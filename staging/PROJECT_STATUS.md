@@ -12,7 +12,7 @@ Checkpoint: 2026-10-01 · dev branch `ccr-aefb96a7-5w3hgh` @ `be84ebd`
 - **Pass B:** area galleries with `#area/<id>/<n>` routes.
   - Open: Portal Meadow™, Riverworks™, Ruin Courtyard™, Prism Ridge™.
   - Creek Crossing™ is incomplete; Clover Cliffs™ and Frost Peaks™ need artwork.
-- **Pass C:** feature cards, Explore Iconic Areas rail, Level Preview, Fast Travel, Bad Guys & Hazards, and the shared `#entity/<id>` dossier.
+- **Pass C:** feature cards, Explore Iconic Areas rail, Level Preview, Fast Travel, Enemies & Hazards, and the shared `#entity/<id>` dossier.
 - **Entity registry** (`entities.js`): canonical IDs, heights (Gamer Bros 1.8 m), sheet-based states, and the evolution line rolling-boulder → rock-guy → crystal-guardian (optional; no trigger is coded).
 - **Copyright pipeline:** XMP/EXIF metadata plus a pixel overscan band; all images verify.
 - **Cache busting:** content-hash `?v=` revisions, `revision.json` freshness reload, and the build ID in the footer.
@@ -30,7 +30,7 @@ Shell note: don't run `pkill -f "http.server"` inside a compound command. It mat
 ## Next: standalone production enemy assets
 Current public state:
 - **Rolling Boulder** has the only enemy image left (provisional crop).
-- **Goom, Spike Bot, Flying Enemy, Turret, Rock Guy and Crystal Guardian** show "Artwork in production". Their old crops were deleted because they didn't match the canonical designs.
+- **Goom, Spike Bot, Rotor Bot, Turret, Stone Golem and Crystal Guardian** show "Artwork in production". Their old crops were deleted because they didn't match the canonical designs.
 
 For each production PNG:
 1. Keep the master outside the public repo.
@@ -40,12 +40,24 @@ For each production PNG:
 
 Never crop the reference sheets (VISUAL_AUTHORITY.md boards A–M) into website art, and never publish them.
 
-## Enemy naming cleanup (open items)
-- **Canonical IDs:** `goom`, `spike-bot`, `flying-enemy`, `turret`, `rolling-boulder`, `rock-guy`, `crystal-guardian`.
+## Pass C.5 (done in this run)
+- Enemy names migrated: Rotor Bot, Sentry Cannon, Stone Golem; section renamed Enemies & Hazards; 7-card grid; legacy aliases via `GB_ENTITY_ALIASES` (`#bad-guys` anchor kept).
+- Phone/tablet portrait map: the whole world is shown first; "Explore the map" or a tap zooms in (centred on the tap) with arrows and the minimap; "Whole map" returns.
+- Clover Cliffs™ / Frost Peaks™ cards use region-identity placeholders (forest green + tree, ice blue + snowflake).
+- "Artwork in production" tiles redesigned (navy tile with icon).
+
+## Blocked: LATEST packs 01–03 arrived corrupted
+Re-upload needed (or put the files loose in Drive, each under 10 MB, for connector download). Waiting on them:
+- clean Blue/Red high-five (to replace the hero layer with the cropped hand)
+- character scenes for carousel / Level Preview / Meet the Team™
+- any standalone enemy art
+
+## Enemy naming cleanup (old notes)
+- **Canonical IDs:** `goom`, `spike-bot`, `rotor-bot`, `sentry-cannon`, `rolling-boulder`, `stone-golem`, `crystal-guardian`.
 - **Collectibles:** `coin`, `adventure-crystal` (formerly `gem`), `secret-key`, `treasure-chest`.
 - **No routing aliases exist yet.** `#entity/gem` currently opens nothing. If old IDs or links need to keep working, add an alias map (e.g. `gem → adventure-crystal`) in the router.
-- **Sheet text not adopted:** "Aerial Form" under Rock Guy (sheet error), "jump on to defeat" (design intent only). Crystal Guardian attack type is TBD.
-- **Bad Guys & Hazards grid:** shows 6 cards; Rock Guy is reached only through the evolution links. Decide whether it gets its own card.
+- **Sheet text not adopted:** "Aerial Form" under Stone Golem (sheet error), "jump on to defeat" (design intent only). Crystal Guardian attack type is TBD.
+- **Enemies & Hazards grid:** shows 6 cards; Stone Golem is reached only through the evolution links. Decide whether it gets its own card.
 
 ## Not started (wait for instruction)
 - Meet the Team™ (Pass D): waiting for the character production assets.

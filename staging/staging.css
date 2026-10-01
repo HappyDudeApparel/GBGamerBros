@@ -209,7 +209,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 }
 .map:focus-visible{outline:none}
 .map-frame{position:relative}
-.map__pan,.map-nav{display:none}
+.map__pan,.map-nav,.map__mode{display:none}
 .map__canvas{position:relative;width:100%}
 .map__img{width:100%;height:auto}
 .hotspot{
@@ -343,8 +343,30 @@ button{font:inherit;color:inherit;cursor:pointer}
             mask-image:linear-gradient(180deg,transparent 0,#000 calc(50 * var(--p)));
   }
   .map::-webkit-scrollbar{display:none}
-  /* full labelled map kept at a readable scale; pan with swipe, arrows or the minimap */
-  .map__canvas{width:max(100%,min(320cqw,1250px))}
+  /* overview first: the whole world fits the width; "Explore the map" (or a tap) zooms in
+     to the readable, pannable view with arrows and the minimap */
+  .map__canvas{width:100%;transition:width .35s ease}
+  .world:not(.is-zoomed) .map{overflow:hidden;cursor:zoom-in}
+  .world:not(.is-zoomed) .hotspot{pointer-events:none}
+  .world:not(.is-zoomed) .map__pan,.world:not(.is-zoomed) .map-nav{display:none}
+  .world.is-zoomed .map__canvas{width:max(100%,min(320cqw,1250px))}
+  .map-nav{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .world:not(.is-zoomed) .map-nav{display:flex;padding-top:8px}
+  .world:not(.is-zoomed) .map-nav .map__hint,.world:not(.is-zoomed) .map-nav .minimap{display:none}
+  .world:not(.is-zoomed) .clouds--top,.world:not(.is-zoomed) .clouds--top2,.world:not(.is-zoomed) .clouds--top3{translate:0 calc(-44 * var(--p))}
+  .world:not(.is-zoomed){margin-top:calc(-30 * var(--p))}
+  .world:not(.is-zoomed) .map{
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12px);
+            mask-image:linear-gradient(180deg,transparent 0,#000 12px)}
+  .map__mode{
+    display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 18px;border-radius:99px;
+    font-size:14px;font-weight:700;letter-spacing:.03em;color:#fff;
+    background:linear-gradient(180deg,#1257c9,#0b3a8f);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(10,40,110,.3);
+  }
+  .map__mode svg{width:18px;height:18px}
+  .map__mode--overview{background:#fff;color:#0b2a6b;border-color:rgba(11,42,107,.3)}
+  .world:not(.is-zoomed) .map__mode--overview,.world.is-zoomed .map__mode--expand{display:none}
+  .map__mode:focus-visible{outline:3px solid #9fd8ff;outline-offset:2px}
   .map__pan{
     display:grid;place-items:center;position:absolute;z-index:5;top:58%;transform:translateY(-50%);
     width:44px;height:44px;padding:0;border-radius:50%;
@@ -355,7 +377,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   .map__pan--prev{left:8px}.map__pan--next{right:8px}
   .map__pan.is-off{opacity:0;pointer-events:none}
   .map__pan:focus-visible{outline:3px solid #9fd8ff;outline-offset:2px}
-  .map-nav{display:block;position:relative;z-index:4;padding:2px 16px 0}
+  .map-nav{position:relative;z-index:4;padding:2px 16px 0}
   .minimap{
     position:relative;max-width:520px;margin:6px auto 0;border-radius:10px;overflow:hidden;cursor:pointer;touch-action:none;
     border:2px solid #fff;box-shadow:0 4px 14px rgba(10,40,100,.25);
@@ -639,7 +661,7 @@ html.is-locked{overflow:hidden}
 .ft__caption span{font-size:12.5px;color:#cfe6ff}
 .ft:hover .ft__caption{background:linear-gradient(180deg,#1440a0,#0a2766)}
 
-/* Bad Guys & Hazards */
+/* Enemies & Hazards */
 .foes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .foe{width:100%;height:100%;display:grid;align-content:start;gap:2px;padding:0 0 8px;border:0;border-radius:12px;overflow:hidden;text-align:left;background:rgba(255,255,255,.75);box-shadow:0 0 0 1.5px rgba(255,255,255,.95),0 4px 12px rgba(20,60,140,.12);transition:transform .2s,box-shadow .2s}
 .foe:hover{transform:translateY(-2px);box-shadow:0 0 0 2px #1f7ae0,0 8px 18px rgba(20,60,140,.2)}
@@ -730,3 +752,39 @@ html.is-locked{overflow:hidden}
 .dossier__evo a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .dossier__evo small{font-size:11px;color:#9fd0ff}
 .dossier__note{margin-left:6px;font-size:12px;color:#9fb8dd}
+/* polished "artwork in production" tile */
+.systems .media-missing,.dossier .media-missing{
+  position:relative;overflow:hidden;gap:6px;align-content:center;justify-items:center;
+  background:radial-gradient(ellipse 80% 70% at 50% 35%,#1d4aa3 0,#0d2c6e 55%,#071c4f 100%);
+  color:#cfe6ff;border:0;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.systems .media-missing::after,.dossier .media-missing::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.08) 45%,transparent 60%);
+}
+.media-missing__icon{width:34%;max-width:64px;aspect-ratio:1;color:rgba(170,215,255,.55);filter:drop-shadow(0 0 10px rgba(80,170,255,.45))}
+.dossier__visual .media-missing{aspect-ratio:1.4;border-radius:14px;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+.dossier__visual .media-missing__icon{max-width:110px}
+.dossier__state.media-missing{background:rgba(255,255,255,.05);border:1px dashed rgba(150,205,255,.3);color:#8fb0da;font-weight:600;letter-spacing:.02em;text-transform:none}
+.dossier__state.media-missing::after{display:none}
+.foe .media-missing{border-radius:0;aspect-ratio:1.6}
+.anchor-alias{position:absolute}
+/* region-identity placeholders (until region imagery exists) */
+.region-id{position:relative;display:grid;place-items:center;aspect-ratio:4/3;overflow:hidden}
+.region-id svg{position:relative;z-index:1;width:30%;aspect-ratio:1;margin-bottom:22%;color:rgba(255,255,255,.92);filter:drop-shadow(0 3px 8px rgba(0,0,0,.35))}
+.region-id::before{content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.18) 0,transparent 40%),
+    radial-gradient(ellipse 70% 45% at 50% 34%,rgba(255,255,255,.22),transparent 70%)}
+.region-id::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-6%;height:52%;
+  clip-path:polygon(0 100%,0 62%,14% 30%,24% 52%,38% 8%,52% 46%,63% 22%,78% 56%,90% 34%,100% 58%,100% 100%)}
+.region-id--forest{background:linear-gradient(170deg,#3fae6a 0,#23864a 48%,#14532d 100%)}
+.region-id--forest::after{background:linear-gradient(180deg,#1b6b3a,#0f3f22)}
+.region-id--ice{background:linear-gradient(170deg,#d8f0ff 0,#7cc6f2 46%,#3a86c4 100%)}
+.region-id--ice::after{background:linear-gradient(180deg,#f4fbff 0,#bfe3f8 30%,#7fb7de 100%)}
+.region-id--ice svg{color:#fff}
+.area-card.is-pending .region-id{filter:none}
+.foes li:last-child:nth-child(3n+1){grid-column:2}
+@media (max-width:419px){.foes li:last-child:nth-child(3n+1){grid-column:auto}.foes li:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 5px)}}
+.foe .media-missing{font-size:9px;letter-spacing:.08em;line-height:1.25;padding:6px}
+.foe .media-missing__icon{width:26%}

@@ -96,3 +96,14 @@ Checked against the production sheets. Only images that match the canonical desi
 | `rolling-boulder` | Provisional crop, clearly marked | Mossy stone sphere matches the canonical direction; not final. |
 
 Encounter links from Goom and Spike Bot to area images were also removed: those images show the old red-capped design.
+
+## Canonical enemy names (supersede the names printed on boards D–M)
+
+Flying Enemy → **Rotor Bot** · Turret → **Sentry Cannon** · Rock Guy → **Stone Golem**. The section title is **Enemies & Hazards**. The boards stay valid design references under the new names. The evolution line is Rolling Boulder → Stone Golem → Crystal Guardian (conditional).
+
+## LATEST packs 01–03 (received damaged)
+
+The three uploads `GB_CLAUDE_LATEST_01_ENEMY_BIBLES`, `_02_ASSET_SHEETS` and `_03_CHARACTER_SCENES` arrived with large zero-filled regions (pack 03 is entirely zeros), so none of their READMEs could be read.
+- Recovered: only two images from pack 01, and both are already registered (`699a3ba648a879d0` = D, `c6f1c0764b8d4c6b` = H).
+- Nothing from packs 02 and 03 was recoverable.
+- Re-upload needed before any new enemy art, the clean Blue/Red high-five or character scenes can be audited.
