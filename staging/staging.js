@@ -206,10 +206,13 @@
   let pushedHere = false;  // whether this session pushed the area entry (so Back/close can pop it)
 
   const ENTITIES = window.GB_ENTITIES || {};
-  // routes: #area/<id>[/<n>]  and  #entity/<id>
+  const CHARS = window.GB_CHARACTERS || {};
+  // routes: #area/<id>[/<n>],  #entity/<id>  and  #character/<id>[/sporty|streetwear]
   const parseHash = () => {
     let m = location.hash.match(/^#area\/([a-z-]+)(?:\/(\d+))?$/);
     if (m) return { id: m[1], view: m[2] ? Number(m[2]) - 1 : 0 };
+    m = location.hash.match(/^#character\/([a-z]+)(?:\/(sporty|streetwear))?$/);
+    if (m) return CHARS[m[1]] ? { character: m[1], look: m[2] || null } : null;
     m = location.hash.match(/^#entity\/([a-z0-9-]+)$/);
     if (!m) return null;
     const canon = (window.GB_ENTITY_ALIASES || {})[m[1]];
@@ -345,6 +348,15 @@
     ? `<span class="gbm ${cls}" style="${frameVars(src)}"><img src="${asset(src, size === "small")}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`
     : `<span class="${cls} media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-hazard"/></svg><span>Artwork in production</span></span>`;
 
+  // transparent cutout (character / enemy render) inside a sized stage; the band is clipped by .gbm
+  const cut = (src, cls, alt, sizes, eager) => {
+    const m = MEDIA[src];
+    if (!m) return `<span class="${cls} media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-hazard"/></svg><span>Artwork in production</span></span>`;
+    const set = m.sw < m.w ? ` srcset="${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w" sizes="${sizes || "50vw"}"` : "";
+    return `<span class="gbm cutout ${cls}" style="${frameVars(src)}"><img src="${asset(src)}"${set} alt="${esc(alt)}"${eager ? "" : ' loading="lazy"'} draggable="false"></span>`;
+  };
+  const isCut = (src) => !!(MEDIA[src] && MEDIA[src].alpha);
+
   // optional authored evolution line (e.g. Rolling Boulder → Stone Golem → Crystal Guardian)
   const evo = (e) => {
     const line = e.evolution && (window.GB_EVOLUTION || {})[e.evolution.line];
@@ -362,19 +374,28 @@
 
   function renderEntity(id) {
     const e = ENTITIES[id];
-    document.getElementById("entType").textContent = `${TYPE[e.type] || ""} · ${e.status === "CANONICAL" ? "Canonical" : e.status === "MISSING" ? "Artwork in production" : "Provisional concept"}`;
+    document.getElementById("entType").textContent = `${TYPE[e.type] || ""} · ${e.status === "APPROVED" ? "Approved production art" : e.status === "CANONICAL" ? "Canonical" : e.status === "MISSING" ? "Artwork in production" : "Provisional concept"}`;
     document.getElementById("entName").textContent = e.name;
     const hero = e.media.render || e.media.thumb;
-    const states = Object.entries(e.states || {}).map(([k, v]) =>
-      `<li>${v ? media(v, "dossier__state", `${e.name} ${k}`) : `<span class="dossier__state media-missing"><span>Not yet available</span></span>`}<small>${esc(k[0].toUpperCase() + k.slice(1))}</small></li>`).join("");
+    // production views / states: cutouts become selectable thumbnails that swap the hero
+    const thumbs = (obj, what) => Object.entries(obj || {}).map(([k, v]) => v && isCut(v)
+      ? `<li><button class="dossier__pick" type="button" data-hero="${v}" data-hero-label="${esc(k)}" aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
+      : `<li>${v ? media(v, "dossier__state", `${e.name} ${k}`) : `<span class="dossier__state media-missing"><span>Not yet available</span></span>`}<small>${esc(k[0].toUpperCase() + k.slice(1))}</small></li>`).join("");
+    const views = thumbs(e.views);
+    const states = thumbs(e.states);
+    const stage = hero && isCut(hero);
     const enc = (e.encounter || []).filter((x) => AREAS[x.area] && AREAS[x.area].views[x.view - 1]).map((x) => {
       const a = AREAS[x.area], v = a.views[x.view - 1];
       return `<li><a href="#area/${x.area}/${x.view}" data-goto-area>${media(v.src, "dossier__enc", v.alt, "small")}
         <small>${esc(a.name)}${x.confirmed === false ? " · match to confirm" : ""}</small></a></li>`;
     }).join("");
     eBody.innerHTML = `
-      <div class="dossier__visual">${media(hero, "dossier__render", e.name)}
-        ${hero && !e.media.render ? `<p class="dossier__caption">Concept thumbnail. Clean render in production.</p>` : ""}</div>
+      <div class="dossier__visual">${stage
+        ? `<div class="dossier__stage" id="entStage"><span class="chip">Production view</span><span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span><span class="dossier__stagelabel" id="entStageLabel">Hero</span></div>
+           <p class="dossier__caption">Asset preview from the approved production art, not an in-game screenshot.</p>`
+        : media(hero, "dossier__render", e.name)}
+        ${hero && !e.media.render ? `<p class="dossier__caption">Concept thumbnail. Clean render in production.</p>` : ""}
+        ${views ? `<h3>Production views</h3><ul class="dossier__picks">${stage ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="true"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
       <div class="dossier__info">
         ${e.copy.provisional ? `<p class="dossier__flag">Working copy · not final</p>` : ""}
         <dl>
@@ -384,7 +405,7 @@
           ${e.height ? `<dt>Approx. height</dt><dd>${e.height.toFixed(1)} m <small class="dossier__note">design reference · Gamer Bros ${(window.GB_HERO_HEIGHT || 1.8).toFixed(1)} m</small></dd>` : ""}
         </dl>
         ${evo(e)}
-        ${states ? `<h3>Visual states</h3><ul class="dossier__states">${states}</ul>` : ""}
+        ${states ? `<h3>Visual states</h3><ul class="${e.views ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
         <h3>Encounter images</h3>
         ${enc ? `<ul class="dossier__encs">${enc}</ul>` : `<p class="dossier__empty">Encounter imagery in production.</p>`}
       </div>`;
@@ -419,6 +440,16 @@
   eDlg.addEventListener("cancel", (e) => { e.preventDefault(); requestCloseEntity(); });
   eDlg.addEventListener("click", (e) => {
     if (e.target === eDlg) { requestCloseEntity(); return; }       // backdrop click
+    const pick = e.target.closest("[data-hero]");
+    if (pick) {
+      const st = document.getElementById("entStage");
+      if (st) {
+        st.querySelector(".stage-box").innerHTML = cut(pick.dataset.hero, "dossier__hero", `${document.getElementById("entName").textContent}: ${pick.dataset.heroLabel}`, "(min-width: 720px) 420px, 90vw", true);
+        document.getElementById("entStageLabel").textContent = pick.dataset.heroLabel;
+        eBody.querySelectorAll("[data-hero]").forEach((b) => b.setAttribute("aria-pressed", String(b === pick)));
+      }
+      return;
+    }
     const l = e.target.closest("[data-entity-link]");
     if (l) { e.preventDefault(); location.replace(`#entity/${l.dataset.entityLink}`); return; }   // stay in one history entry
     const a = e.target.closest("[data-goto-area]");
@@ -437,6 +468,8 @@
   // ---------- router ----------
   function route() {
     const r = parseHash();
+    if (r && r.character) { if (eDlg.open) closeEntityUI(); openCharacter(r.character, r.look); return; }
+    if (cDlg.open) closeCharacterUI();
     if (r && r.entity) { openEntity(r.entity); return; }
     if (eDlg.open) closeEntityUI();
     if (r && isOpen(r.id)) openArea(r.id, r.view);
@@ -510,11 +543,111 @@
   // ---------- Enemies & Hazards ----------
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
     const e = ENTITIES[id];
-    return `<li><button class="foe" type="button" data-entity="${id}" aria-label="${esc(e.name)} — details">
-      ${media(e.media.thumb, "foe__img", "")}
-      <strong>${esc(e.name)}</strong><small>${esc(e.copy.summary)} ${esc(e.copy.behaviour)}</small>
+    const t = e.media.thumb;
+    return `<li><button class="foe${e.status === "APPROVED" ? " foe--approved" : ""}" type="button" data-entity="${id}" aria-label="${esc(e.name)} — details">
+      <span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 180px, (min-width: 720px) 24vw, 46vw") : media(t, "foe__img", "", "small")}</span>
+      <span class="foe__text"><strong>${esc(e.name)}</strong><small>${esc(e.copy.summary)}</small></span>
     </button></li>`;
   }).join("");
+
+  // ---------- Meet the Team™ (#character/<id>) ----------
+  const TEAM = window.GB_TEAM || [];
+  const cDlg = document.getElementById("charView");
+  const cBody = document.getElementById("charBody");
+  let charPushed = false;
+  let charOpenedFrom = null;
+  let charState = { id: null, look: "sporty", view: 0 };
+  const CHAR_SIZES = "(min-width: 900px) 440px, 80vw";
+  const lookOf = (c, look) => c.looks[look] ? look : "sporty";
+  function charStage() {
+    const c = CHARS[charState.id], L = c.looks[charState.look], v = L.views[charState.view];
+    document.getElementById("charStageFig").innerHTML = cut(v.src, "char__hero", `${c.name}, ${L.label.toLowerCase()}: ${v.label}`, CHAR_SIZES, true);
+    document.getElementById("charStageLabel").textContent = `${L.label} · ${v.label}`;
+    cBody.querySelectorAll("[data-char-view]").forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.charView) === charState.view)));
+  }
+  function renderCharacter(id, look) {
+    const c = CHARS[id];
+    charState = { id, look: lookOf(c, look), view: 0 };
+    const L = c.looks[charState.look];
+    cDlg.style.setProperty("--c", c.hex);
+    cDlg.style.setProperty("--cd", c.deep);
+    document.getElementById("charName").textContent = c.name;
+    cBody.innerHTML = `
+      <div class="char__stage">
+        <span class="chip">Production view</span>
+        <span class="char__mark" aria-hidden="true">GB</span>
+        <span class="stage-box" id="charStageFig"></span>
+        <p class="char__stagelabel" id="charStageLabel"></p>
+      </div>
+      <div class="char__side">
+        <div class="char__looks" role="group" aria-label="Choose look">
+          ${Object.entries(c.looks).map(([k, x]) => `<button type="button" class="char__look" data-char-look="${k}" aria-pressed="${k === charState.look}">${esc(x.label)}</button>`).join("")}
+        </div>
+        <h3>Views</h3>
+        <ul class="char__views">${L.views.map((v, i) => `<li><button type="button" class="char__view" data-char-view="${i}" aria-label="${esc(v.label)}"><span class="stage-box">${cut(v.src, "char__thumb", "", "110px")}</span><small>${esc(v.label)}</small></button></li>`).join("")}</ul>
+        <p class="char__note">Character art from the approved multi-view sheets. Not an in-game screenshot.</p>
+        <h3>The team</h3>
+        <ul class="char__team">${TEAM.map((t) => `<li><a href="#character/${t}" data-char-link="${t}" style="--c:${CHARS[t].hex}"${t === id ? ' aria-current="true"' : ""}><i aria-hidden="true"></i>${esc(CHARS[t].name)}</a></li>`).join("")}</ul>
+      </div>`;
+    charStage();
+  }
+  function openCharacter(id, look) {
+    if (!CHARS[id]) return false;
+    if (!cDlg.open || charState.id !== id || (look && lookOf(CHARS[id], look) !== charState.look)) renderCharacter(id, look);
+    if (!cDlg.open) cDlg.showModal();
+    document.documentElement.classList.add("is-locked");
+    pause();
+    cDlg.querySelector(".dossier__close").focus({ preventScroll: true });
+    return true;
+  }
+  function closeCharacterUI() {
+    if (cDlg.open) cDlg.close();
+    if (!dlg.open && !eDlg.open) { document.documentElement.classList.remove("is-locked"); restart(); }
+    if (charOpenedFrom && document.contains(charOpenedFrom)) charOpenedFrom.focus({ preventScroll: true });
+    charOpenedFrom = null;
+  }
+  function requestCloseCharacter() {
+    if (charPushed) { charPushed = false; history.back(); }
+    else { history.replaceState(null, "", "#characters"); closeCharacterUI(); }
+  }
+  document.getElementById("charClose").addEventListener("click", requestCloseCharacter);
+  cDlg.addEventListener("cancel", (e) => { e.preventDefault(); requestCloseCharacter(); });
+  cDlg.addEventListener("click", (e) => {
+    if (e.target === cDlg) { requestCloseCharacter(); return; }
+    const lk = e.target.closest("[data-char-look]");
+    if (lk) {   // look selection is part of the bookmarkable URL, without adding history entries
+      history.replaceState(history.state, "", `#character/${charState.id}/${lk.dataset.charLook}`);
+      renderCharacter(charState.id, lk.dataset.charLook);
+      cBody.querySelector(`[data-char-look="${lk.dataset.charLook}"]`).focus({ preventScroll: true });
+      return;
+    }
+    const vw = e.target.closest("[data-char-view]");
+    if (vw) { charState.view = Number(vw.dataset.charView); charStage(); return; }
+    const t = e.target.closest("[data-char-link]");
+    if (t) { e.preventDefault(); if (t.dataset.charLink !== charState.id) location.replace(`#character/${t.dataset.charLink}`); }
+  });
+
+  const teamList = document.getElementById("teamList");
+  teamList.innerHTML = TEAM.map((id) => {
+    const c = CHARS[id];
+    return `<li><a class="mate" href="#character/${id}" data-character="${id}" style="--c:${c.hex};--cd:${c.deep}">
+      <span class="mate__stage"><span class="mate__mark" aria-hidden="true">GB</span><span class="stage-box">${cut(c.card, "mate__fig", c.name, "(min-width: 1100px) 300px, (min-width: 720px) 45vw, 72vw")}</span></span>
+      <span class="mate__text"><strong>${esc(c.name)}</strong><small><i aria-hidden="true"></i>${esc(c.colour)}</small></span>
+    </a></li>`;
+  }).join("");
+  teamList.addEventListener("click", (e) => {
+    const a = e.target.closest("[data-character]");
+    if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    charOpenedFrom = a;
+    charPushed = true;
+    location.hash = `#character/${a.dataset.character}`;   // pushes history; router opens the view
+  });
+  document.querySelectorAll("[data-team]").forEach((b) => b.addEventListener("click", () => {
+    const card = teamList.querySelector("li");
+    const step = card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(teamList).columnGap || 0) : teamList.clientWidth * 0.8;
+    teamList.scrollBy({ left: Number(b.dataset.team) * step, behavior: reduceMotion ? "auto" : "smooth" });
+  }));
 
   // deep link on load
   route();

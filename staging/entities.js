@@ -12,12 +12,14 @@
 // point the media key here; IDs, routes and layout never change.
 //
 // type       enemy | hazard | portal | prop | collectible
-// status     PROVISIONAL | CANONICAL | REPLACEMENT_REQUIRED | MISSING   (production status)
+// status     APPROVED | PROVISIONAL | CANONICAL | REPLACEMENT_REQUIRED | MISSING   (production status)
+//            APPROVED = approved production art (renders isolated from the approved production atlas)
 // copy       short working copy only; `provisional: true` shows "Working copy · not final"
 // media      thumb / render / icon: banded media keys (media-manifest.js) or null
 //            (null everywhere = public dossier shows "Artwork in production")
 // encounter  [{ area, view, confirmed }] area gallery images where the entity is visible
 // states     ordered { "Label": mediaKey|null } — the planned state set (null = not yet available)
+// views      ordered { "Label": mediaKey } — public production views (angles) shown in the dossier
 // angles     { front, threeQuarter, side, back, top?, bottom? } — production tracking, not shown publicly
 // height     design-reference height in metres (Gamer Bros = 1.8 m); may be tuned in Unreal
 // scale      media key for a scale-reference image, or null
@@ -33,11 +35,14 @@ window.GB_HERO_HEIGHT = 1.8;   // Gamer Bros reference height (m)
 window.GB_ENTITIES = {
   // ---------------- enemies ----------------
   "goom": {
-    name: "Goom", type: "enemy", status: "MISSING",
-    media: { thumb: null, render: null, icon: null },   // old crop was non-canonical; production PNG pending
+    name: "Goom", type: "enemy", status: "APPROVED",
+    // GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1 (approved production master)
+    media: { thumb: E + "goom-hero", render: E + "goom-hero", icon: null },
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
     encounter: [],
-    states: states("Idle", "Walk", "Alert", "Attack / charge", "Defeated"), angles: angles("top", "bottom"), height: 0.5, scale: null,
+    views: { "Front": E + "goom-front", "¾ view": E + "goom-threeq", "Side": E + "goom-side", "Back": E + "goom-back" },
+    states: { "Active": E + "goom-active", "Inactive / defeated": E + "goom-defeated" },
+    angles: angles("top", "bottom"), height: 0.5, scale: null,
   },
   "spike-bot": {
     name: "Spike Bot", type: "enemy", status: "MISSING",
@@ -47,16 +52,24 @@ window.GB_ENTITIES = {
     states: states("Idle", "Roll", "Alert", "Attack", "Defeated"), angles: angles(), height: 0.5, scale: null,
   },
   "rotor-bot": {
-    name: "Rotor Bot", type: "enemy", status: "MISSING",
-    media: { thumb: null, render: null, icon: null },   // old crop did not match the canonical design; production PNG pending
+    name: "Rotor Bot", type: "enemy", status: "APPROVED",
+    // ROTOR_BOT_PRODUCTION_ATLAS_V1 (approved production master)
+    media: { thumb: E + "rotor-bot-hero", render: E + "rotor-bot-hero", icon: null },
     copy: { provisional: true, summary: "Airborne enemy.", behaviour: "Flies in patterns.", where: "To be confirmed." },
-    encounter: [], states: states("Hover", "Patrol", "Attack", "Dive", "Defeated"), angles: angles(), height: 0.8, scale: null,
+    encounter: [],
+    views: { "Front": E + "rotor-bot-front", "¾ view": E + "rotor-bot-threeq", "Side": E + "rotor-bot-side", "Back": E + "rotor-bot-back" },
+    states: { "Hover / attack": E + "rotor-bot-active", "Defeated": E + "rotor-bot-defeated" },
+    angles: angles(), height: 0.8, scale: null,
   },
   "sentry-cannon": {
-    name: "Sentry Cannon", type: "enemy", status: "MISSING",
-    media: { thumb: null, render: null, icon: null },   // old crop was non-canonical; production PNG pending
+    name: "Sentry Cannon", type: "enemy", status: "APPROVED",
+    // GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1 (approved production master)
+    media: { thumb: E + "sentry-cannon-hero", render: E + "sentry-cannon-hero", icon: null },
     copy: { provisional: true, summary: "Stationary cannon.", behaviour: "Fires from a fixed position. Find cover.", where: "To be confirmed." },
-    encounter: [], states: states("Idle", "Tracking", "Firing", "Cooldown", "Inactive"), angles: angles(), height: 1.0, scale: null,
+    encounter: [],
+    views: { "Front": E + "sentry-cannon-front", "¾ view": E + "sentry-cannon-threeq", "Side": E + "sentry-cannon-side", "Back": E + "sentry-cannon-back" },
+    states: { "Active": E + "sentry-cannon-active", "Inactive / defeated": E + "sentry-cannon-defeated" },
+    angles: angles(), height: 1.0, scale: null,
   },
   "stone-golem": {
     name: "Stone Golem", type: "enemy", status: "MISSING",
