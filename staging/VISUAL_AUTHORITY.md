@@ -107,3 +107,14 @@ The three uploads `GB_CLAUDE_LATEST_01_ENEMY_BIBLES`, `_02_ASSET_SHEETS` and `_0
 - Recovered: only two images from pack 01, and both are already registered (`699a3ba648a879d0` = D, `c6f1c0764b8d4c6b` = H).
 - Nothing from packs 02 and 03 was recoverable.
 - Re-upload needed before any new enemy art, the clean Blue/Red high-five or character scenes can be audited.
+
+## Loose-asset re-upload (Drive `CLAUDE_CURRENT_LOOSE_ASSETS`, verified 2026-10-01)
+
+| File | Size | SHA-256 (16) | Status |
+|---|---|---|---|
+| ENEMY_CANONICAL_OVERVIEW.png | 1536 × 1024 RGBA | `3262375cf032c636` | New internal reference (N) |
+| ENEMY_EVOLUTION_PRODUCTION_SHEET.png | 1536 × 1024 | `998ca7e24d0916ba` | New internal reference (O) |
+| ROCK_EVOLUTION_REFERENCE.png | 1536 × 1024 | `d1733f7ccd97c54f` | Same as I |
+| ROLLING_BOULDER_STONE_GOLEM_CRYSTAL_GUARDIAN_SHEET.png | 1536 × 1024 | `c6f1c0764b8d4c6b` | Same as H |
+
+N and O are internal references under the current canonical names (precedence tier 2). They are not published or cropped.

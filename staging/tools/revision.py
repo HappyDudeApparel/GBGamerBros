@@ -99,6 +99,13 @@ def run(check_only=False):
     digest = hashlib.sha1()
     for f in files:
         digest.update(f.encode() + b"\0" + open(os.path.join(STAGING, f), "rb").read())
+    # include the HTML itself, minus the parts that carry the revision
+    page = open(os.path.join(STAGING, "index.html"), encoding="utf-8").read()
+    page = re.sub(r'<meta name="gb-revision" content="[^"]*">\n?', "", page)
+    page = re.sub(r'<script id="gbFresh">.*?</script>\n?', "", page, flags=re.S)
+    page = re.sub(r'<span id="gbRev">[^<]*</span>', "", page)
+    page = re.sub(r'\?v=[0-9a-f]+', "", page)
+    digest.update(b"index.html\0" + page.encode())
     rev = "r-" + digest.hexdigest()[:8]
 
     # 4. HTML references, revision meta, freshness check, footer label
@@ -106,6 +113,18 @@ def run(check_only=False):
     html = open(html_p, encoding="utf-8").read()
     html = stamp_refs(html, r"(?P<pre>(?:src|href)=\")(?P<path>" + LOCAL + r")(?:\?v=[0-9a-f]+)?(?P<post>\")")
     html = stamp_refs(html, r"(?P<pre>url\()(?P<path>" + LOCAL + r")(?:\?v=[0-9a-f]+)?(?P<post>\))")
+    # srcset candidates: "path 960w, path 1672w"
+    def srcset(m):
+        parts = []
+        for cand in m.group(1).split(","):
+            bits = cand.strip().split()
+            path = bits[0].split("?")[0]
+            full = os.path.join(STAGING, path)
+            if not os.path.isfile(full):
+                raise SystemExit(f"missing srcset file: {path}")
+            parts.append(" ".join([path + "?v=" + h(full)] + bits[1:]))
+        return 'srcset="' + ", ".join(parts) + '"'
+    html = re.sub(r'srcset="([^"]+)"', srcset, html)
     html = re.sub(r'<meta name="gb-revision" content="[^"]*">\n?', "", html)
     html = re.sub(r'<script id="gbFresh">.*?</script>\n?', "", html, flags=re.S)
     html = html.replace("<meta charset=\"utf-8\">",
@@ -121,6 +140,13 @@ def run(check_only=False):
     for path, v in refs:
         if not v:
             problems.append(f"unrevisioned reference: {path}")
+    for ss in re.findall(r'srcset="([^"]+)"', html):
+        for cand in ss.split(","):
+            u = cand.strip().split()[0]
+            path, _, v = u.partition("?v=")
+            if not v:
+                problems.append(f"unrevisioned srcset: {path}")
+            refs.add((path, "?v=" + v if v else ""))
     for path, v in re.findall(r"url\((" + LOCAL + r")(\?v=[0-9a-f]+)?\)", html + css2):
         if not v:
             problems.append(f"unrevisioned url(): {path}")

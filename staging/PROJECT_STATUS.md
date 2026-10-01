@@ -46,6 +46,13 @@ Never crop the reference sheets (VISUAL_AUTHORITY.md boards A–M) into website 
 - Clover Cliffs™ / Frost Peaks™ cards use region-identity placeholders (forest green + tree, ice blue + snowflake).
 - "Artwork in production" tiles redesigned (navy tile with icon).
 
+## Loose assets installed (see CHARACTER_ASSETS.md)
+- Hero character layer is now the clean Blue/Red high-five (no cropped hand).
+- Hero: 3 slides (high-five on world plate; Blue world action; Purple/Yellow world action).
+- Level Preview: Blue/Red cliffside, Purple/Yellow boardwalk, four-character climb, trail junction.
+- Video stills retired from the hero and Level Preview.
+- revision.py now stamps `srcset` and includes the HTML in the build hash.
+
 ## Re-upload packs (Drive: Gamer Bros folder)
 - B_EVOLUTION: opened and verified; README read. Its two sheets are byte-identical to boards H (`c6f1c0764b8d4c6b`) and I (`d1733f7ccd97c54f`), so nothing new to register.
 - A_ENEMIES, C_HERO, D_GIRLS, E_TEAM: not retrieved. The Drive connector's session expires on every large download after the first ("session expired"); search still works. The archives themselves are probably fine.

@@ -113,12 +113,6 @@ button{font:inherit;color:inherit;cursor:pointer}
   transition:opacity .9s ease,transform 1.1s cubic-bezier(.2,.8,.2,1);
 }
 .fg.is-active{opacity:1;transform:none}
-/* source limitation: Blue's outstretched hand is hidden behind baked text in the approved
-   reference, so the sleeve ends in a stub. Fade it into the scene until a full-limb cutout exists. */
-.fg--stub-left{
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10%);
-          mask-image:linear-gradient(90deg,transparent 0,#000 10%);
-}
 
 /* fixed hero copy */
 .hero__copy{position:absolute;inset:0;z-index:7;pointer-events:none}
@@ -788,3 +782,20 @@ html.is-locked{overflow:hidden}
 @media (max-width:419px){.foes li:last-child:nth-child(3n+1){grid-column:auto}.foes li:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 5px)}}
 .foe .media-missing{font-size:9px;letter-spacing:.08em;line-height:1.25;padding:6px}
 .foe .media-missing__icon{width:26%}
+
+/* hero scene slides (banded media): cover-fit the CONTENT image; the copyright band is never shown */
+.slide--scene{position:relative;overflow:hidden}
+.scene-box{position:absolute;inset:0;overflow:hidden;container-type:size}
+.scene-box > .gbm{
+  position:absolute;width:max(100cqw,100cqh * var(--ar));
+  --fx:var(--pos-x,50%);
+  left:50%;top:var(--fy,45%);translate:-50% calc(-1 * var(--fy,45%));
+}
+.slide--scene > .scene-box > .gbm > img{filter:brightness(1.04) saturate(1.04)}
+@media (max-aspect-ratio:1/1){
+  .slide--scene::before{content:"";position:absolute;inset:-40px;background:var(--bg) center 30%/cover no-repeat;filter:blur(18px) brightness(.8) saturate(1.1)}
+  .slide--scene .scene-box{inset:auto;left:0;right:0;top:calc(296 * var(--p));height:calc(330 * var(--p));
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 84%,transparent 100%);
+            mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 84%,transparent 100%)}
+  .slide--scene .scene-box > .gbm{left:var(--sx,50%);translate:calc(-1 * var(--sx,50%)) calc(-1 * var(--fy,45%))}
+}
