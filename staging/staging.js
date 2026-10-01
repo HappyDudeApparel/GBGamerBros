@@ -166,6 +166,16 @@
   const aSub = document.getElementById("areaSub");
   const aCount = document.getElementById("areaCount");
   const aLabel = document.getElementById("areaLabel");
+  const MEDIA = window.GB_MEDIA || {};
+  // shared media frame: content aspect (--ar) and the stretch needed to push the
+  // copyright band below the frame (--ext), valid for both derivative sizes
+  const frameVars = (src) => {
+    const m = MEDIA[src];
+    if (!m) return "--ar:1.7778;--ext:1";
+    const ext = Math.max((m.h + m.band) / m.h, (m.sh + m.sband) / m.sh);
+    return `--ar:${(m.w / m.h).toFixed(5)};--ext:${ext.toFixed(5)}`;
+  };
+  const isOpen = (id) => AREAS[id] && AREAS[id].status === "open" && AREAS[id].views.length > 0;
   const KIND = { establishing: "Overview", ground: "Ground level", traversal: "Route", landmark: "Landmark", closeup: "Close view" };
   let current = null;      // area id
   let viewIndex = 0;
@@ -189,9 +199,9 @@
     aTitle.textContent = area.name;
     aSub.textContent = area.sub;
     aTrack.innerHTML = area.views.map((v, i) => `
-      <figure class="shot" data-index="${i}" aria-label="View ${i + 1} of ${area.views.length}: ${v.label}" style="--focus:${v.focus ?? 0.5}">
+      <figure class="shot" data-index="${i}" aria-label="View ${i + 1} of ${area.views.length}: ${v.label}" style="--focus:${v.focus ?? 0.5};${frameVars(v.src)}">
         <div class="shot__frame">
-          <div class="shot__stage">
+          <div class="shot__stage gbm">
             <img src="${v.src}.webp" srcset="${v.src}-960.webp 960w, ${v.src}.webp 1672w"
                  sizes="(max-aspect-ratio: 1/1) 180vh, 92vw" alt="${v.alt}" width="1672" height="941"
                  ${i ? 'loading="lazy"' : 'fetchpriority="high"'} draggable="false">
@@ -212,6 +222,7 @@
 
   function setView(i, fromScroll) {
     const area = AREAS[current];
+    if (!area) return;            // view closed while a scroll update was pending
     viewIndex = Math.max(0, Math.min(area.views.length - 1, i));
     const v = area.views[viewIndex];
     aCount.textContent = `${viewIndex + 1} / ${area.views.length}`;
@@ -219,7 +230,7 @@
     [...aDots.children].forEach((d, n) => d.setAttribute("aria-selected", String(n === viewIndex)));
     aPrev.disabled = viewIndex === 0;
     aNext.disabled = viewIndex === area.views.length - 1;
-    aBg.style.backgroundImage = `url(${v.src}-960.webp)`;
+    aBg.innerHTML = `<div class="gbm" style="${frameVars(v.src)}"><img src="${v.src}-960.webp" alt=""></div>`;
     const hash = `#area/${current}/${viewIndex + 1}`;
     if (location.hash !== hash) history.replaceState(history.state, "", hash);
     if (!fromScroll) aTrack.children[viewIndex].scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", inline: "center", block: "nearest" });
@@ -263,7 +274,7 @@
   });
 
   function openArea(id, view) {
-    if (!AREAS[id] || !AREAS[id].ready) return false;
+    if (!isOpen(id)) return false;
     if (current !== id) { current = id; render(id); }
     if (!dlg.open) { dlg.showModal(); document.documentElement.classList.add("is-locked"); pause(); }
     // wait a frame so the track has its size before scrolling to the view
@@ -276,6 +287,7 @@
     return true;
   }
   function closeAreaUI() {
+    clearTimeout(scrollTimer);
     if (dlg.open) dlg.close();
     document.documentElement.classList.remove("is-locked");
     current = null;
@@ -292,15 +304,17 @@
 
   window.addEventListener("hashchange", () => {
     const r = parseHash();
-    if (r && AREAS[r.id] && AREAS[r.id].ready) openArea(r.id, r.view);
+    if (r && isOpen(r.id)) openArea(r.id, r.view);
     else if (dlg.open) { pushedHere = false; closeAreaUI(); }
   });
 
   document.querySelectorAll(".hotspot").forEach((h) =>
     h.addEventListener("click", () => {
       const id = h.dataset.area;
-      if (!AREAS[id] || !AREAS[id].ready) {
-        showToast(`${AREAS[id] ? AREAS[id].name : "This area"} opens once the area template is approved.`);
+      if (!isOpen(id)) {
+        const a = AREAS[id];
+        const why = a && a.status === "artwork-required" ? "artwork is in production" : "more views are in production";
+        showToast(`${a ? a.name : "This area"}: ${why}.`);
         return;
       }
       openedFrom = h;

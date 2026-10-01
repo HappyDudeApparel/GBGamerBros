@@ -1,63 +1,85 @@
-# Pass B — area asset assignments
+# Pass B — area asset assignments and production status
 
-Sources: GB_CLAUDE_03A, 03B, 04A, 04B (plus `a4` from GB_CLAUDE_02). Files were compared by checksum, and exact duplicates were merged:
+Standard: see `WORLD_ASSET_STANDARD.md`. Status values: `CANONICAL` · `ACCEPTABLE` · `NORMALIZATION_REQUIRED` · `NOT_PRESENT` · `PROVISIONAL` · `FINAL` · `APPLIED`.
+
+**Every gallery image is `PROVISIONAL` world-design reference, not final art.** Object statuses are a preliminary visual audit made at about 1000 px review size. They will be confirmed at full resolution during normalisation. No image can be `CANONICAL` until the canonical banner, crate and springboard masters exist.
+
+Sources: GB_CLAUDE_03A/03B/04A/04B, plus `a4` from GB_CLAUDE_02. Byte-identical duplicates were merged:
 `04A/POV/raw_img1` = `adventure_mountain_prism_valley`, `raw_img2` = `crystal_valley_portal_adventure`,
 `raw_img3` = `canyon_of_crystal_waterworks`, `raw_img4` = `floating_ruins_portal_adventure`.
-Each image is assigned to **one** location at most.
+Each image is used in at most one location.
 
-Status key: **Live** = in the staging gallery now · **Provisional** = proposed, waiting for template approval · **Reference** = not for galleries.
+Column key — **BANNER** · **CRATE** · **SPRING** · **BRANDING** (in-world signs/logos) · **©** (COPYRIGHT_STATUS) · **ART** (FINAL_ART_STATUS)
 
-## Riverworks™ — template area (live)
+## Live galleries
 
-| # | Source file | View type | Status | Reason | Better replacement needed? |
-|---|---|---|---|---|---|
-| 1 | `canyon_of_crystal_waterworks.png` | Overview | Live | Aerial canyon of blue pipeways, aqueduct bridges and waterfalls, matching the map's Riverworks™ label. | No |
-| 2 | `gb_waterfall_riverworks_adventure.png` | Ground level | Live | Player-height boardwalk beside a pipe waterfall. | No |
-| 3 | `riverworks_canyon_pipeline_adventure.png` | Route | Live | Boardwalk route through pipe assemblies with a bounce pad and gems; good Pass E hotspot candidate. | No |
-| 4 | `cinematic_gb_mountain_waterfall_adventure.png` | Landmark | Live | Pipe outflow waterfall and cliff walkway with a bounce pad. | No |
+### Portal Meadow™ (open · banner family: teal/green)
 
-## Proposed for the remaining areas (applied only after template approval)
+| # | Source file | View | BANNER | CRATE | SPRING | BRANDING | © | ART | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | `crystal_valley_portal_adventure.png` | Overview | NORMALIZATION_REQUIRED | ACCEPTABLE | ACCEPTABLE | NORMALIZATION_REQUIRED | APPLIED | PROVISIONAL | Blue crown banners (wrong colour and symbol). The baked-in wooden "GB GAMER BROS" sign uses older lettering. |
+| 2 | `adventure_mountain_portal_valley.png` | Ground level | NORMALIZATION_REQUIRED | ACCEPTABLE | ACCEPTABLE | NORMALIZATION_REQUIRED | APPLIED | PROVISIONAL | Blue mountain banners with no GB mark. The baked-in sign reads "GB Gamer Bros / Adventure Mountain" in an older style. |
+| 3 | `gb_portal_overlooking_crystal_valley.png` | Close view | NORMALIZATION_REQUIRED | ACCEPTABLE | ACCEPTABLE | ACCEPTABLE | APPLIED | PROVISIONAL | GB banners in the correct form but blue. Springboard matches the canonical design. |
 
-| Source file | Proposed area | View type | Status | Reason |
-|---|---|---|---|---|
-| `crystal_valley_portal_adventure.png` | Portal Meadow™ | Overview | Provisional | Grassy meadow with a portal and fenced paths. Note: has a baked-in in-world "GB Gamer Bros" sign. |
-| `adventure_mountain_portal_valley.png` | Portal Meadow™ | Ground level | Provisional | Meadow path leading to the portal. Note: has a baked-in in-world "GB Gamer Bros / Adventure Mountain" sign. |
-| `gb_portal_overlooking_crystal_valley.png` | Portal Meadow™ | Route / close view | Provisional | Portal on a cliff path with a bounce pad and gems. |
-| `enchanted_waterfall_canyon_adventure.png` | Creek Crossing™ | Route | Provisional | Wooden bridge crossing over rapids, matching "Bridges & Rapids". |
-| `vibrant_ruined_courtyard_adventure.png` | Ruin Courtyard™ | Ground level | Provisional | Paved courtyard, ruined arches, enemy and portal gate. |
-| `mossy_gb_fortress_valley_adventure.png` | Ruin Courtyard™ | Route | Provisional | Stone path and stairs through a ruined fortress arch. |
-| `mountain_fortress_portal_ruins.png` | Ruin Courtyard™ | Landmark | Provisional | Ruined towers with a portal and stairs. |
-| `floating_ruins_portal_adventure.png` | Ruin Courtyard™ | Overview | Provisional | Wide view of ruined walls and a portal. |
-| `crystalline_mountain_citadel_adventure.png` | Prism Ridge™ | Route | Provisional | Crystal path leading toward the crystal citadel. |
-| `adventure_mountain_prism_valley.png` | Prism Ridge™ | Overview | Provisional | Aerial view of the crystal citadel and valley. Note: has a baked-in in-world GB sign. |
-| `prism_ridge_valley_adventure.png` | Prism Ridge™ | Ground level | Provisional | Trail with an in-world signpost "Prism Ridge ↑" (the viewer is on the approach). |
-| `a4.png` (pack 02) | Prism Ridge™ | Landmark | Provisional | Stone stairs climbing to the crystal castle. |
+Still needed: a landmark view, and (once the standard is approved) teal/green banners throughout.
+
+### Riverworks™ (open · banner family: copper)
+
+| # | Source file | View | BANNER | CRATE | SPRING | BRANDING | © | ART | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | `canyon_of_crystal_waterworks.png` | Overview | NORMALIZATION_REQUIRED | ACCEPTABLE | ACCEPTABLE | ACCEPTABLE | APPLIED | PROVISIONAL | Blue banners with a mountain/crown mark and no GB. |
+| 2 | `gb_waterfall_riverworks_adventure.png` | Ground level | NORMALIZATION_REQUIRED | ACCEPTABLE | ACCEPTABLE | ACCEPTABLE | APPLIED | PROVISIONAL | **Reference for the canonical banner form, crate and springboard**; the banner colour should be copper. |
+| 3 | `riverworks_canyon_pipeline_adventure.png` | Route | NORMALIZATION_REQUIRED | ACCEPTABLE | ACCEPTABLE | ACCEPTABLE | APPLIED | PROVISIONAL | Banner form correct, colour blue. |
+| 4 | `cinematic_gb_mountain_waterfall_adventure.png` | Landmark | NORMALIZATION_REQUIRED | ACCEPTABLE | ACCEPTABLE | ACCEPTABLE | APPLIED | PROVISIONAL | Banner form correct, colour blue. |
+
+### Ruin Courtyard™ (open · banner family: red)
+
+| # | Source file | View | BANNER | CRATE | SPRING | BRANDING | © | ART | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | `floating_ruins_portal_adventure.png` | Overview | NORMALIZATION_REQUIRED | NORMALIZATION_REQUIRED | NOT_PRESENT | ACCEPTABLE | APPLIED | PROVISIONAL | Mountain banners with no GB mark. Crates are unbranded. |
+| 2 | `vibrant_ruined_courtyard_adventure.png` | Ground level | NORMALIZATION_REQUIRED | NORMALIZATION_REQUIRED | NOT_PRESENT | ACCEPTABLE | APPLIED | PROVISIONAL | Mountain banners with no GB mark. Plain crates. |
+| 3 | `mossy_gb_fortress_valley_adventure.png` | Route | NORMALIZATION_REQUIRED | ACCEPTABLE | NOT_PRESENT | ACCEPTABLE | APPLIED | PROVISIONAL | GB banners in the correct form but blue. |
+| 4 | `mountain_fortress_portal_ruins.png` | Landmark | NORMALIZATION_REQUIRED | ACCEPTABLE | NOT_PRESENT | ACCEPTABLE | APPLIED | PROVISIONAL | GB banners in the correct form but blue. |
+
+### Prism Ridge™ (open · banner family: purple)
+
+| # | Source file | View | BANNER | CRATE | SPRING | BRANDING | © | ART | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | `adventure_mountain_prism_valley.png` | Overview | NORMALIZATION_REQUIRED | ACCEPTABLE | ACCEPTABLE | NORMALIZATION_REQUIRED | APPLIED | PROVISIONAL | Crown banners. The baked-in "GB Gamer Bros / Adventure Mountain" sign uses older lettering. |
+| 2 | `prism_ridge_valley_adventure.png` | Ground level | NORMALIZATION_REQUIRED | NOT_PRESENT | NOT_PRESENT | ACCEPTABLE | APPLIED | PROVISIONAL | GB banner, blue. The route sign ("Prism Ridge ↑ / Riverworks →") should become canonical signage later. |
+| 3 | `crystalline_mountain_citadel_adventure.png` | Route | NORMALIZATION_REQUIRED | ACCEPTABLE | NOT_PRESENT | ACCEPTABLE | APPLIED | PROVISIONAL | Crown banners. |
+| 4 | `a4.png` (pack 02) | Landmark | NORMALIZATION_REQUIRED | ACCEPTABLE | NOT_PRESENT | ACCEPTABLE | APPLIED | PROVISIONAL | GB banners in the correct form but blue. |
+
+## Built but not open
+
+### Creek Crossing™ (incomplete · banner family: blue)
+
+| # | Source file | View | BANNER | CRATE | SPRING | BRANDING | © | ART | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | `enchanted_waterfall_canyon_adventure.png` | Route | NORMALIZATION_REQUIRED | NORMALIZATION_REQUIRED | ACCEPTABLE | ACCEPTABLE | APPLIED | PROVISIONAL | Banner colour is already correct, but the banners lack the GB mark. Plain crates. |
+
+Opens when at least 3 views exist (overview, ground level, close view still needed).
+
+### Clover Cliffs™ and Frost Peaks™ — artwork required
+
+No imagery exists. The map labels show a notice; nothing is faked.
 
 ## Unassigned (not guessed)
 
 | Source file | Why |
 |---|---|
-| `adventure_mountain_portal_meadow_vista.png` | Junction shot. Its baked-in signpost points **to** both Portal Meadow and Creek Crossing, so it's in neither. Could serve as a world-hub image later. |
-| `cascading_gb_crystal_ruins.png` | Ruins plus pools plus pipes. Could be Ruin Courtyard™ or Riverworks™; no confident single home. |
-| `04A/POV/raw_img5.png` | Already used as the hero slide 1 world plate; kept out of galleries to avoid duplication. |
-| `ADVENTURE_MOUNTAIN_CRYSTAL_ISLES_MASTER.png`, `ADVENTURE_WORLD_CONCEPT.png` | World/map reference, not area views. |
+| `adventure_mountain_portal_meadow_vista.png` | Junction shot whose signpost points **to** both Portal Meadow and Creek Crossing. Possible world-hub image. |
+| `cascading_gb_crystal_ruins.png` | Ruins plus pools plus pipes: could be Ruin Courtyard™ or Riverworks™. |
+| `04A/POV/raw_img5.png` | Used as the hero slide 1 world plate. |
+| `ADVENTURE_MOUNTAIN_CRYSTAL_ISLES_MASTER.png`, `ADVENTURE_WORLD_CONCEPT.png` | World/map reference. |
 
-## Gaps (need new art, not filler)
+## Pass A assets (copyright)
 
-| Area | Have | Missing |
-|---|---|---|
-| Portal Meadow™ | 3 provisional | A landmark or close gameplay view (4th image). |
-| Creek Crossing™ | 1 provisional | Overview, ground-level and close views. |
-| Clover Cliffs™ | **None** | All views (forest trails, cliffs). |
-| Frost Peaks™ | **None** | All views (icy cliffs, granite roads). No snow imagery exists in any pack. |
-| Ruin Courtyard™ | 4 provisional | Close gameplay view (optional). |
-| Prism Ridge™ | 4 provisional | Close gameplay view (optional). |
+| File | Metadata | Pixel band | Notes |
+|---|---|---|---|
+| `adventure-mountain-map.webp`, `hero-*.webp` | APPLIED | PENDING | Pass A is frozen for device testing. Banding these means routing the hero slides and the map through the `.gbm` frame; scheduled right after the Pass A device sign-off. |
+| `gb-logo.webp`, `adventure-mountain-sign.webp`, `bros-highfive.webp`, `cloud-bank.webp` | APPLIED | PENDING (design decision) | Transparent cutouts. A band would add an opaque strip to a transparent file; options are listed in the hand-off notes. |
 
 ## Reserve brand assets (not placed)
 
-- `blue_banner_variant.png`: likely an area-page/world masthead later.
-- `blended_sign_variant_2.png`: likely a section transition or lower-page CTA panel later.
-
-## Labels
-
-View labels ("Pipeway canyon", "Boardwalk", …) and view-type chips are working labels, not final marketing copy. Area subtitles are taken from the approved map labels.
+`blue_banner_variant.png` (likely an area/world masthead) and `blended_sign_variant_2.png` (likely a section transition or lower CTA panel). Placement will be decided after the page architecture is assembled. Note: the blue banner variant has a single-colour field, so if it becomes a per-area masthead it should follow the region colour families.
