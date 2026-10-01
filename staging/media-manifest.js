@@ -214,30 +214,6 @@ window.GB_MEDIA = {
   "rev": "40182d5678",
   "srev": "40182d5678"
  },
- "assets/entities/crystal-guardian-thumb": {
-  "w": 252,
-  "h": 156,
-  "band": 14,
-  "sw": 252,
-  "sh": 156,
-  "sband": 14,
-  "alpha": false,
-  "master": "crystal-guardian.png",
-  "rev": "9e5e28fe28",
-  "srev": "af6ebe1778"
- },
- "assets/entities/flying-enemy-thumb": {
-  "w": 252,
-  "h": 156,
-  "band": 14,
-  "sw": 252,
-  "sh": 156,
-  "sband": 14,
-  "alpha": false,
-  "master": "flying-enemy.png",
-  "rev": "d587943dd0",
-  "srev": "c02afbd740"
- },
  "assets/entities/rolling-boulder-thumb": {
   "w": 252,
   "h": 156,
@@ -249,18 +225,6 @@ window.GB_MEDIA = {
   "master": "rolling-boulder.png",
   "rev": "90fb161f73",
   "srev": "9f892ef92e"
- },
- "assets/entities/spike-bot-thumb": {
-  "w": 252,
-  "h": 156,
-  "band": 14,
-  "sw": 252,
-  "sh": 156,
-  "sband": 14,
-  "alpha": false,
-  "master": "spike-bot.png",
-  "rev": "06ab7ec952",
-  "srev": "dc75a7fc4c"
  },
  "assets/systems/fast-travel-portal": {
   "w": 1280,

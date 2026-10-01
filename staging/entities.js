@@ -18,14 +18,17 @@
 //            (null everywhere = public dossier shows "Artwork in production")
 // encounter  [{ area, view, confirmed }] area gallery images where the entity is visible
 // states     ordered { "Label": mediaKey|null } — the planned state set (null = not yet available)
-// angles     { front, threeQuarter, side, back } — production tracking, not shown publicly
-// scale      media key for a scale reference, or null
+// angles     { front, threeQuarter, side, back, top?, bottom? } — production tracking, not shown publicly
+// height     design-reference height in metres (Gamer Bros = 1.8 m); may be tuned in Unreal
+// scale      media key for a scale-reference image, or null
 // evolution  { line, phase, of } — optional authored evolution; conditions are undecided
 
 (() => {
 const E = "assets/entities/";
-const angles = () => ({ front: null, threeQuarter: null, side: null, back: null });
+const angles = (...extra) => ({ front: null, threeQuarter: null, side: null, back: null, ...Object.fromEntries(extra.map((k) => [k, null])) });
 const states = (...labels) => Object.fromEntries(labels.map((l) => [l, null]));
+
+window.GB_HERO_HEIGHT = 1.8;   // Gamer Bros reference height (m)
 
 window.GB_ENTITIES = {
   // ---------------- enemies ----------------
@@ -33,40 +36,40 @@ window.GB_ENTITIES = {
     name: "Goom", type: "enemy", status: "MISSING",
     media: { thumb: null, render: null, icon: null },   // old crop was non-canonical; production PNG pending
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
-    encounter: [{ area: "river", view: 2, confirmed: false }, { area: "ruin", view: 1, confirmed: false }],
-    states: states("Idle", "Movement", "Alert / attack", "Defeated"), angles: angles(), scale: null,
+    encounter: [],
+    states: states("Idle", "Walk", "Alert", "Attack / charge", "Defeated"), angles: angles("top", "bottom"), height: 0.5, scale: null,
   },
   "spike-bot": {
-    name: "Spike Bot", type: "enemy", status: "PROVISIONAL",
-    media: { thumb: E + "spike-bot-thumb", render: null, icon: null },
+    name: "Spike Bot", type: "enemy", status: "MISSING",
+    media: { thumb: null, render: null, icon: null },   // old crop did not match the canonical design; production PNG pending
     copy: { provisional: true, summary: "Spiked ground enemy.", behaviour: "Stays put or patrols. Damages on contact.", where: "To be confirmed." },
-    encounter: [{ area: "ruin", view: 2, confirmed: false }],
-    states: states("Idle", "Rolling / movement", "Alert / attack"), angles: angles(), scale: null,
+    encounter: [],
+    states: states("Idle", "Roll", "Alert", "Attack", "Defeated"), angles: angles(), height: 0.5, scale: null,
   },
   "flying-enemy": {
-    name: "Flying Enemy", type: "enemy", status: "PROVISIONAL",
-    media: { thumb: E + "flying-enemy-thumb", render: null, icon: null },
+    name: "Flying Enemy", type: "enemy", status: "MISSING",
+    media: { thumb: null, render: null, icon: null },   // old crop did not match the canonical design; production PNG pending
     copy: { provisional: true, summary: "Airborne enemy.", behaviour: "Flies in patterns.", where: "To be confirmed." },
-    encounter: [], states: states("Hover", "Patrol", "Attack", "Defeated"), angles: angles(), scale: null,
+    encounter: [], states: states("Hover", "Patrol", "Attack", "Dive", "Defeated"), angles: angles(), height: 0.8, scale: null,
   },
   "turret": {
     name: "Turret", type: "enemy", status: "MISSING",
     media: { thumb: null, render: null, icon: null },   // old crop was non-canonical; production PNG pending
     copy: { provisional: true, summary: "Stationary cannon.", behaviour: "Fires from a fixed position. Find cover.", where: "To be confirmed." },
-    encounter: [], states: states("Idle", "Tracking", "Firing", "Cooldown / inactive"), angles: angles(), scale: null,
+    encounter: [], states: states("Idle", "Tracking", "Firing", "Cooldown", "Inactive"), angles: angles(), height: 1.0, scale: null,
   },
   "rock-guy": {
     name: "Rock Guy", type: "enemy", status: "MISSING",
     media: { thumb: null, render: null, icon: null },
     copy: { provisional: true, summary: "Evolved rock enemy.", behaviour: "Chases and attacks up close.", where: "To be confirmed." },
-    encounter: [], states: states("Idle", "Chase / move", "Melee attack", "Defeated"), angles: angles(), scale: null,
+    encounter: [], states: states("Idle", "Walk / chase", "Melee attack", "Hit / stagger", "Defeated"), angles: angles(), height: 2.0, scale: null,
     evolution: { line: "boulder", phase: 2 },
   },
   "crystal-guardian": {
-    name: "Crystal Guardian", type: "enemy", status: "PROVISIONAL",
-    media: { thumb: E + "crystal-guardian-thumb", render: null, icon: null },
+    name: "Crystal Guardian", type: "enemy", status: "MISSING",
+    media: { thumb: null, render: null, icon: null },   // old crop did not match the canonical design; production PNG pending
     copy: { provisional: true, summary: "Advanced crystal form.", behaviour: "Guards key areas.", where: "To be confirmed." },
-    encounter: [], states: states("Idle", "Charge", "Attack", "Defeated / inactive"), angles: angles(), scale: null,
+    encounter: [], states: states("Idle", "Charge", "Attack", "Damaged", "Defeated"), angles: angles(), height: 2.5, scale: null,
     evolution: { line: "boulder", phase: 3 },
   },
   // ---------------- hazards ----------------
@@ -74,7 +77,7 @@ window.GB_ENTITIES = {
     name: "Rolling Boulder", type: "hazard", status: "PROVISIONAL",
     media: { thumb: E + "rolling-boulder-thumb", render: null, icon: null },
     copy: { provisional: true, summary: "Environmental hazard.", behaviour: "Rolls downhill and smashes obstacles.", where: "To be confirmed." },
-    encounter: [], states: states("Idle", "Rolling", "Hit / cracked", "Destroyed"), angles: angles(), scale: null,
+    encounter: [], states: states("Idle", "Rolling", "Impact", "Cracked", "Destroyed"), angles: angles(), height: 1.5, scale: null,
     evolution: { line: "boulder", phase: 1 },
   },
 

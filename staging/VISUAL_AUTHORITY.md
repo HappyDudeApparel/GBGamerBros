@@ -18,14 +18,25 @@ Approved design-authority boards for recurring world assets, portals, collectibl
 | D | **GB Gamer Bros™ Adventure Mountain™ — Enemy & Hazard Bible v1** (revised) | **Current enemy and hazard authority**; supersedes B for enemies and hazards | 1672 × 941 PNG | `699a3ba648a879d0` | Core lineup (Goom, Spike Bot, Flying Enemy, Turret, Rolling Boulder, Rock Guy, Crystal Guardian); evolution chain Rolling Boulder → Rock Guy → Crystal Guardian; angles and variants; visual states; encounter notes |
 | E | **Enemy & Hazard Bible v1**: "Canonical Enemy Designs · Animation & States · Evolution Paths · Game Implementation Guide" | Detailed sheet; refines D | 1536 × 1024 PNG | `dd015887a0812d0f` | Per-enemy hero, angles (front/¾/side/back), UI icon, states, evolution path, scale reference, in-game region examples |
 | F | **Enemy & Hazard Bible v1**: "Canonical Designs for a Unified Adventure Mountain™" | Detailed sheet; refines D | 1536 × 1024 PNG | `9b68dec42713f7e9` | Per-enemy role/behaviour cards, turnarounds, states, in-game examples, scale against the Gamer Bros |
+| G | **Enemy Production Assets v1**: Flying Enemy · Rolling Boulder · Crystal Guardian | Individual production sheets | 1536 × 1024 PNG | `4b45cfcba9a1358e` | Hero, angles, icon, states, in-game examples, scale and technical notes for those three |
+| H | **Enemy Evolution Chain**: Rolling Boulder → Rock Guy → Crystal Guardian | Evolution production sheet | 1536 × 1024 PNG | `c6f1c0764b8d4c6b` | Angles, icons, states (incl. cracked, hit/stagger), palette, evolution and technical notes |
+| I | **Rock Evolution Enemies** (Enemy Evolution Line v1.0) | Evolution production sheet | 1536 × 1024 PNG | `d1733f7ccd97c54f` | Same three; states incl. damaged; technical notes |
+| J | **Enemy & Hazard Assets v1** | Full-family production sheet | 1536 × 1024 PNG | `5672cd4f9e622210` | All seven: angles, icons, states; Spike Bot's only dedicated states |
+| K | **Game Asset Production Sheet v1**: Goom · Turret | Individual production sheet | 1536 × 1024 PNG | `92b2a17359e05d4e` | Turnaround (Goom incl. top/bottom), states, design/technical notes "for Astra / Unreal" |
+| L | **Enemy Asset Pack v1**: Goom · Turret | Individual production sheet | 1536 × 1024 PNG | `81b493f5d23e1613` | Main renders, turnaround, states, environment/placement variants |
+| M | **Enemy Production Assets v1**: Goom · Turret | Individual production sheet | 1536 × 1024 PNG | `b07f2f6adf1ae553` | Hero render spec (2000 px transparent), angles, 256 px icons, states, technical notes |
 
 ## Precedence
 
-**When boards disagree, the newest specific approved board for that asset family wins.**
+**Enemies and hazards** (newest and most specific wins):
+1. Individual / dedicated production sheet: G (Flying Enemy, Rolling Boulder, Crystal Guardian), K, L, M (Goom, Turret)
+2. Newest evolution or enemy production sheet: H, I (boulder line), J (all seven; the only dedicated Spike Bot sheet)
+3. Revised Enemy & Hazard Bible: D, then its detailed sheets E and F
+4. Older general boards: B, C
 
-1. **Enemies and hazards:** D governs. B and C are earlier references.
-2. **World assets** (banners, crate, springboard, route signs, lantern, portals, collectibles, pipes, wood rails/bridges, stone/ruins): A governs.
-3. **Ziplines/rails and climbable ledges:** C governs.
+**World assets:** A governs banners, crate, springboard, route signs, lantern, portals, collectibles, pipes, wood rails/bridges, stone/ruins. C governs ziplines/rails and climbable ledges.
+
+All enemy sheets (D–M) are **internal production references**. They are never published, offered for download or cropped into website art, and their text is never used verbatim as website copy.
 
 ## Conflicts between boards (history)
 
@@ -57,23 +68,31 @@ Approved design-authority boards for recurring world assets, portals, collectibl
 
 E and F confirm D's designs: spiked Goom, restrained Spike Bot, rotor Flying Enemy, stationary GB cannon Turret, mossy Rolling Boulder, Rock Guy and Crystal Guardian. Both show a front/¾/side/back turnaround and an icon for every enemy. Their stat labels (Health, Threat, Found In) are design intent only, not website copy.
 
-**Scale conflict (decision needed before scale renders):**
+## Canonical scale (decided)
 
-| Entity | E | F |
-|---|---|---|
-| Goom | 0.4 m | 0.5 m |
-| Spike Bot | 0.5 m | 0.5 m |
-| Flying Enemy | 0.5 m | 0.8 m |
-| Turret | 0.6 m | 1.0 m |
-| Rolling Boulder | 1.0 m | 1.5 m |
-| Rock Guy | 1.8 m | 2.0 m |
-| Crystal Guardian | 2.5 m | 2.5 m |
-| Gamer Bros | not shown | 1.8 m |
+These are the website, concept and modelling reference heights. They may be tuned in Unreal gameplay testing. Scale values printed on the sheets (for example 0.4 m Goom, 0.6 m Turret, 1.6 m Rock Guy) are superseded.
+
+| Goom | Spike Bot | Flying Enemy | Turret | Rolling Boulder | Rock Guy | Crystal Guardian | Gamer Bros |
+|---|---|---|---|---|---|---|---|
+| 0.5 m | 0.5 m | 0.8 m | 1.0 m | 1.5 m | 2.0 m | 2.5 m | 1.8 m |
+
+## Sheet text not adopted
+
+- "Aerial Form" under Rock Guy (H, I, J) is a sheet error: Rock Guy is a ground melee enemy.
+- "Can be jumped on to defeat" (K) and "Jump attack" (M) are design intent (TBD in Unreal), not website copy.
+- Sheet G describes Crystal Guardian attacks as melee, while D says "ranged and melee". This is left TBD; the website copy stays "Guards key areas."
 
 ## Website placeholders (enemy tiles)
 
+Checked against the production sheets. Only images that match the canonical design are shown.
+
 | ID | Public image | Why |
 |---|---|---|
-| `goom`, `turret` | **Removed. Shows "Artwork in production"** | The old crops showed non-canonical designs (mushroom-cap Goom, bipedal Turret). Their files were deleted from staging. |
+| `goom`, `turret` | "Artwork in production" | Old crops showed non-canonical designs (mushroom-cap Goom, bipedal Turret). Deleted. |
+| `spike-bot` | "Artwork in production" | Old crop had black/gold spikes and yellow eyes; canonical has red spikes and a red core. Deleted. |
+| `flying-enemy` | "Artwork in production" | Old crop was a single top-rotor craft with a tail fin; canonical is a round body with four orange side propellers. Deleted. |
+| `crystal-guardian` | "Artwork in production" | Old crop was an all-crystal figure without the Rock Guy rock body. Deleted. |
 | `rock-guy` | "Artwork in production" | No art yet. |
-| `spike-bot`, `flying-enemy`, `crystal-guardian`, `rolling-boulder` | Provisional crop, clearly marked | Close enough to the approved direction to serve as placeholders; not final. |
+| `rolling-boulder` | Provisional crop, clearly marked | Mossy stone sphere matches the canonical direction; not final. |
+
+Encounter links from Goom and Spike Bot to area images were also removed: those images show the old red-capped design.

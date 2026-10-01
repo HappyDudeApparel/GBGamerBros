@@ -1,6 +1,6 @@
 # GB GAMER BROS™ — Enemy & Hazard Asset Standard
 
-Status: **Visual authority: board D "Enemy & Hazard Bible v1" (revised); see `VISUAL_AUTHORITY.md`.** No enemy art was generated. The website tiles stay as provisional placeholders until standalone high-resolution production PNGs are supplied.
+Status: **Visual authority: the enemy production sheets G–M, then the revised Bible D (precedence in `VISUAL_AUTHORITY.md`).** No enemy art was generated. Sheets are internal references only; website art comes from standalone production PNGs.
 
 ## One registry, one detail view
 
@@ -26,51 +26,63 @@ To replace art or copy, edit the entry in `entities.js` or rebuild the image wit
 
 ## Status values
 
-`CANONICAL` (approved master) · `PROVISIONAL` (usable on staging, not final) · `REPLACEMENT_REQUIRED` (exists, but must be redone) · `MISSING` (does not exist).
+`CANONICAL` (approved master) · `PROVISIONAL` (usable on staging, not final) · `REPLACEMENT_REQUIRED` (exists, but must be redone) · `MISSING` (does not exist as a standalone asset). "Sheet" means the design exists on a production sheet but no standalone file has been supplied.
 
 ## Enemy and hazard tracking
 
-Authority: **Enemy & Hazard Bible v1 (revised), board D** in `VISUAL_AUTHORITY.md`.
+| ID | Name | Type | Height | Production | Website thumb | Clean render | Icon (256) | Encounter image | Front | ¾ | Side | Back | Scale ref | © | Final art |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `goom` | Goom | enemy | 0.5 m | MISSING | MISSING | MISSING (sheet) | MISSING (sheet) | MISSING (sheet) | sheet | sheet | sheet | sheet | sheet | — | MISSING |
+| `spike-bot` | Spike Bot | enemy | 0.5 m | MISSING | MISSING | MISSING (sheet) | MISSING (sheet) | MISSING | sheet | sheet | sheet | sheet | MISSING | — | MISSING |
+| `flying-enemy` | Flying Enemy | enemy | 0.8 m | MISSING | MISSING | MISSING (sheet) | MISSING (sheet) | MISSING (sheet) | sheet | sheet | sheet | sheet | sheet | — | MISSING |
+| `turret` | Turret | enemy | 1.0 m | MISSING | MISSING | MISSING (sheet) | MISSING (sheet) | MISSING (sheet) | sheet | sheet | sheet | sheet | sheet | — | MISSING |
+| `rolling-boulder` | Rolling Boulder | hazard | 1.5 m | PROVISIONAL | PROVISIONAL (target crop) | MISSING (sheet) | MISSING (sheet) | MISSING (sheet) | sheet | sheet | sheet | sheet | sheet | APPLIED | PROVISIONAL |
+| `rock-guy` | Rock Guy | enemy | 2.0 m | MISSING | MISSING | MISSING (sheet) | MISSING (sheet) | MISSING (sheet) | sheet | sheet | sheet | sheet | sheet | — | MISSING |
+| `crystal-guardian` | Crystal Guardian | enemy | 2.5 m | MISSING | MISSING | MISSING (sheet) | MISSING (sheet) | MISSING (sheet) | sheet | sheet | sheet | sheet | sheet | — | MISSING |
 
-The website tiles for Spike Bot, Flying Enemy, Crystal Guardian and Rolling Boulder are upscaled crops of tiny tiles from the original target image (about 85 × 52 px). They are **provisional placeholders whose designs are superseded by board D**. They stay only until standalone production PNGs arrive. **Goom and Turret** crops showed non-canonical designs, so they were removed. Those two and Rock Guy show "Artwork in production".
+Extra angles: Goom also has **top** and **bottom** on sheet K.
 
-| ID | Name | Type | Production | Thumbnail | Clean render | Icon | Encounter image | Front | ¾ | Side | Back | Scale | © | Final art |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `goom` | Goom | enemy | MISSING | MISSING (old crop removed: non-canonical) | MISSING | MISSING | PROVISIONAL ¹ | MISSING | MISSING | MISSING | — | MISSING | APPLIED | PROVISIONAL |
-| `spike-bot` | Spike Bot | enemy | PROVISIONAL | REPLACEMENT_REQUIRED | MISSING | MISSING | PROVISIONAL ² | MISSING | MISSING | MISSING | — | MISSING | APPLIED | PROVISIONAL |
-| `flying-enemy` | Flying Enemy | enemy | PROVISIONAL | REPLACEMENT_REQUIRED | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | — | MISSING | APPLIED | PROVISIONAL |
-| `turret` | Turret | enemy | MISSING | MISSING (old robot crop removed: non-canonical) | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | APPLIED | PROVISIONAL |
-| `rolling-boulder` | Rolling Boulder | hazard | PROVISIONAL | REPLACEMENT_REQUIRED | MISSING | MISSING | MISSING | — | — | — | — | MISSING | APPLIED | PROVISIONAL |
-| `rock-guy` | Rock Guy | enemy | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | n/a | MISSING |
-| `crystal-guardian` | Crystal Guardian | enemy | PROVISIONAL | REPLACEMENT_REQUIRED | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | — | MISSING | APPLIED | PROVISIONAL |
+## States (from the newest specific sheet)
 
-"—" = not planned unless useful. ¹ Red-capped bots in Riverworks™ view 2 and Ruin Courtyard™ view 1; match unconfirmed. ² Spiked enemy in Ruin Courtyard™ view 2; match unconfirmed.
+Every state is "sheet" (designed) but MISSING as a standalone file. The public dossier lists them as "Not yet available".
 
-## Planned angles and states (board D)
-
-All entries are MISSING until supplied. No animation mechanics are implied. The public dossier lists each state as "Not yet available" until its image exists.
-
-| ID | Angles | States |
+| ID | States | Source |
 |---|---|---|
-| `goom` | front, ¾, side | idle, movement, alert/attack, defeated |
-| `spike-bot` | front, ¾, side | idle, rolling/movement, alert/attack |
-| `flying-enemy` | front, ¾, side | hover, patrol, attack, defeated |
-| `turret` | front, ¾, side, back | idle, tracking, firing, cooldown/inactive |
-| `rolling-boulder` | — | idle, rolling, hit/cracked, destroyed (+ evolution transition later) |
-| `rock-guy` | front, ¾, side | idle, chase/move, melee attack, defeated |
-| `crystal-guardian` | front, ¾, side | idle, charge, attack, defeated/inactive |
+| `goom` | Idle, Walk, Alert, Attack / charge, Defeated | K, L, M |
+| `spike-bot` | Idle, Roll, Alert, Attack, Defeated | J |
+| `flying-enemy` | Hover, Patrol, Attack, Dive, Defeated | G |
+| `turret` | Idle, Tracking, Firing, Cooldown, Inactive (destroyed/off variants) | K, L, M |
+| `rolling-boulder` | Idle, Rolling, Impact, Cracked, Destroyed | H, I |
+| `rock-guy` | Idle, Walk / chase, Melee attack, Hit / stagger, Defeated | H, I |
+| `crystal-guardian` | Idle, Charge, Attack, Damaged, Defeated | G, I |
 
-## Design direction (board D)
+## Design direction
 
-| ID | Canonical design | Notes |
+| ID | Canonical design | Must not drift into |
 |---|---|---|
-| `goom` | Dark round body, red spikes, glowing yellow eyes | Basic enemy. |
-| `spike-bot` | **Restrained** compact dark body with deliberate red spikes and a readable face | Not an oversized porcupine ball. |
-| `flying-enemy` | Round dark body, glowing core, red/orange **rotor/propeller** | Must keep its rotor silhouette; never a plain orb. |
-| `turret` | **Stationary cannon**, red/black, GB-branded base, aiming barrel | The bipedal robot is not canonical. |
-| `rolling-boulder` | Rock sphere with glowing orange cracks | Phase 1 of the boulder line. |
-| `rock-guy` | Rocky golem visibly built from the boulder, no crystals, melee look, orange/yellow eyes acceptable | Phase 2. New canonical enemy. |
-| `crystal-guardian` | Rock Guy body family with purple crystal growths and a bright crystal core | Phase 3. Copy stays "Guards key areas." |
+| `goom` | Round dark body, a few red cone spikes, round red feet, large glowing yellow eyes, small smile | The old mushroom-cap Goom |
+| `spike-bot` | Compact dark sphere, **restrained** evenly spread red cone spikes, red glowing core | An oversized porcupine ball; black or gold spikes |
+| `flying-enemy` | Round dark body, glowing yellow-orange core, **four orange/red side propellers** | A plain orb; a single-rotor helicopter |
+| `turret` | Fixed red/black hexagonal base with a "GB" plate and a **rotating** upper cannon with a glowing muzzle | The bipedal robot |
+| `rolling-boulder` | Stone-plate sphere with moss; glowing orange cracks appear in the Cracked state | |
+| `rock-guy` | Same stone plates and moss as the boulder, golem body, glowing orange/yellow eyes and seams, **no crystals** | Any crystal growth |
+| `crystal-guardian` | Rock Guy anatomy with purple crystal growths and a bright purple core | An all-crystal figure without the rock body |
+
+## Unreal / Astra reference
+
+Taken only from what the sheets state. **TBD IN UNREAL** = not established by any sheet.
+
+| ID | Height | Collision intent | Locomotion | Animation type | Rotating / articulating parts | LODs | Materials | Emissive | Physics | Destructible | AI / role | Placement |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `goom` | 0.5 m | Simple capsule/sphere | Ground walk; patrols; turns at edges | TBD IN UNREAL | Spikes and feet (TBD IN UNREAL) | Multiple | Dark body, red spikes | Eyes | Light; knockback possible | No | Basic ground patrol and chase; defeat method TBD IN UNREAL | Groups; all regions |
+| `spike-bot` | 0.5 m | TBD IN UNREAL | Static or patrol; rolls | TBD IN UNREAL | TBD IN UNREAL | TBD IN UNREAL | Dark body, red spikes | Core (TBD IN UNREAL) | TBD IN UNREAL | No | Contact hazard; protects routes | Ruins, bridges |
+| `flying-enemy` | 0.8 m | Simple aerial | Hover, patrol routes, dive attacks; holds altitude | TBD IN UNREAL | Four rotors | Multiple | Metal body, rotors | Core, rotors | Light (hover behaviour) | No | Tracks the player, dives | Patrol routes above paths |
+| `turret` | 1.0 m | Static base; separate hit/collision for barrel | Stationary | TBD IN UNREAL | Cannon: 360° horizontal, limited vertical | Multiple | Red/black metal, GB branding | Barrel/muzzle | Static | Destroyed state shown; method TBD IN UNREAL | Target acquisition and line of sight; range and projectile type TBD IN UNREAL | Defensive positions, ruins, bridges, key routes |
+| `rolling-boulder` | 1.5 m | Heavy; pushes/destroys objects | Rolls along set paths; can fall off the map | Rigid body | Whole body rolls | Multiple | Rock, moss, dirt | Cracks (cracked state) | Rigid body, gravity, momentum | Yes: impact, cracked, destroyed; destroys objects | Environmental hazard; optional evolution | Chase segments, timed routes, slopes |
+| `rock-guy` | 2.0 m | Per enemy (TBD IN UNREAL) | Walk/chase | TBD IN UNREAL | TBD IN UNREAL | Multiple | Rock, moss | Eyes and internal seams | TBD IN UNREAL | Defeated pose shown; method TBD IN UNREAL | Melee enemy; optional evolution | Ruins, cliffs |
+| `crystal-guardian` | 2.5 m | Heavy, large hitbox | Moves, charges | TBD IN UNREAL | TBD IN UNREAL | Multiple | Rock, purple crystals | Crystals, core | Heavy (stone body) | Defeated pose shown; method TBD IN UNREAL | Guards key areas; attack type TBD IN UNREAL | Key areas, Prism Ridge™ |
+
+Sheet M specifies the hero-render deliverable for Goom and Turret: a ~2000 px transparent PNG plus 256 × 256 icons.
 
 ## Evolution line
 
