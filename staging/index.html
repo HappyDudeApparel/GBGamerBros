@@ -10,7 +10,7 @@
 <link rel="icon" href="assets/gb-logo.webp">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=3">
+<link rel="stylesheet" href="staging.css?v=7">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -111,12 +111,38 @@
   </section>
 </div>
 
+<dialog class="area" id="areaView" aria-labelledby="areaTitle">
+  <div class="area__bg" id="areaBg" aria-hidden="true"></div>
+  <header class="area__bar">
+    <button class="area__back" id="areaBack" type="button">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>World Map</span>
+    </button>
+    <div class="area__heading">
+      <h2 class="area__title" id="areaTitle"></h2>
+      <p class="area__sub" id="areaSub"></p>
+    </div>
+    <p class="area__count" id="areaCount" aria-live="polite"></p>
+  </header>
+  <div class="area__gallery">
+    <div class="area__track" id="areaTrack" tabindex="0" aria-roledescription="gallery"></div>
+    <button class="area__arrow area__arrow--prev" id="areaPrev" type="button" aria-label="Previous view"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="area__arrow area__arrow--next" id="areaNext" type="button" aria-label="Next view"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+  <footer class="area__foot">
+    <p class="area__label" id="areaLabel"></p>
+    <button class="area__fit" id="areaFit" type="button" aria-pressed="false">Full view</button>
+    <div class="area__dots" id="areaDots" role="tablist" aria-label="Choose view"></div>
+  </footer>
+</dialog>
+
 <footer class="staging-note">
-  <p>Staging preview · Pass A (header, hero, cloud transition, map). Lower sections follow after approval.</p>
+  <p>Staging preview · Pass B (map hotspots and area views). Template area: Riverworks™. Lower sections follow after approval.</p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
-<script src="staging.js?v=2" defer></script>
+<script src="areas.js?v=2" defer></script>
+<script src="staging.js?v=4" defer></script>
 </body>
 </html>
