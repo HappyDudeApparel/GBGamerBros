@@ -64,12 +64,20 @@ Opens when at least 3 views exist (overview, ground level, close view still need
 
 No imagery exists. The map labels show a notice; nothing is faked.
 
+## Level Preview stills (Pass C, not an area)
+
+| Source file | Use | © | ART | Notes |
+|---|---|---|---|---|
+| `05/video_stills/7516_3s.jpg` | Preview still 1 "Boardwalk run" | APPLIED | PROVISIONAL | Gamer Bro Blue™ video frame, 1280×720. |
+| `05/video_stills/7516_5s.jpg` | Preview still 2 "Ruin stairs" | APPLIED | PROVISIONAL | Gamer Bro Blue™ video frame, 1280×720. |
+| `cascading_gb_crystal_ruins.png` | Preview still 3 "Waterfall ruins" | APPLIED | PROVISIONAL | Was unassigned; still not assigned to any map area. |
+| `adventure_mountain_portal_meadow_vista.png` | Preview still 4 "Trail junction" | APPLIED | PROVISIONAL | Was unassigned; its signpost points to Portal Meadow and Creek Crossing. |
+| `05/video_stills/7531_10s.jpg` | Fast Travel image / `portal` entity | APPLIED | PROVISIONAL | Gamer Bro Blue™ leaping into a portal. |
+
 ## Unassigned (not guessed)
 
 | Source file | Why |
 |---|---|
-| `adventure_mountain_portal_meadow_vista.png` | Junction shot whose signpost points **to** both Portal Meadow and Creek Crossing. Possible world-hub image. |
-| `cascading_gb_crystal_ruins.png` | Ruins plus pools plus pipes: could be Ruin Courtyard™ or Riverworks™. |
 | `04A/POV/raw_img5.png` | Used as the hero slide 1 world plate. |
 | `ADVENTURE_MOUNTAIN_CRYSTAL_ISLES_MASTER.png`, `ADVENTURE_WORLD_CONCEPT.png` | World/map reference. |
 
@@ -78,7 +86,8 @@ No imagery exists. The map labels show a notice; nothing is faked.
 | File | Metadata | Pixel band | Notes |
 |---|---|---|---|
 | `adventure-mountain-map.webp`, `hero-*.webp` | APPLIED | PENDING | Pass A is frozen for device testing. Banding these means routing the hero slides and the map through the `.gbm` frame; scheduled right after the Pass A device sign-off. |
-| `gb-logo.webp`, `adventure-mountain-sign.webp`, `bros-highfive.webp`, `cloud-bank.webp` | APPLIED | PENDING (design decision) | Transparent cutouts. A band would add an opaque strip to a transparent file; options are listed in the hand-off notes. |
+| `brand/gb-logo.webp`, `brand/adventure-mountain-sign.webp`, `brand/bros-highfive.webp` | APPLIED | APPLIED (transparent band) | Geometry test passed at all five sizes (≤0.02 px change). |
+| `cloud-bank.webp` | APPLIED | NOT APPLIED | Decorative cloud layer; it bleeds past its own edges, so a band would show. Metadata only. |
 
 ## Reserve brand assets (not placed)
 

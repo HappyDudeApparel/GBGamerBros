@@ -144,5 +144,145 @@ window.GB_MEDIA = {
   "sh": 540,
   "sband": 17,
   "master": "mountain_fortress_portal_ruins.png"
+ },
+ "assets/brand/adventure-mountain-sign": {
+  "w": 900,
+  "h": 553,
+  "band": 16,
+  "sw": 900,
+  "sh": 553,
+  "sband": 16,
+  "alpha": true,
+  "master": "adventure-mountain-sign.png"
+ },
+ "assets/brand/bros-highfive": {
+  "w": 512,
+  "h": 468,
+  "band": 14,
+  "sw": 512,
+  "sh": 468,
+  "sband": 14,
+  "alpha": true,
+  "master": "bros-highfive.png"
+ },
+ "assets/brand/gb-logo": {
+  "w": 640,
+  "h": 258,
+  "band": 14,
+  "sw": 640,
+  "sh": 258,
+  "sband": 14,
+  "alpha": true,
+  "master": "gb-logo.png"
+ },
+ "assets/entities/crystal-guardian-thumb": {
+  "w": 252,
+  "h": 156,
+  "band": 14,
+  "sw": 252,
+  "sh": 156,
+  "sband": 14,
+  "alpha": false,
+  "master": "crystal-guardian.png"
+ },
+ "assets/entities/flying-enemy-thumb": {
+  "w": 252,
+  "h": 156,
+  "band": 14,
+  "sw": 252,
+  "sh": 156,
+  "sband": 14,
+  "alpha": false,
+  "master": "flying-enemy.png"
+ },
+ "assets/entities/goom-thumb": {
+  "w": 252,
+  "h": 156,
+  "band": 14,
+  "sw": 252,
+  "sh": 156,
+  "sband": 14,
+  "alpha": false,
+  "master": "goom.png"
+ },
+ "assets/entities/rolling-boulder-thumb": {
+  "w": 252,
+  "h": 156,
+  "band": 14,
+  "sw": 252,
+  "sh": 156,
+  "sband": 14,
+  "alpha": false,
+  "master": "rolling-boulder.png"
+ },
+ "assets/entities/spike-bot-thumb": {
+  "w": 252,
+  "h": 156,
+  "band": 14,
+  "sw": 252,
+  "sh": 156,
+  "sband": 14,
+  "alpha": false,
+  "master": "spike-bot.png"
+ },
+ "assets/entities/turret-thumb": {
+  "w": 252,
+  "h": 156,
+  "band": 14,
+  "sw": 252,
+  "sh": 156,
+  "sband": 14,
+  "alpha": false,
+  "master": "turret.png"
+ },
+ "assets/systems/fast-travel-portal": {
+  "w": 1280,
+  "h": 720,
+  "band": 23,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "7531_10s.jpg"
+ },
+ "assets/systems/preview-01-boardwalk-run": {
+  "w": 1280,
+  "h": 720,
+  "band": 23,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "7516_3s.jpg"
+ },
+ "assets/systems/preview-02-ruin-stairs": {
+  "w": 1280,
+  "h": 720,
+  "band": 23,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "7516_5s.jpg"
+ },
+ "assets/systems/preview-03-waterfall-ruins": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "cascading_gb_crystal_ruins.png"
+ },
+ "assets/systems/preview-04-trail-junction": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "adventure_mountain_portal_meadow_vista.png"
  }
 };

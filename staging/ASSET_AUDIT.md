@@ -6,9 +6,9 @@ Visual authority: `PRIMARY_APPROVED_TARGET.png` and `APPROVED_HERO_MAP_HIGH_RES_
 
 | Staging file | Source | Why |
 |---|---|---|
-| `assets/gb-logo.webp` | `logo_white_variant_2.png` (01B), trimmed, alpha normalised to fully solid | Chosen by the user. Standalone layer: no older logo is baked into any slide or map image underneath. |
-| `assets/adventure-mountain-sign.webp` | `wood_sign_variant.png` (01B), trimmed, alpha normalised to fully solid | Chosen by the user (ADVENTURE MOUNTAIN™ on one line). Standalone layer: no older sign is baked into any slide underneath. |
-| `assets/bros-highfive.webp` | Re-extracted from the lossless high-res reference | Only approved Bros action pose. See limitation below. |
+| `assets/brand/gb-logo.webp` | `logo_white_variant_2.png` (01B), trimmed, alpha normalised to fully solid | Chosen by the user. Standalone layer: no older logo is baked into any slide or map image underneath. |
+| `assets/brand/adventure-mountain-sign.webp` | `wood_sign_variant.png` (01B), trimmed, alpha normalised to fully solid | Chosen by the user (ADVENTURE MOUNTAIN™ on one line). Standalone layer: no older sign is baked into any slide underneath. |
+| `assets/brand/bros-highfive.webp` | Re-extracted from the lossless high-res reference | Only approved Bros action pose. See limitation below. |
 | `assets/hero-world-highfive.webp` | `raw_img5` (character-free world plate) | Backdrop for slide 1 only; the Bros cutout sits on top. |
 | `assets/hero-blue-portal.webp`, `hero-blue-run.webp`, `hero-blue-bridge.webp` | Video stills `7516_1s`, `7516_7s`, `7531_14s` | Gamer Bro Blue™ only, no backpack, no pink character. 1280×720, softer than slide 1. Pending approval. |
 | `assets/adventure-mountain-map.webp` | High-res reference, rows 562–1024 | Labelled map with its own clouds; hotspots sit over the baked labels. |
@@ -47,3 +47,9 @@ The character layer is `.hero__fg` in `index.html`. Each cutout is one `<img cla
 5. Gamer Girl Yellow™ action pose, transparent.
 6. Four-character team action image (Meet the Team™ / later hero slide).
 7. Per-character card art for Meet the Team™ (all four).
+
+## Copyright band on transparent cutouts (Pass C)
+
+The logo, sign and Bros cutouts now carry a **transparent** overscan band: extra transparent canvas below the artwork, holding the notice in faint grey text, with no solid bar. They are shown through the shared `.gbm` frame, which clips the band.
+
+Before adopting them, a test copy of the page was compared against the frozen Pass A page at all five review sizes. Element boxes for the logo, sign and Bros matched within 0.02 px. The only pixel differences were fine encoding speckle inside the cutouts, from re-encoding them once from their lossless masters. Masters are rebuilt from the original pack files and kept outside the public repo.

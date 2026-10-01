@@ -176,21 +176,25 @@
     return `--ar:${(m.w / m.h).toFixed(5)};--ext:${ext.toFixed(5)}`;
   };
   const isOpen = (id) => AREAS[id] && AREAS[id].status === "open" && AREAS[id].views.length > 0;
-  const KIND = { establishing: "Overview", ground: "Ground level", traversal: "Route", landmark: "Landmark", closeup: "Close view" };
+  const KIND = { establishing: "Overview", ground: "Ground level", traversal: "Route", landmark: "Landmark", closeup: "Close view", still: "Preview still" };
   let current = null;      // area id
   let viewIndex = 0;
   let openedFrom = null;   // element to return focus to
   let pushedHere = false;  // whether this session pushed the area entry (so Back/close can pop it)
 
+  const ENTITIES = window.GB_ENTITIES || {};
+  // routes: #area/<id>[/<n>]  and  #entity/<id>
   const parseHash = () => {
-    const m = location.hash.match(/^#area\/([a-z]+)(?:\/(\d+))?$/);
-    return m ? { id: m[1], view: m[2] ? Number(m[2]) - 1 : 0 } : null;
+    let m = location.hash.match(/^#area\/([a-z-]+)(?:\/(\d+))?$/);
+    if (m) return { id: m[1], view: m[2] ? Number(m[2]) - 1 : 0 };
+    m = location.hash.match(/^#entity\/([a-z0-9-]+)$/);
+    return m ? { entity: m[1] } : null;
   };
 
   function buildHotspots(view) {
-    // Pass E: each hotspot is a % box over the full image
-    return (view.hotspots || []).map((h) =>
-      `<button type="button" data-hotspot="${h.id}" data-type="${h.type || ""}" aria-label="${h.label || h.type || "Point of interest"}"
+    // Pass E: each hotspot is a % box over the content image and points at a canonical entity ID
+    return (view.hotspots || []).filter((h) => ENTITIES[h.ref]).map((h) =>
+      `<button type="button" data-ref="${h.ref}" aria-label="${h.label || ENTITIES[h.ref].name}"
          style="--x:${h.x};--y:${h.y};--w:${h.w};--h:${h.h}"></button>`).join("");
   }
 
@@ -302,28 +306,169 @@
   document.getElementById("areaBack").addEventListener("click", requestClose);
   dlg.addEventListener("cancel", (e) => { e.preventDefault(); requestClose(); });
 
-  window.addEventListener("hashchange", () => {
-    const r = parseHash();
-    if (r && isOpen(r.id)) openArea(r.id, r.view);
-    else if (dlg.open) { pushedHere = false; closeAreaUI(); }
+  // ---------- entity dossier (Pass C) ----------
+  // One detail view for every canonical entity: Bad Guys & Hazards cards, Fast Travel,
+  // and Pass E hotspots inside area images all open #entity/<id>.
+  const eDlg = document.getElementById("entityView");
+  const eBody = document.getElementById("entBody");
+  const TYPE = { enemy: "Enemy", hazard: "Hazard", portal: "Portal", prop: "World prop", collectible: "Collectible" };
+  let entPushed = false;
+  let entOpenedFrom = null;
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const media = (src, cls, alt, size) => src && MEDIA[src]
+    ? `<span class="gbm ${cls}" style="${frameVars(src)}"><img src="${src}${size === "small" ? "-960" : ""}.webp" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`
+    : `<span class="${cls} media-missing"><span>Artwork in production</span></span>`;
+
+  function renderEntity(id) {
+    const e = ENTITIES[id];
+    document.getElementById("entType").textContent = `${TYPE[e.type] || ""} · ${e.status === "CANONICAL" ? "Canonical" : "Provisional concept"}`;
+    document.getElementById("entName").textContent = e.name;
+    const hero = e.media.render || e.media.thumb;
+    const states = Object.entries(e.states || {}).map(([k, v]) =>
+      `<li>${v ? media(v, "dossier__state", `${e.name} ${k}`) : `<span class="dossier__state media-missing"><span>Not yet available</span></span>`}<small>${esc(k[0].toUpperCase() + k.slice(1))}</small></li>`).join("");
+    const enc = (e.encounter || []).filter((x) => AREAS[x.area] && AREAS[x.area].views[x.view - 1]).map((x) => {
+      const a = AREAS[x.area], v = a.views[x.view - 1];
+      return `<li><a href="#area/${x.area}/${x.view}" data-goto-area>${media(v.src, "dossier__enc", v.alt, "small")}
+        <small>${esc(a.name)}${x.confirmed === false ? " · match to confirm" : ""}</small></a></li>`;
+    }).join("");
+    eBody.innerHTML = `
+      <div class="dossier__visual">${media(hero, "dossier__render", e.name)}
+        ${hero && !e.media.render ? `<p class="dossier__caption">Concept thumbnail. Clean render in production.</p>` : ""}</div>
+      <div class="dossier__info">
+        ${e.copy.provisional ? `<p class="dossier__flag">Working copy · not final</p>` : ""}
+        <dl>
+          <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
+          <dt>${e.type === "hazard" ? "Hazard" : "Behaviour"}</dt><dd>${esc(e.copy.behaviour)}</dd>
+          <dt>Where encountered</dt><dd>${esc(e.copy.where)}</dd>
+        </dl>
+        ${states ? `<h3>Visual states</h3><ul class="dossier__states">${states}</ul>` : ""}
+        <h3>Encounter images</h3>
+        ${enc ? `<ul class="dossier__encs">${enc}</ul>` : `<p class="dossier__empty">Encounter imagery in production.</p>`}
+      </div>`;
+  }
+  function openEntity(id) {
+    if (!ENTITIES[id]) return false;
+    renderEntity(id);
+    if (!eDlg.open) eDlg.showModal();
+    document.documentElement.classList.add("is-locked");
+    pause();
+    eDlg.querySelector(".dossier__close").focus({ preventScroll: true });
+    return true;
+  }
+  function closeEntityUI() {
+    if (eDlg.open) eDlg.close();
+    if (!dlg.open) { document.documentElement.classList.remove("is-locked"); restart(); }
+    if (entOpenedFrom && document.contains(entOpenedFrom)) entOpenedFrom.focus({ preventScroll: true });
+    entOpenedFrom = null;
+  }
+  function requestCloseEntity() {
+    if (entPushed) { entPushed = false; history.back(); }
+    else if (dlg.open && current) { history.replaceState(null, "", `#area/${current}/${viewIndex + 1}`); closeEntityUI(); }
+    else { history.replaceState(null, "", "#bad-guys"); closeEntityUI(); }
+  }
+  function navEntity(id, from) {
+    if (!ENTITIES[id]) return;
+    entOpenedFrom = from || null;
+    entPushed = true;
+    location.hash = `#entity/${id}`;
+  }
+  document.getElementById("entClose").addEventListener("click", requestCloseEntity);
+  eDlg.addEventListener("cancel", (e) => { e.preventDefault(); requestCloseEntity(); });
+  eDlg.addEventListener("click", (e) => {
+    if (e.target === eDlg) { requestCloseEntity(); return; }       // backdrop click
+    const a = e.target.closest("[data-goto-area]");
+    if (a) { e.preventDefault(); entPushed = false; pushedHere = true; location.replace(a.getAttribute("href")); }
+  });
+  // hotspots inside area images (Pass E) resolve through the same registry
+  aTrack.addEventListener("click", (e) => {
+    const h = e.target.closest("[data-ref]");
+    if (h) navEntity(h.dataset.ref, h);
+  });
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-entity]");
+    if (b && !b.closest("dialog")) navEntity(b.dataset.entity, b);
   });
 
-  document.querySelectorAll(".hotspot").forEach((h) =>
-    h.addEventListener("click", () => {
-      const id = h.dataset.area;
-      if (!isOpen(id)) {
-        const a = AREAS[id];
-        const why = a && a.status === "artwork-required" ? "artwork is in production" : "more views are in production";
-        showToast(`${a ? a.name : "This area"}: ${why}.`);
-        return;
-      }
-      openedFrom = h;
-      pushedHere = true;
-      location.hash = `#area/${id}`;   // pushes a history entry; hashchange opens the view
-    })
-  );
+  // ---------- router ----------
+  function route() {
+    const r = parseHash();
+    if (r && r.entity) { openEntity(r.entity); return; }
+    if (eDlg.open) closeEntityUI();
+    if (r && isOpen(r.id)) openArea(r.id, r.view);
+    else if (dlg.open) { pushedHere = false; closeAreaUI(); }
+  }
+  window.addEventListener("hashchange", route);
+
+  function navArea(id, from, view) {
+    if (!isOpen(id)) {
+      const a = AREAS[id];
+      const why = a && a.status === "artwork-required" ? "artwork is in production" : "more views are in production";
+      showToast(`${a ? a.name : "This area"}: ${why}.`);
+      return;
+    }
+    openedFrom = from || null;
+    pushedHere = true;
+    location.hash = `#area/${id}` + (view ? `/${view + 1}` : "");   // pushes history; router opens the view
+  }
+  document.querySelectorAll(".hotspot").forEach((h) => h.addEventListener("click", () => navArea(h.dataset.area, h)));
+
+  // ---------- Explore Iconic Areas rail ----------
+  const rail = document.getElementById("areaRail");
+  const RAIL = ["portal", "creek", "river", "clover", "ruin", "prism", "frost"];
+  rail.innerHTML = RAIL.map((id) => {
+    const a = AREAS[id];
+    const v = a.views[0];
+    const state = a.status === "open" ? "" : a.status === "incomplete" ? "More views in production" : "Artwork in production";
+    return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}"
+        aria-label="${esc(a.name)} — ${esc(a.sub)}${state ? ` (${state})` : ""}">
+      ${v ? media(v.src, "area-card__img", "", "small") : `<span class="area-card__img area-card__img--empty"></span>`}
+      <span class="area-card__text"><strong>${esc(a.name)}</strong><small>${esc(a.sub)}</small></span>
+      ${state ? `<span class="area-card__state">${state}</span>` : ""}
+    </button>`;
+  }).join("");
+  rail.addEventListener("click", (e) => {
+    const c = e.target.closest("[data-area-card]");
+    if (c) navArea(c.dataset.areaCard, c);
+  });
+  document.querySelectorAll("[data-rail]").forEach((b) => b.addEventListener("click", () =>
+    rail.scrollBy({ left: Number(b.dataset.rail) * rail.clientWidth * 0.8, behavior: reduceMotion ? "auto" : "smooth" })));
+
+  // ---------- Level Preview ----------
+  const LP = AREAS.preview;
+  const lpFrame = document.getElementById("lpFrame");
+  const lpThumbs = document.getElementById("lpThumbs");
+  const lpLabel = document.getElementById("lpLabel");
+  let lpIndex = 0;
+  lpThumbs.innerHTML = LP.views.map((v, i) =>
+    `<button type="button" role="tab" data-lp-index="${i}" aria-label="${esc(v.label)}">${media(v.src, "lp__thumb", "", "small")}</button>`).join("");
+  function lpSet(i) {
+    lpIndex = (i + LP.views.length) % LP.views.length;
+    const v = LP.views[lpIndex];
+    lpFrame.setAttribute("style", frameVars(v.src));
+    lpFrame.innerHTML = `<img src="${v.src}-960.webp" srcset="${v.src}-960.webp 960w, ${v.src}.webp 1672w" sizes="(min-width: 1100px) 34vw, 92vw" alt="${esc(v.alt)}" draggable="false">`;
+    lpLabel.textContent = v.label;
+    [...lpThumbs.children].forEach((b, n) => b.setAttribute("aria-selected", String(n === lpIndex)));
+  }
+  lpThumbs.addEventListener("click", (e) => { const b = e.target.closest("[data-lp-index]"); if (b) lpSet(Number(b.dataset.lpIndex)); });
+  document.querySelectorAll("[data-lp]").forEach((b) => b.addEventListener("click", () => lpSet(lpIndex + Number(b.dataset.lp))));
+  document.getElementById("lpMain").addEventListener("click", (e) => navArea("preview", e.currentTarget, lpIndex));
+  lpSet(0);
+
+  // ---------- Fast Travel ----------
+  const portal = ENTITIES.portal;
+  const ftFrame = document.getElementById("ftFrame");
+  ftFrame.setAttribute("style", frameVars(portal.media.render));
+  ftFrame.innerHTML = `<img src="${portal.media.render}-960.webp" srcset="${portal.media.render}-960.webp 960w, ${portal.media.render}.webp 1280w" sizes="(min-width: 1100px) 30vw, 92vw" alt="Gamer Bro Blue™ leaping into a blue portal in a stone shrine" loading="lazy" draggable="false">`;
+
+  // ---------- Bad Guys & Hazards ----------
+  document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
+    const e = ENTITIES[id];
+    return `<li><button class="foe" type="button" data-entity="${id}" aria-label="${esc(e.name)} — details">
+      ${media(e.media.thumb, "foe__img", "")}
+      <strong>${esc(e.name)}</strong><small>${esc(e.copy.summary)} ${esc(e.copy.behaviour)}</small>
+    </button></li>`;
+  }).join("");
 
   // deep link on load
-  const initial = parseHash();
-  if (initial) openArea(initial.id, initial.view);
+  route();
 })();

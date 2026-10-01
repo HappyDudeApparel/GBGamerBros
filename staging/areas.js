@@ -9,8 +9,12 @@
 // views[].kind     establishing | ground | traversal | landmark | closeup
 // views[].label    working label (not final marketing copy)
 // views[].focus    0–1 horizontal focal point for the portrait immersive crop
-// views[].hotspots Pass E: boxes in % of the CONTENT image (the copyright band is excluded):
-//                  { id:"spring-1", type:"spring", x:72, y:58, w:10, h:14, label:"Springboard" }
+// views[].hotspots Pass E: boxes in % of the CONTENT image (the copyright band is excluded).
+//                  `ref` is a canonical ID from entities.js, so a Goom here opens the same
+//                  #entity/goom dossier as the Bad Guys & Hazards section:
+//                  { ref:"goom", x:61, y:42, w:6, h:9 }   (optional `label` overrides the name)
+//
+// `map:false` entries are galleries that are not map locations (e.g. the Level Preview stills).
 
 (() => {
 const A = "assets/areas/";
@@ -76,5 +80,20 @@ window.GB_AREAS = {
     ],
   },
   frost: { name: "Frost Peaks™", sub: "Icy Cliffs & Granite Roads", status: "artwork-required", views: [] },
+
+  // Level Preview still sequence (not a map location). Opens in the same gallery view.
+  preview: {
+    name: "Level Preview", sub: "Preview stills · gameplay video not yet available", status: "open", map: false,
+    views: [
+      { src: "assets/systems/preview-01-boardwalk-run", kind: "still", label: "Boardwalk run", focus: 0.45,
+        alt: "Gamer Bro Blue™ running along a boardwalk past waterfalls and gems", hotspots: [] },
+      { src: "assets/systems/preview-02-ruin-stairs", kind: "still", label: "Ruin stairs", focus: 0.5,
+        alt: "Gamer Bro Blue™ climbing stone stairs between waterfalls and ruins", hotspots: [] },
+      { src: "assets/systems/preview-03-waterfall-ruins", kind: "still", label: "Waterfall ruins", focus: 0.55,
+        alt: "Ruined aqueduct arches and waterfalls pouring into a clear pool", hotspots: [] },
+      { src: "assets/systems/preview-04-trail-junction", kind: "still", label: "Trail junction", focus: 0.3,
+        alt: "Stone steps at a trail junction with signposts, pipes and a waterfall", hotspots: [] },
+    ],
+  },
 };
 })();

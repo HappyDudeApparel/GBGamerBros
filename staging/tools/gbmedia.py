@@ -88,20 +88,30 @@ def save(im, path, quality=84):
         raise SystemExit(f"unsupported format: {path}")
 
 
-def add_band(content):
-    """Return content + band canvas. The band is extra canvas; content pixels are untouched."""
+def add_band(content, alpha=False):
+    """Return content + band canvas. The band is extra canvas; content pixels are untouched.
+    alpha=True (transparent cutouts): the band stays transparent and only the faint
+    notice text is drawn into it, so no solid bar is added to the file."""
     w, h = content.size
     band = max(14, round(w * BAND_RATIO))
-    out = Image.new("RGB", (w, h + band))
-    out.paste(content.convert("RGB"), (0, 0))
-    # band tone: the image's own bottom edge, darkened, so the strip reads as part of the file
-    edge = content.convert("RGB").crop((0, h - 4, w, h)).resize((1, 1), Image.BOX).getpixel((0, 0))
-    bg = tuple(int(c * 0.35) for c in edge)
-    fg = tuple(min(255, c + 70) for c in bg)  # faint: low contrast against the band
-    d = ImageDraw.Draw(out)
-    d.rectangle((0, h, w, h + band), fill=bg)
     font = ImageFont.truetype(FONT, max(9, int(band * 0.56)))
+    if alpha:
+        out = Image.new("RGBA", (w, h + band), (0, 0, 0, 0))
+        out.paste(content.convert("RGBA"), (0, 0))
+        fg = (120, 132, 150, 120)       # mid grey, low alpha: faint on light or dark backgrounds
+    else:
+        out = Image.new("RGB", (w, h + band))
+        out.paste(content.convert("RGB"), (0, 0))
+        # band tone: the image's own bottom edge, darkened, so the strip reads as part of the file
+        edge = content.convert("RGB").crop((0, h - 4, w, h)).resize((1, 1), Image.BOX).getpixel((0, 0))
+        bg = tuple(int(c * 0.35) for c in edge)
+        fg = tuple(min(255, c + 70) for c in bg)  # faint: low contrast against the band
+        ImageDraw.Draw(out).rectangle((0, h, w, h + band), fill=bg)
+    d = ImageDraw.Draw(out)
     tw = d.textlength(NOTICE, font=font)
+    if tw > w * 0.96:                    # narrow cutouts: shrink the line to fit
+        font = ImageFont.truetype(FONT, max(6, int(font.size * w * 0.96 / tw)))
+        tw = d.textlength(NOTICE, font=font)
     d.text(((w - tw) / 2, h + band / 2), NOTICE, fill=fg, font=font, anchor="lm")
     return out, band
 
@@ -121,23 +131,24 @@ def write_manifest(m):
         f"window.GB_MEDIA = {body};\n")
 
 
-def build(master, base):
+def build(master, base, small_w=SMALL_W):
     src = Image.open(master)
-    content = src.convert("RGB")
+    alpha = src.mode in ("RGBA", "LA") or (src.mode == "P" and "transparency" in src.info)
+    content = src.convert("RGBA" if alpha else "RGB")
     w, h = content.size
     os.makedirs(os.path.dirname(base), exist_ok=True)
-    full, band = add_band(content)
-    save(full, base + ".webp")
-    sw = SMALL_W
+    full, band = add_band(content, alpha)
+    save(full, base + ".webp", quality=92 if alpha else 84)
+    sw = min(small_w, w)
     sh = round(h * sw / w)
-    small, sband = add_band(content.resize((sw, sh), Image.LANCZOS))
-    save(small, base + "-960.webp", quality=82)
+    small, sband = add_band(content.resize((sw, sh), Image.LANCZOS), alpha)
+    save(small, base + "-960.webp", quality=92 if alpha else 82)
     key = os.path.relpath(base, STAGING).replace(os.sep, "/")
     m = load_manifest()
     m[key] = {"w": w, "h": h, "band": band, "sw": sw, "sh": sh, "sband": sband,
-              "master": os.path.basename(master)}
+              "alpha": alpha, "master": os.path.basename(master)}
     write_manifest(m)
-    print(f"built {key}: content {w}x{h} + band {band}px; small {sw}x{sh} + {sband}px")
+    print(f"built {key}: content {w}x{h} + band {band}px; small {sw}x{sh} + {sband}px{' (transparent band)' if alpha else ''}")
 
 
 def _chunk(cid, payload):

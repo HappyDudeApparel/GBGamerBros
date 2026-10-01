@@ -89,6 +89,6 @@ Notice: **2026 Copyright © GB Gamer Bros™ x Happy Dude®. All Rights Reserved
   - EXIF Artist, Copyright and ImageDescription (ASCII rendering, because EXIF text is ASCII-only)
   - EXIF XPAuthor/XPComment (exact Unicode)
   - PNG: iTXt XMP plus Copyright/Author text chunks.
-- **Pixel band** (world/area imagery): extra canvas added below the image, never cut from the composition, carrying the notice faintly. The site always clips it through the shared `.gbm` media frame.
+- **Pixel band**: extra canvas added below the image, never cut from the composition, carrying the notice faintly. Opaque images get a dark band. Transparent cutouts get a **transparent** band with faint text only. The site always clips it through the shared `.gbm` media frame.
 - **Verification:** `tools/gbmedia.py verify` re-reads every file from disk.
 - **Limits:** metadata can be stripped by other software. The band can be cropped off a downloaded copy. Neither layer is tamper-proof; together they make casual reuse carry the notice.
