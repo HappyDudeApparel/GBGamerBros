@@ -40,10 +40,10 @@
   const slidesWrap = document.getElementById("heroSlides");
   const track = document.getElementById("heroTrack");
   const slides = [...track.children];
-  const bros = document.getElementById("heroBros");
+  const fgLayers = [...document.querySelectorAll(".hero__fg .fg")];
   const dotsWrap = document.getElementById("heroDots");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const INTERVAL = 7000;
+  const INTERVAL = 8500; // slow, deliberate rotation
   let index = 0;
   let timer = null;
 
@@ -62,7 +62,7 @@
     track.style.transform = `translateX(${-index * 100}%)`;
     slides.forEach((s, i) => s.setAttribute("aria-hidden", String(i !== index)));
     dots.forEach((d, i) => d.setAttribute("aria-selected", String(i === index)));
-    bros.classList.toggle("is-hidden", slides[index].dataset.fg !== "bros");
+    fgLayers.forEach((f) => f.classList.toggle("is-active", Number(f.dataset.slide) === index));
   }
   function restart() {
     clearInterval(timer);
@@ -103,6 +103,55 @@
 
   go(0);
   restart();
+
+  // ---------- map panning (portrait: swipe, arrows, minimap) ----------
+  const map = document.getElementById("mapScroller");
+  const panPrev = document.querySelector(".map__pan--prev");
+  const panNext = document.querySelector(".map__pan--next");
+  const minimap = document.getElementById("minimap");
+  const minimapView = document.getElementById("minimapView");
+
+  function syncMap() {
+    const max = map.scrollWidth - map.clientWidth;
+    const pannable = max > 2;
+    const ratio = pannable ? map.scrollLeft / max : 0;
+    panPrev.classList.toggle("is-off", !pannable || map.scrollLeft < 4);
+    panNext.classList.toggle("is-off", !pannable || map.scrollLeft > max - 4);
+    minimapView.style.width = `${(map.clientWidth / map.scrollWidth) * 100}%`;
+    minimapView.style.left = `${(map.scrollLeft / map.scrollWidth) * 100}%`;
+    minimap.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
+  }
+  function panTo(fraction, smooth) {
+    // fraction = centre of the view as a share of the full map width
+    const left = fraction * map.scrollWidth - map.clientWidth / 2;
+    map.scrollTo({ left, behavior: smooth && !reduceMotion ? "smooth" : "auto" });
+  }
+  map.addEventListener("scroll", syncMap, { passive: true });
+  window.addEventListener("resize", syncMap);
+  [panPrev, panNext].forEach((b) =>
+    b.addEventListener("click", () =>
+      map.scrollBy({ left: Number(b.dataset.pan) * map.clientWidth * 0.7, behavior: reduceMotion ? "auto" : "smooth" })
+    )
+  );
+  let dragging = false;
+  const minimapAt = (e) => {
+    const r = minimap.getBoundingClientRect();
+    panTo(Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), !dragging);
+  };
+  minimap.addEventListener("pointerdown", (e) => { dragging = true; minimap.setPointerCapture(e.pointerId); minimapAt(e); });
+  minimap.addEventListener("pointermove", (e) => { if (dragging) minimapAt(e); });
+  minimap.addEventListener("pointerup", () => (dragging = false));
+  minimap.addEventListener("pointercancel", () => (dragging = false));
+  minimap.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+      e.preventDefault();
+      map.scrollBy({ left: (e.key === "ArrowLeft" ? -1 : 1) * map.clientWidth * 0.5, behavior: "auto" });
+    }
+  });
+  // start where the adventure begins (Portal Meadow™ on the left)
+  map.scrollLeft = 0;
+  syncMap();
+  window.addEventListener("load", syncMap);
 
   // ---------- map hotspots (area views are wired in Pass B) ----------
   const AREA_NAMES = {

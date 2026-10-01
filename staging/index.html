@@ -10,7 +10,7 @@
 <link rel="icon" href="assets/gb-logo.webp">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=1">
+<link rel="stylesheet" href="staging.css?v=2">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -40,16 +40,26 @@
   <section class="hero" aria-roledescription="carousel" aria-label="Adventure Mountain™ hero">
     <div class="hero__slides" id="heroSlides" aria-live="off">
       <div class="hero__track" id="heroTrack">
-        <figure class="slide" data-fg="bros" aria-label="Slide 1 of 4"><img src="assets/hero-world-highfive.webp" alt="" fetchpriority="high"></figure>
-        <figure class="slide slide--blue-portal" aria-label="Slide 2 of 4"><img src="assets/hero-blue-portal.webp" alt="Gamer Bro Blue™ beside a portal on Adventure Mountain™" loading="lazy"></figure>
-        <figure class="slide slide--blue-run" aria-label="Slide 3 of 4"><img src="assets/hero-blue-run.webp" alt="Gamer Bro Blue™ running toward a portal shrine" loading="lazy"></figure>
-        <figure class="slide slide--blue-bridge" aria-label="Slide 4 of 4"><img src="assets/hero-blue-bridge.webp" alt="Gamer Bro Blue™ crossing a rope bridge past waterfalls" loading="lazy"></figure>
+        <!-- Slide types:
+             plain  = world plate; its characters come from the .hero__fg layer (data-slide index)
+             still  = character already in the frame; portrait layouts frame it in the scene band -->
+        <figure class="slide" aria-label="Slide 1 of 4"><img src="assets/hero-world-highfive.webp" alt="" fetchpriority="high"></figure>
+        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-portal.webp);--ppos:44% 50%" aria-label="Slide 2 of 4"><img src="assets/hero-blue-portal.webp" alt="Gamer Bro Blue™ beside a portal on Adventure Mountain™" loading="lazy"></figure>
+        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-run.webp);--ppos:42% 50%" aria-label="Slide 3 of 4"><img src="assets/hero-blue-run.webp" alt="Gamer Bro Blue™ running toward a portal shrine" loading="lazy"></figure>
+        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-bridge.webp);--ppos:50% 50%" aria-label="Slide 4 of 4"><img src="assets/hero-blue-bridge.webp" alt="Gamer Bro Blue™ crossing a rope bridge past waterfalls" loading="lazy"></figure>
       </div>
     </div>
     <div class="hero__shade" aria-hidden="true"></div>
 
-    <img class="hero__sign" src="assets/adventure-mountain-sign.webp" alt="GB GAMER BROS™ Adventure Mountain™ sign — PLAY • EXPLORE • DISCOVER" width="431" height="342">
-    <img class="hero__bros" id="heroBros" src="assets/bros-highfive.webp" alt="Gamer Bro Blue™ and Gamer Bro Red™ jumping for a high five" width="510" height="469">
+    <img class="hero__sign" src="assets/adventure-mountain-sign.webp" alt="GB GAMER BROS™ Adventure Mountain™ sign — PLAY • EXPLORE • DISCOVER" width="415" height="262">
+
+    <!-- Character layer. Swap a cutout by changing src + its box:
+         --x/--y/--w = landscape box in reference px (1536-wide grid)
+         --px/--py/--pw = portrait box in --p units (--px is offset from centre) -->
+    <div class="hero__fg">
+      <img class="fg fg--stub-left" data-slide="0" src="assets/bros-highfive.webp" alt="Gamer Bro Blue™ and Gamer Bro Red™ jumping for a high five" width="512" height="468"
+           style="--x:489;--y:75;--w:512;--px:-196;--py:336;--pw:240">
+    </div>
 
     <div class="hero__copy">
       <h1 class="headline"><span>EXPLORE</span> <span>A BRIGHTER</span> <span>TOMORROW</span></h1>
@@ -74,6 +84,7 @@
     <img class="clouds clouds--top2" src="assets/cloud-bank.webp" alt="" aria-hidden="true" width="2048" height="142">
     <img class="clouds clouds--top3" src="assets/cloud-bank.webp" alt="" aria-hidden="true" width="2048" height="142">
     <h2 id="worldTitle" class="sr-only">Adventure Mountain™ world map</h2>
+    <div class="map-frame">
     <div class="map" id="mapScroller" tabindex="0" aria-label="Adventure Mountain™ map. Scroll sideways on small screens.">
       <div class="map__canvas">
         <img class="map__img" src="assets/adventure-mountain-map.webp" alt="Labelled map of Adventure Mountain™ showing Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Ruin Courtyard™, Prism Ridge™ and Frost Peaks™" width="1536" height="462">
@@ -86,8 +97,17 @@
         <button class="hotspot" type="button" data-area="frost"   style="--x:79.1;--y:19.0;--w:16.9;--h:13.4" aria-label="Frost Peaks™ — Icy Cliffs &amp; Granite Roads"></button>
       </div>
     </div>
+    <button class="map__pan map__pan--prev" type="button" data-pan="-1" aria-label="Pan map left" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="map__pan map__pan--next" type="button" data-pan="1" aria-label="Pan map right" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <img class="clouds clouds--bottom" src="assets/cloud-bank.webp" alt="" aria-hidden="true" width="2048" height="142">
-    <p class="map__hint" aria-hidden="true"><span>‹</span> Swipe to explore the map <span>›</span></p>
+    </div>
+    <div class="map-nav">
+      <p class="map__hint" aria-hidden="true"><span>‹</span> Swipe to explore the map <span>›</span></p>
+      <div class="minimap" id="minimap" role="slider" tabindex="0" aria-label="Map position" aria-controls="mapScroller" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <img src="assets/adventure-mountain-map.webp" alt="" width="1536" height="462">
+        <span class="minimap__view" id="minimapView"></span>
+      </div>
+    </div>
   </section>
 </div>
 
@@ -97,6 +117,6 @@
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
-<script src="staging.js?v=1" defer></script>
+<script src="staging.js?v=2" defer></script>
 </body>
 </html>
