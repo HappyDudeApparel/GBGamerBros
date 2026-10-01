@@ -1,10 +1,10 @@
 # GB GAMER BROS™ — project status / handoff
 
-Checkpoint: 2026-10-01 · dev branch `ccr-aefb96a7-5w3hgh` @ `be84ebd`
+Checkpoint: 2026-10-01 · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
-- Live build: **`r-0c3aa5b5`**, published as main `b7a7acf` (built from dev `be84ebd`). GitHub Pages deploy succeeded.
+- Live build: **`r-2917a366`**, main `020bc94` (dev `e9d5f5f`).
 - Root homepage and `/v2/` are untouched (byte-identical to main `919f2d0`). Never change them.
 
 ## Done
