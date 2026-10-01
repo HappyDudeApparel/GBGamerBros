@@ -1,6 +1,6 @@
 # GB GAMER BROS™ — World Asset Standard
 
-Status: **proposed for approval** · Applies to all Adventure Mountain™ world art (galleries, hero art, future generated or corrected images).
+Status: **approved** (banner, springboard and crate specs approved after Pass B). **Visual authority: board A "Canonical World Assets v1", refined by board C "World & Game Assets v1.1"; see `VISUAL_AUTHORITY.md`.** Applies to all Adventure Mountain™ world art (galleries, hero art, future generated or corrected images).
 
 The concept images were developed iteratively, so recurring objects vary between images. Before any image is approved as final art, its recurring objects must match the canonical designs below. Only the **region colour** changes between areas; shape, construction and branding never do.
 
@@ -16,11 +16,11 @@ The concept images were developed iteratively, so recurring objects vary between
 | Clover Cliffs™ | Forest green | `#23864A` | white | |
 | Ruin Courtyard™ | Red | `#C8283B` | white | |
 | Prism Ridge™ | Purple | `#7A3CC8` | white | |
-| Frost Peaks™ | Ice blue | `#7CC6F2` | navy `#0B2F6B` | A dark trim keeps contrast on the light field. |
+| Frost Peaks™ | Ice blue | `#7CC6F2` | white | Confirmed by board A: white trim and graphics on ice blue. |
 
 The hex values are starting points sampled to sit alongside the map labels. Final values are set once, here, and reused everywhere.
 
-## 2. Canonical banner (proposed)
+## 2. Canonical banner (approved · board A)
 
 Based on the strongest existing form, already present in `gb_waterfall_riverworks_adventure`, `riverworks_canyon_pipeline_adventure` and `blended_sign_variant_2`:
 
@@ -34,7 +34,7 @@ Based on the strongest existing form, already present in `gb_waterfall_riverwork
 - **Varies by area:** field colour only (section 1).
 - **Not allowed:** a crown symbol in place of the mountain mark, a banner with no GB mark, a straight or rounded lower edge, ad-hoc logos, or more than one banner design in a single area.
 
-## 3. Canonical springboard (proposed)
+## 3. Canonical springboard (approved · board A)
 
 Based on the springboard in the Riverworks™ and Portal Meadow™ close views:
 
@@ -45,7 +45,7 @@ Based on the springboard in the Riverworks™ and Portal Meadow™ close views:
 - **Proportions:** base diameter ≈ 1.25 × pad diameter. Total height ≈ 0.8 × pad diameter.
 - **Never varies:** colour, mark, base design. Only wear and dirt may vary slightly.
 
-## 4. Canonical crate (proposed)
+## 4. Canonical crate (approved · board A)
 
 - **Body:** a warm mid-brown wood cube made of horizontal planks (3 per face) with a diagonal cross-brace on the side faces.
 - **Reinforcement:** dark iron corner brackets on all 8 corners, with 2 rivets per bracket face.
@@ -54,7 +54,22 @@ Based on the springboard in the Riverworks™ and Portal Meadow™ close views:
 - **May vary per environment:** moss, water stains, chips and scale relative to the scene.
 - **Never varies:** construction, brackets, brand panel, wood tone.
 
-## 5. Other recurring assets (to be standardised later)
+## 5. Other recurring assets (design set by board A / C; specs to be written when production art arrives)
+
+| Asset | Board design direction | Notes |
+|---|---|---|
+| **World portal** | Stone arch with a blue swirl, regional banners on both sides, a lantern each side, and regional environment dressing (B shows all 7 regions) | Visual states: Active (standard), Discovered, Inactive/Locked; B also shows Cave/Interior. States are visuals only, not confirmed mechanics. |
+| **Route sign** | Wooden posts and boards with an arrow, the mountain icon and the GB mark | Consistent wood style; placement varies by region. |
+| **Lantern** | Wood/metal frame with a warm light | Same design in all regions; used on posts, bridges and ruins. |
+| **Collectibles** | Coin (mountain emblem), Adventure Crystal (yellow), Secret Key / Rare Crystal, Treasure Chest (GB) | Glow and colour may vary by region; silhouettes stay. |
+| **Pipes** | Blue industrial pipe with riveted flanges | Traversal / shortcuts. |
+| **Wood rails & bridges** | Rope-tied timber rails and plank bridges | |
+| **Ziplines / rails** | Shown on board C | Kept as a traversal concept alongside springboards. |
+| **Climbable ledges** | Shown on board C | Exploration. |
+| **Stone / ruin** | Mossy stone arches and walls | |
+| **Scale reference** | Board A shows the Gamer Bros next to the springboard, crate, lantern and portal | Use for relative scale in future renders. |
+
+Lanterns, portals, collectibles, signs, pipes and traversal props are tracked as `PROVISIONAL` in `ASSET_ASSIGNMENTS.md` until their standalone production PNGs exist.
 
 Lanterns, portal architecture, collectibles (gems/coins), route signs, checkpoints, enemy families, pipes and traversal props each get a section here when they are normalised. Until then, each is tracked in `ASSET_ASSIGNMENTS.md` as `PROVISIONAL`.
 

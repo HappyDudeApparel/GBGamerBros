@@ -2,6 +2,8 @@
 
 Standard: see `WORLD_ASSET_STANDARD.md`. Status values: `CANONICAL` · `ACCEPTABLE` · `NORMALIZATION_REQUIRED` · `NOT_PRESENT` · `PROVISIONAL` · `FINAL` · `APPLIED`.
 
+**Normalisation targets are now the approved boards listed in `VISUAL_AUTHORITY.md`** (Canonical World Assets v1, World & Game Assets v1.1, Enemy & Hazard Bible v1). Statuses below are judged against them.
+
 **Every gallery image is `PROVISIONAL` world-design reference, not final art.** Object statuses are a preliminary visual audit made at about 1000 px review size. They will be confirmed at full resolution during normalisation. No image can be `CANONICAL` until the canonical banner, crate and springboard masters exist.
 
 Sources: GB_CLAUDE_03A/03B/04A/04B, plus `a4` from GB_CLAUDE_02. Byte-identical duplicates were merged:

@@ -1,6 +1,6 @@
 # GB GAMER BROS™ — Enemy & Hazard Asset Standard
 
-Status: **tracking sheet for the forthcoming Enemy & Hazard Bible.** No enemy art was generated in Pass C.
+Status: **Visual authority: board B "Visual Design Bible v1" (the Enemy & Hazard Bible v1), supported by board C; see `VISUAL_AUTHORITY.md`.** No enemy art was generated. The website tiles stay as provisional placeholders until standalone high-resolution production PNGs are supplied.
 
 ## One registry, one detail view
 
@@ -46,6 +46,21 @@ The current core set. The thumbnail source for all six is the Bad Guys & Hazards
 
 **Thumbnails are REPLACEMENT_REQUIRED** because they're upscaled from tiny target tiles. They show the approved designs, but they're soft at the dossier size. That's why the dossier caption reads "Concept thumbnail. Clean render in production."
 
+## Bible v1 design direction (board B)
+
+Board labels are recorded as design intent, not website copy or confirmed mechanics.
+
+| ID | Bible design | Board label | Current website tile vs Bible |
+|---|---|---|---|
+| `goom` | Black sphere, red spike-tipped top, glowing yellow eyes | Basic enemy · Common | **Superseded**: the tile shows the older red mushroom-cap design |
+| `spike-bot` | Black/red sphere covered in silver spikes | Ground hazard · Area control | Superseded: different spike and body treatment |
+| `flying-enemy` | Round dark body, orange rotor, glowing eye, side wings | Air enemy · Ranged | Superseded: different colourway and rotor |
+| `turret` | Bipedal robot, red helmet, GB chest plate (B) **or** a stationary cannon on a GB base (C) | Stationary · Ranged | Superseded; **canonical form undecided** (see VISUAL_AUTHORITY.md) |
+| `crystal-guardian` | Stone golem with purple crystal growths and a glowing core | Elite enemy · High health | Superseded: the tile shows a crystal figure with no stone body |
+| `rolling-boulder` | Cracked boulder with glowing lava seams | Dynamic hazard · Environmental | Superseded: the tile has no lava seams |
+
+Board B also shows small per-enemy state/variant thumbnails. These confirm that each production enemy needs idle/active/defeated (or equivalent) renders.
+
 ## Other registered IDs (for Pass E hotspots)
 
 | ID | Type | Production | Detail art | Notes |
@@ -53,8 +68,10 @@ The current core set. The thumbnail source for all six is the Bad Guys & Hazards
 | `portal` | portal | PROVISIONAL | PROVISIONAL (Fast Travel still) | Must follow the canonical portal family once standardised. |
 | `springboard` | prop | PROVISIONAL | MISSING | Canonical spec approved in WORLD_ASSET_STANDARD.md. |
 | `crate` | prop | PROVISIONAL | MISSING | Canonical spec approved in WORLD_ASSET_STANDARD.md. |
-| `gem` | collectible | PROVISIONAL | MISSING | |
-| `coin` | collectible | MISSING | MISSING | No coins appear in the current world images. |
+| `gem` | collectible | PROVISIONAL | MISSING | Board name: **Adventure Crystal**. The display name will be aligned when production art arrives. |
+| `coin` | collectible | PROVISIONAL | MISSING | Canonical design on boards A/B/C (mountain emblem). Not yet in any world image. |
+| *(pending)* `secret-key` | collectible | MISSING | MISSING | Board: Secret Key / Rare Crystal. Register when art arrives. |
+| *(pending)* `treasure-chest` | collectible | MISSING | MISSING | Board: Treasure Chest (GB). Register when art arrives. |
 
 ## Design variants seen in the reference pack (not adopted)
 
