@@ -148,7 +148,24 @@
       map.scrollBy({ left: (e.key === "ArrowLeft" ? -1 : 1) * map.clientWidth * 0.5, behavior: "auto" });
     }
   });
-  // start where the adventure begins (Portal Meadow™ on the left)
+  // portrait: whole-world overview first, then zoom in to explore (centred where tapped)
+  const world = document.getElementById("world");
+  const portraitMap = window.matchMedia("(max-aspect-ratio: 1/1)");
+  function zoomMap(on, fraction) {
+    world.classList.toggle("is-zoomed", on);
+    requestAnimationFrame(() => setTimeout(() => {
+      if (on) panTo(fraction ?? 0.5, false); else map.scrollLeft = 0;
+      syncMap();
+    }, 360));
+  }
+  document.getElementById("mapExpand").addEventListener("click", () => zoomMap(true, 0.5));
+  document.getElementById("mapOverview").addEventListener("click", () => zoomMap(false));
+  map.addEventListener("click", (e) => {
+    if (!portraitMap.matches || world.classList.contains("is-zoomed")) return;
+    const r = map.getBoundingClientRect();
+    zoomMap(true, (e.clientX - r.left) / r.width);
+  });
+  portraitMap.addEventListener("change", () => { world.classList.remove("is-zoomed"); syncMap(); });
   map.scrollLeft = 0;
   syncMap();
   window.addEventListener("load", syncMap);
@@ -194,7 +211,10 @@
     let m = location.hash.match(/^#area\/([a-z-]+)(?:\/(\d+))?$/);
     if (m) return { id: m[1], view: m[2] ? Number(m[2]) - 1 : 0 };
     m = location.hash.match(/^#entity\/([a-z0-9-]+)$/);
-    return m ? { entity: m[1] } : null;
+    if (!m) return null;
+    const canon = (window.GB_ENTITY_ALIASES || {})[m[1]];
+    if (canon) history.replaceState(history.state, "", `#entity/${canon}`);   // legacy link → canonical
+    return { entity: canon || m[1] };
   };
 
   function buildHotspots(view) {
@@ -313,7 +333,7 @@
   dlg.addEventListener("cancel", (e) => { e.preventDefault(); requestClose(); });
 
   // ---------- entity dossier (Pass C) ----------
-  // One detail view for every canonical entity: Bad Guys & Hazards cards, Fast Travel,
+  // One detail view for every canonical entity: Enemies & Hazards cards, Fast Travel,
   // and Pass E hotspots inside area images all open #entity/<id>.
   const eDlg = document.getElementById("entityView");
   const eBody = document.getElementById("entBody");
@@ -323,9 +343,9 @@
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const media = (src, cls, alt, size) => src && MEDIA[src]
     ? `<span class="gbm ${cls}" style="${frameVars(src)}"><img src="${asset(src, size === "small")}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`
-    : `<span class="${cls} media-missing"><span>Artwork in production</span></span>`;
+    : `<span class="${cls} media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-hazard"/></svg><span>Artwork in production</span></span>`;
 
-  // optional authored evolution line (e.g. Rolling Boulder → Rock Guy → Crystal Guardian)
+  // optional authored evolution line (e.g. Rolling Boulder → Stone Golem → Crystal Guardian)
   const evo = (e) => {
     const line = e.evolution && (window.GB_EVOLUTION || {})[e.evolution.line];
     if (!line) return "";
@@ -387,7 +407,7 @@
   function requestCloseEntity() {
     if (entPushed) { entPushed = false; history.back(); }
     else if (dlg.open && current) { history.replaceState(null, "", `#area/${current}/${viewIndex + 1}`); closeEntityUI(); }
-    else { history.replaceState(null, "", "#bad-guys"); closeEntityUI(); }
+    else { history.replaceState(null, "", "#enemies"); closeEntityUI(); }
   }
   function navEntity(id, from) {
     if (!ENTITIES[id]) return;
@@ -446,7 +466,9 @@
     const state = a.status === "open" ? "" : a.status === "incomplete" ? "More views in production" : "Artwork in production";
     return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}"
         aria-label="${esc(a.name)} — ${esc(a.sub)}${state ? ` (${state})` : ""}">
-      ${v ? media(v.src, "area-card__img", "", "small") : `<span class="area-card__img area-card__img--empty"></span>`}
+      ${v ? media(v.src, "area-card__img", "", "small")
+          : a.identity ? `<span class="area-card__img region-id region-id--${a.identity.theme}" aria-hidden="true"><svg><use href="#${a.identity.icon}"/></svg></span>`
+          : `<span class="area-card__img area-card__img--empty"></span>`}
       <span class="area-card__text"><strong>${esc(a.name)}</strong><small>${esc(a.sub)}</small></span>
       ${state ? `<span class="area-card__state">${state}</span>` : ""}
     </button>`;
@@ -485,7 +507,7 @@
   ftFrame.setAttribute("style", frameVars(portal.media.render));
   ftFrame.innerHTML = `<img src="${asset(portal.media.render, true)}" srcset="${asset(portal.media.render, true)} 960w, ${asset(portal.media.render)} 1280w" sizes="(min-width: 1100px) 30vw, 92vw" alt="Gamer Bro Blue™ leaping into a blue portal in a stone shrine" loading="lazy" draggable="false">`;
 
-  // ---------- Bad Guys & Hazards ----------
+  // ---------- Enemies & Hazards ----------
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
     const e = ENTITIES[id];
     return `<li><button class="foe" type="button" data-entity="${id}" aria-label="${esc(e.name)} — details">

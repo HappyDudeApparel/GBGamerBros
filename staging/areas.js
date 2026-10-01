@@ -11,9 +11,10 @@
 // views[].focus    0–1 horizontal focal point for the portrait immersive crop
 // views[].hotspots Pass E: boxes in % of the CONTENT image (the copyright band is excluded).
 //                  `ref` is a canonical ID from entities.js, so a Goom here opens the same
-//                  #entity/goom dossier as the Bad Guys & Hazards section:
+//                  #entity/goom dossier as the Enemies & Hazards section:
 //                  { ref:"goom", x:61, y:42, w:6, h:9 }   (optional `label` overrides the name)
 //
+// identity       region placeholder (theme + icon) shown on cards until real imagery exists
 // `map:false` entries are galleries that are not map locations (e.g. the Level Preview stills).
 
 (() => {
@@ -52,7 +53,8 @@ window.GB_AREAS = {
         alt: "Cliffside walkway beside a pipe outflow waterfall, overlooking the terraced canyon", hotspots: [] },
     ],
   },
-  clover: { name: "Clover Cliffs™", sub: "Forest Trails", status: "artwork-required", views: [] },
+  clover: { name: "Clover Cliffs™", sub: "Forest Trails", status: "artwork-required", views: [],
+    identity: { theme: "forest", icon: "i-tree" } },
   ruin: {
     name: "Ruin Courtyard™", sub: "Forgotten Towers", status: "open",
     views: [
@@ -79,7 +81,8 @@ window.GB_AREAS = {
         alt: "Stone stairs climbing toward the crystal castle with gems and crates", hotspots: [] },
     ],
   },
-  frost: { name: "Frost Peaks™", sub: "Icy Cliffs & Granite Roads", status: "artwork-required", views: [] },
+  frost: { name: "Frost Peaks™", sub: "Icy Cliffs & Granite Roads", status: "artwork-required", views: [],
+    identity: { theme: "ice", icon: "i-snow" } },
 
   // Level Preview still sequence (not a map location). Opens in the same gallery view.
   preview: {

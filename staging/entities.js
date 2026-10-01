@@ -1,6 +1,6 @@
 // GB GAMER BROS™ — canonical world entity registry
 //
-// ONE registry for every clickable thing in the world. The Bad Guys & Hazards section,
+// ONE registry for every clickable thing in the world. The Enemies & Hazards section,
 // the Fast Travel panel and (Pass E) hotspots inside area images all resolve through
 // these IDs and open the SAME detail view:  #entity/<id>
 //
@@ -46,20 +46,20 @@ window.GB_ENTITIES = {
     encounter: [],
     states: states("Idle", "Roll", "Alert", "Attack", "Defeated"), angles: angles(), height: 0.5, scale: null,
   },
-  "flying-enemy": {
-    name: "Flying Enemy", type: "enemy", status: "MISSING",
+  "rotor-bot": {
+    name: "Rotor Bot", type: "enemy", status: "MISSING",
     media: { thumb: null, render: null, icon: null },   // old crop did not match the canonical design; production PNG pending
     copy: { provisional: true, summary: "Airborne enemy.", behaviour: "Flies in patterns.", where: "To be confirmed." },
     encounter: [], states: states("Hover", "Patrol", "Attack", "Dive", "Defeated"), angles: angles(), height: 0.8, scale: null,
   },
-  "turret": {
-    name: "Turret", type: "enemy", status: "MISSING",
+  "sentry-cannon": {
+    name: "Sentry Cannon", type: "enemy", status: "MISSING",
     media: { thumb: null, render: null, icon: null },   // old crop was non-canonical; production PNG pending
     copy: { provisional: true, summary: "Stationary cannon.", behaviour: "Fires from a fixed position. Find cover.", where: "To be confirmed." },
     encounter: [], states: states("Idle", "Tracking", "Firing", "Cooldown", "Inactive"), angles: angles(), height: 1.0, scale: null,
   },
-  "rock-guy": {
-    name: "Rock Guy", type: "enemy", status: "MISSING",
+  "stone-golem": {
+    name: "Stone Golem", type: "enemy", status: "MISSING",
     media: { thumb: null, render: null, icon: null },
     copy: { provisional: true, summary: "Evolved rock enemy.", behaviour: "Chases and attacks up close.", where: "To be confirmed." },
     encounter: [], states: states("Idle", "Walk / chase", "Melee attack", "Hit / stagger", "Defeated"), angles: angles(), height: 2.0, scale: null,
@@ -129,10 +129,17 @@ window.GB_ENTITIES = {
 
 // optional authored evolution lines (no trigger is hard-coded; conditions are undecided)
 window.GB_EVOLUTION = {
-  boulder: ["rolling-boulder", "rock-guy", "crystal-guardian"],
+  boulder: ["rolling-boulder", "stone-golem", "crystal-guardian"],
 };
 
-// display order for the Bad Guys & Hazards section (six-card grid; Rock Guy is reached
-// through the evolution line and its own #entity/rock-guy route until its art exists)
-window.GB_BESTIARY = ["goom", "spike-bot", "flying-enemy", "turret", "crystal-guardian", "rolling-boulder"];
+// display order for the Enemies & Hazards section
+window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian"];
+
+// legacy IDs keep working: #entity/<old> is rewritten to the canonical ID
+window.GB_ENTITY_ALIASES = {
+  "flying-enemy": "rotor-bot",
+  "turret": "sentry-cannon",
+  "rock-guy": "stone-golem",
+  "gem": "adventure-crystal",
+};
 })();

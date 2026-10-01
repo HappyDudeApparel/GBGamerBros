@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-0c3aa5b5">
+<meta name="gb-revision" content="r-2917a366">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-0c3aa5b5";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-2917a366";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -14,7 +14,7 @@
 <link rel="icon" href="assets/brand/gb-logo-960.webp?v=40182d5678">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=828d202dda">
+<link rel="stylesheet" href="staging.css?v=21415021e1">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -30,6 +30,8 @@
   <symbol id="i-team2" viewBox="0 0 64 64"><circle cx="22" cy="23" r="9" fill="currentColor"/><circle cx="42" cy="23" r="9" fill="currentColor"/><circle cx="32" cy="17" r="10" fill="currentColor"/><path d="M5 56c1-13 8-20 17-20s16 7 17 20Zm20 0c1-15 8-23 18-23s16 8 16 23Z" fill="currentColor"/></symbol>
   <symbol id="i-frames" viewBox="0 0 64 64"><rect x="6" y="14" width="40" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="4.5"/><path d="M18 50h34a6 6 0 0 0 6-6V22" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M14 38l9-10 7 7 5-5 7 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
   <symbol id="i-hazard" viewBox="0 0 64 64"><path d="M32 6c13 0 23 9 23 21 0 7-3 12-8 15v8a4 4 0 0 1-4 4H21a4 4 0 0 1-4-4v-8c-5-3-8-8-8-15C9 15 19 6 32 6Z" fill="currentColor"/><circle cx="23" cy="28" r="6" fill="#fff"/><circle cx="41" cy="28" r="6" fill="#fff"/><path d="M27 54v-7M37 54v-7M32 39l-3 5h6Z" stroke="#fff" stroke-width="3" fill="#fff" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tree" viewBox="0 0 64 64"><path d="M32 4 14 28h11L10 45h17v15h10V45h17L39 28h11Z" fill="currentColor"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 64 64"><g stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M32 5v54M8 18l48 28M8 46l48-28"/><path d="m25 12 7 7 7-7M25 52l7-7 7 7M12 26l10 3-2-10M52 38l-10-3 2 10M12 38l10-3-2 10M52 26l-10 3 2-10"/></g></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></symbol>
 </svg>
 
@@ -113,6 +115,10 @@
     <img class="clouds clouds--bottom" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
     </div>
     <div class="map-nav">
+      <button class="map__mode map__mode--expand" id="mapExpand" type="button" aria-controls="mapScroller">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Explore the map</button>
+      <button class="map__mode map__mode--overview" id="mapOverview" type="button" aria-controls="mapScroller">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Whole map</button>
       <p class="map__hint" aria-hidden="true"><span>‹</span> Swipe to explore the map <span>›</span></p>
       <div class="minimap" id="minimap" role="slider" tabindex="0" aria-label="Map position" aria-controls="mapScroller" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
         <img src="assets/adventure-mountain-map.webp?v=2929e64c6e" alt="" width="1536" height="462">
@@ -175,10 +181,11 @@
         </button>
       </section>
 
-      <section class="panel panel--hazards" id="bad-guys" aria-labelledby="bgTitle">
+      <section class="panel panel--hazards" id="enemies" aria-labelledby="bgTitle">
+        <span id="bad-guys" class="anchor-alias" aria-hidden="true"></span>
         <header class="panel__head">
           <span class="panel__icon"><svg aria-hidden="true"><use href="#i-hazard"/></svg></span>
-          <div><h2 id="bgTitle">Bad Guys &amp; Hazards</h2><p>Different enemies, new challenges</p></div>
+          <div><h2 id="bgTitle">Enemies &amp; Hazards</h2><p>Different enemies, new challenges</p></div>
         </header>
         <ul class="foes" id="foes"></ul>
         <p class="panel__note">Concept designs shown are provisional.</p>
@@ -226,14 +233,14 @@
 </dialog>
 
 <footer class="staging-note">
-  <p>Staging preview · Pass C (gameplay systems). Meet the Team™ follows after approval. · Build <span id="gbRev">r-0c3aa5b5</span></p>
+  <p>Staging preview · Pass C (gameplay systems). Meet the Team™ follows after approval. · Build <span id="gbRev">r-2917a366</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
 <script src="media-manifest.js?v=a6f37e1f3d" defer></script>
-<script src="areas.js?v=0ae4588b49" defer></script>
-<script src="entities.js?v=13e68421dd" defer></script>
-<script src="staging.js?v=fd2f805940" defer></script>
+<script src="areas.js?v=b5909c6c99" defer></script>
+<script src="entities.js?v=f97f9a5794" defer></script>
+<script src="staging.js?v=75e633d0a6" defer></script>
 </body>
 </html>
