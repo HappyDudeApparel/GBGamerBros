@@ -361,6 +361,7 @@
           <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
           <dt>${e.type === "hazard" ? "Hazard" : "Behaviour"}</dt><dd>${esc(e.copy.behaviour)}</dd>
           <dt>Where encountered</dt><dd>${esc(e.copy.where)}</dd>
+          ${e.height ? `<dt>Approx. height</dt><dd>${e.height.toFixed(1)} m <small class="dossier__note">design reference · Gamer Bros ${(window.GB_HERO_HEIGHT || 1.8).toFixed(1)} m</small></dd>` : ""}
         </dl>
         ${evo(e)}
         ${states ? `<h3>Visual states</h3><ul class="dossier__states">${states}</ul>` : ""}
