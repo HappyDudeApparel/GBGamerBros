@@ -35,3 +35,21 @@ Official Blue, Red, Purple and Yellow turnaround/reference material exists and w
 | Gamer Bro Red™ | high-five (hoodie), duo/team scenes | Any solo world action; transparent solo hero render per look; sporty look; turnaround |
 | Gamer Girl Purple™ | solo world action (sporty), duo/team scenes, turnaround reference | Transparent solo hero render per look; alternate poses |
 | Gamer Girl Yellow™ | solo world action (sporty), duo/team scenes, turnaround reference | Transparent solo hero render per look; alternate poses |
+
+## Approved character masters (Drive `CHARACTER_PRODUCTION_V1/APPROVED_CHARACTER_MASTERS`, retrieved 2026-10-01)
+
+Masters stay private (Drive + session scratchpad), never in the repo. Each public image is ONE view isolated from a sheet (background removed with rembg isnet-general-use), built with `gbmedia.py` (transparent band + XMP/EXIF). The `master` field in media-manifest.js names the source sheet and view.
+
+| Master | Size | SHA-256 (16) | Public derivatives (`assets/characters/…`) |
+|---|---|---|---|
+| GAMER_BRO_BLUE_SPORTY_MULTI_VIEW_V1.jpeg | 1536×857 | `7a2837b17bf3490f` | blue/sporty-{pose,front,side,back} |
+| GAMER_BRO_BLUE_STREETWEAR_MULTI_VIEW_V1.jpeg | 1776×592 | `f866ae159b1baf1b` | blue/street-{front,threeq,side} (sheet has no back/pose) |
+| GAMER_BRO_RED_SPORTY_MULTI_VIEW_V1.jpeg | 1536×857 | `7139938a38331c3e` | red/sporty-{pose,front,side,back} |
+| GAMER_BRO_RED_STREETWEAR_MULTI_VIEW_V1.jpeg | 1376×768 | `bf2d6543cf8d3af7` | red/street-{pose,front,side,back} |
+| GAMER_GIRL_PURPLE_SPORTY_MULTI_VIEW_V1.jpeg | 1376×768 | `c18d7d04e23aa024` | purple/sporty-{pose,front,side,back} |
+| GAMER_GIRL_PURPLE_STREETWEAR_MULTI_VIEW_V1.jpeg | 1536×857 | `8a16a61694707490` | purple/street-{pose,front,side,back} |
+| GAMER_GIRL_YELLOW_SPORTY_MULTI_VIEW_V1.png | 1024×572 | `5b3ac7e1fbfa3f4d` | yellow/sporty-{pose,front,side,back} (corrected athletic shorts) |
+| GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1.jpeg | 1536×857 | `1ca1e18cedd36bbb` | yellow/street-{pose,front,side,back} |
+
+Meet the Team™ cards use each character's Sporty personality pose. Detail route `#character/<id>[/sporty|streetwear]` (registry `characters.js`).
+Native resolution is modest (figures ~520–800 px tall); higher-resolution single-view renders would sharpen the cards on retina screens.

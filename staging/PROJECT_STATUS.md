@@ -46,7 +46,14 @@ Never crop the reference sheets (VISUAL_AUTHORITY.md boards A–M) into website 
 - Clover Cliffs™ / Frost Peaks™ cards use region-identity placeholders (forest green + tree, ice blue + snowflake).
 - "Artwork in production" tiles redesigned (navy tile with icon).
 
-## Approved state
+## Major asset + Meet the Team™ update (this run)
+- Meet the Team™ section (`#characters`, alias `#team`) after Enemies & Hazards: 4 cards (desktop 4 across; 720–899 2×2; phone snap carousel with arrows).
+- Character routes `#character/<id>[/sporty|streetwear]` (blue, red, purple, yellow): Sporty/Streetwear selector, views gallery, team switcher; Back/Esc/history like the dossier.
+- Goom, Rotor Bot, Sentry Cannon: approved production art (cards, dossier hero, production views, states). See CHARACTER_ASSETS.md / ENEMY_ASSET_STANDARD.md.
+- Enemies & Hazards is now a full-width panel (7 across / 4 / 2); Level Preview + Fast Travel share a row; branding footer with the approved copyright line.
+- `gbmedia.py build` accepts an optional small width.
+
+## Approved state (previous)
 Build `r-01839066` is provisionally approved. Keep it unchanged until new production assets arrive. Don't redesign the Pass C.5 layout.
 
 ## Queued for the next asset-driven update

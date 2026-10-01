@@ -128,3 +128,14 @@ The 05 production boards show other enemy concepts: Patrol Bot, Rock Goom, Fire 
 4. A scale reference next to Gamer Bro Blue™
 5. A small icon for the legend/UI
 6. At least one encounter image in a region, using the canonical banners, crates and springboards
+
+## Approved production atlases (Drive `ENEMY_PRODUCTION_V1/APPROVED_PRODUCTION_MASTERS`, 2026-10-01)
+
+| Master | SHA-256 (16) | Public derivatives (`assets/entities/…`) |
+|---|---|---|
+| GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1.jpeg (1536×857) | `ce5d2fae5af2de40` | goom-{hero,front,threeq,side,back,active,defeated}; sentry-cannon-{hero,front,threeq,side,back,active,defeated} |
+| ROTOR_BOT_PRODUCTION_ATLAS_V1.jpeg (1536×857) | `1c6a1a153b4d3402` | rotor-bot-{hero,front,threeq,side,back,active,defeated} |
+
+Status APPROVED for goom, rotor-bot, sentry-cannon. Cutouts: rembg mask plus a chroma mask (keeps the glowing rotors and muzzle flash); labels and the atlas UI icons are not used.
+Goom "defeated" uses the atlas INACTIVE/DEFEATED cell; the earlier approved defeated pose was not in the retrieved files.
+Still "Artwork in production": spike-bot, stone-golem, crystal-guardian. Rolling Boulder keeps its provisional thumb.

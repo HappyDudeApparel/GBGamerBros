@@ -272,8 +272,8 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         raise SystemExit(__doc__)
     cmd = sys.argv[1]
-    if cmd == "build" and len(sys.argv) == 4:
-        build(sys.argv[2], sys.argv[3])
+    if cmd == "build" and len(sys.argv) in (4, 5):
+        build(sys.argv[2], sys.argv[3], *(int(a) for a in sys.argv[4:]))
     elif cmd == "stamp" and len(sys.argv) > 2:
         stamp(sys.argv[2:])
     elif cmd == "verify":

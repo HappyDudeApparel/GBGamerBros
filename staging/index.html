@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-01839066">
+<meta name="gb-revision" content="r-1b8a1997">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-01839066";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-1b8a1997";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -14,7 +14,7 @@
 <link rel="icon" href="assets/brand/gb-logo-960.webp?v=40182d5678">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=4dbee20f2a">
+<link rel="stylesheet" href="staging.css?v=d0eb656316">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -180,18 +180,34 @@
         </button>
       </section>
 
-      <section class="panel panel--hazards" id="enemies" aria-labelledby="bgTitle">
-        <span id="bad-guys" class="anchor-alias" aria-hidden="true"></span>
-        <header class="panel__head">
-          <span class="panel__icon"><svg aria-hidden="true"><use href="#i-hazard"/></svg></span>
-          <div><h2 id="bgTitle">Enemies &amp; Hazards</h2><p>Different enemies, new challenges</p></div>
-        </header>
-        <ul class="foes" id="foes"></ul>
-        <p class="panel__note">Concept designs shown are provisional.</p>
-      </section>
     </div>
+
+    <section class="panel panel--hazards" id="enemies" aria-labelledby="bgTitle">
+      <span id="bad-guys" class="anchor-alias" aria-hidden="true"></span>
+      <header class="panel__head">
+        <span class="panel__icon"><svg aria-hidden="true"><use href="#i-hazard"/></svg></span>
+        <div><h2 id="bgTitle">Enemies &amp; Hazards</h2><p>Different enemies, new challenges</p></div>
+      </header>
+      <ul class="foes" id="foes"></ul>
+      <p class="panel__note">Asset previews, not in-game screenshots. Some designs are still provisional.</p>
+    </section>
   </div>
 </main>
+
+<section class="team" id="characters" aria-labelledby="teamTitle">
+  <span id="team" class="anchor-alias" aria-hidden="true"></span>
+  <div class="team__inner">
+    <header class="sec-head team__head">
+      <span class="sec-head__icon"><svg aria-hidden="true"><use href="#i-team"/></svg></span>
+      <div><h2 id="teamTitle">Meet the Team™</h2><p>Sporty and streetwear looks</p></div>
+      <div class="sec-head__nav team__nav">
+        <button class="round-btn" type="button" data-team="-1" aria-label="Previous character" aria-controls="teamList"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="round-btn" type="button" data-team="1" aria-label="Next character" aria-controls="teamList"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </header>
+    <ul class="team__list" id="teamList" aria-label="The four Gamers"></ul>
+  </div>
+</section>
 
 <dialog class="dossier" id="entityView" aria-labelledby="entName">
   <div class="dossier__card">
@@ -203,6 +219,19 @@
       <button class="dossier__close" id="entClose" type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
     </header>
     <div class="dossier__body" id="entBody"></div>
+  </div>
+</dialog>
+
+<dialog class="dossier char" id="charView" aria-labelledby="charName">
+  <div class="dossier__card char__card" id="charCard">
+    <header class="dossier__head char__head">
+      <div>
+        <p class="dossier__type">Meet the Team™</p>
+        <h2 class="dossier__name" id="charName"></h2>
+      </div>
+      <button class="dossier__close" id="charClose" type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="char__body" id="charBody"></div>
   </div>
 </dialog>
 
@@ -231,15 +260,21 @@
   </footer>
 </dialog>
 
+<footer class="site-foot">
+  <span class="site-foot__logo gbm" style="--ar:2.48062;--ext:1.05426"><img src="assets/brand/gb-logo.webp?v=40182d5678" alt="GB GAMER BROS™" width="640" height="272" loading="lazy"></span>
+  <p class="site-foot__tag">PLAY • EXPLORE • DISCOVER</p>
+  <p class="site-foot__legal">2026 Copyright © GB Gamer Bros™ x Happy Dude®. All Rights Reserved.</p>
+</footer>
 <footer class="staging-note">
-  <p>Staging preview · Pass C (gameplay systems). Meet the Team™ follows after approval. · Build <span id="gbRev">r-01839066</span></p>
+  <p>Staging preview · Meet the Team™ and production enemy art. · Build <span id="gbRev">r-1b8a1997</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
-<script src="media-manifest.js?v=2d612a074f" defer></script>
+<script src="media-manifest.js?v=186abad2c9" defer></script>
 <script src="areas.js?v=56393413c5" defer></script>
-<script src="entities.js?v=f97f9a5794" defer></script>
-<script src="staging.js?v=75e633d0a6" defer></script>
+<script src="entities.js?v=1f97a6464e" defer></script>
+<script src="characters.js?v=8fbc177e60" defer></script>
+<script src="staging.js?v=eaf2b9eff6" defer></script>
 </body>
 </html>
