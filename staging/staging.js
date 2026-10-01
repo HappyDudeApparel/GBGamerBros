@@ -175,6 +175,12 @@
     const ext = Math.max((m.h + m.band) / m.h, (m.sh + m.sband) / m.sh);
     return `--ar:${(m.w / m.h).toFixed(5)};--ext:${ext.toFixed(5)}`;
   };
+  // every image URL carries the file's content revision so replacements are never served stale
+  const asset = (src, small) => {
+    const m = MEDIA[src] || {};
+    const rev = small ? m.srev : m.rev;
+    return `${src}${small ? "-960" : ""}.webp${rev ? `?v=${rev}` : ""}`;
+  };
   const isOpen = (id) => AREAS[id] && AREAS[id].status === "open" && AREAS[id].views.length > 0;
   const KIND = { establishing: "Overview", ground: "Ground level", traversal: "Route", landmark: "Landmark", closeup: "Close view", still: "Preview still" };
   let current = null;      // area id
@@ -206,7 +212,7 @@
       <figure class="shot" data-index="${i}" aria-label="View ${i + 1} of ${area.views.length}: ${v.label}" style="--focus:${v.focus ?? 0.5};${frameVars(v.src)}">
         <div class="shot__frame">
           <div class="shot__stage gbm">
-            <img src="${v.src}.webp" srcset="${v.src}-960.webp 960w, ${v.src}.webp 1672w"
+            <img src="${asset(v.src)}" srcset="${asset(v.src, true)} 960w, ${asset(v.src)} 1672w"
                  sizes="(max-aspect-ratio: 1/1) 180vh, 92vw" alt="${v.alt}" width="1672" height="941"
                  ${i ? 'loading="lazy"' : 'fetchpriority="high"'} draggable="false">
             <div class="shot__hotspots" data-view="${i}">${buildHotspots(v)}</div>
@@ -234,7 +240,7 @@
     [...aDots.children].forEach((d, n) => d.setAttribute("aria-selected", String(n === viewIndex)));
     aPrev.disabled = viewIndex === 0;
     aNext.disabled = viewIndex === area.views.length - 1;
-    aBg.innerHTML = `<div class="gbm" style="${frameVars(v.src)}"><img src="${v.src}-960.webp" alt=""></div>`;
+    aBg.innerHTML = `<div class="gbm" style="${frameVars(v.src)}"><img src="${asset(v.src, true)}" alt=""></div>`;
     const hash = `#area/${current}/${viewIndex + 1}`;
     if (location.hash !== hash) history.replaceState(history.state, "", hash);
     if (!fromScroll) aTrack.children[viewIndex].scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", inline: "center", block: "nearest" });
@@ -316,12 +322,27 @@
   let entOpenedFrom = null;
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const media = (src, cls, alt, size) => src && MEDIA[src]
-    ? `<span class="gbm ${cls}" style="${frameVars(src)}"><img src="${src}${size === "small" ? "-960" : ""}.webp" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`
+    ? `<span class="gbm ${cls}" style="${frameVars(src)}"><img src="${asset(src, size === "small")}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`
     : `<span class="${cls} media-missing"><span>Artwork in production</span></span>`;
+
+  // optional authored evolution line (e.g. Rolling Boulder → Rock Guy → Crystal Guardian)
+  const evo = (e) => {
+    const line = e.evolution && (window.GB_EVOLUTION || {})[e.evolution.line];
+    if (!line) return "";
+    const steps = line.map((id, i) => {
+      const x = ENTITIES[id];
+      const here = i + 1 === e.evolution.phase;
+      return `<li${here ? ' aria-current="step"' : ""}>${here
+        ? `<strong>${esc(x.name)}</strong>`
+        : `<a href="#entity/${id}" data-entity-link="${id}">${esc(x.name)}</a>`}<small>Phase ${i + 1}</small></li>`;
+    }).join("");
+    return `<h3>Evolution · phase ${e.evolution.phase} of ${line.length}</h3><ol class="dossier__evo">${steps}</ol>
+      <p class="dossier__empty">Evolution is optional and doesn't happen every time. When it happens is still being designed.</p>`;
+  };
 
   function renderEntity(id) {
     const e = ENTITIES[id];
-    document.getElementById("entType").textContent = `${TYPE[e.type] || ""} · ${e.status === "CANONICAL" ? "Canonical" : "Provisional concept"}`;
+    document.getElementById("entType").textContent = `${TYPE[e.type] || ""} · ${e.status === "CANONICAL" ? "Canonical" : e.status === "MISSING" ? "Artwork in production" : "Provisional concept"}`;
     document.getElementById("entName").textContent = e.name;
     const hero = e.media.render || e.media.thumb;
     const states = Object.entries(e.states || {}).map(([k, v]) =>
@@ -341,6 +362,7 @@
           <dt>${e.type === "hazard" ? "Hazard" : "Behaviour"}</dt><dd>${esc(e.copy.behaviour)}</dd>
           <dt>Where encountered</dt><dd>${esc(e.copy.where)}</dd>
         </dl>
+        ${evo(e)}
         ${states ? `<h3>Visual states</h3><ul class="dossier__states">${states}</ul>` : ""}
         <h3>Encounter images</h3>
         ${enc ? `<ul class="dossier__encs">${enc}</ul>` : `<p class="dossier__empty">Encounter imagery in production.</p>`}
@@ -376,6 +398,8 @@
   eDlg.addEventListener("cancel", (e) => { e.preventDefault(); requestCloseEntity(); });
   eDlg.addEventListener("click", (e) => {
     if (e.target === eDlg) { requestCloseEntity(); return; }       // backdrop click
+    const l = e.target.closest("[data-entity-link]");
+    if (l) { e.preventDefault(); location.replace(`#entity/${l.dataset.entityLink}`); return; }   // stay in one history entry
     const a = e.target.closest("[data-goto-area]");
     if (a) { e.preventDefault(); entPushed = false; pushedHere = true; location.replace(a.getAttribute("href")); }
   });
@@ -445,7 +469,7 @@
     lpIndex = (i + LP.views.length) % LP.views.length;
     const v = LP.views[lpIndex];
     lpFrame.setAttribute("style", frameVars(v.src));
-    lpFrame.innerHTML = `<img src="${v.src}-960.webp" srcset="${v.src}-960.webp 960w, ${v.src}.webp 1672w" sizes="(min-width: 1100px) 34vw, 92vw" alt="${esc(v.alt)}" draggable="false">`;
+    lpFrame.innerHTML = `<img src="${asset(v.src, true)}" srcset="${asset(v.src, true)} 960w, ${asset(v.src)} 1672w" sizes="(min-width: 1100px) 34vw, 92vw" alt="${esc(v.alt)}" draggable="false">`;
     lpLabel.textContent = v.label;
     [...lpThumbs.children].forEach((b, n) => b.setAttribute("aria-selected", String(n === lpIndex)));
   }
@@ -458,7 +482,7 @@
   const portal = ENTITIES.portal;
   const ftFrame = document.getElementById("ftFrame");
   ftFrame.setAttribute("style", frameVars(portal.media.render));
-  ftFrame.innerHTML = `<img src="${portal.media.render}-960.webp" srcset="${portal.media.render}-960.webp 960w, ${portal.media.render}.webp 1280w" sizes="(min-width: 1100px) 30vw, 92vw" alt="Gamer Bro Blue™ leaping into a blue portal in a stone shrine" loading="lazy" draggable="false">`;
+  ftFrame.innerHTML = `<img src="${asset(portal.media.render, true)}" srcset="${asset(portal.media.render, true)} 960w, ${asset(portal.media.render)} 1280w" sizes="(min-width: 1100px) 30vw, 92vw" alt="Gamer Bro Blue™ leaping into a blue portal in a stone shrine" loading="lazy" draggable="false">`;
 
   // ---------- Bad Guys & Hazards ----------
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
