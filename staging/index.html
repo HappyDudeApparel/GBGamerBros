@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="gb-revision" content="r-5faeee64">
+<script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
+(function(){var R="r-5faeee64";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
 <meta name="robots" content="noindex">
 <title>GB GAMER BROS™ — Adventure Mountain™ (Staging)</title>
 <meta name="description" content="GB GAMER BROS™ — Explore Adventure Mountain™. PLAY • EXPLORE • DISCOVER">
-<link rel="icon" href="assets/brand/gb-logo-960.webp">
-<link rel="preload" href="assets/fonts/rubik-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/rubik-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=10">
+<link rel="icon" href="assets/brand/gb-logo-960.webp?v=40182d5678">
+<link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="staging.css?v=87b01dd0bb">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -31,7 +35,7 @@
 
 <div class="stage" id="home">
   <header class="topbar">
-    <a class="brand" href="#home" aria-label="GB GAMER BROS™ home"><span class="gbm" style="--ar:2.48062;--ext:1.05426"><img src="assets/brand/gb-logo.webp" alt="GB GAMER BROS™" width="640" height="272"></span></a>
+    <a class="brand" href="#home" aria-label="GB GAMER BROS™ home"><span class="gbm" style="--ar:2.48062;--ext:1.05426"><img src="assets/brand/gb-logo.webp?v=40182d5678" alt="GB GAMER BROS™" width="640" height="272"></span></a>
     <nav class="nav" id="nav" aria-label="Primary">
       <a href="#home" class="is-active" aria-current="page">HOME</a>
       <a href="#world">WORLD</a>
@@ -51,21 +55,21 @@
         <!-- Slide types:
              plain  = world plate; its characters come from the .hero__fg layer (data-slide index)
              still  = character already in the frame; portrait layouts frame it in the scene band -->
-        <figure class="slide" aria-label="Slide 1 of 4"><img src="assets/hero-world-highfive.webp" alt="" fetchpriority="high"></figure>
-        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-portal.webp);--ppos:44% 50%" aria-label="Slide 2 of 4"><img src="assets/hero-blue-portal.webp" alt="Gamer Bro Blue™ beside a portal on Adventure Mountain™" loading="lazy"></figure>
-        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-run.webp);--ppos:42% 50%" aria-label="Slide 3 of 4"><img src="assets/hero-blue-run.webp" alt="Gamer Bro Blue™ running toward a portal shrine" loading="lazy"></figure>
-        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-bridge.webp);--ppos:50% 50%" aria-label="Slide 4 of 4"><img src="assets/hero-blue-bridge.webp" alt="Gamer Bro Blue™ crossing a rope bridge past waterfalls" loading="lazy"></figure>
+        <figure class="slide" aria-label="Slide 1 of 4"><img src="assets/hero-world-highfive.webp?v=d409fe1e44" alt="" fetchpriority="high"></figure>
+        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-portal.webp?v=b4ceb896b0);--ppos:44% 50%" aria-label="Slide 2 of 4"><img src="assets/hero-blue-portal.webp?v=b4ceb896b0" alt="Gamer Bro Blue™ beside a portal on Adventure Mountain™" loading="lazy"></figure>
+        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-run.webp?v=0ab625eb51);--ppos:42% 50%" aria-label="Slide 3 of 4"><img src="assets/hero-blue-run.webp?v=0ab625eb51" alt="Gamer Bro Blue™ running toward a portal shrine" loading="lazy"></figure>
+        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-bridge.webp?v=22ef1865d1);--ppos:50% 50%" aria-label="Slide 4 of 4"><img src="assets/hero-blue-bridge.webp?v=22ef1865d1" alt="Gamer Bro Blue™ crossing a rope bridge past waterfalls" loading="lazy"></figure>
       </div>
     </div>
     <div class="hero__shade" aria-hidden="true"></div>
 
-    <span class="hero__sign gbm" style="--ar:1.62749;--ext:1.02893"><img src="assets/brand/adventure-mountain-sign.webp" alt="GB GAMER BROS™ Adventure Mountain™ sign — PLAY • EXPLORE • DISCOVER" width="900" height="569"></span>
+    <span class="hero__sign gbm" style="--ar:1.62749;--ext:1.02893"><img src="assets/brand/adventure-mountain-sign.webp?v=f84ad079f6" alt="GB GAMER BROS™ Adventure Mountain™ sign — PLAY • EXPLORE • DISCOVER" width="900" height="569"></span>
 
     <!-- Character layer. Swap a cutout by changing src + its box:
          --x/--y/--w = landscape box in reference px (1536-wide grid)
          --px/--py/--pw = portrait box in --p units (--px is offset from centre) -->
     <div class="hero__fg">
-      <span class="fg fg--stub-left gbm" data-slide="0" style="--x:489;--y:75;--w:512;--px:-196;--py:336;--pw:240;--ar:1.09402;--ext:1.02991"><img src="assets/brand/bros-highfive.webp" alt="Gamer Bro Blue™ and Gamer Bro Red™ jumping for a high five" width="512" height="482"></span>
+      <span class="fg fg--stub-left gbm" data-slide="0" style="--x:489;--y:75;--w:512;--px:-196;--py:336;--pw:240;--ar:1.09402;--ext:1.02991"><img src="assets/brand/bros-highfive.webp?v=3f83589cd0" alt="Gamer Bro Blue™ and Gamer Bro Red™ jumping for a high five" width="512" height="482"></span>
     </div>
 
     <div class="hero__copy">
@@ -87,14 +91,14 @@
   </section>
 
   <section class="world" id="world" aria-labelledby="worldTitle">
-    <img class="clouds clouds--top" src="assets/cloud-bank.webp" alt="" aria-hidden="true" width="2048" height="142">
-    <img class="clouds clouds--top2" src="assets/cloud-bank.webp" alt="" aria-hidden="true" width="2048" height="142">
-    <img class="clouds clouds--top3" src="assets/cloud-bank.webp" alt="" aria-hidden="true" width="2048" height="142">
+    <img class="clouds clouds--top" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
+    <img class="clouds clouds--top2" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
+    <img class="clouds clouds--top3" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
     <h2 id="worldTitle" class="sr-only">Adventure Mountain™ world map</h2>
     <div class="map-frame">
     <div class="map" id="mapScroller" tabindex="0" aria-label="Adventure Mountain™ map. Scroll sideways on small screens.">
       <div class="map__canvas">
-        <img class="map__img" src="assets/adventure-mountain-map.webp" alt="Labelled map of Adventure Mountain™ showing Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Ruin Courtyard™, Prism Ridge™ and Frost Peaks™" width="1536" height="462">
+        <img class="map__img" src="assets/adventure-mountain-map.webp?v=2929e64c6e" alt="Labelled map of Adventure Mountain™ showing Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Ruin Courtyard™, Prism Ridge™ and Frost Peaks™" width="1536" height="462">
         <button class="hotspot" type="button" data-area="portal"  style="--x:5.5;--y:64.5;--w:15.6;--h:14.7" aria-label="Portal Meadow™ — The Adventure Begins"></button>
         <button class="hotspot" type="button" data-area="creek"   style="--x:30.1;--y:53.7;--w:14.8;--h:13.6" aria-label="Creek Crossing™ — Bridges &amp; Rapids"></button>
         <button class="hotspot" type="button" data-area="river"   style="--x:53.1;--y:55.8;--w:14.6;--h:14.1" aria-label="Riverworks™ — Waterfalls &amp; Pipeways"></button>
@@ -106,12 +110,12 @@
     </div>
     <button class="map__pan map__pan--prev" type="button" data-pan="-1" aria-label="Pan map left" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <button class="map__pan map__pan--next" type="button" data-pan="1" aria-label="Pan map right" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <img class="clouds clouds--bottom" src="assets/cloud-bank.webp" alt="" aria-hidden="true" width="2048" height="142">
+    <img class="clouds clouds--bottom" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
     </div>
     <div class="map-nav">
       <p class="map__hint" aria-hidden="true"><span>‹</span> Swipe to explore the map <span>›</span></p>
       <div class="minimap" id="minimap" role="slider" tabindex="0" aria-label="Map position" aria-controls="mapScroller" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <img src="assets/adventure-mountain-map.webp" alt="" width="1536" height="462">
+        <img src="assets/adventure-mountain-map.webp?v=2929e64c6e" alt="" width="1536" height="462">
         <span class="minimap__view" id="minimapView"></span>
       </div>
     </div>
@@ -222,14 +226,14 @@
 </dialog>
 
 <footer class="staging-note">
-  <p>Staging preview · Pass C (gameplay systems). Meet the Team™ follows after approval.</p>
+  <p>Staging preview · Pass C (gameplay systems). Meet the Team™ follows after approval. · Build <span id="gbRev">r-5faeee64</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
-<script src="media-manifest.js?v=2" defer></script>
-<script src="areas.js?v=4" defer></script>
-<script src="entities.js?v=1" defer></script>
-<script src="staging.js?v=8" defer></script>
+<script src="media-manifest.js?v=ef50826a27" defer></script>
+<script src="areas.js?v=0ae4588b49" defer></script>
+<script src="entities.js?v=c74253337d" defer></script>
+<script src="staging.js?v=584599322a" defer></script>
 </body>
 </html>

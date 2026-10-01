@@ -2,8 +2,8 @@
    Landscape layout is measured from APPROVED_HERO_MAP_HIGH_RES_REFERENCE (1536 × 1024).
    1 --u = 1 reference pixel at the current page width. */
 
-@font-face{font-family:"Rubik";font-style:normal;font-weight:300 900;font-display:swap;src:url(assets/fonts/rubik-latin.woff2) format("woff2")}
-@font-face{font-family:"Rubik";font-style:italic;font-weight:300 900;font-display:swap;src:url(assets/fonts/rubik-italic-latin.woff2) format("woff2")}
+@font-face{font-family:"Rubik";font-style:normal;font-weight:300 900;font-display:swap;src:url(assets/fonts/rubik-latin.woff2?v=ea3f56e306) format("woff2")}
+@font-face{font-family:"Rubik";font-style:italic;font-weight:300 900;font-display:swap;src:url(assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f) format("woff2")}
 
 :root{
   --navy:#071c4f;
@@ -721,3 +721,11 @@ html.is-locked{overflow:hidden}
 .hero .gbm.hero__sign > img,.hero .gbm.fg > img{filter:none}
 .brand .gbm{filter:drop-shadow(0 2px 6px rgba(0,10,40,.45))}
 .brand .gbm > img{filter:none}
+.dossier__evo{list-style:none;margin:0 0 6px;padding:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.dossier__evo li{display:grid;padding:6px 12px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(150,205,255,.35)}
+.dossier__evo li + li::before{content:"→";position:absolute;margin:8px 0 0 -22px;color:#9fd0ff}
+.dossier__evo li{position:relative;margin-left:0}
+.dossier__evo li + li{margin-left:16px}
+.dossier__evo li[aria-current]{background:rgba(47,155,255,.25);border-color:#5cc2ff}
+.dossier__evo a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.dossier__evo small{font-size:11px;color:#9fd0ff}
