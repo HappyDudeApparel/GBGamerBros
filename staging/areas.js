@@ -88,12 +88,12 @@ window.GB_AREAS = {
   preview: {
     name: "Level Preview", sub: "Preview stills · gameplay video not yet available", status: "open", map: false,
     views: [
-      { src: "assets/systems/preview-01-boardwalk-run", kind: "still", label: "Boardwalk run", focus: 0.45,
-        alt: "Gamer Bro Blue™ running along a boardwalk past waterfalls and gems", hotspots: [] },
-      { src: "assets/systems/preview-02-ruin-stairs", kind: "still", label: "Ruin stairs", focus: 0.5,
-        alt: "Gamer Bro Blue™ climbing stone stairs between waterfalls and ruins", hotspots: [] },
-      { src: "assets/systems/preview-03-waterfall-ruins", kind: "still", label: "Waterfall ruins", focus: 0.55,
-        alt: "Ruined aqueduct arches and waterfalls pouring into a clear pool", hotspots: [] },
+      { src: "assets/scenes/blue-red-world-action-01", kind: "still", label: "Cliffside dash", focus: 0.3,
+        alt: "Gamer Bro Blue™ and Gamer Bro Red™ dashing along a cliff path above waterfalls and bridges", hotspots: [] },
+      { src: "assets/scenes/purple-yellow-world-action-02", kind: "still", label: "Boardwalk run", focus: 0.45,
+        alt: "Gamer Girl Purple™ and Gamer Girl Yellow™ running along a rope-rail boardwalk past waterfalls", hotspots: [] },
+      { src: "assets/scenes/four-character-world-action-01", kind: "still", label: "Team climb", focus: 0.3,
+        alt: "Gamer Bro Blue™, Gamer Bro Red™, Gamer Girl Purple™ and Gamer Girl Yellow™ climbing a rocky ledge above the waterfall valley", hotspots: [] },
       { src: "assets/systems/preview-04-trail-junction", kind: "still", label: "Trail junction", focus: 0.3,
         alt: "Stone steps at a trail junction with signposts, pipes and a waterfall", hotspots: [] },
     ],

@@ -190,18 +190,6 @@ window.GB_MEDIA = {
   "rev": "f84ad079f6",
   "srev": "f84ad079f6"
  },
- "assets/brand/bros-highfive": {
-  "w": 512,
-  "h": 468,
-  "band": 14,
-  "sw": 512,
-  "sh": 468,
-  "sband": 14,
-  "alpha": true,
-  "master": "bros-highfive.png",
-  "rev": "3f83589cd0",
-  "srev": "3f83589cd0"
- },
  "assets/brand/gb-logo": {
   "w": 640,
   "h": 258,
@@ -213,6 +201,18 @@ window.GB_MEDIA = {
   "master": "gb-logo.png",
   "rev": "40182d5678",
   "srev": "40182d5678"
+ },
+ "assets/characters/blue-red-high-five": {
+  "w": 1088,
+  "h": 1160,
+  "band": 20,
+  "sw": 960,
+  "sh": 1024,
+  "sband": 17,
+  "alpha": true,
+  "master": "blue-red-high-five.png",
+  "rev": "17e60a5aed",
+  "srev": "370359120e"
  },
  "assets/entities/rolling-boulder-thumb": {
   "w": 252,
@@ -226,6 +226,66 @@ window.GB_MEDIA = {
   "rev": "90fb161f73",
   "srev": "9f892ef92e"
  },
+ "assets/scenes/blue-red-world-action-01": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "GB_BLUE_RED_WORLD_ACTION_01.png",
+  "rev": "9d927aba45",
+  "srev": "1f7659b2c3"
+ },
+ "assets/scenes/blue-world-action-01": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "GB_BLUE_WORLD_ACTION_01.png",
+  "rev": "f188c09494",
+  "srev": "79c7174e12"
+ },
+ "assets/scenes/four-character-world-action-01": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "GB_FOUR_CHARACTER_WORLD_ACTION_01.png",
+  "rev": "d921032084",
+  "srev": "20896f6947"
+ },
+ "assets/scenes/purple-yellow-world-action-01": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "GB_PURPLE_YELLOW_WORLD_ACTION_01.png",
+  "rev": "0952411235",
+  "srev": "5d1943bd75"
+ },
+ "assets/scenes/purple-yellow-world-action-02": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "GB_PURPLE_YELLOW_WORLD_ACTION_02.png",
+  "rev": "aff80a4cab",
+  "srev": "3551f16e63"
+ },
  "assets/systems/fast-travel-portal": {
   "w": 1280,
   "h": 720,
@@ -237,42 +297,6 @@ window.GB_MEDIA = {
   "master": "7531_10s.jpg",
   "rev": "16b6fdbdaf",
   "srev": "5be0b01df7"
- },
- "assets/systems/preview-01-boardwalk-run": {
-  "w": 1280,
-  "h": 720,
-  "band": 23,
-  "sw": 960,
-  "sh": 540,
-  "sband": 17,
-  "alpha": false,
-  "master": "7516_3s.jpg",
-  "rev": "4c180144e1",
-  "srev": "722e14c2f4"
- },
- "assets/systems/preview-02-ruin-stairs": {
-  "w": 1280,
-  "h": 720,
-  "band": 23,
-  "sw": 960,
-  "sh": 540,
-  "sband": 17,
-  "alpha": false,
-  "master": "7516_5s.jpg",
-  "rev": "52366945fc",
-  "srev": "68b73a3433"
- },
- "assets/systems/preview-03-waterfall-ruins": {
-  "w": 1672,
-  "h": 941,
-  "band": 30,
-  "sw": 960,
-  "sh": 540,
-  "sband": 17,
-  "alpha": false,
-  "master": "cascading_gb_crystal_ruins.png",
-  "rev": "dc29ff2710",
-  "srev": "14fcb455cb"
  },
  "assets/systems/preview-04-trail-junction": {
   "w": 1672,

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-2917a366">
+<meta name="gb-revision" content="r-01839066">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-2917a366";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-01839066";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -14,7 +14,7 @@
 <link rel="icon" href="assets/brand/gb-logo-960.webp?v=40182d5678">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=21415021e1">
+<link rel="stylesheet" href="staging.css?v=4dbee20f2a">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -57,10 +57,9 @@
         <!-- Slide types:
              plain  = world plate; its characters come from the .hero__fg layer (data-slide index)
              still  = character already in the frame; portrait layouts frame it in the scene band -->
-        <figure class="slide" aria-label="Slide 1 of 4"><img src="assets/hero-world-highfive.webp?v=d409fe1e44" alt="" fetchpriority="high"></figure>
-        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-portal.webp?v=b4ceb896b0);--ppos:44% 50%" aria-label="Slide 2 of 4"><img src="assets/hero-blue-portal.webp?v=b4ceb896b0" alt="Gamer Bro Blue™ beside a portal on Adventure Mountain™" loading="lazy"></figure>
-        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-run.webp?v=0ab625eb51);--ppos:42% 50%" aria-label="Slide 3 of 4"><img src="assets/hero-blue-run.webp?v=0ab625eb51" alt="Gamer Bro Blue™ running toward a portal shrine" loading="lazy"></figure>
-        <figure class="slide slide--still" style="--bg:url(assets/hero-blue-bridge.webp?v=22ef1865d1);--ppos:50% 50%" aria-label="Slide 4 of 4"><img src="assets/hero-blue-bridge.webp?v=22ef1865d1" alt="Gamer Bro Blue™ crossing a rope bridge past waterfalls" loading="lazy"></figure>
+        <figure class="slide" aria-label="Slide 1 of 3"><img src="assets/hero-world-highfive.webp?v=d409fe1e44" alt="" fetchpriority="high"></figure>
+        <figure class="slide slide--scene" style="--fy:6%;--sx:42%;--bg:url(assets/scenes/blue-world-action-01-960.webp?v=79c7174e12)" aria-label="Slide 2 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/blue-world-action-01.webp?v=f188c09494" srcset="assets/scenes/blue-world-action-01-960.webp?v=79c7174e12 960w, assets/scenes/blue-world-action-01.webp?v=f188c09494 1672w" sizes="100vw" alt="Gamer Bro Blue™ leaping between platforms past waterfalls and the crystal castle" loading="lazy" draggable="false"></span></div></figure>
+        <figure class="slide slide--scene" style="--fy:8%;--sx:40%;--bg:url(assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75)" aria-label="Slide 3 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/purple-yellow-world-action-01.webp?v=0952411235" srcset="assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75 960w, assets/scenes/purple-yellow-world-action-01.webp?v=0952411235 1672w" sizes="100vw" alt="Gamer Girl Purple™ and Gamer Girl Yellow™ running along a waterfall boardwalk" loading="lazy" draggable="false"></span></div></figure>
       </div>
     </div>
     <div class="hero__shade" aria-hidden="true"></div>
@@ -71,7 +70,7 @@
          --x/--y/--w = landscape box in reference px (1536-wide grid)
          --px/--py/--pw = portrait box in --p units (--px is offset from centre) -->
     <div class="hero__fg">
-      <span class="fg fg--stub-left gbm" data-slide="0" style="--x:489;--y:75;--w:512;--px:-196;--py:336;--pw:240;--ar:1.09402;--ext:1.02991"><img src="assets/brand/bros-highfive.webp?v=3f83589cd0" alt="Gamer Bro Blue™ and Gamer Bro Red™ jumping for a high five" width="512" height="482"></span>
+      <span class="fg gbm" data-slide="0" style="--x:525;--y:75;--w:440;--px:-187;--py:330;--pw:222;--ar:0.93793;--ext:1.01724"><img src="assets/characters/blue-red-high-five.webp?v=17e60a5aed" alt="Gamer Bro Blue™ and Gamer Bro Red™ jumping for a high five" width="1088" height="1180"></span>
     </div>
 
     <div class="hero__copy">
@@ -233,13 +232,13 @@
 </dialog>
 
 <footer class="staging-note">
-  <p>Staging preview · Pass C (gameplay systems). Meet the Team™ follows after approval. · Build <span id="gbRev">r-2917a366</span></p>
+  <p>Staging preview · Pass C (gameplay systems). Meet the Team™ follows after approval. · Build <span id="gbRev">r-01839066</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
-<script src="media-manifest.js?v=a6f37e1f3d" defer></script>
-<script src="areas.js?v=b5909c6c99" defer></script>
+<script src="media-manifest.js?v=2d612a074f" defer></script>
+<script src="areas.js?v=56393413c5" defer></script>
 <script src="entities.js?v=f97f9a5794" defer></script>
 <script src="staging.js?v=75e633d0a6" defer></script>
 </body>
