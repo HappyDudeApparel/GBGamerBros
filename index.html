@@ -3,97 +3,206 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#071a2d">
+<meta name="theme-color" content="#061a30">
 <title>GB GAMER BROS™ — Adventure Mountain™</title>
 <meta name="description" content="GB GAMER BROS™ — Explore Adventure Mountain™.">
 <link rel="icon" href="assets/logo.png">
-<link rel="stylesheet" href="site.css?v=1">
+<link rel="stylesheet" href="site.css?v=3">
 </head>
 <body>
-<header class="nav">
-  <img src="assets/logo.png" alt="GB GAMER BROS™">
-  <nav>
+<header class="topbar" id="topbar">
+  <a class="nav-brand" href="#home" aria-label="GB GAMER BROS home">
+    <img src="assets/logo.png" alt="GB GAMER BROS™">
+  </a>
+  <nav class="nav-links" aria-label="Primary navigation">
     <a href="#home">HOME</a>
     <a href="#world">WORLD</a>
     <a href="#areas">AREAS</a>
     <a href="#features">FEATURES</a>
-    <a href="#team">CHARACTERS</a>
+    <a href="#characters">CHARACTERS</a>
   </nav>
-  <button class="steam js-steam">STEAM WISHLIST — SOON</button>
+  <button class="steam-button js-steam" type="button"><span class="steam-dot">●</span> WISHLIST ON STEAM</button>
 </header>
 
 <main id="home">
-<section class="hero" aria-label="GB Gamer Bros hero carousel">
-  <div class="slides" id="slides">
-    <figure><img src="assets/hero-1.jpg" alt="Adventure Mountain portal vista"></figure>
-    <figure><img src="assets/hero-2.jpg" alt="Adventure Mountain world vista"></figure>
-    <figure><img src="assets/hero-3.jpg" alt="Portal Meadow vista"></figure>
+<section class="hero" aria-label="Adventure Mountain hero">
+  <div class="hero-track" id="heroTrack">
+    <figure class="hero-slide"><img src="assets/hero-1.jpg" alt="Adventure Mountain portal route"></figure>
+    <figure class="hero-slide"><img src="assets/hero-2.jpg" alt="Adventure Mountain waterfalls and ruins"></figure>
+    <figure class="hero-slide"><img src="assets/hero-3.jpg" alt="Adventure Mountain portal vista"></figure>
   </div>
+  <div class="hero-shade"></div>
 
-  <div class="hero-panel">
-    <img class="brand" src="assets/logo.png" alt="GB GAMER BROS™">
+  <div class="hero-copy">
     <h1>EXPLORE<br>A BRIGHTER<br>TOMORROW</h1>
-    <p>PLAY • EXPLORE • DISCOVER</p>
-    <button class="steam js-steam">STEAM WISHLIST — SOON</button>
-    <div class="hero-icons">
-      <span><b>⌁</b>PLAY</span>
-      <span><b>◎</b>EXPLORE</span>
-      <span><b>✦</b>DISCOVER</span>
+    <p>PLAY <span>•</span> EXPLORE <span>•</span> DISCOVER</p>
+    <button class="steam-button hero-steam js-steam" type="button"><span class="steam-dot">●</span> WISHLIST ON STEAM <b>→</b></button>
+    <div class="hero-actions" aria-label="Game pillars">
+      <button type="button" data-scroll="#features"><i>⌁</i><b>PLAY</b></button>
+      <button type="button" data-scroll="#world"><i>◎</i><b>EXPLORE</b></button>
+      <button type="button" data-scroll="#areas"><i>✦</i><b>DISCOVER</b></button>
     </div>
   </div>
 
-  <div class="wood-sign" aria-label="Adventure Mountain">
-    <img src="assets/logo.png" alt="">
+  <div class="world-sign" aria-label="GB Gamer Bros Adventure Mountain">
+    <div class="sign-top">
+      <span class="mountain-mark">⌁</span>
+      <img src="assets/logo.png" alt="GB GAMER BROS™">
+    </div>
     <strong>ADVENTURE MOUNTAIN™</strong>
-    <small>PLAY • EXPLORE • DISCOVER</small>
+    <small>PLAY <b>•</b> EXPLORE <b>•</b> DISCOVER</small>
   </div>
 
-  <button class="arrow prev" aria-label="Previous image">‹</button>
-  <button class="arrow next" aria-label="Next image">›</button>
-  <div class="dots" id="dots"></div>
-  <div class="cloud cloud-hero"></div>
+  <button class="hero-arrow prev" type="button" aria-label="Previous hero image">‹</button>
+  <button class="hero-arrow next" type="button" aria-label="Next hero image">›</button>
+  <div class="hero-dots" id="heroDots" aria-label="Hero image selector"></div>
+  <div class="cloud-edge cloud-hero" aria-hidden="true"></div>
 </section>
 
-<section id="world" class="world">
-  <div class="map-wrap">
-    <img src="assets/map.jpg" alt="Adventure Mountain™ world map">
-    <div class="map-shine"></div>
+<section id="world" class="world-section" aria-labelledby="worldTitle">
+  <div class="section-kicker">THE WORLD</div>
+  <div class="map-title-row">
+    <div>
+      <h2 id="worldTitle">ADVENTURE MOUNTAIN™</h2>
+      <p>Choose a location to open its world view.</p>
+    </div>
+    <button class="ghost-button" type="button" data-open-area="portal">EXPLORE THE MAP →</button>
   </div>
-  <div class="cloud cloud-map"></div>
+
+  <div class="map-shell">
+    <img class="world-map" src="assets/map.jpg" alt="Adventure Mountain world map">
+    <div class="map-vignette" aria-hidden="true"></div>
+
+    <button class="map-label portal-label" type="button" data-open-area="portal">
+      <b>PORTAL MEADOW™</b><small>The adventure begins</small>
+    </button>
+    <button class="map-label creek-label" type="button" data-open-area="creek">
+      <b>CREEK CROSSING™</b><small>Bridges &amp; Rapids</small>
+    </button>
+    <button class="map-label river-label" type="button" data-open-area="riverworks">
+      <b>RIVERWORKS™</b><small>Waterfalls &amp; Pipeways</small>
+    </button>
+    <button class="map-label clover-label" type="button" data-open-area="clover">
+      <b>CLOVER CLIFFS™</b><small>Forest Trails</small>
+    </button>
+    <button class="map-label ruin-label" type="button" data-open-area="ruin">
+      <b>RUIN COURTYARD™</b><small>Forgotten Towers</small>
+    </button>
+    <button class="map-label prism-label" type="button" data-open-area="prism">
+      <b>PRISM RIDGE™</b><small>Crystal Peaks &amp; Ancient Ruins</small>
+    </button>
+    <button class="map-label frost-label" type="button" data-open-area="frost">
+      <b>FROST PEAKS™</b><small>Icy Cliffs &amp; Granite Roads</small>
+    </button>
+  </div>
+  <div class="cloud-edge cloud-map" aria-hidden="true"></div>
 </section>
 
-<section class="quick" aria-label="Adventure Mountain features">
-  <article><span class="i portal">◎</span><b>FIND PORTALS™</b><small>Discover portal locations hidden across the world.</small></article>
-  <article><span class="i reward">◆</span><b>COLLECT REWARDS™</b><small>Find coins, gems, chests and rare collectibles.</small></article>
-  <article><span class="i secret">★</span><b>UNCOVER SECRETS™</b><small>Explore optional routes and hidden areas.</small></article>
-  <article><span class="i mastery">▲</span><b>MASTER TRAVERSAL™</b><small>Use jumps, pipes, bridges and more.</small></article>
-  <article><span class="i team">●●●</span><b>PLAY TOGETHER™</b><small>Co-op remains a development goal.</small></article>
+<section class="pillars" aria-label="Adventure Mountain features">
+  <button type="button" data-detail="portals"><span class="pillar-icon p-blue">◎</span><b>FIND PORTALS™</b><small>Discover portal locations hidden across the world.</small></button>
+  <button type="button" data-detail="rewards"><span class="pillar-icon p-gold">◆</span><b>COLLECT REWARDS™</b><small>Find coins, gems, chests and rare collectibles.</small></button>
+  <button type="button" data-detail="secrets"><span class="pillar-icon p-purple">★</span><b>UNCOVER SECRETS™</b><small>Explore optional routes and hidden areas.</small></button>
+  <button type="button" data-detail="traversal"><span class="pillar-icon p-cyan">▲</span><b>MASTER TRAVERSAL™</b><small>Use jumps, pipes, bridges and more.</small></button>
+  <button type="button" data-detail="coop"><span class="pillar-icon p-team">•••</span><b>PLAY TOGETHER™</b><small>Co-op remains a development goal.</small></button>
 </section>
 
-<section id="areas" class="strip-section">
-  <div class="heading"><div><span>EXPLORE</span><h2>ICONIC AREAS™</h2></div><small>Swipe and discover</small></div>
-  <div class="fade-frame">
-    <img class="wide-strip" src="assets/iconic.jpg" alt="Iconic Adventure Mountain locations">
+<section id="areas" class="areas-section">
+  <div class="section-heading">
+    <div><span>EXPLORE</span><h2>ICONIC AREAS™</h2></div>
+    <small>Swipe, tap, or click an area</small>
+  </div>
+  <div class="area-rail-wrap">
+    <button class="rail-arrow rail-prev" type="button" aria-label="Scroll areas left">‹</button>
+    <div class="area-rail" id="areaRail"></div>
+    <button class="rail-arrow rail-next" type="button" aria-label="Scroll areas right">›</button>
   </div>
 </section>
 
-<section id="features" class="feature-panel">
-  <div class="heading"><div><span>GAMEPLAY</span><h2>EXPLORE THE WORLD™</h2></div></div>
-  <img src="assets/features.jpg" alt="Level Preview, Fast Travel, and Bad Guys and Hazards">
+<section id="features" class="gameplay-section">
+  <div class="section-heading">
+    <div><span>GAMEPLAY</span><h2>EXPLORE THE WORLD™</h2></div>
+    <small>Interactive feature previews</small>
+  </div>
+  <div class="feature-grid">
+    <article class="feature-card level-card" data-detail="level">
+      <div class="feature-image"><img src="assets/hero-1.jpg" alt="Level preview"><button class="play-disc" type="button" aria-label="Open level preview">▶</button></div>
+      <div class="feature-copy"><span>LEVEL PREVIEW™</span><h3>Routes built around movement</h3><p>Bridges, waterfalls, elevation changes, fast paths and alternate lines.</p><button type="button">OPEN PREVIEW →</button></div>
+    </article>
+    <article class="feature-card" data-detail="travel">
+      <div class="feature-image"><img src="assets/hero-3.jpg" alt="Fast travel portal"></div>
+      <div class="feature-copy"><span>FAST TRAVEL™</span><h3>Portal network</h3><p>Portals connect distant parts of Adventure Mountain™ as the world opens up.</p><button type="button">VIEW PORTALS →</button></div>
+    </article>
+    <article class="feature-card hazards-card" data-detail="hazards">
+      <div class="hazard-art">
+        <div class="hazard-orb red">●</div><div class="hazard-orb spike">✹</div><div class="hazard-orb flyer">✦</div>
+        <div class="hazard-orb turret">▣</div><div class="hazard-orb crystal">◆</div><div class="hazard-orb boulder">●</div>
+      </div>
+      <div class="feature-copy"><span>BAD GUYS &amp; HAZARDS™</span><h3>Enemies, traps and world hazards</h3><p>Patrol enemies, moving hazards and environmental challenges shape each route.</p><button type="button">VIEW HAZARDS →</button></div>
+    </article>
+  </div>
 </section>
 
-<section id="team" class="team-panel">
-  <div class="heading light"><div><span>CHARACTERS</span><h2>MEET THE TEAM™</h2></div><small>Blue • Red • Purple • Yellow</small></div>
-  <div class="fade-frame dark"><img src="assets/team.jpg" alt="GB Gamer Bros character team"></div>
+<section id="characters" class="characters-section">
+  <div class="characters-bg"></div>
+  <div class="section-heading light">
+    <div><span>CHARACTERS</span><h2>MEET THE TEAM™</h2></div>
+    <small>Blue • Red • Purple • Yellow</small>
+  </div>
+  <div class="team-stage">
+    <img src="assets/team.jpg" alt="GB Gamer Bros character team">
+    <button class="character-zone char-purple" type="button" data-character="purple" aria-label="Gamer Girl Purple"></button>
+    <button class="character-zone char-blue" type="button" data-character="blue" aria-label="Gamer Bro Blue"></button>
+    <button class="character-zone char-red" type="button" data-character="red" aria-label="Gamer Bro Red"></button>
+    <button class="character-zone char-yellow" type="button" data-character="yellow" aria-label="Gamer Girl Yellow"></button>
+  </div>
+  <div class="character-tabs" aria-label="Character selector">
+    <button type="button" data-character="purple"><i class="purple-dot"></i>GAMER GIRL PURPLE™</button>
+    <button type="button" data-character="blue"><i class="blue-dot"></i>BLUE™</button>
+    <button type="button" data-character="red"><i class="red-dot"></i>RED™</button>
+    <button type="button" data-character="yellow"><i class="yellow-dot"></i>GAMER GIRL YELLOW™</button>
+  </div>
 </section>
 
-<footer>
+<footer class="site-footer">
   <span>PLAY • EXPLORE • DISCOVER</span>
   <img src="assets/logo.png" alt="GB GAMER BROS™">
-  <button class="steam js-steam">STEAM WISHLIST — SOON</button>
+  <button class="steam-button js-steam" type="button"><span class="steam-dot">●</span> WISHLIST ON STEAM</button>
 </footer>
 </main>
 
-<script src="site.js?v=1"></script>
+<dialog class="world-dialog" id="worldDialog" aria-labelledby="dialogTitle">
+  <div class="dialog-shell">
+    <button class="dialog-close" id="dialogClose" type="button" aria-label="Close">×</button>
+    <div class="dialog-head">
+      <span id="dialogKicker">ADVENTURE MOUNTAIN™</span>
+      <h2 id="dialogTitle">PORTAL MEADOW™</h2>
+      <p id="dialogSub">The adventure begins.</p>
+    </div>
+    <div class="dialog-gallery">
+      <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image">‹</button>
+      <div class="gallery-stage" id="galleryStage" role="img" aria-label="Location view"></div>
+      <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">›</button>
+      <div class="gallery-dots" id="galleryDots"></div>
+    </div>
+    <div class="dialog-bottom">
+      <div class="dialog-description">
+        <h3 id="dialogCaption">Portal route</h3>
+        <p id="dialogText">A starting-area view of Adventure Mountain™.</p>
+      </div>
+      <div class="detail-chips" id="detailChips"></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="info-dialog" id="infoDialog">
+  <div class="info-shell">
+    <button class="dialog-close" id="infoClose" type="button" aria-label="Close">×</button>
+    <span id="infoKicker">GB GAMER BROS™</span>
+    <h2 id="infoTitle">FEATURE</h2>
+    <p id="infoText"></p>
+  </div>
+</dialog>
+
+<script src="site.js?v=3"></script>
 </body>
 </html>
