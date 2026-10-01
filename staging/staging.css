@@ -99,7 +99,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 /* fixed brand sign (independent of the slides) */
 .hero__sign{
   position:absolute;z-index:4;
-  left:calc(1056 * var(--u));top:calc(238 * var(--u));width:calc(415 * var(--u));height:auto;
+  left:calc(1046 * var(--u));top:calc(232 * var(--u));width:calc(434 * var(--u));height:auto;
   filter:drop-shadow(0 calc(8 * var(--u)) calc(14 * var(--u)) rgba(0,20,40,.35));
   pointer-events:none;
 }
@@ -308,7 +308,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 
   .fg{left:calc(50% + var(--px) * var(--p));top:calc(var(--py) * var(--p));width:calc(var(--pw) * var(--p));transform:translateY(12px) scale(.98)}
   .fg.is-active{transform:none}
-  .hero__sign{left:calc(50% + 30 * var(--p));top:calc(426 * var(--p));width:calc(162 * var(--p))}
+  .hero__sign{left:calc(50% + 12 * var(--p));top:calc(438 * var(--p));width:calc(170 * var(--p))}
 
   /* stills already contain the character: frame them in the scene band so heads/limbs
      never sit behind the fixed copy; a blurred copy of the same frame fills the rest */
