@@ -3,91 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#061a30">
-<title>GB GAMER BROS™ — Adventure Mountain™ V2</title>
+<meta name="theme-color" content="#071b31">
+<title>GB GAMER BROS™ — Adventure Mountain™</title>
 <link rel="icon" href="../assets/logo.png">
-<link rel="stylesheet" href="site.css?v=1">
+<link rel="stylesheet" href="site.css?v=4">
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="#home" aria-label="GB GAMER BROS home"><img src="../assets/logo.png" alt="GB GAMER BROS™"></a>
-  <nav aria-label="Primary">
-    <a href="#home">HOME</a>
-    <a href="#world">WORLD</a>
-    <a href="#areas">AREAS</a>
-    <a href="#features">FEATURES</a>
-    <a href="#characters">CHARACTERS</a>
-  </nav>
-  <button class="wishlist" id="wishlistTop" type="button"><span>◉</span> WISHLIST ON STEAM</button>
-</header>
-
 <main id="home">
+
 <section class="hero" aria-label="GB GAMER BROS Adventure Mountain hero">
-  <div class="hero-media" id="heroMedia">
-    <div class="scene active" style="background-image:url('../assets/hero-1.jpg')"></div>
-    <div class="scene" style="background-image:url('../assets/hero-2.jpg')"></div>
-  </div>
-  <div class="hero-grade"></div>
+  <div class="hero-image" role="img" aria-label="Gamer Bro exploring Adventure Mountain"></div>
+  <div class="hero-vignette"></div>
+
+  <header class="hero-nav">
+    <a class="brand" href="#home"><img src="../assets/logo.png" alt="GB GAMER BROS™"></a>
+    <nav aria-label="Primary navigation">
+      <a href="#home">HOME</a>
+      <a href="#world">WORLD</a>
+      <a href="#areas">AREAS</a>
+      <a href="#features">FEATURES</a>
+      <a href="#characters">CHARACTERS</a>
+    </nav>
+    <button class="steam js-steam" type="button"><span>◉</span> WISHLIST ON STEAM <b>→</b></button>
+  </header>
 
   <div class="hero-copy">
     <h1>EXPLORE<br>A BRIGHTER<br>TOMORROW</h1>
-    <p class="tag">PLAY <b>•</b> EXPLORE <b>•</b> DISCOVER</p>
-    <button class="wishlist hero-wishlist" type="button"><span>◉</span> WISHLIST ON STEAM <strong>→</strong></button>
-    <div class="pillars" aria-label="Game pillars">
-      <button type="button"><i>⌁</i><b>PLAY</b></button>
-      <button type="button"><i>◎</i><b>EXPLORE</b></button>
-      <button type="button"><i>✦</i><b>DISCOVER</b></button>
+    <p>PLAY <i>•</i> EXPLORE <i>•</i> DISCOVER</p>
+    <button class="steam hero-steam js-steam" type="button"><span>◉</span> WISHLIST ON STEAM <b>→</b></button>
+    <div class="hero-icons" aria-label="Game pillars">
+      <button type="button"><strong>⌁</strong><span>PLAY</span></button>
+      <button type="button" data-jump="#world"><strong>◎</strong><span>EXPLORE</span></button>
+      <button type="button" data-jump="#areas"><strong>✦</strong><span>DISCOVER</span></button>
     </div>
   </div>
 
-  <div class="mountain-sign" aria-label="GB GAMER BROS Adventure Mountain">
-    <div class="sign-logo"><img src="../assets/logo.png" alt="GB GAMER BROS™"></div>
-    <div class="sign-title">ADVENTURE<br>MOUNTAIN™</div>
-    <div class="sign-tag">PLAY <b>•</b> EXPLORE <b>•</b> DISCOVER</div>
-  </div>
+  <button class="hero-arrow left" type="button" aria-label="Previous hero image">‹</button>
+  <button class="hero-arrow right" type="button" aria-label="Next hero image">›</button>
+  <div class="hero-dots"><span class="active"></span><span></span><span></span><span></span></div>
+</section>
 
-  <button class="hero-arrow prev" type="button" aria-label="Previous hero image">‹</button>
-  <button class="hero-arrow next" type="button" aria-label="Next hero image">›</button>
-  <div class="hero-dots" id="heroDots" aria-label="Hero image selector"></div>
-
-  <div class="clouds hero-clouds" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<section class="world" id="world" aria-label="Adventure Mountain world map">
+  <div class="world-map-wrap">
+    <img src="../assets/map.jpg" alt="Adventure Mountain™ world map">
+    <button class="map-hotspot portal" type="button" data-area="Portal Meadow™" aria-label="Open Portal Meadow"></button>
+    <button class="map-hotspot creek" type="button" data-area="Creek Crossing™" aria-label="Open Creek Crossing"></button>
+    <button class="map-hotspot river" type="button" data-area="Riverworks™" aria-label="Open Riverworks"></button>
+    <button class="map-hotspot clover" type="button" data-area="Clover Cliffs™" aria-label="Open Clover Cliffs"></button>
+    <button class="map-hotspot ruin" type="button" data-area="Ruin Courtyard™" aria-label="Open Ruin Courtyard"></button>
+    <button class="map-hotspot prism" type="button" data-area="Prism Ridge™" aria-label="Open Prism Ridge"></button>
+    <button class="map-hotspot frost" type="button" data-area="Frost Peaks™" aria-label="Open Frost Peaks"></button>
   </div>
 </section>
 
-<section class="world" id="world">
-  <div class="world-head">
-    <div>
-      <span>THE WORLD</span>
-      <h2>ADVENTURE MOUNTAIN™</h2>
-    </div>
-    <p>Explore the world map. Interactive locations return in the next pass.</p>
-  </div>
-
-  <div class="map-stage">
-    <img src="../assets/map.jpg" alt="Adventure Mountain world map">
-    <div class="map-shade"></div>
-    <button class="map-cta" type="button">EXPLORE THE MAP <b>→</b></button>
-  </div>
-
-  <div class="clouds map-clouds" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
+<section class="phase-bar" id="areas">
+  <div><span>NEXT PASS</span><h2>Interactive lower-page systems</h2></div>
+  <p>The visual foundation stops here until this hero + map composition is approved.</p>
 </section>
 
-<section class="pass-one-note" aria-label="Rebuild status">
-  <div><span>PASS 1</span><h3>Visual foundation only</h3></div>
-  <p>The approved hero, cloud transition and map composition are being locked before the interactive lower-page systems are rebuilt.</p>
-</section>
 </main>
 
-<dialog id="steamDialog">
-  <button class="dialog-close" type="button">×</button>
-  <span>GB GAMER BROS™</span>
-  <h2>STEAM PAGE COMING LATER</h2>
-  <p>The wishlist button is visually placed, but it will not claim a live Steam listing until the real store page exists.</p>
+<dialog id="infoDialog">
+  <button class="close" type="button">×</button>
+  <span class="dialog-kicker">GB GAMER BROS™</span>
+  <h2 id="dialogTitle">COMING NEXT</h2>
+  <p id="dialogText"></p>
 </dialog>
 
-<script src="site.js?v=1"></script>
+<script src="site.js?v=4"></script>
 </body>
 </html>
