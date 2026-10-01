@@ -18,7 +18,7 @@ Source: Drive folder `Gamer Bros / CLAUDE_CURRENT_LOOSE_ASSETS`. Each file was r
 | GB_PURPLE_WORLD_ACTION_01.png | 1122×1402 | `1fcd4c5309dd2755` | Purple, sporty | Good portrait action | Reserved: Gamer Girl Purple™ detail page |
 | GB_YELLOW_WORLD_ACTION_01.png | 1122×1402 | `f0ae5d4622c2812b` | Yellow, sporty (athletic shorts) | Good portrait action | Reserved: Gamer Girl Yellow™ detail page |
 
-Notes on world details inside the scenes: they use crown banners and crown-emblem coins, where canonical assets use the mountain mark. These are recorded as world-normalisation items, not character issues.
+Notes on world details inside the scenes: they use crown banners and crown-emblem coins (canonical assets use the mountain mark), and BLUE_RED_WORLD_ACTION_01 shows old enemy designs. These are **source-art corrections**: never hide or repaint them with CSS; replace the scene masters when corrected versions arrive.
 
 ## Retired from the public build (replaced by the above)
 - Old high-five cutout extracted from the target image (Blue's hand was hidden).
@@ -26,6 +26,9 @@ Notes on world details inside the scenes: they use crown banners and crown-emble
 - `cascading_gb_crystal_ruins` Level Preview still: back to unassigned.
 
 ## Still missing before the final Meet the Team™
+
+Official Blue, Red, Purple and Yellow turnaround/reference material exists and will be supplied before implementation.
+
 | Character | Have | Missing |
 |---|---|---|
 | Gamer Bro Blue™ | high-five (hoodie), solo world action (sporty), duo/team scenes | Clean transparent solo hero render per look; alternate poses; clean turnaround |

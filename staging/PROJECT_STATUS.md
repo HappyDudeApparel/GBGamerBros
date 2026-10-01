@@ -46,6 +46,14 @@ Never crop the reference sheets (VISUAL_AUTHORITY.md boards A–M) into website 
 - Clover Cliffs™ / Frost Peaks™ cards use region-identity placeholders (forest green + tree, ice blue + snowflake).
 - "Artwork in production" tiles redesigned (navy tile with icon).
 
+## Approved state
+Build `r-01839066` is provisionally approved. Keep it unchanged until new production assets arrive. Don't redesign the Pass C.5 layout.
+
+## Queued for the next asset-driven update
+1. **Phone portrait only:** if the Purple/Yellow hero slide still conflicts with the fixed Adventure Mountain™ sign, suppress that slide at that breakpoint (e.g. hide the slide and its dot under `max-aspect-ratio:1/1` + phone width). Do not reposition the global sign.
+2. **Source-art corrections:** crown banners, crown coins and old enemy designs inside the newer scenes are fixed in the source art only. Never hide or repaint them with CSS; swap in the corrected scene masters when they arrive (same paths via gbmedia.py, so no layout change).
+3. **Character references:** official Blue, Red, Purple and Yellow turnaround/reference material exists and will be supplied before the final Meet the Team™ implementation. Wait for it; don't build character pages from incomplete assets.
+
 ## Loose assets installed (see CHARACTER_ASSETS.md)
 - Hero character layer is now the clean Blue/Red high-five (no cropped hand).
 - Hero: 3 slides (high-five on world plate; Blue world action; Purple/Yellow world action).
