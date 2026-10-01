@@ -32,14 +32,14 @@ To replace art or copy, edit the entry in `entities.js` or rebuild the image wit
 
 Authority: **Enemy & Hazard Bible v1 (revised), board D** in `VISUAL_AUTHORITY.md`.
 
-The website tiles for six enemies are upscaled crops of tiny tiles from the original target image (about 85 × 52 px). They are **provisional placeholders whose designs are superseded by board D**. For example, the tile Goom has a mushroom cap and the tile Turret is a robot. They stay only until standalone production PNGs arrive. Rock Guy has no website image and shows "Artwork in production".
+The website tiles for Spike Bot, Flying Enemy, Crystal Guardian and Rolling Boulder are upscaled crops of tiny tiles from the original target image (about 85 × 52 px). They are **provisional placeholders whose designs are superseded by board D**. They stay only until standalone production PNGs arrive. **Goom and Turret** crops showed non-canonical designs, so they were removed. Those two and Rock Guy show "Artwork in production".
 
 | ID | Name | Type | Production | Thumbnail | Clean render | Icon | Encounter image | Front | ¾ | Side | Back | Scale | © | Final art |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `goom` | Goom | enemy | PROVISIONAL | REPLACEMENT_REQUIRED | MISSING | MISSING | PROVISIONAL ¹ | MISSING | MISSING | MISSING | — | MISSING | APPLIED | PROVISIONAL |
+| `goom` | Goom | enemy | MISSING | MISSING (old crop removed: non-canonical) | MISSING | MISSING | PROVISIONAL ¹ | MISSING | MISSING | MISSING | — | MISSING | APPLIED | PROVISIONAL |
 | `spike-bot` | Spike Bot | enemy | PROVISIONAL | REPLACEMENT_REQUIRED | MISSING | MISSING | PROVISIONAL ² | MISSING | MISSING | MISSING | — | MISSING | APPLIED | PROVISIONAL |
 | `flying-enemy` | Flying Enemy | enemy | PROVISIONAL | REPLACEMENT_REQUIRED | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | — | MISSING | APPLIED | PROVISIONAL |
-| `turret` | Turret | enemy | PROVISIONAL | REPLACEMENT_REQUIRED (tile shows the non-canonical robot) | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | APPLIED | PROVISIONAL |
+| `turret` | Turret | enemy | MISSING | MISSING (old robot crop removed: non-canonical) | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | APPLIED | PROVISIONAL |
 | `rolling-boulder` | Rolling Boulder | hazard | PROVISIONAL | REPLACEMENT_REQUIRED | MISSING | MISSING | MISSING | — | — | — | — | MISSING | APPLIED | PROVISIONAL |
 | `rock-guy` | Rock Guy | enemy | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | n/a | MISSING |
 | `crystal-guardian` | Crystal Guardian | enemy | PROVISIONAL | REPLACEMENT_REQUIRED | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | — | MISSING | APPLIED | PROVISIONAL |

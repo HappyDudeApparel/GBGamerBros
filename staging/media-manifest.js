@@ -238,18 +238,6 @@ window.GB_MEDIA = {
   "rev": "d587943dd0",
   "srev": "c02afbd740"
  },
- "assets/entities/goom-thumb": {
-  "w": 252,
-  "h": 156,
-  "band": 14,
-  "sw": 252,
-  "sh": 156,
-  "sband": 14,
-  "alpha": false,
-  "master": "goom.png",
-  "rev": "73b52348d1",
-  "srev": "b47d9cdf45"
- },
  "assets/entities/rolling-boulder-thumb": {
   "w": 252,
   "h": 156,
@@ -273,18 +261,6 @@ window.GB_MEDIA = {
   "master": "spike-bot.png",
   "rev": "06ab7ec952",
   "srev": "dc75a7fc4c"
- },
- "assets/entities/turret-thumb": {
-  "w": 252,
-  "h": 156,
-  "band": 14,
-  "sw": 252,
-  "sh": 156,
-  "sband": 14,
-  "alpha": false,
-  "master": "turret.png",
-  "rev": "a71cb64af0",
-  "srev": "def96c10da"
  },
  "assets/systems/fast-travel-portal": {
   "w": 1280,

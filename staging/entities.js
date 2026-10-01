@@ -30,8 +30,8 @@ const states = (...labels) => Object.fromEntries(labels.map((l) => [l, null]));
 window.GB_ENTITIES = {
   // ---------------- enemies ----------------
   "goom": {
-    name: "Goom", type: "enemy", status: "PROVISIONAL",
-    media: { thumb: E + "goom-thumb", render: null, icon: null },
+    name: "Goom", type: "enemy", status: "MISSING",
+    media: { thumb: null, render: null, icon: null },   // old crop was non-canonical; production PNG pending
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
     encounter: [{ area: "river", view: 2, confirmed: false }, { area: "ruin", view: 1, confirmed: false }],
     states: states("Idle", "Movement", "Alert / attack", "Defeated"), angles: angles(), scale: null,
@@ -50,8 +50,8 @@ window.GB_ENTITIES = {
     encounter: [], states: states("Hover", "Patrol", "Attack", "Defeated"), angles: angles(), scale: null,
   },
   "turret": {
-    name: "Turret", type: "enemy", status: "PROVISIONAL",
-    media: { thumb: E + "turret-thumb", render: null, icon: null },
+    name: "Turret", type: "enemy", status: "MISSING",
+    media: { thumb: null, render: null, icon: null },   // old crop was non-canonical; production PNG pending
     copy: { provisional: true, summary: "Stationary cannon.", behaviour: "Fires from a fixed position. Find cover.", where: "To be confirmed." },
     encounter: [], states: states("Idle", "Tracking", "Firing", "Cooldown / inactive"), angles: angles(), scale: null,
   },
