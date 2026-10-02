@@ -152,7 +152,7 @@ Masters stay private (Drive + session scratchpad). Public files are isolated ren
 | STONE_GOLEM_STATES_MASTER_V1.png | `17ae3f6d285edbc2` | stone-golem-{idle,walk,attack,hit}; Defeated not used (shows a purple crystal fragment; Phase 2 has none) |
 | CRYSTAL_GUARDIAN_ANGLES_MASTER_V1.png | `8c66e99d4f941458` | crystal-guardian-{front,threeq,side,back} |
 | CRYSTAL_GUARDIAN_STATES_MASTER_V1.png | `0ae0980f23e6c406` | crystal-guardian-{hero,idle,charge,attack,hit,defeated} |
-| EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1.png | `c8d7dac7164f98c0` | evolution/evo-{boulder-idle,boulder-rolling,boulder-impact,boulder-cracked,golem-forming,stone-golem,crystal-guardian}; evolution/mech-{core-ignition,plate-reconfiguration,core-migration,crystal-nucleation}; crystal-guardian-final (built, unused) |
+| EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1.png | `c8d7dac7164f98c0` | evolution/evo-{boulder-idle,boulder-rolling,boulder-impact,boulder-cracked,golem-forming,stone-golem,crystal-guardian}; evolution/mech-{core-ignition,plate-reconfiguration,core-migration,crystal-nucleation} |
 | ROLLING_BOULDER_TO_STONE_GOLEM_TO_CRYSTAL_GUARDIAN_EVOLUTION_MASTER_V1.png | `8c99e072e59a7677` | evolution/evo-step-1…6 (scene panels, captions not used) |
 
 The Stone Golem sheets print the superseded legacy label; only the renders are used. All seven enemies are now APPROVED.
