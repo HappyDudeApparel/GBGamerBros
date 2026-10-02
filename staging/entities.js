@@ -45,11 +45,14 @@ window.GB_ENTITIES = {
     angles: angles("top", "bottom"), height: 0.5, scale: null,
   },
   "spike-bot": {
-    name: "Spike Bot", type: "enemy", status: "MISSING",
-    media: { thumb: null, render: null, icon: null },   // old crop did not match the canonical design; production PNG pending
+    name: "Spike Bot", type: "enemy", status: "APPROVED",
+    // SPIKE_BOT_PRODUCTION_MASTER_V1 (approved production master)
+    media: { thumb: E + "spike-bot-hero", render: E + "spike-bot-hero", icon: null },
     copy: { provisional: true, summary: "Spiked ground enemy.", behaviour: "Stays put or patrols. Damages on contact.", where: "To be confirmed." },
     encounter: [],
-    states: states("Idle", "Roll", "Alert", "Attack", "Defeated"), angles: angles(), height: 0.5, scale: null,
+    views: { "Front": E + "spike-bot-front", "Side": E + "spike-bot-side", "Back": E + "spike-bot-back", "Top": E + "spike-bot-top", "Bottom": E + "spike-bot-bottom" },
+    states: { "Idle": E + "spike-bot-idle", "Roll": E + "spike-bot-roll", "Alert": E + "spike-bot-alert", "Attack": E + "spike-bot-attack", "Defeated": E + "spike-bot-defeated" },
+    angles: angles("top", "bottom"), height: 0.5, scale: null,
   },
   "rotor-bot": {
     name: "Rotor Bot", type: "enemy", status: "APPROVED",
@@ -72,25 +75,38 @@ window.GB_ENTITIES = {
     angles: angles(), height: 1.0, scale: null,
   },
   "stone-golem": {
-    name: "Stone Golem", type: "enemy", status: "MISSING",
-    media: { thumb: null, render: null, icon: null },
+    name: "Stone Golem", type: "enemy", status: "APPROVED",
+    // STONE_GOLEM_ANGLES_MASTER_V1 + STONE_GOLEM_STATES_MASTER_V1 (approved; the sheets' printed label is the superseded legacy name)
+    media: { thumb: E + "stone-golem-hero", render: E + "stone-golem-hero", icon: null },
     copy: { provisional: true, summary: "Evolved rock enemy.", behaviour: "Chases and attacks up close.", where: "To be confirmed." },
-    encounter: [], states: states("Idle", "Walk / chase", "Melee attack", "Hit / stagger", "Defeated"), angles: angles(), height: 2.0, scale: null,
+    encounter: [],
+    views: { "Front": E + "stone-golem-front", "¾ view": E + "stone-golem-threeq", "Side": E + "stone-golem-side", "Back": E + "stone-golem-back" },
+    // the sheet's Defeated pose is not used: it shows a purple crystal fragment, and Phase 2 has no crystals
+    states: { "Idle": E + "stone-golem-idle", "Walk / chase": E + "stone-golem-walk", "Attack": E + "stone-golem-attack", "Hit / stagger": E + "stone-golem-hit" },
+    angles: angles(), height: 2.0, scale: null,
     evolution: { line: "boulder", phase: 2 },
   },
   "crystal-guardian": {
-    name: "Crystal Guardian", type: "enemy", status: "MISSING",
-    media: { thumb: null, render: null, icon: null },   // old crop did not match the canonical design; production PNG pending
+    name: "Crystal Guardian", type: "enemy", status: "APPROVED",
+    // CRYSTAL_GUARDIAN_ANGLES_MASTER_V1 + CRYSTAL_GUARDIAN_STATES_MASTER_V1 (approved production masters)
+    media: { thumb: E + "crystal-guardian-hero", render: E + "crystal-guardian-hero", icon: null },
     copy: { provisional: true, summary: "Advanced crystal form.", behaviour: "Guards key areas.", where: "To be confirmed." },
-    encounter: [], states: states("Idle", "Charge", "Attack", "Damaged", "Defeated"), angles: angles(), height: 2.5, scale: null,
+    encounter: [],
+    views: { "Front": E + "crystal-guardian-front", "¾ view": E + "crystal-guardian-threeq", "Side": E + "crystal-guardian-side", "Back": E + "crystal-guardian-back" },
+    states: { "Idle": E + "crystal-guardian-idle", "Charge": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated": E + "crystal-guardian-defeated" },
+    angles: angles(), height: 2.5, scale: null,
     evolution: { line: "boulder", phase: 3 },
   },
   // ---------------- hazards ----------------
   "rolling-boulder": {
-    name: "Rolling Boulder", type: "hazard", status: "PROVISIONAL",
-    media: { thumb: E + "rolling-boulder-thumb", render: null, icon: null },
+    name: "Rolling Boulder", type: "hazard", status: "APPROVED",
+    // ROLLING_BOULDER_PRODUCTION_MASTER_V1 (approved Phase 1 production master; replaces the old provisional crop)
+    media: { thumb: E + "rolling-boulder-threeq", render: E + "rolling-boulder-threeq", icon: null },
     copy: { provisional: true, summary: "Environmental hazard.", behaviour: "Rolls downhill and smashes obstacles.", where: "To be confirmed." },
-    encounter: [], states: states("Idle", "Rolling", "Impact", "Cracked", "Destroyed"), angles: angles(), height: 1.5, scale: null,
+    encounter: [],
+    views: { "Front": E + "rolling-boulder-front", "Side": E + "rolling-boulder-side", "Back": E + "rolling-boulder-back", "Top": E + "rolling-boulder-top" },
+    states: { "Idle": E + "rolling-boulder-idle", "Rolling": E + "rolling-boulder-rolling", "Impact": E + "rolling-boulder-impact", "Cracked / hit": E + "rolling-boulder-cracked", "Destroyed": E + "rolling-boulder-destroyed" },
+    angles: angles(), height: 1.5, scale: null,
     evolution: { line: "boulder", phase: 1 },
   },
 
@@ -143,6 +159,36 @@ window.GB_ENTITIES = {
 // optional authored evolution lines (no trigger is hard-coded; conditions are undecided)
 window.GB_EVOLUTION = {
   boulder: ["rolling-boulder", "stone-golem", "crystal-guardian"],
+};
+
+// evolution detail (approved EVOLUTION_MECHANICS masters): cutout sequence, mechanics close-ups, in-world steps
+const X = E + "evolution/";
+window.GB_EVOLUTION_DETAIL = {
+  boulder: {
+    sequence: [
+      { src: X + "evo-boulder-idle", label: "Boulder", phase: 1 },
+      { src: X + "evo-boulder-rolling", label: "Rolling", phase: 1 },
+      { src: X + "evo-boulder-impact", label: "Impact", phase: 1 },
+      { src: X + "evo-boulder-cracked", label: "Cracked", phase: 1 },
+      { src: X + "evo-golem-forming", label: "Forming", phase: 2 },
+      { src: X + "evo-stone-golem", label: "Stone Golem", phase: 2 },
+      { src: X + "evo-crystal-guardian", label: "Crystal Guardian", phase: 3 },
+    ],
+    mechanics: [
+      { src: X + "mech-core-ignition", label: "Core ignition", text: "Orange internal energy ignites, visible through cracks between the stone plates." },
+      { src: X + "mech-plate-reconfiguration", label: "Plate reconfiguration", text: "Stone plates unlock and rotate, reconfiguring into limbs and torso." },
+      { src: X + "mech-core-migration", label: "Core migration", text: "The energy gathers into the Stone Golem's eyes and core." },
+      { src: X + "mech-crystal-nucleation", label: "Crystal nucleation", text: "Crystals grow from the core and pressure points while the rock body stays visible." },
+    ],
+    scenes: [
+      { src: X + "evo-step-1", label: "Rolling Boulder", note: "Mossy segmented stone, dormant.", phase: 1 },
+      { src: X + "evo-step-2", label: "Energized", note: "Energy glows through the cracks.", phase: 1 },
+      { src: X + "evo-step-3", label: "Impact / fracture", note: "Plates break loose and begin to reconfigure.", phase: 1 },
+      { src: X + "evo-step-4", label: "Stone Golem forming", note: "The same rock becomes limbs and torso.", phase: 2 },
+      { src: X + "evo-step-5", label: "Crystal nucleation", note: "Crystals seed from the core and shoulders.", phase: 3 },
+      { src: X + "evo-step-6", label: "Crystal Guardian", note: "The Stone Golem body remains beneath the crystals.", phase: 3 },
+    ],
+  },
 };
 
 // display order for the Enemies & Hazards section

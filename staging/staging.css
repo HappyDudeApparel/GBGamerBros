@@ -939,3 +939,84 @@ html.is-locked{overflow:hidden}
 .team h2,.team p{margin:0}
 .team .sec-head p{margin-top:4px}
 @media (max-width:719px){.team .sec-head h2{font-size:clamp(20px,6vw,26px)}}
+
+/* ===================== Enemies & Hazards: production pass 2 ===================== */
+/* evolution teaser band under the grid */
+.evo-teaser{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:clamp(14px,2vw,28px);align-items:center;padding:clamp(14px,1.8vw,22px) clamp(16px,2vw,26px);
+  border-radius:18px;color:#fff;overflow:hidden;position:relative;
+  background:radial-gradient(ellipse 50% 90% at 82% 50%,rgba(150,90,255,.28),transparent 70%),radial-gradient(ellipse 40% 80% at 45% 60%,rgba(255,140,40,.2),transparent 70%),linear-gradient(135deg,#0e2a6e,#071a48);
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.9),0 12px 30px rgba(7,28,79,.3)}
+.evo-teaser h3{margin:2px 0 6px;font-size:clamp(16px,1.6vw,22px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:1.15;color:#fff}
+.evo-teaser p{margin:0;font-size:13px;color:#cfe6ff}
+.evo-teaser .evo-teaser__kicker{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ffb35c}
+.evo-teaser__btn{margin-top:12px;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:99px;font:inherit;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0b2a6b;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer}
+.evo-teaser__btn svg{width:16px;height:16px}
+.evo-teaser__btn:hover{background:#ffe1b8}
+.evo-teaser__line{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,34px)}
+.evo-teaser__line li{position:relative}
+.evo-teaser__line li + li::before{content:"";position:absolute;left:calc(-1 * clamp(18px,2.4vw,34px));top:38%;width:clamp(18px,2.4vw,34px);height:24px;
+  background:center/14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 5l7 7-7 7' fill='none' stroke='%23ffb35c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.evo-teaser__item{width:100%;display:grid;gap:3px;padding:0 0 8px;border:0;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.08);color:#fff;font:inherit;text-align:center;
+  box-shadow:0 0 0 1.5px rgba(160,200,255,.35);transition:transform .2s,box-shadow .2s;cursor:pointer}
+.evo-teaser__item:hover{transform:translateY(-3px);box-shadow:0 0 0 2px #ffb35c}
+.evo-teaser__item .stage-box{aspect-ratio:4/3;background:radial-gradient(ellipse 70% 65% at 50% 45%,#fff 0,#e6eefb 55%,#b9cdee 100%);--fw:86;--fh:84;--fb:6%}
+.evo-teaser__item strong{font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.evo-teaser__item small{font-size:11px;color:#9fd0ff}
+
+/* evolution component inside the dossier */
+.evo{grid-column:1/-1;display:grid;gap:12px;padding:16px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(150,205,255,.3)}
+.evo__head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.evo__head h3{margin:0;font-size:12px}
+.evo__head p{margin:3px 0 0;font-size:15px;font-weight:800;font-style:italic;text-transform:uppercase;color:#fff}
+.evo__tabs{margin-left:auto;display:flex;gap:4px;padding:4px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(150,205,255,.3)}
+.evo__tabs button{min-height:40px;padding:0 14px;border:0;border-radius:9px;background:transparent;color:#cfe6ff;font:inherit;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.evo__tabs button[aria-selected="true"]{background:#fff;color:#0b2a6b}
+.evo__seq,.evo__mech,.evo__scenes{list-style:none;margin:0;padding:0}
+.evo__seq{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px}
+.evo__step{position:relative;display:grid;gap:2px;text-align:center}
+.evo__step + .evo__step::before{content:"›";position:absolute;left:-12px;top:30%;font-size:22px;font-weight:800;color:#ffb35c}
+.evo__step .stage-box{aspect-ratio:1;border-radius:12px;background:radial-gradient(circle at 50% 42%,#fff 0,#e3edfb 58%,#b8cdee 100%);--fw:90;--fh:86;--fb:5%;box-shadow:0 0 0 1.5px rgba(150,205,255,.3)}
+.evo__step.is-here .stage-box{box-shadow:0 0 0 2.5px #fff,0 0 0 5px #ffb35c}
+.evo__step strong{margin-top:4px;font-size:11.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#fff}
+.evo__step small{font-size:10.5px;color:#9fd0ff}
+.evo__mech{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.evo__mech li,.evo__scenes li{position:relative;display:grid;align-content:start;gap:4px}
+.evo__mechimg,.evo__sceneimg{display:block;width:100%;border-radius:12px;box-shadow:0 0 0 1.5px rgba(255,255,255,.6)}
+.evo__mech strong,.evo__scenes strong{margin-top:4px;font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff}
+.evo__mech p,.evo__scenes p{margin:0;font-size:12.5px;line-height:1.35;color:#cfe6ff}
+.evo__scenes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.evo__scenes li.is-here .evo__sceneimg{box-shadow:0 0 0 2.5px #fff,0 0 0 5px #ffb35c}
+.evo__num{position:absolute;top:8px;left:8px;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#0b2a6b;color:#fff;font-size:12px;font-weight:800;box-shadow:0 0 0 2px #fff}
+.evo__note{margin:0;font-size:12px;color:#9fb8dd}
+
+/* phones: dense galleries become swipe rails instead of shrinking */
+@media (max-width:719px){
+  .evo-teaser{grid-template-columns:1fr}
+  .evo-teaser__line{gap:16px}
+  .evo-teaser__line li + li::before{left:-16px;width:16px;background-size:11px}
+  .evo-teaser__item strong{font-size:10.5px}
+  .dossier__picks,.evo__seq,.evo__mech,.evo__scenes{display:grid;grid-template-columns:none;grid-auto-flow:column;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:6px}
+  .dossier__picks::-webkit-scrollbar,.evo__seq::-webkit-scrollbar,.evo__mech::-webkit-scrollbar,.evo__scenes::-webkit-scrollbar{display:none}
+  .dossier__picks{grid-auto-columns:96px}
+  .evo__seq{grid-auto-columns:118px}
+  .evo__mech{grid-auto-columns:70%}
+  .evo__scenes{grid-auto-columns:78%}
+  .dossier__picks > li,.evo__seq > li,.evo__mech > li,.evo__scenes > li{scroll-snap-align:start}
+  .evo__tabs{margin-left:0;width:100%}
+  .evo__tabs button{flex:1;padding:0 6px;font-size:11px}
+  .evo{padding:12px}
+}
+@media (min-width:720px) and (max-width:899px){
+  .evo__seq{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .evo__step:nth-child(5)::before{display:none}
+  .evo__mech{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (orientation:landscape) and (max-height:520px){
+  .evo__seq{grid-template-columns:repeat(7,minmax(0,1fr))}
+}
+.dossier__body > *,.char__body > *{min-width:0}
+.dossier__card{overflow-x:hidden}
+.dossier__head{z-index:5}
+@media (max-width:719px){.dossier__body{grid-template-columns:minmax(0,1fr)}}
+@media (min-width:900px){.evo__scenes{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.evo__scenes p{font-size:11.5px}}
+.evo{grid-template-columns:minmax(0,1fr)}.evo > *{min-width:0}
