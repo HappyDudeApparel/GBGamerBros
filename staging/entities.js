@@ -21,6 +21,7 @@
 // states     ordered { "Label": mediaKey|null } — the planned state set (null = not yet available)
 // views      ordered { "Label": mediaKey } — public production views (angles) shown in the dossier
 // angles     { front, threeQuarter, side, back, top?, bottom? } — production tracking, not shown publicly
+// cardScale  relative size of the render on its Enemies & Hazards card (big evolved forms break the frame)
 // height     design-reference height in metres (Gamer Bros = 1.8 m); may be tuned in Unreal
 // scale      media key for a scale-reference image, or null
 // evolution  { line, phase, of } — optional authored evolution; conditions are undecided
@@ -42,7 +43,7 @@ window.GB_ENTITIES = {
     encounter: [],
     views: { "Front": E + "goom-front", "¾ view": E + "goom-threeq", "Side": E + "goom-side", "Back": E + "goom-back" },
     states: { "Active": E + "goom-active", "Inactive / defeated": E + "goom-defeated" },
-    angles: angles("top", "bottom"), height: 0.5, scale: null,
+    angles: angles("top", "bottom"), cardScale: 0.64, height: 0.5, scale: null,
   },
   "spike-bot": {
     name: "Spike Bot", type: "enemy", status: "APPROVED",
@@ -52,7 +53,7 @@ window.GB_ENTITIES = {
     encounter: [],
     views: { "Front": E + "spike-bot-front", "Side": E + "spike-bot-side", "Back": E + "spike-bot-back", "Top": E + "spike-bot-top", "Bottom": E + "spike-bot-bottom" },
     states: { "Idle": E + "spike-bot-idle", "Roll": E + "spike-bot-roll", "Alert": E + "spike-bot-alert", "Attack": E + "spike-bot-attack", "Defeated": E + "spike-bot-defeated" },
-    angles: angles("top", "bottom"), height: 0.5, scale: null,
+    angles: angles("top", "bottom"), cardScale: 0.68, height: 0.5, scale: null,
   },
   "rotor-bot": {
     name: "Rotor Bot", type: "enemy", status: "APPROVED",
@@ -62,7 +63,7 @@ window.GB_ENTITIES = {
     encounter: [],
     views: { "Front": E + "rotor-bot-front", "¾ view": E + "rotor-bot-threeq", "Side": E + "rotor-bot-side", "Back": E + "rotor-bot-back" },
     states: { "Hover / attack": E + "rotor-bot-active", "Defeated": E + "rotor-bot-defeated" },
-    angles: angles(), height: 0.8, scale: null,
+    angles: angles(), cardScale: 0.86, height: 0.8, scale: null,
   },
   "sentry-cannon": {
     name: "Sentry Cannon", type: "enemy", status: "APPROVED",
@@ -72,7 +73,7 @@ window.GB_ENTITIES = {
     encounter: [],
     views: { "Front": E + "sentry-cannon-front", "¾ view": E + "sentry-cannon-threeq", "Side": E + "sentry-cannon-side", "Back": E + "sentry-cannon-back" },
     states: { "Active": E + "sentry-cannon-active", "Inactive / defeated": E + "sentry-cannon-defeated" },
-    angles: angles(), height: 1.0, scale: null,
+    angles: angles(), cardScale: 0.8, height: 1.0, scale: null,
   },
   "stone-golem": {
     name: "Stone Golem", type: "enemy", status: "APPROVED",
@@ -83,7 +84,7 @@ window.GB_ENTITIES = {
     views: { "Front": E + "stone-golem-front", "¾ view": E + "stone-golem-threeq", "Side": E + "stone-golem-side", "Back": E + "stone-golem-back" },
     // the sheet's Defeated pose is not used: it shows a purple crystal fragment, and Phase 2 has no crystals
     states: { "Idle": E + "stone-golem-idle", "Walk / chase": E + "stone-golem-walk", "Attack": E + "stone-golem-attack", "Hit / stagger": E + "stone-golem-hit" },
-    angles: angles(), height: 2.0, scale: null,
+    angles: angles(), cardScale: 1.25, height: 2.0, scale: null,
     evolution: { line: "boulder", phase: 2 },
   },
   "crystal-guardian": {
@@ -94,7 +95,7 @@ window.GB_ENTITIES = {
     encounter: [],
     views: { "Front": E + "crystal-guardian-front", "¾ view": E + "crystal-guardian-threeq", "Side": E + "crystal-guardian-side", "Back": E + "crystal-guardian-back" },
     states: { "Idle": E + "crystal-guardian-idle", "Charge": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated": E + "crystal-guardian-defeated" },
-    angles: angles(), height: 2.5, scale: null,
+    angles: angles(), cardScale: 1.28, height: 2.5, scale: null,
     evolution: { line: "boulder", phase: 3 },
   },
   // ---------------- hazards ----------------
@@ -106,7 +107,7 @@ window.GB_ENTITIES = {
     encounter: [],
     views: { "Front": E + "rolling-boulder-front", "Side": E + "rolling-boulder-side", "Back": E + "rolling-boulder-back", "Top": E + "rolling-boulder-top" },
     states: { "Idle": E + "rolling-boulder-idle", "Rolling": E + "rolling-boulder-rolling", "Impact": E + "rolling-boulder-impact", "Cracked / hit": E + "rolling-boulder-cracked", "Destroyed": E + "rolling-boulder-destroyed" },
-    angles: angles(), height: 1.5, scale: null,
+    angles: angles(), cardScale: 0.74, height: 1.5, scale: null,
     evolution: { line: "boulder", phase: 1 },
   },
 

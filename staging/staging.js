@@ -165,8 +165,12 @@
     const r = map.getBoundingClientRect();
     zoomMap(true, (e.clientX - r.left) / r.width);
   });
-  portraitMap.addEventListener("change", () => { world.classList.remove("is-zoomed"); syncMap(); });
+  // portrait opens zoomed in (the world art dominates); "Whole map" shows all seven regions at once
+  const MAP_START = 0.42;
+  portraitMap.addEventListener("change", () => { world.classList.toggle("is-zoomed", portraitMap.matches); requestAnimationFrame(() => { if (portraitMap.matches) panTo(MAP_START, false); else map.scrollLeft = 0; syncMap(); }); });
+  world.classList.toggle("is-zoomed", portraitMap.matches);
   map.scrollLeft = 0;
+  if (portraitMap.matches) requestAnimationFrame(() => panTo(MAP_START, false));
   syncMap();
   window.addEventListener("load", syncMap);
 
@@ -419,8 +423,8 @@
     }).join("");
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
-        ? `<div class="dossier__stage" id="entStage"><span class="chip">Production view</span><span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span><span class="dossier__stagelabel" id="entStageLabel">Hero</span></div>
-           <p class="dossier__caption">Asset preview from the approved production art, not an in-game screenshot.</p>`
+        ? `<div class="dossier__stage" id="entStage"><span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span></div>
+           <p class="dossier__caption"><b class="chip chip--inline">Production view</b> <span id="entStageLabel">Hero</span> · asset preview, not an in-game screenshot.</p>`
         : media(hero, "dossier__render", e.name)}
         ${hero && !e.media.render ? `<p class="dossier__caption">Concept thumbnail. Clean render in production.</p>` : ""}
         ${views ? `<h3>Production views</h3><ul class="dossier__picks">${stage ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="true"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
@@ -528,7 +532,31 @@
     pushedHere = true;
     location.hash = `#area/${id}` + (view ? `/${view + 1}` : "");   // pushes history; router opens the view
   }
-  document.querySelectorAll(".hotspot").forEach((h) => h.addEventListener("click", () => navArea(h.dataset.area, h)));
+  // Region labels. The current map has its labels baked into the art (data-labels="baked"),
+  // so hotspots are invisible. With a label-free map set data-labels="live": every hotspot then
+  // shows a compact pin (icon + faint name) that expands to name + subtitle on hover / focus /
+  // first tap; on touch the second tap (or a tap on the open label) enters the region.
+  const LIVE_LABELS = world.dataset.labels === "live";
+  const PIN_ICON = { portal: "i-portal", creek: "i-traversal", river: "i-spiral", clover: "i-tree", ruin: "i-secret", prism: "i-reward", frost: "i-snow" };
+  let lastPointer = "mouse";
+  const hotspots = [...document.querySelectorAll(".hotspot")];
+  const closePins = (except) => hotspots.forEach((h) => { if (h !== except) h.classList.remove("is-open"); });
+  if (LIVE_LABELS) {
+    hotspots.forEach((h) => {
+      const a = AREAS[h.dataset.area];
+      h.classList.add("pin");
+      h.innerHTML = `<span class="pin__icon" aria-hidden="true"><svg><use href="#${PIN_ICON[h.dataset.area] || "i-compass"}"/></svg></span><span class="pin__text" aria-hidden="true"><strong>${esc(a.name)}</strong><small>${esc(a.sub)}</small></span>`;
+    });
+    document.addEventListener("click", (e) => { if (!e.target.closest(".hotspot")) closePins(); });
+  }
+  hotspots.forEach((h) => {
+    h.addEventListener("pointerdown", (e) => { lastPointer = e.pointerType; });
+    h.addEventListener("click", () => {
+      if (LIVE_LABELS && lastPointer === "touch" && !h.classList.contains("is-open")) { closePins(h); h.classList.add("is-open"); return; }
+      closePins();
+      navArea(h.dataset.area, h);
+    });
+  });
 
   // ---------- Explore Iconic Areas rail ----------
   const rail = document.getElementById("areaRail");
@@ -584,11 +612,15 @@
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
     const e = ENTITIES[id];
     const t = e.media.thumb;
-    return `<li><button class="foe${e.status === "APPROVED" ? " foe--approved" : ""}" type="button" data-entity="${id}" aria-label="${esc(e.name)} — details">
-      <span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 180px, (min-width: 720px) 24vw, 46vw") : media(t, "foe__img", "", "small")}</span>
+    return `<li><button class="foe${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
+      <span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
       <span class="foe__text"><strong>${esc(e.name)}</strong><small>${esc(e.copy.summary)}</small></span>
     </button></li>`;
-  }).join("");
+  }).join("") + `<li><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
+      <span class="foe-evo__kicker">Optional evolution</span>
+      <span class="foe-evo__line">Rolling Boulder <i>→</i> Stone Golem <i>→</i> Crystal Guardian</span>
+      <span class="foe-evo__go">See how it evolves<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </button></li>`;
 
   // ---------- Meet the Team™ (#character/<id>) ----------
   const TEAM = window.GB_TEAM || [];
@@ -613,11 +645,12 @@
     cDlg.style.setProperty("--cd", c.deep);
     document.getElementById("charName").textContent = c.name;
     cBody.innerHTML = `
-      <div class="char__stage">
-        <span class="chip">Production view</span>
-        <span class="char__mark" aria-hidden="true">GB</span>
-        <span class="stage-box" id="charStageFig"></span>
-        <p class="char__stagelabel" id="charStageLabel"></p>
+      <div class="char__stagewrap">
+        <div class="char__stage">
+          <span class="char__mark" aria-hidden="true">GB</span>
+          <span class="stage-box" id="charStageFig"></span>
+        </div>
+        <p class="char__caption"><b class="chip chip--inline">Production view</b> <span id="charStageLabel"></span></p>
       </div>
       <div class="char__side">
         <div class="char__looks" role="group" aria-label="Choose look">
@@ -688,18 +721,6 @@
     const step = card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(teamList).columnGap || 0) : teamList.clientWidth * 0.8;
     teamList.scrollBy({ left: Number(b.dataset.team) * step, behavior: reduceMotion ? "auto" : "smooth" });
   }));
-
-  // evolution teaser under the Enemies & Hazards grid
-  const teaser = document.getElementById("evoTeaser");
-  if (teaser) {
-    const line = (window.GB_EVOLUTION || {}).boulder || [];
-    teaser.innerHTML = `<div class="evo-teaser__text"><p class="evo-teaser__kicker">Optional evolution</p>
-        <h3>Rolling Boulder → Stone Golem → Crystal Guardian</h3>
-        <p>The same mossy rock can wake, take shape and grow crystals.</p>
-        <button class="evo-teaser__btn" type="button" data-entity="rolling-boulder" data-evo>See how it evolves<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <ol class="evo-teaser__line">${line.map((id, i) => `<li><button type="button" class="evo-teaser__item" data-entity="${id}" aria-label="${esc(ENTITIES[id].name)} — details">
-        <span class="stage-box">${cut(ENTITIES[id].media.thumb, "evo-teaser__cut", "", "200px")}</span><strong>${esc(ENTITIES[id].name)}</strong><small>Phase ${i + 1}</small></button></li>`).join("")}</ol>`;
-  }
 
   // deep link on load
   route();

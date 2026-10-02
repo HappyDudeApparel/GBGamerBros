@@ -1020,3 +1020,185 @@ html.is-locked{overflow:hidden}
 @media (max-width:719px){.dossier__body{grid-template-columns:minmax(0,1fr)}}
 @media (min-width:900px){.evo__scenes{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.evo__scenes p{font-size:11.5px}}
 .evo{grid-template-columns:minmax(0,1fr)}.evo > *{min-width:0}
+
+/* ===================== Visual convergence pass ===================== */
+:root{--cloud:#e9f1fc}
+.stage{background:var(--cloud)}
+
+/* --- one cloud system: the same puff scale at every viewport (no per-breakpoint layers) --- */
+.world{--cw:max(130cqw,1180px);--ch:calc(var(--cw) * .0693)}
+.clouds{left:50%;width:var(--cw);translate:-50% 0}
+.clouds--top{top:calc(var(--ch) * -.66)}
+.clouds--top2{top:calc(var(--ch) * -.5);translate:-58% 0;transform:scaleX(-1)}
+.clouds--top3{top:calc(var(--ch) * -.86);translate:-42% 0;opacity:.85}
+.clouds--bottom{bottom:-1px;transform:scaleX(-1)}
+.world:not(.is-zoomed) .clouds--top{translate:-50% 0}
+.world:not(.is-zoomed) .clouds--top2{translate:-58% 0}
+.world:not(.is-zoomed) .clouds--top3{translate:-42% 0}
+/* the bank's lower edge dissolves into the shared cloud white the page continues on */
+.map-frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:calc(var(--ch) * .5);z-index:3;pointer-events:none;
+  background:linear-gradient(180deg,rgba(233,241,252,0),var(--cloud) 80%)}
+
+/* page continues on the cloud sea: soft puffs, no hard edge under the map */
+.systems{position:relative;z-index:1;
+  background:
+    radial-gradient(ellipse 34% 90px at 14% 30px,#fff,rgba(255,255,255,0) 72%),
+    radial-gradient(ellipse 30% 80px at 52% 10px,#fff,rgba(255,255,255,0) 72%),
+    radial-gradient(ellipse 34% 100px at 88% 40px,#fff,rgba(255,255,255,0) 72%),
+    radial-gradient(ellipse 60% 40% at 12% 38%,rgba(255,255,255,.75),transparent 70%),
+    radial-gradient(ellipse 55% 35% at 88% 70%,rgba(255,255,255,.65),transparent 70%),
+    linear-gradient(180deg,var(--cloud) 0,#e3edfb 320px,#d9e8fb 60%,#e4effd 100%)}
+@media (min-aspect-ratio:1/1){
+  .systems{padding-top:0}
+  .feats{margin-top:calc(-1 * clamp(26px,3.4vw,58px));position:relative;z-index:2}
+}
+.feat{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.74));box-shadow:0 10px 30px rgba(20,60,140,.14)}
+
+/* --- portrait map: opens zoomed so the world art dominates --- */
+@media (max-aspect-ratio:1/1){
+  .world.is-zoomed .map__canvas{width:max(100%,min(250cqw,1536px))}
+  .map__pan{top:50%}
+  .map-nav{padding:6px 16px 4px}
+  .world.is-zoomed .map-nav{gap:8px}
+  .map__hint{display:none}
+  .minimap{max-width:min(420px,78%)}
+}
+
+/* --- compact region pins (active only with a label-free map: data-labels="live") --- */
+.hotspot.pin{width:auto;height:auto;display:inline-flex;align-items:center;gap:6px;padding:3px 9px 3px 3px;border-radius:99px;
+  background:rgba(6,24,70,.42);border:1px solid rgba(255,255,255,.55);color:#fff;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  transition:background .2s,padding .2s,box-shadow .2s}
+.pin__icon{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18)}
+.pin__icon svg{width:15px;height:15px;fill:currentColor}
+.pin__text{display:grid;text-align:left}
+.pin__text strong{font-size:11px;font-weight:700;letter-spacing:.04em;opacity:.85;white-space:nowrap}
+.pin__text small{display:none;font-size:11px;color:#cfe6ff;white-space:nowrap}
+.hotspot.pin:hover,.hotspot.pin:focus-visible,.hotspot.pin.is-open{background:rgba(6,24,70,.85);padding:5px 14px 5px 5px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.hotspot.pin:hover .pin__text strong,.hotspot.pin:focus-visible .pin__text strong,.hotspot.pin.is-open .pin__text strong{font-size:14px;opacity:1}
+.hotspot.pin:hover .pin__text small,.hotspot.pin:focus-visible .pin__text small,.hotspot.pin.is-open .pin__text small{display:block}
+.hotspot.pin:hover .pin__icon,.hotspot.pin:focus-visible .pin__icon,.hotspot.pin.is-open .pin__icon{width:34px;height:34px}
+
+/* --- Explore Iconic Areas: image-led rail, soft ends, edge arrows, peeking card --- */
+.rail-wrap{position:relative}
+.rail{grid-auto-columns:clamp(200px,calc((100% - 5 * 14px) / 5.6),300px);gap:14px;padding:6px 2px 14px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 46px,#000 calc(100% - 46px),transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 46px,#000 calc(100% - 46px),transparent 100%)}
+.area-card{border-width:2.5px;border-radius:16px;box-shadow:0 10px 24px rgba(20,60,140,.22)}
+.area-card .area-card__img.gbm,.area-card .area-card__img--empty,.area-card .region-id{aspect-ratio:5/4}
+.area-card__text{padding:30px 12px 10px}
+.area-card__text strong{font-size:14px}
+.area-card__text small{font-size:11px;opacity:.85}
+.area-card__state{top:8px;left:auto;right:8px;padding:2px 7px;font-size:9px;letter-spacing:.08em;background:rgba(4,16,52,.72);border-color:rgba(255,255,255,.35)}
+.rail-arrow{position:absolute;top:calc(50% - 4px);translate:0 -50%;z-index:3;width:46px;height:46px;background:#fff;color:#0b2a6b;
+  box-shadow:0 6px 18px rgba(10,40,110,.3)}
+.rail-arrow--prev{left:-6px}.rail-arrow--next{right:-6px}
+.rail-arrow:hover{background:#0b2a6b;color:#fff}
+@media (max-width:1099px){.rail{grid-auto-columns:clamp(190px,34vw,260px)}}
+@media (max-width:719px){.rail{grid-auto-columns:68%}.rail-arrow{width:40px;height:40px}.rail-arrow--prev{left:-4px}.rail-arrow--next{right:-4px}}
+
+/* --- Level Preview / Fast Travel / Enemies & Hazards: one three-part row --- */
+.trio{grid-template-columns:minmax(0,1.05fr) minmax(0,.78fr) minmax(0,1.6fr);align-items:stretch}
+.panel{gap:10px}
+.panel__head p{display:none}
+.panel--hazards .panel__note{margin-top:2px}
+.lp__label span{font-size:11px}
+.ft__frame.gbm{min-height:0;flex:1}
+.ft__caption span{display:none}
+@media (max-width:1099px){
+  .trio{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .panel--hazards{grid-column:1/-1}
+}
+@media (max-width:719px){.trio{grid-template-columns:minmax(0,1fr)}}
+
+/* enemy cards: equal geometry; the render sits on a light plinth and big forms break out of it */
+.foes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 12px}
+.foes li{flex:none}
+.foe{position:relative;overflow:visible;height:100%;border-radius:16px;background:transparent;box-shadow:none}
+.foe:hover{transform:none;box-shadow:none}
+.foe__stage{position:relative;display:block;aspect-ratio:1/1.02;overflow:visible;background:none}
+.foe__stage::before{content:"";position:absolute;left:0;right:0;bottom:0;top:22%;border-radius:16px 16px 0 0;
+  background:radial-gradient(ellipse 80% 75% at 50% 35%,#fff 0,#e6f0fd 52%,#bcd3f2 100%);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.95)}
+.foe__stage::after{left:22%;right:22%;bottom:7%;height:7%;z-index:1}
+.foe__stage > .gbm.cutout{bottom:9%;width:calc(var(--s) * 92%);max-width:none;z-index:2;filter:drop-shadow(0 8px 10px rgba(10,30,80,.28));transition:transform .25s}
+.foe--big .foe__stage > .gbm.cutout{bottom:6%;filter:drop-shadow(0 10px 14px rgba(10,30,80,.35))}
+.foe:hover .foe__stage > .gbm.cutout{transform:translateY(-4px) scale(1.04)}
+.foe__text{position:relative;z-index:3;border-radius:0 0 16px 16px;background:#fff;border-top:3px solid #1f7ae0;padding:8px 10px 10px;box-shadow:0 8px 18px rgba(20,60,140,.14)}
+.foe:hover .foe__text{background:#0b2a6b}
+.foe:hover .foe__text strong,.foe:hover .foe__text small{color:#fff}
+.foe .foe__text small{font-size:11.5px}
+.foe--evo{display:grid;align-content:center;gap:8px;padding:14px;border-radius:16px;text-align:left;color:#fff;
+  background:radial-gradient(ellipse 70% 60% at 85% 20%,rgba(150,90,255,.4),transparent 70%),radial-gradient(ellipse 60% 60% at 15% 85%,rgba(255,140,40,.32),transparent 70%),linear-gradient(150deg,#123a8f,#071a48);
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.9),0 10px 22px rgba(7,28,79,.3)}
+.foe--evo:hover{box-shadow:0 0 0 2px #ffb35c,0 12px 26px rgba(7,28,79,.4)}
+.foe-evo__kicker{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffb35c}
+.foe-evo__line{font-size:clamp(13px,1.1vw,15px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:1.2}
+.foe-evo__line i{font-style:normal;color:#ffb35c}
+.foe-evo__go{display:inline-flex;align-items:center;gap:6px;justify-self:start;margin-top:4px;padding:7px 12px;border-radius:99px;background:#fff;color:#0b2a6b;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.foe-evo__go svg{width:13px;height:13px}
+@media (max-width:719px){.foes{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}}
+
+/* --- dossier: no words over the art; capped render sizes until higher-res renders arrive --- */
+.chip--inline{position:static;display:inline-block;margin-right:4px;padding:1px 8px;font-size:9.5px;vertical-align:1px;box-shadow:none}
+.dossier__caption{line-height:1.6}
+.dossier__stage{max-width:560px}
+.dossier__stage > .stage-box{inset:8% 6% 9%}
+.char__caption{margin:8px 0 0;font-size:12px;color:#cfe6ff}
+.char__stage > .stage-box{inset:6% 4% 5%}
+
+/* --- Meet the Team™: team-colour panels, characters dominate and break the frame --- */
+.team{background:
+    linear-gradient(180deg,rgba(7,26,72,.55),rgba(7,26,72,.82)),
+    radial-gradient(ellipse 60% 50% at 50% 0,rgba(90,170,255,.45),transparent 70%),
+    linear-gradient(180deg,#123f98 0,#0a2563 55%,#071a48 100%)}
+.team::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:url(assets/hero-world-highfive.webp?v=d409fe1e44) center 30%/cover no-repeat;opacity:.16;filter:blur(6px) saturate(1.2)}
+.team__inner{z-index:1}
+.team__list{margin-top:clamp(40px,4.4vw,70px);gap:clamp(14px,1.8vw,26px)}
+.mate{position:relative;overflow:visible;border-radius:22px;background:transparent;box-shadow:none}
+.mate:hover{box-shadow:none;transform:translateY(-5px)}
+.mate__stage{aspect-ratio:3/3.6;overflow:visible;border-radius:22px 22px 0 0;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--c) 70%,#fff) 0,var(--c) 45%,var(--cd) 100%)}
+.mate__stage::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(ellipse 70% 55% at 50% 38%,rgba(255,255,255,.55),transparent 70%),repeating-linear-gradient(115deg,rgba(255,255,255,.07) 0 14px,rgba(255,255,255,0) 14px 40px)}
+.mate__stage::after{bottom:3%;background:radial-gradient(closest-side,rgba(0,0,30,.4),rgba(0,0,30,0))}
+.mate__mark{color:#fff;opacity:.16;top:18%}
+/* the figure is taller than the panel: head and hands rise above the frame, legs crop at the base */
+.mate__stage > .stage-box{inset:-16% -6% 0;overflow:hidden;border-radius:0 0 0 0;clip-path:inset(-40% -10% 0 -10%)}
+.mate__stage .gbm.cutout{bottom:-14%;width:min(108cqw,calc(118cqh * var(--ar)))}
+.mate__text{position:relative;z-index:2;border-top:0;border-radius:0 0 22px 22px;padding:12px 16px 15px;
+  background:linear-gradient(180deg,var(--cd),color-mix(in srgb,var(--cd) 70%,#000))}
+.mate__text strong{color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.mate__text small{color:rgba(255,255,255,.8)}
+.mate__text i{box-shadow:0 0 0 2px #fff}
+.mate:hover .mate__stage{box-shadow:0 0 0 3px #fff}
+.mate:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@media (max-width:719px){
+  .team__list{padding-top:44px;margin-top:0;grid-auto-columns:74%}
+}
+@media (orientation:landscape) and (max-height:520px){.team__list{margin-top:40px}.mate__stage{aspect-ratio:3/3.3}}
+@media (max-aspect-ratio:1/1){
+  .world,.world:not(.is-zoomed){margin-top:calc(-14 * var(--p))}
+  .world{--cw:max(180cqw,900px)}
+}
+/* Fast Travel keeps a picture-frame height when it is not stretched by a row */
+@media (max-width:719px){.ft__frame.gbm{flex:none;aspect-ratio:4/3}}
+/* enemy renders sized against the card stage: big evolved forms are taller and wider */
+.foe__stage{container-type:size}
+.foe__stage > .gbm.cutout{width:min(calc(var(--s) * 96cqw),calc(var(--s) * 78cqh * var(--ar)))}
+.foe-evo__line{font-size:clamp(12px,.95vw,14px)}
+.foe-evo__go{padding:6px 10px;font-size:10px;white-space:nowrap}
+.foe--evo{min-width:0;overflow:hidden;padding:12px;gap:6px}
+.foe--evo > span{min-width:0}
+.foe-evo__kicker{font-size:9.5px;letter-spacing:.1em}
+.foe-evo__go{white-space:normal;line-height:1.2}
+@media (max-aspect-ratio:1/1){
+  .world,.world:not(.is-zoomed){margin-top:calc(-44 * var(--p))}
+  .world{--cw:max(330cqw,1500px)}
+  .clouds--top{top:calc(var(--ch) * -.55)}
+  .clouds--top2{top:calc(var(--ch) * -.38)}
+  .clouds--top3{top:calc(var(--ch) * -.72)}
+  .map,.world:not(.is-zoomed) .map{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 calc(64 * var(--p)));mask-image:linear-gradient(180deg,transparent 0,#000 calc(64 * var(--p)))}
+}
+.foe__stage > .gbm,.foe__stage::before,.foe__stage::after,.mate__stage > .stage-box,.mate__mark{pointer-events:none}
+.systems__inner{grid-template-columns:minmax(0,1fr)}.systems__inner > *{min-width:0}
+.rail-block,.rail-wrap{grid-template-columns:minmax(0,1fr);min-width:0}.systems,.team{overflow-x:clip}
