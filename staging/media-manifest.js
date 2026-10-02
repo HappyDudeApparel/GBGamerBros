@@ -634,18 +634,6 @@ window.GB_MEDIA = {
   "rev": "9f87bfb243",
   "srev": "79929168ac"
  },
- "assets/entities/crystal-guardian-final": {
-  "w": 498,
-  "h": 418,
-  "band": 14,
-  "sw": 360,
-  "sh": 302,
-  "sband": 14,
-  "alpha": true,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__crystal-guardian-final.png",
-  "rev": "09f3aa0004",
-  "srev": "56fd5fecfc"
- },
  "assets/entities/crystal-guardian-front": {
   "w": 336,
   "h": 286,
