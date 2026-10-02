@@ -53,6 +53,13 @@ Never crop the reference sheets (VISUAL_AUTHORITY.md boards A–M) into website 
 - Enemies & Hazards is now a full-width panel (7 across / 4 / 2); Level Preview + Fast Travel share a row; branding footer with the approved copyright line.
 - `gbmedia.py build` accepts an optional small width.
 
+## Enemies & Hazards production pass 2 (manifest V2)
+- All 7 enemy cards use approved production art (no "Artwork in production" left in the section).
+- Dossiers: hero + production views + visual states (tap to swap the hero); phone galleries are swipe rails.
+- Evolution component in the Rolling Boulder / Stone Golem / Crystal Guardian dossiers: tabs Sequence (7 cutouts) / Mechanics (4 close-ups) / In the world (6 scene steps); still optional, no trigger.
+- Evolution teaser band under the grid ("See how it evolves" opens the Rolling Boulder dossier at the evolution block).
+- Data: `GB_EVOLUTION_DETAIL` in entities.js; assets in `assets/entities/evolution/`.
+
 ## Approved state (previous)
 Build `r-01839066` is provisionally approved. Keep it unchanged until new production assets arrive. Don't redesign the Pass C.5 layout.
 

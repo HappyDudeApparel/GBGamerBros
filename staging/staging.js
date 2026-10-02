@@ -368,8 +368,36 @@
         ? `<strong>${esc(x.name)}</strong>`
         : `<a href="#entity/${id}" data-entity-link="${id}">${esc(x.name)}</a>`}<small>Phase ${i + 1}</small></li>`;
     }).join("");
+    const detail = (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     return `<h3>Evolution · phase ${e.evolution.phase} of ${line.length}</h3><ol class="dossier__evo">${steps}</ol>
-      <p class="dossier__empty">Evolution is optional and doesn't happen every time. When it happens is still being designed.</p>`;
+      ${detail ? "" : `<p class="dossier__empty">${EVO_NOTE}</p>`}`;
+  };
+  const EVO_NOTE = "Evolution is optional and doesn't happen every time. When it happens is still being designed.";
+  // full evolution component: cutout sequence, transformation mechanics, in-world steps (tabs; swipe rails on phones)
+  const evoDetail = (e) => {
+    const d = e.evolution && (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
+    if (!d) return "";
+    const ph = e.evolution.phase;
+    const PH = ["", "Phase 1", "Phase 2", "Phase 3"];
+    const seq = d.sequence.map((x, i) => `<li class="evo__step${x.phase === ph ? " is-here" : ""}">
+        <span class="stage-box">${cut(x.src, "evo__cut", x.label, "160px")}</span>
+        <strong>${esc(x.label)}</strong><small>${PH[x.phase]}</small></li>`).join("");
+    const mech = d.mechanics.map((x) => `<li>${media(x.src, "evo__mechimg", x.label, "small")}<strong>${esc(x.label)}</strong><p>${esc(x.text)}</p></li>`).join("");
+    const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}<span class="evo__num">${i + 1}</span><strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
+    return `<section class="evo" id="entEvo" aria-labelledby="evoTitle">
+      <header class="evo__head">
+        <div><h3 id="evoTitle">How the evolution works</h3><p>Rolling Boulder → Stone Golem → Crystal Guardian</p></div>
+        <div class="evo__tabs" role="tablist" aria-label="Evolution views">
+          <button type="button" role="tab" aria-selected="true" data-evo-tab="seq">Sequence</button>
+          <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>
+          <button type="button" role="tab" aria-selected="false" data-evo-tab="scene">In the world</button>
+        </div>
+      </header>
+      <div class="evo__panel" data-evo-panel="seq" role="tabpanel"><ol class="evo__seq">${seq}</ol></div>
+      <div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ul class="evo__mech">${mech}</ul></div>
+      <div class="evo__panel" data-evo-panel="scene" role="tabpanel" hidden><ol class="evo__scenes">${scenes}</ol></div>
+      <p class="evo__note">${EVO_NOTE} The same mossy, segmented rock carries through every phase. Production art, not in-game screenshots.</p>
+    </section>`;
   };
 
   function renderEntity(id) {
@@ -408,7 +436,8 @@
         ${states ? `<h3>Visual states</h3><ul class="${e.views ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
         <h3>Encounter images</h3>
         ${enc ? `<ul class="dossier__encs">${enc}</ul>` : `<p class="dossier__empty">Encounter imagery in production.</p>`}
-      </div>`;
+      </div>
+      ${evoDetail(e)}`;
   }
   function openEntity(id) {
     if (!ENTITIES[id]) return false;
@@ -417,8 +446,13 @@
     document.documentElement.classList.add("is-locked");
     pause();
     eDlg.querySelector(".dossier__close").focus({ preventScroll: true });
+    const ev = document.getElementById("entEvo");
+    if (evoFocus && ev) requestAnimationFrame(() => ev.scrollIntoView({ block: "start" }));
+    else eDlg.querySelector(".dossier__card").scrollTop = 0;
+    evoFocus = false;
     return true;
   }
+  let evoFocus = false;
   function closeEntityUI() {
     if (eDlg.open) eDlg.close();
     if (!dlg.open) { document.documentElement.classList.remove("is-locked"); restart(); }
@@ -440,6 +474,12 @@
   eDlg.addEventListener("cancel", (e) => { e.preventDefault(); requestCloseEntity(); });
   eDlg.addEventListener("click", (e) => {
     if (e.target === eDlg) { requestCloseEntity(); return; }       // backdrop click
+    const tab = e.target.closest("[data-evo-tab]");
+    if (tab) {
+      eBody.querySelectorAll("[data-evo-tab]").forEach((b) => b.setAttribute("aria-selected", String(b === tab)));
+      eBody.querySelectorAll("[data-evo-panel]").forEach((p) => { p.hidden = p.dataset.evoPanel !== tab.dataset.evoTab; });
+      return;
+    }
     const pick = e.target.closest("[data-hero]");
     if (pick) {
       const st = document.getElementById("entStage");
@@ -462,7 +502,7 @@
   });
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-entity]");
-    if (b && !b.closest("dialog")) navEntity(b.dataset.entity, b);
+    if (b && !b.closest("dialog")) { evoFocus = b.hasAttribute("data-evo"); navEntity(b.dataset.entity, b); }
   });
 
   // ---------- router ----------
@@ -648,6 +688,18 @@
     const step = card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(teamList).columnGap || 0) : teamList.clientWidth * 0.8;
     teamList.scrollBy({ left: Number(b.dataset.team) * step, behavior: reduceMotion ? "auto" : "smooth" });
   }));
+
+  // evolution teaser under the Enemies & Hazards grid
+  const teaser = document.getElementById("evoTeaser");
+  if (teaser) {
+    const line = (window.GB_EVOLUTION || {}).boulder || [];
+    teaser.innerHTML = `<div class="evo-teaser__text"><p class="evo-teaser__kicker">Optional evolution</p>
+        <h3>Rolling Boulder → Stone Golem → Crystal Guardian</h3>
+        <p>The same mossy rock can wake, take shape and grow crystals.</p>
+        <button class="evo-teaser__btn" type="button" data-entity="rolling-boulder" data-evo>See how it evolves<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <ol class="evo-teaser__line">${line.map((id, i) => `<li><button type="button" class="evo-teaser__item" data-entity="${id}" aria-label="${esc(ENTITIES[id].name)} — details">
+        <span class="stage-box">${cut(ENTITIES[id].media.thumb, "evo-teaser__cut", "", "200px")}</span><strong>${esc(ENTITIES[id].name)}</strong><small>Phase ${i + 1}</small></button></li>`).join("")}</ol>`;
+  }
 
   // deep link on load
   route();

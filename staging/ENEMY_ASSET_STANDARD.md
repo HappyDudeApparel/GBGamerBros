@@ -139,3 +139,21 @@ The 05 production boards show other enemy concepts: Patrol Bot, Rock Goom, Fire 
 Status APPROVED for goom, rotor-bot, sentry-cannon. Cutouts: rembg mask plus a chroma mask (keeps the glowing rotors and muzzle flash); labels and the atlas UI icons are not used.
 Goom "defeated" uses the atlas INACTIVE/DEFEATED cell; the earlier approved defeated pose was not in the retrieved files.
 Still "Artwork in production": spike-bot, stone-golem, crystal-guardian. Rolling Boulder keeps its provisional thumb.
+
+## Approved production masters, manifest V2 (2026-10-02)
+
+Masters stay private (Drive + session scratchpad). Public files are isolated renders (rembg + warm/magenta colour mask) or clean rectangular crops, built with `gbmedia.py`; sheet labels, headers, icons and info boxes are never used.
+
+| Master | SHA-256 (16) | Public derivatives |
+|---|---|---|
+| SPIKE_BOT_PRODUCTION_MASTER_V1.jpg | `ef4fb6f81835cddd` | spike-bot-{hero,front,side,back,top,bottom,idle,roll,alert,attack,defeated} |
+| ROLLING_BOULDER_PRODUCTION_MASTER_V1.png | `cdf7bc0158f9a735` | rolling-boulder-{front,threeq,side,back,top,idle,rolling,impact,cracked,destroyed} (replaces the old provisional thumb) |
+| STONE_GOLEM_ANGLES_MASTER_V1.png | `ef8bce99dd8b12ba` | stone-golem-{hero,front,threeq,side,back} |
+| STONE_GOLEM_STATES_MASTER_V1.png | `17ae3f6d285edbc2` | stone-golem-{idle,walk,attack,hit}; Defeated not used (shows a purple crystal fragment; Phase 2 has none) |
+| CRYSTAL_GUARDIAN_ANGLES_MASTER_V1.png | `8c66e99d4f941458` | crystal-guardian-{front,threeq,side,back} |
+| CRYSTAL_GUARDIAN_STATES_MASTER_V1.png | `0ae0980f23e6c406` | crystal-guardian-{hero,idle,charge,attack,hit,defeated} |
+| EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1.png | `c8d7dac7164f98c0` | evolution/evo-{boulder-idle,boulder-rolling,boulder-impact,boulder-cracked,golem-forming,stone-golem,crystal-guardian}; evolution/mech-{core-ignition,plate-reconfiguration,core-migration,crystal-nucleation}; crystal-guardian-final (built, unused) |
+| ROLLING_BOULDER_TO_STONE_GOLEM_TO_CRYSTAL_GUARDIAN_EVOLUTION_MASTER_V1.png | `8c99e072e59a7677` | evolution/evo-step-1…6 (scene panels, captions not used) |
+
+The Stone Golem sheets print the superseded legacy label; only the renders are used. All seven enemies are now APPROVED.
+Not used: in-scene hero panels of the Boulder sheet, 256 px icons, the sheets' in-game example / scale / key-info boxes, the evolution master's own mechanics row (duplicates the overlay sheet).
