@@ -53,6 +53,17 @@ Never crop the reference sheets (VISUAL_AUTHORITY.md boards A–M) into website 
 - Enemies & Hazards is now a full-width panel (7 across / 4 / 2); Level Preview + Fast Travel share a row; branding footer with the approved copyright line.
 - `gbmedia.py build` accepts an optional small width.
 
+## Visual convergence pass (target: WEBSITE_TARGET_REFINEMENT_2026-10-01/PRIMARY_TARGET_FINAL_LAYOUT.png)
+- One cloud system: the same puff scale at every size (`--cw`/`--ch` on .world), bank dissolves into the shared cloud white (`--cloud`); page continues on the cloud sea; feature row overlaps the cloud edge.
+- Portrait map opens zoomed in (world art dominant), "Whole map" + minimap still available.
+- Region labels: the map's labels are BAKED into adventure-mountain-map.webp. A compact pin system (icon + faint name → full label on hover/focus/first tap, second tap enters) is implemented but dormant; switch on with `data-labels="live"` on #world once a label-free map master exists. Patch-inpainting the baked labels was tried and rejected (visible artefacts).
+- Lower row: Level Preview / Fast Travel / Enemies & Hazards in one three-part row; enemy cards 4-up with per-enemy `cardScale` (Stone Golem / Crystal Guardian break the frame); evolution teaser is now the 8th tile.
+- Area rail: 5:4 image cards, soft faded ends, edge arrows, peeking card.
+- Meet the Team™: team-colour panels, figures rise above the frame; no new copy.
+- Dossier/character views: no labels over the art (caption below).
+- Crystal Guardian "Defeated" derivative re-cut (holes in rock body fixed); master untouched.
+- Fixed a tablet/phone layout-viewport overflow (grid min-content blowout of .systems__inner / .rail-block).
+
 ## Enemies & Hazards production pass 2 (manifest V2)
 - All 7 enemy cards use approved production art (no "Artwork in production" left in the section).
 - Dossiers: hero + production views + visual states (tap to swap the hero); phone galleries are swipe rails.

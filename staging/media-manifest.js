@@ -631,8 +631,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "CRYSTAL_GUARDIAN_STATES_MASTER_V1__crystal-guardian-defeated.png",
-  "rev": "9f87bfb243",
-  "srev": "79929168ac"
+  "rev": "27c803545a",
+  "srev": "b2079fa710"
  },
  "assets/entities/crystal-guardian-front": {
   "w": 336,
