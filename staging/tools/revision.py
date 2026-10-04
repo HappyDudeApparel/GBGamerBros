@@ -10,6 +10,8 @@ What it does
       - staging.css url(...) to local files   ->  url(file?v=<rev>)
       - media-manifest.js entries             ->  "rev" (full) and "srev" (-960) per image
         (staging.js builds every image URL from these)
+      - panorama-manifest.js (optional)       ->  "rev" per overview/tile file (world.js
+        builds tile URLs from these); `null` = no panorama installed, nothing to do
   * computes a build revision from all public files and writes it to
       revision.json, <meta name="gb-revision">, the inline freshness check and the footer
   * checks: every referenced file exists, no unrevisioned local reference remains,
@@ -73,6 +75,26 @@ def write_manifest(m):
         f"window.GB_MEDIA = {body};\n")
 
 
+PANO = os.path.join(STAGING, "panorama-manifest.js")
+PANO_RE = re.compile(r"^(window\.GB_PANORAMA = )(.*?)(;\s*)\Z", re.S | re.M)
+
+
+def load_pano():
+    """(text, manifest or None). A missing file or `null` means fallback mode."""
+    if not os.path.isfile(PANO):
+        return None, None
+    t = open(PANO, encoding="utf-8").read()
+    m = PANO_RE.search(t)
+    if not m:
+        raise SystemExit("panorama-manifest.js: no `window.GB_PANORAMA = …;` assignment")
+    body = m.group(2).strip()
+    return t, (None if body == "null" else json.loads(body))
+
+
+def pano_files(p):
+    return [p["overview"]] + [tile for tier in p["tiers"] for tile in tier["tiles"]]
+
+
 FRESH = """<script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
 (function(){var R="{REV}";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>"""
@@ -86,6 +108,18 @@ def run(check_only=False):
         e["srev"] = h(os.path.join(STAGING, key + "-960.webp"))
     if not check_only:
         write_manifest(m)
+
+    # 1b. panorama tiles (dynamically referenced by world.js)
+    ptext, pano = load_pano()
+    if pano:
+        for f in pano_files(pano):
+            full = os.path.join(STAGING, f["src"])
+            if not os.path.isfile(full):
+                raise SystemExit(f"missing panorama file: {f['src']}")
+            f["rev"] = h(full)
+        if not check_only:
+            open(PANO, "w", encoding="utf-8").write(PANO_RE.sub(
+                lambda mm: mm.group(1) + json.dumps(pano, indent=1, ensure_ascii=False) + mm.group(3), ptext))
 
     # 2. CSS url(...) references
     css_p = os.path.join(STAGING, "staging.css")
@@ -155,6 +189,8 @@ def run(check_only=False):
     referenced |= set(re.findall(r"url\((" + LOCAL + r")\?v=", css2))
     for key in m:
         referenced |= {key + ".webp", key + "-960.webp"}
+    if pano:
+        referenced |= {f["src"] for f in pano_files(pano)}
     referenced |= {"revision.json", "index.html"}
     orphans = [f for f in public_files() if f.startswith("assets/") and f not in referenced]
     for f in orphans:

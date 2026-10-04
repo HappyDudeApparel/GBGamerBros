@@ -1,4 +1,4 @@
-// GB GAMER BROS™ — staging build, Pass A
+// GB GAMER BROS™ — Adventure Mountain™ site
 (() => {
   "use strict";
 
@@ -51,19 +51,38 @@
     const b = document.createElement("button");
     b.type = "button";
     b.setAttribute("role", "tab");
-    b.setAttribute("aria-label", `Show slide ${n + 1} of ${slides.length}`);
-    b.addEventListener("click", () => { go(n); restart(); });
+    b.addEventListener("click", () => { go(Math.max(0, live().indexOf(slides[n]))); restart(); });
     dotsWrap.appendChild(b);
     return b;
   });
+  // slides marked data-skip="phone-portrait" leave the rotation on phone portrait screens
+  // (slide 3: Gamer Girl Yellow™ would sit behind the fixed Adventure Mountain™ sign there)
+  const phonePortrait = window.matchMedia("(max-width: 599px) and (max-aspect-ratio: 1/1)");
+  const live = () => slides.filter((s) => !(s.dataset.skip === "phone-portrait" && phonePortrait.matches));
+  function syncSlides() {
+    const L = live();
+    slides.forEach((s, i) => {
+      const on = L.includes(s);
+      s.hidden = !on;
+      dots[i].hidden = !on;
+    });
+    L.forEach((s, n) => {
+      s.setAttribute("aria-label", `Slide ${n + 1} of ${L.length}`);
+      dots[slides.indexOf(s)].setAttribute("aria-label", `Show slide ${n + 1} of ${L.length}`);
+    });
+  }
 
   function go(n) {
-    index = (n + slides.length) % slides.length;
+    const L = live();
+    index = (n + L.length) % L.length;
     track.style.transform = `translateX(${-index * 100}%)`;
-    slides.forEach((s, i) => s.setAttribute("aria-hidden", String(i !== index)));
-    dots.forEach((d, i) => d.setAttribute("aria-selected", String(i === index)));
-    fgLayers.forEach((f) => f.classList.toggle("is-active", Number(f.dataset.slide) === index));
+    const cur = L[index];
+    slides.forEach((s) => s.setAttribute("aria-hidden", String(s !== cur)));
+    dots.forEach((d, i) => d.setAttribute("aria-selected", String(slides[i] === cur)));
+    fgLayers.forEach((f) => f.classList.toggle("is-active", slides[Number(f.dataset.slide)] === cur));
   }
+  phonePortrait.addEventListener("change", () => { syncSlides(); go(0); });
+  syncSlides();
   function restart() {
     clearInterval(timer);
     if (!reduceMotion) timer = setInterval(() => go(index + 1), INTERVAL);
@@ -104,75 +123,31 @@
   go(0);
   restart();
 
-  // ---------- map panning (portrait: swipe, arrows, minimap) ----------
-  const map = document.getElementById("mapScroller");
-  const panPrev = document.querySelector(".map__pan--prev");
-  const panNext = document.querySelector(".map__pan--next");
-  const minimap = document.getElementById("minimap");
-  const minimapView = document.getElementById("minimapView");
-
-  function syncMap() {
-    const max = map.scrollWidth - map.clientWidth;
-    const pannable = max > 2;
-    const ratio = pannable ? map.scrollLeft / max : 0;
-    panPrev.classList.toggle("is-off", !pannable || map.scrollLeft < 4);
-    panNext.classList.toggle("is-off", !pannable || map.scrollLeft > max - 4);
-    minimapView.style.width = `${(map.clientWidth / map.scrollWidth) * 100}%`;
-    minimapView.style.left = `${(map.scrollLeft / map.scrollWidth) * 100}%`;
-    minimap.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
-  }
-  function panTo(fraction, smooth) {
-    // fraction = centre of the view as a share of the full map width
-    const left = fraction * map.scrollWidth - map.clientWidth / 2;
-    map.scrollTo({ left, behavior: smooth && !reduceMotion ? "smooth" : "auto" });
-  }
-  map.addEventListener("scroll", syncMap, { passive: true });
-  window.addEventListener("resize", syncMap);
-  [panPrev, panNext].forEach((b) =>
-    b.addEventListener("click", () =>
-      map.scrollBy({ left: Number(b.dataset.pan) * map.clientWidth * 0.7, behavior: reduceMotion ? "auto" : "smooth" })
-    )
-  );
-  let dragging = false;
-  const minimapAt = (e) => {
-    const r = minimap.getBoundingClientRect();
-    panTo(Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), !dragging);
-  };
-  minimap.addEventListener("pointerdown", (e) => { dragging = true; minimap.setPointerCapture(e.pointerId); minimapAt(e); });
-  minimap.addEventListener("pointermove", (e) => { if (dragging) minimapAt(e); });
-  minimap.addEventListener("pointerup", () => (dragging = false));
-  minimap.addEventListener("pointercancel", () => (dragging = false));
-  minimap.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-      e.preventDefault();
-      map.scrollBy({ left: (e.key === "ArrowLeft" ? -1 : 1) * map.clientWidth * 0.5, behavior: "auto" });
-    }
-  });
-  // portrait: whole-world overview first, then zoom in to explore (centred where tapped)
+  // ---------- world map (world.js) ----------
+  // Fallback mode now (current front map); panorama mode switches on by itself once
+  // panorama-manifest.js carries a manifest. Region data lives in world-data.js.
   const world = document.getElementById("world");
+  const viewer = window.GBWorld.create(world, { panorama: window.GB_PANORAMA });
   const portraitMap = window.matchMedia("(max-aspect-ratio: 1/1)");
-  function zoomMap(on, fraction) {
+  // portrait fallback opens zoomed on a framing where every visible baked label is whole
+  // (Prism Ridge™, Ruin Courtyard™, Riverworks™, Frost Peaks™); "Whole map" shows all seven
+  const FALLBACK_ZOOM = 2, MAP_START = 0.715;
+  function setZoomed(on, fx) {
     world.classList.toggle("is-zoomed", on);
-    requestAnimationFrame(() => setTimeout(() => {
-      if (on) panTo(fraction ?? 0.5, false); else map.scrollLeft = 0;
-      syncMap();
-    }, 360));
+    viewer.setZoom(on ? FALLBACK_ZOOM : 1, fx);
   }
-  document.getElementById("mapExpand").addEventListener("click", () => zoomMap(true, 0.5));
-  document.getElementById("mapOverview").addEventListener("click", () => zoomMap(false));
-  map.addEventListener("click", (e) => {
-    if (!portraitMap.matches || world.classList.contains("is-zoomed")) return;
-    const r = map.getBoundingClientRect();
-    zoomMap(true, (e.clientX - r.left) / r.width);
-  });
-  // portrait opens zoomed in (the world art dominates); "Whole map" shows all seven regions at once
-  const MAP_START = 0.42;
-  portraitMap.addEventListener("change", () => { world.classList.toggle("is-zoomed", portraitMap.matches); requestAnimationFrame(() => { if (portraitMap.matches) panTo(MAP_START, false); else map.scrollLeft = 0; syncMap(); }); });
-  world.classList.toggle("is-zoomed", portraitMap.matches);
-  map.scrollLeft = 0;
-  if (portraitMap.matches) requestAnimationFrame(() => panTo(MAP_START, false));
-  syncMap();
-  window.addEventListener("load", syncMap);
+  if (viewer.mode === "fallback") {
+    const fit = () => setZoomed(portraitMap.matches, MAP_START);
+    portraitMap.addEventListener("change", fit);
+    fit();
+    document.getElementById("mapExpand").addEventListener("click", () => setZoomed(true, MAP_START));
+    document.getElementById("mapOverview").addEventListener("click", () => setZoomed(false));
+    document.getElementById("mapScroller").addEventListener("click", (e) => {
+      if (!portraitMap.matches || world.classList.contains("is-zoomed")) return;
+      const r = e.currentTarget.getBoundingClientRect();
+      setZoomed(true, (e.clientX - r.left) / r.width);
+    });
+  }
 
   // ---------- area views (Pass B) ----------
   // Routes: #area/<id> and #area/<id>/<view number>. Browser Back closes the view.
@@ -350,12 +325,12 @@
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const media = (src, cls, alt, size) => src && MEDIA[src]
     ? `<span class="gbm ${cls}" style="${frameVars(src)}"><img src="${asset(src, size === "small")}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`
-    : `<span class="${cls} media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-hazard"/></svg><span>Artwork in production</span></span>`;
+    : `<span class="${cls} media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-hazard"/></svg><span>Coming soon</span></span>`;
 
   // transparent cutout (character / enemy render) inside a sized stage; the band is clipped by .gbm
   const cut = (src, cls, alt, sizes, eager) => {
     const m = MEDIA[src];
-    if (!m) return `<span class="${cls} media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-hazard"/></svg><span>Artwork in production</span></span>`;
+    if (!m) return `<span class="${cls} media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-hazard"/></svg><span>Coming soon</span></span>`;
     const set = m.sw < m.w ? ` srcset="${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w" sizes="${sizes || "50vw"}"` : "";
     return `<span class="gbm cutout ${cls}" style="${frameVars(src)}"><img src="${asset(src)}"${set} alt="${esc(alt)}"${eager ? "" : ' loading="lazy"'} draggable="false"></span>`;
   };
@@ -400,13 +375,13 @@
       <div class="evo__panel" data-evo-panel="seq" role="tabpanel"><ol class="evo__seq">${seq}</ol></div>
       <div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ul class="evo__mech">${mech}</ul></div>
       <div class="evo__panel" data-evo-panel="scene" role="tabpanel" hidden><ol class="evo__scenes">${scenes}</ol></div>
-      <p class="evo__note">${EVO_NOTE} The same mossy, segmented rock carries through every phase. Production art, not in-game screenshots.</p>
+      <p class="evo__note">${EVO_NOTE} The same mossy, segmented rock carries through every phase.</p>
     </section>`;
   };
 
   function renderEntity(id) {
     const e = ENTITIES[id];
-    document.getElementById("entType").textContent = `${TYPE[e.type] || ""} · ${e.status === "APPROVED" ? "Approved production art" : e.status === "CANONICAL" ? "Canonical" : e.status === "MISSING" ? "Artwork in production" : "Provisional concept"}`;
+    document.getElementById("entType").textContent = TYPE[e.type] || "";
     document.getElementById("entName").textContent = e.name;
     const hero = e.media.render || e.media.thumb;
     // production views / states: cutouts become selectable thumbnails that swap the hero
@@ -419,17 +394,15 @@
     const enc = (e.encounter || []).filter((x) => AREAS[x.area] && AREAS[x.area].views[x.view - 1]).map((x) => {
       const a = AREAS[x.area], v = a.views[x.view - 1];
       return `<li><a href="#area/${x.area}/${x.view}" data-goto-area>${media(v.src, "dossier__enc", v.alt, "small")}
-        <small>${esc(a.name)}${x.confirmed === false ? " · match to confirm" : ""}</small></a></li>`;
+        <small>${esc(a.name)}</small></a></li>`;
     }).join("");
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
         ? `<div class="dossier__stage" id="entStage"><span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span></div>
-           <p class="dossier__caption"><b class="chip chip--inline">Production view</b> <span id="entStageLabel">Hero</span> · asset preview, not an in-game screenshot.</p>`
+           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">Hero</span></p>`
         : media(hero, "dossier__render", e.name)}
-        ${hero && !e.media.render ? `<p class="dossier__caption">Concept thumbnail. Clean render in production.</p>` : ""}
         ${views ? `<h3>Production views</h3><ul class="dossier__picks">${stage ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="true"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
       <div class="dossier__info">
-        ${e.copy.provisional ? `<p class="dossier__flag">Working copy · not final</p>` : ""}
         <dl>
           <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
           <dt>${e.type === "hazard" ? "Hazard" : "Behaviour"}</dt><dd>${esc(e.copy.behaviour)}</dd>
@@ -439,7 +412,7 @@
         ${evo(e)}
         ${states ? `<h3>Visual states</h3><ul class="${e.views ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
         <h3>Encounter images</h3>
-        ${enc ? `<ul class="dossier__encs">${enc}</ul>` : `<p class="dossier__empty">Encounter imagery in production.</p>`}
+        ${enc ? `<ul class="dossier__encs">${enc}</ul>` : `<p class="dossier__empty">More encounter views coming soon.</p>`}
       </div>
       ${evoDetail(e)}`;
   }
@@ -524,39 +497,43 @@
   function navArea(id, from, view) {
     if (!isOpen(id)) {
       const a = AREAS[id];
-      const why = a && a.status === "artwork-required" ? "artwork is in production" : "more views are in production";
-      showToast(`${a ? a.name : "This area"}: ${why}.`);
+      showToast(`${a ? a.name : "This area"}: ${a && a.status === "artwork-required" ? "coming soon" : "more views coming soon"}.`);
       return;
     }
     openedFrom = from || null;
     pushedHere = true;
     location.hash = `#area/${id}` + (view ? `/${view + 1}` : "");   // pushes history; router opens the view
   }
-  // Region labels. The current map has its labels baked into the art (data-labels="baked"),
-  // so hotspots are invisible. With a label-free map set data-labels="live": every hotspot then
-  // shows a compact pin (icon + faint name) that expands to name + subtitle on hover / focus /
-  // first tap; on touch the second tap (or a tap on the open label) enters the region.
-  const LIVE_LABELS = world.dataset.labels === "live";
-  const PIN_ICON = { portal: "i-portal", creek: "i-traversal", river: "i-spiral", clover: "i-tree", ruin: "i-secret", prism: "i-reward", frost: "i-snow" };
+  // Region hotspots. Fallback map: invisible boxes over the labels baked into that image.
+  // Panorama: compact pins (icon + faint name → full label on hover / focus / first tap; on
+  // touch the second tap enters), shown only once world coordinates are measured and locked.
+  const WORLD = window.GB_WORLD || { regions: [] };
+  const LIVE_LABELS = viewer.mode === "panorama";
   let lastPointer = "mouse";
-  const hotspots = [...document.querySelectorAll(".hotspot")];
+  const hotspots = [];
   const closePins = (except) => hotspots.forEach((h) => { if (h !== except) h.classList.remove("is-open"); });
-  if (LIVE_LABELS) {
-    hotspots.forEach((h) => {
-      const a = AREAS[h.dataset.area];
+  WORLD.regions.forEach((r) => {
+    const pos = LIVE_LABELS ? (WORLD.coordinateAuthority && r.world) : r.fallback;
+    if (!pos || !AREAS[r.area]) return;
+    const h = document.createElement("button");
+    h.type = "button";
+    h.className = "hotspot";
+    h.dataset.area = r.area;
+    h.setAttribute("aria-label", `${r.name} — ${r.sub}`);
+    if (LIVE_LABELS) {
       h.classList.add("pin");
-      h.innerHTML = `<span class="pin__icon" aria-hidden="true"><svg><use href="#${PIN_ICON[h.dataset.area] || "i-compass"}"/></svg></span><span class="pin__text" aria-hidden="true"><strong>${esc(a.name)}</strong><small>${esc(a.sub)}</small></span>`;
-    });
-    document.addEventListener("click", (e) => { if (!e.target.closest(".hotspot")) closePins(); });
-  }
-  hotspots.forEach((h) => {
+      h.innerHTML = `<span class="pin__icon" aria-hidden="true"><svg><use href="#${r.icon || "i-compass"}"/></svg></span><span class="pin__text" aria-hidden="true"><strong>${esc(r.name)}</strong><small>${esc(r.sub)}</small></span>`;
+    }
     h.addEventListener("pointerdown", (e) => { lastPointer = e.pointerType; });
     h.addEventListener("click", () => {
       if (LIVE_LABELS && lastPointer === "touch" && !h.classList.contains("is-open")) { closePins(h); h.classList.add("is-open"); return; }
       closePins();
       navArea(h.dataset.area, h);
     });
+    viewer.addOverlay(h, pos);
+    hotspots.push(h);
   });
+  if (LIVE_LABELS) document.addEventListener("click", (e) => { if (!e.target.closest(".hotspot")) closePins(); });
 
   // ---------- Explore Iconic Areas rail ----------
   const rail = document.getElementById("areaRail");
@@ -564,7 +541,7 @@
   rail.innerHTML = RAIL.map((id) => {
     const a = AREAS[id];
     const v = a.views[0];
-    const state = a.status === "open" ? "" : a.status === "incomplete" ? "More views in production" : "Artwork in production";
+    const state = a.status === "open" ? "" : a.status === "incomplete" ? "More views soon" : "Coming soon";
     return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}"
         aria-label="${esc(a.name)} — ${esc(a.sub)}${state ? ` (${state})` : ""}">
       ${v ? media(v.src, "area-card__img", "", "small")
@@ -650,7 +627,7 @@
           <span class="char__mark" aria-hidden="true">GB</span>
           <span class="stage-box" id="charStageFig"></span>
         </div>
-        <p class="char__caption"><b class="chip chip--inline">Production view</b> <span id="charStageLabel"></span></p>
+        <p class="char__caption"><b class="chip chip--inline">View</b> <span id="charStageLabel"></span></p>
       </div>
       <div class="char__side">
         <div class="char__looks" role="group" aria-label="Choose look">
@@ -658,7 +635,6 @@
         </div>
         <h3>Views</h3>
         <ul class="char__views">${L.views.map((v, i) => `<li><button type="button" class="char__view" data-char-view="${i}" aria-label="${esc(v.label)}"><span class="stage-box">${cut(v.src, "char__thumb", "", "110px")}</span><small>${esc(v.label)}</small></button></li>`).join("")}</ul>
-        <p class="char__note">Character art from the approved multi-view sheets. Not an in-game screenshot.</p>
         <h3>The team</h3>
         <ul class="char__team">${TEAM.map((t) => `<li><a href="#character/${t}" data-char-link="${t}" style="--c:${CHARS[t].hex}"${t === id ? ' aria-current="true"' : ""}><i aria-hidden="true"></i>${esc(CHARS[t].name)}</a></li>`).join("")}</ul>
       </div>`;

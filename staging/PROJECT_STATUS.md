@@ -1,21 +1,11 @@
 # GB GAMER BROS™ — project status / handoff
 
-Checkpoint: 2026-10-01 · dev branch `ccr-aefb96a7-5w3hgh`
+Checkpoint: 2026-10-04 · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
-- Live build: **`r-019799f3`**, main `576f029`.
-- Root homepage and `/v2/` are untouched (byte-identical to main `919f2d0`). Never change them.
-
-## Done
-- **Pass A:** header, hero carousel, cloud transition and map.
-- **Pass B:** area galleries with `#area/<id>/<n>` routes.
-  - Open: Portal Meadow™, Riverworks™, Ruin Courtyard™, Prism Ridge™.
-  - Creek Crossing™ is incomplete; Clover Cliffs™ and Frost Peaks™ need artwork.
-- **Pass C:** feature cards, Explore Iconic Areas rail, Level Preview, Fast Travel, Enemies & Hazards, and the shared `#entity/<id>` dossier.
-- **Entity registry** (`entities.js`): canonical IDs, heights (Gamer Bros 1.8 m), sheet-based states, and the evolution line rolling-boulder → rock-guy → crystal-guardian (optional; no trigger is coded).
-- **Copyright pipeline:** XMP/EXIF metadata plus a pixel overscan band; all images verify.
-- **Cache busting:** content-hash `?v=` revisions, `revision.json` freshness reload, and the build ID in the footer.
+- Live build: **`r-93f82a77`** (site completion pass; see below).
+- Root homepage and `/v2/` are untouched. Never change them.
 
 ## Publishing workflow (every user-visible change)
 1. Edit on the dev branch.
@@ -27,18 +17,33 @@ Checkpoint: 2026-10-01 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
-## Next: standalone production enemy assets
-Current public state:
-- **Rolling Boulder** has the only enemy image left (provisional crop).
-- **Goom, Spike Bot, Rotor Bot, Turret, Stone Golem and Crystal Guardian** show "Artwork in production". Their old crops were deleted because they didn't match the canonical designs.
+## COMPLETED — site completion pass (2026-10-04, build r-93f82a77)
+- **Hero/carousel:** phone portrait (<600 px, portrait) hides the carousel arrows (dots + swipe remain) and skips slide 3 (`data-skip="phone-portrait"`; dots/labels renumber, rotation re-syncs on orientation change). Tablet portrait arrows moved to the outer ends of the dot row (off the feet). Phone landscape logo has 10 px safe top padding (smaller min size so it clears the headline). `viewport-fit=cover` safe-area insets applied to logo, menu, copy and arrows.
+- **Cloud transition:** clouds grouped in `.cloudfx` (transition layer only, `pointer-events:none`, z above the map, below hero characters). They fade to 30 % once the visitor drags the map (`.is-exploring`). Fixed a portrait seam: the map's top fade now equals the hero overlap (−44 --p). No animation, so reduced motion is unaffected.
+- **Map component:** new `world.js` viewer + `world-data.js` + `panorama-manifest.js` (see "Map / panorama contract"). Old scroll-based map JS, the HTML hotspot list, dormant `data-labels` logic and all superseded map/minimap/pin CSS removed. Visible title "Explore Adventure Mountain™" (chip on the lower-right cloud bank on landscape; below the map on portrait). "360° World" badge and wording only appear in panorama mode (`[data-when]`).
+- **Portrait fallback map:** opens at zoom 2 framed on x = 0.715 so the visible baked labels (Prism Ridge™, Ruin Courtyard™, Riverworks™, Frost Peaks™) are whole; drag/swipe with momentum, pan buttons (moved off the labels), minimap, "Whole map" / "Zoom in".
+- **Enemies & Hazards:** card bottoms aligned per row; Stone Golem / Crystal Guardian capped at 106 % card width so they no longer spill into neighbours (they still read heavier: taller and wider than Rolling Boulder).
+- **Copy cleanup (public):** removed "Asset previews, not in-game screenshots", "Gameplay video not yet available", dossier status labels ("Approved production art"/"Provisional concept"), "Working copy · not final", "match to confirm", "Concept thumbnail…", the character-sheet note. "Artwork in production" → "Coming soon". "Play Together" keeps its "In development" chip. Title no longer says "(Staging)". Dead nav link `#media` → `#level-preview`.
+- **Footer:** staging note removed; footer nav (World, Areas, Enemies & Hazards, Meet the Team™); approved notice; approved line "Adventure Mountain™ artwork, characters, environments and visual assets are original project material." Build ID kept in a hidden element (`#gbRev`, still stamped by revision.py).
+- **Image deterrence (not DRM):** no drag-out / long-press save on published art (CSS), no context menu on map images, map art not in links. Masters stay private; gbmedia metadata + band unchanged (273/273 rasters verify).
+- **Dead code:** dead CSS rules for retired selectors removed (evo-teaser, slide--still/blue-*, stage-floor, dossier__flag, char__note, staging-note, panel__note…). Untracked `tools/__pycache__`.
+- **Tests run:** six viewports (1920×1080, 1366×768, 1180×820, 820×1180, 844×390, 390×844): no console errors, no failed requests, no body overflow. Functional: carousel, slide gating, rotation, map zoom/pan/minimap, hotspot → `#area/…`, Esc, `#entity/rock-guy` alias, `#character/…`, Tab focus ring, reduced motion (no transition, no autoplay). Panorama mode exercised in an isolated scratch copy built from a 2304×512 preview image (drag, momentum, keys, wrap, lazy tiles; not committed).
 
-For each production PNG:
-1. Keep the master outside the public repo.
-2. Run `python3 staging/tools/gbmedia.py build <png> staging/assets/entities/<id>-thumb` (likewise `-render`, `-icon`, `-<state>`). Transparent PNGs get a transparent band automatically.
-3. In `entities.js`, set `media.thumb` / `media.render` / `media.icon` / `states[...]` to the new key and set `status` (PROVISIONAL or CANONICAL). The ID and route stay the same.
-4. Follow the publishing workflow above.
+## WAITING ONLY FOR THE CORRECTED PANORAMA
+1. **Source:** final master path (keep it outside the repo).
+2. **Derivatives:** `python3 staging/tools/gbpano.py check <master>` (size + wrap-seam report), then `python3 staging/tools/gbpano.py build <master> --version pano-YYYY-MM-DD`. Writes `assets/world/` tiers (540/1080/2160 px, 1024 px strips) + overview and `panorama-manifest.js`. The site switches to panorama mode automatically.
+3. **Manifest:** produced by step 2; `revision.py` stamps tile revisions and checks every tile exists.
+4. **Coordinates:** measure the seven regions on the master; set `world: { x, y }` in `world-data.js` and `coordinateAuthority` to the version. Region pins appear only after that. Do NOT reuse the fallback boxes or the first Astra panorama's numbers.
+5. **Minimap:** uses the panorama overview automatically; check its framing.
+6. **Panorama QA:** six viewports, seam at x = 0/1, tier choice on phones, overlay wrap, cloud overlap, then publish.
+- Rollback to fallback: `python3 staging/tools/gbpano.py clear`.
+- Note: the 2304×512 preview attached on 2026-10-04 reports a wrap-seam difference of 30/255 (left/right edges don't match). The corrected master should loop.
 
-Never crop the reference sheets (VISUAL_AUTHORITY.md boards A–M) into website art, and never publish them.
+## Map / panorama contract
+- `world.js` → `window.GBWorld.create(root, { panorama })`. Mode = `panorama` if `GB_PANORAMA` validates, else `fallback` (the `<img class="map__img">` in index.html; size from its width/height attributes, never from the file).
+- Shared: drag, touch swipe (vertical scroll left to the page), momentum, ← → Home End, horizontal wheel, pan buttons, minimap, overlays via `addOverlay(el, {x,y} | {l,t,w,h})` in 0–1 coordinates (wrap-aware).
+- `world-data.js`: stable region ids/names/icons, `fallback` boxes (valid only for the current fallback map), `world: null` (unlocked), non-public sub-region Summit Spine, empty Phase 2 marker arrays (flags, portals, spawns, enemies, hazards, springboards, collectibles, objectives).
+- Fallback map has baked labels; a label-free map is only expected with the panorama.
 
 ## Pass C.5 (done in this run)
 - Enemy names migrated: Rotor Bot, Sentry Cannon, Stone Golem; section renamed Enemies & Hazards; 7-card grid; legacy aliases via `GB_ENTITY_ALIASES` (`#bad-guys` anchor kept).
@@ -56,7 +61,7 @@ Never crop the reference sheets (VISUAL_AUTHORITY.md boards A–M) into website 
 ## Visual convergence pass (target: WEBSITE_TARGET_REFINEMENT_2026-10-01/PRIMARY_TARGET_FINAL_LAYOUT.png)
 - One cloud system: the same puff scale at every size (`--cw`/`--ch` on .world), bank dissolves into the shared cloud white (`--cloud`); page continues on the cloud sea; feature row overlaps the cloud edge.
 - Portrait map opens zoomed in (world art dominant), "Whole map" + minimap still available.
-- Region labels: the map's labels are BAKED into adventure-mountain-map.webp. A compact pin system (icon + faint name → full label on hover/focus/first tap, second tap enters) is implemented but dormant; switch on with `data-labels="live"` on #world once a label-free map master exists. Patch-inpainting the baked labels was tried and rejected (visible artefacts).
+- Region labels: baked into adventure-mountain-map.webp (inpainting rejected: artefacts). Superseded 2026-10-04: pins now belong to panorama mode (world.js).
 - Lower row: Level Preview / Fast Travel / Enemies & Hazards in one three-part row; enemy cards 4-up with per-enemy `cardScale` (Stone Golem / Crystal Guardian break the frame); evolution teaser is now the 8th tile.
 - Area rail: 5:4 image cards, soft faded ends, edge arrows, peeking card.
 - Meet the Team™: team-colour panels, figures rise above the frame; no new copy.
@@ -71,30 +76,12 @@ Never crop the reference sheets (VISUAL_AUTHORITY.md boards A–M) into website 
 - Evolution teaser band under the grid ("See how it evolves" opens the Rolling Boulder dossier at the evolution block).
 - Data: `GB_EVOLUTION_DETAIL` in entities.js; assets in `assets/entities/evolution/`.
 
-## Approved state (previous)
-Build `r-01839066` is provisionally approved. Keep it unchanged until new production assets arrive. Don't redesign the Pass C.5 layout.
-
-## Queued for the next asset-driven update
-1. **Phone portrait only:** if the Purple/Yellow hero slide still conflicts with the fixed Adventure Mountain™ sign, suppress that slide at that breakpoint (e.g. hide the slide and its dot under `max-aspect-ratio:1/1` + phone width). Do not reposition the global sign.
-2. **Source-art corrections:** crown banners, crown coins and old enemy designs inside the newer scenes are fixed in the source art only. Never hide or repaint them with CSS; swap in the corrected scene masters when they arrive (same paths via gbmedia.py, so no layout change).
-3. **Character references:** official Blue, Red, Purple and Yellow turnaround/reference material exists and will be supplied before the final Meet the Team™ implementation. Wait for it; don't build character pages from incomplete assets.
-
 ## Loose assets installed (see CHARACTER_ASSETS.md)
 - Hero character layer is now the clean Blue/Red high-five (no cropped hand).
 - Hero: 3 slides (high-five on world plate; Blue world action; Purple/Yellow world action).
 - Level Preview: Blue/Red cliffside, Purple/Yellow boardwalk, four-character climb, trail junction.
 - Video stills retired from the hero and Level Preview.
 - revision.py now stamps `srcset` and includes the HTML in the build hash.
-
-## Re-upload packs (Drive: Gamer Bros folder)
-- B_EVOLUTION: opened and verified; README read. Its two sheets are byte-identical to boards H (`c6f1c0764b8d4c6b`) and I (`d1733f7ccd97c54f`), so nothing new to register.
-- A_ENEMIES, C_HERO, D_GIRLS, E_TEAM: not retrieved. The Drive connector's session expires on every large download after the first ("session expired"); search still works. The archives themselves are probably fine.
-
-## Blocked earlier: LATEST packs 01–03 arrived corrupted
-Re-upload needed (or put the files loose in Drive, each under 10 MB, for connector download). Waiting on them:
-- clean Blue/Red high-five (to replace the hero layer with the cropped hand)
-- character scenes for carousel / Level Preview / Meet the Team™
-- any standalone enemy art
 
 ## Enemy naming cleanup (old notes)
 - **Canonical IDs:** `goom`, `spike-bot`, `rotor-bot`, `sentry-cannon`, `rolling-boulder`, `stone-golem`, `crystal-guardian`.
@@ -114,4 +101,5 @@ Re-upload needed (or put the files loose in Drive, each under 10 MB, for connect
 - `WORLD_ASSET_STANDARD.md`: region colours and the banner/crate/springboard specs.
 - `ASSET_ASSIGNMENTS.md`: per-image area assignments and status.
 - `ASSET_AUDIT.md`: Pass A sources.
-- `tools/`: `gbmedia.py`, `revision.py`, `publish.py`.
+- `tools/`: `gbmedia.py`, `revision.py`, `publish.py`, `gbpano.py`.
+- Site: `index.html`, `staging.css`, `staging.js`, `world.js`, `world-data.js`, `panorama-manifest.js`, `areas.js`, `entities.js`, `characters.js`.

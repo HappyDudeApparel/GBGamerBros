@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-019799f3">
+<meta name="gb-revision" content="r-93f82a77">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-019799f3";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-93f82a77";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
 <meta name="robots" content="noindex">
-<title>GB GAMER BROS™ — Adventure Mountain™ (Staging)</title>
+<title>GB GAMER BROS™ — Adventure Mountain™</title>
 <meta name="description" content="GB GAMER BROS™ — Explore Adventure Mountain™. PLAY • EXPLORE • DISCOVER">
 <link rel="icon" href="assets/brand/gb-logo-960.webp?v=40182d5678">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=ab9203c4ec">
+<link rel="stylesheet" href="staging.css?v=cb946c14e0">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -43,7 +43,7 @@
       <a href="#world">WORLD</a>
       <a href="#characters">CHARACTERS</a>
       <a href="#features">FEATURES</a>
-      <a href="#media">MEDIA</a>
+      <a href="#level-preview">MEDIA</a>
     </nav>
     <button class="steam steam--top js-steam" type="button" aria-describedby="steamNote">
       <svg class="steam__logo" aria-hidden="true"><use href="#i-steam"/></svg><span>WISHLIST ON STEAM</span><svg class="steam__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
@@ -59,7 +59,7 @@
              still  = character already in the frame; portrait layouts frame it in the scene band -->
         <figure class="slide" aria-label="Slide 1 of 3"><img src="assets/hero-world-highfive.webp?v=d409fe1e44" alt="" fetchpriority="high"></figure>
         <figure class="slide slide--scene" style="--fy:6%;--sx:42%;--bg:url(assets/scenes/blue-world-action-01-960.webp?v=79c7174e12)" aria-label="Slide 2 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/blue-world-action-01.webp?v=f188c09494" srcset="assets/scenes/blue-world-action-01-960.webp?v=79c7174e12 960w, assets/scenes/blue-world-action-01.webp?v=f188c09494 1672w" sizes="100vw" alt="Gamer Bro Blue™ leaping between platforms past waterfalls and the crystal castle" loading="lazy" draggable="false"></span></div></figure>
-        <figure class="slide slide--scene" style="--fy:8%;--sx:40%;--bg:url(assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75)" aria-label="Slide 3 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/purple-yellow-world-action-01.webp?v=0952411235" srcset="assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75 960w, assets/scenes/purple-yellow-world-action-01.webp?v=0952411235 1672w" sizes="100vw" alt="Gamer Girl Purple™ and Gamer Girl Yellow™ running along a waterfall boardwalk" loading="lazy" draggable="false"></span></div></figure>
+        <figure class="slide slide--scene" data-skip="phone-portrait" style="--fy:8%;--sx:40%;--bg:url(assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75)" aria-label="Slide 3 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/purple-yellow-world-action-01.webp?v=0952411235" srcset="assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75 960w, assets/scenes/purple-yellow-world-action-01.webp?v=0952411235 1672w" sizes="100vw" alt="Gamer Girl Purple™ and Gamer Girl Yellow™ running along a waterfall boardwalk" loading="lazy" draggable="false"></span></div></figure>
       </div>
     </div>
     <div class="hero__shade" aria-hidden="true"></div>
@@ -91,37 +91,37 @@
     <div class="hero__dots" id="heroDots" role="tablist" aria-label="Choose slide"></div>
   </section>
 
-  <section class="world" id="world" data-labels="baked" aria-labelledby="worldTitle">
-    <img class="clouds clouds--top" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
-    <img class="clouds clouds--top2" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
-    <img class="clouds clouds--top3" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
-    <h2 id="worldTitle" class="sr-only">Adventure Mountain™ world map</h2>
-    <div class="map-frame">
-    <div class="map" id="mapScroller" tabindex="0" aria-label="Adventure Mountain™ map. Scroll sideways on small screens.">
-      <div class="map__canvas">
-        <img class="map__img" src="assets/adventure-mountain-map.webp?v=2929e64c6e" alt="Labelled map of Adventure Mountain™ showing Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Ruin Courtyard™, Prism Ridge™ and Frost Peaks™" width="1536" height="462">
-        <button class="hotspot" type="button" data-area="portal"  style="--x:5.5;--y:64.5;--w:15.6;--h:14.7" aria-label="Portal Meadow™ — The Adventure Begins"></button>
-        <button class="hotspot" type="button" data-area="creek"   style="--x:30.1;--y:53.7;--w:14.8;--h:13.6" aria-label="Creek Crossing™ — Bridges &amp; Rapids"></button>
-        <button class="hotspot" type="button" data-area="river"   style="--x:53.1;--y:55.8;--w:14.6;--h:14.1" aria-label="Riverworks™ — Waterfalls &amp; Pipeways"></button>
-        <button class="hotspot" type="button" data-area="clover"  style="--x:23.1;--y:21.2;--w:13.7;--h:13.4" aria-label="Clover Cliffs™ — Forest Trails"></button>
-        <button class="hotspot" type="button" data-area="ruin"    style="--x:58.5;--y:33.5;--w:16.5;--h:13.2" aria-label="Ruin Courtyard™ — Forgotten Towers"></button>
-        <button class="hotspot" type="button" data-area="prism"   style="--x:47.4;--y:18.0;--w:16.7;--h:13.6" aria-label="Prism Ridge™ — Crystal Peaks &amp; Ancient Ruins"></button>
-        <button class="hotspot" type="button" data-area="frost"   style="--x:79.1;--y:19.0;--w:16.9;--h:13.4" aria-label="Frost Peaks™ — Icy Cliffs &amp; Granite Roads"></button>
-      </div>
+  <section class="world" id="world" data-mode="fallback" aria-labelledby="worldTitle">
+    <!-- hero-to-world transition: atmosphere only, never geography; never intercepts input -->
+    <div class="cloudfx" aria-hidden="true">
+      <img class="clouds clouds--top" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" width="2048" height="142">
+      <img class="clouds clouds--top2" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" width="2048" height="142">
+      <img class="clouds clouds--top3" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" width="2048" height="142">
     </div>
-    <button class="map__pan map__pan--prev" type="button" data-pan="-1" aria-label="Pan map left" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <button class="map__pan map__pan--next" type="button" data-pan="1" aria-label="Pan map right" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <img class="clouds clouds--bottom" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
+    <div class="map-frame">
+      <!-- world viewer (world.js). Fallback mode: the current front map below.
+           Panorama mode: activated by panorama-manifest.js; tiles replace this image. -->
+      <div class="map" id="mapScroller" tabindex="0" role="region" aria-roledescription="map" aria-label="Map of Adventure Mountain™">
+        <div class="map__track" id="mapTrack">
+          <img class="map__img" src="assets/adventure-mountain-map.webp?v=2929e64c6e" alt="Map of Adventure Mountain™ showing Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Ruin Courtyard™, Prism Ridge™ and Frost Peaks™" width="1536" height="462" fetchpriority="high">
+        </div>
+        <div class="map__overlay" id="mapOverlay"></div>
+      </div>
+      <button class="map__pan map__pan--prev" type="button" aria-label="Pan map left" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="map__pan map__pan--next" type="button" aria-label="Pan map right" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <img class="clouds clouds--bottom" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
     </div>
     <div class="map-nav">
-      <button class="map__mode map__mode--expand" id="mapExpand" type="button" aria-controls="mapScroller">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Explore the map</button>
-      <button class="map__mode map__mode--overview" id="mapOverview" type="button" aria-controls="mapScroller">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Whole map</button>
-      <p class="map__hint" aria-hidden="true"><span>‹</span> Swipe to explore the map <span>›</span></p>
+      <h2 class="map-title" id="worldTitle"><svg aria-hidden="true"><use href="#i-compass"/></svg><span>Explore Adventure Mountain™</span><b class="map-title__badge" data-when="panorama">360° World</b></h2>
+      <div class="map-nav__row">
+        <button class="map__mode map__mode--expand" id="mapExpand" type="button" aria-controls="mapScroller">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Zoom in</button>
+        <button class="map__mode map__mode--overview" id="mapOverview" type="button" aria-controls="mapScroller">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Whole map</button>
+        <p class="map__hint" aria-hidden="true"><span>‹</span> <b data-when="fallback">Drag to explore</b><b data-when="panorama">Drag to travel around the world</b> <span>›</span></p>
+      </div>
       <div class="minimap" id="minimap" role="slider" tabindex="0" aria-label="Map position" aria-controls="mapScroller" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <img src="assets/adventure-mountain-map.webp?v=2929e64c6e" alt="" width="1536" height="462">
-        <span class="minimap__view" id="minimapView"></span>
+        <img src="assets/adventure-mountain-map.webp?v=2929e64c6e" alt="" width="1536" height="462" loading="lazy">
       </div>
     </div>
   </section>
@@ -131,16 +131,16 @@
   <div class="systems__inner">
     <ul class="feats" aria-label="Ways to play">
       <li class="feat"><span class="feat__icon feat__icon--portal"><svg aria-hidden="true"><use href="#i-portal"/></svg></span><h3>Find Portals</h3><p>Discover portal locations hidden across the world.</p></li>
-      <li class="feat"><span class="feat__icon feat__icon--reward"><svg aria-hidden="true"><use href="#i-reward"/></svg></span><h3>Collect Rewards</h3><p>Find gems, chests and rare collectibles.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--reward"><svg aria-hidden="true"><use href="#i-reward"/></svg></span><h3>Collect Rewards</h3><p>Find Adventure Crystals, chests and rare collectibles.</p></li>
       <li class="feat"><span class="feat__icon feat__icon--secret"><svg aria-hidden="true"><use href="#i-secret"/></svg></span><h3>Uncover Secrets</h3><p>Explore optional routes and hidden areas.</p></li>
       <li class="feat"><span class="feat__icon feat__icon--traversal"><svg aria-hidden="true"><use href="#i-traversal"/></svg></span><h3>Master Traversal</h3><p>Use jumps, ziplines, pipes, springboards, bridges and more.</p></li>
-      <li class="feat"><span class="feat__icon feat__icon--team"><svg aria-hidden="true"><use href="#i-team2"/></svg></span><h3>Play Together</h3><p>A development goal, not yet confirmed.</p><span class="feat__note">In development</span></li>
+      <li class="feat"><span class="feat__icon feat__icon--team"><svg aria-hidden="true"><use href="#i-team2"/></svg></span><h3>Play Together</h3><p>Team up and explore Adventure Mountain™ together.</p><span class="feat__note">In development</span></li>
     </ul>
 
     <section class="rail-block" id="areas" aria-labelledby="areasTitle">
       <header class="sec-head">
         <span class="sec-head__icon"><svg aria-hidden="true"><use href="#i-compass"/></svg></span>
-        <div><h2 id="areasTitle">Explore Iconic Areas</h2><p>Each area has its own views to explore</p></div>
+        <div><h2 id="areasTitle">Explore Iconic Areas</h2><p>Seven regions of Adventure Mountain™</p></div>
       </header>
       <div class="rail-wrap">
         <button class="round-btn rail-arrow rail-arrow--prev" type="button" data-rail="-1" aria-label="Scroll areas left" aria-controls="areaRail"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -163,7 +163,7 @@
           <div class="lp__thumbs" id="lpThumbs" role="tablist" aria-label="Choose preview still"></div>
           <div class="lp__bar">
             <button class="round-btn round-btn--sm" type="button" data-lp="-1" aria-label="Previous still"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <p class="lp__label"><strong id="lpLabel"></strong><span>Gameplay video not yet available</span></p>
+            <p class="lp__label"><strong id="lpLabel"></strong></p>
             <button class="round-btn round-btn--sm" type="button" data-lp="1" aria-label="Next still"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           </div>
         </div>
@@ -187,7 +187,6 @@
           <div><h2 id="bgTitle">Enemies &amp; Hazards</h2><p>Different enemies, new challenges</p></div>
         </header>
         <ul class="foes" id="foes"></ul>
-        <p class="panel__note">Asset previews, not in-game screenshots.</p>
       </section>
     </div>
 
@@ -264,18 +263,23 @@
 <footer class="site-foot">
   <span class="site-foot__logo gbm" style="--ar:2.48062;--ext:1.05426"><img src="assets/brand/gb-logo.webp?v=40182d5678" alt="GB GAMER BROS™" width="640" height="272" loading="lazy"></span>
   <p class="site-foot__tag">PLAY • EXPLORE • DISCOVER</p>
+  <nav class="site-foot__nav" aria-label="Footer">
+    <a href="#world">World</a><a href="#areas">Areas</a><a href="#enemies">Enemies &amp; Hazards</a><a href="#characters">Meet the Team™</a>
+  </nav>
   <p class="site-foot__legal">2026 Copyright © GB Gamer Bros™ x Happy Dude®. All Rights Reserved.</p>
-</footer>
-<footer class="staging-note">
-  <p>Staging preview · Meet the Team™ and production enemy art. · Build <span id="gbRev">r-019799f3</span></p>
+  <p class="site-foot__note">Adventure Mountain™ artwork, characters, environments and visual assets are original project material.</p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-93f82a77</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
 <script src="media-manifest.js?v=82310a9967" defer></script>
-<script src="areas.js?v=56393413c5" defer></script>
+<script src="areas.js?v=9fabe539a3" defer></script>
 <script src="entities.js?v=d3d8478453" defer></script>
+<script src="world-data.js?v=057d877ba8" defer></script>
+<script src="panorama-manifest.js?v=ec9076c2a1" defer></script>
+<script src="world.js?v=2e080ec6b3" defer></script>
 <script src="characters.js?v=8fbc177e60" defer></script>
-<script src="staging.js?v=f5db699fcd" defer></script>
+<script src="staging.js?v=263c65c94d" defer></script>
 </body>
 </html>

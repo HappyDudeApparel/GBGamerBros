@@ -86,7 +86,7 @@ window.GB_AREAS = {
 
   // Level Preview still sequence (not a map location). Opens in the same gallery view.
   preview: {
-    name: "Level Preview", sub: "Preview stills · gameplay video not yet available", status: "open", map: false,
+    name: "Level Preview", sub: "Preview stills", status: "open", map: false,
     views: [
       { src: "assets/scenes/blue-red-world-action-01", kind: "still", label: "Cliffside dash", focus: 0.3,
         alt: "Gamer Bro Blue™ and Gamer Bro Red™ dashing along a cliff path above waterfalls and bridges", hotspots: [] },
