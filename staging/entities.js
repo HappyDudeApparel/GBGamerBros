@@ -42,7 +42,7 @@ window.GB_ENTITIES = {
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
     encounter: [],
     views: { "Front": E + "goom-front", "¾ view": E + "goom-threeq", "Side": E + "goom-side", "Back": E + "goom-back" },
-    states: { "Active": E + "goom-active", "Inactive / defeated": E + "goom-defeated" },
+    states: { "Active": E + "goom-active", "Inactive": E + "goom-defeated", "Defeated": E + "goom-defeated-dizzy" },
     angles: angles("top", "bottom"), cardScale: 0.64, height: 0.5, scale: null,
   },
   "spike-bot": {
@@ -194,18 +194,17 @@ window.GB_EVOLUTION_DETAIL = {
 
 // display order for the Enemies & Hazards section
 window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian"];
-// In-world backdrop behind each enemy on its card and dossier stage (soft, blurred region art),
-// so renders read as part of Adventure Mountain™ rather than a studio asset sheet.
-// Presentation only: NOT a claim about where the enemy is encountered.
-const AR = "assets/areas/";
-window.GB_ENTITY_ENV = {
-  "goom": AR + "portal-meadow/pm02-open-meadow-routes",
-  "spike-bot": AR + "ruin-courtyard/rc01-broad-dry-courtyard",
-  "rotor-bot": AR + "riverworks/rw02-cliffside-waterworks",
-  "sentry-cannon": AR + "ruin-courtyard/rc02-court-stairs-exits",
-  "rolling-boulder": AR + "clover-cliffs/cl02-switchback-forest-route",
-  "stone-golem": AR + "clover-cliffs/cl01-cliff-path-ruins",
-  "crystal-guardian": AR + "frost-peaks/fp04-frost-to-summit-spine",
+// In-game view of each enemy (cropped from the approved production masters' in-game renders):
+// the enemy card image and the dossier's opening view. Production cutouts stay as selectable views.
+const SC = "assets/entities/scenes/";
+window.GB_ENTITY_SCENE = {
+  "goom": { src: SC + "goom-ingame", fx: 45 },
+  "spike-bot": { src: SC + "spike-bot-ingame", fx: 50 },
+  "rotor-bot": { src: SC + "rotor-bot-ingame", fx: 52 },
+  "sentry-cannon": { src: SC + "sentry-cannon-ingame", fx: 48 },
+  "rolling-boulder": { src: SC + "rolling-boulder-ingame", fx: 62 },
+  "stone-golem": { src: SC + "stone-golem-ingame", fx: 50 },
+  "crystal-guardian": { src: SC + "crystal-guardian-ingame", fx: 50 },
 };
 
 // legacy IDs keep working: #entity/<old> is rewritten to the canonical ID

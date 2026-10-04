@@ -744,20 +744,19 @@ html.is-locked{overflow:hidden}
   box-shadow:0 0 0 2px rgba(255,255,255,.9),0 18px 40px rgba(0,8,34,.45);transition:transform .25s,box-shadow .25s}
 .mate:hover{transform:translateY(-5px);box-shadow:0 0 0 3px var(--c),0 24px 48px rgba(0,8,34,.55)}
 .mate:focus-visible{outline:3px solid #fff;outline-offset:3px}
-.mate__stage{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:#eef4fc;
-  background:radial-gradient(ellipse 72% 58% at 50% 40%,#fff 0,color-mix(in srgb,var(--c) 16%,#fff) 52%,color-mix(in srgb,var(--c) 48%,#d9e5f6) 100%)}
-.mate__stage::after{content:"";position:absolute;left:20%;right:20%;bottom:4.5%;height:5%;border-radius:50%;background:radial-gradient(closest-side,rgba(8,28,80,.32),rgba(8,28,80,0))}
-.mate__mark,.char__mark{position:absolute;left:0;right:0;top:12%;text-align:center;font-size:clamp(96px,11vw,180px);font-weight:900;font-style:italic;line-height:1;letter-spacing:-.04em;color:var(--c);opacity:.13;pointer-events:none;user-select:none}
-.mate__stage > .stage-box{position:absolute;inset:5% 3% 6%;z-index:1}
-.mate__stage .cutout > img{transition:transform .3s}
-.mate:hover .mate__stage .cutout > img{transform:scale(1.025)}
+
+
+.char__mark{position:absolute;left:0;right:0;top:12%;text-align:center;font-size:clamp(96px,11vw,180px);font-weight:900;font-style:italic;line-height:1;letter-spacing:-.04em;color:var(--c);opacity:.13;pointer-events:none;user-select:none}
+
+
+
 .mate__text{display:grid;gap:4px;padding:12px 16px 15px;border-top:5px solid var(--c);background:linear-gradient(180deg,#fff,#f0f5fc)}
 .mate__text strong{font-size:clamp(15px,1.35vw,20px);font-weight:800;font-style:italic;letter-spacing:.01em;text-transform:uppercase;color:#0b2a6b;line-height:1.1}
 .mate__text small{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#4a6590}
 .mate__text i,.char__team i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(11,42,107,.2)}
 @media (max-width:899px) and (min-width:720px){
   .team__list{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .mate__stage{aspect-ratio:5/6}
+  
 }
 /* phone: horizontal snap carousel, the next card peeks in */
 @media (max-width:719px){
@@ -770,7 +769,7 @@ html.is-locked{overflow:hidden}
 @media (orientation:landscape) and (max-height:520px){
   .team__list{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:row;overflow:visible;margin:14px 0 0;padding:0}
   .team__nav{display:none}
-  .mate__stage{aspect-ratio:4/5}
+  
 }
 
 /* enemy dossier: production stage + selectable views/states */
@@ -1016,26 +1015,24 @@ html.is-locked{overflow:hidden}
 .team__list{margin-top:clamp(40px,4.4vw,70px);gap:clamp(14px,1.8vw,26px)}
 .mate{position:relative;overflow:visible;border-radius:22px;background:transparent;box-shadow:none}
 .mate:hover{box-shadow:none;transform:translateY(-5px)}
-.mate__stage{aspect-ratio:3/3.6;overflow:visible;border-radius:22px 22px 0 0;
-  background:linear-gradient(160deg,color-mix(in srgb,var(--c) 70%,#fff) 0,var(--c) 45%,var(--cd) 100%)}
-.mate__stage::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-  background:radial-gradient(ellipse 70% 55% at 50% 38%,rgba(255,255,255,.55),transparent 70%),repeating-linear-gradient(115deg,rgba(255,255,255,.07) 0 14px,rgba(255,255,255,0) 14px 40px)}
-.mate__stage::after{bottom:3%;background:radial-gradient(closest-side,rgba(0,0,30,.4),rgba(0,0,30,0))}
-.mate__mark{color:#fff;opacity:.16;top:18%}
+
+
+
+
 /* the figure is taller than the panel: head and hands rise above the frame, legs crop at the base */
-.mate__stage > .stage-box{inset:-16% -6% 0;overflow:hidden;border-radius:0 0 0 0;clip-path:inset(-40% -10% 0 -10%)}
-.mate__stage .gbm.cutout{bottom:-14%;width:min(108cqw,calc(118cqh * var(--ar)))}
+
+
 .mate__text{position:relative;z-index:2;border-top:0;border-radius:0 0 22px 22px;padding:12px 16px 15px;
   background:linear-gradient(180deg,var(--cd),color-mix(in srgb,var(--cd) 70%,#000))}
 .mate__text strong{color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.25)}
 .mate__text small{color:rgba(255,255,255,.8)}
 .mate__text i{box-shadow:0 0 0 2px #fff}
-.mate:hover .mate__stage{box-shadow:0 0 0 3px #fff}
+
 .mate:focus-visible{outline:3px solid #fff;outline-offset:4px}
 @media (max-width:719px){
   .team__list{padding-top:44px;margin-top:0;grid-auto-columns:74%}
 }
-@media (orientation:landscape) and (max-height:520px){.team__list{margin-top:40px}.mate__stage{aspect-ratio:3/3.3}}
+@media (orientation:landscape) and (max-height:520px){.team__list{margin-top:40px}}
 @media (max-aspect-ratio:1/1){
   .world{--cw:max(180cqw,900px)}
 }
@@ -1057,7 +1054,7 @@ html.is-locked{overflow:hidden}
   .clouds--top2{top:calc(var(--ch) * -.38)}
   .clouds--top3{top:calc(var(--ch) * -.72)}
 }
-.foe__stage > .gbm,.foe__stage::before,.foe__stage::after,.mate__stage > .stage-box,.mate__mark{pointer-events:none}
+.foe__stage > .gbm,.foe__stage::before,.foe__stage::after{pointer-events:none}
 .systems__inner{grid-template-columns:minmax(0,1fr)}.systems__inner > *{min-width:0}
 .rail-block,.rail-wrap{grid-template-columns:minmax(0,1fr);min-width:0}.systems,.team{overflow-x:clip}
 
@@ -1239,35 +1236,103 @@ html.is-locked{overflow:hidden}
 .region-id--crystal{background:linear-gradient(170deg,#a46ae6 0,#7a3cc8 48%,#3e1675 100%)}
 .region-id--crystal::after{background:linear-gradient(180deg,#5a2596,#2d0f57)}
 
-/* --- enemies: renders stand in a soft in-world scene, not a studio sheet --- */
-.foe__stage[data-env]::before{background:
-    linear-gradient(180deg,rgba(255,255,255,.18) 0,rgba(255,255,255,0) 45%,rgba(10,30,80,.18) 100%),
-    var(--env) center 45%/cover;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85),inset 0 -24px 30px -18px rgba(10,30,80,.35)}
-.dossier__stage[data-env]{background:#0b2a6b}
-.dossier__stage[data-env]::before{content:"";position:absolute;inset:-14px;
-  background:radial-gradient(ellipse 70% 62% at 50% 52%,rgba(4,16,52,0) 35%,rgba(4,16,52,.6) 100%),var(--env) center 45%/cover;
-  filter:blur(3px) saturate(1.08)}
-.dossier__stage[data-env]::after{background:radial-gradient(closest-side,rgba(0,8,30,.55),rgba(0,8,30,0))}
+/* --- enemies: in-game views (cards + dossier opening view); cutouts only as selected views --- */
+.scene-fit{position:absolute;top:50%;left:var(--fx,50%);width:max(100cqw,calc(100cqh * var(--ar)));translate:calc(-1 * var(--fx,50%)) -50%}
+.foe__stage--scene{aspect-ratio:1/.86;overflow:hidden;border-radius:16px 16px 0 0;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85)}
+.foe__stage--scene::before,.foe__stage--scene::after{display:none}
+.foe__stage--scene .scene-fit{transition:transform .35s}
+.foe:hover .foe__stage--scene .scene-fit{transform:scale(1.05)}
+.dossier__stage.is-scene{background:#0b2a6b}
+.dossier__stage.is-scene::after{display:none}
+.dossier__stage.is-scene{aspect-ratio:auto;max-width:620px}
+.dossier__stage.is-scene .scene-fit{position:relative;top:0;left:0;width:100%;translate:none}
 .dossier__stage .gbm.cutout{filter:drop-shadow(0 10px 16px rgba(0,8,30,.45))}
-.dossier__stage[data-env] > .stage-box{inset:15% 13% 13%}
-.dossier__pick .stage-box{background:radial-gradient(circle at 50% 38%,#3d6fc4 0,#163f8a 55%,#0b2556 100%)}
+.dossier__stage > .stage-box{inset:12% 10% 12%}
+.dossier__pick .stage-box{background:radial-gradient(circle at 50% 38%,#3d6fc4 0,#163f8a 55%,#0b2556 100%);overflow:hidden}
 
-/* --- Meet the Team™: shaped team-colour panels; the whole figure sits inside the card --- */
-.team__list{margin-top:clamp(18px,2.2vw,32px)}
-.team__list > li{filter:drop-shadow(0 16px 24px rgba(0,8,34,.45))}
-.mate__stage{aspect-ratio:3/4;overflow:hidden;border-radius:22px 22px 0 0;
-  clip-path:polygon(0 0,calc(100% - 44px) 0,100% 44px,100% 100%,0 100%)}
-.mate__stage > .stage-box{inset:6% 5% 3.5%;overflow:visible;clip-path:none}
-.mate__stage .gbm.cutout{bottom:0;width:min(94cqw,calc(100cqh * var(--ar)))}
-.mate__stage::after{bottom:2.5%;left:22%;right:22%}
-.mate:hover .mate__stage{box-shadow:none}
-.mate:hover .mate__stage .cutout > img{transform:scale(1.03) translateY(-1%)}
+
+/* ===================== Meet the Team™ (approved target: wide team cards, figures break out above) ===================== */
+.team{background:
+    linear-gradient(180deg,rgba(233,241,252,.55),rgba(233,241,252,.25) 40%,rgba(10,40,110,.35)),
+    url(assets/areas/portal-meadow/pm02-open-meadow-routes-960.webp?v=66fd5e58a6) center 40%/cover}
+.team::after{display:none}
+.team__head h2{color:#0b2a6b;text-shadow:0 2px 0 #fff}
+.team__head p{color:#24418e}
+.team .sec-head__icon{background:#0b2a6b;color:#fff}
+.team__list{list-style:none;margin:0;padding:clamp(56px,6vw,90px) 0 10px;display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,22px)}
+.team__list > li{display:flex;filter:none}
+.mate{position:relative;display:block;width:100%;aspect-ratio:1.45/1;border-radius:20px;overflow:visible;text-decoration:none;color:#fff;
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.35) 0,rgba(255,255,255,0) 38%),
+    repeating-linear-gradient(115deg,rgba(255,255,255,.08) 0 12px,rgba(255,255,255,0) 12px 34px),
+    linear-gradient(150deg,color-mix(in srgb,var(--c) 55%,#fff) 0,var(--c) 45%,var(--cd) 100%);
+  box-shadow:0 0 0 2.5px rgba(255,255,255,.95),0 16px 30px rgba(6,24,70,.35);transition:transform .25s,box-shadow .25s}
+.mate:hover{transform:translateY(-4px);box-shadow:0 0 0 3px #fff,0 22px 36px rgba(6,24,70,.45)}
+.mate:focus-visible{outline:3px solid #0b2a6b;outline-offset:4px}
+/* figure: upper body, larger than the card; rises above the top edge, cropped at the bottom edge */
+.mate__fig{position:absolute;left:-2%;bottom:0;width:56%;height:142%;clip-path:inset(-20% -30% 0 -30% round 0 0 0 20px);pointer-events:none}
+.mate__fig > .stage-box{position:absolute;inset:0}
+.mate__fig .gbm.cutout{left:50%;bottom:auto;top:0;translate:-50% 0;width:min(120cqw,calc(170cqh * var(--ar)));filter:drop-shadow(0 8px 12px rgba(0,10,40,.35))}
+.mate:hover .mate__fig .cutout > img{transform:scale(1.03)}
+.mate__text{position:absolute;right:0;top:0;bottom:0;width:50%;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px 14px 10px 4px;text-align:left;background:none;border:0}
+.mate__colour{font-size:clamp(20px,2.1vw,30px);font-weight:900;font-style:italic;text-transform:uppercase;line-height:1;letter-spacing:.01em;
+  -webkit-text-stroke:3px var(--cd);paint-order:stroke fill;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.mate__text strong{font-size:clamp(9.5px,.78vw,11.5px);font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.mate__text small{font-size:clamp(11px,.9vw,13px);line-height:1.3;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.mate__go{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;margin-top:6px;padding:7px 12px;border-radius:99px;
+  font-size:clamp(10px,.8vw,11.5px);font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;
+  background:var(--cd);box-shadow:0 0 0 1.5px rgba(255,255,255,.85),0 4px 10px rgba(0,0,0,.25)}
+.mate__go svg{width:14px;height:14px}
+@media (max-width:1099px){.team__list{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:clamp(60px,8vw,90px)}}
 @media (max-width:719px){
-  .team__list{padding-top:6px;grid-auto-columns:78%}
-  .team__head h2{font-size:clamp(22px,6.6vw,30px);white-space:nowrap}
+  .team__list{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:none;padding:64px 16px 14px;margin:0 -16px;scroll-padding:0 16px}
+  .team__list::-webkit-scrollbar{display:none}
+  .team__list > li{scroll-snap-align:start}
+  .mate__colour{font-size:28px}
+  .mate__text strong{font-size:11px}.mate__text small{font-size:13px}.mate__go{font-size:11px}
 }
-@media (orientation:landscape) and (max-height:520px){.team__list{margin-top:16px}.mate__stage{aspect-ratio:3/3.7}}
-/* every Meet the Team™ card ends on the same line, however the name wraps */
-.team__list > li{display:flex}
-.mate{width:100%}
-.mate__text{flex:1;align-content:start}
+@media (orientation:landscape) and (max-height:520px){.team__list{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:row;overflow:visible;margin:0;padding:56px 0 10px}}
+.mate__text strong{font-style:normal}
+.mate__text small{display:block;letter-spacing:0;text-transform:none;font-weight:600}
+.mate__fig{clip-path:inset(-60% -30% 0 -30% round 0 0 0 20px)}
+.mate__go{white-space:nowrap;padding:7px 11px}
+.team .team__head{position:relative;z-index:1;align-self:start;justify-self:start;padding:8px 18px 8px 8px;border-radius:99px;
+  background:rgba(255,255,255,.86);box-shadow:0 8px 22px rgba(6,24,70,.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.team .team__head h2{color:#0b2a6b;text-shadow:none;-webkit-text-stroke:0}
+.team .team__head p{color:#24418e;text-shadow:none}
+.team__inner{display:grid}
+@media (max-width:719px){
+  .team .team__head{border-radius:18px;padding-right:12px}
+  .team .team__head h2{font-size:clamp(20px,6vw,26px);white-space:nowrap}
+  .team__list{padding-top:120px}
+  .mate__fig{width:54%;height:150%}
+}
+
+/* ===================== Portrait hero (approved target): compact top-left cluster, big centred art ===================== */
+@media (max-aspect-ratio:1/1){
+  .hero{height:calc(740 * var(--p))}
+  /* the one logo heads the cluster (no second logo anywhere in the hero) */
+  .brand{display:block;left:max(14px,env(safe-area-inset-left));top:calc(10 * var(--p));width:calc(134 * var(--p));min-width:0}
+  .hero__copy::before{width:72%;height:calc(310 * var(--p));
+    background:radial-gradient(ellipse 100% 100% at 0 0,rgba(3,14,48,.78) 0,rgba(4,20,64,.5) 55%,rgba(6,28,80,0) 80%)}
+  .headline{left:16px;top:calc(76 * var(--p));font-size:calc(27 * var(--p));-webkit-text-stroke:calc(3 * var(--p)) #0b2f96;
+    text-shadow:0 0 calc(12 * var(--p)) rgba(56,156,255,.9),0 calc(3 * var(--p)) 0 #08236e}
+  .tagline{left:18px;top:calc(166 * var(--p));font-size:calc(10.5 * var(--p))}
+  .steam--hero{left:18px;top:calc(186 * var(--p));width:calc(178 * var(--p));height:calc(36 * var(--p));font-size:calc(11.5 * var(--p));border-radius:calc(10 * var(--p))}
+  .pillars{left:calc(8 * var(--p));top:calc(232 * var(--p));transform:none}
+  .pillars li{width:calc(74 * var(--p))}
+  .pillar__ring{width:calc(36 * var(--p));height:calc(36 * var(--p));border-width:calc(1.8 * var(--p))}
+  .pillar__label{margin-top:calc(4 * var(--p));font-size:calc(7.6 * var(--p));white-space:nowrap}
+  .pillar__note{margin-top:calc(2 * var(--p));font-size:calc(6 * var(--p));padding:0 calc(5 * var(--p))}
+  /* characters: large, centred under the cluster */
+  .hero__sign{left:auto;right:calc(6 * var(--p));top:calc(566 * var(--p));width:calc(168 * var(--p))}
+  .hero__dots{top:calc(700 * var(--p))}
+  .hero__arrow{top:calc(700 * var(--p))}
+  /* scene slides fill the whole hero (no thin band) */
+  .slide--scene::before{display:none}
+  .slide--scene .scene-box{inset:0;height:auto;-webkit-mask-image:none;mask-image:none}
+  .slide--scene .scene-box > .gbm{top:50%;translate:calc(-1 * var(--sx,50%)) -50%}
+}
+@media (max-aspect-ratio:1/1){.slide--scene .scene-box > .gbm{left:var(--psx,var(--sx,50%));translate:calc(-1 * var(--psx,var(--sx,50%))) -50%}}

@@ -17,6 +17,12 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## COMPLETED — target match pass (2026-10-05)
+- **Enemies:** cards and dossier opening views now use in-game renders (`GB_ENTITY_SCENE` in entities.js, assets/entities/scenes/*-ingame) cropped from the production masters' in-game panels: Goom/Sentry Cannon (Game Asset Production sheet), Spike Bot and Rotor Bot (Enemy & Hazard Assets v1), Rolling Boulder / Stone Golem / Crystal Guardian (owner-uploaded production masters). By owner direction this supersedes the "never crop boards" rule for these in-game panels only; no labels/text are included. Blurred-terrain backdrops removed. Dossier: "In the world" view first; production cutouts remain selectable views.
+- **Goom:** new **Defeated** state (X-eyes, squashed) keyed to a transparent cutout (`goom-defeated-dizzy`); states are now Active / Inactive / Defeated.
+- **Meet the Team™:** rebuilt to the approved target strip: wide team-colour cards (order Purple, Blue, Red, Yellow), streetwear figures large and breaking out above the card, colour word + name + target tagline + "View character"; scenic background; phone = snap carousel with peek.
+- **Portrait hero:** target composition: one GB logo heading a compact top-left cluster (headline, tagline, Steam, icons); high-five characters large and centred below; sign lower right; scene slides fill the whole hero (per-slide portrait focus `--psx`).
+
 ## COMPLETED — visual correction pass (2026-10-05, build r-46ccc427)
 - **Locations:** replaced the old floating-island "waterfall/bridge overload" renders (blue banners in every region) with the canonical Drive region sequences (folder "01_Portal_Meadow" … "07_Frost_Peaks"): Portal Meadow™ PM01–03, Riverworks™ RW02–04, Ruin Courtyard™ RC01–03, Clover Cliffs™ CL01–04 (now open), Frost Peaks™ FP01, FP02, FP04 (now open). Not used: collages FP03 / RW01 / RW05 and the busy "Ruin Courtyard Exiting towards Summit Spine" overview. Masters stay private (scratch only); derivatives via gbmedia.py.
 - **Prism Ridge™:** all four old views carried non-canonical blue banners → removed; purple region-identity card (`identity.theme: "crystal"`) until approved Prism Ridge art exists. **Creek Crossing™** keeps its single plank-bridge view (blue = its canonical colour); still waiting for a full set.

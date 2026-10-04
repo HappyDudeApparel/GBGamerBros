@@ -973,6 +973,18 @@ window.GB_MEDIA = {
   "rev": "17145e8d2f",
   "srev": "afb3264924"
  },
+ "assets/entities/goom-defeated-dizzy": {
+  "w": 378,
+  "h": 264,
+  "band": 14,
+  "sw": 378,
+  "sh": 264,
+  "sband": 14,
+  "alpha": true,
+  "master": "goom-defeated-cut.png",
+  "rev": "6b1f3e48e0",
+  "srev": "68b29c9fa1"
+ },
  "assets/entities/goom-front": {
   "w": 164,
   "h": 149,
@@ -1224,6 +1236,90 @@ window.GB_MEDIA = {
   "master": "ROTOR_BOT_PRODUCTION_ATLAS_V1__rotor-threeq.png",
   "rev": "ce5051092c",
   "srev": "73f6a736d5"
+ },
+ "assets/entities/scenes/crystal-guardian-ingame": {
+  "w": 1368,
+  "h": 1342,
+  "band": 25,
+  "sw": 960,
+  "sh": 942,
+  "sband": 17,
+  "alpha": false,
+  "master": "final-crystal-guardian.png",
+  "rev": "b8cc67eef6",
+  "srev": "12e3765ecc"
+ },
+ "assets/entities/scenes/goom-ingame": {
+  "w": 720,
+  "h": 544,
+  "band": 14,
+  "sw": 720,
+  "sh": 544,
+  "sband": 14,
+  "alpha": false,
+  "master": "final-goom.png",
+  "rev": "d29d26f8dd",
+  "srev": "3f86c7a1e4"
+ },
+ "assets/entities/scenes/rolling-boulder-ingame": {
+  "w": 704,
+  "h": 334,
+  "band": 14,
+  "sw": 704,
+  "sh": 334,
+  "sband": 14,
+  "alpha": false,
+  "master": "final-rolling-boulder.png",
+  "rev": "32cad515b4",
+  "srev": "f2e5b0baf7"
+ },
+ "assets/entities/scenes/rotor-bot-ingame": {
+  "w": 624,
+  "h": 336,
+  "band": 14,
+  "sw": 624,
+  "sh": 336,
+  "sband": 14,
+  "alpha": false,
+  "master": "final-rotor-bot.png",
+  "rev": "95eafe14a7",
+  "srev": "1358414e2e"
+ },
+ "assets/entities/scenes/sentry-cannon-ingame": {
+  "w": 720,
+  "h": 500,
+  "band": 14,
+  "sw": 720,
+  "sh": 500,
+  "sband": 14,
+  "alpha": false,
+  "master": "final-sentry-cannon.png",
+  "rev": "3a033eea5e",
+  "srev": "3814018e79"
+ },
+ "assets/entities/scenes/spike-bot-ingame": {
+  "w": 576,
+  "h": 366,
+  "band": 14,
+  "sw": 576,
+  "sh": 366,
+  "sband": 14,
+  "alpha": false,
+  "master": "final-spike-bot.png",
+  "rev": "cc7313658b",
+  "srev": "f9a888e20b"
+ },
+ "assets/entities/scenes/stone-golem-ingame": {
+  "w": 1106,
+  "h": 1020,
+  "band": 20,
+  "sw": 960,
+  "sh": 885,
+  "sband": 17,
+  "alpha": false,
+  "master": "final-stone-golem.png",
+  "rev": "0fc9f72371",
+  "srev": "8a339d6950"
  },
  "assets/entities/sentry-cannon-active": {
   "w": 197,
