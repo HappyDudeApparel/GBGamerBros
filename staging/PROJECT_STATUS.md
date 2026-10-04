@@ -1,10 +1,10 @@
 # GB GAMER BROS™ — project status / handoff
 
-Checkpoint: 2026-10-04 · dev branch `ccr-aefb96a7-5w3hgh`
+Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
-- Live build: **`r-93f82a77`**, main `0feb508` (site completion pass; see below).
+- Live build: **`r-46ccc427`** (visual correction pass; see below). Previous: `r-93f82a77`.
 - Root homepage and `/v2/` are untouched. Never change them.
 
 ## Publishing workflow (every user-visible change)
@@ -16,6 +16,22 @@ Checkpoint: 2026-10-04 · dev branch `ccr-aefb96a7-5w3hgh`
 6. Check the Pages run (GitHub Actions "pages build and deployment") and report the new build ID.
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
+
+## COMPLETED — visual correction pass (2026-10-05, build r-46ccc427)
+- **Locations:** replaced the old floating-island "waterfall/bridge overload" renders (blue banners in every region) with the canonical Drive region sequences (folder "01_Portal_Meadow" … "07_Frost_Peaks"): Portal Meadow™ PM01–03, Riverworks™ RW02–04, Ruin Courtyard™ RC01–03, Clover Cliffs™ CL01–04 (now open), Frost Peaks™ FP01, FP02, FP04 (now open). Not used: collages FP03 / RW01 / RW05 and the busy "Ruin Courtyard Exiting towards Summit Spine" overview. Masters stay private (scratch only); derivatives via gbmedia.py.
+- **Prism Ridge™:** all four old views carried non-canonical blue banners → removed; purple region-identity card (`identity.theme: "crystal"`) until approved Prism Ridge art exists. **Creek Crossing™** keeps its single plank-bridge view (blue = its canonical colour); still waiting for a full set.
+- **Region colour coding:** canonical banner fields (WORLD_ASSET_STANDARD.md §1) added as `color` in world-data.js; area cards carry a region colour bar.
+- **Transparency:** all cutout sources verified to have alpha; white-matte halos removed from all 102 cutouts with new `tools/gbdefringe.py` (not idempotent: run once per newly built cutout). Stale encounter links to replaced views cleared (portal, springboard, crate, adventure crystal).
+- **Enemies / dossiers:** cards and dossier stages now sit on soft in-world backdrops (`GB_ENTITY_ENV` in entities.js; presentation only, not encounter claims); dossier hero reduced and framed with vignette/blur; thumbnails on navy instead of white studio tiles.
+- **Meet the Team™:** shaped team-colour panels (cut top-right corner), whole figure inside the card (no head overflow / leg crop), equal card heights, phone carousel heading fits on one line.
+- **Portrait hero:** headline, tagline, CTA and pillar icons form one top-left cluster with a local shade (the full-height dark band is gone); topbar GB logo hidden in portrait because the Adventure Mountain™ sign already carries it; figure and sign repositioned so neither covers the other. Desktop/landscape unchanged (approved target keeps the header logo).
+- **Clouds:** solid bright puffs (no 85 % grey layer); area gallery/Level Preview srcsets now use real derivative widths.
+- Tests: six viewports clean (no console errors, no failed requests, no overflow); functional suite passes.
+
+## Waiting on approved art (visual)
+- Prism Ridge™ views (purple banners), Creek Crossing™ additional views.
+- Hero world plate, Level Preview stills and the fallback front map still contain blue banners in every region (source-art correction; never repainted in CSS).
+- Drive also holds `Adventure_Mountain_360_FINAL_Panorama_14400x3200.png` and `Adventure_Mountain_FINAL_MASTER_A_v3_3x2.png` — not installed (panorama is its own upgrade; see below).
 
 ## COMPLETED — site completion pass (2026-10-04, build r-93f82a77)
 - **Hero/carousel:** phone portrait (<600 px, portrait) hides the carousel arrows (dots + swipe remain) and skips slide 3 (`data-skip="phone-portrait"`; dots/labels renumber, rotation re-syncs on orientation change). Tablet portrait arrows moved to the outer ends of the dot row (off the feet). Phone landscape logo has 10 px safe top padding (smaller min size so it clears the headline). `viewport-fit=cover` safe-area insets applied to logo, menu, copy and arrows.

@@ -116,20 +116,20 @@ window.GB_ENTITIES = {
     name: "Portal", type: "portal", status: "PROVISIONAL",
     media: { thumb: null, render: "assets/systems/fast-travel-portal", icon: null },
     copy: { provisional: true, summary: "Blue portal shrine.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
-    encounter: [{ area: "portal", view: 2, confirmed: true }, { area: "river", view: 1, confirmed: true }],
+    encounter: [],
     states: {}, angles: angles(), scale: null,
   },
   "springboard": {
     name: "Springboard", type: "prop", status: "PROVISIONAL",
     media: { thumb: null, render: null, icon: null },
-    copy: { provisional: true, summary: "Red springboard.", behaviour: "Launches upward.", where: "Seen in Riverworks™ and Portal Meadow™ concepts." },
-    encounter: [{ area: "river", view: 3, confirmed: true }], states: {}, angles: angles(), scale: null,
+    copy: { provisional: true, summary: "Red springboard.", behaviour: "Launches upward.", where: "Found across Adventure Mountain™." },
+    encounter: [], states: {}, angles: angles(), scale: null,
   },
   "crate": {
     name: "GB Crate", type: "prop", status: "PROVISIONAL",
     media: { thumb: null, render: null, icon: null },
     copy: { provisional: true, summary: "Branded wooden crate.", behaviour: "To be confirmed.", where: "Found across Adventure Mountain™." },
-    encounter: [{ area: "river", view: 2, confirmed: true }], states: {}, angles: angles(), scale: null,
+    encounter: [], states: {}, angles: angles(), scale: null,
   },
   "coin": {
     name: "Coin", type: "collectible", status: "MISSING",
@@ -141,7 +141,7 @@ window.GB_ENTITIES = {
     name: "Adventure Crystal", type: "collectible", status: "PROVISIONAL",
     media: { thumb: null, render: null, icon: null },
     copy: { provisional: true, summary: "Common collectible.", behaviour: "Collectible.", where: "Found across Adventure Mountain™." },
-    encounter: [{ area: "river", view: 3, confirmed: true }], states: {}, angles: angles(), scale: null,
+    encounter: [], states: {}, angles: angles(), scale: null,
   },
   "secret-key": {
     name: "Secret Key / Rare Crystal", type: "collectible", status: "MISSING",
@@ -194,6 +194,19 @@ window.GB_EVOLUTION_DETAIL = {
 
 // display order for the Enemies & Hazards section
 window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian"];
+// In-world backdrop behind each enemy on its card and dossier stage (soft, blurred region art),
+// so renders read as part of Adventure Mountain™ rather than a studio asset sheet.
+// Presentation only: NOT a claim about where the enemy is encountered.
+const AR = "assets/areas/";
+window.GB_ENTITY_ENV = {
+  "goom": AR + "portal-meadow/pm02-open-meadow-routes",
+  "spike-bot": AR + "ruin-courtyard/rc01-broad-dry-courtyard",
+  "rotor-bot": AR + "riverworks/rw02-cliffside-waterworks",
+  "sentry-cannon": AR + "ruin-courtyard/rc02-court-stairs-exits",
+  "rolling-boulder": AR + "clover-cliffs/cl02-switchback-forest-route",
+  "stone-golem": AR + "clover-cliffs/cl01-cliff-path-ruins",
+  "crystal-guardian": AR + "frost-peaks/fp04-frost-to-summit-spine",
+};
 
 // legacy IDs keep working: #entity/<old> is rewritten to the canonical ID
 window.GB_ENTITY_ALIASES = {
