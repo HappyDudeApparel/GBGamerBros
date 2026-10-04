@@ -337,8 +337,9 @@
     return `<span class="gbm cutout ${cls}" style="${frameVars(src)}"><img src="${asset(src)}"${set} alt="${esc(alt)}"${eager ? "" : ' loading="lazy"'} draggable="false"></span>`;
   };
   const isCut = (src) => !!(MEDIA[src] && MEDIA[src].alpha);
-  // soft in-world backdrop (entities.js GB_ENTITY_ENV) behind enemy renders
-  const envStyle = (id) => { const s = (window.GB_ENTITY_ENV || {})[id]; return s && MEDIA[s] ? ` style="--env:url('${asset(s, true)}')" data-env` : ""; };
+  // in-game view (entities.js GB_ENTITY_SCENE): cover-fitted inside a fixed frame, band clipped
+  const sceneOf = (id) => { const s = (window.GB_ENTITY_SCENE || {})[id]; return s && MEDIA[s.src] ? s : null; };
+  const sceneImg = (s, alt, small) => `<span class="gbm scene-fit" style="${frameVars(s.src)};--fx:${s.fx}%"><img src="${asset(s.src, small)}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`;
 
   // optional authored evolution line (e.g. Rolling Boulder → Stone Golem → Crystal Guardian)
   const evo = (e) => {
@@ -400,12 +401,13 @@
       return `<li><a href="#area/${x.area}/${x.view}" data-goto-area>${media(v.src, "dossier__enc", v.alt, "small")}
         <small>${esc(a.name)}</small></a></li>`;
     }).join("");
+    const sc = sceneOf(id);
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
-        ? `<div class="dossier__stage" id="entStage"${envStyle(id)}><span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span></div>
-           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">Hero</span></p>`
+        ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : `<span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span>`}</div>
+           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? "In the world" : "Hero"}</span></p>`
         : media(hero, "dossier__render", e.name)}
-        ${views ? `<h3>Production views</h3><ul class="dossier__picks">${stage ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="true"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
+        ${views ? `<h3>Production views</h3><ul class="dossier__picks">${sc ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="true"><span class="stage-box">${sceneImg(sc, "", true)}</span><small>In the world</small></button></li>` : ""}${stage ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
           <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
@@ -461,13 +463,17 @@
       eBody.querySelectorAll("[data-evo-panel]").forEach((p) => { p.hidden = p.dataset.evoPanel !== tab.dataset.evoTab; });
       return;
     }
-    const pick = e.target.closest("[data-hero]");
+    const pick = e.target.closest("[data-hero], [data-scene]");
     if (pick) {
       const st = document.getElementById("entStage");
       if (st) {
-        st.querySelector(".stage-box").innerHTML = cut(pick.dataset.hero, "dossier__hero", `${document.getElementById("entName").textContent}: ${pick.dataset.heroLabel}`, "(min-width: 720px) 420px, 90vw", true);
+        const nm = document.getElementById("entName").textContent;
+        const sc = pick.dataset.scene && sceneOf(pick.dataset.scene);
+        st.classList.toggle("is-scene", !!sc);
+        st.innerHTML = sc ? sceneImg(sc, `${nm} in Adventure Mountain™`)
+          : `<span class="stage-box">${cut(pick.dataset.hero, "dossier__hero", `${nm}: ${pick.dataset.heroLabel}`, "(min-width: 720px) 420px, 90vw", true)}</span>`;
         document.getElementById("entStageLabel").textContent = pick.dataset.heroLabel;
-        eBody.querySelectorAll("[data-hero]").forEach((b) => b.setAttribute("aria-pressed", String(b === pick)));
+        eBody.querySelectorAll("[data-hero], [data-scene]").forEach((b) => b.setAttribute("aria-pressed", String(b === pick)));
       }
       return;
     }
@@ -595,7 +601,8 @@
     const e = ENTITIES[id];
     const t = e.media.thumb;
     return `<li><button class="foe${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
-      <span class="foe__stage"${envStyle(id)}>${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
+      ${sceneOf(id) ? `<span class="foe__stage foe__stage--scene">${sceneImg(sceneOf(id), "", true)}</span>`
+        : `<span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>`}
       <span class="foe__text"><strong>${esc(e.name)}</strong><small>${esc(e.copy.summary)}</small></span>
     </button></li>`;
   }).join("") + `<li><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
@@ -685,8 +692,13 @@
   teamList.innerHTML = TEAM.map((id) => {
     const c = CHARS[id];
     return `<li><a class="mate" href="#character/${id}" data-character="${id}" style="--c:${c.hex};--cd:${c.deep}">
-      <span class="mate__stage"><span class="mate__mark" aria-hidden="true">GB</span><span class="stage-box">${cut(c.card, "mate__fig", c.name, "(min-width: 1100px) 300px, (min-width: 720px) 45vw, 72vw")}</span></span>
-      <span class="mate__text"><strong>${esc(c.name)}</strong><small><i aria-hidden="true"></i>${esc(c.colour)}</small></span>
+      <span class="mate__fig" aria-hidden="true"><span class="stage-box">${cut(c.card, "mate__cut", "", "(min-width: 1100px) 260px, 60vw")}</span></span>
+      <span class="mate__text">
+        <b class="mate__colour">${esc(c.colour)}</b>
+        <strong>${esc(c.name)}</strong>
+        <small>${esc(c.tagline || "")}</small>
+        <span class="mate__go">View character<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </span>
     </a></li>`;
   }).join("");
   teamList.addEventListener("click", (e) => {
