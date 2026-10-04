@@ -20,6 +20,7 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--sky);color:var(--ink);font-family:var(--font);overflow-x:hidden}
 img{display:block;max-width:none}
 button{font:inherit;color:inherit;cursor:pointer}
+[hidden]{display:none!important}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- stage (hero + map share one stacking context) ---------- */
@@ -85,9 +86,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .slide{flex:0 0 100%;height:100%;margin:0}
 .slide img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 40%);filter:brightness(1.06) saturate(1.05)}
 .slide:first-child{--pos:50% 30%}
-.slide--blue-portal{--pos:50% 45%}
-.slide--blue-run{--pos:50% 40%}
-.slide--blue-bridge{--pos:55% 45%}
 
 .hero__shade{
   position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -194,30 +192,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .hero__dots button[aria-selected="true"]::before{background:#2f9bff;border-color:#fff;box-shadow:0 0 8px #49b2ff;transform:scale(1.15)}
 .hero__dots button:focus-visible{outline:2px solid #fff;border-radius:50%}
 
-/* ---------- map (rises into the hero through its own clouds) ---------- */
-.world{position:relative;z-index:3;margin-top:calc(-40 * var(--u))}
-.map{
-  position:relative;overflow:hidden;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 calc(40 * var(--u)));
-          mask-image:linear-gradient(180deg,transparent 0,#000 calc(40 * var(--u)));
-}
-.map:focus-visible{outline:none}
-.map-frame{position:relative}
-.map__pan,.map-nav,.map__mode{display:none}
-.map__canvas{position:relative;width:100%}
-.map__img{width:100%;height:auto}
-.hotspot{
-  position:absolute;left:calc(var(--x) * 1%);top:calc(var(--y) * 1%);
-  width:calc(var(--w) * 1%);height:calc(var(--h) * 1%);
-  padding:0;border:0;border-radius:10px;background:transparent;
-  transition:box-shadow .2s,background .2s;
-}
-.hotspot:hover,.hotspot:focus-visible{
-  background:rgba(255,255,255,.08);
-  box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 18px 4px rgba(90,190,255,.8);outline:none;
-}
-.map__hint{display:none}
-
 /* cloud banks: keyed from the approved target's cloud sea */
 .clouds{position:absolute;left:-15%;width:130%;height:auto;pointer-events:none;z-index:2}
 .clouds--top,.clouds--top2,.clouds--top3{
@@ -228,10 +202,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .clouds--top2{top:calc(-60 * var(--u));left:-32%;width:150%;transform:scaleX(-1)}
 .clouds--top3{top:calc(-96 * var(--u));left:-48%;width:175%;opacity:.9}
 .clouds--bottom{bottom:-1px;transform:scaleX(-1)}
-
-/* ---------- footer note (staging only) ---------- */
-.staging-note{padding:22px 16px 30px;text-align:center;color:#3b5a8a;font-size:13px}
-.staging-note p{margin:0}
 
 /* ---------- toast ---------- */
 .toast{
@@ -285,9 +255,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 
   .hero{height:calc(738 * var(--p));min-height:0}
   .slide:first-child{--pos:48% 30%}
-  .slide--blue-portal{--pos:46% 50%}
-  .slide--blue-run{--pos:42% 50%}
-  .slide--blue-bridge{--pos:52% 50%}
+  
+  
+  
   .hero__shade{
     background:
       linear-gradient(180deg,rgba(3,14,48,.82) 0,rgba(4,20,64,.66) 34%,rgba(6,28,80,.12) 52%,rgba(6,28,80,0) 60%),
@@ -306,17 +276,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 
   /* stills already contain the character: frame them in the scene band so heads/limbs
      never sit behind the fixed copy; a blurred copy of the same frame fills the rest */
-  .slide--still{position:relative;overflow:hidden}
-  .slide--still::before{
-    content:"";position:absolute;inset:-40px;background:var(--bg) center 30%/cover no-repeat;
-    filter:blur(18px) brightness(.8) saturate(1.1);
-  }
-  .slide--still img{
-    position:absolute;left:0;top:calc(296 * var(--p));width:100%;height:calc(330 * var(--p));
-    object-fit:cover;object-position:var(--ppos,50% 50%);
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 84%,transparent 100%);
-            mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 84%,transparent 100%);
-  }
+  
+  
+  
 
   .pillars{left:50%;top:calc(596 * var(--p));transform:translateX(-50%)}
   .pillars li{width:calc(118 * var(--p))}
@@ -330,67 +292,6 @@ button{font:inherit;color:inherit;cursor:pointer}
   .hero__arrow--prev{left:calc(50% - 112px)}
   .hero__arrow--next{right:auto;left:calc(50% + 72px)}
 
-  .world{margin-top:calc(-56 * var(--p))}
-  .map{
-    overflow-x:auto;overflow-y:hidden;scroll-snap-type:none;-webkit-overflow-scrolling:touch;scrollbar-width:none;
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 calc(50 * var(--p)));
-            mask-image:linear-gradient(180deg,transparent 0,#000 calc(50 * var(--p)));
-  }
-  .map::-webkit-scrollbar{display:none}
-  /* overview first: the whole world fits the width; "Explore the map" (or a tap) zooms in
-     to the readable, pannable view with arrows and the minimap */
-  .map__canvas{width:100%;transition:width .35s ease}
-  .world:not(.is-zoomed) .map{overflow:hidden;cursor:zoom-in}
-  .world:not(.is-zoomed) .hotspot{pointer-events:none}
-  .world:not(.is-zoomed) .map__pan,.world:not(.is-zoomed) .map-nav{display:none}
-  .world.is-zoomed .map__canvas{width:max(100%,min(320cqw,1250px))}
-  .map-nav{display:flex;flex-direction:column;align-items:center;gap:6px}
-  .world:not(.is-zoomed) .map-nav{display:flex;padding-top:8px}
-  .world:not(.is-zoomed) .map-nav .map__hint,.world:not(.is-zoomed) .map-nav .minimap{display:none}
-  .world:not(.is-zoomed) .clouds--top,.world:not(.is-zoomed) .clouds--top2,.world:not(.is-zoomed) .clouds--top3{translate:0 calc(-44 * var(--p))}
-  .world:not(.is-zoomed){margin-top:calc(-30 * var(--p))}
-  .world:not(.is-zoomed) .map{
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12px);
-            mask-image:linear-gradient(180deg,transparent 0,#000 12px)}
-  .map__mode{
-    display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 18px;border-radius:99px;
-    font-size:14px;font-weight:700;letter-spacing:.03em;color:#fff;
-    background:linear-gradient(180deg,#1257c9,#0b3a8f);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(10,40,110,.3);
-  }
-  .map__mode svg{width:18px;height:18px}
-  .map__mode--overview{background:#fff;color:#0b2a6b;border-color:rgba(11,42,107,.3)}
-  .world:not(.is-zoomed) .map__mode--overview,.world.is-zoomed .map__mode--expand{display:none}
-  .map__mode:focus-visible{outline:3px solid #9fd8ff;outline-offset:2px}
-  .map__pan{
-    display:grid;place-items:center;position:absolute;z-index:5;top:58%;transform:translateY(-50%);
-    width:44px;height:44px;padding:0;border-radius:50%;
-    background:rgba(4,14,40,.66);border:1.5px solid rgba(255,255,255,.8);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.35);
-    transition:opacity .25s;
-  }
-  .map__pan svg{width:55%;height:55%}
-  .map__pan--prev{left:8px}.map__pan--next{right:8px}
-  .map__pan.is-off{opacity:0;pointer-events:none}
-  .map__pan:focus-visible{outline:3px solid #9fd8ff;outline-offset:2px}
-  .map-nav{position:relative;z-index:4;padding:2px 16px 0}
-  .minimap{
-    position:relative;max-width:520px;margin:6px auto 0;border-radius:10px;overflow:hidden;cursor:pointer;touch-action:none;
-    border:2px solid #fff;box-shadow:0 4px 14px rgba(10,40,100,.25);
-  }
-  .minimap img{width:100%;height:auto}
-  .minimap__view{
-    position:absolute;top:0;bottom:0;left:0;width:30%;border:2px solid #fff;border-radius:6px;
-    box-shadow:0 0 0 999px rgba(4,20,60,.38),0 0 10px rgba(80,180,255,.9);
-  }
-  .minimap:focus-visible{outline:3px solid #2f9bff;outline-offset:2px}
-  .clouds--top{top:calc(-86 * var(--p));left:-110%;width:330%}
-  .clouds--top2{top:calc(-62 * var(--p));left:-160%;width:390%}
-  .clouds--top3{top:calc(-112 * var(--p));left:-200%;width:460%}
-  .clouds--bottom{left:-60%;width:220%}
-  .map__hint{
-    display:flex;justify-content:center;gap:10px;align-items:center;margin:0;
-    font-size:13px;font-weight:600;color:#2a4f86;letter-spacing:.02em;
-  }
-  .map__hint span{font-size:18px;line-height:1;color:#2f9bff}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -561,12 +462,6 @@ html.is-locked{overflow:hidden}
 }
 .systems__inner{max-width:1360px;margin:0 auto;padding:0 clamp(16px,3vw,40px);display:grid;gap:clamp(14px,1.8vw,24px)}
 .systems h2,.systems h3{margin:0}
-.frost-card{
-  background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.58));
-  border:1.5px solid rgba(255,255,255,.95);border-radius:18px;
-  box-shadow:0 10px 30px rgba(20,60,140,.14),inset 0 1px 0 #fff;
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-}
 
 /* five feature cards */
 .feats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1vw,14px)}
@@ -623,7 +518,6 @@ html.is-locked{overflow:hidden}
 .trio{display:grid;grid-template-columns:1.25fr 1fr 1.12fr;gap:clamp(12px,1.4vw,20px);align-items:stretch}
 .panel{display:flex;flex-direction:column;gap:12px;padding:clamp(12px,1.2vw,18px)}
 .panel{background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.6));border:1.5px solid rgba(255,255,255,.95);border-radius:18px;box-shadow:0 10px 30px rgba(20,60,140,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.panel__note{margin:auto 0 0;font-size:11px;font-weight:600;color:#5a7299;letter-spacing:.02em}
 
 /* Level Preview */
 .lp{display:grid;gap:10px}
@@ -643,7 +537,6 @@ html.is-locked{overflow:hidden}
 .lp__bar{display:flex;align-items:center;gap:10px}
 .lp__label{flex:1;margin:0;display:grid;text-align:center}
 .lp__label strong{font-size:14px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#0b2a6b}
-.lp__label span{font-size:11.5px;color:#5a7299}
 
 /* Fast Travel */
 .ft{position:relative;flex:1;display:flex;flex-direction:column;padding:0;border:0;border-radius:14px;overflow:hidden;background:#0b2050;text-align:center;box-shadow:0 0 0 2px #fff,0 8px 20px rgba(10,40,110,.25)}
@@ -678,7 +571,7 @@ html.is-locked{overflow:hidden}
 .dossier__close:hover{background:rgba(255,255,255,.22)}
 .dossier__body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px;padding:4px 18px 20px}
 .dossier__render{display:block;width:100%;border-radius:14px;box-shadow:0 0 0 2px rgba(255,255,255,.85)}
-.dossier__flag{display:inline-block;margin:0 0 10px;padding:2px 10px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ffd98a;background:rgba(255,190,60,.12);border:1px solid rgba(255,200,90,.45)}
+
 .dossier dl{margin:0;display:grid;gap:2px}
 .dossier dt{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9fd0ff}
 .dossier dd{margin:0;font-size:15px;line-height:1.4}
@@ -806,8 +699,7 @@ html.is-locked{overflow:hidden}
 .stage-box{position:relative;display:block;container-type:size}
 .stage-box > .gbm.cutout{position:absolute;left:50%;bottom:var(--fb,0%);translate:-50% 0;
   width:min(calc(var(--fw,100) * 1cqw),calc(var(--fh,100) * 1cqh * var(--ar)))}
-.stage-floor::after{content:"";position:absolute;left:22%;right:22%;bottom:var(--floor,8%);height:7%;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(8,28,80,.3),rgba(8,28,80,0));pointer-events:none}
+
 .chip{position:absolute;top:12px;left:12px;z-index:2;padding:3px 10px;border-radius:99px;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0b2a6b;background:rgba(255,255,255,.88);box-shadow:0 1px 4px rgba(0,20,60,.18)}
 
 /* Level Preview + Fast Travel share a row; Enemies & Hazards gets the full width */
@@ -886,7 +778,7 @@ html.is-locked{overflow:hidden}
   background:radial-gradient(ellipse 72% 66% at 50% 42%,#fff 0,#e3eefc 52%,#b5cdef 100%);box-shadow:0 0 0 2px rgba(255,255,255,.85)}
 .dossier__stage::after{content:"";position:absolute;left:24%;right:24%;bottom:12%;height:6%;border-radius:50%;background:radial-gradient(closest-side,rgba(8,28,80,.32),rgba(8,28,80,0))}
 .dossier__stage > .stage-box{position:absolute;inset:14% 8% 15%;z-index:1}
-.dossier__stagelabel,.char__stagelabel{position:absolute;left:0;right:0;bottom:10px;z-index:2;margin:0;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0b2a6b}
+
 .dossier__picks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
 .dossier__picks--states{grid-template-columns:repeat(4,minmax(0,1fr))}
 .dossier__pick,.char__view{width:100%;display:grid;gap:4px;padding:0 0 6px;border:0;border-radius:11px;overflow:hidden;background:rgba(255,255,255,.07);color:#cfe6ff;font:inherit;
@@ -913,7 +805,7 @@ html.is-locked{overflow:hidden}
 .char__views{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
 .char__view .stage-box{aspect-ratio:3/4;background:radial-gradient(ellipse at 50% 40%,#fff 0,color-mix(in srgb,var(--c) 14%,#fff) 60%,color-mix(in srgb,var(--c) 36%,#d5e2f4) 100%);--fw:90;--fh:90;--fb:5%}
 .char__view[aria-pressed="true"]{box-shadow:0 0 0 2.5px #fff,0 0 0 5px var(--c)}
-.char__note{margin:10px 0 0;font-size:12px;color:#9fb8dd}
+
 .char__team{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .char__team a{display:flex;align-items:center;gap:9px;min-height:44px;padding:6px 12px;border-radius:11px;color:#fff;text-decoration:none;font-size:13px;font-weight:700;background:rgba(255,255,255,.06);border:1px solid rgba(150,205,255,.25)}
 .char__team a:hover{background:rgba(255,255,255,.14)}
@@ -931,37 +823,20 @@ html.is-locked{overflow:hidden}
 }
 
 /* final branding footer */
-.site-foot{display:grid;justify-items:center;gap:8px;padding:clamp(26px,3.5vw,44px) 16px 10px;background:#061538;color:#cfe6ff;text-align:center}
+.site-foot{display:grid;justify-items:center;gap:8px;padding:clamp(26px,3.5vw,44px) 16px calc(28px + env(safe-area-inset-bottom));background:#061538;color:#cfe6ff;text-align:center}
 .site-foot__logo{width:clamp(150px,16vw,210px)}
 .site-foot__tag{margin:0;font-size:12px;font-weight:800;letter-spacing:.28em;color:#fff}
 .site-foot__legal{margin:0;font-size:12px;color:#9fb8dd}
-.staging-note{background:#061538;color:#7f9cc8}
+.site-foot__nav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;margin:4px 0}
+.site-foot__nav a{color:#cfe6ff;font-size:13px;font-weight:600;text-decoration:none;padding:6px 2px}
+.site-foot__nav a:hover{color:#fff;text-decoration:underline}
+.site-foot__nav a:focus-visible{outline:2px solid #9fd8ff;outline-offset:2px;border-radius:4px}
 .team h2,.team p{margin:0}
 .team .sec-head p{margin-top:4px}
 @media (max-width:719px){.team .sec-head h2{font-size:clamp(20px,6vw,26px)}}
 
 /* ===================== Enemies & Hazards: production pass 2 ===================== */
 /* evolution teaser band under the grid */
-.evo-teaser{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:clamp(14px,2vw,28px);align-items:center;padding:clamp(14px,1.8vw,22px) clamp(16px,2vw,26px);
-  border-radius:18px;color:#fff;overflow:hidden;position:relative;
-  background:radial-gradient(ellipse 50% 90% at 82% 50%,rgba(150,90,255,.28),transparent 70%),radial-gradient(ellipse 40% 80% at 45% 60%,rgba(255,140,40,.2),transparent 70%),linear-gradient(135deg,#0e2a6e,#071a48);
-  box-shadow:0 0 0 1.5px rgba(255,255,255,.9),0 12px 30px rgba(7,28,79,.3)}
-.evo-teaser h3{margin:2px 0 6px;font-size:clamp(16px,1.6vw,22px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:1.15;color:#fff}
-.evo-teaser p{margin:0;font-size:13px;color:#cfe6ff}
-.evo-teaser .evo-teaser__kicker{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ffb35c}
-.evo-teaser__btn{margin-top:12px;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:99px;font:inherit;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0b2a6b;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer}
-.evo-teaser__btn svg{width:16px;height:16px}
-.evo-teaser__btn:hover{background:#ffe1b8}
-.evo-teaser__line{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,34px)}
-.evo-teaser__line li{position:relative}
-.evo-teaser__line li + li::before{content:"";position:absolute;left:calc(-1 * clamp(18px,2.4vw,34px));top:38%;width:clamp(18px,2.4vw,34px);height:24px;
-  background:center/14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 5l7 7-7 7' fill='none' stroke='%23ffb35c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
-.evo-teaser__item{width:100%;display:grid;gap:3px;padding:0 0 8px;border:0;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.08);color:#fff;font:inherit;text-align:center;
-  box-shadow:0 0 0 1.5px rgba(160,200,255,.35);transition:transform .2s,box-shadow .2s;cursor:pointer}
-.evo-teaser__item:hover{transform:translateY(-3px);box-shadow:0 0 0 2px #ffb35c}
-.evo-teaser__item .stage-box{aspect-ratio:4/3;background:radial-gradient(ellipse 70% 65% at 50% 45%,#fff 0,#e6eefb 55%,#b9cdee 100%);--fw:86;--fh:84;--fb:6%}
-.evo-teaser__item strong{font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
-.evo-teaser__item small{font-size:11px;color:#9fd0ff}
 
 /* evolution component inside the dossier */
 .evo{grid-column:1/-1;display:grid;gap:12px;padding:16px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(150,205,255,.3)}
@@ -991,10 +866,10 @@ html.is-locked{overflow:hidden}
 
 /* phones: dense galleries become swipe rails instead of shrinking */
 @media (max-width:719px){
-  .evo-teaser{grid-template-columns:1fr}
-  .evo-teaser__line{gap:16px}
-  .evo-teaser__line li + li::before{left:-16px;width:16px;background-size:11px}
-  .evo-teaser__item strong{font-size:10.5px}
+  
+  
+  
+  
   .dossier__picks,.evo__seq,.evo__mech,.evo__scenes{display:grid;grid-template-columns:none;grid-auto-flow:column;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:6px}
   .dossier__picks::-webkit-scrollbar,.evo__seq::-webkit-scrollbar,.evo__mech::-webkit-scrollbar,.evo__scenes::-webkit-scrollbar{display:none}
   .dossier__picks{grid-auto-columns:96px}
@@ -1032,11 +907,8 @@ html.is-locked{overflow:hidden}
 .clouds--top2{top:calc(var(--ch) * -.5);translate:-58% 0;transform:scaleX(-1)}
 .clouds--top3{top:calc(var(--ch) * -.86);translate:-42% 0;opacity:.85}
 .clouds--bottom{bottom:-1px;transform:scaleX(-1)}
-.world:not(.is-zoomed) .clouds--top{translate:-50% 0}
-.world:not(.is-zoomed) .clouds--top2{translate:-58% 0}
-.world:not(.is-zoomed) .clouds--top3{translate:-42% 0}
 /* the bank's lower edge dissolves into the shared cloud white the page continues on */
-.map-frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:calc(var(--ch) * .5);z-index:3;pointer-events:none;
+.map-frame::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:calc(var(--ch) * .5);z-index:3;pointer-events:none;
   background:linear-gradient(180deg,rgba(233,241,252,0),var(--cloud) 80%)}
 
 /* page continues on the cloud sea: soft puffs, no hard edge under the map */
@@ -1054,17 +926,7 @@ html.is-locked{overflow:hidden}
 }
 .feat{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.74));box-shadow:0 10px 30px rgba(20,60,140,.14)}
 
-/* --- portrait map: opens zoomed so the world art dominates --- */
-@media (max-aspect-ratio:1/1){
-  .world.is-zoomed .map__canvas{width:max(100%,min(250cqw,1536px))}
-  .map__pan{top:50%}
-  .map-nav{padding:6px 16px 4px}
-  .world.is-zoomed .map-nav{gap:8px}
-  .map__hint{display:none}
-  .minimap{max-width:min(420px,78%)}
-}
-
-/* --- compact region pins (active only with a label-free map: data-labels="live") --- */
+/* --- compact region pins (panorama mode, once world coordinates are locked) --- */
 .hotspot.pin{width:auto;height:auto;display:inline-flex;align-items:center;gap:6px;padding:3px 9px 3px 3px;border-radius:99px;
   background:rgba(6,24,70,.42);border:1px solid rgba(255,255,255,.55);color:#fff;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
   transition:background .2s,padding .2s,box-shadow .2s}
@@ -1100,8 +962,6 @@ html.is-locked{overflow:hidden}
 .trio{grid-template-columns:minmax(0,1.05fr) minmax(0,.78fr) minmax(0,1.6fr);align-items:stretch}
 .panel{gap:10px}
 .panel__head p{display:none}
-.panel--hazards .panel__note{margin-top:2px}
-.lp__label span{font-size:11px}
 .ft__frame.gbm{min-height:0;flex:1}
 .ft__caption span{display:none}
 @media (max-width:1099px){
@@ -1177,7 +1037,6 @@ html.is-locked{overflow:hidden}
 }
 @media (orientation:landscape) and (max-height:520px){.team__list{margin-top:40px}.mate__stage{aspect-ratio:3/3.3}}
 @media (max-aspect-ratio:1/1){
-  .world,.world:not(.is-zoomed){margin-top:calc(-14 * var(--p))}
   .world{--cw:max(180cqw,900px)}
 }
 /* Fast Travel keeps a picture-frame height when it is not stretched by a row */
@@ -1192,13 +1051,157 @@ html.is-locked{overflow:hidden}
 .foe-evo__kicker{font-size:9.5px;letter-spacing:.1em}
 .foe-evo__go{white-space:normal;line-height:1.2}
 @media (max-aspect-ratio:1/1){
-  .world,.world:not(.is-zoomed){margin-top:calc(-44 * var(--p))}
+  .world{margin-top:calc(-44 * var(--p))}
   .world{--cw:max(330cqw,1500px)}
   .clouds--top{top:calc(var(--ch) * -.55)}
   .clouds--top2{top:calc(var(--ch) * -.38)}
   .clouds--top3{top:calc(var(--ch) * -.72)}
-  .map,.world:not(.is-zoomed) .map{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 calc(64 * var(--p)));mask-image:linear-gradient(180deg,transparent 0,#000 calc(64 * var(--p)))}
 }
 .foe__stage > .gbm,.foe__stage::before,.foe__stage::after,.mate__stage > .stage-box,.mate__mark{pointer-events:none}
 .systems__inner{grid-template-columns:minmax(0,1fr)}.systems__inner > *{min-width:0}
 .rail-block,.rail-wrap{grid-template-columns:minmax(0,1fr);min-width:0}.systems,.team{overflow-x:clip}
+
+/* ===================== World viewer (world.js) =====================
+   Fallback mode: the current front map (JS sets the viewport height from the configured size).
+   Panorama mode: CSS sets the viewport height; tiles loop horizontally.
+   Clouds are the hero-to-world transition only: never geography, never interactive. */
+.world{position:relative;z-index:3;margin-top:calc(-40 * var(--u))}
+.cloudfx{position:absolute;inset:0;z-index:2;pointer-events:none;transition:opacity .5s ease}
+.world.is-exploring .cloudfx{opacity:.3}
+.clouds{pointer-events:none;user-select:none}
+.map-frame{position:relative}
+.map{
+  position:relative;overflow:hidden;touch-action:pan-y;outline:none;
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 calc(40 * var(--u)));
+          mask-image:linear-gradient(180deg,transparent 0,#000 calc(40 * var(--u)));
+}
+.map:focus-visible::after{content:"";position:absolute;z-index:4;inset:calc(48 * var(--u)) 8px calc(var(--ch,60px) * .6) 8px;
+  border:3px solid #2f9bff;border-radius:14px;box-shadow:0 0 0 2px #fff;pointer-events:none}
+.world.can-pan .map{cursor:grab}
+.world.is-dragging .map{cursor:grabbing}
+.map__track{position:absolute;left:0;top:0;height:100%;will-change:transform}
+.map__img{display:block;max-width:none;pointer-events:none}
+.map__strip{position:absolute;left:0;top:0;overflow:hidden}
+.map__overview{position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none}
+.map__tile{position:absolute;top:0;height:100%;max-width:none;opacity:0;transition:opacity .35s;pointer-events:none}
+.map__tile.is-in{opacity:1}
+.map__overlay{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.map__mark{position:absolute;left:0;top:0;pointer-events:auto}
+.world[data-mode="panorama"] .map{height:clamp(340px,40vw,760px)}
+
+/* region hotspots (fallback: invisible boxes over the map's baked labels) */
+.hotspot{padding:0;border:0;border-radius:10px;background:transparent;transition:box-shadow .2s,background .2s}
+.hotspot:hover,.hotspot:focus-visible{background:rgba(255,255,255,.08);
+  box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 18px 4px rgba(90,190,255,.8);outline:none}
+.hotspot.pin{translate:-50% -50%}
+
+/* mode-dependent wording: [data-when] shows only in its mode */
+.world:not([data-mode="panorama"]) [data-when="panorama"],
+.world:not([data-mode="fallback"]) [data-when="fallback"]{display:none}
+
+/* pan buttons: shown whenever the view can move */
+.map__pan{
+  display:none;place-items:center;position:absolute;z-index:5;top:55%;transform:translateY(-50%);
+  width:44px;height:44px;padding:0;border-radius:50%;
+  background:rgba(4,14,40,.66);border:1.5px solid rgba(255,255,255,.8);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.35);
+  transition:opacity .25s;
+}
+.world.can-pan .map__pan{display:grid}
+.map__pan svg{width:55%;height:55%}
+.map__pan--prev{left:10px}.map__pan--next{right:10px}
+.map__pan.is-off{opacity:0;pointer-events:none}
+.map__pan:hover{background:rgba(10,40,110,.85)}
+.map__pan:focus-visible{outline:3px solid #9fd8ff;outline-offset:2px}
+
+/* section title + controls */
+.map-nav{position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px 16px 4px}
+.map-title{display:inline-flex;align-items:center;gap:8px;margin:0;padding:7px 16px 7px 10px;border-radius:99px;
+  font-size:clamp(13px,1.15vw,16px);font-weight:800;font-style:italic;letter-spacing:.04em;text-transform:uppercase;color:#0b2a6b;
+  background:rgba(255,255,255,.86);box-shadow:0 6px 18px rgba(20,60,140,.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.map-title svg{width:1.5em;height:1.5em;flex:none;color:#1f7ae0}
+.map-title__badge{margin-left:4px;padding:2px 8px;border-radius:99px;font-size:.72em;font-style:normal;letter-spacing:.08em;color:#fff;background:#1f7ae0}
+.map-nav__row{display:flex;align-items:center;gap:10px}
+.map__mode,.map__hint,.minimap{display:none}
+.map__mode{align-items:center;gap:7px;min-height:44px;padding:0 18px;border-radius:99px;
+  font-size:14px;font-weight:700;letter-spacing:.03em;color:#fff;
+  background:linear-gradient(180deg,#1257c9,#0b3a8f);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(10,40,110,.3)}
+.map__mode svg{width:18px;height:18px}
+.map__mode--overview{background:#fff;color:#0b2a6b;border-color:rgba(11,42,107,.3)}
+.map__mode:focus-visible{outline:3px solid #9fd8ff;outline-offset:2px}
+.map__hint{align-items:center;gap:8px;margin:0;font-size:13px;font-weight:600;color:#2a4f86;letter-spacing:.02em}
+.map__hint span{font-size:18px;line-height:1;color:#2f9bff}
+.map__hint b{font-weight:600}
+.world.can-pan .map__hint{display:flex}
+.minimap{position:relative;width:min(420px,78%);border-radius:10px;overflow:hidden;cursor:pointer;touch-action:none;
+  border:2px solid #fff;box-shadow:0 4px 14px rgba(10,40,100,.25)}
+.minimap img{width:100%;height:auto;pointer-events:none}
+.minimap__view{position:absolute;top:0;bottom:0;left:0;width:30%;border:2px solid #fff;border-radius:6px;
+  box-shadow:0 0 0 999px rgba(4,20,60,.38),0 0 10px rgba(80,180,255,.9)}
+.minimap__view + .minimap__view{box-shadow:0 0 10px rgba(80,180,255,.9)}
+.minimap:focus-visible{outline:3px solid #2f9bff;outline-offset:2px}
+.world.can-pan .minimap,.world[data-mode="panorama"] .minimap{display:block}
+
+/* landscape: the title sits on the lower cloud bank, above the overlapping feature row */
+@media (min-aspect-ratio:1/1){
+  .map-nav{position:absolute;left:auto;right:clamp(16px,3vw,48px);bottom:calc(clamp(26px,3.4vw,58px) + 10px);align-items:flex-end;padding:0;pointer-events:none}
+  .map-nav > *{pointer-events:auto}
+  .world:not(.can-pan) .map-nav__row{display:none}
+  .minimap{display:none!important}
+}
+@media (orientation:landscape) and (max-height:520px){
+  .map-nav{bottom:calc(clamp(26px,3.4vw,58px) + 6px)}
+  .map-title{font-size:12px;padding:5px 12px 5px 8px}
+}
+
+/* portrait: zoom in / whole map (fallback), title and controls below the map */
+@media (max-aspect-ratio:1/1){
+  .world[data-mode="fallback"] .map__mode{display:inline-flex}
+  .world:not(.is-zoomed) .map__mode--overview,.world.is-zoomed .map__mode--expand{display:none}
+  .world[data-mode="fallback"]:not(.is-zoomed) .map{cursor:zoom-in}
+  .world:not(.is-zoomed) .hotspot{pointer-events:none}
+  .world.can-pan .map__hint{display:none}
+  .world[data-mode="panorama"] .map{height:min(62svh,520px)}
+  /* the fade never runs past the hero overlap, so no hard hero edge shows through */
+  .world{margin-top:calc(-44 * var(--p))}
+  .map{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 calc(44 * var(--p)));
+               mask-image:linear-gradient(180deg,transparent 0,#000 calc(44 * var(--p)))}
+  .map__pan{top:auto;bottom:calc(var(--ch) * .55);transform:none;width:40px;height:40px}
+}
+@media (prefers-reduced-motion:reduce){.cloudfx,.map__tile{transition:none}}
+
+/* artwork deterrence (not DRM): no drag-out, no long-press save sheet on published art */
+.gbm img,.cutout img,.hero img,.mate img,.foe img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+
+/* footer */
+.site-foot__note{margin:0 0 4px;max-width:46ch;font-size:11.5px;line-height:1.5;color:#7f9cc8}
+.site-foot__build{display:none}
+
+/* ===================== Hero responsive corrections ===================== */
+/* safe areas (viewport-fit=cover): keep logo, copy and controls clear of notches */
+.topbar{padding-top:env(safe-area-inset-top)}
+.hero__copy{left:env(safe-area-inset-left,0px);right:env(safe-area-inset-right,0px)}
+/* phone landscape: the logo needs breathing room above it */
+@media (orientation:landscape) and (max-height:520px){
+  .brand{top:max(10px,env(safe-area-inset-top));left:max(calc(60 * var(--u)),env(safe-area-inset-left));min-width:88px}
+  .menu-btn{top:max(10px,env(safe-area-inset-top))}
+}
+/* portrait: carousel arrows never cross the characters' feet.
+   Tablets keep them at the outer ends of the dot row; phones use dots + swipe only. */
+@media (max-aspect-ratio:1/1){
+  .hero__arrow--prev{left:max(12px,env(safe-area-inset-left))}
+  .hero__arrow--next{left:auto;right:max(12px,env(safe-area-inset-right))}
+}
+@media (max-aspect-ratio:1/1) and (max-width:599px){
+  .hero__arrow{display:none}
+  .hero__dots{gap:6px}
+  .hero__dots button{width:32px;height:32px}
+}
+
+/* ===================== Enemies & Hazards: aligned cards ===================== */
+/* every card in a row ends on the same line, whatever the name length */
+.foes > li{display:flex}
+.foe:not(.foe--evo){display:flex;flex-direction:column;align-content:normal}
+.foe:not(.foe--evo) .foe__text{flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:2px}
+/* evolved forms read heavier through height and mass, not by spilling into neighbouring cards */
+.foe--big .foe__stage > .gbm.cutout{width:min(106cqw,calc(var(--s) * 86cqh * var(--ar)))}
