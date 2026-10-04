@@ -4,7 +4,7 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
-- Live build: **`r-46ccc427`** (visual correction pass; see below). Previous: `r-93f82a77`.
+- Live build: **`r-46ccc427`**, main `767d14f` (visual correction pass; see below). Previous: `r-93f82a77`.
 - Root homepage and `/v2/` are untouched. Never change them.
 
 ## Publishing workflow (every user-visible change)
