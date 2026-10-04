@@ -177,6 +177,8 @@
     const rev = small ? m.srev : m.rev;
     return `${src}${small ? "-960" : ""}.webp${rev ? `?v=${rev}` : ""}`;
   };
+  // srcset from the real derivative widths (images differ in size; never hard-code them)
+  const srcset = (src) => { const m = MEDIA[src] || {}; return m.sw && m.sw < m.w ? `${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w` : `${asset(src)} ${m.w || 1600}w`; };
   const isOpen = (id) => AREAS[id] && AREAS[id].status === "open" && AREAS[id].views.length > 0;
   const KIND = { establishing: "Overview", ground: "Ground level", traversal: "Route", landmark: "Landmark", closeup: "Close view", still: "Preview still" };
   let current = null;      // area id
@@ -214,8 +216,8 @@
       <figure class="shot" data-index="${i}" aria-label="View ${i + 1} of ${area.views.length}: ${v.label}" style="--focus:${v.focus ?? 0.5};${frameVars(v.src)}">
         <div class="shot__frame">
           <div class="shot__stage gbm">
-            <img src="${asset(v.src)}" srcset="${asset(v.src, true)} 960w, ${asset(v.src)} 1672w"
-                 sizes="(max-aspect-ratio: 1/1) 180vh, 92vw" alt="${v.alt}" width="1672" height="941"
+            <img src="${asset(v.src)}" srcset="${srcset(v.src)}"
+                 sizes="(max-aspect-ratio: 1/1) 180vh, 92vw" alt="${v.alt}" width="${(MEDIA[v.src] || {}).w || 1672}" height="${(MEDIA[v.src] || {}).h || 941}"
                  ${i ? 'loading="lazy"' : 'fetchpriority="high"'} draggable="false">
             <div class="shot__hotspots" data-view="${i}">${buildHotspots(v)}</div>
           </div>
@@ -335,6 +337,8 @@
     return `<span class="gbm cutout ${cls}" style="${frameVars(src)}"><img src="${asset(src)}"${set} alt="${esc(alt)}"${eager ? "" : ' loading="lazy"'} draggable="false"></span>`;
   };
   const isCut = (src) => !!(MEDIA[src] && MEDIA[src].alpha);
+  // soft in-world backdrop (entities.js GB_ENTITY_ENV) behind enemy renders
+  const envStyle = (id) => { const s = (window.GB_ENTITY_ENV || {})[id]; return s && MEDIA[s] ? ` style="--env:url('${asset(s, true)}')" data-env` : ""; };
 
   // optional authored evolution line (e.g. Rolling Boulder → Stone Golem → Crystal Guardian)
   const evo = (e) => {
@@ -398,7 +402,7 @@
     }).join("");
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
-        ? `<div class="dossier__stage" id="entStage"><span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span></div>
+        ? `<div class="dossier__stage" id="entStage"${envStyle(id)}><span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span></div>
            <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">Hero</span></p>`
         : media(hero, "dossier__render", e.name)}
         ${views ? `<h3>Production views</h3><ul class="dossier__picks">${stage ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="true"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
@@ -542,7 +546,8 @@
     const a = AREAS[id];
     const v = a.views[0];
     const state = a.status === "open" ? "" : a.status === "incomplete" ? "More views soon" : "Coming soon";
-    return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}"
+    const rc = ((window.GB_WORLD || {}).regions || []).find((r) => r.area === id);
+    return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}" style="--rc:${rc ? rc.color : "#1f7ae0"}"
         aria-label="${esc(a.name)} — ${esc(a.sub)}${state ? ` (${state})` : ""}">
       ${v ? media(v.src, "area-card__img", "", "small")
           : a.identity ? `<span class="area-card__img region-id region-id--${a.identity.theme}" aria-hidden="true"><svg><use href="#${a.identity.icon}"/></svg></span>`
@@ -570,7 +575,7 @@
     lpIndex = (i + LP.views.length) % LP.views.length;
     const v = LP.views[lpIndex];
     lpFrame.setAttribute("style", frameVars(v.src));
-    lpFrame.innerHTML = `<img src="${asset(v.src, true)}" srcset="${asset(v.src, true)} 960w, ${asset(v.src)} 1672w" sizes="(min-width: 1100px) 34vw, 92vw" alt="${esc(v.alt)}" draggable="false">`;
+    lpFrame.innerHTML = `<img src="${asset(v.src, true)}" srcset="${srcset(v.src)}" sizes="(min-width: 1100px) 34vw, 92vw" alt="${esc(v.alt)}" draggable="false">`;
     lpLabel.textContent = v.label;
     [...lpThumbs.children].forEach((b, n) => b.setAttribute("aria-selected", String(n === lpIndex)));
   }
@@ -583,14 +588,14 @@
   const portal = ENTITIES.portal;
   const ftFrame = document.getElementById("ftFrame");
   ftFrame.setAttribute("style", frameVars(portal.media.render));
-  ftFrame.innerHTML = `<img src="${asset(portal.media.render, true)}" srcset="${asset(portal.media.render, true)} 960w, ${asset(portal.media.render)} 1280w" sizes="(min-width: 1100px) 30vw, 92vw" alt="Gamer Bro Blue™ leaping into a blue portal in a stone shrine" loading="lazy" draggable="false">`;
+  ftFrame.innerHTML = `<img src="${asset(portal.media.render, true)}" srcset="${srcset(portal.media.render)}" sizes="(min-width: 1100px) 30vw, 92vw" alt="Gamer Bro Blue™ leaping into a blue portal in a stone shrine" loading="lazy" draggable="false">`;
 
   // ---------- Enemies & Hazards ----------
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
     const e = ENTITIES[id];
     const t = e.media.thumb;
     return `<li><button class="foe${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
-      <span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
+      <span class="foe__stage"${envStyle(id)}>${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
       <span class="foe__text"><strong>${esc(e.name)}</strong><small>${esc(e.copy.summary)}</small></span>
     </button></li>`;
   }).join("") + `<li><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
