@@ -1398,3 +1398,12 @@ html.is-locked{overflow:hidden}
 .ft{flex:none}
 .objs{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media (max-width:719px){.objs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.panel__intro{margin:-2px 0 4px;font-size:13.5px;line-height:1.45;color:#2c4a7c}
+.panel__intro b{color:#0b2a6b}
+.objs{grid-template-columns:repeat(4,minmax(0,1fr))}
+.obj .foe__stage--scene{aspect-ratio:1/1}
+.objs .obj .foe__stage,.objs .obj .foe__stage--scene{aspect-ratio:1.3/1}
+.objs .obj .foe__stage--scene{overflow:hidden;border-radius:16px 16px 0 0}
+@media (max-width:719px){.objs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.objs .obj .foe__stage::before{top:0;border-radius:16px 16px 0 0}
