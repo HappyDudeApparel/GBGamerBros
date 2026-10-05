@@ -11,7 +11,7 @@
 
 (() => {
 const C = "assets/characters/";
-const V = { pose: "Pose", front: "Front", threeq: "¾ view", side: "Side", back: "Back" };
+const V = { pose: "Pose", front: "Front", threeq: "Pose", side: "Side", back: "Back" };
 const looks = (id, sporty, street) => ({
   sporty: { label: "Sporty look", views: sporty.map((v) => ({ src: `${C}${id}/sporty-${v}`, label: V[v] })) },
   streetwear: { label: "Streetwear look", views: street.map((v) => ({ src: `${C}${id}/street-${v}`, label: V[v] })) },
@@ -21,7 +21,7 @@ window.GB_CHARACTERS = {
   blue: {
     name: "Gamer Bro Blue™", colour: "Blue", hex: "#1f6fff", deep: "#0a2f8f",
     card: C + "blue/street-threeq", tagline: "Bold, curious, and always ready to explore.",
-    looks: looks("blue", ["pose", "front", "side", "back"], ["front", "threeq", "side"]),
+    looks: looks("blue", ["pose", "front", "side", "back"], ["threeq", "front", "side", "back"]),
   },
   red: {
     name: "Gamer Bro Red™", colour: "Red", hex: "#e3262f", deep: "#7d0d14",

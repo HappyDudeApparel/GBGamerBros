@@ -4,7 +4,7 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
-- Live build: **`r-46ccc427`**, main `767d14f` (visual correction pass; see below). Previous: `r-93f82a77`.
+- Live build: **`r-754c2d45`** (README completion pass). Earlier: `r-46ccc427`, main `767d14f` (visual correction pass; see below). Previous: `r-93f82a77`.
 - Root homepage and `/v2/` are untouched. Never change them.
 
 ## Publishing workflow (every user-visible change)
@@ -16,6 +16,24 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 6. Check the Pages run (GitHub Actions "pages build and deployment") and report the new build ID.
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
+
+## COMPLETED — README completion pass (2026-10-05, build r-754c2d45)
+Authority: Drive `ASTRA_360_RECONSTRUCTION_V3_2026-10-04/README.md` (source roles, asset search rules, website fix list).
+- **Map:** fallback map replaced with the approved **0° FRONT master** (`01_WORLD_0_FRONT_MASTER_REFERENCE`, cropped y 30–990 → `assets/adventure-mountain-front.webp`, minimap `-480`). Old overloaded map deleted. Region pins (region-coloured icon + name) now show on the front map; positions in world-data.js `fallback {x,y}` are valid for this image only. Panorama contract unchanged.
+- **Locations:** Creek Crossing™ now open with CC01–03 (old waterfall render removed); Prism Ridge™ open with PR02–04 + SS01 Summit portal stairs (Drive folders found by visual search). All seven regions have real galleries.
+- **Fast Travel:** the seven regional portals from the Visual Design Bible (correct banner colours) in `assets/systems/portals/`; panel has a region-colour switcher; portal dossier shows all seven.
+- **World Objects (new section):** Springboard, GB Crate, Treasure Chest, Adventure Crystal, Coin, Secret Key / Rare Crystal: transparent cutouts keyed from Canonical World Assets v1; dossiers via the existing #entity routes. One subtle line: "Visualizations and designs are subject to change during development."
+- **Enemies:** card descriptors removed, names larger/styled, ™ on all seven names. Dossiers: **Action states first, Reference views second**; empty "Not yet available" tiles and empty encounter sections removed. New action states keyed from the Game Asset Production sheet: Goom Idle/Walk/Alert/Charge (+ Defeated dizzy, Inactive), Sentry Cannon Idle/Tracking/Firing/Cooldown/Destroyed (+ Inactive). Evolution sequence ends on the strong `crystal-guardian-hero` final form (weak evo-crystal-guardian cutout deleted). Public "To be confirmed" copy replaced.
+- **Meet the Team:** heading without ™; Gamer Girl Purple™ streetwear pose (card) now wears her visor (transplanted from her own front view); Gamer Bro Blue™ streetwear set completed with a Back view (from the official hoodie turnaround) and the "¾ view" label normalised (set = Pose/Front/Side/Back).
+- **Hero:** slide 3 restored on phone portrait (3 dots everywhere).
+- **Phone portrait feature strip:** compact horizontal cards (icon left), no truncation; other breakpoints unchanged.
+- Tests: six viewports clean; functional suite passes (logo-padding check is a known scrolled-page artefact).
+
+### Next assets to generate
+- Rotor Bot™ action states (patrol, dive, turning, damaged): only hover/attack + defeated exist at usable resolution.
+- 90° RIGHT and 270° LEFT world views for the 360 (per README §3).
+- New hero carousel art (running toward camera, springboard launch, portal entry, Frost/Prism approach) in current character designs.
+- Higher-resolution in-game renders for Spike Bot™ / Rotor Bot™ (current crops are 2× upscales); larger object renders (current cutouts are ~3× upscales from the board).
 
 ## COMPLETED — target match pass (2026-10-05)
 - **Enemies:** cards and dossier opening views now use in-game renders (`GB_ENTITY_SCENE` in entities.js, assets/entities/scenes/*-ingame) cropped from the production masters' in-game panels: Goom/Sentry Cannon (Game Asset Production sheet), Spike Bot and Rotor Bot (Enemy & Hazard Assets v1), Rolling Boulder / Stone Golem / Crystal Guardian (owner-uploaded production masters). By owner direction this supersedes the "never crop boards" rule for these in-game panels only; no labels/text are included. Blurred-terrain backdrops removed. Dossier: "In the world" view first; production cutouts remain selectable views.

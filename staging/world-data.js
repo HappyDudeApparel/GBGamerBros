@@ -3,9 +3,9 @@
 // COORDINATES ARE UNLOCKED. The corrected 360° panorama becomes the coordinate authority
 // when it is installed. Until then:
 //   * `world` is null for every region (no panorama-space position is claimed);
-//   * `fallback` boxes { l, t, w, h } (left/top/width/height, 0–1) are measured against the CURRENT fallback map
-//     (assets/adventure-mountain-map.webp) — they sit over that image's baked labels and
-//     are valid ONLY for it. They are never reused as panorama coordinates.
+//   * `fallback` points { x, y } (0–1) are region pin positions measured on the CURRENT fallback map,
+//     the approved 0° front master (assets/adventure-mountain-front.webp, cropped y 30–990 of
+//     01_WORLD_0_FRONT_MASTER_REFERENCE). Valid ONLY for that image; never reused as panorama coordinates.
 //
 // World coordinate system (panorama mode):
 //   x = 0–1 around the world circumference (wraps: 1.0 ≡ 0.0)
@@ -24,19 +24,19 @@ window.GB_WORLD = {
   // `color` = canonical region banner field (WORLD_ASSET_STANDARD.md §1): cards, pins, placeholders.
   regions: [
     { id: "portal", color: "#16A38A", area: "portal", name: "Portal Meadow™",   sub: "The Adventure Begins",          icon: "i-portal",
-      fallback: { l: .055, t: .645, w: .156, h: .147 }, world: null },
+      fallback: { x: 0.49, y: 0.875 }, world: null },
     { id: "creek", color: "#1E6FD9",  area: "creek",  name: "Creek Crossing™",  sub: "Bridges & Rapids",              icon: "i-traversal",
-      fallback: { l: .301, t: .537, w: .148, h: .136 }, world: null },
+      fallback: { x: 0.51, y: 0.635 }, world: null },
     { id: "river", color: "#B8692A",  area: "river",  name: "Riverworks™",      sub: "Waterfalls & Pipeways",         icon: "i-spiral",
-      fallback: { l: .531, t: .558, w: .146, h: .141 }, world: null },
+      fallback: { x: 0.85, y: 0.59 }, world: null },
     { id: "clover", color: "#23864A", area: "clover", name: "Clover Cliffs™",   sub: "Forest Trails",                 icon: "i-tree",
-      fallback: { l: .231, t: .212, w: .137, h: .134 }, world: null },
+      fallback: { x: 0.195, y: 0.47 }, world: null },
     { id: "ruin", color: "#C8283B",   area: "ruin",   name: "Ruin Courtyard™",  sub: "Forgotten Towers",              icon: "i-secret",
-      fallback: { l: .585, t: .335, w: .165, h: .132 }, world: null },
+      fallback: { x: 0.15, y: 0.18 }, world: null },
     { id: "prism", color: "#7A3CC8",  area: "prism",  name: "Prism Ridge™",     sub: "Crystal Peaks & Ancient Ruins", icon: "i-reward",
-      fallback: { l: .474, t: .180, w: .167, h: .136 }, world: null },
+      fallback: { x: 0.5, y: 0.115 }, world: null },
     { id: "frost", color: "#7CC6F2",  area: "frost",  name: "Frost Peaks™",     sub: "Icy Cliffs & Granite Roads",    icon: "i-snow",
-      fallback: { l: .791, t: .190, w: .169, h: .134 }, world: null },
+      fallback: { x: 0.86, y: 0.21 }, world: null },
   ],
 
   // Geographic sub-regions that are NOT public areas (no card, no route, no pin).

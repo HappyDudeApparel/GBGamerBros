@@ -1336,3 +1336,39 @@ html.is-locked{overflow:hidden}
   .slide--scene .scene-box > .gbm{top:50%;translate:calc(-1 * var(--sx,50%)) -50%}
 }
 @media (max-aspect-ratio:1/1){.slide--scene .scene-box > .gbm{left:var(--psx,var(--sx,50%));translate:calc(-1 * var(--psx,var(--sx,50%))) -50%}}
+
+/* ===================== README completion pass (2026-10-05) ===================== */
+/* enemy + object cards: the name is the card */
+.foe .foe__text{display:flex;align-items:center;justify-content:center;min-height:46px;padding:8px 8px 10px;text-align:center}
+.foe .foe__text strong{font-size:clamp(13px,1.05vw,16px);font-weight:900;font-style:italic;letter-spacing:.02em;line-height:1.1;text-transform:uppercase;color:#0b2a6b}
+/* world objects: cutouts on the light plinth, six across */
+.panel--objects{margin-top:clamp(14px,1.6vw,22px)}
+.objs{grid-template-columns:repeat(6,minmax(0,1fr))}
+.obj .foe__stage{aspect-ratio:1/1}
+.obj .foe__stage > .gbm.cutout{bottom:12%;width:min(calc(var(--s) * 100cqw),calc(var(--s) * 100cqh * var(--ar)))}
+.panel__fine{margin:4px 0 0;font-size:11px;color:#5a7299;text-align:right}
+@media (max-width:1099px){.objs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:719px){.objs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* fast travel: regional portal switcher */
+.ft__caption strong{font-size:14px}
+.ft__dots{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:8px}
+.ft__dots button{width:26px;height:26px;padding:0;border-radius:50%;border:2.5px solid #fff;background:var(--rc);box-shadow:0 2px 6px rgba(10,40,110,.3)}
+.ft__dots button[aria-pressed="true"]{box-shadow:0 0 0 2.5px #0b2a6b,0 2px 6px rgba(10,40,110,.3);transform:scale(1.12)}
+.ft__dots button:focus-visible{outline:3px solid #2f9bff;outline-offset:2px}
+.dossier__states{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+/* front map pins */
+.hotspot.pin .pin__icon{background:var(--rc,rgba(255,255,255,.18))}
+/* phone portrait: compact feature strip, nothing truncated */
+@media (max-width:599px) and (max-aspect-ratio:1/1){
+  .feats{grid-template-columns:repeat(5,74%);gap:8px}
+  .feat{display:grid;grid-template-columns:38px 1fr;column-gap:10px;align-items:center;padding:9px 12px;text-align:left}
+  .feat__icon{grid-row:1 / span 3;width:38px;height:38px;margin:0}
+  .feat__icon svg{width:58%;height:58%}
+  .feat h3{font-size:12.5px;margin:0;white-space:normal;overflow:visible}
+  .feat p{font-size:11.5px;line-height:1.3;margin:1px 0 0;overflow:visible;display:block}
+  .feat .feat__note{justify-self:start;margin-top:3px}
+}
+.hotspot.pin{padding:4px 12px 4px 4px;background:rgba(6,24,70,.62)}
+.hotspot.pin .pin__icon{width:28px;height:28px}
+.hotspot.pin .pin__text strong{font-size:13px;opacity:1}
+@media (max-width:599px){.hotspot.pin{padding:2px 8px 2px 2px}.hotspot.pin .pin__icon{width:20px;height:20px}.hotspot.pin .pin__text strong{font-size:10px}}

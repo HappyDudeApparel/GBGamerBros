@@ -33,11 +33,14 @@ window.GB_AREAS = {
     ],
   },
   creek: {
-    name: "Creek Crossing™", sub: "Bridges & Rapids", status: "incomplete",
-    // one reliable image so far; opens once more views exist
+    name: "Creek Crossing™", sub: "Bridges & Rapids", status: "open",
     views: [
-      { src: A + "creek-crossing/01-enchanted_waterfall_canyon_adventure", kind: "traversal", label: "Plank bridge", focus: 0.5,
-        alt: "Wooden plank bridge crossing over rapids between waterfalls", hotspots: [] },
+      { src: A + "creek-crossing/cc01-low-water-crossing", kind: "establishing", label: "Low-water crossing", focus: 0.4,
+        alt: "Lantern-lit stone steps and a masonry arch bridge over a turquoise creek", hotspots: [] },
+      { src: A + "creek-crossing/cc02-branching-path", kind: "traversal", label: "Branching path", focus: 0.36,
+        alt: "Stone stairs branching from the creek path beside a wooden rail", hotspots: [] },
+      { src: A + "creek-crossing/cc03-creek-bank-bridge", kind: "landmark", label: "Under the bridge", focus: 0.55,
+        alt: "Creek bank path running beneath a mossy masonry bridge", hotspots: [] },
     ],
   },
   river: {
@@ -75,9 +78,19 @@ window.GB_AREAS = {
         alt: "Layered ruins with stairs and arched walkways leading to several routes", hotspots: [] },
     ],
   },
-  // Prism Ridge™: previous views carried non-canonical (blue) banners; purple identity until new art
-  prism: { name: "Prism Ridge™", sub: "Crystal Peaks & Ancient Ruins", status: "artwork-required", views: [],
-    identity: { theme: "crystal", icon: "i-reward" } },
+  prism: {
+    name: "Prism Ridge™", sub: "Crystal Peaks & Ancient Ruins", status: "open",
+    views: [
+      { src: A + "prism-ridge/pr02-crystal-flatland", kind: "establishing", label: "Crystal flatland", focus: 0.55,
+        alt: "Paved ruin plateau with violet crystals and the crystal citadel on the peaks beyond", hotspots: [] },
+      { src: A + "prism-ridge/pr03-high-ridge-approach", kind: "traversal", label: "High ridge approach", focus: 0.6,
+        alt: "Ridge path past ruined arches with a sightline to the crystal citadel", hotspots: [] },
+      { src: A + "prism-ridge/pr04-prism-ruin-landing", kind: "ground", label: "Ruin landing", focus: 0.55,
+        alt: "Broad stone landing among ruined towers and crystal clusters", hotspots: [] },
+      { src: A + "prism-ridge/ss01-summit-portal-stairs", kind: "landmark", label: "Summit portal stairs", focus: 0.5,
+        alt: "Grand staircase climbing between crystals and waterfalls to the summit portal", hotspots: [] },
+    ],
+  },
   frost: {
     name: "Frost Peaks™", sub: "Icy Cliffs & Granite Roads", status: "open",
     views: [

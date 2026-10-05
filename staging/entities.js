@@ -36,50 +36,50 @@ window.GB_HERO_HEIGHT = 1.8;   // Gamer Bros reference height (m)
 window.GB_ENTITIES = {
   // ---------------- enemies ----------------
   "goom": {
-    name: "Goom", type: "enemy", status: "APPROVED",
+    name: "Goom™", type: "enemy", status: "APPROVED",
     // GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1 (approved production master)
     media: { thumb: E + "goom-hero", render: E + "goom-hero", icon: null },
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
     encounter: [],
     views: { "Front": E + "goom-front", "¾ view": E + "goom-threeq", "Side": E + "goom-side", "Back": E + "goom-back" },
-    states: { "Active": E + "goom-active", "Inactive": E + "goom-defeated", "Defeated": E + "goom-defeated-dizzy" },
+    states: { "Idle": E + "goom-idle", "Walk": E + "goom-walk", "Alert": E + "goom-alert", "Charge / attack": E + "goom-charge", "Defeated": E + "goom-defeated-dizzy", "Inactive": E + "goom-defeated" },
     angles: angles("top", "bottom"), cardScale: 0.64, height: 0.5, scale: null,
   },
   "spike-bot": {
-    name: "Spike Bot", type: "enemy", status: "APPROVED",
+    name: "Spike Bot™", type: "enemy", status: "APPROVED",
     // SPIKE_BOT_PRODUCTION_MASTER_V1 (approved production master)
     media: { thumb: E + "spike-bot-hero", render: E + "spike-bot-hero", icon: null },
-    copy: { provisional: true, summary: "Spiked ground enemy.", behaviour: "Stays put or patrols. Damages on contact.", where: "To be confirmed." },
+    copy: { provisional: true, summary: "Spiked ground enemy.", behaviour: "Stays put or patrols. Damages on contact.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "spike-bot-front", "Side": E + "spike-bot-side", "Back": E + "spike-bot-back", "Top": E + "spike-bot-top", "Bottom": E + "spike-bot-bottom" },
     states: { "Idle": E + "spike-bot-idle", "Roll": E + "spike-bot-roll", "Alert": E + "spike-bot-alert", "Attack": E + "spike-bot-attack", "Defeated": E + "spike-bot-defeated" },
     angles: angles("top", "bottom"), cardScale: 0.68, height: 0.5, scale: null,
   },
   "rotor-bot": {
-    name: "Rotor Bot", type: "enemy", status: "APPROVED",
+    name: "Rotor Bot™", type: "enemy", status: "APPROVED",
     // ROTOR_BOT_PRODUCTION_ATLAS_V1 (approved production master)
     media: { thumb: E + "rotor-bot-hero", render: E + "rotor-bot-hero", icon: null },
-    copy: { provisional: true, summary: "Airborne enemy.", behaviour: "Flies in patterns.", where: "To be confirmed." },
+    copy: { provisional: true, summary: "Airborne enemy.", behaviour: "Flies in patterns.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "rotor-bot-front", "¾ view": E + "rotor-bot-threeq", "Side": E + "rotor-bot-side", "Back": E + "rotor-bot-back" },
     states: { "Hover / attack": E + "rotor-bot-active", "Defeated": E + "rotor-bot-defeated" },
     angles: angles(), cardScale: 0.86, height: 0.8, scale: null,
   },
   "sentry-cannon": {
-    name: "Sentry Cannon", type: "enemy", status: "APPROVED",
+    name: "Sentry Cannon™", type: "enemy", status: "APPROVED",
     // GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1 (approved production master)
     media: { thumb: E + "sentry-cannon-hero", render: E + "sentry-cannon-hero", icon: null },
-    copy: { provisional: true, summary: "Stationary cannon.", behaviour: "Fires from a fixed position. Find cover.", where: "To be confirmed." },
+    copy: { provisional: true, summary: "Stationary cannon.", behaviour: "Fires from a fixed position. Find cover.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "sentry-cannon-front", "¾ view": E + "sentry-cannon-threeq", "Side": E + "sentry-cannon-side", "Back": E + "sentry-cannon-back" },
-    states: { "Active": E + "sentry-cannon-active", "Inactive / defeated": E + "sentry-cannon-defeated" },
+    states: { "Idle": E + "sentry-cannon-idle", "Tracking": E + "sentry-cannon-tracking", "Firing": E + "sentry-cannon-firing", "Cooldown": E + "sentry-cannon-cooldown", "Destroyed": E + "sentry-cannon-destroyed", "Inactive": E + "sentry-cannon-defeated" },
     angles: angles(), cardScale: 0.8, height: 1.0, scale: null,
   },
   "stone-golem": {
-    name: "Stone Golem", type: "enemy", status: "APPROVED",
+    name: "Stone Golem™", type: "enemy", status: "APPROVED",
     // STONE_GOLEM_ANGLES_MASTER_V1 + STONE_GOLEM_STATES_MASTER_V1 (approved; the sheets' printed label is the superseded legacy name)
     media: { thumb: E + "stone-golem-hero", render: E + "stone-golem-hero", icon: null },
-    copy: { provisional: true, summary: "Evolved rock enemy.", behaviour: "Chases and attacks up close.", where: "To be confirmed." },
+    copy: { provisional: true, summary: "Evolved rock enemy.", behaviour: "Chases and attacks up close.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "stone-golem-front", "¾ view": E + "stone-golem-threeq", "Side": E + "stone-golem-side", "Back": E + "stone-golem-back" },
     // the sheet's Defeated pose is not used: it shows a purple crystal fragment, and Phase 2 has no crystals
@@ -88,10 +88,10 @@ window.GB_ENTITIES = {
     evolution: { line: "boulder", phase: 2 },
   },
   "crystal-guardian": {
-    name: "Crystal Guardian", type: "enemy", status: "APPROVED",
+    name: "Crystal Guardian™", type: "enemy", status: "APPROVED",
     // CRYSTAL_GUARDIAN_ANGLES_MASTER_V1 + CRYSTAL_GUARDIAN_STATES_MASTER_V1 (approved production masters)
     media: { thumb: E + "crystal-guardian-hero", render: E + "crystal-guardian-hero", icon: null },
-    copy: { provisional: true, summary: "Advanced crystal form.", behaviour: "Guards key areas.", where: "To be confirmed." },
+    copy: { provisional: true, summary: "Advanced crystal form.", behaviour: "Guards key areas.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "crystal-guardian-front", "¾ view": E + "crystal-guardian-threeq", "Side": E + "crystal-guardian-side", "Back": E + "crystal-guardian-back" },
     states: { "Idle": E + "crystal-guardian-idle", "Charge": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated": E + "crystal-guardian-defeated" },
@@ -100,10 +100,10 @@ window.GB_ENTITIES = {
   },
   // ---------------- hazards ----------------
   "rolling-boulder": {
-    name: "Rolling Boulder", type: "hazard", status: "APPROVED",
+    name: "Rolling Boulder™", type: "hazard", status: "APPROVED",
     // ROLLING_BOULDER_PRODUCTION_MASTER_V1 (approved Phase 1 production master; replaces the old provisional crop)
     media: { thumb: E + "rolling-boulder-threeq", render: E + "rolling-boulder-threeq", icon: null },
-    copy: { provisional: true, summary: "Environmental hazard.", behaviour: "Rolls downhill and smashes obstacles.", where: "To be confirmed." },
+    copy: { provisional: true, summary: "Environmental hazard.", behaviour: "Rolls downhill and smashes obstacles.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "rolling-boulder-front", "Side": E + "rolling-boulder-side", "Back": E + "rolling-boulder-back", "Top": E + "rolling-boulder-top" },
     states: { "Idle": E + "rolling-boulder-idle", "Rolling": E + "rolling-boulder-rolling", "Impact": E + "rolling-boulder-impact", "Cracked / hit": E + "rolling-boulder-cracked", "Destroyed": E + "rolling-boulder-destroyed" },
@@ -115,44 +115,44 @@ window.GB_ENTITIES = {
   "portal": {
     name: "Portal", type: "portal", status: "PROVISIONAL",
     media: { thumb: null, render: "assets/systems/fast-travel-portal", icon: null },
-    copy: { provisional: true, summary: "Blue portal shrine.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "Blue portal shrine.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    states: {}, angles: angles(), scale: null,
+    states: { "Portal Meadow™": "assets/systems/portals/portal-portal", "Creek Crossing™": "assets/systems/portals/portal-creek", "Riverworks™": "assets/systems/portals/portal-river", "Clover Cliffs™": "assets/systems/portals/portal-clover", "Ruin Courtyard™": "assets/systems/portals/portal-ruin", "Prism Ridge™": "assets/systems/portals/portal-prism", "Frost Peaks™": "assets/systems/portals/portal-frost" }, angles: angles(), scale: null,
   },
   "springboard": {
-    name: "Springboard", type: "prop", status: "PROVISIONAL",
-    media: { thumb: null, render: null, icon: null },
-    copy: { provisional: true, summary: "Red springboard.", behaviour: "Launches upward.", where: "Found across Adventure Mountain™." },
+    name: "Springboard", type: "prop", status: "APPROVED",
+    media: { thumb: "assets/objects/springboard", render: "assets/objects/springboard", icon: null },
+    copy: { summary: "Red springboard with a GB base.", behaviour: "Launches you up to higher ledges and hidden routes.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "crate": {
-    name: "GB Crate", type: "prop", status: "PROVISIONAL",
-    media: { thumb: null, render: null, icon: null },
-    copy: { provisional: true, summary: "Branded wooden crate.", behaviour: "To be confirmed.", where: "Found across Adventure Mountain™." },
+    name: "GB Crate", type: "prop", status: "APPROVED",
+    media: { thumb: "assets/objects/crate", render: "assets/objects/crate", icon: null },
+    copy: { summary: "GB crate with reinforced metal corners.", behaviour: "Found along paths and in hidden corners of the world.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "coin": {
-    name: "Coin", type: "collectible", status: "MISSING",
-    media: { thumb: null, render: null, icon: null },
-    copy: { provisional: true, summary: "Common collectible.", behaviour: "Collectible.", where: "To be confirmed." },
+    name: "Coin", type: "collectible", status: "APPROVED",
+    media: { thumb: "assets/objects/coin", render: "assets/objects/coin", icon: null },
+    copy: { summary: "Common collectible.", behaviour: "Collect them on every route.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "adventure-crystal": {
-    name: "Adventure Crystal", type: "collectible", status: "PROVISIONAL",
-    media: { thumb: null, render: null, icon: null },
-    copy: { provisional: true, summary: "Common collectible.", behaviour: "Collectible.", where: "Found across Adventure Mountain™." },
+    name: "Adventure Crystal", type: "collectible", status: "APPROVED",
+    media: { thumb: "assets/objects/crystal", render: "assets/objects/crystal", icon: null },
+    copy: { summary: "Golden Adventure Crystal.", behaviour: "A collectible found across Adventure Mountain™.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "secret-key": {
-    name: "Secret Key / Rare Crystal", type: "collectible", status: "MISSING",
-    media: { thumb: null, render: null, icon: null },
-    copy: { provisional: true, summary: "Rare collectible.", behaviour: "To be confirmed.", where: "To be confirmed." },
+    name: "Secret Key / Rare Crystal", type: "collectible", status: "APPROVED",
+    media: { thumb: "assets/objects/key", render: "assets/objects/key", icon: null },
+    copy: { summary: "Rare prismatic crystal.", behaviour: "Rewards exploring off the main path.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "treasure-chest": {
-    name: "Treasure Chest", type: "collectible", status: "MISSING",
-    media: { thumb: null, render: null, icon: null },
-    copy: { provisional: true, summary: "Reward chest.", behaviour: "To be confirmed.", where: "To be confirmed." },
+    name: "Treasure Chest", type: "collectible", status: "APPROVED",
+    media: { thumb: "assets/objects/chest", render: "assets/objects/chest", icon: null },
+    copy: { summary: "GB treasure chest.", behaviour: "Holds rewards for curious explorers.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
 };
@@ -173,7 +173,7 @@ window.GB_EVOLUTION_DETAIL = {
       { src: X + "evo-boulder-cracked", label: "Cracked", phase: 1 },
       { src: X + "evo-golem-forming", label: "Forming", phase: 2 },
       { src: X + "evo-stone-golem", label: "Stone Golem", phase: 2 },
-      { src: X + "evo-crystal-guardian", label: "Crystal Guardian", phase: 3 },
+      { src: E + "crystal-guardian-hero", label: "Crystal Guardian", phase: 3 },
     ],
     mechanics: [
       { src: X + "mech-core-ignition", label: "Core ignition", text: "Orange internal energy ignites, visible through cracks between the stone plates." },
@@ -193,6 +193,8 @@ window.GB_EVOLUTION_DETAIL = {
 };
 
 // display order for the Enemies & Hazards section
+// display order for the World Objects section
+window.GB_OBJECTS = ["springboard", "crate", "treasure-chest", "adventure-crystal", "coin", "secret-key"];
 window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian"];
 // In-game view of each enemy (cropped from the approved production masters' in-game renders):
 // the enemy card image and the dossier's opening view. Production cutouts stay as selectable views.

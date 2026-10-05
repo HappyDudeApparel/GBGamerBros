@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-f7f7a18d">
+<meta name="gb-revision" content="r-754c2d45">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-f7f7a18d";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-754c2d45";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -14,7 +14,7 @@
 <link rel="icon" href="assets/brand/gb-logo-960.webp?v=40182d5678">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=9badb2db53">
+<link rel="stylesheet" href="staging.css?v=a9847e887f">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -59,7 +59,7 @@
              still  = character already in the frame; portrait layouts frame it in the scene band -->
         <figure class="slide" aria-label="Slide 1 of 3"><img src="assets/hero-world-highfive.webp?v=d409fe1e44" alt="" fetchpriority="high"></figure>
         <figure class="slide slide--scene" style="--fy:6%;--sx:42%;--psx:20%;--bg:url(assets/scenes/blue-world-action-01-960.webp?v=79c7174e12)" aria-label="Slide 2 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/blue-world-action-01.webp?v=f188c09494" srcset="assets/scenes/blue-world-action-01-960.webp?v=79c7174e12 960w, assets/scenes/blue-world-action-01.webp?v=f188c09494 1672w" sizes="100vw" alt="Gamer Bro Blue™ leaping between platforms past waterfalls and the crystal castle" loading="lazy" draggable="false"></span></div></figure>
-        <figure class="slide slide--scene" data-skip="phone-portrait" style="--fy:8%;--sx:40%;--psx:38%;--bg:url(assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75)" aria-label="Slide 3 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/purple-yellow-world-action-01.webp?v=0952411235" srcset="assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75 960w, assets/scenes/purple-yellow-world-action-01.webp?v=0952411235 1672w" sizes="100vw" alt="Gamer Girl Purple™ and Gamer Girl Yellow™ running along a waterfall boardwalk" loading="lazy" draggable="false"></span></div></figure>
+        <figure class="slide slide--scene" style="--fy:8%;--sx:40%;--psx:38%;--bg:url(assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75)" aria-label="Slide 3 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/purple-yellow-world-action-01.webp?v=0952411235" srcset="assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75 960w, assets/scenes/purple-yellow-world-action-01.webp?v=0952411235 1672w" sizes="100vw" alt="Gamer Girl Purple™ and Gamer Girl Yellow™ running along a waterfall boardwalk" loading="lazy" draggable="false"></span></div></figure>
       </div>
     </div>
     <div class="hero__shade" aria-hidden="true"></div>
@@ -103,7 +103,7 @@
            Panorama mode: activated by panorama-manifest.js; tiles replace this image. -->
       <div class="map" id="mapScroller" tabindex="0" role="region" aria-roledescription="map" aria-label="Map of Adventure Mountain™">
         <div class="map__track" id="mapTrack">
-          <img class="map__img" src="assets/adventure-mountain-map.webp?v=2929e64c6e" alt="Map of Adventure Mountain™ showing Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Ruin Courtyard™, Prism Ridge™ and Frost Peaks™" width="1536" height="462" fetchpriority="high">
+          <img class="map__img" src="assets/adventure-mountain-front.webp?v=6878a76a8a" alt="Adventure Mountain™ seen from the front: Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Ruin Courtyard™, Prism Ridge™ and Frost Peaks™" width="1536" height="960" fetchpriority="high">
         </div>
         <div class="map__overlay" id="mapOverlay"></div>
       </div>
@@ -121,7 +121,7 @@
         <p class="map__hint" aria-hidden="true"><span>‹</span> <b data-when="fallback">Drag to explore</b><b data-when="panorama">Drag to travel around the world</b> <span>›</span></p>
       </div>
       <div class="minimap" id="minimap" role="slider" tabindex="0" aria-label="Map position" aria-controls="mapScroller" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <img src="assets/adventure-mountain-map.webp?v=2929e64c6e" alt="" width="1536" height="462" loading="lazy">
+        <img src="assets/adventure-mountain-front-480.webp?v=dead1d3eb6" alt="" width="480" height="300" loading="lazy">
       </div>
     </div>
   </section>
@@ -176,8 +176,9 @@
         </header>
         <button class="ft" type="button" data-entity="portal" aria-label="Portal details">
           <span class="ft__frame gbm" id="ftFrame"></span>
-          <span class="ft__caption"><strong>Portal Shrine</strong><span>Portals connect discovered areas of Adventure Mountain™.</span></span>
+          <span class="ft__caption"><strong id="ftName">Portal</strong></span>
         </button>
+        <div class="ft__dots" id="ftDots" role="group" aria-label="Choose a region's portal"></div>
       </section>
 
       <section class="panel panel--hazards" id="enemies" aria-labelledby="bgTitle">
@@ -190,6 +191,14 @@
       </section>
     </div>
 
+    <section class="panel panel--objects" id="objects" aria-labelledby="objTitle">
+      <header class="panel__head">
+        <span class="panel__icon"><svg aria-hidden="true"><use href="#i-reward"/></svg></span>
+        <div><h2 id="objTitle">World Objects</h2></div>
+      </header>
+      <ul class="foes objs" id="objs"></ul>
+      <p class="panel__fine">Visualizations and designs are subject to change during development.</p>
+    </section>
 
   </div>
 </main>
@@ -199,7 +208,7 @@
   <div class="team__inner">
     <header class="sec-head team__head">
       <span class="sec-head__icon"><svg aria-hidden="true"><use href="#i-team"/></svg></span>
-      <div><h2 id="teamTitle">Meet the Team™</h2><p>Different styles. Same adventure.</p></div>
+      <div><h2 id="teamTitle">Meet the Team</h2><p>Different styles. Same adventure.</p></div>
       <div class="sec-head__nav team__nav">
         <button class="round-btn" type="button" data-team="-1" aria-label="Previous character" aria-controls="teamList"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="round-btn" type="button" data-team="1" aria-label="Next character" aria-controls="teamList"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -268,18 +277,18 @@
   </nav>
   <p class="site-foot__legal">2026 Copyright © GB Gamer Bros™ x Happy Dude®. All Rights Reserved.</p>
   <p class="site-foot__note">Adventure Mountain™ artwork, characters, environments and visual assets are original project material.</p>
-  <p class="site-foot__build" hidden>Build <span id="gbRev">r-f7f7a18d</span></p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-754c2d45</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
-<script src="media-manifest.js?v=8f5c20fe9f" defer></script>
-<script src="areas.js?v=64dccc511b" defer></script>
-<script src="entities.js?v=8e3bcbf514" defer></script>
-<script src="world-data.js?v=4221d69f14" defer></script>
+<script src="media-manifest.js?v=799fa026b9" defer></script>
+<script src="areas.js?v=e97f83d38d" defer></script>
+<script src="entities.js?v=c24495407d" defer></script>
+<script src="world-data.js?v=e04640e662" defer></script>
 <script src="panorama-manifest.js?v=ec9076c2a1" defer></script>
 <script src="world.js?v=2e080ec6b3" defer></script>
-<script src="characters.js?v=b517808040" defer></script>
-<script src="staging.js?v=a8471297a2" defer></script>
+<script src="characters.js?v=1d73531302" defer></script>
+<script src="staging.js?v=9e98f2df2c" defer></script>
 </body>
 </html>
