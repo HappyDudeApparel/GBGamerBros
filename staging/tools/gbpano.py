@@ -6,6 +6,7 @@ panorama-manifest.js. The master itself is never copied into the repository.
 
   python3 staging/tools/gbpano.py build <master.png|.jpg|.webp> [--version pano-YYYY-MM-DD]
                                          [--out assets/world] [--tile 1024] [--no-mark]
+                                         [--front 0.399]   # x (0–1) of the canonical 0° front; the viewer opens there
   python3 staging/tools/gbpano.py check <master>      # size + seam report only, writes nothing
   python3 staging/tools/gbpano.py clear               # back to fallback mode (manifest = null)
 
@@ -47,6 +48,7 @@ HEADER = """// GB GAMER BROS™ — Adventure Mountain™ 360° panorama manifes
 // window.GB_PANORAMA = {
 //   version:   "pano-YYYY-MM-DD[-n]",          // panorama version label (coordinate authority)
 //   width, height,                              // master size, read from the source at build time
+//   front:     0.399,                            // optional: x (0–1) of the canonical 0° front (initial view)
 //   copyright: "2026 Copyright © …",
 //   overview:  { src, w, h, rev },               // whole loop, small: first paint + minimap
 //   tiers: [                                     // ascending height; the viewer picks per screen
@@ -93,7 +95,7 @@ def check(master):
     return im
 
 
-def build(master, version, out_rel, tile_w, marking):
+def build(master, version, out_rel, tile_w, marking, front=None):
     im = check(master).convert("RGB")
     W, H = im.size
     out = os.path.join(STAGING, out_rel)
@@ -127,6 +129,7 @@ def build(master, version, out_rel, tile_w, marking):
     gbmedia.save(im.resize((ow, oh), Image.LANCZOS), os.path.join(STAGING, ov_rel), quality=80)
     write_manifest({
         "version": version, "width": W, "height": H, "copyright": gbmedia.NOTICE,
+        **({"front": front} if front is not None else {}),
         "overview": {"src": ov_rel, "w": ow, "h": oh},
         "tiers": tiers,
     })
@@ -147,6 +150,7 @@ if __name__ == "__main__":
         version = opt("--version", "pano-" + datetime.date.today().isoformat())
         if not re.fullmatch(r"pano-[0-9A-Za-z.-]+", version):
             raise SystemExit("--version must look like pano-YYYY-MM-DD")
-        build(args[1], version, opt("--out", "assets/world").strip("/"), int(opt("--tile", "1024")), "--no-mark" not in args)
+        build(args[1], version, opt("--out", "assets/world").strip("/"), int(opt("--tile", "1024")), "--no-mark" not in args,
+              float(opt("--front", "nan")) if "--front" in args else None)
     else:
         raise SystemExit(__doc__)

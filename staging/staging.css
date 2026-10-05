@@ -1156,7 +1156,7 @@ html.is-locked{overflow:hidden}
   .world[data-mode="fallback"] .map__mode{display:inline-flex}
   .world:not(.is-zoomed) .map__mode--overview,.world.is-zoomed .map__mode--expand{display:none}
   .world[data-mode="fallback"]:not(.is-zoomed) .map{cursor:zoom-in}
-  .world:not(.is-zoomed) .hotspot{pointer-events:none}
+  .world[data-mode="fallback"]:not(.is-zoomed) .hotspot{pointer-events:none}
   .world.can-pan .map__hint{display:none}
   .world[data-mode="panorama"] .map{height:min(62svh,520px)}
   /* the fade never runs past the hero overlap, so no hard hero edge shows through */
