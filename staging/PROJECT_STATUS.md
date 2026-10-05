@@ -4,7 +4,7 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
-- Live build: **`r-f1d7d996`** (Drive sync + repair pass).
+- Live build: **`r-e279f3d8`** (360 panorama installed).
 - Root homepage and `/v2/` are untouched. Never change them.
 
 ## Publishing workflow (every user-visible change)
@@ -16,6 +16,13 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 6. Check the Pages run (GitHub Actions "pages build and deployment") and report the new build ID.
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
+
+## COMPLETED — 360 panorama installed (2026-10-05, build r-e279f3d8)
+- Source: owner-supplied `Adventure_Mountain_360_MASTER_ENRICHED_V1` (4608x1024, 4.5:1; same image as embedded in `Adventure_Mountain_360_Explore.html`). Master kept outside the repo.
+- Validation: PASSED. 0 degree front sector (x~0.40) = the approved canonical front; one Prism crown, one Riverworks complex, Frosty/Riverworks continuous right, Clover/Fallen continuous left, no duplicated regions; seam visually clean (gbpano edge metric 20.5/255 = texture noise); painted art, not a clay/control render. Rear sectors are less landmark-dense than the front.
+- Built: `gbpano.py build <master> --version pano-2026-10-05 --front 0.3993` -> assets/world/ (low 540 px x3 tiles, medium 1024 px x5, overview 2048). New manifest field `front` (viewer opens on the front).
+- Coordinates LOCKED: coordinateAuthority "pano-2026-10-05"; seven region world {x,y} measured on the panorama. Pins live; "360 World" wording visible; portrait pins clickable in panorama mode.
+- Fallback front map kept for rollback (`gbpano.py clear`).
 
 ## COMPLETED — Drive sync + repair pass (2026-10-05, build r-f1d7d996)
 Source: Drive "ASSET PRODUCTION — 2026-10-05" (01_CHARACTERS, 02_WORLD_OBJECTS, 03_FAST_TRAVEL_PORTALS, 04_CRYSTAL_SYSTEM, 05_MASTER_MAP) + owner-supplied canon images.
@@ -31,7 +38,6 @@ Source: Drive "ASSET PRODUCTION — 2026-10-05" (01_CHARACTERS, 02_WORLD_OBJECTS
 ### Pending (stronger assets coming)
 - Fast Travel: Creek Crossing™, Fallen Grounds™, Frosty Peaks™ in-environment portals (Frosty needs ice-blue flags).
 - Sentry Cannon, hazards, more springboards, PatchPad™ / QuickHack™ / GlitchKey™ art (names reserved, nothing published).
-- 360 master: needs a sub-10 MB derivative (or direct copy into the repo workspace) for validation before panorama install.
 - Rumbler/Stone Walker/Prism Keeper evolution images still carry legacy file names (assets only); "rubble/no corpse" defeat states to come.
 
 ## COMPLETED — README completion pass (2026-10-05, build r-754c2d45)
