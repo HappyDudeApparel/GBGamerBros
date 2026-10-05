@@ -1372,3 +1372,29 @@ html.is-locked{overflow:hidden}
 .hotspot.pin .pin__icon{width:28px;height:28px}
 .hotspot.pin .pin__text strong{font-size:13px;opacity:1}
 @media (max-width:599px){.hotspot.pin{padding:2px 8px 2px 2px}.hotspot.pin .pin__icon{width:20px;height:20px}.hotspot.pin .pin__text strong{font-size:10px}}
+
+/* ===================== Drive sync pass (2026-10-05b) ===================== */
+/* one name system for Enemies & Hazards and Adventure Finds™: heavy italic, white with navy stroke on a team-blue plate */
+.foe .foe__text{min-height:54px;padding:10px 8px 12px;border-top:0;
+  background:linear-gradient(180deg,#1d5fd6 0,#0b2a6b 100%);box-shadow:0 8px 18px rgba(20,60,140,.22),inset 0 2px 0 rgba(255,255,255,.25)}
+.foe .foe__text strong{font-size:clamp(15px,1.3vw,19px);font-weight:900;font-style:italic;letter-spacing:.01em;line-height:1.05;
+  color:#fff;-webkit-text-stroke:4px #071c4f;paint-order:stroke fill;text-shadow:0 3px 0 #071c4f,0 0 12px rgba(80,170,255,.55)}
+.foe:hover .foe__text{background:linear-gradient(180deg,#2b78ff 0,#0d3592 100%)}
+.foe:hover .foe__text strong{color:#fff}
+@media (max-width:719px){.foe .foe__text strong{font-size:16px;-webkit-text-stroke-width:3.5px}}
+
+/* phone portrait strip under the map: narrow cards, next card visibly peeks */
+@media (max-width:599px) and (max-aspect-ratio:1/1){
+  .feats{grid-template-columns:repeat(5,42%);gap:10px;padding:2px 16px 8px;margin-left:-16px;margin-right:-16px;scroll-padding:0 16px;
+    -webkit-mask-image:linear-gradient(90deg,#000 0,#000 85%,rgba(0,0,0,.35) 100%);mask-image:linear-gradient(90deg,#000 0,#000 85%,rgba(0,0,0,.35) 100%)}
+  .feats > li{scroll-snap-align:start}
+  .feat{display:block;padding:10px 10px 12px;text-align:left}
+  .feat__icon{width:32px;height:32px;margin:0 0 6px}
+  .feat h3{font-size:12px;line-height:1.15}
+  .feat p{font-size:11px;line-height:1.3;margin-top:3px}
+}
+.ft__frame.gbm{flex:none;aspect-ratio:var(--ar)}
+.ft__frame.gbm > img{object-position:60% 50%}
+.ft{flex:none}
+.objs{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:719px){.objs{grid-template-columns:repeat(2,minmax(0,1fr))}}

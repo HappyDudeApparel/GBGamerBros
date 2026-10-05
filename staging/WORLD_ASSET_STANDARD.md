@@ -10,13 +10,13 @@ The concept images were developed iteratively, so recurring objects vary between
 
 | Area | Family | Banner field | Trim | Notes |
 |---|---|---|---|---|
-| Portal Meadow™ | Teal / fresh green | `#16A38A` | white | Matches the map label's teal-green. |
+| Portal Meadow™ | Yellow / gold | `#E8A812` | white | Owner decision 2026-10-05 (was teal #16A38A). |
 | Creek Crossing™ | Blue | `#1E6FD9` | white | The current world banners are already this family. |
 | Riverworks™ | Warm copper / orange-brown | `#B8692A` | cream `#F3E6CF` | Matches the map label's copper. |
 | Clover Cliffs™ | Forest green | `#23864A` | white | |
-| Ruin Courtyard™ | Red | `#C8283B` | white | |
+| Fallen Grounds™ (formerly Ruin Courtyard) | Red | `#C8283B` | white | |
 | Prism Ridge™ | Purple | `#7A3CC8` | white | |
-| Frost Peaks™ | Ice blue | `#7CC6F2` | white | Confirmed by board A: white trim and graphics on ice blue. |
+| Frosty Peaks™ | Ice blue | `#7CC6F2` | white | Confirmed by board A: white trim and graphics on ice blue. |
 
 The hex values are starting points sampled to sit alongside the map labels. Final values are set once, here, and reused everywhere.
 

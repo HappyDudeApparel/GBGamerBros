@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-754c2d45">
+<meta name="gb-revision" content="r-f1d7d996">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-754c2d45";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-f1d7d996";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -14,7 +14,7 @@
 <link rel="icon" href="assets/brand/gb-logo-960.webp?v=40182d5678">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=a9847e887f">
+<link rel="stylesheet" href="staging.css?v=bf03555b9d">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -103,7 +103,7 @@
            Panorama mode: activated by panorama-manifest.js; tiles replace this image. -->
       <div class="map" id="mapScroller" tabindex="0" role="region" aria-roledescription="map" aria-label="Map of Adventure Mountain™">
         <div class="map__track" id="mapTrack">
-          <img class="map__img" src="assets/adventure-mountain-front.webp?v=6878a76a8a" alt="Adventure Mountain™ seen from the front: Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Ruin Courtyard™, Prism Ridge™ and Frost Peaks™" width="1536" height="960" fetchpriority="high">
+          <img class="map__img" src="assets/adventure-mountain-front.webp?v=96039d75f7" alt="Adventure Mountain™ seen from the front: Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Fallen Grounds™, Prism Ridge™ and Frosty Peaks™" width="1536" height="960" fetchpriority="high">
         </div>
         <div class="map__overlay" id="mapOverlay"></div>
       </div>
@@ -121,7 +121,7 @@
         <p class="map__hint" aria-hidden="true"><span>‹</span> <b data-when="fallback">Drag to explore</b><b data-when="panorama">Drag to travel around the world</b> <span>›</span></p>
       </div>
       <div class="minimap" id="minimap" role="slider" tabindex="0" aria-label="Map position" aria-controls="mapScroller" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <img src="assets/adventure-mountain-front-480.webp?v=dead1d3eb6" alt="" width="480" height="300" loading="lazy">
+        <img src="assets/adventure-mountain-front-480.webp?v=38e0cac6bb" alt="" width="480" height="300" loading="lazy">
       </div>
     </div>
   </section>
@@ -131,7 +131,7 @@
   <div class="systems__inner">
     <ul class="feats" aria-label="Ways to play">
       <li class="feat"><span class="feat__icon feat__icon--portal"><svg aria-hidden="true"><use href="#i-portal"/></svg></span><h3>Find Portals</h3><p>Discover portal locations hidden across the world.</p></li>
-      <li class="feat"><span class="feat__icon feat__icon--reward"><svg aria-hidden="true"><use href="#i-reward"/></svg></span><h3>Collect Rewards</h3><p>Find Adventure Crystals, chests and rare collectibles.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--reward"><svg aria-hidden="true"><use href="#i-reward"/></svg></span><h3>Collect Rewards</h3><p>Find Crystals, Prism Crystals, chests and GB Coins.</p></li>
       <li class="feat"><span class="feat__icon feat__icon--secret"><svg aria-hidden="true"><use href="#i-secret"/></svg></span><h3>Uncover Secrets</h3><p>Explore optional routes and hidden areas.</p></li>
       <li class="feat"><span class="feat__icon feat__icon--traversal"><svg aria-hidden="true"><use href="#i-traversal"/></svg></span><h3>Master Traversal</h3><p>Use jumps, ziplines, pipes, springboards, bridges and more.</p></li>
       <li class="feat"><span class="feat__icon feat__icon--team"><svg aria-hidden="true"><use href="#i-team2"/></svg></span><h3>Play Together</h3><p>Team up and explore Adventure Mountain™ together.</p><span class="feat__note">In development</span></li>
@@ -191,10 +191,10 @@
       </section>
     </div>
 
-    <section class="panel panel--objects" id="objects" aria-labelledby="objTitle">
+    <section class="panel panel--objects" id="adventure-finds" aria-labelledby="objTitle">
       <header class="panel__head">
         <span class="panel__icon"><svg aria-hidden="true"><use href="#i-reward"/></svg></span>
-        <div><h2 id="objTitle">World Objects</h2></div>
+        <div><h2 id="objTitle">Adventure Finds™</h2></div>
       </header>
       <ul class="foes objs" id="objs"></ul>
       <p class="panel__fine">Visualizations and designs are subject to change during development.</p>
@@ -235,7 +235,7 @@
   <div class="dossier__card char__card" id="charCard">
     <header class="dossier__head char__head">
       <div>
-        <p class="dossier__type">Meet the Team™</p>
+        <p class="dossier__type">Meet the Team</p>
         <h2 class="dossier__name" id="charName"></h2>
       </div>
       <button class="dossier__close" id="charClose" type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
@@ -273,22 +273,22 @@
   <span class="site-foot__logo gbm" style="--ar:2.48062;--ext:1.05426"><img src="assets/brand/gb-logo.webp?v=90580b9bae" alt="GB GAMER BROS™" width="640" height="272" loading="lazy"></span>
   <p class="site-foot__tag">PLAY • EXPLORE • DISCOVER</p>
   <nav class="site-foot__nav" aria-label="Footer">
-    <a href="#world">World</a><a href="#areas">Areas</a><a href="#enemies">Enemies &amp; Hazards</a><a href="#characters">Meet the Team™</a>
+    <a href="#world">World</a><a href="#areas">Areas</a><a href="#enemies">Enemies &amp; Hazards</a><a href="#characters">Meet the Team</a>
   </nav>
   <p class="site-foot__legal">2026 Copyright © GB Gamer Bros™ x Happy Dude®. All Rights Reserved.</p>
   <p class="site-foot__note">Adventure Mountain™ artwork, characters, environments and visual assets are original project material.</p>
-  <p class="site-foot__build" hidden>Build <span id="gbRev">r-754c2d45</span></p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-f1d7d996</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
-<script src="media-manifest.js?v=799fa026b9" defer></script>
-<script src="areas.js?v=e97f83d38d" defer></script>
-<script src="entities.js?v=c24495407d" defer></script>
-<script src="world-data.js?v=e04640e662" defer></script>
+<script src="media-manifest.js?v=8e2485f65f" defer></script>
+<script src="areas.js?v=285997afc0" defer></script>
+<script src="entities.js?v=c06b3084d0" defer></script>
+<script src="world-data.js?v=afdc19f98e" defer></script>
 <script src="panorama-manifest.js?v=ec9076c2a1" defer></script>
 <script src="world.js?v=2e080ec6b3" defer></script>
 <script src="characters.js?v=1d73531302" defer></script>
-<script src="staging.js?v=9e98f2df2c" defer></script>
+<script src="staging.js?v=c60d4b0c62" defer></script>
 </body>
 </html>

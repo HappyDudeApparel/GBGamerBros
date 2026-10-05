@@ -68,9 +68,9 @@ window.GB_AREAS = {
     ],
   },
   ruin: {
-    name: "Ruin Courtyard™", sub: "Forgotten Towers", status: "open",
+    name: "Fallen Grounds™", sub: "Broken Arches & Old Stone", status: "open",
     views: [
-      { src: A + "ruin-courtyard/rc01-broad-dry-courtyard", kind: "establishing", label: "Ruined courtyard", focus: 0.55,
+      { src: A + "ruin-courtyard/rc01-broad-dry-courtyard", kind: "establishing", label: "Fallen Grounds", focus: 0.55,
         alt: "Broad paved courtyard between ivy-covered stone arches and ruined towers", hotspots: [] },
       { src: A + "ruin-courtyard/rc02-court-stairs-exits", kind: "ground", label: "Court stairs", focus: 0.5,
         alt: "Flat stone court with a great broken arch, broad stairs and archway exits", hotspots: [] },
@@ -92,14 +92,14 @@ window.GB_AREAS = {
     ],
   },
   frost: {
-    name: "Frost Peaks™", sub: "Icy Cliffs & Granite Roads", status: "open",
+    name: "Frosty Peaks™", sub: "Icy Cliffs & Granite Roads", status: "open",
     views: [
       { src: A + "frost-peaks/fp01-snowy-plateau-icefalls", kind: "establishing", label: "Snowy plateau", focus: 0.5,
         alt: "Snowy plateau with a rope bridge over frozen icefalls and a ruined tower on the peak", hotspots: [] },
       { src: A + "frost-peaks/fp02-rope-bridge-snowy-shelf", kind: "traversal", label: "Rope bridge", focus: 0.52,
         alt: "Lantern-lit rope bridge crossing to a snowy stone shelf below the summit", hotspots: [] },
-      { src: A + "frost-peaks/fp04-frost-to-summit-spine", kind: "landmark", label: "Toward Summit Spine", focus: 0.42,
-        alt: "Snowy path from Frost Peaks™ toward the crystal summit and its glowing portal", hotspots: [] },
+      { src: A + "frost-peaks/fp04-frost-to-summit-spine", kind: "landmark", label: "Toward Summit Spine™", focus: 0.42,
+        alt: "Snowy path from Frosty Peaks™ toward the crystal summit and its glowing portal", hotspots: [] },
     ],
   },
   // Level Preview still sequence (not a map location). Opens in the same gallery view.

@@ -4,7 +4,7 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
-- Live build: **`r-754c2d45`** (README completion pass). Earlier: `r-46ccc427`, main `767d14f` (visual correction pass; see below). Previous: `r-93f82a77`.
+- Live build: **`r-f1d7d996`** (Drive sync + repair pass).
 - Root homepage and `/v2/` are untouched. Never change them.
 
 ## Publishing workflow (every user-visible change)
@@ -16,6 +16,23 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 6. Check the Pages run (GitHub Actions "pages build and deployment") and report the new build ID.
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
+
+## COMPLETED — Drive sync + repair pass (2026-10-05, build r-f1d7d996)
+Source: Drive "ASSET PRODUCTION — 2026-10-05" (01_CHARACTERS, 02_WORLD_OBJECTS, 03_FAST_TRAVEL_PORTALS, 04_CRYSTAL_SYSTEM, 05_MASTER_MAP) + owner-supplied canon images.
+- **Canon names:** Fallen Grounds™ (was Ruin Courtyard), Frosty Peaks™, Summit Spine™, Goom Bot™, Rumbler™ (was Rolling Boulder), Stone Walker™ (was Stone Golem), Prism Keeper™ (was Crystal Guardian). Brightback™ reserved (not used). Internal IDs/routes unchanged; new aliases #entity/goom-bot, rumbler, stone-walker, prism-keeper, crystal, prism-crystal. "Meet the Team" without ™ everywhere.
+- **Crystal terminology:** Crystal → Crystal Shards; Prism Crystal → Prism Shards. "Adventure Crystal", "Secret Key / Rare Crystal", "gems" removed from public copy.
+- **Adventure Finds™** (was World Objects; anchor #adventure-finds): Treasure Chest (Master Chest; Blue/Red/Yellow/Purple player chests as states), Crystal Chest, GB Coin (owner-chosen "GB Coin (Recommended)" gold coin, GB + Mountain faces), Character Coins (silver, 4 team colours), Crystal (+ Crystal Shards), Prism Crystal (+ Prism Shards), Springboard, GB Crate. Adventure Tech chests = TBD (not used). 4-column grid.
+- **Fast Travel:** colour-swap studio portals deleted. Now in-environment portals: Portal Meadow™ (PASS_B, gold flags), Riverworks™ (PASS_B), Clover Cliffs™ (GREEN_CAVE final pass), Prism Ridge™ (PASS_B, purple). Rejected: FROST_PEAKS_PORTAL_FINAL_PASS (purple Prism flags), PRISM_RIDGE_PASS_A (red flags). Portal Meadow™ region colour changed to gold #E8A812 (WORLD_ASSET_STANDARD.md updated).
+- **Gamer Girl Purple™:** previous visor transplant reverted; streetwear Front and Pose now come from GAMER_GIRL_PURPLE_SUPPLEMENTAL_REFERENCE (her own approved art, translucent visor, original eyes).
+- **Map:** fallback map = Adventure_Mountain_CANONICAL_FRONT_ENRICHED_V1 (same approved 0° composition, 1920×1080, sharper detail; pins unchanged). The 360 master (Adventure_Mountain_360_MASTER_ENRICHED_V1.png, 11.8 MB) could NOT be downloaded (connector 10 MB limit) → not inspected, not installed; panorama mode still off.
+- **UI:** enemy/Adventure Finds names on one system (heavy italic white with navy stroke on a blue plate); phone-portrait feature strip cards 42% wide (two cards + next peeking, edge fade); Fast Travel frame keeps the image aspect.
+- **Turntable:** no 3D models / GLB / FBX / rotation sequences / video found in Drive → static reference views kept; action states stay first.
+
+### Pending (stronger assets coming)
+- Fast Travel: Creek Crossing™, Fallen Grounds™, Frosty Peaks™ in-environment portals (Frosty needs ice-blue flags).
+- Sentry Cannon, hazards, more springboards, PatchPad™ / QuickHack™ / GlitchKey™ art (names reserved, nothing published).
+- 360 master: needs a sub-10 MB derivative (or direct copy into the repo workspace) for validation before panorama install.
+- Rumbler/Stone Walker/Prism Keeper evolution images still carry legacy file names (assets only); "rubble/no corpse" defeat states to come.
 
 ## COMPLETED — README completion pass (2026-10-05, build r-754c2d45)
 Authority: Drive `ASTRA_360_RECONSTRUCTION_V3_2026-10-04/README.md` (source roles, asset search rules, website fix list).
