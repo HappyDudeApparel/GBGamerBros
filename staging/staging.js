@@ -131,7 +131,7 @@
   const portraitMap = window.matchMedia("(max-aspect-ratio: 1/1)");
   // portrait fallback opens zoomed on a framing where every visible baked label is whole
   // (Prism Ridge™, Ruin Courtyard™, Riverworks™, Frost Peaks™); "Whole map" shows all seven
-  const FALLBACK_ZOOM = 2, MAP_START = 0.715;
+  const FALLBACK_ZOOM = 2, MAP_START = 0.5;
   function setZoomed(on, fx) {
     world.classList.toggle("is-zoomed", on);
     viewer.setZoom(on ? FALLBACK_ZOOM : 1, fx);
@@ -370,7 +370,7 @@
     const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}<span class="evo__num">${i + 1}</span><strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
     return `<section class="evo" id="entEvo" aria-labelledby="evoTitle">
       <header class="evo__head">
-        <div><h3 id="evoTitle">How the evolution works</h3><p>Rolling Boulder → Stone Golem → Crystal Guardian</p></div>
+        <div><h3 id="evoTitle">How the evolution works</h3><p>Rolling Boulder™ → Stone Golem™ → Crystal Guardian™</p></div>
         <div class="evo__tabs" role="tablist" aria-label="Evolution views">
           <button type="button" role="tab" aria-selected="true" data-evo-tab="seq">Sequence</button>
           <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>
@@ -392,7 +392,7 @@
     // production views / states: cutouts become selectable thumbnails that swap the hero
     const thumbs = (obj, what) => Object.entries(obj || {}).map(([k, v]) => v && isCut(v)
       ? `<li><button class="dossier__pick" type="button" data-hero="${v}" data-hero-label="${esc(k)}" aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
-      : `<li>${v ? media(v, "dossier__state", `${e.name} ${k}`) : `<span class="dossier__state media-missing"><span>Not yet available</span></span>`}<small>${esc(k[0].toUpperCase() + k.slice(1))}</small></li>`).join("");
+      : v ? `<li>${media(v, "dossier__state", `${e.name} ${k}`)}<small>${esc(k[0].toUpperCase() + k.slice(1))}</small></li>` : "").join("");
     const views = thumbs(e.views);
     const states = thumbs(e.states);
     const stage = hero && isCut(hero);
@@ -407,7 +407,8 @@
         ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : `<span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span>`}</div>
            <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? "In the world" : "Hero"}</span></p>`
         : media(hero, "dossier__render", e.name)}
-        ${views ? `<h3>Production views</h3><ul class="dossier__picks">${sc ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="true"><span class="stage-box">${sceneImg(sc, "", true)}</span><small>In the world</small></button></li>` : ""}${stage ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
+        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : "Action states"}</h3><ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
+        ${views ? `<h3>Reference views</h3><ul class="dossier__picks">${sc ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="true"><span class="stage-box">${sceneImg(sc, "", true)}</span><small>In the world</small></button></li>` : ""}${stage ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
           <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
@@ -416,9 +417,7 @@
           ${e.height ? `<dt>Approx. height</dt><dd>${e.height.toFixed(1)} m <small class="dossier__note">design reference · Gamer Bros ${(window.GB_HERO_HEIGHT || 1.8).toFixed(1)} m</small></dd>` : ""}
         </dl>
         ${evo(e)}
-        ${states ? `<h3>Visual states</h3><ul class="${e.views ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
-        <h3>Encounter images</h3>
-        ${enc ? `<ul class="dossier__encs">${enc}</ul>` : `<p class="dossier__empty">More encounter views coming soon.</p>`}
+        ${enc ? `<h3>Encounter images</h3><ul class="dossier__encs">${enc}</ul>` : ""}
       </div>
       ${evoDetail(e)}`;
   }
@@ -518,16 +517,17 @@
   // Panorama: compact pins (icon + faint name → full label on hover / focus / first tap; on
   // touch the second tap enters), shown only once world coordinates are measured and locked.
   const WORLD = window.GB_WORLD || { regions: [] };
-  const LIVE_LABELS = viewer.mode === "panorama";
+  const LIVE_LABELS = true;   // compact region pins on both the front map and the panorama
   let lastPointer = "mouse";
   const hotspots = [];
   const closePins = (except) => hotspots.forEach((h) => { if (h !== except) h.classList.remove("is-open"); });
   WORLD.regions.forEach((r) => {
-    const pos = LIVE_LABELS ? (WORLD.coordinateAuthority && r.world) : r.fallback;
+    const pos = viewer.mode === "panorama" ? (WORLD.coordinateAuthority && r.world) : r.fallback;
     if (!pos || !AREAS[r.area]) return;
     const h = document.createElement("button");
     h.type = "button";
     h.className = "hotspot";
+    if (r.color) h.style.setProperty("--rc", r.color);
     h.dataset.area = r.area;
     h.setAttribute("aria-label", `${r.name} — ${r.sub}`);
     if (LIVE_LABELS) {
@@ -593,8 +593,20 @@
   // ---------- Fast Travel ----------
   const portal = ENTITIES.portal;
   const ftFrame = document.getElementById("ftFrame");
-  ftFrame.setAttribute("style", frameVars(portal.media.render));
-  ftFrame.innerHTML = `<img src="${asset(portal.media.render, true)}" srcset="${srcset(portal.media.render)}" sizes="(min-width: 1100px) 30vw, 92vw" alt="Gamer Bro Blue™ leaping into a blue portal in a stone shrine" loading="lazy" draggable="false">`;
+  const ftRegions = Object.entries(portal.states || {});
+  const ftName = document.getElementById("ftName");
+  const ftDots = document.getElementById("ftDots");
+  const colourOf = (name) => (((window.GB_WORLD || {}).regions || []).find((r) => r.name === name) || {}).color || "#1f7ae0";
+  function ftSet(i) {
+    const [name, src] = ftRegions[i];
+    ftFrame.setAttribute("style", frameVars(src));
+    ftFrame.innerHTML = `<img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="(min-width: 1100px) 30vw, 92vw" alt="${esc(name)} portal" loading="lazy" draggable="false">`;
+    ftName.textContent = name;
+    [...ftDots.children].forEach((d, n) => d.setAttribute("aria-pressed", String(n === i)));
+  }
+  ftDots.innerHTML = ftRegions.map(([name], i) => `<button type="button" style="--rc:${colourOf(name)}" aria-label="${esc(name)} portal" data-ft="${i}"></button>`).join("");
+  ftDots.addEventListener("click", (e) => { const b = e.target.closest("[data-ft]"); if (b) ftSet(Number(b.dataset.ft)); });
+  ftSet(0);
 
   // ---------- Enemies & Hazards ----------
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
@@ -603,13 +615,22 @@
     return `<li><button class="foe${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
       ${sceneOf(id) ? `<span class="foe__stage foe__stage--scene">${sceneImg(sceneOf(id), "", true)}</span>`
         : `<span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>`}
-      <span class="foe__text"><strong>${esc(e.name)}</strong><small>${esc(e.copy.summary)}</small></span>
+      <span class="foe__text"><strong>${esc(e.name)}</strong></span>
     </button></li>`;
   }).join("") + `<li><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
       <span class="foe-evo__kicker">Optional evolution</span>
-      <span class="foe-evo__line">Rolling Boulder <i>→</i> Stone Golem <i>→</i> Crystal Guardian</span>
+      <span class="foe-evo__line">Rolling Boulder™ <i>→</i> Stone Golem™ <i>→</i> Crystal Guardian™</span>
       <span class="foe-evo__go">See how it evolves<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </button></li>`;
+
+  // ---------- World Objects ----------
+  document.getElementById("objs").innerHTML = (window.GB_OBJECTS || []).filter((id) => ENTITIES[id]).map((id) => {
+    const e = ENTITIES[id], t = e.media.thumb;
+    return `<li><button class="foe obj" type="button" data-entity="${id}" style="--s:${e.cardScale || .62}" aria-label="${esc(e.name)} — details">
+      <span class="foe__stage">${cut(t, "foe__cut", "", "(min-width: 1100px) 160px, 40vw")}</span>
+      <span class="foe__text"><strong>${esc(e.name)}</strong></span>
+    </button></li>`;
+  }).join("");
 
   // ---------- Meet the Team™ (#character/<id>) ----------
   const TEAM = window.GB_TEAM || [];

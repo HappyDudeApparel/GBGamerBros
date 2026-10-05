@@ -50,16 +50,41 @@ window.GB_MEDIA = {
   "rev": "5076b80940",
   "srev": "7618706c00"
  },
- "assets/areas/creek-crossing/01-enchanted_waterfall_canyon_adventure": {
+ "assets/areas/creek-crossing/cc01-low-water-crossing": {
   "w": 1672,
   "h": 941,
   "band": 30,
   "sw": 960,
   "sh": 540,
   "sband": 17,
-  "master": "enchanted_waterfall_canyon_adventure.png",
-  "rev": "3070097473",
-  "srev": "7c59a48c9a"
+  "alpha": false,
+  "master": "CC01_Low_Water_Masonry_Crossing.png",
+  "rev": "02a6f9763f",
+  "srev": "8ddb94551e"
+ },
+ "assets/areas/creek-crossing/cc02-branching-path": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "CC02_Branching_Stone_Path_and_Crossing.png",
+  "rev": "14e90f1584",
+  "srev": "388ee53aed"
+ },
+ "assets/areas/creek-crossing/cc03-creek-bank-bridge": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "CC03_Creek_Bank_Under_Masonry_Bridge.png",
+  "rev": "7ee7dd4bbf",
+  "srev": "47e684a4e7"
  },
  "assets/areas/frost-peaks/fp01-snowy-plateau-icefalls": {
   "w": 1448,
@@ -132,6 +157,54 @@ window.GB_MEDIA = {
   "master": "PM03.png",
   "rev": "77c620c63d",
   "srev": "7f65c53a00"
+ },
+ "assets/areas/prism-ridge/pr02-crystal-flatland": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "PR02_Crystal_Ridge_Flatland_and_Ruins.png",
+  "rev": "9f69ca6628",
+  "srev": "7118bc84bf"
+ },
+ "assets/areas/prism-ridge/pr03-high-ridge-approach": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "PR03_High_Ridge_Approach_and_Sightline.png",
+  "rev": "2caefd8969",
+  "srev": "9cf2793426"
+ },
+ "assets/areas/prism-ridge/pr04-prism-ruin-landing": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "PR04_Broad_Prism_Ruin_Landing.png",
+  "rev": "c629631cbe",
+  "srev": "f8cfef4b32"
+ },
+ "assets/areas/prism-ridge/ss01-summit-portal-stairs": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "SS01_Grand_Ascent_Portal_Staircase.png",
+  "rev": "8cd224b0c4",
+  "srev": "20b03579c2"
  },
  "assets/areas/riverworks/rw02-cliffside-waterworks": {
   "w": 1448,
@@ -289,6 +362,18 @@ window.GB_MEDIA = {
   "rev": "97a3dfa11c",
   "srev": "3742c46454"
  },
+ "assets/characters/blue/street-back": {
+  "w": 294,
+  "h": 700,
+  "band": 14,
+  "sw": 294,
+  "sh": 700,
+  "sband": 14,
+  "alpha": true,
+  "master": "blue-street-back.png",
+  "rev": "472c507daa",
+  "srev": "7fc99d962f"
+ },
  "assets/characters/blue/street-front": {
   "w": 262,
   "h": 563,
@@ -401,13 +486,13 @@ window.GB_MEDIA = {
   "w": 346,
   "h": 769,
   "band": 14,
-  "sw": 240,
-  "sh": 533,
+  "sw": 346,
+  "sh": 769,
   "sband": 14,
   "alpha": true,
-  "master": "GAMER_GIRL_PURPLE_STREETWEAR_MULTI_VIEW_V1__pose.png",
-  "rev": "92a87dccbc",
-  "srev": "705caa12ad"
+  "master": "purple-street-pose-visor.png",
+  "rev": "a53d5849b0",
+  "srev": "a53d5849b0"
  },
  "assets/characters/purple/street-side": {
   "w": 293,
@@ -781,18 +866,6 @@ window.GB_MEDIA = {
   "rev": "22bf3b5aa7",
   "srev": "4e01d89c01"
  },
- "assets/entities/evolution/evo-crystal-guardian": {
-  "w": 261,
-  "h": 285,
-  "band": 14,
-  "sw": 240,
-  "sh": 262,
-  "sband": 14,
-  "alpha": true,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__evo-crystal-guardian.png",
-  "rev": "2a8f9c980a",
-  "srev": "a5574e9b64"
- },
  "assets/entities/evolution/evo-golem-forming": {
   "w": 219,
   "h": 259,
@@ -949,6 +1022,18 @@ window.GB_MEDIA = {
   "rev": "ffc8e7737d",
   "srev": "57f2fdfd13"
  },
+ "assets/entities/goom-alert": {
+  "w": 261,
+  "h": 246,
+  "band": 14,
+  "sw": 261,
+  "sh": 246,
+  "sband": 14,
+  "alpha": true,
+  "master": "goom-alert.png",
+  "rev": "555302ccc7",
+  "srev": "ed8074755e"
+ },
  "assets/entities/goom-back": {
   "w": 162,
   "h": 147,
@@ -960,6 +1045,18 @@ window.GB_MEDIA = {
   "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__goom-back.png",
   "rev": "29bcd0e9f9",
   "srev": "3a68391035"
+ },
+ "assets/entities/goom-charge": {
+  "w": 405,
+  "h": 303,
+  "band": 14,
+  "sw": 405,
+  "sh": 303,
+  "sband": 14,
+  "alpha": true,
+  "master": "goom-charge.png",
+  "rev": "b1315e83f3",
+  "srev": "92c8cdd115"
  },
  "assets/entities/goom-defeated": {
   "w": 169,
@@ -1009,6 +1106,18 @@ window.GB_MEDIA = {
   "rev": "875b4bff95",
   "srev": "400b776123"
  },
+ "assets/entities/goom-idle": {
+  "w": 255,
+  "h": 237,
+  "band": 14,
+  "sw": 255,
+  "sh": 237,
+  "sband": 14,
+  "alpha": true,
+  "master": "goom-idle.png",
+  "rev": "10a0b7b85b",
+  "srev": "e6c3876c65"
+ },
  "assets/entities/goom-side": {
   "w": 133,
   "h": 152,
@@ -1032,6 +1141,18 @@ window.GB_MEDIA = {
   "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__goom-threeq.png",
   "rev": "cfb49efe6f",
   "srev": "3a59761a40"
+ },
+ "assets/entities/goom-walk": {
+  "w": 255,
+  "h": 237,
+  "band": 14,
+  "sw": 255,
+  "sh": 237,
+  "sband": 14,
+  "alpha": true,
+  "master": "goom-walk.png",
+  "rev": "b1ecf9ed59",
+  "srev": "a3c41c3d2f"
  },
  "assets/entities/rolling-boulder-back": {
   "w": 203,
@@ -1345,6 +1466,18 @@ window.GB_MEDIA = {
   "rev": "b235b95c6a",
   "srev": "0950c7eff5"
  },
+ "assets/entities/sentry-cannon-cooldown": {
+  "w": 339,
+  "h": 288,
+  "band": 14,
+  "sw": 339,
+  "sh": 288,
+  "sband": 14,
+  "alpha": true,
+  "master": "sentry-cannon-cooldown.png",
+  "rev": "6fdc3ed3a0",
+  "srev": "de7f3b58ca"
+ },
  "assets/entities/sentry-cannon-defeated": {
   "w": 156,
   "h": 142,
@@ -1356,6 +1489,30 @@ window.GB_MEDIA = {
   "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__sentry-defeated.png",
   "rev": "2c4b883aba",
   "srev": "5799ba637c"
+ },
+ "assets/entities/sentry-cannon-destroyed": {
+  "w": 519,
+  "h": 312,
+  "band": 14,
+  "sw": 519,
+  "sh": 312,
+  "sband": 14,
+  "alpha": true,
+  "master": "sentry-cannon-destroyed.png",
+  "rev": "5b22956032",
+  "srev": "664c3104a5"
+ },
+ "assets/entities/sentry-cannon-firing": {
+  "w": 330,
+  "h": 282,
+  "band": 14,
+  "sw": 330,
+  "sh": 282,
+  "sband": 14,
+  "alpha": true,
+  "master": "sentry-cannon-firing.png",
+  "rev": "35ea2e2a9e",
+  "srev": "9bf52ad879"
  },
  "assets/entities/sentry-cannon-front": {
   "w": 150,
@@ -1381,6 +1538,18 @@ window.GB_MEDIA = {
   "rev": "e9c7abd1b9",
   "srev": "ff837b2d21"
  },
+ "assets/entities/sentry-cannon-idle": {
+  "w": 231,
+  "h": 258,
+  "band": 14,
+  "sw": 231,
+  "sh": 258,
+  "sband": 14,
+  "alpha": true,
+  "master": "sentry-cannon-idle.png",
+  "rev": "678401d566",
+  "srev": "5ab3482628"
+ },
  "assets/entities/sentry-cannon-side": {
   "w": 183,
   "h": 163,
@@ -1404,6 +1573,18 @@ window.GB_MEDIA = {
   "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__sentry-threeq.png",
   "rev": "74efb44715",
   "srev": "8b6687c566"
+ },
+ "assets/entities/sentry-cannon-tracking": {
+  "w": 276,
+  "h": 258,
+  "band": 14,
+  "sw": 276,
+  "sh": 258,
+  "sband": 14,
+  "alpha": true,
+  "master": "sentry-cannon-tracking.png",
+  "rev": "e87abe4c80",
+  "srev": "b68f6476c4"
  },
  "assets/entities/spike-bot-alert": {
   "w": 259,
@@ -1645,6 +1826,78 @@ window.GB_MEDIA = {
   "rev": "63431c58a3",
   "srev": "0d83bcf4d4"
  },
+ "assets/objects/chest": {
+  "w": 399,
+  "h": 321,
+  "band": 14,
+  "sw": 399,
+  "sh": 321,
+  "sband": 14,
+  "alpha": true,
+  "master": "chest.png",
+  "rev": "107671c240",
+  "srev": "5355ccd3b6"
+ },
+ "assets/objects/coin": {
+  "w": 225,
+  "h": 237,
+  "band": 14,
+  "sw": 225,
+  "sh": 237,
+  "sband": 14,
+  "alpha": true,
+  "master": "coin.png",
+  "rev": "6a0229309d",
+  "srev": "c3070cb8d7"
+ },
+ "assets/objects/crate": {
+  "w": 514,
+  "h": 418,
+  "band": 14,
+  "sw": 514,
+  "sh": 418,
+  "sband": 14,
+  "alpha": true,
+  "master": "crate.png",
+  "rev": "bbecb339e7",
+  "srev": "4b16ef3d28"
+ },
+ "assets/objects/crystal": {
+  "w": 180,
+  "h": 261,
+  "band": 14,
+  "sw": 180,
+  "sh": 261,
+  "sband": 14,
+  "alpha": true,
+  "master": "crystal.png",
+  "rev": "89a6267c07",
+  "srev": "b04f7c582f"
+ },
+ "assets/objects/key": {
+  "w": 150,
+  "h": 270,
+  "band": 14,
+  "sw": 150,
+  "sh": 270,
+  "sband": 14,
+  "alpha": true,
+  "master": "key.png",
+  "rev": "3027056175",
+  "srev": "87973588cc"
+ },
+ "assets/objects/springboard": {
+  "w": 450,
+  "h": 412,
+  "band": 14,
+  "sw": 450,
+  "sh": 412,
+  "sband": 14,
+  "alpha": true,
+  "master": "springboard.png",
+  "rev": "39fdb906c8",
+  "srev": "86edecded3"
+ },
  "assets/scenes/blue-red-world-action-01": {
   "w": 1672,
   "h": 941,
@@ -1716,6 +1969,90 @@ window.GB_MEDIA = {
   "master": "7531_10s.jpg",
   "rev": "16b6fdbdaf",
   "srev": "5be0b01df7"
+ },
+ "assets/systems/portals/portal-clover": {
+  "w": 334,
+  "h": 332,
+  "band": 14,
+  "sw": 334,
+  "sh": 332,
+  "sband": 14,
+  "alpha": false,
+  "master": "portal-clover.png",
+  "rev": "409a495846",
+  "srev": "82aaeb15a2"
+ },
+ "assets/systems/portals/portal-creek": {
+  "w": 336,
+  "h": 332,
+  "band": 14,
+  "sw": 336,
+  "sh": 332,
+  "sband": 14,
+  "alpha": false,
+  "master": "portal-creek.png",
+  "rev": "0772ce086d",
+  "srev": "bc3c2bbc8a"
+ },
+ "assets/systems/portals/portal-frost": {
+  "w": 334,
+  "h": 332,
+  "band": 14,
+  "sw": 334,
+  "sh": 332,
+  "sband": 14,
+  "alpha": false,
+  "master": "portal-frost.png",
+  "rev": "817f43b449",
+  "srev": "0b727595fc"
+ },
+ "assets/systems/portals/portal-portal": {
+  "w": 340,
+  "h": 332,
+  "band": 14,
+  "sw": 340,
+  "sh": 332,
+  "sband": 14,
+  "alpha": false,
+  "master": "portal-portal.png",
+  "rev": "a1d522e33e",
+  "srev": "da18ec38d3"
+ },
+ "assets/systems/portals/portal-prism": {
+  "w": 330,
+  "h": 332,
+  "band": 14,
+  "sw": 330,
+  "sh": 332,
+  "sband": 14,
+  "alpha": false,
+  "master": "portal-prism.png",
+  "rev": "7eca63293a",
+  "srev": "b424215ec9"
+ },
+ "assets/systems/portals/portal-river": {
+  "w": 336,
+  "h": 332,
+  "band": 14,
+  "sw": 336,
+  "sh": 332,
+  "sband": 14,
+  "alpha": false,
+  "master": "portal-river.png",
+  "rev": "093acc0625",
+  "srev": "18f53aa85a"
+ },
+ "assets/systems/portals/portal-ruin": {
+  "w": 318,
+  "h": 332,
+  "band": 14,
+  "sw": 318,
+  "sh": 332,
+  "sband": 14,
+  "alpha": false,
+  "master": "portal-ruin.png",
+  "rev": "183a131c9a",
+  "srev": "75a71d6468"
  },
  "assets/systems/preview-04-trail-junction": {
   "w": 1672,
