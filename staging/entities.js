@@ -36,7 +36,7 @@ window.GB_HERO_HEIGHT = 1.8;   // Gamer Bros reference height (m)
 window.GB_ENTITIES = {
   // ---------------- enemies ----------------
   "goom": {
-    name: "Goom™", type: "enemy", status: "APPROVED",
+    name: "Goom Bot™", type: "enemy", status: "APPROVED",
     // GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1 (approved production master)
     media: { thumb: E + "goom-hero", render: E + "goom-hero", icon: null },
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
@@ -76,10 +76,10 @@ window.GB_ENTITIES = {
     angles: angles(), cardScale: 0.8, height: 1.0, scale: null,
   },
   "stone-golem": {
-    name: "Stone Golem™", type: "enemy", status: "APPROVED",
+    name: "Stone Walker™", type: "enemy", status: "APPROVED",
     // STONE_GOLEM_ANGLES_MASTER_V1 + STONE_GOLEM_STATES_MASTER_V1 (approved; the sheets' printed label is the superseded legacy name)
     media: { thumb: E + "stone-golem-hero", render: E + "stone-golem-hero", icon: null },
-    copy: { provisional: true, summary: "Evolved rock enemy.", behaviour: "Chases and attacks up close.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Awakened rock enemy.", behaviour: "Chases and attacks up close.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "stone-golem-front", "¾ view": E + "stone-golem-threeq", "Side": E + "stone-golem-side", "Back": E + "stone-golem-back" },
     // the sheet's Defeated pose is not used: it shows a purple crystal fragment, and Phase 2 has no crystals
@@ -88,10 +88,10 @@ window.GB_ENTITIES = {
     evolution: { line: "boulder", phase: 2 },
   },
   "crystal-guardian": {
-    name: "Crystal Guardian™", type: "enemy", status: "APPROVED",
+    name: "Prism Keeper™", type: "enemy", status: "APPROVED",
     // CRYSTAL_GUARDIAN_ANGLES_MASTER_V1 + CRYSTAL_GUARDIAN_STATES_MASTER_V1 (approved production masters)
     media: { thumb: E + "crystal-guardian-hero", render: E + "crystal-guardian-hero", icon: null },
-    copy: { provisional: true, summary: "Advanced crystal form.", behaviour: "Guards key areas.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Rare evolved Prism form.", behaviour: "Guards key areas.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "crystal-guardian-front", "¾ view": E + "crystal-guardian-threeq", "Side": E + "crystal-guardian-side", "Back": E + "crystal-guardian-back" },
     states: { "Idle": E + "crystal-guardian-idle", "Charge": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated": E + "crystal-guardian-defeated" },
@@ -100,10 +100,10 @@ window.GB_ENTITIES = {
   },
   // ---------------- hazards ----------------
   "rolling-boulder": {
-    name: "Rolling Boulder™", type: "hazard", status: "APPROVED",
+    name: "Rumbler™", type: "hazard", status: "APPROVED",
     // ROLLING_BOULDER_PRODUCTION_MASTER_V1 (approved Phase 1 production master; replaces the old provisional crop)
     media: { thumb: E + "rolling-boulder-threeq", render: E + "rolling-boulder-threeq", icon: null },
-    copy: { provisional: true, summary: "Environmental hazard.", behaviour: "Rolls downhill and smashes obstacles.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Energized rolling boulder.", behaviour: "Rolls downhill and smashes obstacles.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "rolling-boulder-front", "Side": E + "rolling-boulder-side", "Back": E + "rolling-boulder-back", "Top": E + "rolling-boulder-top" },
     states: { "Idle": E + "rolling-boulder-idle", "Rolling": E + "rolling-boulder-rolling", "Impact": E + "rolling-boulder-impact", "Cracked / hit": E + "rolling-boulder-cracked", "Destroyed": E + "rolling-boulder-destroyed" },
@@ -113,11 +113,11 @@ window.GB_ENTITIES = {
 
   // ---------------- portals / props / collectibles ----------------
   "portal": {
-    name: "Portal", type: "portal", status: "PROVISIONAL",
+    name: "Portal", type: "portal", status: "APPROVED",
     media: { thumb: null, render: "assets/systems/fast-travel-portal", icon: null },
-    copy: { summary: "Blue portal shrine.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "Regional fast-travel portal.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    states: { "Portal Meadow™": "assets/systems/portals/portal-portal", "Creek Crossing™": "assets/systems/portals/portal-creek", "Riverworks™": "assets/systems/portals/portal-river", "Clover Cliffs™": "assets/systems/portals/portal-clover", "Ruin Courtyard™": "assets/systems/portals/portal-ruin", "Prism Ridge™": "assets/systems/portals/portal-prism", "Frost Peaks™": "assets/systems/portals/portal-frost" }, angles: angles(), scale: null,
+    states: { "Portal Meadow™": "assets/systems/portals/portal-meadow-env", "Riverworks™": "assets/systems/portals/portal-riverworks-env", "Clover Cliffs™": "assets/systems/portals/portal-clover-env", "Prism Ridge™": "assets/systems/portals/portal-prism-env" }, angles: angles(), scale: null,
   },
   "springboard": {
     name: "Springboard", type: "prop", status: "APPROVED",
@@ -132,28 +132,40 @@ window.GB_ENTITIES = {
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "coin": {
-    name: "Coin", type: "collectible", status: "APPROVED",
+    name: "GB Coin", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/coin", render: "assets/objects/coin", icon: null },
-    copy: { summary: "Common collectible.", behaviour: "Collect them on every route.", where: "Found across Adventure Mountain™." },
-    encounter: [], states: {}, angles: angles(), scale: null,
+    copy: { summary: "Gold GB Coin: GB face and Adventure Mountain™ face.", behaviour: "Collect them on every route.", where: "Found across Adventure Mountain™." },
+    encounter: [], states: { "GB face": "assets/objects/coin", "Mountain face": "assets/objects/coin-back" }, angles: angles(), scale: null,
   },
   "adventure-crystal": {
-    name: "Adventure Crystal", type: "collectible", status: "APPROVED",
+    name: "Crystal", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/crystal", render: "assets/objects/crystal", icon: null },
-    copy: { summary: "Golden Adventure Crystal.", behaviour: "A collectible found across Adventure Mountain™.", where: "Found across Adventure Mountain™." },
-    encounter: [], states: {}, angles: angles(), scale: null,
+    copy: { summary: "The common Crystal.", behaviour: "Breaks into Crystal Shards.", where: "Found across Adventure Mountain™." },
+    encounter: [], states: { "Crystal Shards": "assets/objects/crystal-shards" }, angles: angles(), scale: null,
   },
   "secret-key": {
-    name: "Secret Key / Rare Crystal", type: "collectible", status: "APPROVED",
-    media: { thumb: "assets/objects/key", render: "assets/objects/key", icon: null },
-    copy: { summary: "Rare prismatic crystal.", behaviour: "Rewards exploring off the main path.", where: "Found across Adventure Mountain™." },
+    name: "Prism Crystal", type: "collectible", status: "APPROVED",
+    media: { thumb: "assets/objects/prism-crystal", render: "assets/objects/prism-crystal", icon: null },
+    copy: { summary: "The rarer Prism Crystal.", behaviour: "Breaks into Prism Shards.", where: "Found across Adventure Mountain™." },
+    encounter: [], states: { "Prism Shards": "assets/objects/prism-shards" }, angles: angles(), scale: null,
+  },
+  "crystal-chest": {
+    name: "Crystal Chest", type: "collectible", status: "APPROVED",
+    media: { thumb: "assets/objects/crystal-chest", render: "assets/objects/crystal-chest", icon: null },
+    copy: { summary: "Special chest with glowing crystal panels.", behaviour: "A rarer reward chest.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
+  },
+  "character-coins": {
+    name: "Character Coins", type: "collectible", status: "APPROVED",
+    media: { thumb: "assets/objects/coin-blue", render: "assets/objects/coin-blue", icon: null },
+    copy: { summary: "One silver coin per Gamer, in team colour.", behaviour: "Each player earns their own character coin.", where: "Found across Adventure Mountain™." },
+    encounter: [], states: { "Blue": "assets/objects/coin-blue", "Red": "assets/objects/coin-red", "Yellow": "assets/objects/coin-yellow", "Purple": "assets/objects/coin-purple" }, angles: angles(), scale: null,
   },
   "treasure-chest": {
     name: "Treasure Chest", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/chest", render: "assets/objects/chest", icon: null },
-    copy: { summary: "GB treasure chest.", behaviour: "Holds rewards for curious explorers.", where: "Found across Adventure Mountain™." },
-    encounter: [], states: {}, angles: angles(), scale: null,
+    copy: { summary: "The GB treasure chest.", behaviour: "Holds rewards for curious explorers.", where: "Found across Adventure Mountain™." },
+    encounter: [], states: { "Blue": "assets/objects/chest-blue", "Red": "assets/objects/chest-red", "Yellow": "assets/objects/chest-yellow", "Purple": "assets/objects/chest-purple" }, angles: angles(), scale: null,
   },
 };
 
@@ -167,34 +179,34 @@ const X = E + "evolution/";
 window.GB_EVOLUTION_DETAIL = {
   boulder: {
     sequence: [
-      { src: X + "evo-boulder-idle", label: "Boulder", phase: 1 },
+      { src: X + "evo-boulder-idle", label: "Rumbler", phase: 1 },
       { src: X + "evo-boulder-rolling", label: "Rolling", phase: 1 },
       { src: X + "evo-boulder-impact", label: "Impact", phase: 1 },
       { src: X + "evo-boulder-cracked", label: "Cracked", phase: 1 },
       { src: X + "evo-golem-forming", label: "Forming", phase: 2 },
-      { src: X + "evo-stone-golem", label: "Stone Golem", phase: 2 },
-      { src: E + "crystal-guardian-hero", label: "Crystal Guardian", phase: 3 },
+      { src: X + "evo-stone-golem", label: "Stone Walker™", phase: 2 },
+      { src: E + "crystal-guardian-hero", label: "Prism Keeper™", phase: 3 },
     ],
     mechanics: [
       { src: X + "mech-core-ignition", label: "Core ignition", text: "Orange internal energy ignites, visible through cracks between the stone plates." },
       { src: X + "mech-plate-reconfiguration", label: "Plate reconfiguration", text: "Stone plates unlock and rotate, reconfiguring into limbs and torso." },
-      { src: X + "mech-core-migration", label: "Core migration", text: "The energy gathers into the Stone Golem's eyes and core." },
+      { src: X + "mech-core-migration", label: "Core migration", text: "The energy gathers into the Stone Walker™'s eyes and core." },
       { src: X + "mech-crystal-nucleation", label: "Crystal nucleation", text: "Crystals grow from the core and pressure points while the rock body stays visible." },
     ],
     scenes: [
-      { src: X + "evo-step-1", label: "Rolling Boulder", note: "Mossy segmented stone, dormant.", phase: 1 },
+      { src: X + "evo-step-1", label: "Rumbler™", note: "Mossy segmented stone, dormant.", phase: 1 },
       { src: X + "evo-step-2", label: "Energized", note: "Energy glows through the cracks.", phase: 1 },
       { src: X + "evo-step-3", label: "Impact / fracture", note: "Plates break loose and begin to reconfigure.", phase: 1 },
-      { src: X + "evo-step-4", label: "Stone Golem forming", note: "The same rock becomes limbs and torso.", phase: 2 },
-      { src: X + "evo-step-5", label: "Crystal nucleation", note: "Crystals seed from the core and shoulders.", phase: 3 },
-      { src: X + "evo-step-6", label: "Crystal Guardian", note: "The Stone Golem body remains beneath the crystals.", phase: 3 },
+      { src: X + "evo-step-4", label: "Stone Walker™ forming", note: "The same rock becomes limbs and torso.", phase: 2 },
+      { src: X + "evo-step-5", label: "Crystal nucleation", note: "Prism crystals seed from the core and shoulders.", phase: 3 },
+      { src: X + "evo-step-6", label: "Prism Keeper™", note: "The Stone Walker™ body remains beneath the Prism crystals.", phase: 3 },
     ],
   },
 };
 
 // display order for the Enemies & Hazards section
-// display order for the World Objects section
-window.GB_OBJECTS = ["springboard", "crate", "treasure-chest", "adventure-crystal", "coin", "secret-key"];
+// display order for the Adventure Finds™ section
+window.GB_OBJECTS = ["treasure-chest", "crystal-chest", "coin", "character-coins", "adventure-crystal", "secret-key", "springboard", "crate"];
 window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian"];
 // In-game view of each enemy (cropped from the approved production masters' in-game renders):
 // the enemy card image and the dossier's opening view. Production cutouts stay as selectable views.
@@ -215,5 +227,11 @@ window.GB_ENTITY_ALIASES = {
   "turret": "sentry-cannon",
   "rock-guy": "stone-golem",
   "gem": "adventure-crystal",
+  "goom-bot": "goom",
+  "rumbler": "rolling-boulder",
+  "stone-walker": "stone-golem",
+  "prism-keeper": "crystal-guardian",
+  "crystal": "adventure-crystal",
+  "prism-crystal": "secret-key",
 };
 })();

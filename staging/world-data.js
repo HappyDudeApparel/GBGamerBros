@@ -23,7 +23,7 @@ window.GB_WORLD = {
   // Seven public regions. `area` is the gallery id in areas.js (routes #area/<id>).
   // `color` = canonical region banner field (WORLD_ASSET_STANDARD.md §1): cards, pins, placeholders.
   regions: [
-    { id: "portal", color: "#16A38A", area: "portal", name: "Portal Meadow™",   sub: "The Adventure Begins",          icon: "i-portal",
+    { id: "portal", color: "#E8A812", area: "portal", name: "Portal Meadow™",   sub: "The Adventure Begins",          icon: "i-portal",
       fallback: { x: 0.49, y: 0.875 }, world: null },
     { id: "creek", color: "#1E6FD9",  area: "creek",  name: "Creek Crossing™",  sub: "Bridges & Rapids",              icon: "i-traversal",
       fallback: { x: 0.51, y: 0.635 }, world: null },
@@ -31,17 +31,17 @@ window.GB_WORLD = {
       fallback: { x: 0.85, y: 0.59 }, world: null },
     { id: "clover", color: "#23864A", area: "clover", name: "Clover Cliffs™",   sub: "Forest Trails",                 icon: "i-tree",
       fallback: { x: 0.195, y: 0.47 }, world: null },
-    { id: "ruin", color: "#C8283B",   area: "ruin",   name: "Ruin Courtyard™",  sub: "Forgotten Towers",              icon: "i-secret",
+    { id: "ruin", color: "#C8283B",   area: "ruin",   name: "Fallen Grounds™",  sub: "Broken Arches & Old Stone",              icon: "i-secret",
       fallback: { x: 0.15, y: 0.18 }, world: null },
     { id: "prism", color: "#7A3CC8",  area: "prism",  name: "Prism Ridge™",     sub: "Crystal Peaks & Ancient Ruins", icon: "i-reward",
       fallback: { x: 0.5, y: 0.115 }, world: null },
-    { id: "frost", color: "#7CC6F2",  area: "frost",  name: "Frost Peaks™",     sub: "Icy Cliffs & Granite Roads",    icon: "i-snow",
+    { id: "frost", color: "#7CC6F2",  area: "frost",  name: "Frosty Peaks™",     sub: "Icy Cliffs & Granite Roads",    icon: "i-snow",
       fallback: { x: 0.86, y: 0.21 }, world: null },
   ],
 
   // Geographic sub-regions that are NOT public areas (no card, no route, no pin).
   subregions: [
-    { id: "summit-spine", name: "Summit Spine", parent: "prism", public: false, world: null },
+    { id: "summit-spine", name: "Summit Spine™", parent: "prism", public: false, world: null },
   ],
 
   // Phase 2 gameplay overlays. Reversible: they never touch the base imagery.

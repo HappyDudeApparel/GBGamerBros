@@ -130,7 +130,7 @@
   const viewer = window.GBWorld.create(world, { panorama: window.GB_PANORAMA });
   const portraitMap = window.matchMedia("(max-aspect-ratio: 1/1)");
   // portrait fallback opens zoomed on a framing where every visible baked label is whole
-  // (Prism Ridge™, Ruin Courtyard™, Riverworks™, Frost Peaks™); "Whole map" shows all seven
+  // (Prism Ridge™, Fallen Grounds™, Riverworks™, Frosty Peaks™); "Whole map" shows all seven
   const FALLBACK_ZOOM = 2, MAP_START = 0.5;
   function setZoomed(on, fx) {
     world.classList.toggle("is-zoomed", on);
@@ -370,7 +370,7 @@
     const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}<span class="evo__num">${i + 1}</span><strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
     return `<section class="evo" id="entEvo" aria-labelledby="evoTitle">
       <header class="evo__head">
-        <div><h3 id="evoTitle">How the evolution works</h3><p>Rolling Boulder™ → Stone Golem™ → Crystal Guardian™</p></div>
+        <div><h3 id="evoTitle">How the evolution works</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™</p></div>
         <div class="evo__tabs" role="tablist" aria-label="Evolution views">
           <button type="button" role="tab" aria-selected="true" data-evo-tab="seq">Sequence</button>
           <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>
@@ -619,11 +619,11 @@
     </button></li>`;
   }).join("") + `<li><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
       <span class="foe-evo__kicker">Optional evolution</span>
-      <span class="foe-evo__line">Rolling Boulder™ <i>→</i> Stone Golem™ <i>→</i> Crystal Guardian™</span>
+      <span class="foe-evo__line">Rumbler™ <i>→</i> Stone Walker™ <i>→</i> Prism Keeper™</span>
       <span class="foe-evo__go">See how it evolves<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </button></li>`;
 
-  // ---------- World Objects ----------
+  // ---------- Adventure Finds™ ----------
   document.getElementById("objs").innerHTML = (window.GB_OBJECTS || []).filter((id) => ENTITIES[id]).map((id) => {
     const e = ENTITIES[id], t = e.media.thumb;
     return `<li><button class="foe obj" type="button" data-entity="${id}" style="--s:${e.cardScale || .62}" aria-label="${esc(e.name)} — details">
