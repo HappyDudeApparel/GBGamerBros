@@ -8,13 +8,15 @@ The concept images were developed iteratively, so recurring objects vary between
 
 ## 1. Region colour families
 
+Summit Spine™ (sub-region): purple. Prism Ridge™: separately locked special Prism treatment. Flags are optional in scenes; region decides the colour, never the player shown.
+
 | Area | Family | Banner field | Trim | Notes |
 |---|---|---|---|---|
 | Portal Meadow™ | Yellow / gold | `#E8A812` | white | Owner decision 2026-10-05 (was teal #16A38A). |
-| Creek Crossing™ | Blue | `#1E6FD9` | white | The current world banners are already this family. |
-| Riverworks™ | Warm copper / orange-brown | `#B8692A` | cream `#F3E6CF` | Matches the map label's copper. |
+| Creek Crossing™ | Dark blue | `#1A4FB8` | white | The current world banners are already this family. |
+| Riverworks™ | Red | `#C8283B` | white | Owner handoff 2026-10-05 (was copper). |
 | Clover Cliffs™ | Forest green | `#23864A` | white | |
-| Fallen Grounds™ (formerly Ruin Courtyard) | Red | `#C8283B` | white | |
+| Fallen Grounds™ (formerly Ruin Courtyard) | Copper / orange | `#D2691E` | white | Owner handoff 2026-10-05 (was red). |
 | Prism Ridge™ | Purple | `#7A3CC8` | white | |
 | Frosty Peaks™ | Ice blue | `#7CC6F2` | white | Confirmed by board A: white trim and graphics on ice blue. |
 

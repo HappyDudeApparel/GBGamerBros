@@ -1407,16 +1407,16 @@ window.GB_MEDIA = {
   "srev": "1358414e2e"
  },
  "assets/entities/scenes/sentry-cannon-ingame": {
-  "w": 720,
-  "h": 500,
-  "band": 14,
-  "sw": 720,
-  "sh": 500,
-  "sband": 14,
+  "w": 928,
+  "h": 584,
+  "band": 17,
+  "sw": 928,
+  "sh": 584,
+  "sband": 17,
   "alpha": false,
-  "master": "final-sentry-cannon.png",
-  "rev": "3a033eea5e",
-  "srev": "3814018e79"
+  "master": "sc-ingame.png",
+  "rev": "d0558144b2",
+  "srev": "eaf5210dc0"
  },
  "assets/entities/scenes/spike-bot-ingame": {
   "w": 576,
@@ -1442,149 +1442,89 @@ window.GB_MEDIA = {
   "rev": "0fc9f72371",
   "srev": "8a339d6950"
  },
- "assets/entities/sentry-cannon-active": {
-  "w": 197,
-  "h": 151,
+ "assets/entities/sentry/blue": {
+  "w": 304,
+  "h": 244,
   "band": 14,
-  "sw": 197,
-  "sh": 151,
+  "sw": 304,
+  "sh": 244,
   "sband": 14,
   "alpha": true,
-  "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__sentry-active.png",
-  "rev": "24fe1b0cab",
-  "srev": "75871256cf"
+  "master": "sc-blue.png",
+  "rev": "1329682349",
+  "srev": "7055ead25b"
  },
- "assets/entities/sentry-cannon-back": {
-  "w": 146,
-  "h": 168,
+ "assets/entities/sentry/hostile": {
+  "w": 423,
+  "h": 347,
   "band": 14,
-  "sw": 146,
-  "sh": 168,
+  "sw": 423,
+  "sh": 347,
   "sband": 14,
   "alpha": true,
-  "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__sentry-back.png",
-  "rev": "b235b95c6a",
-  "srev": "0950c7eff5"
+  "master": "sc-hostile.png",
+  "rev": "4e5da028e4",
+  "srev": "35c087c4d2"
  },
- "assets/entities/sentry-cannon-cooldown": {
-  "w": 339,
-  "h": 288,
+ "assets/entities/sentry/missile": {
+  "w": 406,
+  "h": 422,
   "band": 14,
-  "sw": 339,
-  "sh": 288,
+  "sw": 406,
+  "sh": 422,
   "sband": 14,
   "alpha": true,
-  "master": "sentry-cannon-cooldown.png",
-  "rev": "6fdc3ed3a0",
-  "srev": "de7f3b58ca"
+  "master": "sc-missile.png",
+  "rev": "9b3f2b6197",
+  "srev": "5cf6bdb3d2"
  },
- "assets/entities/sentry-cannon-defeated": {
-  "w": 156,
-  "h": 142,
+ "assets/entities/sentry/purple": {
+  "w": 306,
+  "h": 244,
   "band": 14,
-  "sw": 156,
-  "sh": 142,
+  "sw": 306,
+  "sh": 244,
   "sband": 14,
   "alpha": true,
-  "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__sentry-defeated.png",
-  "rev": "2c4b883aba",
-  "srev": "5799ba637c"
+  "master": "sc-purple.png",
+  "rev": "e34760b7d6",
+  "srev": "245773e81c"
  },
- "assets/entities/sentry-cannon-destroyed": {
-  "w": 519,
-  "h": 312,
+ "assets/entities/sentry/red": {
+  "w": 300,
+  "h": 243,
   "band": 14,
-  "sw": 519,
-  "sh": 312,
+  "sw": 300,
+  "sh": 243,
   "sband": 14,
   "alpha": true,
-  "master": "sentry-cannon-destroyed.png",
-  "rev": "5b22956032",
-  "srev": "664c3104a5"
+  "master": "sc-red.png",
+  "rev": "ba5e8efd89",
+  "srev": "6e95e79151"
  },
- "assets/entities/sentry-cannon-firing": {
-  "w": 330,
-  "h": 282,
+ "assets/entities/sentry/rotary": {
+  "w": 418,
+  "h": 412,
   "band": 14,
-  "sw": 330,
-  "sh": 282,
+  "sw": 418,
+  "sh": 412,
   "sband": 14,
   "alpha": true,
-  "master": "sentry-cannon-firing.png",
-  "rev": "35ea2e2a9e",
-  "srev": "9bf52ad879"
+  "master": "sc-rotary.png",
+  "rev": "4099c7239b",
+  "srev": "fc169cc09b"
  },
- "assets/entities/sentry-cannon-front": {
-  "w": 150,
-  "h": 169,
+ "assets/entities/sentry/yellow": {
+  "w": 302,
+  "h": 243,
   "band": 14,
-  "sw": 150,
-  "sh": 169,
+  "sw": 302,
+  "sh": 243,
   "sband": 14,
   "alpha": true,
-  "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__sentry-front.png",
-  "rev": "2fa5fc6e67",
-  "srev": "d1739f3ee3"
- },
- "assets/entities/sentry-cannon-hero": {
-  "w": 347,
-  "h": 298,
-  "band": 14,
-  "sw": 200,
-  "sh": 172,
-  "sband": 14,
-  "alpha": true,
-  "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__sentry-hero.png",
-  "rev": "e9c7abd1b9",
-  "srev": "ff837b2d21"
- },
- "assets/entities/sentry-cannon-idle": {
-  "w": 231,
-  "h": 258,
-  "band": 14,
-  "sw": 231,
-  "sh": 258,
-  "sband": 14,
-  "alpha": true,
-  "master": "sentry-cannon-idle.png",
-  "rev": "678401d566",
-  "srev": "5ab3482628"
- },
- "assets/entities/sentry-cannon-side": {
-  "w": 183,
-  "h": 163,
-  "band": 14,
-  "sw": 183,
-  "sh": 163,
-  "sband": 14,
-  "alpha": true,
-  "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__sentry-side.png",
-  "rev": "0b9b232f1d",
-  "srev": "dc950cf952"
- },
- "assets/entities/sentry-cannon-threeq": {
-  "w": 179,
-  "h": 162,
-  "band": 14,
-  "sw": 179,
-  "sh": 162,
-  "sband": 14,
-  "alpha": true,
-  "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__sentry-threeq.png",
-  "rev": "74efb44715",
-  "srev": "8b6687c566"
- },
- "assets/entities/sentry-cannon-tracking": {
-  "w": 276,
-  "h": 258,
-  "band": 14,
-  "sw": 276,
-  "sh": 258,
-  "sband": 14,
-  "alpha": true,
-  "master": "sentry-cannon-tracking.png",
-  "rev": "e87abe4c80",
-  "srev": "b68f6476c4"
+  "master": "sc-yellow.png",
+  "rev": "ecdbf799af",
+  "srev": "ba78652a1c"
  },
  "assets/entities/spike-bot-alert": {
   "w": 259,
@@ -1958,17 +1898,41 @@ window.GB_MEDIA = {
   "rev": "af18890c46",
   "srev": "1be792d5d8"
  },
- "assets/objects/crate": {
-  "w": 514,
-  "h": 418,
+ "assets/objects/crate-broken": {
+  "w": 466,
+  "h": 322,
   "band": 14,
-  "sw": 514,
-  "sh": 418,
+  "sw": 466,
+  "sh": 322,
   "sband": 14,
   "alpha": true,
-  "master": "crate.png",
-  "rev": "bbecb339e7",
-  "srev": "4b16ef3d28"
+  "master": "crate-broken.png",
+  "rev": "63adb29677",
+  "srev": "1bd7514f83"
+ },
+ "assets/objects/crate-damaged": {
+  "w": 295,
+  "h": 310,
+  "band": 14,
+  "sw": 295,
+  "sh": 310,
+  "sband": 14,
+  "alpha": true,
+  "master": "crate-damaged.png",
+  "rev": "f786734daf",
+  "srev": "2b6bd27958"
+ },
+ "assets/objects/crate-intact": {
+  "w": 301,
+  "h": 322,
+  "band": 14,
+  "sw": 301,
+  "sh": 322,
+  "sband": 14,
+  "alpha": true,
+  "master": "crate-intact.png",
+  "rev": "45acc660eb",
+  "srev": "b6df413c7e"
  },
  "assets/objects/crystal": {
   "w": 354,
@@ -2006,6 +1970,30 @@ window.GB_MEDIA = {
   "rev": "69d853a8b9",
   "srev": "c6ce159947"
  },
+ "assets/objects/glitchkey": {
+  "w": 432,
+  "h": 448,
+  "band": 14,
+  "sw": 432,
+  "sh": 448,
+  "sband": 14,
+  "alpha": false,
+  "master": "glitchkey.png",
+  "rev": "0777a39aaa",
+  "srev": "7334b26acb"
+ },
+ "assets/objects/patchpad": {
+  "w": 512,
+  "h": 708,
+  "band": 14,
+  "sw": 512,
+  "sh": 708,
+  "sband": 14,
+  "alpha": false,
+  "master": "patchpad.png",
+  "rev": "86d6319fe4",
+  "srev": "e45e7a32c7"
+ },
  "assets/objects/prism-crystal": {
   "w": 258,
   "h": 490,
@@ -2030,17 +2018,209 @@ window.GB_MEDIA = {
   "rev": "1e298efa70",
   "srev": "c82554ac5b"
  },
- "assets/objects/springboard": {
-  "w": 450,
-  "h": 412,
+ "assets/objects/quickhack/code": {
+  "w": 560,
+  "h": 820,
   "band": 14,
-  "sw": 450,
-  "sh": 412,
+  "sw": 560,
+  "sh": 820,
   "sband": 14,
   "alpha": true,
-  "master": "springboard.png",
-  "rev": "39fdb906c8",
-  "srev": "86edecded3"
+  "master": "qh-code.png",
+  "rev": "4e1a7f4ad0",
+  "srev": "0655a50bb7"
+ },
+ "assets/objects/quickhack/denied": {
+  "w": 560,
+  "h": 820,
+  "band": 14,
+  "sw": 560,
+  "sh": 820,
+  "sband": 14,
+  "alpha": true,
+  "master": "qh-denied.png",
+  "rev": "4e49d0a06c",
+  "srev": "c082f8e9de"
+ },
+ "assets/objects/quickhack/granted": {
+  "w": 560,
+  "h": 820,
+  "band": 14,
+  "sw": 560,
+  "sh": 820,
+  "sband": 14,
+  "alpha": true,
+  "master": "qh-granted.png",
+  "rev": "3a02e93cb9",
+  "srev": "53a87a7c33"
+ },
+ "assets/objects/quickhack/hacking": {
+  "w": 560,
+  "h": 820,
+  "band": 14,
+  "sw": 560,
+  "sh": 820,
+  "sband": 14,
+  "alpha": true,
+  "master": "qh-hacking.png",
+  "rev": "732794fd56",
+  "srev": "934e32afc2"
+ },
+ "assets/objects/quickhack/scan": {
+  "w": 560,
+  "h": 820,
+  "band": 14,
+  "sw": 560,
+  "sh": 820,
+  "sband": 14,
+  "alpha": true,
+  "master": "qh-scan.png",
+  "rev": "08caebd1e7",
+  "srev": "1be01befa0"
+ },
+ "assets/objects/springboard/back": {
+  "w": 276,
+  "h": 257,
+  "band": 14,
+  "sw": 276,
+  "sh": 257,
+  "sband": 14,
+  "alpha": true,
+  "master": "sb-back.png",
+  "rev": "4814993665",
+  "srev": "b355ae6d4c"
+ },
+ "assets/objects/springboard/compressed": {
+  "w": 232,
+  "h": 220,
+  "band": 14,
+  "sw": 232,
+  "sh": 220,
+  "sband": 14,
+  "alpha": true,
+  "master": "sb-compressed.png",
+  "rev": "b41f9a0b40",
+  "srev": "c9532d4b3e"
+ },
+ "assets/objects/springboard/front": {
+  "w": 287,
+  "h": 260,
+  "band": 14,
+  "sw": 287,
+  "sh": 260,
+  "sband": 14,
+  "alpha": true,
+  "master": "sb-front.png",
+  "rev": "44c78ac814",
+  "srev": "33b3282037"
+ },
+ "assets/objects/springboard/left": {
+  "w": 241,
+  "h": 242,
+  "band": 14,
+  "sw": 241,
+  "sh": 242,
+  "sband": 14,
+  "alpha": true,
+  "master": "sb-left.png",
+  "rev": "0f41347a70",
+  "srev": "c2ed05720f"
+ },
+ "assets/objects/springboard/neutral": {
+  "w": 237,
+  "h": 219,
+  "band": 14,
+  "sw": 237,
+  "sh": 219,
+  "sband": 14,
+  "alpha": true,
+  "master": "sb-neutral.png",
+  "rev": "0e2d40e241",
+  "srev": "639649a0ae"
+ },
+ "assets/objects/springboard/rebound": {
+  "w": 236,
+  "h": 263,
+  "band": 14,
+  "sw": 236,
+  "sh": 263,
+  "sband": 14,
+  "alpha": true,
+  "master": "sb-rebound.png",
+  "rev": "1554726b0e",
+  "srev": "8fe1d30940"
+ },
+ "assets/objects/springboard/scene-frost-peaks": {
+  "w": 1672,
+  "h": 905,
+  "band": 30,
+  "sw": 960,
+  "sh": 520,
+  "sband": 17,
+  "alpha": false,
+  "master": "sb-scene-frost_peaks.png",
+  "rev": "d1e2b417b9",
+  "srev": "ba11809a0d"
+ },
+ "assets/objects/springboard/scene-portal-meadow": {
+  "w": 1672,
+  "h": 905,
+  "band": 30,
+  "sw": 960,
+  "sh": 520,
+  "sband": 17,
+  "alpha": false,
+  "master": "sb-scene-portal_meadow.png",
+  "rev": "28c104a7b2",
+  "srev": "daf49702b8"
+ },
+ "assets/objects/springboard/scene-riverworks": {
+  "w": 1672,
+  "h": 905,
+  "band": 30,
+  "sw": 960,
+  "sh": 520,
+  "sband": 17,
+  "alpha": false,
+  "master": "sb-scene-riverworks.png",
+  "rev": "49ac7d8029",
+  "srev": "67d9147907"
+ },
+ "assets/objects/springboard/settling": {
+  "w": 250,
+  "h": 198,
+  "band": 14,
+  "sw": 250,
+  "sh": 198,
+  "sband": 14,
+  "alpha": true,
+  "master": "sb-settling.png",
+  "rev": "89020d700a",
+  "srev": "e0bda4b71d"
+ },
+ "assets/objects/springboard/threeq": {
+  "w": 291,
+  "h": 262,
+  "band": 14,
+  "sw": 291,
+  "sh": 262,
+  "sband": 14,
+  "alpha": true,
+  "master": "sb-threeq.png",
+  "rev": "87cf2cb185",
+  "srev": "4a8566950a"
+ },
+ "assets/objects/springboard/top": {
+  "w": 257,
+  "h": 255,
+  "band": 14,
+  "sw": 257,
+  "sh": 255,
+  "sband": 14,
+  "alpha": true,
+  "master": "sb-top.png",
+  "rev": "1aeddcf0c9",
+  "srev": "b77dcbfb5d"
  },
  "assets/scenes/blue-red-world-action-01": {
   "w": 1672,
@@ -2114,53 +2294,65 @@ window.GB_MEDIA = {
   "rev": "16b6fdbdaf",
   "srev": "5be0b01df7"
  },
- "assets/systems/portals/portal-clover-env": {
-  "w": 1672,
-  "h": 941,
-  "band": 30,
+ "assets/systems/portals/portal-clover": {
+  "w": 1200,
+  "h": 900,
+  "band": 22,
   "sw": 960,
-  "sh": 540,
+  "sh": 720,
   "sband": 17,
   "alpha": false,
-  "master": "GREEN_CAVE_PORTAL_FINAL_PASS.png",
-  "rev": "f835966cf6",
-  "srev": "304ee1ee6b"
+  "master": "portal-clover.png",
+  "rev": "5734ebcdcd",
+  "srev": "26dd8af6b4"
  },
- "assets/systems/portals/portal-meadow-env": {
-  "w": 1672,
-  "h": 941,
-  "band": 30,
+ "assets/systems/portals/portal-creek": {
+  "w": 963,
+  "h": 721,
+  "band": 17,
   "sw": 960,
-  "sh": 540,
+  "sh": 719,
   "sband": 17,
   "alpha": false,
-  "master": "PORTAL_MEADOW_PASS_B.png",
-  "rev": "a20bcf6b38",
-  "srev": "5f02694674"
+  "master": "portal-creek.png",
+  "rev": "72c5129ce8",
+  "srev": "ab6784d269"
  },
- "assets/systems/portals/portal-prism-env": {
-  "w": 1672,
-  "h": 941,
-  "band": 30,
+ "assets/systems/portals/portal-fallen": {
+  "w": 963,
+  "h": 721,
+  "band": 17,
   "sw": 960,
-  "sh": 540,
+  "sh": 719,
   "sband": 17,
   "alpha": false,
-  "master": "PRISM_RIDGE_PASS_B.png",
-  "rev": "b2f44b066f",
-  "srev": "7f68f95695"
+  "master": "portal-fallen.png",
+  "rev": "ed96a4589e",
+  "srev": "72d0051c2b"
  },
- "assets/systems/portals/portal-riverworks-env": {
-  "w": 1672,
-  "h": 941,
-  "band": 30,
+ "assets/systems/portals/portal-meadow": {
+  "w": 1254,
+  "h": 940,
+  "band": 23,
   "sw": 960,
-  "sh": 540,
+  "sh": 720,
   "sband": 17,
   "alpha": false,
-  "master": "RIVERWORKS_PASS_B.png",
-  "rev": "024bc8dd94",
-  "srev": "97f3d93ba3"
+  "master": "portal-meadow.png",
+  "rev": "90afd94401",
+  "srev": "6380221d67"
+ },
+ "assets/systems/portals/portal-prism": {
+  "w": 1254,
+  "h": 940,
+  "band": 23,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "portal-prism.png",
+  "rev": "d6d59d9c7c",
+  "srev": "775852be40"
  },
  "assets/systems/preview-04-trail-junction": {
   "w": 1672,

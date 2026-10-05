@@ -67,12 +67,13 @@ window.GB_ENTITIES = {
   },
   "sentry-cannon": {
     name: "Sentry Cannon™", type: "enemy", status: "APPROVED",
-    // GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1 (approved production master)
-    media: { thumb: E + "sentry-cannon-hero", render: E + "sentry-cannon-hero", icon: null },
-    copy: { provisional: true, summary: "Stationary cannon.", behaviour: "Fires from a fixed position. Find cover.", where: "Found across Adventure Mountain™." },
+    // 08_SENTRY_CANNON locked system (sole geometry/state source): hostile = red/orange hazard language,
+    // hacked = player-colour energy + GB / mountain insignia; same structure across Standard, Rotary, Missile
+    media: { thumb: "assets/entities/sentry/hostile", render: "assets/entities/sentry/hostile", icon: null },
+    copy: { summary: "Stationary hostile cannon.", behaviour: "Locks on and fires from a fixed position. Hack one and it fights on your side in your colour.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Front": E + "sentry-cannon-front", "¾ view": E + "sentry-cannon-threeq", "Side": E + "sentry-cannon-side", "Back": E + "sentry-cannon-back" },
-    states: { "Idle": E + "sentry-cannon-idle", "Tracking": E + "sentry-cannon-tracking", "Firing": E + "sentry-cannon-firing", "Cooldown": E + "sentry-cannon-cooldown", "Destroyed": E + "sentry-cannon-destroyed", "Inactive": E + "sentry-cannon-defeated" },
+    states: { "Hostile": "assets/entities/sentry/hostile", "Hacked · Blue": "assets/entities/sentry/blue", "Hacked · Red": "assets/entities/sentry/red", "Hacked · Yellow": "assets/entities/sentry/yellow", "Hacked · Purple": "assets/entities/sentry/purple" },
+    views: { "Standard": "assets/entities/sentry/hostile", "Rotary": "assets/entities/sentry/rotary", "Missile": "assets/entities/sentry/missile" },
     angles: angles(), cardScale: 0.8, height: 1.0, scale: null,
   },
   "stone-golem": {
@@ -117,18 +118,41 @@ window.GB_ENTITIES = {
     media: { thumb: null, render: "assets/systems/fast-travel-portal", icon: null },
     copy: { summary: "Regional fast-travel portal.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    states: { "Portal Meadow™": "assets/systems/portals/portal-meadow-env", "Riverworks™": "assets/systems/portals/portal-riverworks-env", "Clover Cliffs™": "assets/systems/portals/portal-clover-env", "Prism Ridge™": "assets/systems/portals/portal-prism-env" }, angles: angles(), scale: null,
+    states: { "Portal Meadow™": "assets/systems/portals/portal-meadow", "Creek Crossing™": "assets/systems/portals/portal-creek", "Clover Cliffs™": "assets/systems/portals/portal-clover", "Fallen Grounds™": "assets/systems/portals/portal-fallen", "Prism Ridge™": "assets/systems/portals/portal-prism" }, angles: angles(), scale: null,
   },
   "springboard": {
     name: "Springboard", type: "prop", status: "APPROVED",
-    media: { thumb: "assets/objects/springboard", render: "assets/objects/springboard", icon: null },
-    copy: { summary: "Red springboard with a GB base.", behaviour: "Launches you up to higher ledges and hidden routes.", where: "Found across Adventure Mountain™." },
-    encounter: [], states: {}, angles: angles(), scale: null,
+    // 09_SPRINGBOARD/SPRINGBOARD_TURNAROUND_LOCKED (the only approved springboard)
+    media: { thumb: "assets/objects/springboard/front", render: "assets/objects/springboard/front", icon: null },
+    copy: { summary: "Red domed springboard on a GB base.", behaviour: "Jump on it to launch to higher ledges and hidden routes.", where: "Found across Adventure Mountain™." },
+    encounter: [],
+    states: { "Neutral": "assets/objects/springboard/neutral", "Compressed": "assets/objects/springboard/compressed", "Rebound": "assets/objects/springboard/rebound", "Settling": "assets/objects/springboard/settling" },
+    views: { "Front": "assets/objects/springboard/front", "Left side": "assets/objects/springboard/left", "Back": "assets/objects/springboard/back", "Right ¾": "assets/objects/springboard/threeq", "Top": "assets/objects/springboard/top" },
+    angles: angles(), scale: null,
   },
   "crate": {
     name: "GB Crate", type: "prop", status: "APPROVED",
-    media: { thumb: "assets/objects/crate", render: "assets/objects/crate", icon: null },
-    copy: { summary: "GB crate with reinforced metal corners.", behaviour: "Found along paths and in hidden corners of the world.", where: "Found across Adventure Mountain™." },
+    // 07_CRATES preferred direction: Classic GB
+    media: { thumb: "assets/objects/crate-intact", render: "assets/objects/crate-intact", icon: null },
+    copy: { summary: "Classic wooden GB crate.", behaviour: "Break it open for rewards; it cracks before it breaks.", where: "Found across Adventure Mountain™." },
+    encounter: [], states: { "Intact": "assets/objects/crate-intact", "Damaged": "assets/objects/crate-damaged", "Broken": "assets/objects/crate-broken" }, angles: angles(), scale: null,
+  },
+  "patchpad": {
+    name: "PatchPad™", type: "gadget", status: "APPROVED",
+    media: { thumb: "assets/objects/patchpad", render: "assets/objects/patchpad", icon: null },
+    copy: { summary: "Handheld hacking and control device.", behaviour: "Scan, decode and take over compatible machines, like a Sentry Cannon™.", where: "Carried by the Gamers." },
+    encounter: [], states: {}, angles: angles(), scale: null,
+  },
+  "quickhack": {
+    name: "QuickHack™", type: "gadget", status: "APPROVED",
+    media: { thumb: "assets/objects/quickhack/code", render: "assets/objects/quickhack/code", icon: null },
+    copy: { summary: "Fast hacking software on the Gamers' smartwatch.", behaviour: "Enter a code you've found, scan nearby devices or run a quick hack on the go.", where: "assets/objects/n every Gamer's watch." },
+    encounter: [], states: { "Enter code": "assets/objects/quickhack/code", "Scan": "assets/objects/quickhack/scan", "Hacking": "assets/objects/quickhack/hacking", "Access granted": "assets/objects/quickhack/granted", "Access denied": "assets/objects/quickhack/denied" }, angles: angles(), scale: null,
+  },
+  "glitchkey": {
+    name: "GlitchKey™", type: "gadget", status: "APPROVED",
+    media: { thumb: "assets/objects/glitchkey", render: "assets/objects/glitchkey", icon: null },
+    copy: { summary: "Physical access chip.", behaviour: "Insert it into compatible terminals, locks and machinery to open new paths.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "coin": {
@@ -206,7 +230,7 @@ window.GB_EVOLUTION_DETAIL = {
 
 // display order for the Enemies & Hazards section
 // display order for the Adventure Finds™ section
-window.GB_OBJECTS = ["treasure-chest", "crystal-chest", "coin", "character-coins", "adventure-crystal", "secret-key", "springboard", "crate"];
+window.GB_OBJECTS = ["treasure-chest", "crystal-chest", "coin", "character-coins", "adventure-crystal", "secret-key", "springboard", "crate", "patchpad", "quickhack", "glitchkey"];
 window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian"];
 // In-game view of each enemy (cropped from the approved production masters' in-game renders):
 // the enemy card image and the dossier's opening view. Production cutouts stay as selectable views.
@@ -215,7 +239,8 @@ window.GB_ENTITY_SCENE = {
   "goom": { src: SC + "goom-ingame", fx: 45 },
   "spike-bot": { src: SC + "spike-bot-ingame", fx: 50 },
   "rotor-bot": { src: SC + "rotor-bot-ingame", fx: 52 },
-  "sentry-cannon": { src: SC + "sentry-cannon-ingame", fx: 48 },
+  "sentry-cannon": { src: SC + "sentry-cannon-ingame", fx: 40 },
+  "springboard": [{ src: "assets/objects/springboard/scene-portal-meadow", fx: 45, label: "Portal Meadow™" }, { src: "assets/objects/springboard/scene-riverworks", fx: 45, label: "Riverworks™" }, { src: "assets/objects/springboard/scene-frost-peaks", fx: 45, label: "Frosty Peaks™" }],
   "rolling-boulder": { src: SC + "rolling-boulder-ingame", fx: 62 },
   "stone-golem": { src: SC + "stone-golem-ingame", fx: 50 },
   "crystal-guardian": { src: SC + "crystal-guardian-ingame", fx: 50 },
@@ -233,5 +258,8 @@ window.GB_ENTITY_ALIASES = {
   "prism-keeper": "crystal-guardian",
   "crystal": "adventure-crystal",
   "prism-crystal": "secret-key",
+  "patch-pad": "patchpad",
+  "glitch-key": "glitchkey",
+  "quick-hack": "quickhack",
 };
 })();

@@ -4,7 +4,7 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
-- Live build: **`r-e279f3d8`** (360 panorama installed).
+- Live build: **`r-6f8645e4`** (handoff pass).
 - Root homepage and `/v2/` are untouched. Never change them.
 
 ## Publishing workflow (every user-visible change)
@@ -16,6 +16,21 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 6. Check the Pages run (GitHub Actions "pages build and deployment") and report the new build ID.
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
+
+## COMPLETED — handoff pass (2026-10-05, build r-6f8645e4)
+Authority: Drive `ASSET PRODUCTION — 2026-10-05/00_READ_ME_FIRST_CLAUDE_SITE_HANDOFF.md` + `06_HACKING_SYSTEM/00_HACKING_SYSTEM_SITE_USAGE_NOTES.md` (source sheets beat generated art; flags optional, never wrong).
+- **Flag colours (handoff §4):** Riverworks™ red (was copper), Fallen Grounds™ copper/orange (was red), Creek Crossing™ dark blue; WORLD_ASSET_STANDARD.md updated. Summit Spine™ purple; Prism Ridge™ special treatment.
+- **Fast Travel:** Portal Meadow™ (gold), Creek Crossing™ (dark blue), Clover Cliffs™ (green), Fallen Grounds™ (orange), Prism Ridge™ (purple); all cropped 4:3 on the portal. Creek/Fallen from CREEK_CLOVER_FALLEN_CLEAN_TRIPTYCH. Riverworks PASS_B removed (orange flags = wrong under the new canon). Riverworks™ + Frosty Peaks™ portals pending.
+- **Sentry Cannon™:** all old art replaced from 08_SENTRY_CANNON locked system: Hostile + Hacked Blue/Red/Yellow/Purple (action states), Standard/Rotary/Missile (reference forms), in-game hostile view (card + dossier).
+- **Springboard:** the locked red domed springboard only (09_SPRINGBOARD turnaround): states Neutral/Compressed/Rebound/Settling, five reference views, three audited action scenes (Portal Meadow gold, Riverworks red, Frosty light-blue flags — PASS). Old springboard deleted.
+- **GB Crate:** Classic GB (preferred direction) with Intact/Damaged/Broken.
+- **Hacking family (Adventure Finds™):** PatchPad™ = concept A Core Field Unit; GlitchKey™ = concept B Compact Access Chip; QuickHack™ = UI screens (code entry, scan, hacking, granted, denied) composited onto a simple black smartwatch with blue accent (sheet's bulky shells not used). One intro line explains the three roles.
+- **Dossiers:** "In the world" scenes (multiple supported: GB_ENTITY_SCENE may be a list) → action states → reference views; Hero tile dropped when it duplicates a view.
+- Tests: six viewports clean; functional suite updated for panorama mode, passes (logo-padding artefact aside).
+
+### Pending
+- Fast Travel: Riverworks™ (red flags) and Frosty Peaks™ (light-blue flags) in-environment portals.
+- Rotor Bot™ action states; character-audited hero carousel scenes; QuickHack player-colour accents per character.
 
 ## COMPLETED — 360 panorama installed (2026-10-05, build r-e279f3d8)
 - Source: owner-supplied `Adventure_Mountain_360_MASTER_ENRICHED_V1` (4608x1024, 4.5:1; same image as embedded in `Adventure_Mountain_360_Explore.html`). Master kept outside the repo.

@@ -321,7 +321,7 @@
   // and Pass E hotspots inside area images all open #entity/<id>.
   const eDlg = document.getElementById("entityView");
   const eBody = document.getElementById("entBody");
-  const TYPE = { enemy: "Enemy", hazard: "Hazard", portal: "Portal", prop: "World prop", collectible: "Collectible" };
+  const TYPE = { enemy: "Enemy", hazard: "Hazard", portal: "Portal", prop: "Adventure Find", collectible: "Adventure Find", gadget: "Gadget" };
   let entPushed = false;
   let entOpenedFrom = null;
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -338,7 +338,9 @@
   };
   const isCut = (src) => !!(MEDIA[src] && MEDIA[src].alpha);
   // in-game view (entities.js GB_ENTITY_SCENE): cover-fitted inside a fixed frame, band clipped
-  const sceneOf = (id) => { const s = (window.GB_ENTITY_SCENE || {})[id]; return s && MEDIA[s.src] ? s : null; };
+  // GB_ENTITY_SCENE[id] is one scene or a list; scenesOf → all valid, sceneOf → the first ("id" or "id:n")
+  const scenesOf = (id) => [].concat((window.GB_ENTITY_SCENE || {})[id] || []).filter((s) => MEDIA[s.src]);
+  const sceneOf = (ref) => { const [id, n] = String(ref).split(":"); return scenesOf(id)[Number(n) || 0] || null; };
   const sceneImg = (s, alt, small) => `<span class="gbm scene-fit" style="${frameVars(s.src)};--fx:${s.fx}%"><img src="${asset(s.src, small)}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`;
 
   // optional authored evolution line (e.g. Rolling Boulder → Stone Golem → Crystal Guardian)
@@ -405,10 +407,11 @@
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
         ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : `<span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span>`}</div>
-           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? "In the world" : "Hero"}</span></p>`
+           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : "Hero"}</span></p>`
         : media(hero, "dossier__render", e.name)}
+        ${scenesOf(id).length > 1 ? `<h3>In the world</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
         ${states ? `<h3>${e.type === "portal" ? "Regional portals" : "Action states"}</h3><ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
-        ${views ? `<h3>Reference views</h3><ul class="dossier__picks">${sc ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="true"><span class="stage-box">${sceneImg(sc, "", true)}</span><small>In the world</small></button></li>` : ""}${stage ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
+                ${views ? `<h3>Reference views</h3><ul class="dossier__picks">${sc && scenesOf(id).length === 1 ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="true"><span class="stage-box">${sceneImg(sc, "", true)}</span><small>In the world</small></button></li>` : ""}${stage && !Object.values(e.views || {}).includes(hero) ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
           <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
@@ -627,7 +630,7 @@
   document.getElementById("objs").innerHTML = (window.GB_OBJECTS || []).filter((id) => ENTITIES[id]).map((id) => {
     const e = ENTITIES[id], t = e.media.thumb;
     return `<li><button class="foe obj" type="button" data-entity="${id}" style="--s:${e.cardScale || .62}" aria-label="${esc(e.name)} — details">
-      <span class="foe__stage">${cut(t, "foe__cut", "", "(min-width: 1100px) 160px, 40vw")}</span>
+      ${isCut(t) ? `<span class="foe__stage">${cut(t, "foe__cut", "", "(min-width: 1100px) 160px, 40vw")}</span>` : `<span class="foe__stage foe__stage--scene">${sceneImg({ src: t, fx: 50 }, "", true)}</span>`}
       <span class="foe__text"><strong>${esc(e.name)}</strong></span>
     </button></li>`;
   }).join("");
