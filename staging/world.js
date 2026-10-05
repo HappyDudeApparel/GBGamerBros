@@ -302,6 +302,7 @@ function create(root, opts) {
     refresh: () => layout(),
   };
   layout(false);
+  if (pano && typeof pano.front === "number") panTo(pano.front, false);   // open on the canonical 0° front
   return api;
 }
 
