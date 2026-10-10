@@ -113,6 +113,17 @@ window.GB_ENTITIES = {
     angles: angles(), cardScale: 1.28, height: 2.5, scale: null,
     evolution: { line: "boulder", phase: 3 },
   },
+  "brightback": {
+    name: "Brightback™", type: "enemy", status: "APPROVED",
+    // Preferred Brightback V1 imagery only; V2 is an unapproved alternate.
+    // Stage 4 follows Prism Keeper; do not borrow this silhouette or its cyan/magenta shards for stage 3.
+    scenicHero: true,
+    media: { thumb: E + "brightback-v1-hero", render: E + "brightback-v1-hero", icon: null },
+    copy: { summary: "The towering fourth evolution of the Rumbler™ line, with deeper violet stone and larger Prism Shards.", behaviour: "An imposing apex form with an intensified core and heavy crystal growth.", where: "Prism Ridge™." },
+    encounter: [],
+    views: {}, states: {}, angles: angles(), cardScale: 1.0, height: null, scale: null,
+    evolution: { line: "boulder", phase: 4 },
+  },
   // ---------------- hazards ----------------
   "rolling-boulder": {
     name: "Rumbler™", type: "hazard", status: "APPROVED",
@@ -217,7 +228,7 @@ window.GB_ENTITIES = {
 
 // optional authored evolution lines (no trigger is hard-coded; conditions are undecided)
 window.GB_EVOLUTION = {
-  boulder: ["rolling-boulder", "stone-golem", "crystal-guardian"],
+  boulder: ["rolling-boulder", "stone-golem", "crystal-guardian", "brightback"],
 };
 
 // evolution detail (approved EVOLUTION_MECHANICS masters): cutout sequence, mechanics close-ups, in-world steps
@@ -232,6 +243,7 @@ window.GB_EVOLUTION_DETAIL = {
       { src: X + "evo-golem-forming", label: "Forming", phase: 2 },
       { src: X + "evo-stone-golem", label: "Stone Walker™", phase: 2 },
       { src: E + "crystal-guardian-hero", label: "Prism Keeper™", phase: 3 },
+      { src: E + "brightback-v1-hero", label: "Brightback™", phase: 4 },
     ],
     mechanics: [
       { src: X + "mech-core-ignition", label: "Core ignition", text: "Orange internal energy ignites, visible through cracks between the stone plates." },
@@ -247,6 +259,7 @@ window.GB_EVOLUTION_DETAIL = {
       // Owner visual audit, 2026-10-10: former evo-step-5 and evo-step-6 incorrectly portrayed
       // Prism Keeper anatomy. Keep the gallery's earlier approved steps only, pending
       // verified replacement Phase 3 in-world imagery. Do not relabel mismatched art.
+      { src: E + "brightback-v1-hero", label: "Brightback™", note: "Preferred V1 apex appearance in Prism Ridge™.", phase: 4 },
     ],
   },
 };
@@ -254,7 +267,7 @@ window.GB_EVOLUTION_DETAIL = {
 // display order for the Enemies & Hazards section
 // display order for the Adventure Finds™ section
 window.GB_OBJECTS = ["treasure-chest", "crystal-chest", "coin", "character-coins", "adventure-crystal", "secret-key", "springboard", "crate"];
-window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "claw-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian"];
+window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "claw-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian", "brightback"];
 // In-game view of each enemy (cropped from the approved production masters' in-game renders):
 // the enemy card image and the dossier's opening view. Production cutouts stay as selectable views.
 const SC = "assets/entities/scenes/";
@@ -269,6 +282,12 @@ window.GB_ENTITY_SCENE = {
   "rolling-boulder": { src: SC + "rolling-boulder-ingame", fx: 62 },
   "stone-golem": { src: SC + "stone-golem-ingame", fx: 50 },
   "crystal-guardian": { src: SC + "crystal-guardian-ingame", fx: 50 },
+  "brightback": [
+    { src: E + "brightback-v1-hero", fx: 50, label: "Preferred V1 hero" },
+    { src: E + "brightback-v1-turnaround", fx: 50, label: "Four-view turnaround" },
+    { src: E + "brightback-v1-face", fx: 50, label: "Face and core detail" },
+    { src: E + "brightback-v1-hand", fx: 50, label: "Prism Shard detail" },
+  ],
 };
 
 // legacy IDs keep working: #entity/<old> is rewritten to the canonical ID
