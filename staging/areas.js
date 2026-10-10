@@ -106,12 +106,9 @@ window.GB_AREAS = {
   preview: {
     name: "Level Preview", sub: "Preview stills", status: "open", map: false,
     views: [
-      { src: "assets/scenes/blue-red-world-action-01", kind: "still", label: "Cliffside dash", focus: 0.3,
-        alt: "Gamer Bro Blue™ and Gamer Bro Red™ dashing along a cliff path above waterfalls and bridges", hotspots: [] },
-      { src: "assets/scenes/purple-yellow-world-action-02", kind: "still", label: "Boardwalk run", focus: 0.45,
-        alt: "Gamer Girl Purple™ and Gamer Girl Yellow™ running along a rope-rail boardwalk past waterfalls", hotspots: [] },
-      { src: "assets/scenes/four-character-world-action-01", kind: "still", label: "Team climb", focus: 0.3,
-        alt: "Gamer Bro Blue™, Gamer Bro Red™, Gamer Girl Purple™ and Gamer Girl Yellow™ climbing a rocky ledge above the waterfall valley", hotspots: [] },
+      // Owner canon audit 2026-10-10 (issue #1): the three character action stills formerly here
+      // (blue-red-world-action-01, purple-yellow-world-action-02, four-character-world-action-01)
+      // show floating islands, contrary to ONE CONNECTED MOUNTAIN. Removed pending owner-approved scenes.
       { src: "assets/systems/preview-04-trail-junction", kind: "still", label: "Trail junction", focus: 0.3,
         alt: "Stone steps at a trail junction with signposts, pipes and a waterfall", hotspots: [] },
     ],

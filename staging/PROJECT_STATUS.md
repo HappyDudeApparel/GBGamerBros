@@ -17,6 +17,33 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## CANON CORRECTION — block 1 (2026-10-10, issue #1 / PR #2) — STAGING ONLY, awaiting owner visual sign-off
+Removed (owner-rejected):
+- Sentry Cannon™ in-world scene (uncanny figure + beam): GB_ENTITY_SCENE entry and assets/entities/scenes/sentry-cannon-ingame deleted.
+  Dossier = approved hostile cannon + four hacked colours + Standard/Rotary/Missile (unchanged system).
+- Evolution in-world steps #5 "Crystal nucleation" and #6 "Prism Keeper™" (wrong morphology): entries + evo-step-5/6 files deleted. Steps 1–4 kept.
+- (PR #2's entities.js edits are applied in the dev source; the draft PR itself is now redundant.)
+Corrected from approved source:
+- Claw Bot™ — all 14 images re-extracted (previous key2 flood-fill left motion streaks, grey mats, shadow bars inside the WebPs).
+  New extractor (scratchpad matx.py): material mask (dark metal / saturated paint) + selective hole fill + warm-edge recovery,
+  grey-island removal, floor-sliver cleanup, gbdefringe. Sources: "Claw Bot Final Production Reference" (hero, 6 views, idle, alert,
+  clamp A, defeated A/B) and "Claw Bot Animation Bundle Reference" (walk = front scuttle; attack = front attack, replaces streaked Clamp B).
+- Rotor Bot™ — ALL imagery replaced: old ROTOR_BOT_PRODUCTION_ATLAS_V1 propeller-fin cutouts + in-world scene removed. New from
+  "Rotor Bot Production Spec Sheet" (final fixed-nozzle: 3 spikes, 4 thrusters, bottom nozzle, no propellers): hero, Front/¾/Side/Back/Top/Bottom,
+  Idle/hover, Patrol, Alert, Inactive, Defeated A/B. Charge/Attack A + Attack/Dive B NOT shipped (exhaust plumes can't be cleanly matted
+  from the flattened sheet) — needs transparent exports.
+- Level Preview — 3 floating-island stills removed (blue-red-world-action-01, purple-yellow-world-action-02, four-character-world-action-01);
+  only preview-04 trail junction remains; arrows/thumbs hide for a single still.
+Audit, NOT changed (owner decision needed):
+- Homepage carousel: all 3 slides FAIL connected-mountain rule (hero-world-highfive plate, blue-world-action-01, purple-yellow-world-action-01
+  all show floating islands; crown banners non-canon). Kept to avoid an empty hero; need owner-approved replacements.
+- Drive 11_ACTION_SCENE_REFERENCES (4 portrait refs): Red/Sentry = FAIL (firing beam), Purple/crystal guardian = UNVERIFIED Prism Keeper
+  morphology, Blue/Creek + Yellow = connected terrain but enemies don't match locked Spike Bot/Goom designs. Not used.
+Tests: func.js 23/23; p5check all 6 viewports (0 overflow, 21 dossiers open, 0 errors); b2check DOM assertions; gbmedia verify 447/447.
+Remaining queue (issue #1): character cutout mats (8 hero poses + turnarounds), crystal-guardian/stone-golem/coins/crystals/chests alpha audit
+(all 217 keys), Explore Areas relabel ss01 → Summit Spine, fp01 flag colour, Sentry hacked row on one line, Brightback reconciliation,
+copyright wording review.
+
 ## PHASE 5 — block 1 (2026-10-10, build r-9fea5c71) — STAGING ONLY, awaiting owner review
 Brief: 00B_CLAUDE_SITE_REFRESH_2026-10-10 (Drive doc 1yn2IjKOtJDdJzLfQYj8HiwvZJ1q-RiiMfbHeVsbz-rY). Production root untouched.
 Done:
