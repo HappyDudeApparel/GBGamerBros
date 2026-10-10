@@ -241,8 +241,9 @@ window.GB_EVOLUTION_DETAIL = {
       { src: X + "evo-step-2", label: "Energized", note: "Energy glows through the cracks.", phase: 1 },
       { src: X + "evo-step-3", label: "Impact / fracture", note: "Plates break loose and begin to reconfigure.", phase: 1 },
       { src: X + "evo-step-4", label: "Stone Walker™ forming", note: "The same rock becomes limbs and torso.", phase: 2 },
-      { src: X + "evo-step-5", label: "Crystal nucleation", note: "Prism crystals seed from the core and shoulders.", phase: 3 },
-      { src: X + "evo-step-6", label: "Prism Keeper™", note: "The Stone Walker™ body remains beneath the Prism crystals.", phase: 3 },
+      // Owner visual audit, 2026-10-10: former evo-step-5 and evo-step-6 incorrectly portrayed
+      // Prism Keeper anatomy. Keep the gallery's earlier approved steps only, pending
+      // verified replacement Phase 3 in-world imagery. Do not relabel mismatched art.
     ],
   },
 };
@@ -258,7 +259,9 @@ window.GB_ENTITY_SCENE = {
   "goom": { src: SC + "goom-ingame", fx: 45 },
   "spike-bot": { src: SC + "spike-bot-ingame", fx: 50 },
   "rotor-bot": { src: SC + "rotor-bot-ingame", fx: 52 },
-  "sentry-cannon": { src: SC + "sentry-cannon-ingame", fx: 40 },
+  // Owner explicitly rejected former Sentry Cannon "In the world" image: unapproved
+  // person and beam scene. Hostile canonical model will be the main hero without it.
+  // Do not re-enable this source until an approved in-world replacement exists.
   "springboard": [{ src: "assets/objects/springboard/scene-portal-meadow", fx: 45, label: "Portal Meadow™" }, { src: "assets/objects/springboard/scene-riverworks", fx: 45, label: "Riverworks™" }, { src: "assets/objects/springboard/scene-frost-peaks", fx: 45, label: "Frosty Peaks™" }],
   "rolling-boulder": { src: SC + "rolling-boulder-ingame", fx: 62 },
   "stone-golem": { src: SC + "stone-golem-ingame", fx: 50 },
