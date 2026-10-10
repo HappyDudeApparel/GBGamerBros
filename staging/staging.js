@@ -626,6 +626,8 @@
   document.querySelectorAll("[data-lp]").forEach((b) => b.addEventListener("click", () => lpSet(lpIndex + Number(b.dataset.lp))));
   document.getElementById("lpMain").addEventListener("click", (e) => navArea("preview", e.currentTarget, lpIndex));
   lpSet(0);
+  // a single approved still: no carousel controls to show
+  if (LP.views.length < 2) { lpThumbs.hidden = true; document.querySelectorAll("[data-lp]").forEach((b) => { b.hidden = true; }); }
 
   // ---------- Fast Travel ----------
   const portal = ENTITIES.portal;

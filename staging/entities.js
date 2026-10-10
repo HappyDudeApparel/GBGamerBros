@@ -47,12 +47,13 @@ window.GB_ENTITIES = {
   },
   "claw-bot": {
     name: "Claw Bot™", type: "enemy", status: "APPROVED",
-    // Claw Bot Final Production Reference (core finished source master)
+    // Sources: Claw Bot Final Production Reference (hero, views, idle, alert, clamp A, defeated A/B) and
+    // Claw Bot Animation Bundle Reference (walk = front scuttle; attack = front attack). Re-extracted 2026-10-10 (no streaks/shadows).
     media: { thumb: E + "claw-bot-hero", render: E + "claw-bot-hero", icon: null },
     copy: { provisional: true, summary: "Crab-like ground enemy with two split-spike claws.", behaviour: "Patrols, spots you, raises its claws and clamps to attack.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Front": E + "claw-bot-front", "¾ view": E + "claw-bot-threeq", "Side": E + "claw-bot-side", "Back": E + "claw-bot-back", "Top": E + "claw-bot-top", "Bottom": E + "claw-bot-bottom" },
-    states: { "Idle": E + "claw-bot-idle", "Walk / scuttle": E + "claw-bot-walk", "Alert": E + "claw-bot-alert", "Clamp A": E + "claw-bot-attack-a", "Clamp B": E + "claw-bot-attack-b", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b" },
+    states: { "Idle": E + "claw-bot-idle", "Walk / scuttle": E + "claw-bot-walk", "Alert": E + "claw-bot-alert", "Clamp A": E + "claw-bot-attack-a", "Attack · open claws": E + "claw-bot-attack-front", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b" },
     angles: angles("top", "bottom"), cardScale: 0.95, height: 0.8, scale: null,
   },
   "spike-bot": {
@@ -67,13 +68,15 @@ window.GB_ENTITIES = {
   },
   "rotor-bot": {
     name: "Rotor Bot™", type: "enemy", status: "APPROVED",
-    // ROTOR_BOT_PRODUCTION_ATLAS_V1 (approved production master)
+    // Source: Rotor Bot Production Spec Sheet (final fixed-nozzle design: 3 red spikes, 4 angled red thruster
+    // nozzles, 1 bottom stabilization nozzle, no propellers). Replaces ROTOR_BOT_PRODUCTION_ATLAS_V1 (propeller fins).
+    // Charge/Attack A and Attack/Dive B are omitted until a transparent export exists (exhaust plumes can't be cleanly matted from the sheet).
     media: { thumb: E + "rotor-bot-hero", render: E + "rotor-bot-hero", icon: null },
-    copy: { provisional: true, summary: "Airborne enemy.", behaviour: "Flies in patterns.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Fast, agile flying enemy with a spherical core and fixed thruster nozzles.", behaviour: "Hovers, patrols, spots you and attacks from above.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Front": E + "rotor-bot-front", "¾ view": E + "rotor-bot-threeq", "Side": E + "rotor-bot-side", "Back": E + "rotor-bot-back" },
-    states: { "Hover / attack": E + "rotor-bot-active", "Defeated": E + "rotor-bot-defeated" },
-    angles: angles(), cardScale: 0.86, height: 0.8, scale: null,
+    views: { "Front": E + "rotor-bot-front", "¾ view": E + "rotor-bot-threeq", "Side": E + "rotor-bot-side", "Back": E + "rotor-bot-back", "Top": E + "rotor-bot-top", "Bottom": E + "rotor-bot-bottom" },
+    states: { "Idle / hover": E + "rotor-bot-idle", "Patrol": E + "rotor-bot-patrol", "Alert": E + "rotor-bot-alert", "Inactive": E + "rotor-bot-inactive", "Defeated A": E + "rotor-bot-defeated-a", "Defeated B": E + "rotor-bot-defeated-b" },
+    angles: angles("top", "bottom"), cardScale: 0.86, height: 0.8, scale: null,
   },
   "sentry-cannon": {
     name: "Sentry Cannon™", type: "enemy", status: "APPROVED",
@@ -241,8 +244,9 @@ window.GB_EVOLUTION_DETAIL = {
       { src: X + "evo-step-2", label: "Energized", note: "Energy glows through the cracks.", phase: 1 },
       { src: X + "evo-step-3", label: "Impact / fracture", note: "Plates break loose and begin to reconfigure.", phase: 1 },
       { src: X + "evo-step-4", label: "Stone Walker™ forming", note: "The same rock becomes limbs and torso.", phase: 2 },
-      { src: X + "evo-step-5", label: "Crystal nucleation", note: "Prism crystals seed from the core and shoulders.", phase: 3 },
-      { src: X + "evo-step-6", label: "Prism Keeper™", note: "The Stone Walker™ body remains beneath the Prism crystals.", phase: 3 },
+      // Owner visual audit, 2026-10-10: former evo-step-5 and evo-step-6 incorrectly portrayed
+      // Prism Keeper anatomy. Keep the gallery's earlier approved steps only, pending
+      // verified replacement Phase 3 in-world imagery. Do not relabel mismatched art.
     ],
   },
 };
@@ -257,8 +261,10 @@ const SC = "assets/entities/scenes/";
 window.GB_ENTITY_SCENE = {
   "goom": { src: SC + "goom-ingame", fx: 45 },
   "spike-bot": { src: SC + "spike-bot-ingame", fx: 50 },
-  "rotor-bot": { src: SC + "rotor-bot-ingame", fx: 52 },
-  "sentry-cannon": { src: SC + "sentry-cannon-ingame", fx: 40 },
+  // Rotor Bot™ in-world scene removed 2026-10-10: it showed the superseded propeller-fin design.
+  // Owner explicitly rejected former Sentry Cannon "In the world" image: unapproved
+  // person and beam scene. Hostile canonical model will be the main hero without it.
+  // Do not re-enable this source until an approved in-world replacement exists.
   "springboard": [{ src: "assets/objects/springboard/scene-portal-meadow", fx: 45, label: "Portal Meadow™" }, { src: "assets/objects/springboard/scene-riverworks", fx: 45, label: "Riverworks™" }, { src: "assets/objects/springboard/scene-frost-peaks", fx: 45, label: "Frosty Peaks™" }],
   "rolling-boulder": { src: SC + "rolling-boulder-ingame", fx: 62 },
   "stone-golem": { src: SC + "stone-golem-ingame", fx: 50 },
