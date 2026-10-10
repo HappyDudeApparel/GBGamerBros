@@ -2,207 +2,293 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="gb-revision" content="r-6f8645e4">
+<script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
+(function(){var R="r-6f8645e4";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#061a30">
+<meta name="theme-color" content="#0b2a6b">
 <title>GB GAMER BROS™ — Adventure Mountain™</title>
-<meta name="description" content="GB GAMER BROS™ — Explore Adventure Mountain™.">
-<link rel="icon" href="assets/logo.png">
-<link rel="stylesheet" href="site.css?v=3">
+<meta name="description" content="GB GAMER BROS™ — Explore Adventure Mountain™. PLAY • EXPLORE • DISCOVER">
+<link rel="icon" href="assets/brand/gb-logo-960.webp?v=40182d5678">
+<link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="staging.css?v=d93cc45a59">
 </head>
 <body>
-<header class="topbar" id="topbar">
-  <a class="nav-brand" href="#home" aria-label="GB GAMER BROS home">
-    <img src="assets/logo.png" alt="GB GAMER BROS™">
-  </a>
-  <nav class="nav-links" aria-label="Primary navigation">
-    <a href="#home">HOME</a>
-    <a href="#world">WORLD</a>
-    <a href="#areas">AREAS</a>
-    <a href="#features">FEATURES</a>
-    <a href="#characters">CHARACTERS</a>
-  </nav>
-  <button class="steam-button js-steam" type="button"><span class="steam-dot">●</span> WISHLIST ON STEAM</button>
-</header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-steam" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#fff"/><circle cx="21" cy="12" r="5" fill="none" stroke="#d3131f" stroke-width="2.4"/><circle cx="21" cy="12" r="2.2" fill="#d3131f"/><circle cx="11.5" cy="21" r="3.6" fill="none" stroke="#d3131f" stroke-width="2.2"/><path d="M4 18.5l5.2 2.2M14.6 19.3l3.8-3.6" stroke="#d3131f" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M44 20 36 36 20 44l8-16Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="32" cy="32" r="3" fill="currentColor"/></symbol>
+  <symbol id="i-spiral" viewBox="0 0 64 64"><path d="M33 33c-1-3 3-5 5-3 4 3 1 10-5 10-8 0-11-9-7-15 5-8 18-8 23 1 6 10-1 23-13 24-14 1-24-10-22-23" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-team" viewBox="0 0 64 64"><circle cx="20" cy="24" r="7" fill="currentColor"/><circle cx="44" cy="24" r="7" fill="currentColor"/><circle cx="32" cy="19" r="8.5" fill="currentColor"/><path d="M6 50c1-10 7-15 14-15 4 0 7 1 9 4-3 3-5 7-5 11Zm52 0c-1-10-7-15-14-15-4 0-7 1-9 4 3 3 5 7 5 11Zm-36 2c1-11 5-17 10-17s9 6 10 17Z" fill="currentColor"/></symbol>
+  <symbol id="i-portal" viewBox="0 0 64 64"><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="32" cy="32" r="10" fill="none" stroke="currentColor" stroke-width="5"/><path d="M32 3v10M32 51v10M3 32h10M51 32h10" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+  <symbol id="i-reward" viewBox="0 0 64 64"><path d="M32 4 54 26 32 60 10 26Z" fill="currentColor"/><path d="M10 26h44M22 10l10 16 10-16M20 26l12 34 12-34" fill="none" stroke="white" stroke-opacity=".55" stroke-width="3"/></symbol>
+  <symbol id="i-secret" viewBox="0 0 64 64"><path d="m32 4 8 18 20 2-15 13 5 20-18-10-18 10 5-20L4 24l20-2Z" fill="currentColor"/></symbol>
+  <symbol id="i-traversal" viewBox="0 0 64 64"><path d="M4 52 25 18l10 15 7-10 18 29Z" fill="currentColor"/><path d="m18 38 7-12 5 8" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="i-team2" viewBox="0 0 64 64"><circle cx="22" cy="23" r="9" fill="currentColor"/><circle cx="42" cy="23" r="9" fill="currentColor"/><circle cx="32" cy="17" r="10" fill="currentColor"/><path d="M5 56c1-13 8-20 17-20s16 7 17 20Zm20 0c1-15 8-23 18-23s16 8 16 23Z" fill="currentColor"/></symbol>
+  <symbol id="i-frames" viewBox="0 0 64 64"><rect x="6" y="14" width="40" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="4.5"/><path d="M18 50h34a6 6 0 0 0 6-6V22" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M14 38l9-10 7 7 5-5 7 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-hazard" viewBox="0 0 64 64"><path d="M32 6c13 0 23 9 23 21 0 7-3 12-8 15v8a4 4 0 0 1-4 4H21a4 4 0 0 1-4-4v-8c-5-3-8-8-8-15C9 15 19 6 32 6Z" fill="currentColor"/><circle cx="23" cy="28" r="6" fill="#fff"/><circle cx="41" cy="28" r="6" fill="#fff"/><path d="M27 54v-7M37 54v-7M32 39l-3 5h6Z" stroke="#fff" stroke-width="3" fill="#fff" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tree" viewBox="0 0 64 64"><path d="M32 4 14 28h11L10 45h17v15h10V45h17L39 28h11Z" fill="currentColor"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 64 64"><g stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M32 5v54M8 18l48 28M8 46l48-28"/><path d="m25 12 7 7 7-7M25 52l7-7 7 7M12 26l10 3-2-10M52 38l-10-3 2 10M12 38l10-3-2 10M52 26l-10 3 2-10"/></g></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></symbol>
+</svg>
 
-<main id="home">
-<section class="hero" aria-label="Adventure Mountain hero">
-  <div class="hero-track" id="heroTrack">
-    <figure class="hero-slide"><img src="assets/hero-1.jpg" alt="Adventure Mountain portal route"></figure>
-    <figure class="hero-slide"><img src="assets/hero-2.jpg" alt="Adventure Mountain waterfalls and ruins"></figure>
-    <figure class="hero-slide"><img src="assets/hero-3.jpg" alt="Adventure Mountain portal vista"></figure>
-  </div>
-  <div class="hero-shade"></div>
-
-  <div class="hero-copy">
-    <h1>EXPLORE<br>A BRIGHTER<br>TOMORROW</h1>
-    <p>PLAY <span>•</span> EXPLORE <span>•</span> DISCOVER</p>
-    <button class="steam-button hero-steam js-steam" type="button"><span class="steam-dot">●</span> WISHLIST ON STEAM <b>→</b></button>
-    <div class="hero-actions" aria-label="Game pillars">
-      <button type="button" data-scroll="#features"><i>⌁</i><b>PLAY</b></button>
-      <button type="button" data-scroll="#world"><i>◎</i><b>EXPLORE</b></button>
-      <button type="button" data-scroll="#areas"><i>✦</i><b>DISCOVER</b></button>
-    </div>
-  </div>
-
-  <div class="world-sign" aria-label="GB Gamer Bros Adventure Mountain">
-    <div class="sign-top">
-      <span class="mountain-mark">⌁</span>
-      <img src="assets/logo.png" alt="GB GAMER BROS™">
-    </div>
-    <strong>ADVENTURE MOUNTAIN™</strong>
-    <small>PLAY <b>•</b> EXPLORE <b>•</b> DISCOVER</small>
-  </div>
-
-  <button class="hero-arrow prev" type="button" aria-label="Previous hero image">‹</button>
-  <button class="hero-arrow next" type="button" aria-label="Next hero image">›</button>
-  <div class="hero-dots" id="heroDots" aria-label="Hero image selector"></div>
-  <div class="cloud-edge cloud-hero" aria-hidden="true"></div>
-</section>
-
-<section id="world" class="world-section" aria-labelledby="worldTitle">
-  <div class="section-kicker">THE WORLD</div>
-  <div class="map-title-row">
-    <div>
-      <h2 id="worldTitle">ADVENTURE MOUNTAIN™</h2>
-      <p>Choose a location to open its world view.</p>
-    </div>
-    <button class="ghost-button" type="button" data-open-area="portal">EXPLORE THE MAP →</button>
-  </div>
-
-  <div class="map-shell">
-    <img class="world-map" src="assets/map.jpg" alt="Adventure Mountain world map">
-    <div class="map-vignette" aria-hidden="true"></div>
-
-    <button class="map-label portal-label" type="button" data-open-area="portal">
-      <b>PORTAL MEADOW™</b><small>The adventure begins</small>
+<div class="stage" id="home">
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="GB GAMER BROS™ home"><span class="gbm" style="--ar:2.48062;--ext:1.05426"><img src="assets/brand/gb-logo.webp?v=90580b9bae" alt="GB GAMER BROS™" width="640" height="272"></span></a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#home" class="is-active" aria-current="page">HOME</a>
+      <a href="#world">WORLD</a>
+      <a href="#characters">CHARACTERS</a>
+      <a href="#features">FEATURES</a>
+      <a href="#level-preview">MEDIA</a>
+    </nav>
+    <button class="steam steam--top js-steam" type="button" aria-describedby="steamNote">
+      <svg class="steam__logo" aria-hidden="true"><use href="#i-steam"/></svg><span>WISHLIST ON STEAM</span><svg class="steam__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
     </button>
-    <button class="map-label creek-label" type="button" data-open-area="creek">
-      <b>CREEK CROSSING™</b><small>Bridges &amp; Rapids</small>
-    </button>
-    <button class="map-label river-label" type="button" data-open-area="riverworks">
-      <b>RIVERWORKS™</b><small>Waterfalls &amp; Pipeways</small>
-    </button>
-    <button class="map-label clover-label" type="button" data-open-area="clover">
-      <b>CLOVER CLIFFS™</b><small>Forest Trails</small>
-    </button>
-    <button class="map-label ruin-label" type="button" data-open-area="ruin">
-      <b>RUIN COURTYARD™</b><small>Forgotten Towers</small>
-    </button>
-    <button class="map-label prism-label" type="button" data-open-area="prism">
-      <b>PRISM RIDGE™</b><small>Crystal Peaks &amp; Ancient Ruins</small>
-    </button>
-    <button class="map-label frost-label" type="button" data-open-area="frost">
-      <b>FROST PEAKS™</b><small>Icy Cliffs &amp; Granite Roads</small>
-    </button>
-  </div>
-  <div class="cloud-edge cloud-map" aria-hidden="true"></div>
-</section>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </header>
 
-<section class="pillars" aria-label="Adventure Mountain features">
-  <button type="button" data-detail="portals"><span class="pillar-icon p-blue">◎</span><b>FIND PORTALS™</b><small>Discover portal locations hidden across the world.</small></button>
-  <button type="button" data-detail="rewards"><span class="pillar-icon p-gold">◆</span><b>COLLECT REWARDS™</b><small>Find coins, gems, chests and rare collectibles.</small></button>
-  <button type="button" data-detail="secrets"><span class="pillar-icon p-purple">★</span><b>UNCOVER SECRETS™</b><small>Explore optional routes and hidden areas.</small></button>
-  <button type="button" data-detail="traversal"><span class="pillar-icon p-cyan">▲</span><b>MASTER TRAVERSAL™</b><small>Use jumps, pipes, bridges and more.</small></button>
-  <button type="button" data-detail="coop"><span class="pillar-icon p-team">•••</span><b>PLAY TOGETHER™</b><small>Co-op remains a development goal.</small></button>
-</section>
-
-<section id="areas" class="areas-section">
-  <div class="section-heading">
-    <div><span>EXPLORE</span><h2>ICONIC AREAS™</h2></div>
-    <small>Swipe, tap, or click an area</small>
-  </div>
-  <div class="area-rail-wrap">
-    <button class="rail-arrow rail-prev" type="button" aria-label="Scroll areas left">‹</button>
-    <div class="area-rail" id="areaRail"></div>
-    <button class="rail-arrow rail-next" type="button" aria-label="Scroll areas right">›</button>
-  </div>
-</section>
-
-<section id="features" class="gameplay-section">
-  <div class="section-heading">
-    <div><span>GAMEPLAY</span><h2>EXPLORE THE WORLD™</h2></div>
-    <small>Interactive feature previews</small>
-  </div>
-  <div class="feature-grid">
-    <article class="feature-card level-card" data-detail="level">
-      <div class="feature-image"><img src="assets/hero-1.jpg" alt="Level preview"><button class="play-disc" type="button" aria-label="Open level preview">▶</button></div>
-      <div class="feature-copy"><span>LEVEL PREVIEW™</span><h3>Routes built around movement</h3><p>Bridges, waterfalls, elevation changes, fast paths and alternate lines.</p><button type="button">OPEN PREVIEW →</button></div>
-    </article>
-    <article class="feature-card" data-detail="travel">
-      <div class="feature-image"><img src="assets/hero-3.jpg" alt="Fast travel portal"></div>
-      <div class="feature-copy"><span>FAST TRAVEL™</span><h3>Portal network</h3><p>Portals connect distant parts of Adventure Mountain™ as the world opens up.</p><button type="button">VIEW PORTALS →</button></div>
-    </article>
-    <article class="feature-card hazards-card" data-detail="hazards">
-      <div class="hazard-art">
-        <div class="hazard-orb red">●</div><div class="hazard-orb spike">✹</div><div class="hazard-orb flyer">✦</div>
-        <div class="hazard-orb turret">▣</div><div class="hazard-orb crystal">◆</div><div class="hazard-orb boulder">●</div>
+  <section class="hero" aria-roledescription="carousel" aria-label="Adventure Mountain™ hero">
+    <div class="hero__slides" id="heroSlides" aria-live="off">
+      <div class="hero__track" id="heroTrack">
+        <!-- Slide types:
+             plain  = world plate; its characters come from the .hero__fg layer (data-slide index)
+             still  = character already in the frame; portrait layouts frame it in the scene band -->
+        <figure class="slide" aria-label="Slide 1 of 3"><img src="assets/hero-world-highfive.webp?v=d409fe1e44" alt="" fetchpriority="high"></figure>
+        <figure class="slide slide--scene" style="--fy:6%;--sx:42%;--psx:20%;--bg:url(assets/scenes/blue-world-action-01-960.webp?v=79c7174e12)" aria-label="Slide 2 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/blue-world-action-01.webp?v=f188c09494" srcset="assets/scenes/blue-world-action-01-960.webp?v=79c7174e12 960w, assets/scenes/blue-world-action-01.webp?v=f188c09494 1672w" sizes="100vw" alt="Gamer Bro Blue™ leaping between platforms past waterfalls and the crystal castle" loading="lazy" draggable="false"></span></div></figure>
+        <figure class="slide slide--scene" style="--fy:8%;--sx:40%;--psx:38%;--bg:url(assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75)" aria-label="Slide 3 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/purple-yellow-world-action-01.webp?v=0952411235" srcset="assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75 960w, assets/scenes/purple-yellow-world-action-01.webp?v=0952411235 1672w" sizes="100vw" alt="Gamer Girl Purple™ and Gamer Girl Yellow™ running along a waterfall boardwalk" loading="lazy" draggable="false"></span></div></figure>
       </div>
-      <div class="feature-copy"><span>BAD GUYS &amp; HAZARDS™</span><h3>Enemies, traps and world hazards</h3><p>Patrol enemies, moving hazards and environmental challenges shape each route.</p><button type="button">VIEW HAZARDS →</button></div>
-    </article>
-  </div>
-</section>
+    </div>
+    <div class="hero__shade" aria-hidden="true"></div>
 
-<section id="characters" class="characters-section">
-  <div class="characters-bg"></div>
-  <div class="section-heading light">
-    <div><span>CHARACTERS</span><h2>MEET THE TEAM™</h2></div>
-    <small>Blue • Red • Purple • Yellow</small>
-  </div>
-  <div class="team-stage">
-    <img src="assets/team.jpg" alt="GB Gamer Bros character team">
-    <button class="character-zone char-purple" type="button" data-character="purple" aria-label="Gamer Girl Purple"></button>
-    <button class="character-zone char-blue" type="button" data-character="blue" aria-label="Gamer Bro Blue"></button>
-    <button class="character-zone char-red" type="button" data-character="red" aria-label="Gamer Bro Red"></button>
-    <button class="character-zone char-yellow" type="button" data-character="yellow" aria-label="Gamer Girl Yellow"></button>
-  </div>
-  <div class="character-tabs" aria-label="Character selector">
-    <button type="button" data-character="purple"><i class="purple-dot"></i>GAMER GIRL PURPLE™</button>
-    <button type="button" data-character="blue"><i class="blue-dot"></i>BLUE™</button>
-    <button type="button" data-character="red"><i class="red-dot"></i>RED™</button>
-    <button type="button" data-character="yellow"><i class="yellow-dot"></i>GAMER GIRL YELLOW™</button>
-  </div>
-</section>
+    <span class="hero__sign gbm" style="--ar:1.62749;--ext:1.02893"><img src="assets/brand/adventure-mountain-sign.webp?v=21fcd58e0b" alt="GB GAMER BROS™ Adventure Mountain™ sign — PLAY • EXPLORE • DISCOVER" width="900" height="569"></span>
 
-<footer class="site-footer">
-  <span>PLAY • EXPLORE • DISCOVER</span>
-  <img src="assets/logo.png" alt="GB GAMER BROS™">
-  <button class="steam-button js-steam" type="button"><span class="steam-dot">●</span> WISHLIST ON STEAM</button>
-</footer>
+    <!-- Character layer. Swap a cutout by changing src + its box:
+         --x/--y/--w = landscape box in reference px (1536-wide grid)
+         --px/--py/--pw = portrait box in --p units (--px is offset from centre) -->
+    <div class="hero__fg">
+      <span class="fg gbm" data-slide="0" style="--x:525;--y:75;--w:440;--px:-158;--py:276;--pw:336;--ar:0.93793;--ext:1.01724"><img src="assets/characters/blue-red-high-five.webp?v=2849c774c9" alt="Gamer Bro Blue™ and Gamer Bro Red™ jumping for a high five" width="1088" height="1180"></span>
+    </div>
+
+    <div class="hero__copy">
+      <h1 class="headline"><span>EXPLORE</span> <span>A BRIGHTER</span> <span>TOMORROW</span></h1>
+      <p class="tagline">PLAY <b>•</b> EXPLORE <b>•</b> DISCOVER</p>
+      <button class="steam steam--hero js-steam" type="button" aria-describedby="steamNote">
+        <svg class="steam__logo" aria-hidden="true"><use href="#i-steam"/></svg><span>WISHLIST ON STEAM</span><svg class="steam__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </button>
+      <ul class="pillars" aria-label="Game pillars">
+        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-compass"/></svg></span><span class="pillar__label">EXPLORE<br>VIBRANT WORLDS</span></li>
+        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-spiral"/></svg></span><span class="pillar__label">DISCOVER<br>HIDDEN SECRETS</span></li>
+        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-team"/></svg></span><span class="pillar__label">PLAY<br>TOGETHER</span><span class="pillar__note">In development</span></li>
+      </ul>
+    </div>
+
+    <button class="hero__arrow hero__arrow--prev" type="button" aria-label="Previous slide" data-dir="-1"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="hero__arrow hero__arrow--next" type="button" aria-label="Next slide" data-dir="1"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="hero__dots" id="heroDots" role="tablist" aria-label="Choose slide"></div>
+  </section>
+
+  <section class="world" id="world" data-mode="fallback" aria-labelledby="worldTitle">
+    <!-- hero-to-world transition: atmosphere only, never geography; never intercepts input -->
+    <div class="cloudfx" aria-hidden="true">
+      <img class="clouds clouds--top" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" width="2048" height="142">
+      <img class="clouds clouds--top2" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" width="2048" height="142">
+      <img class="clouds clouds--top3" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" width="2048" height="142">
+    </div>
+    <div class="map-frame">
+      <!-- world viewer (world.js). Fallback mode: the current front map below.
+           Panorama mode: activated by panorama-manifest.js; tiles replace this image. -->
+      <div class="map" id="mapScroller" tabindex="0" role="region" aria-roledescription="map" aria-label="Map of Adventure Mountain™">
+        <div class="map__track" id="mapTrack">
+          <img class="map__img" src="assets/adventure-mountain-front.webp?v=96039d75f7" alt="Adventure Mountain™ seen from the front: Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Fallen Grounds™, Prism Ridge™ and Frosty Peaks™" width="1536" height="960" fetchpriority="high">
+        </div>
+        <div class="map__overlay" id="mapOverlay"></div>
+      </div>
+      <button class="map__pan map__pan--prev" type="button" aria-label="Pan map left" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="map__pan map__pan--next" type="button" aria-label="Pan map right" aria-controls="mapScroller"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <img class="clouds clouds--bottom" src="assets/cloud-bank.webp?v=0c0ed56194" alt="" aria-hidden="true" width="2048" height="142">
+    </div>
+    <div class="map-nav">
+      <h2 class="map-title" id="worldTitle"><svg aria-hidden="true"><use href="#i-compass"/></svg><span>Explore Adventure Mountain™</span><b class="map-title__badge" data-when="panorama">360° World</b></h2>
+      <div class="map-nav__row">
+        <button class="map__mode map__mode--expand" id="mapExpand" type="button" aria-controls="mapScroller">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Zoom in</button>
+        <button class="map__mode map__mode--overview" id="mapOverview" type="button" aria-controls="mapScroller">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Whole map</button>
+        <p class="map__hint" aria-hidden="true"><span>‹</span> <b data-when="fallback">Drag to explore</b><b data-when="panorama">Drag to travel around the world</b> <span>›</span></p>
+      </div>
+      <div class="minimap" id="minimap" role="slider" tabindex="0" aria-label="Map position" aria-controls="mapScroller" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <img src="assets/adventure-mountain-front-480.webp?v=38e0cac6bb" alt="" width="480" height="300" loading="lazy">
+      </div>
+    </div>
+  </section>
+</div>
+
+<main class="systems" id="features">
+  <div class="systems__inner">
+    <ul class="feats" aria-label="Ways to play">
+      <li class="feat"><span class="feat__icon feat__icon--portal"><svg aria-hidden="true"><use href="#i-portal"/></svg></span><h3>Find Portals</h3><p>Discover portal locations hidden across the world.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--reward"><svg aria-hidden="true"><use href="#i-reward"/></svg></span><h3>Collect Rewards</h3><p>Find Crystals, Prism Crystals, chests and GB Coins.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--secret"><svg aria-hidden="true"><use href="#i-secret"/></svg></span><h3>Uncover Secrets</h3><p>Explore optional routes and hidden areas.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--traversal"><svg aria-hidden="true"><use href="#i-traversal"/></svg></span><h3>Master Traversal</h3><p>Use jumps, ziplines, pipes, springboards, bridges and more.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--team"><svg aria-hidden="true"><use href="#i-team2"/></svg></span><h3>Play Together</h3><p>Team up and explore Adventure Mountain™ together.</p><span class="feat__note">In development</span></li>
+    </ul>
+
+    <section class="rail-block" id="areas" aria-labelledby="areasTitle">
+      <header class="sec-head">
+        <span class="sec-head__icon"><svg aria-hidden="true"><use href="#i-compass"/></svg></span>
+        <div><h2 id="areasTitle">Explore Iconic Areas</h2><p>Seven regions of Adventure Mountain™</p></div>
+      </header>
+      <div class="rail-wrap">
+        <button class="round-btn rail-arrow rail-arrow--prev" type="button" data-rail="-1" aria-label="Scroll areas left" aria-controls="areaRail"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="rail" id="areaRail" tabindex="0" aria-label="Areas of Adventure Mountain™"></div>
+        <button class="round-btn rail-arrow rail-arrow--next" type="button" data-rail="1" aria-label="Scroll areas right" aria-controls="areaRail"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </section>
+
+    <div class="trio">
+      <section class="panel panel--preview" id="level-preview" aria-labelledby="lpTitle">
+        <header class="panel__head">
+          <span class="panel__icon"><svg aria-hidden="true"><use href="#i-frames"/></svg></span>
+          <div><h2 id="lpTitle">Level Preview</h2><p>Preview stills from Adventure Mountain™</p></div>
+        </header>
+        <div class="lp" id="levelPreview">
+          <button class="lp__main" id="lpMain" type="button" aria-label="Open preview stills">
+            <span class="lp__frame gbm" id="lpFrame"></span>
+            <span class="lp__open"><svg aria-hidden="true"><use href="#i-frames"/></svg>View stills</span>
+          </button>
+          <div class="lp__thumbs" id="lpThumbs" role="tablist" aria-label="Choose preview still"></div>
+          <div class="lp__bar">
+            <button class="round-btn round-btn--sm" type="button" data-lp="-1" aria-label="Previous still"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <p class="lp__label"><strong id="lpLabel"></strong></p>
+            <button class="round-btn round-btn--sm" type="button" data-lp="1" aria-label="Next still"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel--travel" id="fast-travel" aria-labelledby="ftTitle">
+        <header class="panel__head">
+          <span class="panel__icon"><svg aria-hidden="true"><use href="#i-portal"/></svg></span>
+          <div><h2 id="ftTitle">Fast Travel</h2><p>Find portals across the world</p></div>
+        </header>
+        <button class="ft" type="button" data-entity="portal" aria-label="Portal details">
+          <span class="ft__frame gbm" id="ftFrame"></span>
+          <span class="ft__caption"><strong id="ftName">Portal</strong></span>
+        </button>
+        <div class="ft__dots" id="ftDots" role="group" aria-label="Choose a region's portal"></div>
+      </section>
+
+      <section class="panel panel--hazards" id="enemies" aria-labelledby="bgTitle">
+        <span id="bad-guys" class="anchor-alias" aria-hidden="true"></span>
+        <header class="panel__head">
+          <span class="panel__icon"><svg aria-hidden="true"><use href="#i-hazard"/></svg></span>
+          <div><h2 id="bgTitle">Enemies &amp; Hazards</h2><p>Different enemies, new challenges</p></div>
+        </header>
+        <ul class="foes" id="foes"></ul>
+      </section>
+    </div>
+
+    <section class="panel panel--objects" id="adventure-finds" aria-labelledby="objTitle">
+      <header class="panel__head">
+        <span class="panel__icon"><svg aria-hidden="true"><use href="#i-reward"/></svg></span>
+        <div><h2 id="objTitle">Adventure Finds™</h2></div>
+      </header>
+      <p class="panel__intro">Rewards, helpers and gadgets. <b>PatchPad™</b> takes control of machines, <b>QuickHack™</b> runs fast hacks from your watch, and a <b>GlitchKey™</b> opens locked paths.</p>
+      <ul class="foes objs" id="objs"></ul>
+      <p class="panel__fine">Visualizations and designs are subject to change during development.</p>
+    </section>
+
+  </div>
 </main>
 
-<dialog class="world-dialog" id="worldDialog" aria-labelledby="dialogTitle">
-  <div class="dialog-shell">
-    <button class="dialog-close" id="dialogClose" type="button" aria-label="Close">×</button>
-    <div class="dialog-head">
-      <span id="dialogKicker">ADVENTURE MOUNTAIN™</span>
-      <h2 id="dialogTitle">PORTAL MEADOW™</h2>
-      <p id="dialogSub">The adventure begins.</p>
-    </div>
-    <div class="dialog-gallery">
-      <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image">‹</button>
-      <div class="gallery-stage" id="galleryStage" role="img" aria-label="Location view"></div>
-      <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">›</button>
-      <div class="gallery-dots" id="galleryDots"></div>
-    </div>
-    <div class="dialog-bottom">
-      <div class="dialog-description">
-        <h3 id="dialogCaption">Portal route</h3>
-        <p id="dialogText">A starting-area view of Adventure Mountain™.</p>
+<section class="team" id="characters" aria-labelledby="teamTitle">
+  <span id="team" class="anchor-alias" aria-hidden="true"></span>
+  <div class="team__inner">
+    <header class="sec-head team__head">
+      <span class="sec-head__icon"><svg aria-hidden="true"><use href="#i-team"/></svg></span>
+      <div><h2 id="teamTitle">Meet the Team</h2><p>Different styles. Same adventure.</p></div>
+      <div class="sec-head__nav team__nav">
+        <button class="round-btn" type="button" data-team="-1" aria-label="Previous character" aria-controls="teamList"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="round-btn" type="button" data-team="1" aria-label="Next character" aria-controls="teamList"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
-      <div class="detail-chips" id="detailChips"></div>
+    </header>
+    <ul class="team__list" id="teamList" aria-label="The four Gamers"></ul>
+  </div>
+</section>
+
+<dialog class="dossier" id="entityView" aria-labelledby="entName">
+  <div class="dossier__card">
+    <header class="dossier__head">
+      <div>
+        <p class="dossier__type" id="entType"></p>
+        <h2 class="dossier__name" id="entName"></h2>
+      </div>
+      <button class="dossier__close" id="entClose" type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="dossier__body" id="entBody"></div>
+  </div>
+</dialog>
+
+<dialog class="dossier char" id="charView" aria-labelledby="charName">
+  <div class="dossier__card char__card" id="charCard">
+    <header class="dossier__head char__head">
+      <div>
+        <p class="dossier__type">Meet the Team</p>
+        <h2 class="dossier__name" id="charName"></h2>
+      </div>
+      <button class="dossier__close" id="charClose" type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="char__body" id="charBody"></div>
+  </div>
+</dialog>
+
+<dialog class="area" id="areaView" aria-labelledby="areaTitle">
+  <div class="area__bg" id="areaBg" aria-hidden="true"></div>
+  <header class="area__bar">
+    <button class="area__back" id="areaBack" type="button">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>World Map</span>
+    </button>
+    <div class="area__heading">
+      <h2 class="area__title" id="areaTitle"></h2>
+      <p class="area__sub" id="areaSub"></p>
     </div>
+    <p class="area__count" id="areaCount" aria-live="polite"></p>
+  </header>
+  <div class="area__gallery">
+    <div class="area__track" id="areaTrack" tabindex="0" aria-roledescription="gallery"></div>
+    <button class="area__arrow area__arrow--prev" id="areaPrev" type="button" aria-label="Previous view"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="area__arrow area__arrow--next" id="areaNext" type="button" aria-label="Next view"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
+  <footer class="area__foot">
+    <p class="area__label" id="areaLabel"></p>
+    <button class="area__fit" id="areaFit" type="button" aria-pressed="false">Full view</button>
+    <div class="area__dots" id="areaDots" role="tablist" aria-label="Choose view"></div>
+  </footer>
 </dialog>
 
-<dialog class="info-dialog" id="infoDialog">
-  <div class="info-shell">
-    <button class="dialog-close" id="infoClose" type="button" aria-label="Close">×</button>
-    <span id="infoKicker">GB GAMER BROS™</span>
-    <h2 id="infoTitle">FEATURE</h2>
-    <p id="infoText"></p>
-  </div>
-</dialog>
+<footer class="site-foot">
+  <span class="site-foot__logo gbm" style="--ar:2.48062;--ext:1.05426"><img src="assets/brand/gb-logo.webp?v=90580b9bae" alt="GB GAMER BROS™" width="640" height="272" loading="lazy"></span>
+  <p class="site-foot__tag">PLAY • EXPLORE • DISCOVER</p>
+  <nav class="site-foot__nav" aria-label="Footer">
+    <a href="#world">World</a><a href="#areas">Areas</a><a href="#enemies">Enemies &amp; Hazards</a><a href="#characters">Meet the Team</a>
+  </nav>
+  <p class="site-foot__legal">2026 Copyright © GB Gamer Bros™ x Happy Dude®. All Rights Reserved.</p>
+  <p class="site-foot__note">Adventure Mountain™ artwork, characters, environments and visual assets are original project material.</p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-6f8645e4</span></p>
+</footer>
 
-<script src="site.js?v=3"></script>
+<div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
+
+<script src="media-manifest.js?v=d090b438f1" defer></script>
+<script src="areas.js?v=285997afc0" defer></script>
+<script src="entities.js?v=8c8eeca9a9" defer></script>
+<script src="world-data.js?v=4e4c3357aa" defer></script>
+<script src="panorama-manifest.js?v=71f9e44ab7" defer></script>
+<script src="world.js?v=4380a116fd" defer></script>
+<script src="characters.js?v=1d73531302" defer></script>
+<script src="staging.js?v=ab40603a85" defer></script>
 </body>
 </html>
