@@ -45,6 +45,16 @@ window.GB_ENTITIES = {
     states: { "Idle": E + "goom-idle", "Walk": E + "goom-walk", "Alert": E + "goom-alert", "Charge / attack": E + "goom-charge", "Defeated": E + "goom-defeated-dizzy", "Inactive": E + "goom-defeated" },
     angles: angles("top", "bottom"), cardScale: 0.64, height: 0.5, scale: null,
   },
+  "claw-bot": {
+    name: "Claw Bot™", type: "enemy", status: "APPROVED",
+    // Claw Bot Final Production Reference (core finished source master)
+    media: { thumb: E + "claw-bot-hero", render: E + "claw-bot-hero", icon: null },
+    copy: { provisional: true, summary: "Crab-like ground enemy with two split-spike claws.", behaviour: "Patrols, spots you, raises its claws and clamps to attack.", where: "Found across Adventure Mountain™." },
+    encounter: [],
+    views: { "Front": E + "claw-bot-front", "¾ view": E + "claw-bot-threeq", "Side": E + "claw-bot-side", "Back": E + "claw-bot-back", "Top": E + "claw-bot-top", "Bottom": E + "claw-bot-bottom" },
+    states: { "Idle": E + "claw-bot-idle", "Walk / scuttle": E + "claw-bot-walk", "Alert": E + "claw-bot-alert", "Clamp A": E + "claw-bot-attack-a", "Clamp B": E + "claw-bot-attack-b", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b" },
+    angles: angles("top", "bottom"), cardScale: 0.95, height: 0.8, scale: null,
+  },
   "spike-bot": {
     name: "Spike Bot™", type: "enemy", status: "APPROVED",
     // SPIKE_BOT_PRODUCTION_MASTER_V1 (approved production master)
@@ -74,6 +84,7 @@ window.GB_ENTITIES = {
     encounter: [],
     states: { "Hostile": "assets/entities/sentry/hostile", "Hacked · Blue": "assets/entities/sentry/blue", "Hacked · Red": "assets/entities/sentry/red", "Hacked · Yellow": "assets/entities/sentry/yellow", "Hacked · Purple": "assets/entities/sentry/purple" },
     views: { "Standard": "assets/entities/sentry/hostile", "Rotary": "assets/entities/sentry/rotary", "Missile": "assets/entities/sentry/missile" },
+    heroFirst: true, heroLabel: "Hostile",
     angles: angles(), cardScale: 0.8, height: 1.0, scale: null,
   },
   "stone-golem": {
@@ -138,21 +149,27 @@ window.GB_ENTITIES = {
     encounter: [], states: { "Intact": "assets/objects/crate-intact", "Damaged": "assets/objects/crate-damaged", "Broken": "assets/objects/crate-broken" }, angles: angles(), scale: null,
   },
   "patchpad": {
-    name: "PatchPad™", type: "gadget", status: "APPROVED",
-    media: { thumb: "assets/objects/patchpad", render: "assets/objects/patchpad", icon: null },
-    copy: { summary: "Handheld hacking and control device.", behaviour: "Scan, decode and take over compatible machines, like a Sentry Cannon™.", where: "Carried by the Gamers." },
+    name: "PATCHPAD™", type: "gadget", status: "APPROVED",
+    media: { thumb: "assets/gear/patchpad-hero", render: "assets/gear/patchpad-hero", icon: null },
+    copy: { summary: "Handheld hacking device, shown in GB Blue.", behaviour: "Metallic dial and vertical thumbwheel. Four controls: red Action/Acquire, blue Scan/Monitor, yellow App/Program Selector and purple Settings.", where: "Carried by the Gamers. Designed for hacking machines such as the Sentry Cannon™." },
     encounter: [], states: {}, angles: angles(), scale: null,
+  },
+  "smartwatch": {
+    name: "SMARTWATCH", type: "gadget", status: "APPROVED",
+    media: { thumb: "assets/gear/smartwatch-lineup", render: "assets/gear/smartwatch-lineup", icon: null },
+    copy: { summary: "The Gamers' smartwatch, in Blue, Red, Yellow and Purple.", behaviour: "Runs QuickHack™, the fast hacking software, alongside the watch face.", where: "Worn by every Gamer." },
+    encounter: [], states: {}, views: { "Lineup": "assets/gear/smartwatch-lineup", "Showcase": "assets/gear/smartwatch-stage" }, angles: angles(), scale: null,
   },
   "quickhack": {
     name: "QuickHack™", type: "gadget", status: "APPROVED",
-    media: { thumb: "assets/objects/quickhack/code", render: "assets/objects/quickhack/code", icon: null },
-    copy: { summary: "Fast hacking software on the Gamers' smartwatch.", behaviour: "Enter a code you've found, scan nearby devices or run a quick hack on the go.", where: "assets/objects/n every Gamer's watch." },
-    encounter: [], states: { "Enter code": "assets/objects/quickhack/code", "Scan": "assets/objects/quickhack/scan", "Hacking": "assets/objects/quickhack/hacking", "Access granted": "assets/objects/quickhack/granted", "Access denied": "assets/objects/quickhack/denied" }, angles: angles(), scale: null,
+    media: { thumb: "assets/gear/smartwatch-lineup", render: "assets/gear/smartwatch-lineup", icon: null },
+    copy: { summary: "Fast hacking software on the Gamers' SMARTWATCH.", behaviour: "Runs on the SMARTWATCH in every player colour.", where: "On every Gamer's watch." },
+    encounter: [], states: {}, angles: angles(), scale: null,
   },
   "glitchkey": {
-    name: "GlitchKey™", type: "gadget", status: "APPROVED",
-    media: { thumb: "assets/objects/glitchkey", render: "assets/objects/glitchkey", icon: null },
-    copy: { summary: "Physical access chip.", behaviour: "Insert it into compatible terminals, locks and machinery to open new paths.", where: "Found across Adventure Mountain™." },
+    name: "GlitchKey™", type: "gadget", status: "PENDING",
+    media: { thumb: null, render: null, icon: null },
+    copy: { summary: "Final design in development.", behaviour: "More to come.", where: "More to come." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "coin": {
@@ -182,8 +199,10 @@ window.GB_ENTITIES = {
   "character-coins": {
     name: "Character Coins", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/coin-blue", render: "assets/objects/coin-blue", icon: null },
-    copy: { summary: "One silver coin per Gamer, in team colour.", behaviour: "Each player earns their own character coin.", where: "Found across Adventure Mountain™." },
-    encounter: [], states: { "Blue": "assets/objects/coin-blue", "Red": "assets/objects/coin-red", "Yellow": "assets/objects/coin-yellow", "Purple": "assets/objects/coin-purple" }, angles: angles(), scale: null,
+    copy: { summary: "One silver coin per Gamer, in team colour: GB logo on the front, Adventure Mountain™ on the back.", behaviour: "Each player automatically earns their own character coin on entering the world.", where: "Found across Adventure Mountain™." },
+    encounter: [], states: { "Blue": "assets/objects/coin-blue", "Red": "assets/objects/coin-red", "Yellow": "assets/objects/coin-yellow", "Purple": "assets/objects/coin-purple" },
+    flip: { "assets/objects/coin-blue": "assets/objects/coin-blue-back", "assets/objects/coin-red": "assets/objects/coin-red-back", "assets/objects/coin-yellow": "assets/objects/coin-yellow-back", "assets/objects/coin-purple": "assets/objects/coin-purple-back" },
+    angles: angles(), scale: null,
   },
   "treasure-chest": {
     name: "Treasure Chest", type: "collectible", status: "APPROVED",
@@ -230,8 +249,8 @@ window.GB_EVOLUTION_DETAIL = {
 
 // display order for the Enemies & Hazards section
 // display order for the Adventure Finds™ section
-window.GB_OBJECTS = ["treasure-chest", "crystal-chest", "coin", "character-coins", "adventure-crystal", "secret-key", "springboard", "crate", "patchpad", "quickhack", "glitchkey"];
-window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian"];
+window.GB_OBJECTS = ["treasure-chest", "crystal-chest", "coin", "character-coins", "adventure-crystal", "secret-key", "springboard", "crate"];
+window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "claw-bot", "sentry-cannon", "rolling-boulder", "stone-golem", "crystal-guardian"];
 // In-game view of each enemy (cropped from the approved production masters' in-game renders):
 // the enemy card image and the dossier's opening view. Production cutouts stay as selectable views.
 const SC = "assets/entities/scenes/";
@@ -261,5 +280,9 @@ window.GB_ENTITY_ALIASES = {
   "patch-pad": "patchpad",
   "glitch-key": "glitchkey",
   "quick-hack": "quickhack",
+  "smart-watch": "smartwatch",
+  "clawbot": "claw-bot",
+  "claw": "claw-bot",
+  "watch": "smartwatch",
 };
 })();

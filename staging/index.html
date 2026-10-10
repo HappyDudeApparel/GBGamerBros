@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-6f8645e4">
+<meta name="gb-revision" content="r-9fea5c71">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-6f8645e4";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-9fea5c71";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -14,7 +14,7 @@
 <link rel="icon" href="assets/brand/gb-logo-960.webp?v=40182d5678">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=d93cc45a59">
+<link rel="stylesheet" href="staging.css?v=8e802d78dd">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -28,6 +28,7 @@
   <symbol id="i-secret" viewBox="0 0 64 64"><path d="m32 4 8 18 20 2-15 13 5 20-18-10-18 10 5-20L4 24l20-2Z" fill="currentColor"/></symbol>
   <symbol id="i-traversal" viewBox="0 0 64 64"><path d="M4 52 25 18l10 15 7-10 18 29Z" fill="currentColor"/><path d="m18 38 7-12 5 8" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"/></symbol>
   <symbol id="i-team2" viewBox="0 0 64 64"><circle cx="22" cy="23" r="9" fill="currentColor"/><circle cx="42" cy="23" r="9" fill="currentColor"/><circle cx="32" cy="17" r="10" fill="currentColor"/><path d="M5 56c1-13 8-20 17-20s16 7 17 20Zm20 0c1-15 8-23 18-23s16 8 16 23Z" fill="currentColor"/></symbol>
+  <symbol id="i-key" viewBox="0 0 64 64"><circle cx="20" cy="32" r="11" fill="none" stroke="currentColor" stroke-width="5"/><path d="M31 32h26M49 32v9M41 32v6" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
   <symbol id="i-frames" viewBox="0 0 64 64"><rect x="6" y="14" width="40" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="4.5"/><path d="M18 50h34a6 6 0 0 0 6-6V22" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M14 38l9-10 7 7 5-5 7 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
   <symbol id="i-hazard" viewBox="0 0 64 64"><path d="M32 6c13 0 23 9 23 21 0 7-3 12-8 15v8a4 4 0 0 1-4 4H21a4 4 0 0 1-4-4v-8c-5-3-8-8-8-15C9 15 19 6 32 6Z" fill="currentColor"/><circle cx="23" cy="28" r="6" fill="#fff"/><circle cx="41" cy="28" r="6" fill="#fff"/><path d="M27 54v-7M37 54v-7M32 39l-3 5h6Z" stroke="#fff" stroke-width="3" fill="#fff" stroke-linejoin="round"/></symbol>
   <symbol id="i-tree" viewBox="0 0 64 64"><path d="M32 4 14 28h11L10 45h17v15h10V45h17L39 28h11Z" fill="currentColor"/></symbol>
@@ -196,9 +197,42 @@
         <span class="panel__icon"><svg aria-hidden="true"><use href="#i-reward"/></svg></span>
         <div><h2 id="objTitle">Adventure Finds™</h2></div>
       </header>
-      <p class="panel__intro">Rewards, helpers and gadgets. <b>PatchPad™</b> takes control of machines, <b>QuickHack™</b> runs fast hacks from your watch, and a <b>GlitchKey™</b> opens locked paths.</p>
+      <p class="panel__intro">Rewards and helpers found across the mountain: chests, GB Coins, Crystals, Prism Crystals, springboards and crates. Gadgets have moved to <a href="#gear">Gear &amp; Tech</a>.</p>
       <ul class="foes objs" id="objs"></ul>
       <p class="panel__fine">Visualizations and designs are subject to change during development.</p>
+    </section>
+
+    <section class="panel panel--gear" id="gear" aria-labelledby="gearTitle">
+      <header class="panel__head">
+        <span class="panel__icon"><svg aria-hidden="true"><use href="#i-secret"/></svg></span>
+        <div><h2 id="gearTitle">Gear &amp; Tech</h2></div>
+      </header>
+      <p class="panel__intro">The Gamers' hardware. <b>PATCHPAD™</b> is the handheld hacking device; the <b>SMARTWATCH</b> runs <b>QuickHack™</b>, in all four player colours.</p>
+      <div class="gear">
+        <figure class="gear__card gear__card--patchpad">
+          <button class="gear__view" type="button" data-entity="patchpad" aria-label="PATCHPAD™ — view full size and details">
+            <span class="gbm gear__img" id="gearPadImg"></span>
+            <span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span>
+          </button>
+          <figcaption><strong>PATCHPAD™</strong><span>Handheld hacking device · GB Blue</span></figcaption>
+        </figure>
+        <figure class="gear__card gear__card--watch">
+          <button class="gear__view" type="button" data-entity="smartwatch" aria-label="SMARTWATCH — view full size and details">
+            <span class="gbm gear__img" id="gearWatchImg"></span>
+            <span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span>
+          </button>
+          <figcaption><strong>SMARTWATCH</strong><span>Blue · Red · Yellow · Purple</span>
+            <span class="gear__seg" role="group" aria-label="SMARTWATCH presentation">
+              <button type="button" data-watch="0" aria-pressed="true">Lineup</button><button type="button" data-watch="1" aria-pressed="false">Showcase</button>
+            </span>
+          </figcaption>
+        </figure>
+        <div class="gear__soon" role="note">
+          <span class="gear__soon-icon"><svg aria-hidden="true"><use href="#i-key"/></svg></span>
+          <p><strong>GlitchKey™</strong><span>More to come.</span></p>
+        </div>
+      </div>
+      <p class="panel__fine">Product visuals are design renders; designs are subject to change during development.</p>
     </section>
 
   </div>
@@ -274,22 +308,22 @@
   <span class="site-foot__logo gbm" style="--ar:2.48062;--ext:1.05426"><img src="assets/brand/gb-logo.webp?v=90580b9bae" alt="GB GAMER BROS™" width="640" height="272" loading="lazy"></span>
   <p class="site-foot__tag">PLAY • EXPLORE • DISCOVER</p>
   <nav class="site-foot__nav" aria-label="Footer">
-    <a href="#world">World</a><a href="#areas">Areas</a><a href="#enemies">Enemies &amp; Hazards</a><a href="#characters">Meet the Team</a>
+    <a href="#world">World</a><a href="#areas">Areas</a><a href="#enemies">Enemies &amp; Hazards</a><a href="#adventure-finds">Adventure Finds</a><a href="#gear">Gear &amp; Tech</a><a href="#characters">Meet the Team</a>
   </nav>
   <p class="site-foot__legal">2026 Copyright © GB Gamer Bros™ x Happy Dude®. All Rights Reserved.</p>
   <p class="site-foot__note">Adventure Mountain™ artwork, characters, environments and visual assets are original project material.</p>
-  <p class="site-foot__build" hidden>Build <span id="gbRev">r-6f8645e4</span></p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-9fea5c71</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
-<script src="media-manifest.js?v=d090b438f1" defer></script>
+<script src="media-manifest.js?v=2cc401ff04" defer></script>
 <script src="areas.js?v=285997afc0" defer></script>
-<script src="entities.js?v=8c8eeca9a9" defer></script>
+<script src="entities.js?v=436df8f2fc" defer></script>
 <script src="world-data.js?v=4e4c3357aa" defer></script>
 <script src="panorama-manifest.js?v=71f9e44ab7" defer></script>
 <script src="world.js?v=4380a116fd" defer></script>
 <script src="characters.js?v=1d73531302" defer></script>
-<script src="staging.js?v=ab40603a85" defer></script>
+<script src="staging.js?v=ebe2a809bd" defer></script>
 </body>
 </html>

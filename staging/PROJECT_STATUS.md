@@ -17,6 +17,32 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## PHASE 5 — block 1 (2026-10-10, build r-9fea5c71) — STAGING ONLY, awaiting owner review
+Brief: 00B_CLAUDE_SITE_REFRESH_2026-10-10 (Drive doc 1yn2IjKOtJDdJzLfQYj8HiwvZJ1q-RiiMfbHeVsbz-rY). Production root untouched.
+Done:
+- NEW Gear & Tech panel (#gear, after Adventure Finds™): PATCHPAD™ GB Blue approved hero render (Drive 1yZT5_6dyh…),
+  SMARTWATCH balanced four-colour lineup (1GlwsA05…, default) + angled showcase (1zq8LqUd…) toggle; both click to the
+  dossier with full-size view/link. GlitchKey™ is a separate "More to come" placeholder (no image, no invented detail).
+  Assets: assets/gear/{patchpad-hero,smartwatch-lineup,smartwatch-stage}. The 5 watch hardware/UI references are untouched.
+- Entities: patchpad → new hero; new `smartwatch` entity (views Lineup/Showcase swap the full-size render);
+  quickhack → software on the SMARTWATCH (self-made QuickHack mockups retired from display; files kept in assets/objects/quickhack);
+  glitchkey → PENDING, no media, key-icon "More to come" placeholder. Fixed corrupted QuickHack copy ("assets/objects/n every…").
+- Adventure Finds™ is now 8 finds (gadgets moved to Gear & Tech, no duplication); intro rewritten.
+- Character Coins: Front · GB face / Back · Mountain face toggle across the 4 silver coins (one coin per colour, not eight);
+  backs cut from CHARACTER_COIN_SYSTEM_SILVER.png → assets/objects/coin-{blue,red,yellow,purple}-back.
+- NEW Claw Bot™ (was missing): from "Claw Bot Final Production Reference" (core finished source) — hero, Front/¾/Side/Back/Top/Bottom,
+  states Idle, Walk/scuttle, Alert, Clamp A/B, Defeated A/B; 0.8 m. Bestiary after Rotor Bot™; evolution card now a full-width banner.
+- Sentry Cannon™ dossier now leads with the hostile cannon (heroFirst), four hacked colours below (click-to-swap); in-world scene kept as a pick.
+- Footer nav adds Adventure Finds / Gear & Tech.
+Tests: func.js 23/23 (enemy list updated for Claw Bot); p5check.js all 6 viewports — no overflow, all 21 entity routes open, 0 errors;
+gbmedia verify 449/449; screenshots desktop/tablet/phone of #gear, #enemies, #adventure-finds and dossiers.
+Open / next:
+- OWNER DECISION: brief says no "WISHLIST ON STEAM" CTA unless verified; staging/production still show two (non-linking toast buttons). Not removed — needs approval.
+- Claw Bot™ card uses a studio cutout; needs an approved in-world scene to match the other enemy cards.
+- Rotor Bot™: verify against "fixed nozzles, no propeller" — current art reads as thruster plumes; owner to confirm.
+- Brief items not started: cast outfit galleries (2), evolution states (3), crystal/prism shapes, chest gold trim (5),
+  region-portal set + flags (6), story/lore + PROTOTYPE tiles (7), polish/nav (8).
+
 ## PRODUCTION LAUNCH (2026-10-10)
 - Promoted staging r-6f8645e4 to the site root: main 06d5f73 → a266aa9 (fast-forward, no deletions). Root index.html = staging page minus `<meta name="robots" content="noindex">`; root copies of staging.css/js and data files + revision.json; staging/assets merged into root assets/ (no name collisions; old root assets kept because v2/ uses ../assets/logo.png, map.jpg, hero-3.jpg). staging/, v2/, CNAME, .nojekyll unchanged.
 - Backup: branch `backup/prod-2026-10-10` @ 06d5f73. Tag `prod-backup-2026-10-10` could NOT be pushed from the session (proxy 403 on tags) — create it manually.
