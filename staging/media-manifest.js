@@ -290,6 +290,18 @@ window.GB_MEDIA = {
   "rev": "21fcd58e0b",
   "srev": "f84ad079f6"
  },
+ "assets/brand/gb-logo-clean": {
+  "w": 640,
+  "h": 260,
+  "band": 0,
+  "sw": 640,
+  "sh": 260,
+  "sband": 0,
+  "alpha": true,
+  "master": "gb-logo.png",
+  "rev": "e5b2caf9fd",
+  "srev": "e5b2caf9fd"
+ },
  "assets/brand/gb-logo": {
   "w": 640,
   "h": 258,
