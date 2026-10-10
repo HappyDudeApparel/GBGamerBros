@@ -393,9 +393,12 @@
     const hero = e.media.render || e.media.thumb;
     // production views / states: cutouts become selectable thumbnails that swap the hero
     const thumbs = (obj, what) => Object.entries(obj || {}).map(([k, v]) => v && isCut(v)
-      ? `<li><button class="dossier__pick" type="button" data-hero="${v}" data-hero-label="${esc(k)}" aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
+      ? `<li><button class="dossier__pick" type="button" data-hero="${v}" data-hero-label="${esc(k)}"${e.flip && e.flip[v] ? ` data-front="${v}" data-back="${e.flip[v]}" data-name="${esc(k)}"` : ""} aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
       : v ? `<li>${media(v, "dossier__state", `${e.name} ${k}`)}<small>${esc(k[0].toUpperCase() + k.slice(1))}</small></li>` : "").join("");
-    const views = thumbs(e.views);
+    const gadget = e.type === "gadget" && hero && !isCut(hero);
+    const views = gadget
+      ? Object.entries(e.views || {}).map(([k, v], i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-gview="${v}" aria-label="${esc(e.name)}: ${esc(k)}" aria-pressed="${!i}"><span class="stage-box">${sceneImg({ src: v, fx: 50 }, "", true)}</span><small>${esc(k)}</small></button></li>`).join("")
+      : thumbs(e.views);
     const states = thumbs(e.states);
     const stage = hero && isCut(hero);
     const enc = (e.encounter || []).filter((x) => AREAS[x.area] && AREAS[x.area].views[x.view - 1]).map((x) => {
@@ -403,15 +406,20 @@
       return `<li><a href="#area/${x.area}/${x.view}" data-goto-area>${media(v.src, "dossier__enc", v.alt, "small")}
         <small>${esc(a.name)}</small></a></li>`;
     }).join("");
-    const sc = sceneOf(id);
+    const scAny = sceneOf(id);
+    const sc = e.heroFirst ? null : scAny;   // heroFirst: the production hero leads; the scene stays one pick away
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
         ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : `<span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span>`}</div>
-           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : "Hero"}</span></p>`
-        : media(hero, "dossier__render", e.name)}
+           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : esc(e.heroLabel || "Hero")}</span></p>`
+        : !hero && e.type === "gadget"
+          ? `<span class="dossier__render media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-key"/></svg><span>More to come</span></span>`
+          : gadget
+          ? `<a class="dossier__full" id="entFull" href="${asset(hero)}" target="_blank" rel="noopener" aria-label="${esc(e.name)}: open full-size image in a new tab">${media(hero, "dossier__render", e.name)}<span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span></a>`
+          : media(hero, "dossier__render", e.name)}
         ${scenesOf(id).length > 1 ? `<h3>In the world</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
-        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : "Action states"}</h3><ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
-                ${views ? `<h3>Reference views</h3><ul class="dossier__picks">${sc && scenesOf(id).length === 1 ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="true"><span class="stage-box">${sceneImg(sc, "", true)}</span><small>In the world</small></button></li>` : ""}${stage && !Object.values(e.views || {}).includes(hero) ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
+        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
+                ${views ? `<h3>Reference views</h3><ul class="dossier__picks">${scAny && scenesOf(id).length === 1 ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="${!!sc}"><span class="stage-box">${sceneImg(scAny, "", true)}</span><small>In the world</small></button></li>` : ""}${stage && !Object.values(e.views || {}).includes(hero) ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
           <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
@@ -465,6 +473,22 @@
       eBody.querySelectorAll("[data-evo-panel]").forEach((p) => { p.hidden = p.dataset.evoPanel !== tab.dataset.evoTab; });
       return;
     }
+    const flip = e.target.closest("[data-flip]");
+    if (flip) {
+      // one coin per colour, two faces: swap every colour pick (and the stage) to the chosen face
+      const back = flip.dataset.flip === "1";
+      eBody.querySelectorAll("[data-flip]").forEach((b) => b.setAttribute("aria-pressed", String(b === flip)));
+      const picks = [...eBody.querySelectorAll("[data-front]")];
+      picks.forEach((b) => {
+        const src = back ? b.dataset.back : b.dataset.front;
+        b.dataset.hero = src;
+        b.dataset.heroLabel = `${b.dataset.name} · ${back ? "Back" : "Front"}`;
+        b.querySelector(".stage-box").innerHTML = cut(src, "dossier__thumbimg", "", "120px");
+      });
+      const on = picks.find((b) => b.getAttribute("aria-pressed") === "true") || picks[0];
+      if (on) on.click();
+      return;
+    }
     const pick = e.target.closest("[data-hero], [data-scene]");
     if (pick) {
       const st = document.getElementById("entStage");
@@ -477,6 +501,16 @@
         document.getElementById("entStageLabel").textContent = pick.dataset.heroLabel;
         eBody.querySelectorAll("[data-hero], [data-scene]").forEach((b) => b.setAttribute("aria-pressed", String(b === pick)));
       }
+      return;
+    }
+    const g = e.target.closest("[data-gview]");
+    if (g) {
+      const full = document.getElementById("entFull"), src = g.dataset.gview;
+      if (full) {
+        const img = full.querySelector("img"), box = full.querySelector(".gbm");
+        box.setAttribute("style", frameVars(src)); img.src = asset(src); full.href = asset(src);
+      }
+      eBody.querySelectorAll("[data-gview]").forEach((b) => b.setAttribute("aria-pressed", String(b === g)));
       return;
     }
     const l = e.target.closest("[data-entity-link]");
@@ -620,7 +654,7 @@
         : `<span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>`}
       <span class="foe__text"><strong>${esc(e.name)}</strong></span>
     </button></li>`;
-  }).join("") + `<li><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
+  }).join("") + `<li class="foes__evo"><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
       <span class="foe-evo__kicker">Optional evolution</span>
       <span class="foe-evo__line">Rumbler™ <i>→</i> Stone Walker™ <i>→</i> Prism Keeper™</span>
       <span class="foe-evo__go">See how it evolves<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -634,6 +668,21 @@
       <span class="foe__text"><strong>${esc(e.name)}</strong></span>
     </button></li>`;
   }).join("");
+
+  // ---------- Gear & Tech (#gear) ----------
+  const gearImg = (el, src, alt) => {
+    if (!el || !MEDIA[src]) return;
+    el.setAttribute("style", frameVars(src));
+    el.innerHTML = `<img src="${asset(src)}" srcset="${srcset(src)}" sizes="(min-width: 1100px) 560px, 92vw" alt="${esc(alt)}" loading="lazy" draggable="false">`;
+  };
+  const WATCH = [["assets/gear/smartwatch-lineup", "SMARTWATCH in Blue, Red, Yellow and Purple, balanced lineup"],
+                 ["assets/gear/smartwatch-stage", "SMARTWATCH in Blue, Red, Yellow and Purple, angled showcase"]];
+  gearImg(document.getElementById("gearPadImg"), "assets/gear/patchpad-hero", "PATCHPAD™ handheld hacking device in GB Blue");
+  gearImg(document.getElementById("gearWatchImg"), ...WATCH[0]);
+  document.querySelectorAll("[data-watch]").forEach((b) => b.addEventListener("click", () => {
+    gearImg(document.getElementById("gearWatchImg"), ...WATCH[+b.dataset.watch]);
+    document.querySelectorAll("[data-watch]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  }));
 
   // ---------- Meet the Team™ (#character/<id>) ----------
   const TEAM = window.GB_TEAM || [];

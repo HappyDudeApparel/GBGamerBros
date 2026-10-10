@@ -698,6 +698,174 @@ window.GB_MEDIA = {
   "rev": "409ff2ce45",
   "srev": "86333ff2b4"
  },
+ "assets/entities/claw-bot-alert": {
+  "w": 184,
+  "h": 122,
+  "band": 14,
+  "sw": 184,
+  "sh": 122,
+  "sband": 14,
+  "alpha": true,
+  "master": "alert.png",
+  "rev": "e152bb12a5",
+  "srev": "2d9606117e"
+ },
+ "assets/entities/claw-bot-attack-a": {
+  "w": 183,
+  "h": 115,
+  "band": 14,
+  "sw": 183,
+  "sh": 115,
+  "sband": 14,
+  "alpha": true,
+  "master": "attack-a.png",
+  "rev": "b19ec77fbb",
+  "srev": "97556e0a39"
+ },
+ "assets/entities/claw-bot-attack-b": {
+  "w": 213,
+  "h": 114,
+  "band": 14,
+  "sw": 213,
+  "sh": 114,
+  "sband": 14,
+  "alpha": true,
+  "master": "attack-b.png",
+  "rev": "83890ec7a6",
+  "srev": "074794d880"
+ },
+ "assets/entities/claw-bot-back": {
+  "w": 168,
+  "h": 120,
+  "band": 14,
+  "sw": 168,
+  "sh": 120,
+  "sband": 14,
+  "alpha": true,
+  "master": "back.png",
+  "rev": "c7b6fbacb9",
+  "srev": "7293aa480f"
+ },
+ "assets/entities/claw-bot-bottom": {
+  "w": 147,
+  "h": 151,
+  "band": 14,
+  "sw": 147,
+  "sh": 151,
+  "sband": 14,
+  "alpha": true,
+  "master": "bottom.png",
+  "rev": "cf6b196218",
+  "srev": "15e0c24213"
+ },
+ "assets/entities/claw-bot-defeated-a": {
+  "w": 194,
+  "h": 97,
+  "band": 14,
+  "sw": 194,
+  "sh": 97,
+  "sband": 14,
+  "alpha": true,
+  "master": "defeated-a.png",
+  "rev": "7ccc472c8f",
+  "srev": "2e78d21eb1"
+ },
+ "assets/entities/claw-bot-defeated-b": {
+  "w": 192,
+  "h": 89,
+  "band": 14,
+  "sw": 192,
+  "sh": 89,
+  "sband": 14,
+  "alpha": true,
+  "master": "defeated-b.png",
+  "rev": "321f8ded70",
+  "srev": "008da5fd70"
+ },
+ "assets/entities/claw-bot-front": {
+  "w": 182,
+  "h": 120,
+  "band": 14,
+  "sw": 182,
+  "sh": 120,
+  "sband": 14,
+  "alpha": true,
+  "master": "front.png",
+  "rev": "328052dd96",
+  "srev": "b1fe3b2f54"
+ },
+ "assets/entities/claw-bot-hero": {
+  "w": 426,
+  "h": 264,
+  "band": 14,
+  "sw": 426,
+  "sh": 264,
+  "sband": 14,
+  "alpha": true,
+  "master": "hero.png",
+  "rev": "c64077da09",
+  "srev": "535fe0a076"
+ },
+ "assets/entities/claw-bot-idle": {
+  "w": 165,
+  "h": 109,
+  "band": 14,
+  "sw": 165,
+  "sh": 109,
+  "sband": 14,
+  "alpha": true,
+  "master": "idle.png",
+  "rev": "39b127f8c1",
+  "srev": "d8144243fb"
+ },
+ "assets/entities/claw-bot-side": {
+  "w": 121,
+  "h": 120,
+  "band": 14,
+  "sw": 121,
+  "sh": 120,
+  "sband": 14,
+  "alpha": true,
+  "master": "side.png",
+  "rev": "ad08879068",
+  "srev": "ef4c1ba521"
+ },
+ "assets/entities/claw-bot-threeq": {
+  "w": 165,
+  "h": 122,
+  "band": 14,
+  "sw": 165,
+  "sh": 122,
+  "sband": 14,
+  "alpha": true,
+  "master": "threeq.png",
+  "rev": "6431b9b2a2",
+  "srev": "2e5fe61737"
+ },
+ "assets/entities/claw-bot-top": {
+  "w": 210,
+  "h": 152,
+  "band": 14,
+  "sw": 210,
+  "sh": 152,
+  "sband": 14,
+  "alpha": true,
+  "master": "top.png",
+  "rev": "5b8c7bf214",
+  "srev": "5ff09fc98e"
+ },
+ "assets/entities/claw-bot-walk": {
+  "w": 205,
+  "h": 112,
+  "band": 14,
+  "sw": 205,
+  "sh": 112,
+  "sband": 14,
+  "alpha": true,
+  "master": "walk.png",
+  "rev": "6a863a6603",
+  "srev": "99eeda2b48"
+ },
  "assets/entities/crystal-guardian-attack": {
   "w": 376,
   "h": 345,
@@ -1766,6 +1934,42 @@ window.GB_MEDIA = {
   "rev": "63431c58a3",
   "srev": "0d83bcf4d4"
  },
+ "assets/gear/patchpad-hero": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "PATCHPAD™_GB_BLUE_APPROVED_HERO_RENDER_2026-10-10.png",
+  "rev": "53686dd22f",
+  "srev": "8ad2544755"
+ },
+ "assets/gear/smartwatch-lineup": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "07_SMARTWATCH_FOUR_COLORWAYS_BALANCED_LINEUP_2026-10-10.png",
+  "rev": "b9ec3d2c6b",
+  "srev": "36d0c39b0e"
+ },
+ "assets/gear/smartwatch-stage": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "06_SMARTWATCH_Four_Character_Colorways_Circular_Stage_Showcase_2026-10-09.png",
+  "rev": "cecd8a4fb8",
+  "srev": "0fb040eb66"
+ },
  "assets/objects/chest": {
   "w": 627,
   "h": 410,
@@ -1862,6 +2066,18 @@ window.GB_MEDIA = {
   "rev": "12efe33143",
   "srev": "91251e9485"
  },
+ "assets/objects/coin-blue-back": {
+  "w": 307,
+  "h": 324,
+  "band": 14,
+  "sw": 307,
+  "sh": 324,
+  "sband": 14,
+  "alpha": true,
+  "master": "coin-blue-back.png",
+  "rev": "589c76b129",
+  "srev": "b8047f1af0"
+ },
  "assets/objects/coin-purple": {
   "w": 321,
   "h": 324,
@@ -1873,6 +2089,18 @@ window.GB_MEDIA = {
   "master": "coin-purple.png",
   "rev": "1c613bf7af",
   "srev": "3e113cd451"
+ },
+ "assets/objects/coin-purple-back": {
+  "w": 310,
+  "h": 329,
+  "band": 14,
+  "sw": 310,
+  "sh": 329,
+  "sband": 14,
+  "alpha": true,
+  "master": "coin-purple-back.png",
+  "rev": "07c15d9021",
+  "srev": "3ef6ae7e57"
  },
  "assets/objects/coin-red": {
   "w": 313,
@@ -1886,6 +2114,18 @@ window.GB_MEDIA = {
   "rev": "5659d2a37b",
   "srev": "a9d814a1b8"
  },
+ "assets/objects/coin-red-back": {
+  "w": 309,
+  "h": 324,
+  "band": 14,
+  "sw": 309,
+  "sh": 324,
+  "sband": 14,
+  "alpha": true,
+  "master": "coin-red-back.png",
+  "rev": "1dbf5bbc7c",
+  "srev": "ace3e6effe"
+ },
  "assets/objects/coin-yellow": {
   "w": 315,
   "h": 324,
@@ -1897,6 +2137,18 @@ window.GB_MEDIA = {
   "master": "coin-yellow.png",
   "rev": "af18890c46",
   "srev": "1be792d5d8"
+ },
+ "assets/objects/coin-yellow-back": {
+  "w": 307,
+  "h": 329,
+  "band": 14,
+  "sw": 307,
+  "sh": 329,
+  "sband": 14,
+  "alpha": true,
+  "master": "coin-yellow-back.png",
+  "rev": "cc93c8acce",
+  "srev": "fb7b1c3763"
  },
  "assets/objects/crate-broken": {
   "w": 466,
