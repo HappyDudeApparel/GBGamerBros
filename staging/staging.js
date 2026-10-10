@@ -174,8 +174,9 @@
   // every image URL carries the file's content revision so replacements are never served stale
   const asset = (src, small) => {
     const m = MEDIA[src] || {};
-    const rev = small ? m.srev : m.rev;
-    return `${src}${small ? "-960" : ""}.webp${rev ? `?v=${rev}` : ""}`;
+    const useSmall = Boolean(small && !m.noSmall);
+    const rev = useSmall ? m.srev : m.rev;
+    return `${src}${useSmall ? "-960" : ""}.${m.ext || "webp"}${rev ? `?v=${rev}` : ""}`;
   };
   // srcset from the real derivative widths (images differ in size; never hard-code them)
   const srcset = (src) => { const m = MEDIA[src] || {}; return m.sw && m.sw < m.w ? `${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w` : `${asset(src)} ${m.w || 1600}w`; };
@@ -364,15 +365,15 @@
     const d = e.evolution && (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     if (!d) return "";
     const ph = e.evolution.phase;
-    const PH = ["", "Phase 1", "Phase 2", "Phase 3"];
+    const PH = ["", "Phase 1", "Phase 2", "Phase 3", "Phase 4"];
     const seq = d.sequence.map((x, i) => `<li class="evo__step${x.phase === ph ? " is-here" : ""}">
-        <span class="stage-box">${cut(x.src, "evo__cut", x.label, "160px")}</span>
+        <span class="stage-box">${isCut(x.src) ? cut(x.src, "evo__cut", x.label, "160px") : media(x.src, "evo__thumb-scene", x.label, "small")}</span>
         <strong>${esc(x.label)}</strong><small>${PH[x.phase]}</small></li>`).join("");
     const mech = d.mechanics.map((x) => `<li>${media(x.src, "evo__mechimg", x.label, "small")}<strong>${esc(x.label)}</strong><p>${esc(x.text)}</p></li>`).join("");
     const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}<span class="evo__num">${i + 1}</span><strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
     return `<section class="evo" id="entEvo" aria-labelledby="evoTitle">
       <header class="evo__head">
-        <div><h3 id="evoTitle">How the evolution works</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™</p></div>
+        <div><h3 id="evoTitle">How the evolution works</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™ → Brightback™</p></div>
         <div class="evo__tabs" role="tablist" aria-label="Evolution views">
           <button type="button" role="tab" aria-selected="true" data-evo-tab="seq">Sequence</button>
           <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>
@@ -382,7 +383,7 @@
       <div class="evo__panel" data-evo-panel="seq" role="tabpanel"><ol class="evo__seq">${seq}</ol></div>
       <div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ul class="evo__mech">${mech}</ul></div>
       <div class="evo__panel" data-evo-panel="scene" role="tabpanel" hidden><ol class="evo__scenes">${scenes}</ol></div>
-      <p class="evo__note">${EVO_NOTE} The same mossy, segmented rock carries through every phase.</p>
+      <p class="evo__note">${EVO_NOTE} Each later form builds on the earlier stone body; Brightback™ is the fourth and largest prism evolution.</p>
     </section>`;
   };
 
@@ -400,7 +401,7 @@
       ? Object.entries(e.views || {}).map(([k, v], i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-gview="${v}" aria-label="${esc(e.name)}: ${esc(k)}" aria-pressed="${!i}"><span class="stage-box">${sceneImg({ src: v, fx: 50 }, "", true)}</span><small>${esc(k)}</small></button></li>`).join("")
       : thumbs(e.views);
     const states = thumbs(e.states);
-    const stage = hero && isCut(hero);
+    const stage = hero && (isCut(hero) || e.scenicHero);
     const enc = (e.encounter || []).filter((x) => AREAS[x.area] && AREAS[x.area].views[x.view - 1]).map((x) => {
       const a = AREAS[x.area], v = a.views[x.view - 1];
       return `<li><a href="#area/${x.area}/${x.view}" data-goto-area>${media(v.src, "dossier__enc", v.alt, "small")}
@@ -417,7 +418,7 @@
           : gadget
           ? `<a class="dossier__full" id="entFull" href="${asset(hero)}" target="_blank" rel="noopener" aria-label="${esc(e.name)}: open full-size image in a new tab">${media(hero, "dossier__render", e.name)}<span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span></a>`
           : media(hero, "dossier__render", e.name)}
-        ${scenesOf(id).length > 1 ? `<h3>In the world</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
+        ${scenesOf(id).length > 1 ? `<h3>${e.scenicHero ? "Approved reference imagery" : "In the world"}</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
         ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
                 ${views ? `<h3>Reference views</h3><ul class="dossier__picks">${scAny && scenesOf(id).length === 1 ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="${!!sc}"><span class="stage-box">${sceneImg(scAny, "", true)}</span><small>In the world</small></button></li>` : ""}${stage && !Object.values(e.views || {}).includes(hero) ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
       <div class="dossier__info">
@@ -651,13 +652,13 @@
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
     const e = ENTITIES[id];
     const t = e.media.thumb;
-    return `<li><button class="foe${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
+    return `<li${id === "brightback" ? ' class="foes__apex"' : ""}><button class="foe${id === "brightback" ? " foe--apex" : ""}${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
       <span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
-      <span class="foe__text"><strong>${esc(e.name)}</strong></span>
+      <span class="foe__text"><strong>${esc(e.name)}</strong>${id === "brightback" ? "<small>Apex evolution · Prism Ridge™</small>" : ""}</span>
     </button></li>`;
   }).join("") + `<li class="foes__evo"><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
       <span class="foe-evo__kicker">Optional evolution</span>
-      <span class="foe-evo__line">Rumbler™ <i>→</i> Stone Walker™ <i>→</i> Prism Keeper™</span>
+      <span class="foe-evo__line">Rumbler™ <i>→</i> Stone Walker™ <i>→</i> Prism Keeper™ <i>→</i> Brightback™</span>
       <span class="foe-evo__go">See how it evolves<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </button></li>`;
 

@@ -1449,3 +1449,27 @@ html.is-locked{overflow:hidden}
   #foes .foe--evo{grid-template-columns:1fr auto;gap:6px 12px}
   #foes .foe--evo .foe-evo__kicker{grid-column:1/-1}
 }
+
+
+/* Brightback V1 • fourth stage: approved scenic hero sits in a dedicated apex row,
+   distinct from the studio-cutout enemy lineup. Existing bot cards remain unchanged. */
+#foes > li.foes__apex{grid-column:1/-1;min-width:0}
+#foes .foe--apex{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:stretch;width:100%;overflow:hidden;background:#0b2a6b;border-radius:16px;box-shadow:0 10px 24px rgba(6,24,70,.18)}
+#foes .foe--apex .foe__stage{aspect-ratio:16/9;min-height:0;overflow:hidden;border-radius:16px 0 0 16px;background:#9ab9e2}
+#foes .foe--apex .foe__stage::before,#foes .foe--apex .foe__stage::after{display:none}
+#foes .foe--apex .foe__stage > .gbm.foe__img{inset:0;width:100%;height:100%;aspect-ratio:auto}
+#foes .foe--apex .foe__stage > .gbm.foe__img > img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+#foes .foe--apex .foe__text{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;min-height:0;border-radius:0 16px 16px 0;padding:20px}
+#foes .foe--apex .foe__text strong{font-size:clamp(21px,3.5vw,35px)}
+#foes .foe--apex .foe__text small{color:#d8edff;font-size:clamp(11px,1.3vw,15px);letter-spacing:.07em;text-transform:uppercase;font-weight:750}
+@media(max-width:719px){
+ #foes .foe--apex{display:block}
+ #foes .foe--apex .foe__stage{aspect-ratio:16/9;border-radius:16px 16px 0 0}
+ #foes .foe--apex .foe__text{border-radius:0 0 16px 16px;padding:16px 12px}
+}
+/* Four-phase evolution row and Brightback's source-verified scenic thumbnail. */
+.evo__seq{grid-template-columns:repeat(8,minmax(0,1fr))}
+.evo__step .stage-box > .gbm.evo__thumb-scene{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:hidden;border-radius:12px;aspect-ratio:auto}
+.evo__step .stage-box > .gbm.evo__thumb-scene > img{width:100%;height:100%;object-fit:cover;object-position:center}
+@media(max-width:719px){.evo__seq{grid-template-columns:none}}
+@media(min-width:720px) and (max-width:899px){.evo__seq{grid-template-columns:repeat(4,minmax(0,1fr))}}
