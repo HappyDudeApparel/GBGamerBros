@@ -4,7 +4,7 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
-- Live build: **`r-6f8645e4`** (handoff pass).
+- Live build: **`r-6f8645e4`** (handoff pass). **Production (root) = r-6f8645e4 since 2026-10-10, main a266aa9.**
 - Root homepage and `/v2/` are untouched. Never change them.
 
 ## Publishing workflow (every user-visible change)
@@ -16,6 +16,13 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 6. Check the Pages run (GitHub Actions "pages build and deployment") and report the new build ID.
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
+
+## PRODUCTION LAUNCH (2026-10-10)
+- Promoted staging r-6f8645e4 to the site root: main 06d5f73 → a266aa9 (fast-forward, no deletions). Root index.html = staging page minus `<meta name="robots" content="noindex">`; root copies of staging.css/js and data files + revision.json; staging/assets merged into root assets/ (no name collisions; old root assets kept because v2/ uses ../assets/logo.png, map.jpg, hero-3.jpg). staging/, v2/, CNAME, .nojekyll unchanged.
+- Backup: branch `backup/prod-2026-10-10` @ 06d5f73. Tag `prod-backup-2026-10-10` could NOT be pushed from the session (proxy 403 on tags) — create it manually.
+- Pre-push verification on the assembled tree (local): /, /staging/, /v2/ across 6 viewports, no console/network errors, no overflow, no broken images; functional suite passes on root. Pages run 38061584281 succeeded.
+- Live-domain check NOT performed from the session (container proxy denies gb.happydude.ca; fetch tool DNS down).
+- Going forward: staging publishes still go through publish.py (staging/ only). Promoting a new staging build to production = repeat the root copy (index.html minus noindex, root css/js/data/revision.json, merge assets).
 
 ## COMPLETED — handoff pass (2026-10-05, build r-6f8645e4)
 Authority: Drive `ASSET PRODUCTION — 2026-10-05/00_READ_ME_FIRST_CLAUDE_SITE_HANDOFF.md` + `06_HACKING_SYSTEM/00_HACKING_SYSTEM_SITE_USAGE_NOTES.md` (source sheets beat generated art; flags optional, never wrong).
