@@ -259,7 +259,8 @@ window.GB_EVOLUTION_DETAIL = {
       // Owner visual audit, 2026-10-10: former evo-step-5 and evo-step-6 incorrectly portrayed
       // Prism Keeper anatomy. Keep the gallery's earlier approved steps only, pending
       // verified replacement Phase 3 in-world imagery. Do not relabel mismatched art.
-      { src: E + "brightback-v1-hero", label: "Brightback™", note: "Preferred V1 apex appearance in Prism Ridge™.", phase: 4 },
+      // Completed-form reference only: no in-world Rumbler™ line transformation art exists for Phase 4, so none is implied.
+      { src: E + "brightback-v1-hero", label: "Brightback™ (completed form)", note: "Approved V1 reference art for the finished fourth phase. No in-world transformation scene is documented yet.", phase: 4, reference: true },
     ],
   },
 };

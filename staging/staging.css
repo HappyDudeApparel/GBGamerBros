@@ -1458,25 +1458,47 @@ html.is-locked{overflow:hidden}
 }
 
 
-/* Brightback V1 • fourth stage: approved scenic hero sits in a dedicated apex row,
-   distinct from the studio-cutout enemy lineup. Existing bot cards remain unchanged. */
-#foes > li.foes__apex{grid-column:1/-1;min-width:0}
-#foes .foe--apex{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:stretch;width:100%;overflow:hidden;background:#0b2a6b;border-radius:16px;box-shadow:0 10px 24px rgba(6,24,70,.18)}
-#foes .foe--apex .foe__stage{aspect-ratio:16/9;min-height:0;overflow:hidden;border-radius:16px 0 0 16px;background:#9ab9e2}
+/* Brightback V1 • fourth stage: its own full-width apex row. The approved hero is shown at its own
+   aspect ratio (701:573) so none of the artwork is cropped; text sits beside it (stacked on phones). */
+#foes > li.foes__apex{grid-column:1/-1 !important;min-width:0;width:100% !important;flex:1 1 100%}
+#foes .foe--apex{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);align-items:stretch;width:100%;max-width:820px;margin:0 auto;overflow:hidden;background:#0b2a6b;border-radius:16px;box-shadow:0 10px 24px rgba(6,24,70,.18)}
+#foes .foe--apex .foe__stage{aspect-ratio:701/573;min-height:0;overflow:hidden;border-radius:16px 0 0 16px;background:#9ab9e2}
 #foes .foe--apex .foe__stage::before,#foes .foe--apex .foe__stage::after{display:none}
 #foes .foe--apex .foe__stage > .gbm.foe__img{inset:0;width:100%;height:100%;aspect-ratio:auto}
-#foes .foe--apex .foe__stage > .gbm.foe__img > img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
-#foes .foe--apex .foe__text{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;min-height:0;border-radius:0 16px 16px 0;padding:20px}
-#foes .foe--apex .foe__text strong{font-size:clamp(21px,3.5vw,35px)}
-#foes .foe--apex .foe__text small{color:#d8edff;font-size:clamp(11px,1.3vw,15px);letter-spacing:.07em;text-transform:uppercase;font-weight:750}
-@media(max-width:719px){
- #foes .foe--apex{display:block}
- #foes .foe--apex .foe__stage{aspect-ratio:16/9;border-radius:16px 16px 0 0}
- #foes .foe--apex .foe__text{border-radius:0 0 16px 16px;padding:16px 12px}
+#foes .foe--apex .foe__stage > .gbm.foe__img > img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+#foes .foe--apex .foe__text{display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;min-height:0;border-radius:0 16px 16px 0;padding:16px 14px;text-align:center}
+#foes .foe--apex .foe__text strong{font-size:clamp(18px,2.4vw,26px);line-height:1.1;overflow-wrap:anywhere}
+#foes .foe--apex .foe__text small{color:#d8edff;font-size:clamp(10.5px,1.2vw,13px);line-height:1.3;letter-spacing:.07em;text-transform:uppercase;font-weight:750}
+@media(max-width:559px){
+ #foes .foe--apex{display:block;max-width:none}
+ #foes .foe--apex .foe__stage{border-radius:16px 16px 0 0}
+ #foes .foe--apex .foe__text{border-radius:0 0 16px 16px;padding:14px 12px}
 }
-/* Four-phase evolution row and Brightback's source-verified scenic thumbnail. */
-.evo__seq{grid-template-columns:repeat(8,minmax(0,1fr))}
+/* Evolution sequence: four labelled phases (Phase 1 = four stone states, 2 = two, 3 = one, 4 = one).
+   Each phase is labelled once in its header; thumbnails keep a single uniform square and never crop art. */
+.evo__phases{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));column-gap:12px;row-gap:14px;align-items:start}
+.evo__phase{grid-column:span var(--n,1);min-width:0;display:grid;gap:8px;align-content:start}
+.evo__phase-h{margin:0;padding-bottom:5px;border-bottom:2px solid rgba(150,205,255,.35);font-size:11px;line-height:1.2;font-weight:800;font-style:italic;letter-spacing:.03em;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.evo__phase.is-here .evo__phase-h{border-bottom-color:#ffb35c}
+.evo__phase.is-here .evo__phase-h span{color:#ffb35c}
+.evo__phase-h span{display:block;font-style:normal;font-size:10px;letter-spacing:.14em;color:#9fd0ff}
+.evo__steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,1),minmax(0,1fr));gap:12px}
+.evo__phases .evo__step{display:grid;gap:4px;text-align:center;min-width:0}
+.evo__phases .evo__step::before{display:none}
+.evo__phases .evo__step .stage-box{position:relative;display:block;aspect-ratio:1;box-shadow:0 0 0 1.5px rgba(150,205,255,.3)}
+.evo__phases .evo__step strong{margin:0;font-size:11px;line-height:1.15;overflow-wrap:anywhere}
 .evo__step .stage-box > .gbm.evo__thumb-scene{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:hidden;border-radius:12px;aspect-ratio:auto}
-.evo__step .stage-box > .gbm.evo__thumb-scene > img{width:100%;height:100%;object-fit:cover;object-position:center}
-@media(max-width:719px){.evo__seq{grid-template-columns:none}}
-@media(min-width:720px) and (max-width:899px){.evo__seq{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.evo__step .stage-box > .gbm.evo__thumb-scene > img{width:100%;height:100%;object-fit:contain;object-position:center}
+.evo__num--ref{width:auto;height:auto;border-radius:99px;padding:4px 9px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:899px){
+  .evo__phases{display:flex;flex-wrap:wrap}
+  .evo__phase{flex:0 1 auto}
+  .evo__phases{column-gap:18px}
+  .evo__steps{display:flex;gap:10px}
+  .evo__phases .evo__step{flex:0 0 112px}
+}
+@media(max-width:559px){
+  .evo__phases{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:#5f87c9 transparent}
+  .evo__phase{flex:0 0 auto;scroll-snap-align:start}
+  .evo__phases .evo__step{flex:0 0 104px}
+}
