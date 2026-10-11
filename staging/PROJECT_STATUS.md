@@ -17,6 +17,65 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## PUBLIC CURATION — AUTHORITATIVE WORKING PLAN (2026-10-11) — staging only, awaiting owner visual review
+Owner strategy: the public site is a curated showcase, not an archive of every reference cell. Per dossier:
+1 excellent hero, 1 approved in-world image (where one exists), 2–3 distinctive actions, defeated only if accurate and strong,
+extra views only with real promotional value. Sentry Cannon = quality benchmark. Production references stay in the repo /
+Drive (entities.js `archived: {}` per entity: not rendered, keeps provenance; nothing deleted).
+
+### 1. Image-loading performance (measured, not assumed)
+Harness: Playwright Chromium 390×844 @3x, mobile UA, cache disabled, throttled 4G (150 ms RTT, ~4 Mbit/s), 3 runs each, medians.
+Root cause: no single "sudden" regression in the repo. 0 of 217 pre-existing image revisions changed since e1bcd55 (no mass
+cache-bust); the 21 added images are modest WebPs (Brightback PNGs are not displayed publicly). The page had ALWAYS front-loaded
+~5.5 MB of images: a 930 KB fallback map fetched at HIGH priority by the preload scanner (then thrown away in panorama mode),
+panorama overview + tiles (~2.6 MB), all hero slides, the Level Preview still. These compete with what the visitor is looking at.
+Live CDN headers (Cache-Control/age) could NOT be read — the live domain and github.io are blocked from the build container (UNVERIFIED).
+Fixes: fallback map + minimap images use data-src and load only near the viewport (world.js IntersectionObserver, 300 px);
+Level Preview first still lazy; Fast Travel image no longer lazy (it is a user-initiated swap); selective low-priority warm-up of
+ONLY the open dossier's picks and the 2 neighbouring Fast Travel portals once that panel is visible (same srcset/sizes as the
+real <img>, so the cached file is reused). No eager gallery downloads. Approved carousel untouched.
+Results (median of 3, BEFORE = live staging r-45ac01be, AFTER = this build):
+- LCP 4.22 s → 3.85 s (−9%); load event 11.8 s → 9.6 s (−19%)
+- image bytes at load 5.54 MB → 4.40 MB (−21%); after full scroll 7.19 MB → 5.75 MB (−20%)
+- taps (after 4 s dwell): prefetched picks 50–95 ms (were 215–330 ms); first Fast Travel tap still ~1.1 s on throttled 4G
+  (it now competes with the deferred map). Remaining lever: phone DPR3 picks the full-size portal/dossier files (300+ KB);
+  a 1280-px middle derivative would cut tap cost further. Not done yet.
+
+### 2. Sample implementation (done on staging)
+- SENTRY CANNON (benchmark): unchanged imagery + controls (Hostile + 4 hacked, Standard/Rotary/Missile now labelled
+  "Weapon configurations"). Public name "Sentry Cannon" without ™ everywhere (owner branding decision; ids unchanged).
+- CLAW BOT™: hero + Walk/scuttle + Alert (claws raised) + Clamp attack. Removed from public: Idle (redundant), front attack
+  (head spike + feet clipped by my earlier crop), Defeated A/B, all 6 turnarounds. Small states are shown at native size
+  (CSS cap 1.15× native width) instead of being stretched to the stage — sharper, honest, still source-limited.
+- PRISM KEEPER™: lead = approved in-world image (1368 px); Gallery = In the world | Hero (cleaner card cutout, smoke faded) |
+  Ready stance (full legs/feet). Removed: Charge (grey smoke mat), Attack (slam) + Hit (grey debris/ghosting), Defeated (living
+  crouch, wrong), 4 turnarounds, smoky original hero. Evolution Phase 3 uses the cleaner card cutout.
+- Dossier engine: Gallery row (in-world + hero + curated views) first; a lone hero joins the action row so it is always reachable;
+  rows with a single pick are not drawn (no dead controls).
+
+### 3. Remaining entities — curation plan (apply next, same rules; ids/files unchanged)
+| Entity | Keep public | Remove from public | Needs repair / source |
+| Goom Bot™ | hero 338, Walk, Charge/attack, Defeated (if clean) | Idle/Inactive dupes, 4 turnarounds | in-world 720 px has malformed background Goom face → replace with approved scene or crop-safe variant; Charge/Defeated mattes blurry (owner 05/06) |
+| Spike Bot™ | in-world 576, hero 374, Roll, Attack | Idle, Alert dup, 5 turnarounds incl. top/bottom | all states 208–309 px: native-size display |
+| Rotor Bot™ | hero 408, Idle/hover, Patrol | Alert/Inactive dupes, Defeated A/B, 6 turnarounds | states 139–195 px; Charge/Dive with full flame need ≥1200 px exports (Higgsfield rev 7 / approved renders) |
+| Rumbler™ | in-world 704, Rolling, Impact | Idle, 4 turnarounds (hero only 202 px) | Destroyed must show approved amber/yellow crystal rubble — source check |
+| Stone Walker™ | approved in-world (owner: preserve), card hero 768, Walk/chase, Attack | Hit, 4 turnarounds; Side (apparent 3rd hand, owner 11) | Attack cutout grey floor block (owner 12); defeated = amber crystal rubble (missing) |
+| Brightback™ | keep approved V1 oversized apex presentation | — | repair torn lower-left foot of cutout from the V1 sheet (no regeneration) |
+| Crystal / Prism Crystal + shards | hero + one shard view | — | remove orange/coloured floor mats, shard backing, fill blank reference thumbnail (owner 15–18) |
+| Springboard | 3 in-world scenes, Neutral/Compressed/Rebound | Settling, 5 turnarounds | — |
+| Chests, coins, crate, gear | unchanged (already curated) | — | — |
+
+### 4. Source-limited inventory (honest: cannot be fixed by sharpening/defringing/upscaling)
+Claw Bot™ states 185–189 px · Rotor Bot™ states 139–195 px (no Charge/Dive) · Spike Bot™ 208–309 px · Goom Bot™ states 133–405 px ·
+Rumbler™ hero 202 px · Prism Keeper™ actions 303–376 px + no defeated rubble art · Stone Walker™/Rumbler™ amber-crystal destroyed state ·
+Brightback™ V1 foot (cutout repair only). Needed: approved high-res renders (≥1200 px, transparent, full anatomy/flames) of the retained
+actions only — not every angle. New artwork only with owner approval against the canon.
+
+### 5. Regions (next block)
+Frosty Peaks™ and Prism Ridge™ Fast Travel/area flags: compare against Drive REGION_FLAGS_CANONICAL_REFERENCE_MASTER.png
+(folder 1cyrwfNUBbxwXU0QJgU54RFUcTu0cH4NW) before any change; never guess hues. Summit Spine™ Fast Travel image is near-duplicate of
+Prism Ridge™ → replace with a distinct approved view or remove the entry (prepare proposal if no canonical source).
+
 ## STAGE 1 RELEASE PORT (2026-10-11) — dev source reconciled with main
 Why: publish.py replaces staging/ on main as a whole from this branch. main had two owner commits that never existed here
 (fdf948a unified Enemies & Hazards cards, 76dc8e2 Brightback V1) and the Stage 1 QA corrections (branch ccr-68e61a03-ykulfu,

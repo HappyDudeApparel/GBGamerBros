@@ -52,6 +52,18 @@ function create(root, opts) {
   let fbImg = track.querySelector(".map__img");
   if (pano) { track.innerHTML = ""; fbImg = null; }
   else fbImg.draggable = false;
+  // Map imagery downloads only when the viewer is near the viewport (performance, 2026-10-11).
+  // The page markup carries data-src (no src), so the browser's preload scanner can't fetch the
+  // 930 KB fallback art or the panorama ahead of the hero; `near` releases them once, then stays on.
+  let near = !("IntersectionObserver" in window);
+  const release = () => {
+    root.querySelectorAll("img[data-src]:not([src])").forEach((i) => { if (!i.classList.contains("map__tile")) i.src = i.dataset.src; });
+    if (W) setOffset(offset);
+  };
+  if (!near) {
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { near = true; io.disconnect(); release(); } }, { rootMargin: "300px 0px" });
+    io.observe(root);
+  }
   function pickTier() {
     const need = H * Math.min(window.devicePixelRatio || 1, 2);
     const t = pano.tiers.find((x) => x.height >= need) || pano.tiers[pano.tiers.length - 1];
@@ -68,7 +80,7 @@ function create(root, opts) {
       const s = document.createElement("div");
       s.className = "map__strip";
       const ov = new Image();
-      ov.className = "map__overview"; ov.alt = ""; ov.draggable = false; ov.src = withRev(pano.overview);
+      ov.className = "map__overview"; ov.alt = ""; ov.draggable = false; ov.dataset.src = withRev(pano.overview); if (near) ov.src = ov.dataset.src;
       s.appendChild(ov);
       let x = 0;
       const tiles = tier.tiles.map((d) => {
@@ -126,7 +138,7 @@ function create(root, opts) {
         const x = base + i * W;
         s.el.style.transform = `translate3d(${x}px,0,0)`;
         s.tiles.forEach((t) => {       // load tiles in (or near) view
-          if (t.img.src) return;
+          if (!near || t.img.src) return;
           const a = x + t.x0 * W, b = x + t.x1 * W;
           if (b > -vw * 0.5 && a < vw * 1.5) t.img.src = t.img.dataset.src;
         });
@@ -169,7 +181,8 @@ function create(root, opts) {
   let mmViews = [];
   if (minimap) {
     const img = minimap.querySelector("img");
-    if (pano) img.src = withRev(pano.overview);
+    if (pano) img.dataset.src = withRev(pano.overview);
+    if (near && img.dataset.src) img.src = img.dataset.src;
     img.draggable = false;
     minimap.querySelectorAll(".minimap__view").forEach((v) => v.remove());
     mmViews = [0, 1].map(() => { const s = document.createElement("span"); s.className = "minimap__view"; minimap.appendChild(s); return s; });

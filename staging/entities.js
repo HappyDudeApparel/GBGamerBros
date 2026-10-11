@@ -52,8 +52,13 @@ window.GB_ENTITIES = {
     media: { thumb: E + "claw-bot-hero", render: E + "claw-bot-hero", icon: null },
     copy: { provisional: true, summary: "Crab-like ground enemy with two split-spike claws.", behaviour: "Patrols, spots you, raises its claws and clamps to attack.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Front": E + "claw-bot-front", "¾ view": E + "claw-bot-threeq", "Side": E + "claw-bot-side", "Back": E + "claw-bot-back", "Top": E + "claw-bot-top", "Bottom": E + "claw-bot-bottom" },
-    states: { "Idle": E + "claw-bot-idle", "Walk / scuttle": E + "claw-bot-walk", "Alert": E + "claw-bot-alert", "Clamp A": E + "claw-bot-attack-a", "Attack · open claws": E + "claw-bot-attack-front", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b" },
+    views: {},
+    states: { "Walk / scuttle": E + "claw-bot-walk", "Alert · claws raised": E + "claw-bot-alert", "Clamp attack": E + "claw-bot-attack-a" },
+    // PUBLIC CURATION 2026-10-11 (owner strategy): hero + 3 distinctive actions. Source cells are only 92–201 px
+    // (Final Production Reference sheet), so they are shown at native size, never stretched. Kept for provenance,
+    // not shown publicly: routine turnarounds, the redundant idle, the head-spike-clipped front attack, defeated states.
+    archived: { "Idle": E + "claw-bot-idle", "Attack · open claws (spike + feet clipped)": E + "claw-bot-attack-front", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b",
+      "Front": E + "claw-bot-front", "¾ view": E + "claw-bot-threeq", "Side": E + "claw-bot-side", "Back": E + "claw-bot-back", "Top": E + "claw-bot-top", "Bottom": E + "claw-bot-bottom" },
     angles: angles("top", "bottom"), cardScale: 0.95, height: 0.8, scale: null,
   },
   "spike-bot": {
@@ -79,7 +84,7 @@ window.GB_ENTITIES = {
     angles: angles("top", "bottom"), cardScale: 0.86, height: 0.8, scale: null,
   },
   "sentry-cannon": {
-    name: "Sentry Cannon™", type: "enemy", status: "APPROVED",
+    name: "Sentry Cannon", type: "enemy", status: "APPROVED",
     // 08_SENTRY_CANNON locked system (sole geometry/state source): hostile = red/orange hazard language,
     // hacked = player-colour energy + GB / mountain insignia; same structure across Standard, Rotary, Missile
     media: { thumb: "assets/entities/sentry/hostile", render: "assets/entities/sentry/hostile", icon: null },
@@ -87,7 +92,7 @@ window.GB_ENTITIES = {
     encounter: [],
     states: { "Hostile": "assets/entities/sentry/hostile", "Hacked · Blue": "assets/entities/sentry/blue", "Hacked · Red": "assets/entities/sentry/red", "Hacked · Yellow": "assets/entities/sentry/yellow", "Hacked · Purple": "assets/entities/sentry/purple" },
     views: { "Standard": "assets/entities/sentry/hostile", "Rotary": "assets/entities/sentry/rotary", "Missile": "assets/entities/sentry/missile" },
-    heroFirst: true, heroLabel: "Hostile",
+    heroFirst: true, heroLabel: "Hostile", viewsLabel: "Weapon configurations",
     angles: angles(), cardScale: 0.8, height: 1.0, scale: null,
   },
   "stone-golem": {
@@ -105,11 +110,18 @@ window.GB_ENTITIES = {
   "crystal-guardian": {
     name: "Prism Keeper™", type: "enemy", status: "APPROVED",
     // CRYSTAL_GUARDIAN_ANGLES_MASTER_V1 + CRYSTAL_GUARDIAN_STATES_MASTER_V1 (approved production masters)
-    media: { thumb: E + "crystal-guardian-card", render: E + "crystal-guardian-hero", icon: null },
+    media: { thumb: E + "crystal-guardian-card", render: E + "crystal-guardian-card", icon: null },
     copy: { provisional: true, summary: "Rare evolved Prism form.", behaviour: "Guards key areas.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Front": E + "crystal-guardian-front", "¾ view": E + "crystal-guardian-threeq", "Side": E + "crystal-guardian-side", "Back": E + "crystal-guardian-back" },
-    states: { "Idle": E + "crystal-guardian-idle", "Charge": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated": E + "crystal-guardian-defeated" },
+    views: { "Ready stance": E + "crystal-guardian-idle" },
+    states: {},
+    // PUBLIC CURATION 2026-10-11: lead = approved in-world image (1368 px), the clean studio hero and the full-body ready stance.
+    // Not shown publicly (kept for provenance): Charge (grey smoke mat at its left edge), Attack (slam) and Hit (grey debris/ghosting baked into the cutouts),
+    // Defeated (shows the living form crouching; canon defeated = rubble with purple Prism Shards: source missing),
+    // the four routine turnarounds, and the smoky original hero.
+    archived: { "Charge (grey smoke mat)": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated (wrong: living crouch)": E + "crystal-guardian-defeated",
+      "Front": E + "crystal-guardian-front", "¾ view": E + "crystal-guardian-threeq", "Side": E + "crystal-guardian-side", "Back": E + "crystal-guardian-back", "Hero (smoke under foot)": E + "crystal-guardian-hero" },
+    leadScene: true,
     angles: angles(), cardScale: 1.28, height: 2.5, scale: null,
     evolution: { line: "boulder", phase: 3 },
   },
@@ -168,7 +180,7 @@ window.GB_ENTITIES = {
   "patchpad": {
     name: "PATCHPAD™", type: "gadget", status: "APPROVED",
     media: { thumb: "assets/gear/patchpad-hero", render: "assets/gear/patchpad-hero", icon: null },
-    copy: { summary: "Handheld hacking device, shown in GB Blue.", behaviour: "Metallic dial and vertical thumbwheel. Four controls: red Action/Acquire, blue Scan/Monitor, yellow App/Program Selector and purple Settings.", where: "Carried by the Gamers. Designed for hacking machines such as the Sentry Cannon™." },
+    copy: { summary: "Handheld hacking device, shown in GB Blue.", behaviour: "Metallic dial and vertical thumbwheel. Four controls: red Action/Acquire, blue Scan/Monitor, yellow App/Program Selector and purple Settings.", where: "Carried by the Gamers. Designed for hacking machines such as the Sentry Cannon." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "smartwatch": {
@@ -245,7 +257,7 @@ window.GB_EVOLUTION_DETAIL = {
       { src: X + "evo-boulder-cracked", label: "Cracked", phase: 1 },
       { src: X + "evo-golem-forming", label: "Forming", phase: 2 },
       { src: X + "evo-stone-golem", label: "Stone Walker™", phase: 2 },
-      { src: E + "crystal-guardian-hero", label: "Prism Keeper™", phase: 3 },
+      { src: E + "crystal-guardian-card", label: "Prism Keeper™", phase: 3 },
       { src: E + "brightback-v1-cutout", label: "Brightback™", phase: 4 },
     ],
     mechanics: [
