@@ -1,0 +1,56 @@
+{
+ "category": "hero",
+ "source": "/tmp/claude-0/-home-user-GBGamerBros/277a82e5-48c2-56c4-981d-f7242c63ca70/scratchpad/hero_comp/hero-3-p.png",
+ "source_sha256": "dc568f4bca1a7273437e1c4083e5b37daebf377cbb33b0d95dba1243355866bf",
+ "content_px": [
+  1080,
+  2000
+ ],
+ "content_box": [
+  0,
+  0,
+  1080,
+  2000
+ ],
+ "cutout": false,
+ "band_cropped": 0,
+ "marks": [],
+ "outputs": {
+  "hero-3-p.webp": {
+   "px": [
+    1080,
+    2000
+   ],
+   "bytes": 243124,
+   "sha256": "ac1bf96b95263b3e59c675189800fd849b150925dbad1a9b8084b325f5021518",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  },
+  "hero-3-p-960.webp": {
+   "px": [
+    960,
+    1778
+   ],
+   "bytes": 218988,
+   "sha256": "326a1c9e5cc80008b0563b2e84768b4ff0a440e73fa1dd2df8d1d41fb6ca0a1f",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  }
+ },
+ "source_unchanged": true,
+ "metadata_survived_all_variants": true
+}
