@@ -1,0 +1,19 @@
+name: staging-guard
+# Fails a PR or a push to main if staging/ reverts the owner-approved corrections
+# (footer, logo, Brightback card/evolution, team backdrop, no unfinished privacy draft, no personal name).
+on:
+  pull_request:
+    paths: ["staging/**", "tools/**", ".github/workflows/staging-guard.yml"]
+  push:
+    branches: [main]
+    paths: ["staging/**", "tools/**", ".github/workflows/staging-guard.yml"]
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow numpy
+      - run: python3 tools/check_staging_invariants.py
