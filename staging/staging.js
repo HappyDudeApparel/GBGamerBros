@@ -169,7 +169,7 @@
     const m = MEDIA[src];
     if (!m) return "--ar:1.7778;--ext:1";
     const ext = Math.max((m.h + m.band) / m.h, (m.sh + m.sband) / m.sh);
-    return `--ar:${(m.w / m.h).toFixed(5)};--ext:${ext.toFixed(5)}`;
+    return `--ar:${(m.w / m.h).toFixed(5)};--ext:${ext.toFixed(5)};--nw:${m.w}`;
   };
   // every image URL carries the file's content revision so replacements are never served stale
   const asset = (src, small) => {
@@ -338,6 +338,20 @@
     return `<span class="gbm cutout ${cls}" style="${frameVars(src)}"><img src="${asset(src)}"${set} alt="${esc(alt)}"${eager ? "" : ' loading="lazy"'} draggable="false"></span>`;
   };
   const isCut = (src) => !!(MEDIA[src] && MEDIA[src].alpha);
+  // Selective warm-up (performance, 2026-10-11): fetch at low priority ONLY the few images the visitor can
+  // pick next (the open dossier's picks, the Fast Travel portals), using the same srcset/sizes as the real
+  // <img>, so the browser chooses the same file and a tap shows it from cache. Never the whole gallery.
+  const warmed = new Set();
+  const prefetch = (src, sizes) => {
+    const m = MEDIA[src];
+    if (!m || warmed.has(src + "|" + (sizes || ""))) return;
+    warmed.add(src + "|" + (sizes || ""));
+    const i = new Image();
+    i.fetchPriority = "low"; i.decoding = "async";
+    if (sizes && m.sw < m.w) { i.sizes = sizes; i.srcset = `${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w`; }
+    i.src = asset(src);
+  };
+  const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300));
   // in-game view (entities.js GB_ENTITY_SCENE): cover-fitted inside a fixed frame, band clipped
   // GB_ENTITY_SCENE[id] is one scene or a list; scenesOf → all valid, sceneOf → the first ("id" or "id:n")
   const scenesOf = (id) => [].concat((window.GB_ENTITY_SCENE || {})[id] || []).filter((s) => MEDIA[s.src]);
@@ -412,6 +426,18 @@
     }).join("");
     const scAny = sceneOf(id);
     const sc = e.heroFirst ? null : scAny;   // heroFirst: the production hero leads; the scene stays one pick away
+    // gallery row: in-world (single scene) + studio hero + curated views. A row with a single pick
+    // would advertise a choice that doesn't exist, so it is omitted (the stage already shows that image).
+    const gallery = [];
+    if (scAny && scenesOf(id).length === 1) gallery.push(`<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="${!!sc}"><span class="stage-box">${sceneImg(scAny, "", true)}</span><small>In the world</small></button></li>`);
+    if (stage && !Object.values(e.views || {}).includes(hero)) gallery.push(`<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="${esc(e.heroLabel || "Hero")}" aria-label="${esc(e.name)}: ${esc(e.heroLabel || "Hero")}" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>${esc(e.heroLabel || "Hero")}</small></button></li>`);
+    const nPicks = (h) => h.split("<li").length - 1;
+    // hero + in-world first (owner order); a lone hero pick joins the action row so the visitor can always return to it
+    // with a lead (in-world/hero) the curated views join the Gallery row; without one they keep their own row
+    const leadAll = gallery.length && views ? gallery.concat(views) : gallery;
+    const lead = nPicks(leadAll.join("")) > 1 ? `<h3>Gallery</h3><ul class="dossier__picks">${leadAll.join("")}</ul>` : "";
+    const statesPre = !lead && gallery.length === 1 && states ? gallery[0] : "";
+    const viewsRow = gallery.length ? "" : views;
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
         ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : `<span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span>`}</div>
@@ -422,8 +448,9 @@
           ? `<a class="dossier__full" id="entFull" href="${asset(hero)}" target="_blank" rel="noopener" aria-label="${esc(e.name)}: open full-size image in a new tab">${media(hero, "dossier__render", e.name)}<span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span></a>`
           : media(hero, "dossier__render", e.name)}
         ${scenesOf(id).length > 1 ? `<h3>${e.scenicHero ? "Approved reference imagery" : "In the world"}</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
-        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
-                ${views ? `<h3>Reference views</h3><ul class="dossier__picks">${scAny && scenesOf(id).length === 1 ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="${!!sc}"><span class="stage-box">${sceneImg(scAny, "", true)}</span><small>In the world</small></button></li>` : ""}${stage && !Object.values(e.views || {}).includes(hero) ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
+        ${lead}
+        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : statesPre ? "Gallery" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${statesPre}${states}</ul>` : ""}
+                ${viewsRow && nPicks(viewsRow) > 1 ? `<h3>${esc(e.viewsLabel || "Views")}</h3><ul class="dossier__picks">${viewsRow}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
           <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
@@ -443,6 +470,14 @@
     document.documentElement.classList.add("is-locked");
     pause();
     eDlg.querySelector(".dossier__close").focus({ preventScroll: true });
+    // after the first view has loaded, warm this dossier's own picks (a handful of files)
+    const first = eBody.querySelector("#entStage img, .dossier__render img");
+    const warmPicks = () => whenIdle(() => {
+      eBody.querySelectorAll("[data-hero]").forEach((b) => prefetch(b.dataset.hero, "(min-width: 720px) 420px, 90vw"));
+      eBody.querySelectorAll("[data-scene]").forEach((b) => { const sc = sceneOf(b.dataset.scene); if (sc) prefetch(sc.src); });
+      eBody.querySelectorAll("[data-gview]").forEach((b) => prefetch(b.dataset.gview));
+    });
+    if (!first || first.complete) warmPicks(); else first.addEventListener("load", warmPicks, { once: true });
     const ev = document.getElementById("entEvo");
     if (evoFocus && ev) requestAnimationFrame(() => ev.scrollIntoView({ block: "start" }));
     else eDlg.querySelector(".dossier__card").scrollTop = 0;
@@ -616,16 +651,18 @@
   const lpThumbs = document.getElementById("lpThumbs");
   const lpLabel = document.getElementById("lpLabel");
   let lpIndex = 0;
+  let lpLazy = true;   // first still is far below the fold; later swaps are user-initiated and load at once
   lpThumbs.innerHTML = LP.views.map((v, i) =>
     `<button type="button" role="tab" data-lp-index="${i}" aria-label="${esc(v.label)}">${media(v.src, "lp__thumb", "", "small")}</button>`).join("");
   function lpSet(i) {
     lpIndex = (i + LP.views.length) % LP.views.length;
     const v = LP.views[lpIndex];
     lpFrame.setAttribute("style", frameVars(v.src));
-    lpFrame.innerHTML = `<img src="${asset(v.src, true)}" srcset="${srcset(v.src)}" sizes="(min-width: 1100px) 34vw, 92vw" alt="${esc(v.alt)}" draggable="false">`;
+    lpFrame.innerHTML = `<img src="${asset(v.src, true)}" srcset="${srcset(v.src)}" sizes="(min-width: 1100px) 34vw, 92vw" alt="${esc(v.alt)}"${lpLazy ? ' loading="lazy"' : ""} draggable="false">`;
     lpLabel.textContent = v.label;
     [...lpThumbs.children].forEach((b, n) => b.setAttribute("aria-selected", String(n === lpIndex)));
   }
+  lpThumbs.addEventListener("pointerdown", () => { lpLazy = false; }, { once: true });
   lpThumbs.addEventListener("click", (e) => { const b = e.target.closest("[data-lp-index]"); if (b) lpSet(Number(b.dataset.lpIndex)); });
   document.querySelectorAll("[data-lp]").forEach((b) => b.addEventListener("click", () => lpSet(lpIndex + Number(b.dataset.lp))));
   document.getElementById("lpMain").addEventListener("click", (e) => navArea("preview", e.currentTarget, lpIndex));
@@ -645,7 +682,7 @@
   function ftSet(i) {
     const [name, src] = ftRegions[i];
     ftFrame.setAttribute("style", frameVars(src));
-    ftFrame.innerHTML = `<img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="(min-width: 1100px) 30vw, 92vw" alt="${esc(name)} portal" loading="lazy" draggable="false">`;
+    ftFrame.innerHTML = `<img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="(min-width: 1100px) 30vw, 92vw" alt="${esc(name)} portal" draggable="false">`;
     ftName.textContent = name;
     const pm = portalMeta[name] || {};
     ftFrame.style.setProperty("--fx", pm.fx || "50%");
@@ -655,6 +692,14 @@
   ftDots.innerHTML = ftRegions.map(([name], i) => `<button type="button" style="--rc:${colourOf(name)}" aria-label="${esc(name)} portal" data-ft="${i}"></button>`).join("");
   ftDots.addEventListener("click", (e) => { const b = e.target.closest("[data-ft]"); if (b) ftSet(Number(b.dataset.ft)); });
   ftSet(0);
+  // warm only the neighbouring portals, and only once Fast Travel is on screen (2 files at a time, low priority)
+  let ftSeen = false;
+  const ftWarm = (i) => { if (!ftSeen) return; [i + 1, i - 1].forEach((k) => { const r = ftRegions[(k + ftRegions.length) % ftRegions.length]; if (r) prefetch(r[1], "(min-width: 1100px) 30vw, 92vw"); }); };
+  if ("IntersectionObserver" in window) {
+    const ftIO = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { ftSeen = true; ftIO.disconnect(); whenIdle(() => ftWarm(0)); } });
+    ftIO.observe(ftFrame);
+  }
+  ftDots.addEventListener("click", (e) => { const b = e.target.closest("[data-ft]"); if (b) whenIdle(() => ftWarm(Number(b.dataset.ft))); });
 
   // ---------- Enemies & Hazards ----------
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {

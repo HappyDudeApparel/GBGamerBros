@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-45ac01be">
+<meta name="gb-revision" content="r-6778527d">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-45ac01be";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-6778527d";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -16,7 +16,7 @@
 <link rel="icon" href="assets/brand/gb-logo-clean.webp?v=e5b2caf9fd">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=6424ed011d">
+<link rel="stylesheet" href="staging.css?v=e189fc402a">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -99,7 +99,7 @@
            Panorama mode: activated by panorama-manifest.js; tiles replace this image. -->
       <div class="map" id="mapScroller" tabindex="0" role="region" aria-roledescription="map" aria-label="Map of Adventure Mountain™">
         <div class="map__track" id="mapTrack">
-          <img class="map__img" src="assets/adventure-mountain-front.webp?v=96039d75f7" alt="Adventure Mountain™ seen from the front: Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Fallen Grounds™, Prism Ridge™ and Frosty Peaks™" width="1536" height="960" fetchpriority="high">
+          <img class="map__img" data-src="assets/adventure-mountain-front.webp?v=96039d75f7" alt="Adventure Mountain™ seen from the front: Portal Meadow™, Creek Crossing™, Riverworks™, Clover Cliffs™, Fallen Grounds™, Prism Ridge™ and Frosty Peaks™" width="1536" height="960">
         </div>
         <div class="map__overlay" id="mapOverlay"></div>
       </div>
@@ -117,7 +117,7 @@
         <p class="map__hint" aria-hidden="true"><span>‹</span> <b data-when="fallback">Drag to explore</b><b data-when="panorama">Drag to travel around the world</b> <span>›</span></p>
       </div>
       <div class="minimap" id="minimap" role="slider" tabindex="0" aria-label="Map position" aria-controls="mapScroller" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <img src="assets/adventure-mountain-front-480.webp?v=38e0cac6bb" alt="" width="480" height="300" loading="lazy">
+        <img data-src="assets/adventure-mountain-front-480.webp?v=38e0cac6bb" alt="" width="480" height="300" loading="lazy">
       </div>
     </div>
   </section>
@@ -310,18 +310,18 @@
   <p class="site-foot__legal">© 2026 HAPPY DUDE®. All rights reserved.</p>
   <p class="site-foot__links"><a href="rights.html">Rights &amp; IP</a></p>
   <p class="site-foot__note">Adventure Mountain™ artwork, characters, environments and visual assets are original project material.</p>
-  <p class="site-foot__build" hidden>Build <span id="gbRev">r-45ac01be</span></p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-6778527d</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
 <script src="media-manifest.js?v=4cb4f72b9c" defer></script>
 <script src="areas.js?v=d38e2d08b4" defer></script>
-<script src="entities.js?v=21c5ccff19" defer></script>
+<script src="entities.js?v=0f9046d595" defer></script>
 <script src="world-data.js?v=4e4c3357aa" defer></script>
 <script src="panorama-manifest.js?v=f6156987ce" defer></script>
-<script src="world.js?v=4380a116fd" defer></script>
+<script src="world.js?v=ecb5fa5de5" defer></script>
 <script src="characters.js?v=1d73531302" defer></script>
-<script src="staging.js?v=642e25e16a" defer></script>
+<script src="staging.js?v=1e5ed67aad" defer></script>
 </body>
 </html>
