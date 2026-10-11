@@ -302,6 +302,19 @@ window.GB_MEDIA = {
   "rev": "90580b9bae",
   "srev": "40182d5678"
  },
+ "assets/brand/gb-logo-clean": {
+  "w": 640,
+  "h": 260,
+  "band": 0,
+  "sw": 640,
+  "sh": 260,
+  "sband": 0,
+  "alpha": true,
+  "master": "gb-logo.png",
+  "rev": "e5b2caf9fd",
+  "srev": "e5b2caf9fd",
+  "noSmall": true
+ },
  "assets/characters/blue-red-high-five": {
   "w": 1088,
   "h": 1160,
@@ -697,6 +710,62 @@ window.GB_MEDIA = {
   "master": "GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1__side.png",
   "rev": "409ff2ce45",
   "srev": "86333ff2b4"
+ },
+ "assets/entities/brightback-v1-face": {
+  "w": 471,
+  "h": 316,
+  "band": 0,
+  "sw": 471,
+  "sh": 316,
+  "sband": 0,
+  "alpha": false,
+  "master": "Brightback_V1_Preferred__face_chest_detail.png",
+  "rev": "57cd03d8c8",
+  "srev": "57cd03d8c8",
+  "ext": "png",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-hand": {
+  "w": 308,
+  "h": 317,
+  "band": 0,
+  "sw": 308,
+  "sh": 317,
+  "sband": 0,
+  "alpha": false,
+  "master": "Brightback_V1_Preferred__hand_shard_detail.png",
+  "rev": "0e3024e02d",
+  "srev": "0e3024e02d",
+  "ext": "png",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-hero": {
+  "w": 701,
+  "h": 573,
+  "band": 0,
+  "sw": 701,
+  "sh": 573,
+  "sband": 0,
+  "alpha": false,
+  "master": "Brightback_V1_Preferred__hero_preferred_scene.png",
+  "rev": "e776e9721f",
+  "srev": "e776e9721f",
+  "ext": "png",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-turnaround": {
+  "w": 802,
+  "h": 187,
+  "band": 0,
+  "sw": 802,
+  "sh": 187,
+  "sband": 0,
+  "alpha": false,
+  "master": "Brightback_V1_Preferred__turnaround_row.png",
+  "rev": "269cda3a4e",
+  "srev": "269cda3a4e",
+  "ext": "png",
+  "noSmall": true
  },
  "assets/entities/claw-bot-alert": {
   "w": 186,
