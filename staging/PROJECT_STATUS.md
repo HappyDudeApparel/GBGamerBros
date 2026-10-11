@@ -17,6 +17,26 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## PUBLIC CURATION — pass 4 (2026-10-11, owner decisions applied; staging only)
+OWNER DECISIONS (2026-10-11): Prism Ridge = Option D temporarily, Option A prismatic flag = canonical flag reference, Option C not
+final. Rumbler/Stone Walker amber-crystal destruction concepts authorised (approval before publishing). Rotor (Higgsfield rev 7) and
+Claw (rev 11) high-res 2D renders handled by ChatGPT; integrate only selected approved PNG/WebP. 447 legacy notices stay until the
+watermark is approved; all future exports use "© 2026 HAPPY DUDE®. All rights reserved.". No production promotion.
+DONE: Fast Travel Prism Ridge™ → approved area view pr04 (1448 px + 720 px mobile tier), fx 50%, no letterbox. portal-prism-ridge
+(Option C) retired from public view, file kept.
+CONCEPTS FOR APPROVAL (NOT published, not canonical; scratchpad only, kept out of the public repo):
+- Rumbler™ destroyed = approved Rolling Boulder Production Master "Destroyed" scatter + amber Crystal Shards from the approved
+  Crystals Shards and Evolution Remains Reference, wedged among the fragments (soft contact shadow + the shards' own glow).
+- Stone Walker™ defeated = approved Stone Walker States Master "Defeated" heap + the same amber shards on top and at the base.
+  Note: that approved heap still shows glowing eyes and one small PURPLE crystal at its left — owner to confirm whether the defeated
+  heap should keep the eyes and whether the purple crystal should be replaced by amber.
+  Composites only (no repainting); if approved they will be exported at 2x and added as each entity's defeated state.
+PRISM RIDGE PORTAL — future concept brief (approved references only): composition of PRISM_RIDGE_PASS_B (stone portal arch, lanterns,
+cobbled approach, crystal clusters, ruin ridge with waterfalls) but grounded (no floating islands) and the two banners replaced by the
+canonical Option A prismatic GB flag (PRISM_RIDGE_FLAG_ALTERNATE_CRYSTAL_FIELD); landscape ≥1600 px. Needs an image generator /
+artist render — prepared as a brief; present for visual approval before replacing Option D.
+TESTS: func 23/23; 6 owner viewports 0 overflow / 22 dossiers / 0 errors; invariants OK; verify 495/495.
+
 ## PUBLIC CURATION — pass 3 (2026-10-11, staging only)
 Reconciled first: main 677f26c == dev public files.
 COMPLETED

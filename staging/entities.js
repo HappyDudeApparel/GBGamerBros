@@ -169,7 +169,7 @@ window.GB_ENTITIES = {
     copy: { summary: "Regional fast-travel portal.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
     encounter: [],
     // Canonical region order (03_CANONICAL_REGION_REFERENCE_INDEX). Every entry shows approved portal artwork.
-    states: { "Portal Meadow™": "assets/systems/portals/portal-meadow", "Creek Crossing™": "assets/systems/portals/portal-creek", "Riverworks™": "assets/systems/portals/portal-river", "Clover Cliffs™": "assets/systems/portals/portal-clover", "Fallen Grounds™": "assets/systems/portals/portal-fallen", "Prism Ridge™": "assets/systems/portals/portal-prism-ridge", "Frosty Peaks™": "assets/systems/portals/portal-frost", "Summit Spine™": "assets/systems/portals/portal-prism" }, angles: angles(), scale: null,
+    states: { "Portal Meadow™": "assets/systems/portals/portal-meadow", "Creek Crossing™": "assets/systems/portals/portal-creek", "Riverworks™": "assets/systems/portals/portal-river", "Clover Cliffs™": "assets/systems/portals/portal-clover", "Fallen Grounds™": "assets/systems/portals/portal-fallen", "Prism Ridge™": "assets/areas/prism-ridge/pr04-prism-ruin-landing", "Frosty Peaks™": "assets/systems/portals/portal-frost", "Summit Spine™": "assets/systems/portals/portal-prism" }, angles: angles(), scale: null,
   },
   "springboard": {
     name: "Springboard", type: "prop", status: "APPROVED",
@@ -297,12 +297,13 @@ window.GB_EVOLUTION_DETAIL = {
 // `color` = dot colour when the region is not in GB_WORLD.regions. Summit Spine™ is a canonical region (Visual Design Bible, region index) but is not a
 // public area yet (world-data.js lists it as a sub-region of Prism Ridge™), so it is shown as a portal preview only.
 // FLAG CANON 2026-10-11 (REGION_FLAGS_CANONICAL_REFERENCE_MASTER): Summit Spine™ = purple, Frosty Peaks™ = light blue,
-// Prism Ridge™ = special treatment. portal-prism (purple flags, crystal summit) is the Summit Spine™ portal; Prism Ridge™ uses the
-// master's own "Option C" portal display (four player flags; owner may choose A/B instead); portal-frost flags recoloured to canon
+// Prism Ridge™ = special treatment. portal-prism (purple flags, crystal summit) is the Summit Spine™ portal. Prism Ridge™: OWNER DECISION
+// 2026-10-11 = Option D (TEMPORARY): approved area view pr04 (1448 px, no flag rather than a wrong flag) until a dedicated Prism Ridge
+// portal render with the canonical Option A prismatic flag is approved. Option C (portal-prism-ridge, master crop) retired, file kept; portal-frost flags recoloured to canon
 // light blue; portal-summit (near-duplicate of portal-prism) retired from public view, file kept.
 window.GB_PORTAL_META = {
   "Portal Meadow™": { area: "portal" }, "Creek Crossing™": { area: "creek" }, "Riverworks™": { area: "river", fx: "82%" }, "Clover Cliffs™": { area: "clover" },
-  "Fallen Grounds™": { area: "ruin" }, "Prism Ridge™": { area: "prism", fit: "whole" }, "Frosty Peaks™": { area: "frost", fx: "68%" },
+  "Fallen Grounds™": { area: "ruin" }, "Prism Ridge™": { area: "prism", fx: "50%" }, "Frosty Peaks™": { area: "frost", fx: "68%" },
   "Summit Spine™": { note: "The final ascent above Prism Ridge™. Portal preview only: its area guide is not published yet.", color: "#8d4fe0", fx: "40%" },
 };
 
