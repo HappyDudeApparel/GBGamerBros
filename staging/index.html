@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-7a12983a">
+<meta name="gb-revision" content="r-45ac01be">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-7a12983a";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-45ac01be";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -16,7 +16,7 @@
 <link rel="icon" href="assets/brand/gb-logo-clean.webp?v=e5b2caf9fd">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=ec367511a5">
+<link rel="stylesheet" href="staging.css?v=6424ed011d">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -57,24 +57,17 @@
   <section class="hero" aria-roledescription="carousel" aria-label="Adventure Mountain™ hero">
     <div class="hero__slides" id="heroSlides" aria-live="off">
       <div class="hero__track" id="heroTrack">
-        <!-- Slide types:
-             plain  = world plate; its characters come from the .hero__fg layer (data-slide index)
-             still  = character already in the frame; portrait layouts frame it in the scene band -->
-        <figure class="slide" aria-label="Slide 1 of 3"><img src="assets/hero-world-highfive.webp?v=d409fe1e44" alt="" fetchpriority="high"></figure>
-        <figure class="slide slide--scene" style="--fy:6%;--sx:42%;--psx:20%;--bg:url(assets/scenes/blue-world-action-01-960.webp?v=79c7174e12)" aria-label="Slide 2 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/blue-world-action-01.webp?v=f188c09494" srcset="assets/scenes/blue-world-action-01-960.webp?v=79c7174e12 960w, assets/scenes/blue-world-action-01.webp?v=f188c09494 1672w" sizes="100vw" alt="Gamer Bro Blue™ leaping between platforms past waterfalls and the crystal castle" loading="lazy" draggable="false"></span></div></figure>
-        <figure class="slide slide--scene" style="--fy:8%;--sx:40%;--psx:38%;--bg:url(assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75)" aria-label="Slide 3 of 3"><div class="scene-box"><span class="gbm" style="--ar:1.77683;--ext:1.03188"><img src="assets/scenes/purple-yellow-world-action-01.webp?v=0952411235" srcset="assets/scenes/purple-yellow-world-action-01-960.webp?v=5d1943bd75 960w, assets/scenes/purple-yellow-world-action-01.webp?v=0952411235 1672w" sizes="100vw" alt="Gamer Girl Purple™ and Gamer Girl Yellow™ running along a waterfall boardwalk" loading="lazy" draggable="false"></span></div></figure>
+        <!-- Key art: each slide is one composite (approved area scene + approved character cutouts, grounded; see tools/make_hero_composites.py).
+             Characters are part of the picture, so there is no separate foreground layer. Portrait layouts frame the central 66 % in the scene band. -->
+        <figure class="slide slide--art" aria-label="Slide 1 of 3"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-1-p-960.webp?v=17626ad426 960w, assets/hero/hero-1-p.webp?v=970d4ad1af 1080w" sizes="100vw"><img src="assets/hero/hero-1.webp?v=feeb8f1fd9" srcset="assets/hero/hero-1-960.webp?v=3fa9072e91 960w, assets/hero/hero-1.webp?v=feeb8f1fd9 1672w" sizes="100vw" width="1672" height="941" alt="The four Gamers, Blue, Red, Yellow and Purple, standing together on the broad entry path of Portal Meadow™" fetchpriority="high" draggable="false"></picture></figure>
+        <figure class="slide slide--art" aria-label="Slide 2 of 3"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-2-p-960.webp?v=d2efc3a88f 960w, assets/hero/hero-2-p.webp?v=d71fb21c28 1080w" sizes="100vw"><img src="assets/hero/hero-2.webp?v=c1e9bef0b5" srcset="assets/hero/hero-2-960.webp?v=1587d00e59 960w, assets/hero/hero-2.webp?v=c1e9bef0b5 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Bro Blue™ and Gamer Bro Red™ at the foot of the Summit Spine™ staircase, with the portal glowing at the top" fetchpriority="low" draggable="false"></picture></figure>
+        <figure class="slide slide--art" aria-label="Slide 3 of 3"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-3-p-960.webp?v=d4ed9e3d2b 960w, assets/hero/hero-3-p.webp?v=7c121243d2 1080w" sizes="100vw"><img src="assets/hero/hero-3.webp?v=48ccc77b93" srcset="assets/hero/hero-3-960.webp?v=6c1968c2f0 960w, assets/hero/hero-3.webp?v=48ccc77b93 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Girl Yellow™ and Gamer Girl Purple™ on the timber maintenance walkway of Riverworks™ beside a blue pipe" fetchpriority="low" draggable="false"></picture></figure>
       </div>
     </div>
     <div class="hero__shade" aria-hidden="true"></div>
 
     <span class="hero__sign gbm" style="--ar:1.62749;--ext:1.02893"><img src="assets/brand/adventure-mountain-sign.webp?v=21fcd58e0b" alt="GB GAMER BROS™ Adventure Mountain™ sign — PLAY • EXPLORE • DISCOVER" width="900" height="569"></span>
 
-    <!-- Character layer. Swap a cutout by changing src + its box:
-         --x/--y/--w = landscape box in reference px (1536-wide grid)
-         --px/--py/--pw = portrait box in --p units (--px is offset from centre) -->
-    <div class="hero__fg">
-      <span class="fg gbm" data-slide="0" style="--x:525;--y:75;--w:440;--px:-158;--py:276;--pw:336;--ar:0.93793;--ext:1.01724"><img src="assets/characters/blue-red-high-five.webp?v=2849c774c9" alt="Gamer Bro Blue™ and Gamer Bro Red™ jumping for a high five" width="1088" height="1180"></span>
-    </div>
 
     <div class="hero__copy">
       <h1 class="headline"><span>EXPLORE</span> <span>A BRIGHTER</span> <span>TOMORROW</span></h1>
@@ -317,12 +310,12 @@
   <p class="site-foot__legal">© 2026 HAPPY DUDE®. All rights reserved.</p>
   <p class="site-foot__links"><a href="rights.html">Rights &amp; IP</a></p>
   <p class="site-foot__note">Adventure Mountain™ artwork, characters, environments and visual assets are original project material.</p>
-  <p class="site-foot__build" hidden>Build <span id="gbRev">r-7a12983a</span></p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-45ac01be</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite">Steam store page coming soon.</div>
 
-<script src="media-manifest.js?v=26e52f754e" defer></script>
+<script src="media-manifest.js?v=4cb4f72b9c" defer></script>
 <script src="areas.js?v=d38e2d08b4" defer></script>
 <script src="entities.js?v=21c5ccff19" defer></script>
 <script src="world-data.js?v=4e4c3357aa" defer></script>

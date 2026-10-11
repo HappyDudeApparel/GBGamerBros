@@ -135,6 +135,9 @@ areas = read("areas.js")
 need(areas.count('kind: "still"') >= 3, "areas.js: Level Preview must define at least three stills")
 need("smartwatch-hardware" in ent and "smartwatch-hardware" in js and "smartwatch-stage" not in js, "SMARTWATCH Showcase must use the distinct hardware composite")
 
+need(index.count("slide--art") >= 3 and "hero__fg" not in index, "index.html: hero must be three key-art slides with no detached foreground character layer")
+need(all(os.path.exists(os.path.join(STAGING, f"assets/hero/hero-{n}{v}.webp")) for n in (1, 2, 3) for v in ("", "-p")), "assets/hero: wide + portrait key art missing")
+
 # ---- every ?v= local reference exists -------------------------------------------------------------
 for m in re.finditer(r'(?:src|href)="([^"?#:]+)\?v=[0-9a-f]+"', index):
     need(os.path.exists(os.path.join(STAGING, m.group(1))), f"index.html references missing file {m.group(1)}")
