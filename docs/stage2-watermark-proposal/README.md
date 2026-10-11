@@ -36,3 +36,21 @@ Sources are today's public derivatives with their old overscan band cropped off 
 ## Not started until approval (gated)
 Re-exporting the 436 existing derivatives; changing `staging/tools/gbmedia.py` (`NOTICE`, `CREATOR`, band text), which still writes the old "GB Gamer Bros™ x Happy Dude®" wording into every rebuilt image; dropping the CSS overscan band; deploying any marked image or `robots.txt`.
 See `METADATA_STANDARD.md` for the metadata fields and attribution structure.
+
+
+## Update 2026-10-11: stronger samples for characters, enemies and hero assets (`v2/`)
+Owner feedback: the first marks were too small and too easy to crop; characters, enemies, hero assets and approved canonical designs matter most, environment and level-preview stills matter less.
+
+`tools/export_protected_sample.py` prints the mark **onto the subject**: it is clipped to the figure's own opaque pixels, so it scales, moves and crops with the figure and cannot be removed by cropping empty canvas. The operator picks a zone (a rectangle in fractions of the subject) that keeps faces, glowing cores, eyes, hardware and other defining detail clear. Marks are 46 to 81 % of the subject's width (the first samples were about 15 % of the image width).
+
+Subjects: Gamer Bro Blue (character), Prism Keeper™ and Goom Bot™ (enemies), Brightback™ V1 (hero asset). Three strengths each:
+| Level | Mark | Opacity | Edge | Second mark |
+|---|---|---|---|---|
+| A | large | about 24 % | none | no |
+| B | larger | about 38 % | fine contrast edge | yes, where the zone allows |
+| C | largest | about 55 % | contrast edge | yes |
+Files: `v2/<subject>_<A|B|C>.webp` (+ `-960.webp`, `.audit.json`). Sources are today's public derivatives with the old band cropped; real runs start from the private masters. Metadata is the approved rights set.
+
+Honest limits: a skilled retoucher can paint a printed mark out, and metadata is stripped by many platforms. This deters casual reuse and shows provenance; it does not prevent copying and does not make any service credit HAPPY DUDE®. Cutout sources with gaps (legs, crystals) break the mark where the figure has no pixels; Level C reads best on solid bodies.
+
+Still gated: no mass export, no replacement of production art, no robots.txt or domain-wide crawler policy until the owner approves a level and zones.

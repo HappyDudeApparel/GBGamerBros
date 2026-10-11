@@ -1,0 +1,68 @@
+{
+ "source": "sporty-pose.webp",
+ "source_sha256": "12329af283557f3f971c827c588b4a4784af63e3a624f64eae230ebb94d96802",
+ "level": "C",
+ "subject_bbox": [
+  7,
+  8,
+  360,
+  744
+ ],
+ "marks": [
+  {
+   "zone": "0.08,0.56,0.94,0.80",
+   "px_width": 286,
+   "angle": -10.0,
+   "opacity": 0.55,
+   "edge": 0.45,
+   "tone": "white",
+   "luminance": 79.5,
+   "share_of_subject_width": 0.81
+  },
+  {
+   "zone": "0.15,0.80,0.9,0.90",
+   "px_width": 177,
+   "angle": 6.0,
+   "opacity": 0.385,
+   "edge": 0.45,
+   "tone": "white",
+   "luminance": 112.9,
+   "share_of_subject_width": 0.5
+  }
+ ],
+ "outputs": {
+  "character-blue_C.webp": {
+   "px": [
+    366,
+    751
+   ],
+   "sha256": "1db4b8665b4d4f6d3581f9513aa845bff17fe514b64a112c3e1762bedeee1334",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  },
+  "character-blue_C-960.webp": {
+   "px": [
+    366,
+    751
+   ],
+   "sha256": "1db4b8665b4d4f6d3581f9513aa845bff17fe514b64a112c3e1762bedeee1334",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  }
+ },
+ "source_unchanged": true
+}
