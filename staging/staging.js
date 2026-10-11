@@ -168,7 +168,7 @@
   const frameVars = (src) => {
     const m = MEDIA[src];
     if (!m) return "--ar:1.7778;--ext:1";
-    const ext = Math.max((m.h + m.band) / m.h, (m.sh + m.sband) / m.sh);
+    const ext = Math.max((m.h + m.band) / m.h, (m.sh + m.sband) / m.sh, m.mw ? (m.mh + m.mband) / m.mh : 0);
     return `--ar:${(m.w / m.h).toFixed(5)};--ext:${ext.toFixed(5)};--nw:${m.w}`;
   };
   // every image URL carries the file's content revision so replacements are never served stale
@@ -179,7 +179,11 @@
     return `${src}${useSmall ? "-960" : ""}.${m.ext || "webp"}${rev ? `?v=${rev}` : ""}`;
   };
   // srcset from the real derivative widths (images differ in size; never hard-code them)
-  const srcset = (src) => { const m = MEDIA[src] || {}; return m.sw && m.sw < m.w ? `${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w` : `${asset(src)} ${m.w || 1600}w`; };
+  const srcset = (src) => {
+    const m = MEDIA[src] || {};
+    const mid = m.mw ? `${src}-${m.mw}.${m.ext || "webp"}${m.mrev ? `?v=${m.mrev}` : ""} ${m.mw}w, ` : "";   // optional mobile tier
+    return m.sw && m.sw < m.w ? `${mid}${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w` : `${asset(src)} ${m.w || 1600}w`;
+  };
   const isOpen = (id) => AREAS[id] && AREAS[id].status === "open" && AREAS[id].views.length > 0;
   const KIND = { establishing: "Overview", ground: "Ground level", traversal: "Route", landmark: "Landmark", closeup: "Close view", still: "Preview still" };
   let current = null;      // area id
@@ -348,7 +352,7 @@
     warmed.add(src + "|" + (sizes || ""));
     const i = new Image();
     i.fetchPriority = "low"; i.decoding = "async";
-    if (sizes && m.sw < m.w) { i.sizes = sizes; i.srcset = `${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w`; }
+    if (sizes && m.sw < m.w) { i.sizes = sizes; i.srcset = srcset(src); }
     i.src = asset(src);
   };
   const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300));
@@ -430,7 +434,7 @@
     // would advertise a choice that doesn't exist, so it is omitted (the stage already shows that image).
     const gallery = [];
     if (scAny && scenesOf(id).length === 1) gallery.push(`<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="${!!sc}"><span class="stage-box">${sceneImg(scAny, "", true)}</span><small>In the world</small></button></li>`);
-    if (stage && !Object.values(e.views || {}).includes(hero)) gallery.push(`<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="${esc(e.heroLabel || "Hero")}" aria-label="${esc(e.name)}: ${esc(e.heroLabel || "Hero")}" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>${esc(e.heroLabel || "Hero")}</small></button></li>`);
+    if (stage && !Object.values(e.views || {}).includes(hero) && !Object.values(e.states || {}).includes(hero)) gallery.push(`<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="${esc(e.heroLabel || "Hero")}" aria-label="${esc(e.name)}: ${esc(e.heroLabel || "Hero")}" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>${esc(e.heroLabel || "Hero")}</small></button></li>`);
     const nPicks = (h) => h.split("<li").length - 1;
     // hero + in-world first (owner order); a lone hero pick joins the action row so the visitor can always return to it
     // with a lead (in-world/hero) the curated views join the Gallery row; without one they keep their own row
@@ -679,13 +683,17 @@
   const ftNote = document.getElementById("ftNote");
   const portalMeta = window.GB_PORTAL_META || {};
   const colourOf = (name) => (((window.GB_WORLD || {}).regions || []).find((r) => r.name === name) || {}).color || (portalMeta[name] || {}).color || "#1f7ae0";
+  // Fast Travel frame is ~92vw on phones. Declaring 60vw there caps the pick at ~2x density on 3x phones
+  // (720 px mobile tier, 90–140 KB) instead of the 1254–1672 px original (170–420 KB); desktop unchanged.
+  const FT_SIZES = "(min-width: 1100px) 30vw, (min-width: 720px) 46vw, 60vw";
   function ftSet(i) {
     const [name, src] = ftRegions[i];
     ftFrame.setAttribute("style", frameVars(src));
-    ftFrame.innerHTML = `<img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="(min-width: 1100px) 30vw, 92vw" alt="${esc(name)} portal" draggable="false">`;
+    ftFrame.innerHTML = `<img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="${FT_SIZES}" alt="${esc(name)} portal" draggable="false">`;
     ftName.textContent = name;
     const pm = portalMeta[name] || {};
     ftFrame.style.setProperty("--fx", pm.fx || "50%");
+    ftFrame.classList.toggle("is-whole", pm.fit === "whole");   // wide source: show it whole (letterboxed) so no flag is cropped
     ftNote.innerHTML = pm.area && isOpen(pm.area) ? `<a href="#area/${pm.area}/1">Explore ${esc(name)} <span aria-hidden="true">→</span></a>` : esc(pm.note || "");
     [...ftDots.children].forEach((d, n) => d.setAttribute("aria-pressed", String(n === i)));
   }
@@ -694,7 +702,7 @@
   ftSet(0);
   // warm only the neighbouring portals, and only once Fast Travel is on screen (2 files at a time, low priority)
   let ftSeen = false;
-  const ftWarm = (i) => { if (!ftSeen) return; [i + 1, i - 1].forEach((k) => { const r = ftRegions[(k + ftRegions.length) % ftRegions.length]; if (r) prefetch(r[1], "(min-width: 1100px) 30vw, 92vw"); }); };
+  const ftWarm = (i) => { if (!ftSeen) return; [i + 1, i - 1].forEach((k) => { const r = ftRegions[(k + ftRegions.length) % ftRegions.length]; if (r) prefetch(r[1], FT_SIZES); }); };
   if ("IntersectionObserver" in window) {
     const ftIO = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { ftSeen = true; ftIO.disconnect(); whenIdle(() => ftWarm(0)); } });
     ftIO.observe(ftFrame);

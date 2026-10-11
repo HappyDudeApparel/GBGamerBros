@@ -192,7 +192,18 @@ def inject_webp(path):
     open(path, "wb").write(b"RIFF" + struct.pack("<I", len(body)) + body)
 
 
+def use_current_notice():
+    """Switch this process's metadata (XMP/EXIF) to the owner-approved notice. Band text is not affected."""
+    global NOTICE, NOTICE_ASCII, CREATOR, CREATOR_ASCII, XMP
+    XMP = (XMP.replace(NOTICE.encode("utf-8"), CURRENT_NOTICE.encode("utf-8"))
+              .replace(CREATOR.encode("utf-8"), CURRENT_CREATOR.encode("utf-8")))
+    NOTICE, NOTICE_ASCII, CREATOR, CREATOR_ASCII = CURRENT_NOTICE, CURRENT_NOTICE_ASCII, CURRENT_CREATOR, CURRENT_CREATOR_ASCII
+
+
 def stamp(paths):
+    if "--current" in paths:
+        paths = [p for p in paths if p != "--current"]
+        use_current_notice()
     for p in paths:
         if p.lower().endswith(".webp"):
             inject_webp(p)                      # metadata only; pixels untouched
@@ -217,7 +228,22 @@ def riff_chunks(path):
     return out
 
 
+# Owner-approved public notice (2026-10-11). Files exported since Stage 1 carry it in XMP/EXIF; the legacy
+# notice above stays valid for older derivatives and is still what build() draws in the overscan band.
+CURRENT_NOTICE = "© 2026 HAPPY DUDE®. All rights reserved."
+CURRENT_NOTICE_ASCII = "(c) 2026 HAPPY DUDE(R). All rights reserved."
+CURRENT_CREATOR = "HAPPY DUDE®"
+CURRENT_CREATOR_ASCII = "HAPPY DUDE(R)"
+ACCEPTED = ((NOTICE, NOTICE_ASCII), (CURRENT_NOTICE, CURRENT_NOTICE_ASCII))
+
+
 def check_file(path, manifest):
+    raw = open(path, "rb").read()
+    notice, ascii_ = next(((n, a) for n, a in ACCEPTED if n.encode("utf-8") in raw), ACCEPTED[0])
+    return _check_file(path, manifest, notice, ascii_)
+
+
+def _check_file(path, manifest, NOTICE, NOTICE_ASCII):
     problems = []
     raw = open(path, "rb").read()
     ext = os.path.splitext(path)[1].lower()

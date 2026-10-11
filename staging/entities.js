@@ -41,9 +41,11 @@ window.GB_ENTITIES = {
     media: { thumb: E + "goom-hero", render: E + "goom-hero", icon: null },
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
     encounter: [],
-    views: { "Front": E + "goom-front", "¾ view": E + "goom-threeq", "Side": E + "goom-side", "Back": E + "goom-back" },
-    states: { "Idle": E + "goom-idle", "Walk": E + "goom-walk", "Alert": E + "goom-alert", "Charge / attack": E + "goom-charge", "Defeated": E + "goom-defeated-dizzy", "Inactive": E + "goom-defeated" },
+    views: {  },
+    states: { "Walk": "assets/entities/goom-walk", "Alert": "assets/entities/goom-alert", "Charge / attack": "assets/entities/goom-charge" },
     angles: angles("top", "bottom"), cardScale: 0.64, height: 0.5, scale: null,
+    // PUBLIC CURATION 2026-10-11: hero + in-world (cropped to drop the malformed background Goom) + 3 actions. Archived: Idle/Inactive (dupes), Defeated + dizzy Defeated (grey dust mat, owner QA 05), 4 turnarounds.
+    archived: { "Idle": "assets/entities/goom-idle", "Defeated": "assets/entities/goom-defeated-dizzy", "Inactive": "assets/entities/goom-defeated", "Front": "assets/entities/goom-front", "¾ view": "assets/entities/goom-threeq", "Side": "assets/entities/goom-side", "Back": "assets/entities/goom-back" },
   },
   "claw-bot": {
     name: "Claw Bot™", type: "enemy", status: "APPROVED",
@@ -67,9 +69,11 @@ window.GB_ENTITIES = {
     media: { thumb: E + "spike-bot-hero", render: E + "spike-bot-hero", icon: null },
     copy: { provisional: true, summary: "Spiked ground enemy.", behaviour: "Stays put or patrols. Damages on contact.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Front": E + "spike-bot-front", "Side": E + "spike-bot-side", "Back": E + "spike-bot-back", "Top": E + "spike-bot-top", "Bottom": E + "spike-bot-bottom" },
-    states: { "Idle": E + "spike-bot-idle", "Roll": E + "spike-bot-roll", "Alert": E + "spike-bot-alert", "Attack": E + "spike-bot-attack", "Defeated": E + "spike-bot-defeated" },
+    views: {  },
+    states: { "Alert": "assets/entities/spike-bot-alert", "Attack": "assets/entities/spike-bot-attack", "Defeated": "assets/entities/spike-bot-defeated" },
     angles: angles("top", "bottom"), cardScale: 0.68, height: 0.5, scale: null,
+    // PUBLIC CURATION 2026-10-11: in-world + hero + Alert (red eye), Attack (thruster flame), Defeated. Archived: Idle/Roll (same pose as hero), 5 turnarounds incl. top/bottom.
+    archived: { "Idle": "assets/entities/spike-bot-idle", "Roll": "assets/entities/spike-bot-roll", "Front": "assets/entities/spike-bot-front", "Side": "assets/entities/spike-bot-side", "Back": "assets/entities/spike-bot-back", "Top": "assets/entities/spike-bot-top", "Bottom": "assets/entities/spike-bot-bottom" },
   },
   "rotor-bot": {
     name: "Rotor Bot™", type: "enemy", status: "APPROVED",
@@ -79,9 +83,11 @@ window.GB_ENTITIES = {
     media: { thumb: E + "rotor-bot-hero", render: E + "rotor-bot-hero", icon: null },
     copy: { provisional: true, summary: "Fast, agile flying enemy with a spherical core and fixed thruster nozzles.", behaviour: "Hovers, patrols, spots you and attacks from above.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Front": E + "rotor-bot-front", "¾ view": E + "rotor-bot-threeq", "Side": E + "rotor-bot-side", "Back": E + "rotor-bot-back", "Top": E + "rotor-bot-top", "Bottom": E + "rotor-bot-bottom" },
-    states: { "Idle / hover": E + "rotor-bot-idle", "Patrol": E + "rotor-bot-patrol", "Alert": E + "rotor-bot-alert", "Inactive": E + "rotor-bot-inactive", "Defeated A": E + "rotor-bot-defeated-a", "Defeated B": E + "rotor-bot-defeated-b" },
+    views: {  },
+    states: { "Idle / hover": "assets/entities/rotor-bot-idle", "Patrol": "assets/entities/rotor-bot-patrol" },
     angles: angles("top", "bottom"), cardScale: 0.86, height: 0.8, scale: null,
+    // PUBLIC CURATION 2026-10-11: final fixed-nozzle design: hero + Idle/hover + Patrol (thruster flame). Source cells 139–195 px; shown at native size. Archived: Alert/Inactive (near-dupes), Defeated A/B (dirt residue), 6 turnarounds.
+    archived: { "Alert": "assets/entities/rotor-bot-alert", "Inactive": "assets/entities/rotor-bot-inactive", "Defeated A": "assets/entities/rotor-bot-defeated-a", "Defeated B": "assets/entities/rotor-bot-defeated-b", "Front": "assets/entities/rotor-bot-front", "¾ view": "assets/entities/rotor-bot-threeq", "Side": "assets/entities/rotor-bot-side", "Back": "assets/entities/rotor-bot-back", "Top": "assets/entities/rotor-bot-top", "Bottom": "assets/entities/rotor-bot-bottom" },
   },
   "sentry-cannon": {
     name: "Sentry Cannon", type: "enemy", status: "APPROVED",
@@ -101,11 +107,13 @@ window.GB_ENTITIES = {
     media: { thumb: E + "stone-golem-card", render: E + "stone-golem-hero", icon: null },
     copy: { provisional: true, summary: "Awakened rock enemy.", behaviour: "Chases and attacks up close.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Front": E + "stone-golem-front", "¾ view": E + "stone-golem-threeq", "Side": E + "stone-golem-side", "Back": E + "stone-golem-back" },
+    views: { "Full stance": "assets/entities/stone-golem-front" },
     // the sheet's Defeated pose is not used: it shows a purple crystal fragment, and Phase 2 has no crystals
-    states: { "Idle": E + "stone-golem-idle", "Walk / chase": E + "stone-golem-walk", "Attack": E + "stone-golem-attack", "Hit / stagger": E + "stone-golem-hit" },
+    states: { "Walk / chase": "assets/entities/stone-golem-walk" },
     angles: angles(), cardScale: 1.25, height: 2.0, scale: null,
     evolution: { line: "boulder", phase: 2 },
+    // PUBLIC CURATION 2026-10-11: approved in-world (preserved) + card hero + Walk + full stance. Archived: Side (apparent third fist, owner QA 11), Attack (grey floor block, owner QA 12), Hit (grey debris), Idle (dupe), ¾/Back. Defeated amber-crystal rubble: source missing.
+    archived: { "Idle": "assets/entities/stone-golem-idle", "Attack": "assets/entities/stone-golem-attack", "Hit / stagger": "assets/entities/stone-golem-hit", "¾ view": "assets/entities/stone-golem-threeq", "Side": "assets/entities/stone-golem-side", "Back": "assets/entities/stone-golem-back" },
   },
   "crystal-guardian": {
     name: "Prism Keeper™", type: "enemy", status: "APPROVED",
@@ -114,7 +122,8 @@ window.GB_ENTITIES = {
     copy: { provisional: true, summary: "Rare evolved Prism form.", behaviour: "Guards key areas.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Ready stance": E + "crystal-guardian-idle" },
-    states: {},
+    // Defeated = approved "Guardian Rubble B" (Crystals Shards and Evolution Remains Reference, Drive 1vfHK9bR…): stone rubble with purple prism shards
+    states: { "Defeated · prism rubble": E + "crystal-guardian-defeated-rubble" },
     // PUBLIC CURATION 2026-10-11: lead = approved in-world image (1368 px), the clean studio hero and the full-body ready stance.
     // Not shown publicly (kept for provenance): Charge (grey smoke mat at its left edge), Attack (slam) and Hit (grey debris/ghosting baked into the cutouts),
     // Defeated (shows the living form crouching; canon defeated = rubble with purple Prism Shards: source missing),
@@ -145,10 +154,12 @@ window.GB_ENTITIES = {
     media: { thumb: E + "rolling-boulder-threeq", render: E + "rolling-boulder-threeq", icon: null },
     copy: { provisional: true, summary: "Energized rolling boulder.", behaviour: "Rolls downhill and smashes obstacles.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Front": E + "rolling-boulder-front", "Side": E + "rolling-boulder-side", "Back": E + "rolling-boulder-back", "Top": E + "rolling-boulder-top" },
-    states: { "Idle": E + "rolling-boulder-idle", "Rolling": E + "rolling-boulder-rolling", "Impact": E + "rolling-boulder-impact", "Cracked / hit": E + "rolling-boulder-cracked", "Destroyed": E + "rolling-boulder-destroyed" },
+    views: {  },
+    states: { "Rolling": "assets/entities/rolling-boulder-rolling", "Impact": "assets/entities/rolling-boulder-impact" },
     angles: angles(), cardScale: 0.74, height: 1.5, scale: null,
     evolution: { line: "boulder", phase: 1 },
+    // PUBLIC CURATION 2026-10-11: in-world + Rolling + Impact. Archived: Destroyed (grey rubble WITHOUT the canonical amber/yellow crystals: wrong, source missing), Idle/Cracked (dupes), 4 turnarounds.
+    archived: { "Idle": "assets/entities/rolling-boulder-idle", "Cracked / hit": "assets/entities/rolling-boulder-cracked", "Destroyed": "assets/entities/rolling-boulder-destroyed", "Front": "assets/entities/rolling-boulder-front", "Side": "assets/entities/rolling-boulder-side", "Back": "assets/entities/rolling-boulder-back", "Top": "assets/entities/rolling-boulder-top" },
   },
 
   // ---------------- portals / props / collectibles ----------------
@@ -158,7 +169,7 @@ window.GB_ENTITIES = {
     copy: { summary: "Regional fast-travel portal.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
     encounter: [],
     // Canonical region order (03_CANONICAL_REGION_REFERENCE_INDEX). Every entry shows approved portal artwork.
-    states: { "Portal Meadow™": "assets/systems/portals/portal-meadow", "Creek Crossing™": "assets/systems/portals/portal-creek", "Riverworks™": "assets/systems/portals/portal-river", "Clover Cliffs™": "assets/systems/portals/portal-clover", "Fallen Grounds™": "assets/systems/portals/portal-fallen", "Prism Ridge™": "assets/systems/portals/portal-prism", "Frosty Peaks™": "assets/systems/portals/portal-frost", "Summit Spine™": "assets/systems/portals/portal-summit" }, angles: angles(), scale: null,
+    states: { "Portal Meadow™": "assets/systems/portals/portal-meadow", "Creek Crossing™": "assets/systems/portals/portal-creek", "Riverworks™": "assets/systems/portals/portal-river", "Clover Cliffs™": "assets/systems/portals/portal-clover", "Fallen Grounds™": "assets/systems/portals/portal-fallen", "Prism Ridge™": "assets/systems/portals/portal-prism-ridge", "Frosty Peaks™": "assets/systems/portals/portal-frost", "Summit Spine™": "assets/systems/portals/portal-prism" }, angles: angles(), scale: null,
   },
   "springboard": {
     name: "Springboard", type: "prop", status: "APPROVED",
@@ -166,9 +177,11 @@ window.GB_ENTITIES = {
     media: { thumb: "assets/objects/springboard/front", render: "assets/objects/springboard/front", icon: null },
     copy: { summary: "Red domed springboard on a GB base.", behaviour: "Jump on it to launch to higher ledges and hidden routes.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    states: { "Neutral": "assets/objects/springboard/neutral", "Compressed": "assets/objects/springboard/compressed", "Rebound": "assets/objects/springboard/rebound", "Settling": "assets/objects/springboard/settling" },
-    views: { "Front": "assets/objects/springboard/front", "Left side": "assets/objects/springboard/left", "Back": "assets/objects/springboard/back", "Right ¾": "assets/objects/springboard/threeq", "Top": "assets/objects/springboard/top" },
+    states: { "Neutral": "assets/objects/springboard/neutral", "Compressed": "assets/objects/springboard/compressed", "Rebound": "assets/objects/springboard/rebound" },
+    views: {  },
     angles: angles(), scale: null,
+    // PUBLIC CURATION 2026-10-11: 3 in-world scenes + Neutral/Compressed/Rebound. Archived: Settling (dupe), 5 turnarounds.
+    archived: { "Settling": "assets/objects/springboard/settling", "Front": "assets/objects/springboard/front", "Left side": "assets/objects/springboard/left", "Back": "assets/objects/springboard/back", "Right ¾": "assets/objects/springboard/threeq", "Top": "assets/objects/springboard/top" },
   },
   "crate": {
     name: "GB Crate", type: "prop", status: "APPROVED",
@@ -283,10 +296,14 @@ window.GB_EVOLUTION_DETAIL = {
 // Fast Travel extras per portal: `area` = the region's area guide (only linked while that area is open); `note` = honest status text;
 // `color` = dot colour when the region is not in GB_WORLD.regions. Summit Spine™ is a canonical region (Visual Design Bible, region index) but is not a
 // public area yet (world-data.js lists it as a sub-region of Prism Ridge™), so it is shown as a portal preview only.
+// FLAG CANON 2026-10-11 (REGION_FLAGS_CANONICAL_REFERENCE_MASTER): Summit Spine™ = purple, Frosty Peaks™ = light blue,
+// Prism Ridge™ = special treatment. portal-prism (purple flags, crystal summit) is the Summit Spine™ portal; Prism Ridge™ uses the
+// master's own "Option C" portal display (four player flags; owner may choose A/B instead); portal-frost flags recoloured to canon
+// light blue; portal-summit (near-duplicate of portal-prism) retired from public view, file kept.
 window.GB_PORTAL_META = {
   "Portal Meadow™": { area: "portal" }, "Creek Crossing™": { area: "creek" }, "Riverworks™": { area: "river", fx: "82%" }, "Clover Cliffs™": { area: "clover" },
-  "Fallen Grounds™": { area: "ruin" }, "Prism Ridge™": { area: "prism" }, "Frosty Peaks™": { area: "frost", fx: "68%" },
-  "Summit Spine™": { note: "The final ascent above Prism Ridge™. Portal preview only: its area guide is not published yet.", color: "#8d4fe0", fx: "27%" },
+  "Fallen Grounds™": { area: "ruin" }, "Prism Ridge™": { area: "prism", fit: "whole" }, "Frosty Peaks™": { area: "frost", fx: "68%" },
+  "Summit Spine™": { note: "The final ascent above Prism Ridge™. Portal preview only: its area guide is not published yet.", color: "#8d4fe0", fx: "40%" },
 };
 
 // display order for the Enemies & Hazards section
@@ -297,7 +314,8 @@ window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "claw-bot", "sentry-cann
 // the enemy card image and the dossier's opening view. Production cutouts stay as selectable views.
 const SC = "assets/entities/scenes/";
 window.GB_ENTITY_SCENE = {
-  "goom": { src: SC + "goom-ingame", fx: 45 },
+  // crop of the approved final-goom scene (x 0–425): drops the malformed background Goom (owner QA 07); original kept
+  "goom": { src: SC + "goom-ingame-solo", fx: 50 },
   "spike-bot": { src: SC + "spike-bot-ingame", fx: 50 },
   // Rotor Bot™ in-world scene removed 2026-10-10: it showed the superseded propeller-fin design.
   // Owner explicitly rejected former Sentry Cannon "In the world" image: unapproved

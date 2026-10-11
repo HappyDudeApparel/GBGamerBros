@@ -109,6 +109,8 @@ def run(check_only=False):
         ext = e.get("ext", "webp")
         e["rev"] = h(os.path.join(STAGING, f"{key}.{ext}"))
         e["srev"] = e["rev"] if e.get("noSmall") else h(os.path.join(STAGING, f"{key}-960.{ext}"))
+        if e.get("mw"):   # optional mid-size mobile tier (tools/gbmid.py)
+            e["mrev"] = h(os.path.join(STAGING, f"{key}-{e['mw']}.{ext}"))
     if not check_only:
         write_manifest(m)
 
@@ -193,6 +195,8 @@ def run(check_only=False):
     for key, e in m.items():
         x = e.get("ext", "webp")
         referenced |= {f"{key}.{x}", f"{key}-960.{x}"}
+        if e.get("mw"):
+            referenced.add(f"{key}-{e['mw']}.{x}")
     if pano:
         referenced |= {f["src"] for f in pano_files(pano)}
     referenced |= {"revision.json", "index.html"}

@@ -17,6 +17,38 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## PUBLIC CURATION — pass 2 (2026-10-11, staging only, awaiting owner visual approval)
+Reconciled first: main 14e2845 == dev public files (no newer work existed). Every removal → entity `archived: {}` (files kept).
+PERFORMANCE — Fast Travel: new 720 px mobile tier (tools/gbmid.py, LANCZOS resize of the approved full derivative + band, metadata;
+manifest mw/mh/mband, revision.py stamps mrev); FT `sizes` caps phones at ~2x density; prefetch uses the same srcset.
+Measured 390@3x, throttled 4G, BEFORE = published 14e2845 (3 runs) / AFTER final (2 runs): cold tap 829–1630 ms (med ~1.0 s) → 340–632 ms
+(final median 455 ms); warm tap 18–48 ms → 8–14 ms; portal bytes for all 8 cold 4.39 MB → 1.51 MB. Carousel untouched.
+GALLERIES:
+- Goom Bot™: in-world = crop of the approved scene (x 0–425) without the malformed background Goom (new key goom-ingame-solo; original kept);
+  hero + Walk, Alert, Charge. Archived Idle/Inactive, both defeated (grey dust mat), 4 turnarounds.
+- Spike Bot™: in-world + hero + Alert, Attack (thruster flame), Defeated. Archived Idle/Roll, 5 turnarounds.
+- Rotor Bot™: hero + Idle/hover + Patrol (flames intact in source cells). Archived Alert/Inactive/Defeated A-B, 6 turnarounds. Still 139–195 px.
+- Rumbler™: in-world + hero + Rolling + Impact. Archived Destroyed (grey rubble, no canonical amber crystals), Idle/Cracked, 4 turnarounds.
+- Stone Walker™: approved in-world (preserved) + hero + Walk + Full stance. Archived Side (third fist), Attack (grey floor block), Hit, Idle, ¾/Back.
+- Prism Keeper™: NEW Defeated = approved "Guardian Rubble B" (Crystals Shards and Evolution Remains Reference, Drive 1vfHK9bR…):
+  stone rubble + purple prism shards → assets/entities/crystal-guardian-defeated-rubble.
+- Brightback™: V1 cutout — enclosed white background speck between fist and leg and grey ground remnants under the lower-left foot removed
+  (pixels otherwise untouched; identity unchanged; apex card unchanged).
+- Crystal + Prism Crystal heroes: orange / blue floor puddles removed with a silhouette mask (facets/glow untouched).
+- Springboard: 3 in-world + Neutral/Compressed/Rebound. Archived Settling + 5 turnarounds.
+- Gallery engine: hero pick no longer duplicated when the hero is also a state.
+REGIONS (flag master REGION_FLAGS_CANONICAL_REFERENCE_MASTER, Drive 1mJBxDQQ…):
+- Frosty Peaks™ portal: its purple flags recoloured to the canon light blue (fabric pixels only inside the two flag boxes; emblems intact).
+- Summit Spine™ = purple per master → now uses portal-prism (purple flags, crystal summit). portal-summit (near-duplicate) retired, file kept.
+- Prism Ridge™ = "special treatment" → master Option C portal display (four player flags), shown whole (letterboxed). Only 520 px wide
+  (master crop): OWNER DECISION needed — confirm option A/B/C and supply a full-resolution Prism Ridge portal render.
+METADATA: 31 → 0 failures (492/492). gbmedia verify now accepts the owner-approved notice "© 2026 HAPPY DUDE®. All rights reserved."
+alongside the legacy one; `gbmedia.py stamp --current` stamped the 10 unstamped files (metadata only, pixel hashes verified identical).
+TESTS: func 23/23; 360/390/844×390/932×430/768/1280 → 0 overflow, 22 dossiers open, 0 errors; invariants OK.
+STILL OPEN: Crystal/Prism Shards floor glow (approved sheet shards also carry it; needs clean exports); Rumbler/Stone Walker amber-crystal
+destroyed state (no approved source found in Drive); Rotor/Claw high-res action renders; Spike/Goom states 208–405 px (native-size display);
+Brightback cutout edge is still from a flattened JPEG.
+
 ## PUBLIC CURATION — AUTHORITATIVE WORKING PLAN (2026-10-11) — staging only, awaiting owner visual review
 Owner strategy: the public site is a curated showcase, not an archive of every reference cell. Per dossier:
 1 excellent hero, 1 approved in-world image (where one exists), 2–3 distinctive actions, defeated only if accurate and strong,
