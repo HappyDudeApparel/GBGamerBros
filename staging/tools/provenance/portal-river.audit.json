@@ -1,0 +1,56 @@
+{
+ "category": "portal",
+ "source": "/tmp/claude-0/-home-user-GBGamerBros/277a82e5-48c2-56c4-981d-f7242c63ca70/scratchpad/portal_src/riverworks_interior.png",
+ "source_sha256": "83b07249369602615e5a21246d9de4bc95762eadc4683d00fcb88c03388c5229",
+ "content_px": [
+  1672,
+  896
+ ],
+ "content_box": [
+  0,
+  0,
+  1672,
+  896
+ ],
+ "cutout": false,
+ "band_cropped": 45,
+ "marks": [],
+ "outputs": {
+  "portal-river.webp": {
+   "px": [
+    1672,
+    896
+   ],
+   "bytes": 403930,
+   "sha256": "031e23e1905a042692c796caa5fa861e739acd72f0085604d50299e7170a47d1",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  },
+  "portal-river-960.webp": {
+   "px": [
+    960,
+    514
+   ],
+   "bytes": 201788,
+   "sha256": "3a3e0097788054353e09401edc47f1fea5e399cb71ca01151ca25aefbb7f255b",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  }
+ },
+ "source_unchanged": true,
+ "metadata_survived_all_variants": true
+}
