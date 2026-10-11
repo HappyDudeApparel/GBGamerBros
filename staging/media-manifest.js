@@ -1057,8 +1057,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "pk-rubble.png",
-  "rev": "be0da76aa5",
-  "srev": "66c5f2360a"
+  "rev": "e48cc72e0d",
+  "srev": "35daaeb23c"
  },
  "assets/entities/crystal-guardian-front": {
   "w": 336,
@@ -1753,8 +1753,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": false,
   "master": "goom-scene-crop.png",
-  "rev": "6f80eb74b1",
-  "srev": "ffe9fe041b"
+  "rev": "17ac51b724",
+  "srev": "7ff85ee088"
  },
  "assets/entities/scenes/rolling-boulder-ingame": {
   "w": 704,
@@ -1767,6 +1767,18 @@ window.GB_MEDIA = {
   "master": "final-rolling-boulder.png",
   "rev": "32cad515b4",
   "srev": "f2e5b0baf7"
+ },
+ "assets/entities/scenes/rolling-boulder-rolling-hero": {
+  "w": 1117,
+  "h": 571,
+  "band": 20,
+  "sw": 960,
+  "sh": 491,
+  "sband": 17,
+  "alpha": false,
+  "master": "Rumbler_Rolling_Boulder_Card__rolling_hero.png",
+  "rev": "ce3fd98eb7",
+  "srev": "ad19d02126"
  },
  "assets/entities/scenes/spike-bot-ingame": {
   "w": 576,
@@ -2473,9 +2485,9 @@ window.GB_MEDIA = {
   "sh": 488,
   "sband": 14,
   "alpha": true,
-  "master": "crystal-geo.png | 2026-10-11 floor puddle removed by silhouette mask (pixels unchanged)",
-  "rev": "4083abe608",
-  "srev": "4083abe608"
+  "master": "crystal-geo.png",
+  "rev": "b8e3213d1d",
+  "srev": "b8e3213d1d"
  },
  "assets/objects/crystal-chest": {
   "w": 1333,
@@ -2490,16 +2502,16 @@ window.GB_MEDIA = {
   "srev": "8620dd1d96"
  },
  "assets/objects/crystal-shards": {
-  "w": 514,
-  "h": 266,
+  "w": 487,
+  "h": 263,
   "band": 14,
-  "sw": 514,
-  "sh": 266,
+  "sw": 487,
+  "sh": 263,
   "sband": 14,
   "alpha": true,
-  "master": "crystal-shards.png",
-  "rev": "69d853a8b9",
-  "srev": "c6ce159947"
+  "master": "crystal-shards-mat.png",
+  "rev": "378aab8f5b",
+  "srev": "378aab8f5b"
  },
  "assets/objects/glitchkey": {
   "w": 432,
@@ -2533,21 +2545,21 @@ window.GB_MEDIA = {
   "sh": 490,
   "sband": 14,
   "alpha": true,
-  "master": "prism-crystal-geo.png | 2026-10-11 floor puddle removed by silhouette mask (pixels unchanged)",
-  "rev": "f946157e8f",
-  "srev": "f946157e8f"
+  "master": "prism-crystal-geo.png",
+  "rev": "6c74d42132",
+  "srev": "6c74d42132"
  },
  "assets/objects/prism-shards": {
-  "w": 508,
-  "h": 268,
+  "w": 463,
+  "h": 241,
   "band": 14,
-  "sw": 508,
-  "sh": 268,
+  "sw": 463,
+  "sh": 241,
   "sband": 14,
   "alpha": true,
-  "master": "prism-shards.png",
-  "rev": "1e298efa70",
-  "srev": "c82554ac5b"
+  "master": "prism-shards-hull.png",
+  "rev": "4d5ca9fd70",
+  "srev": "4d5ca9fd70"
  },
  "assets/objects/quickhack/code": {
   "w": 560,
@@ -2849,9 +2861,9 @@ window.GB_MEDIA = {
   "mw": 720,
   "mh": 386,
   "mband": 14,
-  "rev": "b292338d34",
-  "srev": "c8b0f32bc7",
-  "mrev": "06eb21cafc"
+  "rev": "f032b1cea2",
+  "srev": "5195d0eefd",
+  "mrev": "9c1ed4af29"
  },
  "assets/systems/portals/portal-meadow": {
   "w": 1254,
@@ -2894,8 +2906,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": false,
   "master": "prism-optC-crop.png",
-  "rev": "a829b78f01",
-  "srev": "70bc2fea81"
+  "rev": "678415e83a",
+  "srev": "e53287f0fd"
  },
  "assets/systems/portals/portal-river": {
   "w": 1672,

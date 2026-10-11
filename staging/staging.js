@@ -433,7 +433,8 @@
     // gallery row: in-world (single scene) + studio hero + curated views. A row with a single pick
     // would advertise a choice that doesn't exist, so it is omitted (the stage already shows that image).
     const gallery = [];
-    if (scAny && scenesOf(id).length === 1) gallery.push(`<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="${!!sc}"><span class="stage-box">${sceneImg(scAny, "", true)}</span><small>In the world</small></button></li>`);
+    const scLab = (scAny && scAny.label) || "In the world";
+    if (scAny && scenesOf(id).length === 1) gallery.push(`<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="${esc(scLab)}" aria-label="${esc(e.name)}: ${esc(scLab)}" aria-pressed="${!!sc}"><span class="stage-box">${sceneImg(scAny, "", true)}</span><small>${esc(scLab)}</small></button></li>`);
     if (stage && !Object.values(e.views || {}).includes(hero) && !Object.values(e.states || {}).includes(hero)) gallery.push(`<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="${esc(e.heroLabel || "Hero")}" aria-label="${esc(e.name)}: ${esc(e.heroLabel || "Hero")}" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>${esc(e.heroLabel || "Hero")}</small></button></li>`);
     const nPicks = (h) => h.split("<li").length - 1;
     // hero + in-world first (owner order); a lone hero pick joins the action row so the visitor can always return to it
