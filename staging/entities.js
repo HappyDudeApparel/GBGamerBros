@@ -322,13 +322,14 @@ window.GB_ENTITY_SCENE = {
   // person and beam scene. Hostile canonical model will be the main hero without it.
   // Do not re-enable this source until an approved in-world replacement exists.
   "springboard": [{ src: "assets/objects/springboard/scene-portal-meadow", fx: 45, label: "Portal Meadow™" }, { src: "assets/objects/springboard/scene-riverworks", fx: 45, label: "Riverworks™" }, { src: "assets/objects/springboard/scene-frost-peaks", fx: 45, label: "Frosty Peaks™" }],
-  "rolling-boulder": { src: SC + "rolling-boulder-ingame", fx: 62 },
+  // Rolling hero from the approved Rolling Boulder Full Reference Card (Drive 1TCXFYk3…, 1117 px; was 704 px)
+  "rolling-boulder": { src: SC + "rolling-boulder-rolling-hero", fx: 50 },
   "stone-golem": { src: SC + "stone-golem-ingame", fx: 50 },
   "crystal-guardian": { src: SC + "crystal-guardian-ingame", fx: 50 },
   "brightback": [
-    { src: E + "brightback-v1-turnaround-clean", fx: 50, label: "Four-view turnaround" },
+    // "Four-view turnaround" removed from public view 2026-10-11 (technical turnaround; thin strip left a large blank stage); file kept
     { src: E + "brightback-v1-face-clean", fx: 50, label: "Face and core detail" },
-    { src: E + "brightback-v1-hand-clean", fx: 50, label: "Prism Shard detail" },
+    // "Prism Shard detail" (brightback-v1-hand-clean, 288 px) removed from public view 2026-10-11: shown at 0.4x density on phones; file kept
   ],
 };
 

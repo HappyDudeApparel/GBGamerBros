@@ -294,6 +294,11 @@ def verify():
     return 1 if bad else 0
 
 
+# 2026-10-11: every NEW export (build / gbmid / gbpano / stamp) uses the owner-approved notice — XMP, EXIF and
+# the overscan-band text. LEGACY constants above stay only so verify() still recognises older derivatives.
+use_current_notice()
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         raise SystemExit(__doc__)

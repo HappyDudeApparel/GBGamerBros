@@ -17,6 +17,36 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## PUBLIC CURATION — pass 3 (2026-10-11, staging only)
+Reconciled first: main 677f26c == dev public files.
+COMPLETED
+- Crystal Shards + Prism Shards: floor glow removed (saturation mask / per-shard convex-hull mask; crystal pixels unchanged).
+- Rumbler™ in-world = approved Rolling Boulder Full Reference Card "rolling hero" (Drive 1TCXFYk3…, 1117 px; was 704 px).
+- Brightback™ gallery: removed "Four-view turnaround" (technical strip, blank stage) and "Prism Shard detail" (288 px at 0.4x density).
+  Gallery = Hero (V1) + Face and core detail. Single scene picks now use their own label (was mislabelled "In the world").
+- New exports default to the approved notice (gbmedia.use_current_notice() at import: XMP, EXIF and band text).
+NEEDS VISUAL APPROVAL — PRISM RIDGE (Option C remains live; NOT final). Real Fast Travel renders at 390 px of:
+  A in-game example (master, 255 px: soft) · A approved prismatic flag only (PRISM_RIDGE_FLAG_ALTERNATE_CRYSTAL_FIELD, 1536 px: sharp, no portal)
+  · B four-player flag set (master, 438 px: flags only) · C portal display (master, 520 px: correct flags, letterboxed)
+  · D pr04 area view, no flag (1448 px: sharp; canon "prefer no flag over wrong flag").
+  Rejected: PRISM_RIDGE_PASS_A (red flags + floating islands), PRISM_RIDGE_PASS_B (purple flags = Summit Spine™, already used there).
+  RECOMMENDATION: Option A is the master's own "Prism Ridge flag" (prismatic crystal field; matches the 1536 px approved flag reference
+  and the Prismatic Banner Collection). No approved full-resolution portal scene with that flag exists → commission one (portal + prismatic
+  flag, PASS_B composition, no floating islands). Interim: D (sharpest, no wrong flag) or keep C.
+SOURCE-LIMITED (exact missing assets)
+- Rumbler™ / Stone Walker™ destroyed with amber/yellow crystals: approved Rolling Boulder card "Destroyed" = grey stone rubble only;
+  Stone Walker States Master has no rubble. Missing: approved amber-crystal rubble render (proposal: same treatment as Guardian Rubble B,
+  amber crystals instead of prism) — owner design approval needed before creation.
+- Claw Bot™ actions (Final Production Reference cells 185–189 px) and Rotor Bot™ actions (spec 139–195 px; Animation Bundle attack cells
+  ~280x120 with flames on a pale sheet): need ≥1200 px transparent renders of Walk, Alert, Clamp (Claw) and Patrol, Charge/Attack A,
+  Dive B with full flames (Rotor) from the approved 3D masters (Higgsfield Claw rev 6 / Rotor rev 7).
+COPYRIGHT METADATA (494 public rasters): 47 carry the exact current notice "© 2026 HAPPY DUDE®. All rights reserved.";
+447 carry only the legacy "2026 Copyright © GB Gamer Bros™ x Happy Dude®…" (accepted by verify, not current). Not mass-restamped on purpose:
+it would change every file revision and force a full re-download, and their hidden band pixels carry the legacy text — do it together
+with the owner-approved watermark/band re-export.
+PERFORMANCE (390@3x, throttled 4G, cold): LCP 3.80 s, images at load 4.20 MB (16 files); first Fast Travel tap 0.46 s cold / 10 ms warm.
+TESTS: func 23/23; 6 owner viewports 0 overflow / 22 dossiers / 0 errors; invariants OK; verify 494/494.
+
 ## PUBLIC CURATION — pass 2 (2026-10-11, staging only, awaiting owner visual approval)
 Reconciled first: main 14e2845 == dev public files (no newer work existed). Every removal → entity `archived: {}` (files kept).
 PERFORMANCE — Fast Travel: new 720 px mobile tier (tools/gbmid.py, LANCZOS resize of the approved full derivative + band, metadata;
