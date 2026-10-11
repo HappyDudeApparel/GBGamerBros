@@ -7,11 +7,11 @@ Evidence = real Chromium renders of these files served locally at 360, 390, 768,
 ## Completed in this stage
 | Item | Change | Rendered evidence |
 |---|---|---|
-| Footer | `© 2026 HAPPY DUDE®. All rights reserved.` replaces the old line; plus Rights & IP / Privacy (Draft) links | `docs/qa-2026-10-10/footer_m360_*` |
+| Footer | `© 2026 HAPPY DUDE®. All rights reserved.` replaces the old line; plus a Rights & IP link (the Privacy (Draft) link and page were removed again before release, see STAGE1_RELEASE_2026-10-11.md) | `docs/qa-2026-10-10/footer_m360_*` |
 | Stale notice in rasters | "Meet the Team" backdrop was a raw CSS background that exposed the image's baked old notice on tall crops; now drawn through the `.gbm` clipping frame | `team-backdrop_m390_before/after` |
 | Stale notice in data | `panorama-manifest.js` copyright string updated (it is not rendered anywhere) | — |
-| Clean logo | `assets/brand/gb-logo-clean.{webp,png}`: crop-only (rows 0–259 of 272); verified bit-identical to the source rows, last opaque row 257, nothing below row 259. Header, footer and favicon now use it. Originals untouched. Recipe: `tools/make_clean_logo.py` | `logo_old-vs-clean_*` |
-| Legal pages | `rights.html`, `privacy.html` ported from draft PR #3 (content unchanged) rather than merging that stale branch | — |
+| Clean logo | `assets/brand/gb-logo-clean.webp` (lossless; the PNG was dropped from staging, regenerate with the script): crop-only (rows 0–259 of 272); verified bit-identical to the source rows, last opaque row 257, nothing below row 259. Header, footer and favicon now use it. Originals untouched. Recipe: `tools/make_clean_logo.py` | `logo_old-vs-clean_*` |
+| Legal page | `rights.html` ported from draft PR #3 rather than merging that stale branch (`privacy.html` was NOT shipped) | — |
 | Brightback™ card | Was one narrow grid cell, wordmark cut off (a `grid-column:auto!important` rule beat the apex span). Now a full-width row, hero shown at its own 701:573 ratio (no crop), smaller title | `brightback-card_*` |
 | Evolution sequence | Grouped by phase, each phase labelled once (no repeated "Phase 1"), uniform square thumbnails, no overlap at any tested width; wraps on tablet/landscape, swipe rail on phones; Brightback thumb uses `contain` | `evolution_*` |
 | "In the world" tab | Brightback entry is now labelled "Brightback™ (completed form)" with a REFERENCE badge and the note that no in-world transformation scene is documented; no art invented | `evolution_inworld-reference_m390_after` |
