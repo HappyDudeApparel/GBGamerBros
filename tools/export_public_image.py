@@ -191,10 +191,14 @@ def main():
     ap.add_argument("--opacity", type=float, default=0.62); ap.add_argument("--secondary", action="store_true")
     ap.add_argument("--no-mark", action="store_true"); ap.add_argument("--quality", type=int, default=90)
     ap.add_argument("--category", default="")
+    ap.add_argument("--allow-new-in-staging", action="store_true", help="permit writing NEW files (never overwriting) under staging/assets, for approved sources without a visible mark")
     a = ap.parse_args()
     src, stem = os.path.abspath(a.src), os.path.abspath(a.out)
-    if os.path.abspath(stem + ".webp") == src or os.path.commonpath([os.path.dirname(stem), os.path.join(ROOT, "staging/assets")]) == os.path.join(ROOT, "staging/assets"):
+    in_assets = os.path.commonpath([os.path.dirname(stem), os.path.join(ROOT, "staging/assets")]) == os.path.join(ROOT, "staging/assets")
+    if os.path.abspath(stem + ".webp") == src or (in_assets and not a.allow_new_in_staging):
         sys.exit("refusing: output would overwrite the source or write into staging/assets/ (production art is replaced only after owner approval)")
+    if in_assets and (os.path.exists(stem + ".webp") or os.path.exists(stem + "-960.webp")):
+        sys.exit("refusing: --allow-new-in-staging never overwrites an existing production file")
     before = sha(src)
     im = Image.open(src); im.load()
     if a.band:
