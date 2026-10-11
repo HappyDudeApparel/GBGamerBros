@@ -311,8 +311,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": true,
   "master": "gb-logo.png",
-  "rev": "e5b2caf9fd",
-  "srev": "e5b2caf9fd",
+  "rev": "d0c8b5a38d",
+  "srev": "d0c8b5a38d",
   "noSmall": true
  },
  "assets/characters/blue-red-high-five": {
@@ -720,8 +720,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": true,
   "master": "Brightback Final Evolution V1.jpg (Drive 1VPqGajM...)",
-  "rev": "e57fe24327",
-  "srev": "e57fe24327",
+  "rev": "639b9ed790",
+  "srev": "639b9ed790",
   "noSmall": true
  },
  "assets/entities/brightback-v1-face": {
@@ -733,8 +733,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": false,
   "master": "Brightback_V1_Preferred__face_chest_detail.png",
-  "rev": "57cd03d8c8",
-  "srev": "57cd03d8c8",
+  "rev": "d0f7f85b4e",
+  "srev": "d0f7f85b4e",
   "ext": "png",
   "noSmall": true
  },
@@ -747,8 +747,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": false,
   "master": "brightback-v1-face.png (crop-only)",
-  "rev": "f10618f6bd",
-  "srev": "f10618f6bd",
+  "rev": "5029b4f481",
+  "srev": "5029b4f481",
   "noSmall": true
  },
  "assets/entities/brightback-v1-hand": {
@@ -760,8 +760,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": false,
   "master": "Brightback_V1_Preferred__hand_shard_detail.png",
-  "rev": "0e3024e02d",
-  "srev": "0e3024e02d",
+  "rev": "fc903beea8",
+  "srev": "fc903beea8",
   "ext": "png",
   "noSmall": true
  },
@@ -774,8 +774,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": false,
   "master": "brightback-v1-hand.png (crop-only)",
-  "rev": "efbb268cae",
-  "srev": "efbb268cae",
+  "rev": "157536e52d",
+  "srev": "157536e52d",
   "noSmall": true
  },
  "assets/entities/brightback-v1-hero": {
@@ -787,8 +787,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": false,
   "master": "Brightback_V1_Preferred__hero_preferred_scene.png",
-  "rev": "e776e9721f",
-  "srev": "e776e9721f",
+  "rev": "482d804427",
+  "srev": "482d804427",
   "ext": "png",
   "noSmall": true
  },
@@ -801,8 +801,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": false,
   "master": "Brightback_V1_Preferred__turnaround_row.png",
-  "rev": "269cda3a4e",
-  "srev": "269cda3a4e",
+  "rev": "1aacf1d5eb",
+  "srev": "1aacf1d5eb",
   "ext": "png",
   "noSmall": true
  },
@@ -815,8 +815,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": false,
   "master": "brightback-v1-turnaround.png (crop-only)",
-  "rev": "5d8a9088fc",
-  "srev": "5d8a9088fc",
+  "rev": "4a71cf2964",
+  "srev": "4a71cf2964",
   "noSmall": true
  },
  "assets/entities/claw-bot-alert": {
@@ -1020,8 +1020,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": true,
   "master": "crystal-guardian-hero.webp (card derivative)",
-  "rev": "a61e908248",
-  "srev": "a61e908248",
+  "rev": "766ff22d93",
+  "srev": "766ff22d93",
   "noSmall": true
  },
  "assets/entities/crystal-guardian-charge": {
@@ -1047,6 +1047,18 @@ window.GB_MEDIA = {
   "master": "CRYSTAL_GUARDIAN_STATES_MASTER_V1__crystal-guardian-defeated.png",
   "rev": "5a9fe9ccb8",
   "srev": "377bc8347d"
+ },
+ "assets/entities/crystal-guardian-defeated-rubble": {
+  "w": 456,
+  "h": 218,
+  "band": 14,
+  "sw": 456,
+  "sh": 218,
+  "sband": 14,
+  "alpha": true,
+  "master": "pk-rubble.png",
+  "rev": "be0da76aa5",
+  "srev": "66c5f2360a"
  },
  "assets/entities/crystal-guardian-front": {
   "w": 336,
@@ -1732,6 +1744,18 @@ window.GB_MEDIA = {
   "rev": "d29d26f8dd",
   "srev": "3f86c7a1e4"
  },
+ "assets/entities/scenes/goom-ingame-solo": {
+  "w": 425,
+  "h": 544,
+  "band": 14,
+  "sw": 425,
+  "sh": 544,
+  "sband": 14,
+  "alpha": false,
+  "master": "goom-scene-crop.png",
+  "rev": "6f80eb74b1",
+  "srev": "ffe9fe041b"
+ },
  "assets/entities/scenes/rolling-boulder-ingame": {
   "w": 704,
   "h": 334,
@@ -2017,8 +2041,8 @@ window.GB_MEDIA = {
   "sband": 0,
   "alpha": true,
   "master": "stone-golem-hero.webp (card derivative)",
-  "rev": "d6672263b4",
-  "srev": "d6672263b4",
+  "rev": "c006b1ded9",
+  "srev": "c006b1ded9",
   "noSmall": true
  },
  "assets/entities/stone-golem-front": {
@@ -2449,9 +2473,9 @@ window.GB_MEDIA = {
   "sh": 488,
   "sband": 14,
   "alpha": true,
-  "master": "crystal.png",
-  "rev": "d988dfce42",
-  "srev": "5cfc19fd77"
+  "master": "crystal-geo.png | 2026-10-11 floor puddle removed by silhouette mask (pixels unchanged)",
+  "rev": "4083abe608",
+  "srev": "4083abe608"
  },
  "assets/objects/crystal-chest": {
   "w": 1333,
@@ -2502,16 +2526,16 @@ window.GB_MEDIA = {
   "srev": "e45e7a32c7"
  },
  "assets/objects/prism-crystal": {
-  "w": 258,
+  "w": 256,
   "h": 490,
   "band": 14,
-  "sw": 258,
+  "sw": 256,
   "sh": 490,
   "sband": 14,
   "alpha": true,
-  "master": "prism-crystal.png",
-  "rev": "a20e29bd2f",
-  "srev": "1d4de8ecc9"
+  "master": "prism-crystal-geo.png | 2026-10-11 floor puddle removed by silhouette mask (pixels unchanged)",
+  "rev": "f946157e8f",
+  "srev": "f946157e8f"
  },
  "assets/objects/prism-shards": {
   "w": 508,
@@ -2775,7 +2799,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-clover.png",
   "rev": "5734ebcdcd",
-  "srev": "26dd8af6b4"
+  "srev": "26dd8af6b4",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "mrev": "cc0f8b873b"
  },
  "assets/systems/portals/portal-creek": {
   "w": 963,
@@ -2787,7 +2815,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-creek.png",
   "rev": "72c5129ce8",
-  "srev": "ab6784d269"
+  "srev": "ab6784d269",
+  "mw": 720,
+  "mh": 539,
+  "mband": 14,
+  "mrev": "922ccbe27f"
  },
  "assets/systems/portals/portal-fallen": {
   "w": 963,
@@ -2799,19 +2831,27 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-fallen.png",
   "rev": "ed96a4589e",
-  "srev": "72d0051c2b"
+  "srev": "72d0051c2b",
+  "mw": 720,
+  "mh": 539,
+  "mband": 14,
+  "mrev": "e015b9dff2"
  },
  "assets/systems/portals/portal-frost": {
   "w": 1672,
   "h": 896,
-  "band": 0,
+  "band": 30,
   "sw": 960,
   "sh": 514,
-  "sband": 0,
+  "sband": 17,
   "alpha": false,
-  "master": "FROST_PEAKS_PORTAL_FINAL_PASS.png (Drive 18oQsaJ-THeU6VMYpJ9y8otjOteLM_jWR); bottom 45 px cropped",
-  "rev": "afbd9134bd",
-  "srev": "df0e1f95ec"
+  "master": "frost-fixed.png",
+  "mw": 720,
+  "mh": 386,
+  "mband": 14,
+  "rev": "b292338d34",
+  "srev": "c8b0f32bc7",
+  "mrev": "06eb21cafc"
  },
  "assets/systems/portals/portal-meadow": {
   "w": 1254,
@@ -2823,7 +2863,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-meadow.png",
   "rev": "90afd94401",
-  "srev": "6380221d67"
+  "srev": "6380221d67",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "mrev": "327f7c6cd9"
  },
  "assets/systems/portals/portal-prism": {
   "w": 1254,
@@ -2835,7 +2879,23 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-prism.png",
   "rev": "d6d59d9c7c",
-  "srev": "775852be40"
+  "srev": "775852be40",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "mrev": "fd0b6395c7"
+ },
+ "assets/systems/portals/portal-prism-ridge": {
+  "w": 520,
+  "h": 262,
+  "band": 14,
+  "sw": 520,
+  "sh": 262,
+  "sband": 14,
+  "alpha": false,
+  "master": "prism-optC-crop.png",
+  "rev": "a829b78f01",
+  "srev": "70bc2fea81"
  },
  "assets/systems/portals/portal-river": {
   "w": 1672,
@@ -2847,7 +2907,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "RIVERWORKS_INTERIOR_FINAL_PASS.png (Drive 1apGWTd_pX4nTn8JcMSBaEfSOsnh6HLfv); bottom 45 px cropped",
   "rev": "b061b5b97d",
-  "srev": "5926e3d1eb"
+  "srev": "5926e3d1eb",
+  "mw": 720,
+  "mh": 386,
+  "mband": 14,
+  "mrev": "fc6bf029b4"
  },
  "assets/systems/portals/portal-summit": {
   "w": 1536,
@@ -2859,7 +2923,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "PORTAL_REFERENCE_SUMMIT_PURPLE_WIDE.png (Drive 10ZkdrOv4cWvUyPxVpNJXy3-JYWprjos6)",
   "rev": "dbcc9af745",
-  "srev": "e6b6c7ef41"
+  "srev": "e6b6c7ef41",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "mrev": "e7656f9c5f"
  },
  "assets/systems/preview-04-trail-junction": {
   "w": 1672,

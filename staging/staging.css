@@ -1529,3 +1529,8 @@ html.is-locked{overflow:hidden}
 /* Public curation 2026-10-11: a small source is shown at (about) its native size in the dossier stage instead of
    being stretched to the stage width. It stays sharp and honest; the stage frame and shadow are unchanged. */
 .dossier__stage .stage-box > .gbm.cutout{max-width:calc(var(--nw, 9999) * 1.15px)}
+/* Fast Travel: a wide source (Prism Ridge™ four-flag portal display) is shown whole on the panel navy instead of cover-cropped;
+   the img keeps the content aspect, top-aligned, so the copyright band below the content is clipped */
+.ft__frame.gbm.is-whole{display:flex;align-items:center;background:#0b2a6b}
+.ft__frame.gbm.is-whole > img{width:100%;height:auto;aspect-ratio:var(--ar);object-fit:cover;object-position:50% 0}
+.ft__frame.gbm.is-whole > img{position:absolute;left:0;top:calc((100% - 36px) / 2);transform:translateY(-50%)}
