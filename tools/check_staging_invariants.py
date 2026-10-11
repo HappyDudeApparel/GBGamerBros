@@ -3,7 +3,7 @@
 
 Fails (exit 1) if a build drops or reverts the owner-approved corrections:
 exact HAPPY DUDE(R) footer, no unfinished privacy policy, clean logo, Brightback(tm) apex card and
-four-phase evolution, Meet the Team backdrop frame, and the privacy rule (no personal name).
+four-phase evolution, Meet the Team backdrop frame, and the privacy rule (no personal identifiers).
 
 Why it exists: staging/ on main is *generated* by staging/tools/publish.py from the dev branch and
 replaces the whole folder, so any fix that is not in the dev source is erased by the next publish.
@@ -51,7 +51,14 @@ need("privacy.html" not in rights, "rights.html: links to the unfinished privacy
 
 # stale / conflicting notices and the privacy rule, across every public text file
 stale = re.compile(r"GB Gamer Bros™? x Happy Dude|Copyright ©\s*GB Gamer", re.I)
-private = re.compile(r"[redacted]|[redacted]", re.I)
+# Owner privacy rule: no personal name, address, personal phone or private email in public files.
+# No names are stored in this repository. Generic detectors below; add the owner's private terms at run time with
+#   GB_PRIVATE_TERMS="term1,term2" python3 tools/check_staging_invariants.py
+APPROVED_EMAILS = {"info@happydude.ca"}
+EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
+PHONE = re.compile(r"(?<![\d.])(?:\+?1[ .-])?\(?\d{3}\)?[ .-]\d{3}[ .-]\d{4}(?![\d.])")
+POSTAL = re.compile(r"\b[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d\b")
+PRIVATE_TERMS = [t.strip().lower() for t in os.environ.get("GB_PRIVATE_TERMS", "").split(",") if t.strip()]
 for root, _, files in os.walk(STAGING):
     for f in files:
         if not f.endswith(TEXT_EXT):
@@ -60,7 +67,11 @@ for root, _, files in os.walk(STAGING):
         rel = os.path.relpath(p, STAGING)
         txt = open(p, encoding="utf-8", errors="replace").read()
         need(not stale.search(txt), f"{rel}: outdated copyright notice present")
-        need(not private.search(txt), f"{rel}: personal name present (owner privacy rule)")
+        bad_email = [m for m in EMAIL.findall(txt) if m.lower() not in APPROVED_EMAILS and not m.startswith("@")]
+        need(not bad_email, f"{rel}: non-approved email address in a public file ({len(bad_email)}x)")
+        need(not PHONE.search(txt), f"{rel}: phone-number-like text in a public file")
+        need(not POSTAL.search(txt), f"{rel}: postal-code-like text in a public file")
+        need(not any(t in txt.lower() for t in PRIVATE_TERMS), f"{rel}: contains a private term from GB_PRIVATE_TERMS")
 
 # HAPPY DUDE must always carry the registered mark in the pages we author
 for name, txt in (("index.html", index), ("rights.html", rights)):
