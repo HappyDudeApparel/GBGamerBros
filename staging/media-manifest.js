@@ -192,7 +192,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "PR04_Broad_Prism_Ruin_Landing.png",
   "rev": "c629631cbe",
-  "srev": "f8cfef4b32"
+  "srev": "f8cfef4b32",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "mrev": "83a6f3fc3c"
  },
  "assets/areas/prism-ridge/ss01-summit-portal-stairs": {
   "w": 1448,
