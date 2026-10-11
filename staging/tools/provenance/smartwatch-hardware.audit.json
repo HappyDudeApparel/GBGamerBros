@@ -1,0 +1,56 @@
+{
+ "category": "promotional",
+ "source": "/tmp/claude-0/-home-user-GBGamerBros/277a82e5-48c2-56c4-981d-f7242c63ca70/scratchpad/watch_src/showcase_composed.png",
+ "source_sha256": "26a288b8828c7ab6cd268669e29333633dd73549f7e673704dd9c9cf9b336021",
+ "content_px": [
+  1400,
+  1000
+ ],
+ "content_box": [
+  0,
+  0,
+  1400,
+  1000
+ ],
+ "cutout": false,
+ "band_cropped": 0,
+ "marks": [],
+ "outputs": {
+  "smartwatch-hardware.webp": {
+   "px": [
+    1400,
+    1000
+   ],
+   "bytes": 154394,
+   "sha256": "037a5e76508a4496121a0a3515298e27c77d2c0f0928013ea631d6a67e3e61d6",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  },
+  "smartwatch-hardware-960.webp": {
+   "px": [
+    960,
+    686
+   ],
+   "bytes": 101506,
+   "sha256": "012bed5c003aaa2b7bcf7ec079425c0918e4e230557e32aebed5fe808d05b35f",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  }
+ },
+ "source_unchanged": true,
+ "metadata_survived_all_variants": true
+}

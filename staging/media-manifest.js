@@ -711,6 +711,19 @@ window.GB_MEDIA = {
   "rev": "409ff2ce45",
   "srev": "86333ff2b4"
  },
+ "assets/entities/brightback-v1-cutout": {
+  "w": 692,
+  "h": 604,
+  "band": 0,
+  "sw": 692,
+  "sh": 604,
+  "sband": 0,
+  "alpha": true,
+  "master": "Brightback Final Evolution V1.jpg (Drive 1VPqGajM...)",
+  "rev": "e57fe24327",
+  "srev": "e57fe24327",
+  "noSmall": true
+ },
  "assets/entities/brightback-v1-face": {
   "w": 471,
   "h": 316,
@@ -725,6 +738,19 @@ window.GB_MEDIA = {
   "ext": "png",
   "noSmall": true
  },
+ "assets/entities/brightback-v1-face-clean": {
+  "w": 455,
+  "h": 300,
+  "band": 0,
+  "sw": 455,
+  "sh": 300,
+  "sband": 0,
+  "alpha": false,
+  "master": "brightback-v1-face.png (crop-only)",
+  "rev": "f10618f6bd",
+  "srev": "f10618f6bd",
+  "noSmall": true
+ },
  "assets/entities/brightback-v1-hand": {
   "w": 308,
   "h": 317,
@@ -737,6 +763,19 @@ window.GB_MEDIA = {
   "rev": "0e3024e02d",
   "srev": "0e3024e02d",
   "ext": "png",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-hand-clean": {
+  "w": 288,
+  "h": 297,
+  "band": 0,
+  "sw": 288,
+  "sh": 297,
+  "sband": 0,
+  "alpha": false,
+  "master": "brightback-v1-hand.png (crop-only)",
+  "rev": "efbb268cae",
+  "srev": "efbb268cae",
   "noSmall": true
  },
  "assets/entities/brightback-v1-hero": {
@@ -765,6 +804,19 @@ window.GB_MEDIA = {
   "rev": "269cda3a4e",
   "srev": "269cda3a4e",
   "ext": "png",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-turnaround-clean": {
+  "w": 794,
+  "h": 179,
+  "band": 0,
+  "sw": 794,
+  "sh": 179,
+  "sband": 0,
+  "alpha": false,
+  "master": "brightback-v1-turnaround.png (crop-only)",
+  "rev": "5d8a9088fc",
+  "srev": "5d8a9088fc",
   "noSmall": true
  },
  "assets/entities/claw-bot-alert": {
@@ -958,6 +1010,19 @@ window.GB_MEDIA = {
   "master": "CRYSTAL_GUARDIAN_ANGLES_MASTER_V1__crystal-guardian-back.png",
   "rev": "336937a0dc",
   "srev": "d3b5b68880"
+ },
+ "assets/entities/crystal-guardian-card": {
+  "w": 658,
+  "h": 497,
+  "band": 0,
+  "sw": 658,
+  "sh": 497,
+  "sband": 0,
+  "alpha": true,
+  "master": "crystal-guardian-hero.webp (card derivative)",
+  "rev": "a61e908248",
+  "srev": "a61e908248",
+  "noSmall": true
  },
  "assets/entities/crystal-guardian-charge": {
   "w": 319,
@@ -1943,6 +2008,19 @@ window.GB_MEDIA = {
   "rev": "2524c11a37",
   "srev": "c3fb0d7849"
  },
+ "assets/entities/stone-golem-card": {
+  "w": 768,
+  "h": 521,
+  "band": 0,
+  "sw": 768,
+  "sh": 521,
+  "sband": 0,
+  "alpha": true,
+  "master": "stone-golem-hero.webp (card derivative)",
+  "rev": "d6672263b4",
+  "srev": "d6672263b4",
+  "noSmall": true
+ },
  "assets/entities/stone-golem-front": {
   "w": 386,
   "h": 294,
@@ -2038,6 +2116,18 @@ window.GB_MEDIA = {
   "master": "PATCHPAD™_GB_BLUE_APPROVED_HERO_RENDER_2026-10-10.png",
   "rev": "53686dd22f",
   "srev": "8ad2544755"
+ },
+ "assets/gear/smartwatch-hardware": {
+  "w": 1400,
+  "h": 1000,
+  "band": 0,
+  "sw": 960,
+  "sh": 686,
+  "sband": 0,
+  "alpha": false,
+  "master": "01_Hardware_Spec_Mountain_LED.png (Drive 1IEBoR2g2nG9ZHz3__s0wqfkMjfD9wwcY); composed by tools/make_watch_showcase.py",
+  "rev": "2d11bd739b",
+  "srev": "6990c71ccf"
  },
  "assets/gear/smartwatch-lineup": {
   "w": 1448,
@@ -2639,6 +2729,18 @@ window.GB_MEDIA = {
   "rev": "ed96a4589e",
   "srev": "72d0051c2b"
  },
+ "assets/systems/portals/portal-frost": {
+  "w": 1672,
+  "h": 896,
+  "band": 0,
+  "sw": 960,
+  "sh": 514,
+  "sband": 0,
+  "alpha": false,
+  "master": "FROST_PEAKS_PORTAL_FINAL_PASS.png (Drive 18oQsaJ-THeU6VMYpJ9y8otjOteLM_jWR); bottom 45 px cropped",
+  "rev": "afbd9134bd",
+  "srev": "df0e1f95ec"
+ },
  "assets/systems/portals/portal-meadow": {
   "w": 1254,
   "h": 940,
@@ -2662,6 +2764,30 @@ window.GB_MEDIA = {
   "master": "portal-prism.png",
   "rev": "d6d59d9c7c",
   "srev": "775852be40"
+ },
+ "assets/systems/portals/portal-river": {
+  "w": 1672,
+  "h": 896,
+  "band": 0,
+  "sw": 960,
+  "sh": 514,
+  "sband": 0,
+  "alpha": false,
+  "master": "RIVERWORKS_INTERIOR_FINAL_PASS.png (Drive 1apGWTd_pX4nTn8JcMSBaEfSOsnh6HLfv); bottom 45 px cropped",
+  "rev": "b061b5b97d",
+  "srev": "5926e3d1eb"
+ },
+ "assets/systems/portals/portal-summit": {
+  "w": 1536,
+  "h": 864,
+  "band": 0,
+  "sw": 960,
+  "sh": 540,
+  "sband": 0,
+  "alpha": false,
+  "master": "PORTAL_REFERENCE_SUMMIT_PURPLE_WIDE.png (Drive 10ZkdrOv4cWvUyPxVpNJXy3-JYWprjos6)",
+  "rev": "dbcc9af745",
+  "srev": "e6b6c7ef41"
  },
  "assets/systems/preview-04-trail-junction": {
   "w": 1672,

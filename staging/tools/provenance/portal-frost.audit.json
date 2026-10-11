@@ -1,0 +1,56 @@
+{
+ "category": "portal",
+ "source": "/tmp/claude-0/-home-user-GBGamerBros/277a82e5-48c2-56c4-981d-f7242c63ca70/scratchpad/portal_src/frost_final.png",
+ "source_sha256": "82bdf63cf00299cc6a4df3991eaa8e18fdb1251dbde05c26aeedfba768b1a192",
+ "content_px": [
+  1672,
+  896
+ ],
+ "content_box": [
+  0,
+  0,
+  1672,
+  896
+ ],
+ "cutout": false,
+ "band_cropped": 45,
+ "marks": [],
+ "outputs": {
+  "portal-frost.webp": {
+   "px": [
+    1672,
+    896
+   ],
+   "bytes": 396970,
+   "sha256": "52ad2440b9ed05dca1ef52c376ec0eeb3b4952b5f3219d304613e6a6be3ac91c",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  },
+  "portal-frost-960.webp": {
+   "px": [
+    960,
+    514
+   ],
+   "bytes": 183690,
+   "sha256": "4dff7f4dd0b73c905206b01f39f696f62b001c79aff64333b0bda9f767060d14",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  }
+ },
+ "source_unchanged": true,
+ "metadata_survived_all_variants": true
+}
