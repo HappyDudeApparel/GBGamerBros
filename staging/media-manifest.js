@@ -2153,6 +2153,78 @@ window.GB_MEDIA = {
   "rev": "cecd8a4fb8",
   "srev": "0fb040eb66"
  },
+ "assets/hero/hero-1": {
+  "w": 1672,
+  "h": 941,
+  "band": 0,
+  "sw": 960,
+  "sh": 540,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "feeb8f1fd9",
+  "srev": "3fa9072e91"
+ },
+ "assets/hero/hero-1-p": {
+  "w": 1080,
+  "h": 2000,
+  "band": 0,
+  "sw": 960,
+  "sh": 1778,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "970d4ad1af",
+  "srev": "17626ad426"
+ },
+ "assets/hero/hero-2": {
+  "w": 1672,
+  "h": 941,
+  "band": 0,
+  "sw": 960,
+  "sh": 540,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "c1e9bef0b5",
+  "srev": "1587d00e59"
+ },
+ "assets/hero/hero-2-p": {
+  "w": 1080,
+  "h": 2000,
+  "band": 0,
+  "sw": 960,
+  "sh": 1778,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "d71fb21c28",
+  "srev": "d2efc3a88f"
+ },
+ "assets/hero/hero-3": {
+  "w": 1672,
+  "h": 941,
+  "band": 0,
+  "sw": 960,
+  "sh": 540,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "48ccc77b93",
+  "srev": "6c1968c2f0"
+ },
+ "assets/hero/hero-3-p": {
+  "w": 1080,
+  "h": 2000,
+  "band": 0,
+  "sw": 960,
+  "sh": 1778,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "7c121243d2",
+  "srev": "d4ed9e3d2b"
+ },
  "assets/objects/chest": {
   "w": 627,
   "h": 410,
