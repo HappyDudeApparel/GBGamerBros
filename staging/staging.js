@@ -373,7 +373,7 @@
         <h4 class="evo__phase-h"><span>Phase ${g.phase}</span> ${esc(PHN[g.phase] || "")}</h4>
         <ol class="evo__steps">${g.steps.map((x) => `<li class="evo__step"><span class="stage-box">${isCut(x.src) ? cut(x.src, "evo__cut", x.label, "160px") : media(x.src, "evo__thumb-scene", x.label, "small")}</span><strong>${esc(x.label)}</strong></li>`).join("")}</ol></li>`).join("");
     const mech = d.mechanics.map((x) => `<li>${media(x.src, "evo__mechimg", x.label, "small")}<strong>${esc(x.label)}</strong><p>${esc(x.text)}</p></li>`).join("");
-    const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}${x.reference ? '<span class="evo__num evo__num--ref">Reference</span>' : `<span class="evo__num">${i + 1}</span>`}<strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
+    const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${x.reference && isCut(x.src) ? `<span class="evo__refstage stage-box">${cut(x.src, "evo__refcut", `${x.label}: ${x.note}`, "(min-width: 900px) 220px, 70vw")}</span>` : media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}${x.reference ? '<span class="evo__num evo__num--ref">Reference</span>' : `<span class="evo__num">${i + 1}</span>`}<strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
     return `<section class="evo" id="entEvo" aria-labelledby="evoTitle">
       <header class="evo__head">
         <div><h3 id="evoTitle">How the evolution works</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™ → Brightback™</p></div>
@@ -639,12 +639,17 @@
   const ftRegions = Object.entries(portal.states || {});
   const ftName = document.getElementById("ftName");
   const ftDots = document.getElementById("ftDots");
-  const colourOf = (name) => (((window.GB_WORLD || {}).regions || []).find((r) => r.name === name) || {}).color || "#1f7ae0";
+  const ftNote = document.getElementById("ftNote");
+  const portalMeta = window.GB_PORTAL_META || {};
+  const colourOf = (name) => (((window.GB_WORLD || {}).regions || []).find((r) => r.name === name) || {}).color || (portalMeta[name] || {}).color || "#1f7ae0";
   function ftSet(i) {
     const [name, src] = ftRegions[i];
     ftFrame.setAttribute("style", frameVars(src));
     ftFrame.innerHTML = `<img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="(min-width: 1100px) 30vw, 92vw" alt="${esc(name)} portal" loading="lazy" draggable="false">`;
     ftName.textContent = name;
+    const pm = portalMeta[name] || {};
+    ftFrame.style.setProperty("--fx", pm.fx || "50%");
+    ftNote.innerHTML = pm.area && isOpen(pm.area) ? `<a href="#area/${pm.area}/1">Explore ${esc(name)} <span aria-hidden="true">→</span></a>` : esc(pm.note || "");
     [...ftDots.children].forEach((d, n) => d.setAttribute("aria-pressed", String(n === i)));
   }
   ftDots.innerHTML = ftRegions.map(([name], i) => `<button type="button" style="--rc:${colourOf(name)}" aria-label="${esc(name)} portal" data-ft="${i}"></button>`).join("");
@@ -656,7 +661,7 @@
     const e = ENTITIES[id];
     const t = e.media.thumb;
     return `<li${id === "brightback" ? ' class="foes__apex"' : ""}><button class="foe${id === "brightback" ? " foe--apex" : ""}${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
-      <span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
+      <span class="foe__stage">${t && isCut(t) ? cut(t, id === "brightback" ? "foe__cut foe__cut--apex" : "foe__cut", "", id === "brightback" ? "(min-width: 720px) 560px, 94vw" : "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
       <span class="foe__text"><strong>${esc(e.name)}</strong>${id === "brightback" ? "<small>Apex evolution · Prism Ridge™</small>" : ""}</span>
     </button></li>`;
   }).join("") + `<li class="foes__evo"><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
@@ -681,7 +686,7 @@
     el.innerHTML = `<img src="${asset(src)}" srcset="${srcset(src)}" sizes="(min-width: 1100px) 560px, 92vw" alt="${esc(alt)}" loading="lazy" draggable="false">`;
   };
   const WATCH = [["assets/gear/smartwatch-lineup", "SMARTWATCH in Blue, Red, Yellow and Purple, balanced lineup"],
-                 ["assets/gear/smartwatch-stage", "SMARTWATCH in Blue, Red, Yellow and Purple, angled showcase"]];
+                 ["assets/gear/smartwatch-hardware", "SMARTWATCH hardware showcase in GB Blue: front, three-quarter and side views with close-ups of the buttons, metal build, strap and clasp, and engraved back plate"]];
   gearImg(document.getElementById("gearPadImg"), "assets/gear/patchpad-hero", "PATCHPAD™ handheld hacking device in GB Blue");
   gearImg(document.getElementById("gearWatchImg"), ...WATCH[0]);
   document.querySelectorAll("[data-watch]").forEach((b) => b.addEventListener("click", () => {
