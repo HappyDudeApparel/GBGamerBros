@@ -1,0 +1,75 @@
+{
+ "category": "environment",
+ "source": "staging/assets/areas/portal-meadow/pm02-open-meadow-routes.webp",
+ "source_sha256": "a9627c09057be3eac201395ee6ae19e47dc95142f9e77e589b3f2374645200c2",
+ "content_px": [
+  1448,
+  1086
+ ],
+ "content_box": [
+  0,
+  0,
+  1448,
+  1086
+ ],
+ "cutout": false,
+ "band_cropped": 26,
+ "marks": [
+  {
+   "corner": "br",
+   "xy": [
+    1163,
+    1001
+   ],
+   "size": [
+    213,
+    31
+   ],
+   "opacity": 0.62,
+   "tone": "light",
+   "luminance_under_mark": 74.1,
+   "inset_of_content_box": [
+    0.803,
+    0.922
+   ]
+  }
+ ],
+ "outputs": {
+  "environment_portal-meadow.webp": {
+   "px": [
+    1448,
+    1086
+   ],
+   "bytes": 511542,
+   "sha256": "5b0aa72cda92cbd8d68ba1ba574c2e640f958cfca25523b85658c0842ca88c18",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_name": true
+   }
+  },
+  "environment_portal-meadow-960.webp": {
+   "px": [
+    960,
+    720
+   ],
+   "bytes": 311304,
+   "sha256": "c02967c24c79ed1121eb901cd29b49dd5908bce2041f43119315814b183feba2",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_name": true
+   }
+  }
+ },
+ "source_unchanged": true,
+ "metadata_survived_all_variants": true
+}

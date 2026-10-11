@@ -1,0 +1,75 @@
+{
+ "category": "promotional",
+ "source": "staging/assets/gear/smartwatch-lineup.webp",
+ "source_sha256": "ff03da77e0d3766674fc5fc683270f5fc6d8b2fa8a17396f46d0f5b971ad8237",
+ "content_px": [
+  1448,
+  1086
+ ],
+ "content_box": [
+  0,
+  0,
+  1448,
+  1086
+ ],
+ "cutout": false,
+ "band_cropped": 26,
+ "marks": [
+  {
+   "corner": "br",
+   "xy": [
+    1163,
+    1001
+   ],
+   "size": [
+    213,
+    31
+   ],
+   "opacity": 0.62,
+   "tone": "light",
+   "luminance_under_mark": 71.9,
+   "inset_of_content_box": [
+    0.803,
+    0.922
+   ]
+  }
+ ],
+ "outputs": {
+  "promo_smartwatch-lineup.webp": {
+   "px": [
+    1448,
+    1086
+   ],
+   "bytes": 303010,
+   "sha256": "88e42f87e854f4fc0156ff427bd1a9e09fd4e3f6bd882b89cad48726c80f6647",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_name": true
+   }
+  },
+  "promo_smartwatch-lineup-960.webp": {
+   "px": [
+    960,
+    720
+   ],
+   "bytes": 191176,
+   "sha256": "1b2227bf2ce45f21e87a8b599650b6dda93cdd66ef643c72d55550699c651b2a",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_name": true
+   }
+  }
+ },
+ "source_unchanged": true,
+ "metadata_survived_all_variants": true
+}
