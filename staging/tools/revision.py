@@ -104,8 +104,11 @@ def run(check_only=False):
     # 1. image revisions in the manifest
     m = load_manifest()
     for key, e in m.items():
-        e["rev"] = h(os.path.join(STAGING, key + ".webp"))
-        e["srev"] = h(os.path.join(STAGING, key + "-960.webp"))
+        # entries added by hand on main (Brightback PNGs, clean logo) carry "ext" and/or "noSmall":
+        # no -960 derivative exists, so the small revision is the full file's
+        ext = e.get("ext", "webp")
+        e["rev"] = h(os.path.join(STAGING, f"{key}.{ext}"))
+        e["srev"] = e["rev"] if e.get("noSmall") else h(os.path.join(STAGING, f"{key}-960.{ext}"))
     if not check_only:
         write_manifest(m)
 
@@ -187,8 +190,9 @@ def run(check_only=False):
         refs.add((path, v))
     referenced = {p for p, _ in refs}
     referenced |= set(re.findall(r"url\((" + LOCAL + r")\?v=", css2))
-    for key in m:
-        referenced |= {key + ".webp", key + "-960.webp"}
+    for key, e in m.items():
+        x = e.get("ext", "webp")
+        referenced |= {f"{key}.{x}", f"{key}-960.{x}"}
     if pano:
         referenced |= {f["src"] for f in pano_files(pano)}
     referenced |= {"revision.json", "index.html"}

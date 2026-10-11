@@ -5,7 +5,7 @@
   python3 staging/tools/publish.py --dry-run  # prepare and show the diff, don't push
 
 Rules enforced:
-  * the dev branch must be committed and revision.py --check must pass
+  * the dev branch must be committed, revision.py --check and check_invariants.py must pass
   * only public staging files are copied (no *.md, no tools/)
   * staging/ on main is replaced as a whole, so removed/renamed assets disappear
   * nothing outside staging/ may change on main (root homepage and /v2/ untouched)
@@ -26,6 +26,8 @@ def main(dry):
         raise SystemExit("commit the dev branch first (staging/ has uncommitted changes)")
     if subprocess.call([sys.executable, os.path.join(REPO, "staging/tools/revision.py"), "--check"]):
         raise SystemExit("revision check failed — run staging/tools/revision.py and commit")
+    if subprocess.call([sys.executable, os.path.join(REPO, "staging/tools/check_invariants.py")]):
+        raise SystemExit("regression guard failed — the build would revert owner-approved corrections (see check_invariants.py)")
     dev_sha = git("rev-parse", "--short", "HEAD", out=True)
     rev = open(os.path.join(REPO, "staging/revision.json")).read().split('"')[3]
     for i in range(4):

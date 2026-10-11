@@ -9,7 +9,7 @@
 //   version:   "pano-YYYY-MM-DD[-n]",          // panorama version label (coordinate authority)
 //   width, height,                              // master size, read from the source at build time
 //   front:     0.399,                            // optional: x (0–1) of the canonical 0° front (initial view)
-//   copyright: "2026 Copyright © …",
+//   copyright: "© 2026 HAPPY DUDE®. All rights reserved.",
 //   overview:  { src, w, h, rev },               // whole loop, small: first paint + minimap
 //   tiers: [                                     // ascending height; the viewer picks per screen
 //     { name: "low"|"medium"|"high", height, width,
@@ -20,7 +20,7 @@ window.GB_PANORAMA = {
  "version": "pano-2026-10-05",
  "width": 4608,
  "height": 1024,
- "copyright": "2026 Copyright © GB Gamer Bros™ x Happy Dude®. All Rights Reserved.",
+ "copyright": "© 2026 HAPPY DUDE®. All rights reserved.",
  "front": 0.3993,
  "overview": {
   "src": "assets/world/overview.webp",

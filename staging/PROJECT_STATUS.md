@@ -17,6 +17,20 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## STAGE 1 RELEASE PORT (2026-10-11) — dev source reconciled with main
+Why: publish.py replaces staging/ on main as a whole from this branch. main had two owner commits that never existed here
+(fdf948a unified Enemies & Hazards cards, 76dc8e2 Brightback V1) and the Stage 1 QA corrections (branch ccr-68e61a03-ykulfu,
+PR into main). Publishing the old dev tree would have erased all of them. They are now ported here.
+Ported: © 2026 HAPPY DUDE®. All rights reserved. footer (+ rights.html; privacy draft intentionally NOT shipped); gb-logo-clean.webp
+(crop-only, tools/make_clean_logo.py); Meet the Team backdrop via .gbm frame; Brightback apex card + four-phase evolution layout;
+Brightback in-world entry flagged reference.
+Tooling fixes: revision.py now honours manifest "ext"/"noSmall" (it crashed on the hand-added Brightback PNG entries);
+publish.py now runs tools/check_invariants.py first and refuses if the build would revert the approved corrections.
+RULE: never edit main/staging by hand. Edit here, run revision.py, commit, publish.py. A hand edit on main is erased by the next publish.
+NOT done here (Stage 2): gbmedia.py NOTICE/CREATOR/band text still carry the old "GB Gamer Bros™ x Happy Dude®" wording, so the 436 existing
+derivatives still embed it in their (CSS-hidden) band and XMP/EXIF. Changing it needs a re-export or metadata restamp of every image
+and an owner-approved watermark treatment first. `gbmedia.py verify` is therefore unchanged and still expects the old notice.
+
 ## CANON CORRECTION — block 1 (2026-10-10, issue #1 / PR #2) — STAGING ONLY, awaiting owner visual sign-off
 Removed (owner-rejected):
 - Sentry Cannon™ in-world scene (uncanny figure + beam): GB_ENTITY_SCENE entry and assets/entities/scenes/sentry-cannon-ingame deleted.
