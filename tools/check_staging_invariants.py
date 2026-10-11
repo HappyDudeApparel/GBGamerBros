@@ -108,7 +108,8 @@ need(not re.search(r"\.team\{background:[^}]*url\(assets/areas/portal-meadow/pm0
 
 # ---- Brightback apex card and evolution ----------------------------------------------------------
 need("#foes > li.foes__apex{grid-column:1/-1 !important" in css, "staging.css: Brightback apex card full-width rule missing/overridable")
-need("aspect-ratio:701/573" in css, "staging.css: Brightback hero ratio frame missing (would crop the art)")
+need("#foes .foe--apex .foe__stage{" in css and "overflow:visible" in css.split("#foes .foe--apex .foe__stage{")[1].split("}")[0],
+     "staging.css: Brightback breakout stage (overflow:visible) missing")
 need(".evo__phases" in css and ".evo__phase-h" in css, "staging.css: four-phase evolution layout missing")
 js = read("staging.js")
 need("evo__phases" in js and "evo__phase-h" in js, "staging.js: phase-grouped evolution markup missing")
@@ -120,6 +121,19 @@ need("brightback-v2" not in ent.lower() and "brightback-v2" not in js.lower(), "
 need('"brightback"' in ent.split("GB_BESTIARY")[-1], "entities.js: Brightback missing from the bestiary")
 for f in ("hero", "turnaround", "face", "hand"):
     need(os.path.exists(os.path.join(STAGING, f"assets/entities/brightback-v1-{f}.png")), f"brightback-v1-{f}.png missing")
+
+
+# ---- owner QA pass 2026-10-11 ---------------------------------------------------------------------------
+need("In development" not in index and "in development" not in index.lower(), "index.html: unnecessary 'In development' label is back")
+need("brightback-v1-cutout" in ent and 'media: { thumb: E + "brightback-v1-hero"' not in ent, "entities.js: Brightback must use the clean cutout, not the captioned hero scene")
+need("brightback-v1-hero" not in ent.replace("(brightback-v1-hero.png)", ""), "entities.js: captioned Brightback hero scene is referenced in a public entity")
+need('thumb: E + "stone-golem-card"' in ent and 'thumb: E + "crystal-guardian-card"' in ent, "entities.js: Stone Walker/Prism Keeper cards must use the *-card derivatives")
+portal_states = ent.split("Canonical region order")[1].split("angles: angles()")[0] if "Canonical region order" in ent else ""
+for region in ("Portal Meadow", "Creek Crossing", "Riverworks", "Clover Cliffs", "Fallen Grounds", "Prism Ridge", "Frosty Peaks", "Summit Spine"):
+    need(region in portal_states, f"entities.js: Fast Travel is missing {region}")
+areas = read("areas.js")
+need(areas.count('kind: "still"') >= 3, "areas.js: Level Preview must define at least three stills")
+need("smartwatch-hardware" in ent and "smartwatch-hardware" in js and "smartwatch-stage" not in js, "SMARTWATCH Showcase must use the distinct hardware composite")
 
 # ---- every ?v= local reference exists -------------------------------------------------------------
 for m in re.finditer(r'(?:src|href)="([^"?#:]+)\?v=[0-9a-f]+"', index):
