@@ -1520,3 +1520,8 @@ html.is-locked{overflow:hidden}
 .ft__frame.gbm > img{object-fit:cover;object-position:var(--fx,50%) 50%}
 /* SMARTWATCH card: the "Full size" pill sits top-right so it never covers the showcase captions along the bottom edge */
 .gear__card--watch .gear__zoom{top:10px;bottom:auto}
+
+/* Hero key art: one composite per slide (wide + portrait); characters are part of the picture. Wide crops keep the lower part (feet) in view. */
+.slide--art picture{display:block;width:100%;height:100%}
+.slide--art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 80%;filter:none}
+@media (max-aspect-ratio:1/1){.slide--art img{object-position:50% 50%}}
