@@ -17,6 +17,34 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## DESIGN VERIFICATION — 2026-10-12 (research only; NOTHING published; visual implementation ON HOLD)
+OWNER HOLD: Prism Ridge, chest and defeated-state concepts are NOT approved. No new canonical visuals or copy rewrites published.
+EVOLUTION CANON: owner guidance is kept in the private Drive handoff, not in this public repo. Rule for the site: defeated rubble
+must never contain an intact face, glowing eyes or a crouched living body; public copy must not explain the evolution.
+FINDINGS
+- Stone Walker amber concept (pass 4) FAILS this rule: the approved "Defeated" heap it was built on keeps the face + glowing eyes →
+  withdrawn. A compliant concept needs face-free rubble (e.g. the Stone Walker plates as a collapsed pile with amber shards between).
+  Rumbler amber concept has no face (scattered fragments) but stays unapproved.
+- Prism Keeper defeated (published 10-11, Guardian Rubble B): stone + purple shards, no face/eyes → complies.
+- PUBLIC SPOILER RISK: evolution dossier "How the evolution works" tab publishes the mechanics captions (entities.js
+  GB_EVOLUTION_DETAIL.mechanics).
+  Recommend hiding the Mechanics tab (or neutral captions) — awaiting approval.
+- GADGET NAMES: "QuickHack™" is NOT approved but is public on staging (Gear & Tech intro, SMARTWATCH dossier, quickhack dossier, alias).
+  Alternatives under consideration: GamerWatch / GB Watch / GB Link. Recommend neutral "SMARTWATCH" only until a name is chosen — awaiting
+  approval. Current gadget copy is technical (button colours/functions, "Sentry Cannon hacking") → mysterious alternatives drafted (chat).
+- FAST TRAVEL ORDER: live = Portal Meadow, Creek Crossing, Riverworks, Clover Cliffs, Fallen Grounds, Prism Ridge, Frosty Peaks, Summit Spine.
+  Owner final order ends Fallen Grounds → Frosty Peaks → Summit Spine → Prism Ridge (final destination). One-line reorder of portal.states
+  ready; not applied (hold).
+- PRISM RIDGE FEASIBILITY vs the approved 360 panorama (summit sector): the playable summit is ONE central stair ridge (= Summit Spine)
+  rising to a crowned crystal gate + portal ring (= Prism Ridge), arched viaducts to Fallen Grounds (left) and Frosty Peaks (right),
+  a small circular plaza mid-stair. Buildable approved vocabulary: twin crowned towers, portal ring, crystal spires, central stair,
+  flanking waterfalls, viaducts, mid-stair plaza (E03 core, ss01). Not buildable / not canon: floating islands (E01–E03), E02's broad
+  forecourt (wider than the ridge), crown banners (E01), "Prism Ridge (Summit Spine)" conflated labels.
+  PROPOSALS (approved art only): P1 Prism Ridge FT = ss01 "Summit portal stairs" (1448 px, matches the panorama summit, no flags) —
+  recommended; P2 keep pr04 (current temporary). Summit Spine FT keeps portal-prism until reviewed. Future dedicated Prism Ridge portal
+  render: ss01/E03 architecture + canonical Option A prismatic flag, grounded. Board: scratchpad b2/PRISM_RIDGE_FEASIBILITY.png.
+- Chest concepts: none produced in this session.
+
 ## PUBLIC CURATION — pass 4 (2026-10-11, owner decisions applied; staging only)
 OWNER DECISIONS (2026-10-11): Prism Ridge = Option D temporarily, Option A prismatic flag = canonical flag reference, Option C not
 final. Rumbler/Stone Walker amber-crystal destruction concepts authorised (approval before publishing). Rotor (Higgsfield rev 7) and
