@@ -37,59 +37,70 @@ window.GB_ENTITIES = {
   // ---------------- enemies ----------------
   "goom": {
     name: "Goom Bot™", type: "enemy", status: "APPROVED",
-    // GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1 (approved production master)
-    media: { thumb: E + "goom-v14", render: E + "goom-v14", icon: null },
+    // 2026-10-13 owner-approved 1254 px standalone studio renders (used whole: no crop, no alpha extraction) replace the
+    // blurry production-sheet crops. Exactly three red spikes, four red foot pods, warm amber eyes. The exclamation marks in
+    // the Alert still are a graphic expression, not a permanent part of the model.
+    studioHero: true, heroFirst: true, heroLabel: "Idle",
+    media: { thumb: "assets/entities/studio/goom-idle-hd", render: "assets/entities/studio/goom-idle-hd", icon: null },
+    cardAlt: "assets/entities/studio/goom-attack-hd",
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
     encounter: [],
     views: {  },
-    states: { "Walk": "assets/entities/studio/goom-walk-st", "Alert": "assets/entities/studio/goom-alert-st", "Charge / attack": "assets/entities/studio/goom-charge-st" },
+    states: { "Idle": "assets/entities/studio/goom-idle-hd", "Alert": "assets/entities/studio/goom-alert-hd", "Attack": "assets/entities/studio/goom-attack-hd", "Charge": "assets/entities/studio/goom-charge-hd", "Defeated": "assets/entities/studio/goom-defeated-hd" },
+    details: { "Expression": "assets/entities/studio/goom-face-hd" },
     angles: angles("top", "bottom"), cardScale: 0.64, height: 0.5, scale: null,
-    // PUBLIC CURATION 2026-10-11: hero + in-world (cropped to drop the malformed background Goom) + 3 actions. Archived: Idle/Inactive (dupes), Defeated + dizzy Defeated (grey dust mat, owner QA 05), 4 turnarounds.
-    archived: { "Superseded hero (2026-10-13)": E + "goom-hero", "Idle": "assets/entities/goom-idle", "Defeated": "assets/entities/goom-defeated-dizzy", "Inactive": "assets/entities/goom-defeated", "Front": "assets/entities/goom-front", "¾ view": "assets/entities/goom-threeq", "Side": "assets/entities/goom-side", "Back": "assets/entities/goom-back" },
+    // PUBLIC CURATION 2026-10-13: six of the seven approved renders (alternate alert unused). Archived (superseded): the v14 cutout, the 444 px sheet tiles, earlier heroes.
+    archived: { "Superseded hero (2026-10-13)": E + "goom-hero", "Cutout v14": E + "goom-v14", "Walk (sheet tile)": "assets/entities/studio/goom-walk-st", "Alert (sheet tile)": "assets/entities/studio/goom-alert-st", "Charge (sheet tile)": "assets/entities/studio/goom-charge-st", "Idle": "assets/entities/goom-idle", "Defeated": "assets/entities/goom-defeated-dizzy", "Inactive": "assets/entities/goom-defeated", "Front": "assets/entities/goom-front", "¾ view": "assets/entities/goom-threeq", "Side": "assets/entities/goom-side", "Back": "assets/entities/goom-back" },
   },
   "claw-bot": {
     name: "Claw Bot™", type: "enemy", status: "APPROVED",
-    // Sources: Claw Bot Final Production Reference (hero, views, idle, alert, clamp A, defeated A/B) and
-    // Claw Bot Animation Bundle Reference (walk = front scuttle; attack = front attack). Re-extracted 2026-10-10 (no streaks/shadows).
-    media: { thumb: E + "claw-bot-v14", render: E + "claw-bot-v14", icon: null },
+    // 2026-10-13 owner-approved 1254 px standalone renders (#01-#13) replace the sheet crops. Two hinged split-spike claws, four
+    // support feet, front amber core. The red/gold streak render (#10) is illustrative only and is not shown.
+    studioHero: true, heroFirst: true, heroLabel: "Idle",
+    media: { thumb: "assets/entities/studio/claw-bot-idle-hd", render: "assets/entities/studio/claw-bot-idle-hd", icon: null },
+    cardAlt: "assets/entities/studio/claw-bot-clamp-hd",
     copy: { provisional: true, summary: "Crab-like ground enemy with two split-spike claws.", behaviour: "Patrols, spots you, raises its claws and clamps to attack.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {},
-    states: { "Walk / scuttle": "assets/entities/studio/claw-bot-walk-st", "Alert · claws raised": "assets/entities/studio/claw-bot-alert-st", "Clamp attack": "assets/entities/studio/claw-bot-attack-st" },
-    // PUBLIC CURATION 2026-10-11 (owner strategy): hero + 3 distinctive actions. Source cells are only 92–201 px
-    // (Final Production Reference sheet), so they are shown at native size, never stretched. Kept for provenance,
-    // not shown publicly: routine turnarounds, the redundant idle, the head-spike-clipped front attack, defeated states.
-    archived: { "Superseded hero (2026-10-13)": E + "claw-bot-hero", "Idle": E + "claw-bot-idle", "Attack · open claws (spike + feet clipped)": E + "claw-bot-attack-front", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b",
+    states: { "Idle": "assets/entities/studio/claw-bot-idle-hd", "Scuttle": "assets/entities/studio/claw-bot-scuttle-hd", "Alert": "assets/entities/studio/claw-bot-alert-hd", "Clamp": "assets/entities/studio/claw-bot-clamp-hd", "Forward clamp": "assets/entities/studio/claw-bot-clamp-forward-hd", "Defeated": "assets/entities/studio/claw-bot-defeated-hd" },
+    details: { "Closed claw": "assets/entities/studio/claw-bot-claw-closed-hd", "Open claw": "assets/entities/studio/claw-bot-claw-open-hd", "Hinge": "assets/entities/studio/claw-bot-hinge-hd" },
+    // Archived (superseded 2026-10-13): v14 cutout and the 92-201 px sheet tiles.
+    archived: { "Superseded hero (2026-10-13)": E + "claw-bot-hero", "Cutout v14": E + "claw-bot-v14", "Walk (sheet tile)": "assets/entities/studio/claw-bot-walk-st", "Alert (sheet tile)": "assets/entities/studio/claw-bot-alert-st", "Clamp (sheet tile)": "assets/entities/studio/claw-bot-attack-st", "Idle": E + "claw-bot-idle", "Attack · open claws (spike + feet clipped)": E + "claw-bot-attack-front", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b",
       "Front": E + "claw-bot-front", "¾ view": E + "claw-bot-threeq", "Side": E + "claw-bot-side", "Back": E + "claw-bot-back", "Top": E + "claw-bot-top", "Bottom": E + "claw-bot-bottom" },
     angles: angles("top", "bottom"), cardScale: 0.95, height: 0.8, scale: null,
   },
   "spike-bot": {
     name: "Spike Bot™", type: "enemy", status: "APPROVED",
-    // SPIKE_BOT_PRODUCTION_MASTER_V1 (approved production master)
-    media: { thumb: E + "spike-bot-v14", render: E + "spike-bot-v14", icon: null },
+    // 2026-10-13 owner-approved 1254 px standalone renders. Ground-rolling spherical enemy; the sparks/flash in the Attack and
+    // Charge stills are illustrative treatment and are not described as a mechanic.
+    studioHero: true, heroFirst: true, heroLabel: "Hero",
+    media: { thumb: "assets/entities/studio/spike-bot-hero-hd", render: "assets/entities/studio/spike-bot-hero-hd", icon: null },
+    cardAlt: "assets/entities/studio/spike-bot-roll-hd",
     copy: { provisional: true, summary: "Spiked ground enemy.", behaviour: "Stays put or patrols. Damages on contact.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {  },
-    states: { "Alert": "assets/entities/studio/spike-bot-alert-st", "Attack": "assets/entities/studio/spike-bot-attack-st", "Defeated": "assets/entities/studio/spike-bot-defeated-st" },
+    states: { "Hero": "assets/entities/studio/spike-bot-hero-hd", "Alert": "assets/entities/studio/spike-bot-alert-hd", "Rolling": "assets/entities/studio/spike-bot-roll-hd", "Charge": "assets/entities/studio/spike-bot-charge-hd", "Attack": "assets/entities/studio/spike-bot-attack-hd", "Defeated": "assets/entities/studio/spike-bot-defeated-hd" },
     angles: angles("top", "bottom"), cardScale: 0.68, height: 0.5, scale: null,
-    // PUBLIC CURATION 2026-10-11: in-world + hero + Alert (red eye), Attack (thruster flame), Defeated. Archived: Idle/Roll (same pose as hero), 5 turnarounds incl. top/bottom.
-    archived: { "Superseded hero (2026-10-13)": E + "spike-bot-hero", "Idle": "assets/entities/spike-bot-idle", "Roll": "assets/entities/spike-bot-roll", "Front": "assets/entities/spike-bot-front", "Side": "assets/entities/spike-bot-side", "Back": "assets/entities/spike-bot-back", "Top": "assets/entities/spike-bot-top", "Bottom": "assets/entities/spike-bot-bottom" },
+    // Archived (superseded 2026-10-13): v14 cutout and the sheet tiles.
+    archived: { "Superseded hero (2026-10-13)": E + "spike-bot-hero", "Cutout v14": E + "spike-bot-v14", "Alert (sheet tile)": "assets/entities/studio/spike-bot-alert-st", "Attack (sheet tile)": "assets/entities/studio/spike-bot-attack-st", "Defeated (sheet tile)": "assets/entities/studio/spike-bot-defeated-st", "Idle": "assets/entities/spike-bot-idle", "Roll": "assets/entities/spike-bot-roll", "Front": "assets/entities/spike-bot-front", "Side": "assets/entities/spike-bot-side", "Back": "assets/entities/spike-bot-back", "Top": "assets/entities/spike-bot-top", "Bottom": "assets/entities/spike-bot-bottom" },
   },
   "rotor-bot": {
     name: "Rotor Bot™", type: "enemy", status: "APPROVED",
-    // Source: Rotor Bot Production Spec Sheet (final fixed-nozzle design: 3 red spikes, 4 angled red thruster
-    // nozzles, 1 bottom stabilization nozzle, no propellers). Replaces ROTOR_BOT_PRODUCTION_ATLAS_V1 (propeller fins).
-    // Charge/Attack A and Attack/Dive B are omitted until a transparent export exists (exhaust plumes can't be cleanly matted from the sheet).
-    media: { thumb: E + "rotor-bot-v13-a", render: E + "rotor-bot-v13-a", icon: null },
+    // 2026-10-13: owner-approved 1254 px renders. Geometry authority = the three owner-locked A/B/C views (kept below as
+    // "Design views"): 3 fixed red spikes, 4 primary fixed thrusters + 1 lower stabilization nozzle, no propeller blades.
+    // Only the flame strength varies between the action stills. Close-ups are intentional detail frames.
+    studioHero: true, heroFirst: true, heroLabel: "Hover",
+    media: { thumb: "assets/entities/studio/rotor-bot-hover-hd", render: "assets/entities/studio/rotor-bot-hover-hd", icon: null },
+    cardAlt: "assets/entities/studio/rotor-bot-thrust-hd",
     copy: { provisional: true, summary: "Fast, agile flying enemy with a spherical core and fixed thruster nozzles.", behaviour: "Hovers, patrols, spots you and attacks from above.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Thrusters firing · B": E + "rotor-bot-v13-b", "Thrusters firing · C": E + "rotor-bot-v13-c" },
-    states: {},
+    views: { "Design view A": E + "rotor-bot-v13-a", "Design view B": E + "rotor-bot-v13-b", "Design view C": E + "rotor-bot-v13-c" },
+    viewsLabel: "Design views",
+    states: { "Hover": "assets/entities/studio/rotor-bot-hover-hd", "Full thrust": "assets/entities/studio/rotor-bot-thrust-hd", "Attack run": "assets/entities/studio/rotor-bot-flight-hd", "Inactive": "assets/entities/studio/rotor-bot-inactive-hd" },
+    details: { "Core": "assets/entities/studio/rotor-bot-core-hd", "Thruster": "assets/entities/studio/rotor-bot-nozzle-hd", "Spike collar": "assets/entities/studio/rotor-bot-spike-hd" },
     angles: angles("top", "bottom"), cardScale: 0.86, height: 0.8, scale: null,
-    // PUBLIC CURATION 2026-10-11: final fixed-nozzle design: hero + Idle/hover + Patrol (thruster flame). Source cells 139–195 px; shown at native size. Archived: Alert/Inactive (near-dupes), Defeated A/B (dirt residue), 6 turnarounds.
-    archived: { "Alert": "assets/entities/rotor-bot-alert", "Inactive": "assets/entities/rotor-bot-inactive", "Defeated A": "assets/entities/rotor-bot-defeated-a", "Defeated B": "assets/entities/rotor-bot-defeated-b", "Front": "assets/entities/rotor-bot-front", "¾ view": "assets/entities/rotor-bot-threeq", "Side": "assets/entities/rotor-bot-side", "Back": "assets/entities/rotor-bot-back", "Top": "assets/entities/rotor-bot-top", "Bottom": "assets/entities/rotor-bot-bottom" },
-    // 2026-10-13: owner-locked final renders A/B/C (1254 px, 3 fixed spikes, 4 side thrusters + bottom nozzle, full flames) replace the
-    // 139–408 px sheet crops. Previous public hero + Idle/Patrol kept as files: rotor-bot-hero, rotor-bot-idle, rotor-bot-patrol.
+    // Archived: older sheet-era states. The v13 A/B/C views above are NOT archived (owner-locked authority).
+    archived: { "Alert": "assets/entities/rotor-bot-alert", "Inactive (sheet)": "assets/entities/rotor-bot-inactive", "Defeated A": "assets/entities/rotor-bot-defeated-a", "Defeated B": "assets/entities/rotor-bot-defeated-b", "Front": "assets/entities/rotor-bot-front", "¾ view": "assets/entities/rotor-bot-threeq", "Side": "assets/entities/rotor-bot-side", "Back": "assets/entities/rotor-bot-back", "Top": "assets/entities/rotor-bot-top", "Bottom": "assets/entities/rotor-bot-bottom" },
   },
   "sentry-cannon": {
     name: "Sentry Cannon", type: "enemy", status: "APPROVED",
@@ -206,7 +217,7 @@ window.GB_ENTITIES = {
   "smartwatch": {
     name: "SMARTWATCH", type: "gadget", status: "APPROVED",
     media: { thumb: "assets/gear/smartwatch-lineup", render: "assets/gear/smartwatch-lineup", icon: null },
-    copy: { summary: "The Gamers' smartwatch, in Blue, Red, Yellow and Purple.", behaviour: "Runs the Gamers' hacking software alongside the watch face.", where: "Worn by every Gamer." },
+    copy: { summary: "The Gamers' smartwatch, in Blue, Red, Yellow and Purple.", behaviour: "Worn on the wrist in each Gamer's own colour.", where: "Worn by every Gamer." },
     encounter: [], states: {}, views: { "Lineup": "assets/gear/smartwatch-lineup", "Showcase": "assets/gear/smartwatch-hardware" }, angles: angles(), scale: null,
   },
   "glitchkey": {

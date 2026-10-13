@@ -1,0 +1,145 @@
+{
+ "note": "owner-approved 1254x1254 RGB studio renders used whole (no crop, no alpha extraction)",
+ "slots": {
+  "goom-idle": {
+   "source_file": "GOOM_01_IDLE_STUDIO_APPROVED_2026-10-13.png",
+   "source_sha256": "455efd5f9969c74f88d0547659f64d21ae4b933d2bec8cb1b7a007b7b5bf6fc8",
+   "bytes": 2095775
+  },
+  "goom-alert": {
+   "source_file": "GOOM_02_ALERT_SURPRISED_APPROVED_2026-10-13.png",
+   "source_sha256": "49b8aa0c1b294cf70869b0a8ee4a82bff1b8ec5b1b49915ef361bb10881f3fbc",
+   "bytes": 1979046
+  },
+  "goom-attack": {
+   "source_file": "GOOM_04_ATTACK_ANGRY_APPROVED_2026-10-13.png",
+   "source_sha256": "edcc4afa4d4e44744b18ef303e308a86643a8cdf75b691d6a9dbe3dde61b5acf",
+   "bytes": 2007005
+  },
+  "goom-charge": {
+   "source_file": "GOOM_05_CHARGE_ACTION_APPROVED_2026-10-13.png",
+   "source_sha256": "31fc99ea6998a8e9f82881a6ea87ec37263df53330746f90c929a29003eec8d4",
+   "bytes": 2099079
+  },
+  "goom-defeated": {
+   "source_file": "GOOM_06_DEFEATED_X_EYES_APPROVED_2026-10-13.png",
+   "source_sha256": "2b35f0ed4f1e03d11e33464c9f5623253ac8fc6256f9f7959489f2bc0ef9e524",
+   "bytes": 2004457
+  },
+  "goom-face": {
+   "source_file": "GOOM_07_ATTACK_FACE_CLOSEUP_APPROVED_2026-10-13.png",
+   "source_sha256": "73758763186092e395afbaed9f01a58a2ce61c8a05a8997d677f5ea418785587",
+   "bytes": 2321497
+  },
+  "spike-bot-hero": {
+   "source_file": "SPIKE_BOT_01_HERO_APPROVED_2026-10-13.png",
+   "source_sha256": "b657d419e7dc98a77170b77d1b0b7a6f8043ab46b927af413e5ac8b43ecd3bbf",
+   "bytes": 2107054
+  },
+  "spike-bot-alert": {
+   "source_file": "SPIKE_BOT_06_ALERT_READY_APPROVED_2026-10-13.png",
+   "source_sha256": "1acd6d6c77a322e8298edfe62bd641e4db881dc8c219285492198e73fb40f6d6",
+   "bytes": 1990529
+  },
+  "spike-bot-roll": {
+   "source_file": "SPIKE_BOT_04_ROLL_ACTION_APPROVED_2026-10-13.png",
+   "source_sha256": "c0a7ff4a19a278f05299e66ae2ba471ddda0a1a9ded1f3d9c9a5cc05432519f6",
+   "bytes": 1948047
+  },
+  "spike-bot-charge": {
+   "source_file": "SPIKE_BOT_05_CHARGE_SPARKS_APPROVED_2026-10-13.png",
+   "source_sha256": "a336e9612d85dfdfac6db18f059e01ea8dbaee3d415f2236bf1ba86f08ed751f",
+   "bytes": 2105488
+  },
+  "spike-bot-attack": {
+   "source_file": "SPIKE_BOT_03_ATTACK_ENERGY_EFFECT_APPROVED_2026-10-13.png",
+   "source_sha256": "7e065680084f806eec3ee1249780de0aebd6a5e1455fe7779f67671219fb6838",
+   "bytes": 1964925
+  },
+  "spike-bot-defeated": {
+   "source_file": "SPIKE_BOT_02_DEFEATED_INACTIVE_APPROVED_2026-10-13.png",
+   "source_sha256": "dcc9b6d9a7e4424da185c11475c7b9b094bcbbb2c2ac3710aca63effb2c3e21c",
+   "bytes": 2069178
+  },
+  "rotor-bot-hover": {
+   "source_file": "ROTOR_BOT_01_HOVER_APPROVED_2026-10-13.png",
+   "source_sha256": "af96a45e110be31af9e92165af82e233111f44c824da010b5e8ad6edfe4a1f40",
+   "bytes": 2175240
+  },
+  "rotor-bot-thrust": {
+   "source_file": "ROTOR_BOT_03_ATTACK_MAX_THRUST_APPROVED_2026-10-13.png",
+   "source_sha256": "8d93e475a5caa1c157714b0ea7723cd0efac3d364b41e46aee9ba6d3c4aff6c5",
+   "bytes": 2146612
+  },
+  "rotor-bot-flight": {
+   "source_file": "ROTOR_BOT_04_ATTACK_ANGLED_FLIGHT_APPROVED_2026-10-13.png",
+   "source_sha256": "928e1b43a2de830413882ee942a37502dede9abd8c448b0f86d669b8922d3f46",
+   "bytes": 2108056
+  },
+  "rotor-bot-inactive": {
+   "source_file": "ROTOR_BOT_05_DEFEATED_NO_FLAMES_APPROVED_2026-10-13.png",
+   "source_sha256": "7c0c11962017e0b0cae85716a1313560cf700bf8d57dedf9bdd383bd65af19ee",
+   "bytes": 2401219
+  },
+  "rotor-bot-core": {
+   "source_file": "ROTOR_BOT_06_CORE_CLOSEUP_APPROVED_2026-10-13.png",
+   "source_sha256": "7b593c61763b0d7d66f55d31e692744309dab6f5a60fefbe3d24662b5b3b392d",
+   "bytes": 2850240
+  },
+  "rotor-bot-nozzle": {
+   "source_file": "ROTOR_BOT_07_THRUSTER_CLOSEUP_APPROVED_2026-10-13.png",
+   "source_sha256": "85200fa6bfa64a68270d812eb6ccf543905200333303b515b9cc671fbcde4054",
+   "bytes": 2077986
+  },
+  "rotor-bot-spike": {
+   "source_file": "ROTOR_BOT_08_RED_SPIKE_COLLAR_CLOSEUP_APPROVED_2026-10-13.png",
+   "source_sha256": "5c8aa89babb0e64476e396fff6fba582bf3f93b40ab3c8805a4d825b6f0c39bc",
+   "bytes": 2195291
+  },
+  "claw-bot-idle": {
+   "source_file": "CLAW_BOT_01_IDLE_HERO_APPROVED_STUDIO_2026-10-13.png",
+   "source_sha256": "60dc5374e22376269c6847e1561f865bd2d1204dbad832a25695ce48d8a675e4",
+   "bytes": 1961866
+  },
+  "claw-bot-scuttle": {
+   "source_file": "CLAW_BOT_02_WALK_SCUTTLE_APPROVED_STUDIO_2026-10-13.png",
+   "source_sha256": "1aaf4148695c5a357fa44076cfb85f4e3dcd9aa1a131e443cef85426bc383e36",
+   "bytes": 1914887
+  },
+  "claw-bot-alert": {
+   "source_file": "CLAW_BOT_07_ALERT_RAISED_SPLIT_CLAWS_SITE_APPROVED_2026-10-13.png",
+   "source_sha256": "9f2c04431d94d7ed29e522dafb6adbb25aea7da97317175a9bd7e92b4e6645bd",
+   "bytes": 1996672
+  },
+  "claw-bot-clamp": {
+   "source_file": "CLAW_BOT_04_ATTACK_CLAMP_A_APPROVED_STUDIO_2026-10-13.png",
+   "source_sha256": "4c6f95144bf253c5f84859d617a17b8401e3130db83e84c65fadaac009bc21f3",
+   "bytes": 1966297
+  },
+  "claw-bot-clamp-forward": {
+   "source_file": "CLAW_BOT_09_ATTACK_FORWARD_CLAMP_SITE_APPROVED_2026-10-13.png",
+   "source_sha256": "ec086c80ed9d1616e476f7539d042c7d86c3e0fc799880a919d787b52ef7ebbf",
+   "bytes": 2005781
+  },
+  "claw-bot-defeated": {
+   "source_file": "CLAW_BOT_06_DEFEATED_APPROVED_STUDIO_2026-10-13.png",
+   "source_sha256": "391aa5fd23ab8f394938b86a8f74831cb9dcfe7208ba69864c0e3d5f27681be2",
+   "bytes": 1883946
+  },
+  "claw-bot-claw-closed": {
+   "source_file": "CLAW_BOT_11_MECHANICAL_CLOSED_SPLIT_CLAW_DETAIL_SITE_APPROVED_2026-10-13.png",
+   "source_sha256": "e1798703a93248a251c73147aef018d95be2217a9ccf3a3ab33e2d3621d7d802",
+   "bytes": 1749738
+  },
+  "claw-bot-claw-open": {
+   "source_file": "CLAW_BOT_12_MECHANICAL_OPEN_SPLIT_CLAW_DETAIL_SITE_APPROVED_2026-10-13.png",
+   "source_sha256": "4b11013938e17058388864afbfe46467439490eecfd65122bc50b693f5ac998d",
+   "bytes": 1987293
+  },
+  "claw-bot-hinge": {
+   "source_file": "CLAW_BOT_13_MECHANICAL_HINGE_ACTUATOR_DETAIL_SITE_APPROVED_2026-10-13.png",
+   "source_sha256": "b91c153bcb42c5a537da2927d7b5b305dddbf1af94962fca2e9bf37423638d62",
+   "bytes": 1991270
+  }
+ }
+}

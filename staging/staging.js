@@ -2,9 +2,8 @@
 (() => {
   "use strict";
 
-  // Set this once a real Steam store page exists; until then the buttons explain "coming soon".
-  const STEAM_URL = "";
-
+  // Transient notices (area status, etc.). 2026-10-13: the Steam "coming soon" promise was removed: there is no approved store
+  // page, so the primary call to action is navigational (Explore the Mountain → #world) and makes no platform claim.
   const toast = document.getElementById("steamNote");
   let toastTimer = null;
   function showToast(text) {
@@ -13,13 +12,6 @@
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => toast.classList.remove("is-on"), 2600);
   }
-
-  document.querySelectorAll(".js-steam").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      if (STEAM_URL) window.open(STEAM_URL, "_blank", "noopener");
-      else showToast("Steam store page coming soon.");
-    });
-  });
 
   // ---------- menu (compact header) ----------
   const nav = document.getElementById("nav");
@@ -345,6 +337,13 @@
   // studio tile (opaque 4:3 production-sheet frame on its own light background): shown whole, never cropped
   const studio = (src, cls, alt, small) => `<span class="gbm studio-fit ${cls}" style="${frameVars(src)}"><img src="${asset(src, small)}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`;
   const isStudio = (src) => !!(MEDIA[src] && !MEDIA[src].alpha && src.indexOf("/studio/") > -1);
+  // square studio renders (the 2026-10-13 enemy library) get a square stage so nothing is ever cropped
+  const isSq = (src) => !!(MEDIA[src] && Math.abs(MEDIA[src].w / MEDIA[src].h - 1) < 0.06);
+  // enemy card art: the whole opaque studio render, responsive (960 px / full), band clipped by .gbm
+  const cardImg = (src, cls, sizes) => {
+    const m = MEDIA[src];
+    return `<span class="gbm ${cls}" style="${frameVars(src)}"><img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="${sizes}" alt="" loading="lazy" decoding="async" draggable="false"></span>`;
+  };
   const stageInner = (src, alt) => isStudio(src) ? studio(src, "dossier__hero", alt)
     : `<span class="stage-box">${cut(src, "dossier__hero", alt, "(min-width: 720px) 420px, 90vw", true)}</span>`;
   // Selective warm-up (performance, 2026-10-11): fetch at low priority ONLY the few images the visitor can
@@ -436,7 +435,8 @@
       ? Object.entries(e.views || {}).map(([k, v], i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-gview="${v}" aria-label="${esc(e.name)}: ${esc(k)}" aria-pressed="${!i}"><span class="stage-box">${sceneImg({ src: v, fx: 50 }, "", true)}</span><small>${esc(k)}</small></button></li>`).join("")
       : thumbs(e.views);
     const states = thumbs(e.states);
-    const stage = hero && (isCut(hero) || e.scenicHero);
+    const stage = hero && (isCut(hero) || e.scenicHero || e.studioHero);
+    const details = thumbs(e.details);
     const enc = (e.encounter || []).filter((x) => AREAS[x.area] && AREAS[x.area].views[x.view - 1]).map((x) => {
       const a = AREAS[x.area], v = a.views[x.view - 1];
       return `<li><a href="#area/${x.area}/${x.view}" data-goto-area>${media(v.src, "dossier__enc", v.alt, "small")}
@@ -459,7 +459,7 @@
     const viewsRow = gallery.length ? "" : views;
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
-        ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : stageInner(hero, e.name)}</div>
+        ? `<div class="dossier__stage${sc ? " is-scene" : ""}${!sc && isStudio(hero) ? " is-studio" + (isSq(hero) ? " is-square" : "") : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : stageInner(hero, e.name)}</div>
            <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : esc(e.heroLabel || "Hero")}</span></p>`
         : !hero && e.type === "gadget"
           ? `<span class="dossier__render media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-key"/></svg><span>More to come</span></span>`
@@ -469,6 +469,7 @@
         ${scenesOf(id).length > 1 ? `<h3>${e.scenicHero ? "Approved reference imagery" : "In the world"}</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
         ${lead}
         ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : statesPre ? "Gallery" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some((v) => isCut(v) || isStudio(v)) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${statesPre}${states}</ul>` : ""}
+                ${details ? `<h3>Close-ups</h3><ul class="dossier__picks dossier__picks--states">${details}</ul>` : ""}
                 ${viewsRow && nPicks(viewsRow) > 1 ? `<h3>${esc(e.viewsLabel || "Views")}</h3><ul class="dossier__picks">${viewsRow}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
@@ -555,6 +556,7 @@
         const sc = pick.dataset.scene && sceneOf(pick.dataset.scene);
         st.classList.toggle("is-scene", !!sc);
         st.classList.toggle("is-studio", !sc && isStudio(pick.dataset.hero));
+        st.classList.toggle("is-square", !sc && isStudio(pick.dataset.hero) && isSq(pick.dataset.hero));
         st.innerHTML = sc ? sceneImg(sc, `${nm} in Adventure Mountain™`) : stageInner(pick.dataset.hero, `${nm}: ${pick.dataset.heroLabel}`);
         document.getElementById("entStageLabel").textContent = pick.dataset.heroLabel;
         eBody.querySelectorAll("[data-hero], [data-scene]").forEach((b) => b.setAttribute("aria-pressed", String(b === pick)));
@@ -732,7 +734,7 @@
     const e = ENTITIES[id];
     const t = e.media.thumb;
     return `<li${id === "brightback" ? ' class="foes__apex"' : ""}><button class="foe${id === "brightback" ? " foe--apex" : ""}${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
-      <span class="foe__stage">${t && isCut(t) ? cut(t, id === "brightback" ? "foe__cut foe__cut--apex" : "foe__cut", "", id === "brightback" ? "(min-width: 720px) 560px, 94vw" : "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
+      <span class="foe__stage${e.studioHero ? " foe__stage--studio" : ""}"${e.cardAlt ? ` data-peek="${esc(Object.keys(e.states || {}).find((k) => e.states[k] === e.cardAlt) || "")}"` : ""}>${e.studioHero && isStudio(t) ? cardImg(t, "foe__studio", "(min-width: 1100px) 290px, (min-width: 720px) 22vw, 46vw") + (e.cardAlt ? cardImg(e.cardAlt, "foe__studio foe__studio--alt", "(min-width: 1100px) 290px, (min-width: 720px) 22vw, 46vw") : "") : t && isCut(t) ? cut(t, id === "brightback" ? "foe__cut foe__cut--apex" : "foe__cut", "", id === "brightback" ? "(min-width: 720px) 560px, 94vw" : "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
       <span class="foe__text"><strong>${esc(e.name)}</strong>${id === "brightback" ? "<small>Apex evolution · Prism Ridge™</small>" : ""}</span>
     </button></li>`;
   }).join("") + `<li class="foes__evo"><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">

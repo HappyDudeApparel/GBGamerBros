@@ -2313,6 +2313,18 @@ window.GB_MEDIA = {
   "rev": "63431c58a3",
   "srev": "0d83bcf4d4"
  },
+ "assets/entities/studio/claw-bot-alert-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_07_ALERT_RAISED_SPLIT_CLAWS_SITE_APPROVED_2026-10-13.png",
+  "rev": "41c492f1ec",
+  "srev": "3ab1da5fec"
+ },
  "assets/entities/studio/claw-bot-alert-st": {
   "w": 272,
   "h": 204,
@@ -2336,6 +2348,102 @@ window.GB_MEDIA = {
   "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
   "rev": "3edda8ba2d",
   "srev": "184eacabe4"
+ },
+ "assets/entities/studio/claw-bot-clamp-forward-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_09_ATTACK_FORWARD_CLAMP_SITE_APPROVED_2026-10-13.png",
+  "rev": "65d40738ad",
+  "srev": "59aaff7d10"
+ },
+ "assets/entities/studio/claw-bot-clamp-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_04_ATTACK_CLAMP_A_APPROVED_STUDIO_2026-10-13.png",
+  "rev": "b7b5ab9d08",
+  "srev": "1fb8462e53"
+ },
+ "assets/entities/studio/claw-bot-claw-closed-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_11_MECHANICAL_CLOSED_SPLIT_CLAW_DETAIL_SITE_APPROVED_2026-10-13.png",
+  "rev": "303bff7746",
+  "srev": "3c2ceb141c"
+ },
+ "assets/entities/studio/claw-bot-claw-open-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_12_MECHANICAL_OPEN_SPLIT_CLAW_DETAIL_SITE_APPROVED_2026-10-13.png",
+  "rev": "8a78741848",
+  "srev": "031c786180"
+ },
+ "assets/entities/studio/claw-bot-defeated-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_06_DEFEATED_APPROVED_STUDIO_2026-10-13.png",
+  "rev": "f711ac3fb0",
+  "srev": "2656a76971"
+ },
+ "assets/entities/studio/claw-bot-hinge-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_13_MECHANICAL_HINGE_ACTUATOR_DETAIL_SITE_APPROVED_2026-10-13.png",
+  "rev": "8d2211ca54",
+  "srev": "3d0ccac793"
+ },
+ "assets/entities/studio/claw-bot-idle-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_01_IDLE_HERO_APPROVED_STUDIO_2026-10-13.png",
+  "rev": "fc592b76f8",
+  "srev": "4fe46735f5"
+ },
+ "assets/entities/studio/claw-bot-scuttle-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_02_WALK_SCUTTLE_APPROVED_STUDIO_2026-10-13.png",
+  "rev": "d599c693b3",
+  "srev": "0b3d430d49"
  },
  "assets/entities/studio/claw-bot-walk-st": {
   "w": 280,
@@ -2373,6 +2481,18 @@ window.GB_MEDIA = {
   "rev": "917a7b3d18",
   "srev": "9d02b115f9"
  },
+ "assets/entities/studio/goom-alert-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_02_ALERT_SURPRISED_APPROVED_2026-10-13.png",
+  "rev": "9f9febff63",
+  "srev": "f6e03e3705"
+ },
  "assets/entities/studio/goom-alert-st": {
   "w": 444,
   "h": 333,
@@ -2385,6 +2505,30 @@ window.GB_MEDIA = {
   "rev": "0064c0ab39",
   "srev": "da034340a1"
  },
+ "assets/entities/studio/goom-attack-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_04_ATTACK_ANGRY_APPROVED_2026-10-13.png",
+  "rev": "f106046f12",
+  "srev": "db55de48eb"
+ },
+ "assets/entities/studio/goom-charge-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_05_CHARGE_ACTION_APPROVED_2026-10-13.png",
+  "rev": "7ed9c94060",
+  "srev": "b5daf72f29"
+ },
  "assets/entities/studio/goom-charge-st": {
   "w": 652,
   "h": 489,
@@ -2396,6 +2540,42 @@ window.GB_MEDIA = {
   "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
   "rev": "1d3b142cb3",
   "srev": "e37f38519b"
+ },
+ "assets/entities/studio/goom-defeated-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_06_DEFEATED_X_EYES_APPROVED_2026-10-13.png",
+  "rev": "7e02fbe2fa",
+  "srev": "87e4ccde94"
+ },
+ "assets/entities/studio/goom-face-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_07_ATTACK_FACE_CLOSEUP_APPROVED_2026-10-13.png",
+  "rev": "15761f530e",
+  "srev": "cca2c4307b"
+ },
+ "assets/entities/studio/goom-idle-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_01_IDLE_STUDIO_APPROVED_2026-10-13.png",
+  "rev": "268c747051",
+  "srev": "ac34c9e508"
  },
  "assets/entities/studio/goom-walk-st": {
   "w": 428,
@@ -2445,6 +2625,102 @@ window.GB_MEDIA = {
   "rev": "74510cd28d",
   "srev": "bf225dd3a2"
  },
+ "assets/entities/studio/rotor-bot-core-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_06_CORE_CLOSEUP_APPROVED_2026-10-13.png",
+  "rev": "78728ea7fe",
+  "srev": "9106ebaee0"
+ },
+ "assets/entities/studio/rotor-bot-flight-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_04_ATTACK_ANGLED_FLIGHT_APPROVED_2026-10-13.png",
+  "rev": "f6d5c3da63",
+  "srev": "7f034dc202"
+ },
+ "assets/entities/studio/rotor-bot-hover-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_01_HOVER_APPROVED_2026-10-13.png",
+  "rev": "7f86fa7cf3",
+  "srev": "a599c95788"
+ },
+ "assets/entities/studio/rotor-bot-inactive-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_05_DEFEATED_NO_FLAMES_APPROVED_2026-10-13.png",
+  "rev": "42509b6fe7",
+  "srev": "db416f91f8"
+ },
+ "assets/entities/studio/rotor-bot-nozzle-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_07_THRUSTER_CLOSEUP_APPROVED_2026-10-13.png",
+  "rev": "d2e27a1798",
+  "srev": "9c0536736f"
+ },
+ "assets/entities/studio/rotor-bot-spike-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_08_RED_SPIKE_COLLAR_CLOSEUP_APPROVED_2026-10-13.png",
+  "rev": "9603f82228",
+  "srev": "fd7188a6c8"
+ },
+ "assets/entities/studio/rotor-bot-thrust-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_03_ATTACK_MAX_THRUST_APPROVED_2026-10-13.png",
+  "rev": "d2582173b9",
+  "srev": "e02438c4f7"
+ },
+ "assets/entities/studio/spike-bot-alert-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_06_ALERT_READY_APPROVED_2026-10-13.png",
+  "rev": "53ce681782",
+  "srev": "6ec3218fa9"
+ },
  "assets/entities/studio/spike-bot-alert-st": {
   "w": 420,
   "h": 315,
@@ -2456,6 +2732,18 @@ window.GB_MEDIA = {
   "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
   "rev": "42e429a570",
   "srev": "b929bf6aef"
+ },
+ "assets/entities/studio/spike-bot-attack-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_03_ATTACK_ENERGY_EFFECT_APPROVED_2026-10-13.png",
+  "rev": "5fef5eaba8",
+  "srev": "dae3afd336"
  },
  "assets/entities/studio/spike-bot-attack-st": {
   "w": 484,
@@ -2469,6 +2757,30 @@ window.GB_MEDIA = {
   "rev": "7ce9382907",
   "srev": "6bc1cc5e60"
  },
+ "assets/entities/studio/spike-bot-charge-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_05_CHARGE_SPARKS_APPROVED_2026-10-13.png",
+  "rev": "ad3d0579c8",
+  "srev": "404800ae7e"
+ },
+ "assets/entities/studio/spike-bot-defeated-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_02_DEFEATED_INACTIVE_APPROVED_2026-10-13.png",
+  "rev": "c2ec98f96b",
+  "srev": "a8fd18f4cc"
+ },
  "assets/entities/studio/spike-bot-defeated-st": {
   "w": 400,
   "h": 300,
@@ -2480,6 +2792,30 @@ window.GB_MEDIA = {
   "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
   "rev": "c890c5be1d",
   "srev": "bb4b516421"
+ },
+ "assets/entities/studio/spike-bot-hero-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_01_HERO_APPROVED_2026-10-13.png",
+  "rev": "b76e5a68d3",
+  "srev": "4867e2770f"
+ },
+ "assets/entities/studio/spike-bot-roll-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_04_ROLL_ACTION_APPROVED_2026-10-13.png",
+  "rev": "e6cb1a05fc",
+  "srev": "bc71d50f46"
  },
  "assets/entities/studio/stone-golem-walk-st": {
   "w": 536,
