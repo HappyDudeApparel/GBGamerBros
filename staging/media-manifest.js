@@ -3773,7 +3773,7 @@ window.GB_MEDIA = {
   "srev": "704e94afd1",
   "mrev": "9bcf24a281"
  },
- "assets/systems/preview-04-trail-junction": {
+ "assets/systems/preview-prism-keeper-encounter": {
   "w": 1672,
   "h": 941,
   "band": 30,
@@ -3781,8 +3781,8 @@ window.GB_MEDIA = {
   "sh": 540,
   "sband": 17,
   "alpha": false,
-  "master": "adventure_mountain_portal_meadow_vista.png",
-  "rev": "57a80c8eb6",
-  "srev": "188a8197a5"
+  "master": "GB_GAMER_BROS_Prism_Ridge_Prism_Keeper_vs_GB_Blue_Ground_Slam_Approved_2026-10-12.png",
+  "rev": "83671df61a",
+  "srev": "d174bcb82a"
  }
 };

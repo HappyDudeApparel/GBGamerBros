@@ -153,7 +153,7 @@ window.GB_ENTITIES = {
     // Stage 4 follows Prism Keeper; do not borrow this silhouette or its cyan/magenta shards for stage 3.
     // Clean V1 derivative: the figure cut out of the approved V1 sheet (Brightback Final Evolution V1.jpg), so the sheet's baked caption
     // and header strip are gone. The captioned scene crop (brightback-v1-hero.png) stays in the repo as a reference but is not shown publicly.
-    scenicHero: true, heroFirst: true, heroLabel: "Hero (V1)",
+    scenicHero: true, heroFirst: true, heroLabel: "Final form",
     media: { thumb: E + "brightback-v1-cutout", render: E + "brightback-v1-cutout", icon: null },
     copy: { summary: "The towering fourth evolution of the Rumbler™ line, with deeper violet stone and larger Prism Shards.", behaviour: "An imposing apex form.", where: "Prism Ridge™." },
     encounter: [],

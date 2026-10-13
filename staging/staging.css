@@ -1677,3 +1677,54 @@ html.is-locked{overflow:hidden}
 
 /* the primary call to action is now a link (Explore the Mountain), not a Steam button */
 a.steam,a.steam:visited{text-decoration:none;color:#fff}
+
+/* ===== 2026-10-13 Enemy Spotlight: a cinematic stage above the roster =====
+   One bot at a time on a dark arena, shown as the whole approved studio render on a light "specimen plate" (never cropped). The pose
+   cycles idle → alert → attack until the visitor takes over; it never autoplays under prefers-reduced-motion. */
+.spot{--accent:#ff8a2b;position:relative;display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center;
+  margin:0 0 18px;padding:clamp(14px,2.2vw,26px);border-radius:22px;overflow:hidden;color:#fff;
+  background:radial-gradient(120% 90% at 18% 20%,color-mix(in srgb,var(--accent) 22%,transparent) 0,transparent 55%),linear-gradient(135deg,#0b2a6b 0%,#071c4f 62%,#0a1840 100%);
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.55),0 18px 40px rgba(7,28,79,.35)}
+.spot[hidden]{display:none}
+.spot::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.spot__plate{position:relative;width:100%;aspect-ratio:1/1;border-radius:18px;background:#eef3fb;padding:0;overflow:hidden;
+  box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 0 6px color-mix(in srgb,var(--accent) 70%,transparent),0 20px 36px rgba(0,8,30,.45)}
+.spot__frame{position:absolute;inset:0}
+.spot__img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;opacity:0;transition:opacity .6s ease}
+.spot__img.is-on{opacity:1}
+.spot__img > img{object-fit:contain;object-position:50% 50%}
+.spot__info{display:grid;gap:10px;min-width:0}
+.spot__kicker{margin:0;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.spot__name{margin:0;font-size:clamp(28px,4vw,52px);font-weight:900;font-style:italic;line-height:1;text-transform:uppercase;letter-spacing:.005em;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.spot__sum{margin:0;max-width:46ch;font-size:clamp(14px,1.25vw,17px);line-height:1.45;color:#dbe9ff}
+.spot__states{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.spot__states button{padding:8px 14px;border:0;border-radius:99px;background:rgba(255,255,255,.12);color:#fff;font:inherit;font-size:12px;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28);transition:background .2s,color .2s,box-shadow .2s}
+.spot__states button:hover{background:rgba(255,255,255,.22)}
+.spot__states button[aria-pressed="true"]{background:#fff;color:#0b2a6b;box-shadow:0 0 0 2px var(--accent)}
+.spot__open{justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:11px 18px;border:0;border-radius:99px;background:var(--accent);color:#1a0b00;
+  font:inherit;font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.3);transition:transform .2s,filter .2s}
+.spot__open:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.spot__open svg{width:15px;height:15px}
+.spot__roster{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.spot__roster button{padding:9px 16px;border:0;border-radius:12px;background:transparent;color:#bcd6ff;font:inherit;font-size:13px;font-weight:800;font-style:italic;letter-spacing:.04em;
+  text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.spot__roster button:hover{color:#fff;background:rgba(255,255,255,.1)}
+.spot__roster button[aria-selected="true"]{background:#fff;color:#0b2a6b}
+.spot button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (max-width:899px){
+  .spot{grid-template-columns:1fr;gap:16px}
+  .spot__plate{max-width:min(460px,100%);justify-self:center}
+  .spot__roster{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .spot__roster button{flex:none}
+}
+@media (prefers-reduced-motion:reduce){.spot__img,.spot__states button,.spot__open,.spot__roster button{transition:none}.spot__open:hover{transform:none}}
+/* the overscan band sits below the picture inside the file; clip it exactly (plus 1 px of anti-alias bleed) so no hairline shows */
+#foes .foe__stage--studio .foe__studio > img,.spot__img > img{clip-path:inset(0 0 calc(100% - 100% / var(--ext,1) + 1px) 0)}
+/* short landscape phones: side-by-side with a plate that fits the screen height */
+@media (orientation:landscape) and (max-height:520px){
+  .spot{grid-template-columns:minmax(0,min(300px,70vh)) minmax(0,1fr);gap:18px;padding:12px 16px}
+  .spot__plate{max-width:none;justify-self:stretch}
+  .spot__name{font-size:clamp(24px,4vw,36px)}
+  .spot__roster{flex-wrap:wrap;overflow:visible}
+}

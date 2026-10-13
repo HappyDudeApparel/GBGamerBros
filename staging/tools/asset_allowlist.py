@@ -58,6 +58,7 @@ SUPERSEDED = {
     "assets/systems/fast-travel-portal": "generic generated portal image, not an established portal design (owner QA 2026-10-13)",
     "assets/entities/scenes/goom-ingame": "wrong-region flag and malformed background Goom",
 }
+SUPERSEDED["assets/systems/preview-04-trail-junction"] = "rejected by the owner 2026-10-13 (wrong enemies, inaccurate flag); no replacement trail scene approved yet"
 # 2026-10-13 (quality pass): owner-approved 1254 px standalone studio renders replace the earlier cutouts and sheet-crop tiles
 for _k in ("goom", "spike-bot", "claw-bot"):
     SUPERSEDED[f"assets/entities/{_k}-v14"] = "superseded 2026-10-13 by the approved 1254 px studio renders (studio/*-hd)"

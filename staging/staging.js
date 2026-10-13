@@ -50,7 +50,9 @@
   // slides marked data-skip="phone-portrait" leave the rotation on phone portrait screens
   // (slide 3: Gamer Girl Yellow™ would sit behind the fixed Adventure Mountain™ sign there)
   const phonePortrait = window.matchMedia("(max-width: 599px) and (max-aspect-ratio: 1/1)");
-  const live = () => slides.filter((s) => !(s.dataset.skip === "phone-portrait" && phonePortrait.matches));
+  // data-skip="portrait" (any portrait screen): wide action art that cannot be framed in a tall band without cutting the character
+  const anyPortrait = window.matchMedia("(max-aspect-ratio: 1/1)");
+  const live = () => slides.filter((s) => !(s.dataset.skip === "phone-portrait" && phonePortrait.matches) && !(s.dataset.skip === "portrait" && anyPortrait.matches));
   function syncSlides() {
     const L = live();
     slides.forEach((s, i) => {
@@ -74,6 +76,7 @@
     fgLayers.forEach((f) => f.classList.toggle("is-active", slides[Number(f.dataset.slide)] === cur));
   }
   phonePortrait.addEventListener("change", () => { syncSlides(); go(0); });
+  anyPortrait.addEventListener("change", () => { syncSlides(); go(0); });
   syncSlides();
   function restart() {
     clearInterval(timer);
@@ -742,6 +745,74 @@
       <span class="foe-evo__line">Rumbler™ <i>→</i> Stone Walker™ <i>→</i> Prism Keeper™ <i>→</i> Brightback™</span>
       <span class="foe-evo__go">See how it evolves<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </button></li>`;
+
+  // ---------- Enemy Spotlight (2026-10-13) ----------
+  // A stage above the roster: one bot at a time, shown as the owner-approved studio renders (whole image, never cropped), cycling
+  // idle → alert → attack until the visitor takes control. Uses only each dossier's public states and copy; no mechanics are added.
+  (() => {
+    const host = document.getElementById("foeSpot");
+    const ids = ["goom", "spike-bot", "rotor-bot", "claw-bot"].filter((id) => ENTITIES[id] && ENTITIES[id].studioHero);
+    if (!host || !ids.length) return;
+    const SIZES = "(min-width: 900px) 460px, 92vw";
+    const accent = { "goom": "#ffb21f", "spike-bot": "#ff4b3a", "rotor-bot": "#ff8a2b", "claw-bot": "#ff4b3a" };
+    let cur = 0, st = 0, timer = null, user = false, visible = false;
+    const stateKeys = (id) => Object.keys(ENTITIES[id].states || {}).filter((k) => MEDIA[ENTITIES[id].states[k]]);
+    host.innerHTML = `
+      <div class="spot__plate"><div class="spot__frame" id="spotFrame"></div></div>
+      <div class="spot__info">
+        <p class="spot__kicker">Enemy spotlight</p>
+        <h3 class="spot__name" id="spotName"></h3>
+        <p class="spot__sum" id="spotSum"></p>
+        <div class="spot__states" id="spotStates" role="group" aria-label="Poses"></div>
+        <button class="spot__open" id="spotOpen" type="button" data-entity="">Open dossier<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="spot__roster" id="spotRoster" role="tablist" aria-label="Choose an enemy">${ids.map((id, i) => `<button type="button" role="tab" data-spot="${i}" aria-selected="${i === 0}">${esc(ENTITIES[id].name)}</button>`).join("")}</div>`;
+    host.hidden = false;
+    const frame = document.getElementById("spotFrame");
+    const setSrc = (img) => { if (img && !img.getAttribute("src")) { img.src = img.dataset.src; img.srcset = img.dataset.srcset; } };
+    function build() {
+      const id = ids[cur], e = ENTITIES[id], keys = stateKeys(id);
+      host.style.setProperty("--accent", accent[id] || "#ff8a2b");
+      frame.innerHTML = keys.map((k, i) => {
+        const src = e.states[k];
+        return `<span class="gbm spot__img${i === 0 ? " is-on" : ""}" style="${frameVars(src)}" data-i="${i}"><img ${i === 0 ? `src="${asset(src, true)}" srcset="${srcset(src)}"` : ""} data-src="${asset(src, true)}" data-srcset="${srcset(src)}" sizes="${SIZES}" alt="${esc(e.name)}: ${esc(k)}" decoding="async" draggable="false"></span>`;
+      }).join("");
+      document.getElementById("spotName").textContent = e.name;
+      document.getElementById("spotSum").textContent = e.copy.summary + (e.copy.behaviour ? " " + e.copy.behaviour : "");
+      document.getElementById("spotStates").innerHTML = keys.map((k, i) => `<button type="button" data-state="${i}" aria-pressed="${i === 0}">${esc(k)}</button>`).join("");
+      const open = document.getElementById("spotOpen"); open.dataset.entity = id; open.setAttribute("aria-label", `Open the ${e.name} dossier`);
+      host.querySelectorAll("[data-spot]").forEach((b) => b.setAttribute("aria-selected", String(Number(b.dataset.spot) === cur)));
+      st = 0;
+      whenIdle(() => setSrc(frame.querySelector('[data-i="1"] img')));
+    }
+    function show(i) {
+      const keys = stateKeys(ids[cur]);
+      st = (i + keys.length) % keys.length;
+      frame.querySelectorAll(".spot__img").forEach((n) => { const on = Number(n.dataset.i) === st; n.classList.toggle("is-on", on); if (on) setSrc(n.querySelector("img")); });
+      document.querySelectorAll("#spotStates [data-state]").forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.state) === st)));
+      whenIdle(() => setSrc(frame.querySelector(`[data-i="${(st + 1) % keys.length}"] img`)));
+    }
+    const stop = () => { clearInterval(timer); timer = null; };
+    const play = () => { stop(); if (!reduceMotion && !user && visible && !document.hidden) timer = setInterval(() => show(st + 1), 3600); };
+    host.addEventListener("click", (e) => {
+      const t = e.target.closest("[data-spot]");
+      if (t) { user = true; stop(); cur = Number(t.dataset.spot); build(); return; }
+      const s = e.target.closest("[data-state]");
+      if (s) { user = true; stop(); show(Number(s.dataset.state)); }
+    });
+    host.addEventListener("keydown", (e) => {   // arrow keys move between the enemy tabs
+      const t = e.target.closest("[data-spot]");
+      if (!t || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
+      e.preventDefault(); user = true; stop();
+      cur = (cur + (e.key === "ArrowRight" ? 1 : -1) + ids.length) % ids.length; build();
+      host.querySelector(`[data-spot="${cur}"]`).focus();
+    });
+    build();
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((es) => { visible = es.some((x) => x.isIntersecting); visible ? play() : stop(); }, { threshold: 0.35 }).observe(host);
+    }
+    document.addEventListener("visibilitychange", () => (document.hidden ? stop() : play()));
+  })();
 
   // ---------- Adventure Finds™ ----------
   document.getElementById("objs").innerHTML = (window.GB_OBJECTS || []).filter((id) => ENTITIES[id]).map((id) => {
