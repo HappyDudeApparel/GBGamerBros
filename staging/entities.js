@@ -262,28 +262,28 @@ window.GB_EVOLUTION = {
 const X = E + "evolution/";
 window.GB_EVOLUTION_DETAIL = {
   boulder: {
+    // uniform 4:3 studio tiles (approved form art, subject unaltered) so every step reads at the same size
     sequence: [
-      { src: X + "evo-boulder-idle", label: "Rumbler", phase: 1 },
-      { src: X + "evo-boulder-rolling", label: "Rolling", phase: 1 },
-      { src: X + "evo-boulder-impact", label: "Impact", phase: 1 },
-      { src: X + "evo-boulder-cracked", label: "Cracked", phase: 1 },
-      { src: X + "evo-golem-forming", label: "Forming", phase: 2 },
-      { src: E + "stone-golem-v14", label: "Stone Walker™", phase: 2 },
-      { src: E + "crystal-guardian-v14", label: "Prism Keeper™", phase: 3 },
-      { src: E + "brightback-v1-cutout", label: "Brightback™", phase: 4 },
+      { src: X + "seq/seq-rumbler", label: "Dormant", phase: 1 },
+      { src: X + "seq/seq-rolling", label: "Rolling", phase: 1 },
+      { src: X + "seq/seq-impact", label: "Impact", phase: 1 },
+      { src: X + "seq/seq-cracked", label: "Fracture", phase: 1 },
+      { src: X + "seq/seq-forming", label: "Forming", phase: 2 },
+      { src: X + "seq/seq-stone-walker", label: "Stone Walker™", phase: 2 },
+      { src: X + "seq/seq-prism-keeper", label: "Prism Keeper™", phase: 3 },
+      { src: X + "seq/seq-brightback", label: "Brightback™", phase: 4 },
     ],
-    // 2026-10-13 owner QA: transformation mechanics are not disclosed publicly (spoilers); the Mechanics tab and its
-    // captions were removed. Visual labels only below.
+    // 2026-10-13 owner QA: transformation mechanics are not disclosed publicly (spoilers). The Mechanics tab shows each
+    // form's public summary and behaviour copy from its own dossier instead.
     scenes: [
-      { src: X + "evo-step-1", label: "Rumbler™", note: "Mossy segmented stone.", phase: 1 },
-      { src: X + "evo-step-2", label: "Energized", note: "Glowing cracks.", phase: 1 },
-      { src: X + "evo-step-3", label: "Impact / fracture", note: "Stone plates break apart.", phase: 1 },
-      { src: X + "evo-step-4", label: "Stone Walker™ forming", note: "Stone Walker™ takes shape.", phase: 2 },
-      // Owner visual audit, 2026-10-10: former evo-step-5 and evo-step-6 incorrectly portrayed
-      // Prism Keeper anatomy. Keep the gallery's earlier approved steps only, pending
-      // verified replacement Phase 3 in-world imagery. Do not relabel mismatched art.
-      // Completed-form reference only: no in-world Rumbler™ line transformation art exists for Phase 4, so none is implied.
-      { src: E + "brightback-v1-cutout", label: "Brightback™ (completed form)", note: "Approved V1 reference art for the finished fourth phase. No in-world transformation scene is documented yet.", phase: 4, reference: true },
+      { src: X + "evo-step-1", label: "Rumbler™", phase: 1 },
+      { src: X + "evo-step-2", label: "Energized", phase: 1 },
+      { src: X + "evo-step-3", label: "Fracture", phase: 1 },
+      { src: X + "evo-step-4", label: "Stone Walker™ forming", phase: 2 },
+      { src: E + "scenes/stone-golem-ingame", label: "Stone Walker™", phase: 2 },
+      { src: E + "scenes/crystal-guardian-ingame", label: "Prism Keeper™", phase: 3 },
+      // no approved in-world Brightback™ scene without a wrong-region banner: the approved V1 form tile stands in
+      { src: X + "seq/seq-brightback", label: "Brightback™", phase: 4, reference: true },
     ],
   },
 };

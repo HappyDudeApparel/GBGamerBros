@@ -1561,3 +1561,46 @@ html.is-locked{overflow:hidden}
 .dossier__pick--studio .stage-box > .gbm.studio-fit{position:absolute;top:0;bottom:0;left:50%;translate:-50% 0;height:100%;width:auto;aspect-ratio:var(--ar)}
 /* one consistent light studio look for every gallery thumbnail (cutouts and studio tiles alike) */
 .dossier__pick .stage-box{background:radial-gradient(circle at 50% 42%,#fff 0,#e6eefa 58%,#c3d6f1 100%)}
+
+/* ===== 2026-10-13 evolution redesign (owner QA): one tile size, no rails, nothing half-visible ===== */
+#entEvo .evo__frame{position:relative;display:block;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#eaf1fb;
+  box-shadow:0 0 0 1.5px rgba(150,205,255,.35)}
+#entEvo .evo__frame > .gbm{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;border-radius:0;box-shadow:none}
+#entEvo .evo__frame > .gbm > img{object-fit:cover;object-position:50% 30%}
+#entEvo .evo__frame > .stage-box{position:absolute;inset:6%}
+#entEvo .is-here > .evo__frame,#entEvo .evo__phase.is-here .evo__frame{box-shadow:0 0 0 2.5px #fff,0 0 0 5px #ffb35c}
+#entEvo .evo__kick{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9fd0ff}
+#entEvo .evo__kick .evo__num--ref{position:static;padding:2px 7px;font-size:9px}
+/* Sequence: 4-column grid; Phase 1 fills the first row, Phases 2–4 share the second */
+#entEvo .evo__phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:12px;row-gap:16px;overflow:visible;padding:0}
+#entEvo .evo__phase{grid-column:span var(--n,1);display:grid;gap:8px;align-content:start;min-width:0;flex:none}
+#entEvo .evo__steps{display:grid;grid-template-columns:repeat(var(--n,1),minmax(0,1fr));gap:12px}
+#entEvo .evo__phases .evo__step{display:grid;gap:6px;min-width:0;flex:none;text-align:center}
+#entEvo .evo__phases .evo__step strong{font-size:11.5px;line-height:1.2;overflow-wrap:normal;word-break:normal;color:#fff;text-transform:uppercase;letter-spacing:.03em}
+#entEvo .evo__phase-h{font-size:12px;letter-spacing:.02em;overflow-wrap:normal;word-break:normal;white-space:nowrap}
+#entEvo .evo__phase-h span{display:block;font-size:10px;letter-spacing:.12em}
+/* Mechanics: one card per form */
+#entEvo .evo__forms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+#entEvo .evo__form{display:grid;gap:8px;align-content:start;min-width:0}
+#entEvo .evo__form strong{display:block;font-size:14px;font-style:italic;font-weight:800;text-transform:uppercase;color:#fff}
+#entEvo .evo__form p{margin:4px 0 0;font-size:13px;line-height:1.4;color:#cfe6ff}
+#entEvo .evo__form .evo__beh{color:#fff}
+#entEvo .evo__form a{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:700;color:#9fd8ff}
+/* In the world */
+#entEvo .evo__scenes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:row;gap:14px;overflow:visible;scroll-snap-type:none;padding:0}
+#entEvo .evo__scene{display:grid;gap:5px;align-content:start;min-width:0}
+#entEvo .evo__scene strong{font-size:12.5px;line-height:1.25;font-weight:800;text-transform:uppercase;color:#fff}
+@media (max-width:899px){
+  #entEvo .evo__forms{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #entEvo .evo__scenes{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:599px){
+  #entEvo .evo__phases{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #entEvo .evo__phase[style*="--n:4"],#entEvo .evo__phase[style*="--n:2"]{grid-column:span 2}
+  #entEvo .evo__phase[style*="--n:4"] .evo__steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #entEvo .evo__phase[style*="--n:1"]{grid-column:span 1}
+  #entEvo .evo__forms{grid-template-columns:1fr}
+  #entEvo .evo__form{grid-template-columns:42% 1fr;gap:12px;align-items:start}
+  #entEvo .evo__scenes{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  #entEvo .evo__phase-h{white-space:normal}
+}

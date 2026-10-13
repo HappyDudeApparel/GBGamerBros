@@ -170,15 +170,17 @@
   "GB_EVOLUTION_DETAIL.boulder.scenes[1].src": "assets/entities/evolution/evo-step-2",
   "GB_EVOLUTION_DETAIL.boulder.scenes[2].src": "assets/entities/evolution/evo-step-3",
   "GB_EVOLUTION_DETAIL.boulder.scenes[3].src": "assets/entities/evolution/evo-step-4",
-  "GB_EVOLUTION_DETAIL.boulder.scenes[4].src": "assets/entities/brightback-v1-cutout",
-  "GB_EVOLUTION_DETAIL.boulder.sequence[0].src": "assets/entities/evolution/evo-boulder-idle",
-  "GB_EVOLUTION_DETAIL.boulder.sequence[1].src": "assets/entities/evolution/evo-boulder-rolling",
-  "GB_EVOLUTION_DETAIL.boulder.sequence[2].src": "assets/entities/evolution/evo-boulder-impact",
-  "GB_EVOLUTION_DETAIL.boulder.sequence[3].src": "assets/entities/evolution/evo-boulder-cracked",
-  "GB_EVOLUTION_DETAIL.boulder.sequence[4].src": "assets/entities/evolution/evo-golem-forming",
-  "GB_EVOLUTION_DETAIL.boulder.sequence[5].src": "assets/entities/stone-golem-v14",
-  "GB_EVOLUTION_DETAIL.boulder.sequence[6].src": "assets/entities/crystal-guardian-v14",
-  "GB_EVOLUTION_DETAIL.boulder.sequence[7].src": "assets/entities/brightback-v1-cutout"
+  "GB_EVOLUTION_DETAIL.boulder.scenes[4].src": "assets/entities/scenes/stone-golem-ingame",
+  "GB_EVOLUTION_DETAIL.boulder.scenes[5].src": "assets/entities/scenes/crystal-guardian-ingame",
+  "GB_EVOLUTION_DETAIL.boulder.scenes[6].src": "assets/entities/evolution/seq/seq-brightback",
+  "GB_EVOLUTION_DETAIL.boulder.sequence[0].src": "assets/entities/evolution/seq/seq-rumbler",
+  "GB_EVOLUTION_DETAIL.boulder.sequence[1].src": "assets/entities/evolution/seq/seq-rolling",
+  "GB_EVOLUTION_DETAIL.boulder.sequence[2].src": "assets/entities/evolution/seq/seq-impact",
+  "GB_EVOLUTION_DETAIL.boulder.sequence[3].src": "assets/entities/evolution/seq/seq-cracked",
+  "GB_EVOLUTION_DETAIL.boulder.sequence[4].src": "assets/entities/evolution/seq/seq-forming",
+  "GB_EVOLUTION_DETAIL.boulder.sequence[5].src": "assets/entities/evolution/seq/seq-stone-walker",
+  "GB_EVOLUTION_DETAIL.boulder.sequence[6].src": "assets/entities/evolution/seq/seq-prism-keeper",
+  "GB_EVOLUTION_DETAIL.boulder.sequence[7].src": "assets/entities/evolution/seq/seq-brightback"
  },
  "static": {
   "index.html": [

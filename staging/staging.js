@@ -378,37 +378,47 @@
         ? `<strong>${esc(x.name)}</strong>`
         : `<a href="#entity/${id}" data-entity-link="${id}">${esc(x.name)}</a>`}<small>Phase ${i + 1}</small></li>`;
     }).join("");
-    const detail = (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     return `<h3>Evolution · phase ${e.evolution.phase} of ${line.length}</h3><ol class="dossier__evo">${steps}</ol>
-      ${detail ? "" : `<p class="dossier__empty">${EVO_NOTE}</p>`}`;
+`;
   };
-  const EVO_NOTE = "More about evolution will be revealed later.";
-  // full evolution component: cutout sequence and in-world steps (tabs; swipe rails on phones)
+  // 2026-10-13 evolution component (owner QA): three tabs with one job each, one tile size throughout.
+  //  Sequence    — every approved form/state as an identical 4:3 studio tile, grouped by phase.
+  //  Mechanics   — what each form does, using only the public behaviour copy already on each dossier.
+  //  In the world — the approved in-world steps, Stone Walker™ and Prism Keeper™ scenes, Brightback™ reference.
+  const evoTile = (src, alt) => isStudio(src) || !isCut(src) ? studio(src, "evo__tile", alt, true) : `<span class="stage-box">${cut(src, "evo__cut", alt, "160px")}</span>`;
   const evoDetail = (e) => {
     const d = e.evolution && (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     if (!d) return "";
     const ph = e.evolution.phase;
-    // sequence: grouped by phase so each phase is labelled once (header) instead of repeating a label per card
+    const line = (window.GB_EVOLUTION || {})[e.evolution.line] || [];
     const PHN = { 1: "Rumbler™", 2: "Stone Walker™", 3: "Prism Keeper™", 4: "Brightback™" };
     const phases = [];
     d.sequence.forEach((x) => { let g = phases.find((p) => p.phase === x.phase); if (!g) phases.push(g = { phase: x.phase, steps: [] }); g.steps.push(x); });
     const seq = phases.map((g) => `<li class="evo__phase${g.phase === ph ? " is-here" : ""}" style="--n:${g.steps.length}">
-        <h4 class="evo__phase-h"><span>Phase ${g.phase}</span> ${esc(PHN[g.phase] || "")}</h4>
-        <ol class="evo__steps">${g.steps.map((x) => `<li class="evo__step"><span class="stage-box">${isCut(x.src) ? cut(x.src, "evo__cut", x.label, "160px") : media(x.src, "evo__thumb-scene", x.label, "small")}</span><strong>${esc(x.label)}</strong></li>`).join("")}</ol></li>`).join("");
-    const mech = (d.mechanics || []).map((x) => `<li>${media(x.src, "evo__mechimg", x.label, "small")}<strong>${esc(x.label)}</strong><p>${esc(x.text)}</p></li>`).join("");
-    const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${x.reference && isCut(x.src) ? `<span class="evo__refstage stage-box">${cut(x.src, "evo__refcut", `${x.label}: ${x.note}`, "(min-width: 900px) 220px, 70vw")}</span>` : media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}${x.reference ? '<span class="evo__num evo__num--ref">Reference</span>' : `<span class="evo__num">${i + 1}</span>`}<strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
+        <h4 class="evo__phase-h"><span>Phase ${g.phase}</span>${esc(PHN[g.phase] || "")}</h4>
+        <ol class="evo__steps">${g.steps.map((x) => `<li class="evo__step"><span class="evo__frame">${evoTile(x.src, x.label)}</span><strong>${esc(x.label)}</strong></li>`).join("")}</ol></li>`).join("");
+    const mech = line.map((id, i) => {
+      const x = ENTITIES[id]; if (!x) return "";
+      const inPhase = d.sequence.filter((s) => s.phase === i + 1);
+      const tile = (inPhase.find((s) => s.label === x.name) || inPhase[0] || {}).src;
+      return `<li class="evo__form${i + 1 === ph ? " is-here" : ""}"><span class="evo__frame">${tile ? evoTile(tile, x.name) : ""}</span>
+        <div><span class="evo__kick">Phase ${i + 1}</span><strong>${esc(x.name)}</strong>
+        <p>${esc(x.copy.summary || "")}</p>${x.copy.behaviour ? `<p class="evo__beh">${esc(x.copy.behaviour)}</p>` : ""}
+        ${i + 1 === ph ? "" : `<a href="#entity/${id}" data-entity-link="${id}">Open dossier</a>`}</div></li>`;
+    }).join("");
+    const scenes = d.scenes.map((x) => `<li class="evo__scene${x.phase === ph ? " is-here" : ""}"><span class="evo__frame">${isStudio(x.src) ? studio(x.src, "evo__tile", x.label, true) : media(x.src, "evo__sceneimg", x.label, "small")}</span><span class="evo__kick">Phase ${x.phase}${x.reference ? ' <span class="evo__num evo__num--ref">Reference</span>' : ""}</span><strong>${esc(x.label)}</strong></li>`).join("");
     return `<section class="evo" id="entEvo" aria-labelledby="evoTitle">
       <header class="evo__head">
         <div><h3 id="evoTitle">Evolution line</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™ → Brightback™</p></div>
         <div class="evo__tabs" role="tablist" aria-label="Evolution views">
           <button type="button" role="tab" aria-selected="true" data-evo-tab="seq">Sequence</button>
-${mech ? `          <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>\n` : ""}          <button type="button" role="tab" aria-selected="false" data-evo-tab="scene">In the world</button>
+          <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>
+          <button type="button" role="tab" aria-selected="false" data-evo-tab="scene">In the world</button>
         </div>
       </header>
       <div class="evo__panel" data-evo-panel="seq" role="tabpanel"><ol class="evo__phases">${seq}</ol></div>
-      ${mech ? `<div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ul class="evo__mech">${mech}</ul></div>` : ""}
+      <div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ol class="evo__forms">${mech}</ol></div>
       <div class="evo__panel" data-evo-panel="scene" role="tabpanel" hidden><ol class="evo__scenes">${scenes}</ol></div>
-      <p class="evo__note">${EVO_NOTE}</p>
     </section>`;
   };
 
