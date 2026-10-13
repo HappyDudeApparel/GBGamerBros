@@ -17,6 +17,21 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## STAGE 2026-10-13 — approved regional scenes + bot stills (staging only; production NOT promoted)
+Security: local dev branch aligned to the sanitized remote head (no old history pushed); no branch/tag contains the old exposing commits;
+no personal identifier in tracked files. GitHub-side purge still pending owner/GitHub Support (not claimable from here).
+DONE (public derivatives only; owner originals stay private and unchanged):
+- Fast Travel: 7 owner-approved regional portal scenes (Portal Meadow gold, Creek Crossing blue, Riverworks RED, Clover Cliffs green,
+  Fallen Grounds orange, Frosty Peaks light blue, Summit Spine purple base portal) → assets/systems/portals/v13/* (+720 px mobile tier).
+  Order = … Fallen Grounds → Frosty Peaks → Summit Spine → Prism Ridge (final). Prism Ridge keeps temporary pr04 (owner decision).
+  Summit Spine note corrected ("the climb toward Prism Ridge begins here"). Old portal-* files kept, unreferenced.
+- Frosty Peaks area gallery: approved frozen-basin scene replaces fp01 (wrong dark-blue flag); fp01 file kept.
+- Rotor Bot: owner-locked final renders A (hero/card) + B, C (views), 1254 px transparent; old 139–408 px crops retired from display.
+- Rumbler: owner-confirmed 1254 px still as hero/card (was 351 px).
+PENDING OWNER: recovered Prism Keeper candidate (strong match to the approved master, heavier limb crystals) — not staged;
+Prism Ridge final destination image; evolution mechanics tab wording; gadget naming; rubble concepts; production promotion.
+TESTS: func 23/23; 6 viewports 0 overflow / 22 dossiers / 0 errors; invariants OK; verify 527/527.
+
 ## DESIGN VERIFICATION — 2026-10-12 (research only; NOTHING published; visual implementation ON HOLD)
 OWNER HOLD: Prism Ridge, chest and defeated-state concepts are NOT approved. No new canonical visuals or copy rewrites published.
 EVOLUTION CANON: owner guidance is kept in the private Drive handoff, not in this public repo. Rule for the site: defeated rubble

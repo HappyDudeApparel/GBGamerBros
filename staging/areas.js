@@ -94,8 +94,9 @@ window.GB_AREAS = {
   frost: {
     name: "Frosty Peaks™", sub: "Icy Cliffs & Granite Roads", status: "open",
     views: [
-      { src: A + "frost-peaks/fp01-snowy-plateau-icefalls", kind: "establishing", label: "Snowy plateau", focus: 0.5,
-        alt: "Snowy plateau with a rope bridge over frozen icefalls and a ruined tower on the peak", hotspots: [] },
+      // 2026-10-13: approved frozen-basin scene (canonical light-blue flags) replaces fp01, whose flag was the wrong dark blue; fp01 file kept
+      { src: "assets/systems/portals/v13/frost-basin", kind: "establishing", label: "Frozen basin", focus: 0.5,
+        alt: "Frosty Peaks™ frozen basin: a broad icy plateau with waterfalls, lanterns and light-blue GB banners", hotspots: [] },
       { src: A + "frost-peaks/fp02-rope-bridge-snowy-shelf", kind: "traversal", label: "Rope bridge", focus: 0.52,
         alt: "Lantern-lit rope bridge crossing to a snowy stone shelf below the summit", hotspots: [] },
       { src: A + "frost-peaks/fp04-frost-to-summit-spine", kind: "landmark", label: "Toward Summit Spine™", focus: 0.42,

@@ -80,14 +80,16 @@ window.GB_ENTITIES = {
     // Source: Rotor Bot Production Spec Sheet (final fixed-nozzle design: 3 red spikes, 4 angled red thruster
     // nozzles, 1 bottom stabilization nozzle, no propellers). Replaces ROTOR_BOT_PRODUCTION_ATLAS_V1 (propeller fins).
     // Charge/Attack A and Attack/Dive B are omitted until a transparent export exists (exhaust plumes can't be cleanly matted from the sheet).
-    media: { thumb: E + "rotor-bot-hero", render: E + "rotor-bot-hero", icon: null },
+    media: { thumb: E + "rotor-bot-v13-a", render: E + "rotor-bot-v13-a", icon: null },
     copy: { provisional: true, summary: "Fast, agile flying enemy with a spherical core and fixed thruster nozzles.", behaviour: "Hovers, patrols, spots you and attacks from above.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: {  },
-    states: { "Idle / hover": "assets/entities/rotor-bot-idle", "Patrol": "assets/entities/rotor-bot-patrol" },
+    views: { "Thrusters firing · B": E + "rotor-bot-v13-b", "Thrusters firing · C": E + "rotor-bot-v13-c" },
+    states: {},
     angles: angles("top", "bottom"), cardScale: 0.86, height: 0.8, scale: null,
     // PUBLIC CURATION 2026-10-11: final fixed-nozzle design: hero + Idle/hover + Patrol (thruster flame). Source cells 139–195 px; shown at native size. Archived: Alert/Inactive (near-dupes), Defeated A/B (dirt residue), 6 turnarounds.
     archived: { "Alert": "assets/entities/rotor-bot-alert", "Inactive": "assets/entities/rotor-bot-inactive", "Defeated A": "assets/entities/rotor-bot-defeated-a", "Defeated B": "assets/entities/rotor-bot-defeated-b", "Front": "assets/entities/rotor-bot-front", "¾ view": "assets/entities/rotor-bot-threeq", "Side": "assets/entities/rotor-bot-side", "Back": "assets/entities/rotor-bot-back", "Top": "assets/entities/rotor-bot-top", "Bottom": "assets/entities/rotor-bot-bottom" },
+    // 2026-10-13: owner-locked final renders A/B/C (1254 px, 3 fixed spikes, 4 side thrusters + bottom nozzle, full flames) replace the
+    // 139–408 px sheet crops. Previous public hero + Idle/Patrol kept as files: rotor-bot-hero, rotor-bot-idle, rotor-bot-patrol.
   },
   "sentry-cannon": {
     name: "Sentry Cannon", type: "enemy", status: "APPROVED",
@@ -151,7 +153,7 @@ window.GB_ENTITIES = {
   "rolling-boulder": {
     name: "Rumbler™", type: "hazard", status: "APPROVED",
     // ROLLING_BOULDER_PRODUCTION_MASTER_V1 (approved Phase 1 production master; replaces the old provisional crop)
-    media: { thumb: E + "rolling-boulder-threeq", render: E + "rolling-boulder-threeq", icon: null },
+    media: { thumb: E + "rumbler-v13", render: E + "rumbler-v13", icon: null },
     copy: { provisional: true, summary: "Energized rolling boulder.", behaviour: "Rolls downhill and smashes obstacles.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {  },
@@ -160,6 +162,7 @@ window.GB_ENTITIES = {
     evolution: { line: "boulder", phase: 1 },
     // PUBLIC CURATION 2026-10-11: in-world + Rolling + Impact. Archived: Destroyed (grey rubble WITHOUT the canonical amber/yellow crystals: wrong, source missing), Idle/Cracked (dupes), 4 turnarounds.
     archived: { "Idle": "assets/entities/rolling-boulder-idle", "Cracked / hit": "assets/entities/rolling-boulder-cracked", "Destroyed": "assets/entities/rolling-boulder-destroyed", "Front": "assets/entities/rolling-boulder-front", "Side": "assets/entities/rolling-boulder-side", "Back": "assets/entities/rolling-boulder-back", "Top": "assets/entities/rolling-boulder-top" },
+    // 2026-10-13: owner-confirmed Rumbler still (1254 px) replaces the 351 px hero (file kept: rolling-boulder-threeq).
   },
 
   // ---------------- portals / props / collectibles ----------------
@@ -169,7 +172,9 @@ window.GB_ENTITIES = {
     copy: { summary: "Regional fast-travel portal.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
     encounter: [],
     // Canonical region order (03_CANONICAL_REGION_REFERENCE_INDEX). Every entry shows approved portal artwork.
-    states: { "Portal Meadow™": "assets/systems/portals/portal-meadow", "Creek Crossing™": "assets/systems/portals/portal-creek", "Riverworks™": "assets/systems/portals/portal-river", "Clover Cliffs™": "assets/systems/portals/portal-clover", "Fallen Grounds™": "assets/systems/portals/portal-fallen", "Prism Ridge™": "assets/areas/prism-ridge/pr04-prism-ruin-landing", "Frosty Peaks™": "assets/systems/portals/portal-frost", "Summit Spine™": "assets/systems/portals/portal-prism" }, angles: angles(), scale: null,
+    // 2026-10-13 owner-approved regional portal scenes (private Drive originals unchanged; public derivatives only).
+    // Order = owner's final route: … Fallen Grounds → Frosty Peaks → Summit Spine → Prism Ridge (final destination).
+    states: { "Portal Meadow™": "assets/systems/portals/v13/meadow", "Creek Crossing™": "assets/systems/portals/v13/creek", "Riverworks™": "assets/systems/portals/v13/river", "Clover Cliffs™": "assets/systems/portals/v13/clover", "Fallen Grounds™": "assets/systems/portals/v13/fallen", "Frosty Peaks™": "assets/systems/portals/v13/frost", "Summit Spine™": "assets/systems/portals/v13/summit", "Prism Ridge™": "assets/areas/prism-ridge/pr04-prism-ruin-landing" },
   },
   "springboard": {
     name: "Springboard", type: "prop", status: "APPROVED",
@@ -302,9 +307,10 @@ window.GB_EVOLUTION_DETAIL = {
 // portal render with the canonical Option A prismatic flag is approved. Option C (portal-prism-ridge, master crop) retired, file kept; portal-frost flags recoloured to canon
 // light blue; portal-summit (near-duplicate of portal-prism) retired from public view, file kept.
 window.GB_PORTAL_META = {
-  "Portal Meadow™": { area: "portal" }, "Creek Crossing™": { area: "creek" }, "Riverworks™": { area: "river", fx: "82%" }, "Clover Cliffs™": { area: "clover" },
-  "Fallen Grounds™": { area: "ruin" }, "Prism Ridge™": { area: "prism", fx: "50%" }, "Frosty Peaks™": { area: "frost", fx: "68%" },
-  "Summit Spine™": { note: "The final ascent above Prism Ridge™. Portal preview only: its area guide is not published yet.", color: "#8d4fe0", fx: "40%" },
+  "Portal Meadow™": { area: "portal", fx: "62%" }, "Creek Crossing™": { area: "creek", fx: "34%" }, "Riverworks™": { area: "river", fx: "30%" }, "Clover Cliffs™": { area: "clover", fx: "74%" },
+  "Fallen Grounds™": { area: "ruin", fx: "78%" }, "Frosty Peaks™": { area: "frost", fx: "84%" },
+  "Summit Spine™": { note: "The climb toward Prism Ridge™ begins here. Portal preview only: its area guide is not published yet.", color: "#8d4fe0", fx: "76%" },
+  "Prism Ridge™": { area: "prism", fx: "50%" },
 };
 
 // display order for the Enemies & Hazards section
