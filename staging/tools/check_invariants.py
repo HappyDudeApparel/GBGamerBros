@@ -129,7 +129,7 @@ need("brightback-v1-cutout" in ent and 'media: { thumb: E + "brightback-v1-hero"
 need("brightback-v1-hero" not in ent.replace("(brightback-v1-hero.png)", ""), "entities.js: captioned Brightback hero scene is referenced in a public entity")
 # 2026-10-13: the *-card derivatives had grey floor mats (owner QA); clean v14 derivatives replace them
 need('thumb: E + "stone-golem-v14"' in ent and 'thumb: E + "crystal-guardian-v14"' in ent, "entities.js: Stone Walker/Prism Keeper cards must use the clean *-v14 derivatives")
-need('"Defeated · prism rubble": E + "crystal-guardian-defeated-rubble"' in ent, "entities.js: Prism Keeper approved 'Defeated · prism rubble' state is missing")
+need('"Defeated · prism rubble": "assets/entities/studio/crystal-guardian-defeated-rubble-st"' in ent, "entities.js: Prism Keeper approved 'Defeated · prism rubble' state is missing")
 portal_states = ent.split("Canonical region order")[1].split("angles: angles()")[0] if "Canonical region order" in ent else ""
 for region in ("Portal Meadow", "Creek Crossing", "Riverworks", "Clover Cliffs", "Fallen Grounds", "Prism Ridge", "Frosty Peaks", "Summit Spine"):
     need(region in portal_states, f"entities.js: Fast Travel is missing {region}")

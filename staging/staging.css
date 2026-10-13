@@ -1550,3 +1550,14 @@ html.is-locked{overflow:hidden}
   .evo__phase-h{font-size:9.5px;letter-spacing:0;overflow-wrap:normal;word-break:keep-all}
   .evo__phase-h span{font-size:9px;letter-spacing:.08em}
 }
+
+/* 2026-10-13 studio tiles: opaque production-sheet frames on their own light studio background (no forced cutout).
+   Stage and thumbnails show the whole 4:3 tile; the copyright band is clipped by .gbm. */
+.gbm.studio-fit{display:block;width:100%;aspect-ratio:var(--ar);border-radius:inherit}
+.dossier__stage.is-studio{background:#eaf1fb}
+.dossier__stage.is-studio::after{display:none}
+.dossier__stage.is-studio > .gbm.studio-fit{position:absolute;left:0;right:0;top:50%;translate:0 -50%;width:100%;aspect-ratio:var(--ar)}
+.dossier__pick--studio .stage-box{background:#eaf1fb;overflow:hidden}
+.dossier__pick--studio .stage-box > .gbm.studio-fit{position:absolute;top:0;bottom:0;left:50%;translate:-50% 0;height:100%;width:auto;aspect-ratio:var(--ar)}
+/* one consistent light studio look for every gallery thumbnail (cutouts and studio tiles alike) */
+.dossier__pick .stage-box{background:radial-gradient(circle at 50% 42%,#fff 0,#e6eefa 58%,#c3d6f1 100%)}

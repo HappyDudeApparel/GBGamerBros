@@ -342,6 +342,11 @@
     return `<span class="gbm cutout ${cls}" style="${frameVars(src)}"><img src="${asset(src)}"${set} alt="${esc(alt)}"${eager ? "" : ' loading="lazy"'} draggable="false"></span>`;
   };
   const isCut = (src) => !!(MEDIA[src] && MEDIA[src].alpha);
+  // studio tile (opaque 4:3 production-sheet frame on its own light background): shown whole, never cropped
+  const studio = (src, cls, alt, small) => `<span class="gbm studio-fit ${cls}" style="${frameVars(src)}"><img src="${asset(src, small)}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`;
+  const isStudio = (src) => !!(MEDIA[src] && !MEDIA[src].alpha && src.indexOf("/studio/") > -1);
+  const stageInner = (src, alt) => isStudio(src) ? studio(src, "dossier__hero", alt)
+    : `<span class="stage-box">${cut(src, "dossier__hero", alt, "(min-width: 720px) 420px, 90vw", true)}</span>`;
   // Selective warm-up (performance, 2026-10-11): fetch at low priority ONLY the few images the visitor can
   // pick next (the open dossier's picks, the Fast Travel portals), using the same srcset/sizes as the real
   // <img>, so the browser chooses the same file and a tap shows it from cache. Never the whole gallery.
@@ -413,8 +418,8 @@ ${mech ? `          <button type="button" role="tab" aria-selected="false" data-
     document.getElementById("entName").textContent = e.name;
     const hero = e.media.render || e.media.thumb;
     // production views / states: cutouts become selectable thumbnails that swap the hero
-    const thumbs = (obj, what) => Object.entries(obj || {}).map(([k, v]) => v && isCut(v)
-      ? `<li><button class="dossier__pick" type="button" data-hero="${v}" data-hero-label="${esc(k)}"${e.flip && e.flip[v] ? ` data-front="${v}" data-back="${e.flip[v]}" data-name="${esc(k)}"` : ""} aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
+    const thumbs = (obj, what) => Object.entries(obj || {}).map(([k, v]) => v && (isCut(v) || isStudio(v))
+      ? `<li><button class="dossier__pick${isStudio(v) ? " dossier__pick--studio" : ""}" type="button" data-hero="${v}" data-hero-label="${esc(k)}"${e.flip && e.flip[v] ? ` data-front="${v}" data-back="${e.flip[v]}" data-name="${esc(k)}"` : ""} aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${isStudio(v) ? studio(v, "dossier__thumbimg", "", true) : cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
       : v ? `<li>${media(v, "dossier__state", `${e.name} ${k}`)}<small>${esc(k[0].toUpperCase() + k.slice(1))}</small></li>` : "").join("");
     const gadget = e.type === "gadget" && hero && !isCut(hero);
     const views = gadget
@@ -444,7 +449,7 @@ ${mech ? `          <button type="button" role="tab" aria-selected="false" data-
     const viewsRow = gallery.length ? "" : views;
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
-        ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : `<span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span>`}</div>
+        ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : stageInner(hero, e.name)}</div>
            <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : esc(e.heroLabel || "Hero")}</span></p>`
         : !hero && e.type === "gadget"
           ? `<span class="dossier__render media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-key"/></svg><span>More to come</span></span>`
@@ -453,7 +458,7 @@ ${mech ? `          <button type="button" role="tab" aria-selected="false" data-
           : media(hero, "dossier__render", e.name)}
         ${scenesOf(id).length > 1 ? `<h3>${e.scenicHero ? "Approved reference imagery" : "In the world"}</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
         ${lead}
-        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : statesPre ? "Gallery" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${statesPre}${states}</ul>` : ""}
+        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : statesPre ? "Gallery" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some((v) => isCut(v) || isStudio(v)) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${statesPre}${states}</ul>` : ""}
                 ${viewsRow && nPicks(viewsRow) > 1 ? `<h3>${esc(e.viewsLabel || "Views")}</h3><ul class="dossier__picks">${viewsRow}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
@@ -539,8 +544,8 @@ ${mech ? `          <button type="button" role="tab" aria-selected="false" data-
         const nm = document.getElementById("entName").textContent;
         const sc = pick.dataset.scene && sceneOf(pick.dataset.scene);
         st.classList.toggle("is-scene", !!sc);
-        st.innerHTML = sc ? sceneImg(sc, `${nm} in Adventure Mountain™`)
-          : `<span class="stage-box">${cut(pick.dataset.hero, "dossier__hero", `${nm}: ${pick.dataset.heroLabel}`, "(min-width: 720px) 420px, 90vw", true)}</span>`;
+        st.classList.toggle("is-studio", !sc && isStudio(pick.dataset.hero));
+        st.innerHTML = sc ? sceneImg(sc, `${nm} in Adventure Mountain™`) : stageInner(pick.dataset.hero, `${nm}: ${pick.dataset.heroLabel}`);
         document.getElementById("entStageLabel").textContent = pick.dataset.heroLabel;
         eBody.querySelectorAll("[data-hero], [data-scene]").forEach((b) => b.setAttribute("aria-pressed", String(b === pick)));
       }

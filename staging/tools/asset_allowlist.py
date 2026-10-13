@@ -47,6 +47,15 @@ SUPERSEDED = {
     "assets/objects/springboard/scene-riverworks": {"reason": "rejected for Level Preview (owner QA 2026-10-13)", "scope": "GB_AREAS"},
     "assets/objects/springboard/scene-frost-peaks": {"reason": "rejected for Level Preview (owner QA 2026-10-13)", "scope": "GB_AREAS"},
     "assets/areas/prism-ridge/pr04-prism-ruin-landing": {"reason": "temporary Fast Travel fallback; replaced by the final Prism Ridge portal", "scope": "GB_ENTITIES.portal"},
+    # 2026-10-13 full correction pass: small cutout state crops replaced by studio tiles (subject unaltered)
+    "assets/entities/goom-walk": "superseded by studio tile", "assets/entities/goom-alert": "superseded by studio tile",
+    "assets/entities/goom-charge": "superseded by studio tile", "assets/entities/spike-bot-alert": "superseded by studio tile",
+    "assets/entities/spike-bot-attack": "superseded by studio tile", "assets/entities/spike-bot-defeated": "superseded by studio tile",
+    "assets/entities/claw-bot-walk": "92-201 px sheet crop; superseded by animation-bundle studio tile",
+    "assets/entities/claw-bot-alert": "superseded by animation-bundle studio tile",
+    "assets/entities/claw-bot-attack-a": "superseded by animation-bundle studio tile",
+    "assets/entities/scenes/goom-ingame-solo": "wrong-region flag (owner QA 2026-10-13)",
+    "assets/entities/scenes/goom-ingame": "wrong-region flag and malformed background Goom",
 }
 for _r in ("meadow", "creek", "river", "clover", "fallen", "frost", "summit", "prism", "prism-ridge"):
     SUPERSEDED[f"assets/systems/portals/portal-{_r}"] = "pre-v13 Fast Travel scene"

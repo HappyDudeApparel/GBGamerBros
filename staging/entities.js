@@ -42,7 +42,7 @@ window.GB_ENTITIES = {
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
     encounter: [],
     views: {  },
-    states: { "Walk": "assets/entities/goom-walk", "Alert": "assets/entities/goom-alert", "Charge / attack": "assets/entities/goom-charge" },
+    states: { "Walk": "assets/entities/studio/goom-walk-st", "Alert": "assets/entities/studio/goom-alert-st", "Charge / attack": "assets/entities/studio/goom-charge-st" },
     angles: angles("top", "bottom"), cardScale: 0.64, height: 0.5, scale: null,
     // PUBLIC CURATION 2026-10-11: hero + in-world (cropped to drop the malformed background Goom) + 3 actions. Archived: Idle/Inactive (dupes), Defeated + dizzy Defeated (grey dust mat, owner QA 05), 4 turnarounds.
     archived: { "Superseded hero (2026-10-13)": E + "goom-hero", "Idle": "assets/entities/goom-idle", "Defeated": "assets/entities/goom-defeated-dizzy", "Inactive": "assets/entities/goom-defeated", "Front": "assets/entities/goom-front", "¾ view": "assets/entities/goom-threeq", "Side": "assets/entities/goom-side", "Back": "assets/entities/goom-back" },
@@ -55,7 +55,7 @@ window.GB_ENTITIES = {
     copy: { provisional: true, summary: "Crab-like ground enemy with two split-spike claws.", behaviour: "Patrols, spots you, raises its claws and clamps to attack.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {},
-    states: { "Walk / scuttle": E + "claw-bot-walk", "Alert · claws raised": E + "claw-bot-alert", "Clamp attack": E + "claw-bot-attack-a" },
+    states: { "Walk / scuttle": "assets/entities/studio/claw-bot-walk-st", "Alert · claws raised": "assets/entities/studio/claw-bot-alert-st", "Clamp attack": "assets/entities/studio/claw-bot-attack-st" },
     // PUBLIC CURATION 2026-10-11 (owner strategy): hero + 3 distinctive actions. Source cells are only 92–201 px
     // (Final Production Reference sheet), so they are shown at native size, never stretched. Kept for provenance,
     // not shown publicly: routine turnarounds, the redundant idle, the head-spike-clipped front attack, defeated states.
@@ -70,7 +70,7 @@ window.GB_ENTITIES = {
     copy: { provisional: true, summary: "Spiked ground enemy.", behaviour: "Stays put or patrols. Damages on contact.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {  },
-    states: { "Alert": "assets/entities/spike-bot-alert", "Attack": "assets/entities/spike-bot-attack", "Defeated": "assets/entities/spike-bot-defeated" },
+    states: { "Alert": "assets/entities/studio/spike-bot-alert-st", "Attack": "assets/entities/studio/spike-bot-attack-st", "Defeated": "assets/entities/studio/spike-bot-defeated-st" },
     angles: angles("top", "bottom"), cardScale: 0.68, height: 0.5, scale: null,
     // PUBLIC CURATION 2026-10-11: in-world + hero + Alert (red eye), Attack (thruster flame), Defeated. Archived: Idle/Roll (same pose as hero), 5 turnarounds incl. top/bottom.
     archived: { "Superseded hero (2026-10-13)": E + "spike-bot-hero", "Idle": "assets/entities/spike-bot-idle", "Roll": "assets/entities/spike-bot-roll", "Front": "assets/entities/spike-bot-front", "Side": "assets/entities/spike-bot-side", "Back": "assets/entities/spike-bot-back", "Top": "assets/entities/spike-bot-top", "Bottom": "assets/entities/spike-bot-bottom" },
@@ -111,7 +111,7 @@ window.GB_ENTITIES = {
     encounter: [],
     views: { "Full stance": E + "stone-golem-front-v14" },
     // the sheet's Defeated pose is not used: it shows a purple crystal fragment, and Phase 2 has no crystals
-    states: { "Walk / chase": "assets/entities/stone-golem-walk" },
+    states: { "Walk / chase": "assets/entities/studio/stone-golem-walk-st" },
     angles: angles(), cardScale: 1.25, height: 2.0, scale: null,
     evolution: { line: "boulder", phase: 2 },
     // PUBLIC CURATION 2026-10-11: approved in-world (preserved) + card hero + Walk + full stance. Archived: Side (apparent third fist, owner QA 11), Attack (grey floor block, owner QA 12), Hit (grey debris), Idle (dupe), ¾/Back. Defeated amber-crystal rubble: source missing.
@@ -123,9 +123,9 @@ window.GB_ENTITIES = {
     media: { thumb: E + "crystal-guardian-v14", render: E + "crystal-guardian-v14", icon: null },
     copy: { provisional: true, summary: "Rare evolved Prism form.", behaviour: "Guards key areas.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Ready stance": E + "crystal-guardian-idle" },
+    views: { "Ready stance": "assets/entities/studio/crystal-guardian-idle-st" },
     // Defeated = approved "Guardian Rubble B" (Crystals Shards and Evolution Remains Reference): stone rubble with purple prism shards
-    states: { "Defeated · prism rubble": E + "crystal-guardian-defeated-rubble" },
+    states: { "Defeated · prism rubble": "assets/entities/studio/crystal-guardian-defeated-rubble-st" },
     // PUBLIC CURATION 2026-10-11: lead = approved in-world image (1368 px), the clean studio hero and the full-body ready stance.
     // Not shown publicly (kept for provenance): Charge (grey smoke mat at its left edge), Attack (slam) and Hit (grey debris/ghosting baked into the cutouts),
     // Defeated (shows the living form crouching; canon defeated = rubble with purple Prism Shards: source missing),
@@ -157,7 +157,7 @@ window.GB_ENTITIES = {
     copy: { provisional: true, summary: "Energized rolling boulder.", behaviour: "Rolls downhill and smashes obstacles.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {  },
-    states: { "Rolling": "assets/entities/rolling-boulder-rolling", "Impact": "assets/entities/rolling-boulder-impact" },
+    states: { "Rolling": "assets/entities/studio/rolling-boulder-rolling-st", "Fracture": "assets/entities/studio/rolling-boulder-fracture-st", "Impact": "assets/entities/studio/rolling-boulder-impact-st" },
     angles: angles(), cardScale: 0.74, height: 1.5, scale: null,
     evolution: { line: "boulder", phase: 1 },
     // PUBLIC CURATION 2026-10-11: in-world + Rolling + Impact. Archived: Destroyed (grey rubble WITHOUT the canonical amber/yellow crystals: wrong, source missing), Idle/Cracked (dupes), 4 turnarounds.
@@ -309,7 +309,8 @@ window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "claw-bot", "sentry-cann
 const SC = "assets/entities/scenes/";
 window.GB_ENTITY_SCENE = {
   // crop of the approved final-goom scene (x 0–425): drops the malformed background Goom (owner QA 07); original kept
-  "goom": { src: SC + "goom-ingame-solo", fx: 50 },
+  // Goom in-world withdrawn 2026-10-13 (owner QA): the scene's blue flag does not match its region and cannot be
+  // cropped out without cutting Goom's spike. Goom leads with its clean hero until an approved in-world image exists.
   "spike-bot": { src: SC + "spike-bot-ingame", fx: 50 },
   // Rotor Bot™ in-world scene removed 2026-10-10: it showed the superseded propeller-fin design.
   // Owner explicitly rejected former Sentry Cannon "In the world" image: unapproved
