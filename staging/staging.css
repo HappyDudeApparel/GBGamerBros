@@ -1634,3 +1634,4 @@ html.is-locked{overflow:hidden}
   .panel--preview,.panel--travel{min-height:0}
   #foes{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
+.dossier__head{background:#0e2a6e;box-shadow:0 6px 12px -6px rgba(0,10,40,.6)}

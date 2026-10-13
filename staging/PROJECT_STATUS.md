@@ -17,6 +17,21 @@ Checkpoint: 2026-10-13 (staging) · dev branch `ccr-aefb96a7-5w3hgh`
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
 
+## STAGE 2026-10-13 (pass 3) — full correction authorization (staging only; production NOT promoted)
+DONE:
+- Enemy states rebuilt as 4:3 studio tiles (non-destructive: subject unaltered on its own light studio background):
+  Goom walk/alert/charge, Spike alert/attack/defeated, Claw walk/alert/clamp attack (from the 1536 px animation bundle),
+  Stone Walker walk, Rumbler rolling/fracture/impact, Prism Keeper ready stance + defeated prism rubble. One light look for
+  all dossier thumbnails. Goom in-world withdrawn (wrong-region flag, can't be cropped out). Brightback V1: fringe removed, feet grounded.
+- Evolution: Sequence = identical studio tiles on a 4-col grid (2 on phones); Mechanics = public summary/behaviour per form;
+  In the world = approved steps + Stone Walker + Prism Keeper scenes + Brightback reference. "Revealed later" note removed.
+- Regions: Prism Ridge gallery/card lead with the summit portal (pr04 retired); Fast Travel labelled region buttons;
+  Portal dossier leads with the Portal Meadow design (generic generated portal image retired); equal regional tiles.
+- Layout: Level Preview fills its panel beside Fast Travel; desktop = LP + FT row, Enemies full width; opaque dossier header.
+OPEN (owner): Stone Walker defeated rubble (approved rubble sheets all contain prism crystals; Rumbler destroyed crop is
+low-res/grey — not shipped); Goom approved in-world image without a wrong-region flag; Brightback in-world scene without
+a blue banner; sliding-dodge slide and Steam CTA decisions; production promotion.
+
 ## STAGE 2026-10-13 (pass 2) — correction package: Prism Ridge final, clean cutouts, allowlist, carousel (staging only; production NOT promoted)
 DONE (public derivatives only; owner originals stay private and unchanged):
 - Fast Travel Prism Ridge™ = owner-approved final cyan summit portal scene (assets/systems/portals/v13/prism-ridge-final, +720 tier);
