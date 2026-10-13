@@ -716,16 +716,16 @@ window.GB_MEDIA = {
   "srev": "86333ff2b4"
  },
  "assets/entities/brightback-v1-cutout": {
-  "w": 692,
-  "h": 604,
+  "w": 679,
+  "h": 595,
   "band": 0,
-  "sw": 692,
-  "sh": 604,
+  "sw": 679,
+  "sh": 595,
   "sband": 0,
   "alpha": true,
-  "master": "Brightback Final Evolution V1.jpg (Drive 1VPqGajM...)",
-  "rev": "639b9ed790",
-  "srev": "639b9ed790",
+  "master": "Brightback Final Evolution V1.jpg",
+  "rev": "7e6732e4b3",
+  "srev": "7e6732e4b3",
   "noSmall": true
  },
  "assets/entities/brightback-v1-face": {
@@ -979,6 +979,18 @@ window.GB_MEDIA = {
   "rev": "792a01d408",
   "srev": "192ba19e39"
  },
+ "assets/entities/claw-bot-v14": {
+  "w": 1510,
+  "h": 1026,
+  "band": 27,
+  "sw": 960,
+  "sh": 652,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "417157260f",
+  "srev": "da33fcd007"
+ },
  "assets/entities/claw-bot-walk": {
   "w": 189,
   "h": 103,
@@ -1136,6 +1148,18 @@ window.GB_MEDIA = {
   "rev": "fc2835c037",
   "srev": "705b7aea10"
  },
+ "assets/entities/crystal-guardian-v14": {
+  "w": 1505,
+  "h": 1492,
+  "band": 27,
+  "sw": 960,
+  "sh": 952,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "9c15dc56a0",
+  "srev": "de870822af"
+ },
  "assets/entities/evolution/evo-boulder-cracked": {
   "w": 192,
   "h": 196,
@@ -1255,54 +1279,6 @@ window.GB_MEDIA = {
   "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__evo-stone-golem.png",
   "rev": "92387d900d",
   "srev": "f20d8ec165"
- },
- "assets/entities/evolution/mech-core-ignition": {
-  "w": 241,
-  "h": 251,
-  "band": 14,
-  "sw": 240,
-  "sh": 250,
-  "sband": 14,
-  "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-core-ignition.png",
-  "rev": "549bdf5889",
-  "srev": "da734b003b"
- },
- "assets/entities/evolution/mech-core-migration": {
-  "w": 245,
-  "h": 251,
-  "band": 14,
-  "sw": 240,
-  "sh": 246,
-  "sband": 14,
-  "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-core-migration.png",
-  "rev": "6ad1b84508",
-  "srev": "9d4489144c"
- },
- "assets/entities/evolution/mech-crystal-nucleation": {
-  "w": 253,
-  "h": 251,
-  "band": 14,
-  "sw": 240,
-  "sh": 238,
-  "sband": 14,
-  "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-crystal-nucleation.png",
-  "rev": "c90b61be49",
-  "srev": "8116e00487"
- },
- "assets/entities/evolution/mech-plate-reconfiguration": {
-  "w": 259,
-  "h": 251,
-  "band": 14,
-  "sw": 240,
-  "sh": 233,
-  "sband": 14,
-  "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-plate-reconfiguration.png",
-  "rev": "2908dad1a1",
-  "srev": "88f7952c17"
  },
  "assets/entities/goom-active": {
   "w": 158,
@@ -1435,6 +1411,18 @@ window.GB_MEDIA = {
   "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__goom-threeq.png",
   "rev": "cfb49efe6f",
   "srev": "3a59761a40"
+ },
+ "assets/entities/goom-v14": {
+  "w": 1518,
+  "h": 1361,
+  "band": 27,
+  "sw": 960,
+  "sh": 861,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "feec189a67",
+  "srev": "e1110e0ee1"
  },
  "assets/entities/goom-walk": {
   "w": 255,
@@ -2072,6 +2060,18 @@ window.GB_MEDIA = {
   "rev": "32620d3e01",
   "srev": "ec95a83056"
  },
+ "assets/entities/spike-bot-v14": {
+  "w": 1503,
+  "h": 1450,
+  "band": 27,
+  "sw": 960,
+  "sh": 926,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "31ed394730",
+  "srev": "0d27490f67"
+ },
  "assets/entities/stone-golem-attack": {
   "w": 339,
   "h": 324,
@@ -2120,6 +2120,18 @@ window.GB_MEDIA = {
   "master": "STONE_GOLEM_ANGLES_MASTER_V1__stone-golem-front.png",
   "rev": "b20ca849f5",
   "srev": "8ca722c6a3"
+ },
+ "assets/entities/stone-golem-front-v14": {
+  "w": 372,
+  "h": 283,
+  "band": 14,
+  "sw": 372,
+  "sh": 283,
+  "sband": 14,
+  "alpha": true,
+  "master": "approved Stone Walker angles master view; separately named alpha derivative (no grey floor; original unchanged)",
+  "rev": "c7eb33ac88",
+  "srev": "c7eb33ac88"
  },
  "assets/entities/stone-golem-hero": {
   "w": 768,
@@ -2181,6 +2193,18 @@ window.GB_MEDIA = {
   "rev": "09934accb2",
   "srev": "14a3af5eb9"
  },
+ "assets/entities/stone-golem-v14": {
+  "w": 409,
+  "h": 289,
+  "band": 14,
+  "sw": 409,
+  "sh": 289,
+  "sband": 14,
+  "alpha": true,
+  "master": "approved Stone Walker angles master view; separately named alpha derivative (no grey floor; original unchanged)",
+  "rev": "bdcd3e5707",
+  "srev": "bdcd3e5707"
+ },
  "assets/entities/stone-golem-walk": {
   "w": 310,
   "h": 306,
@@ -2213,7 +2237,7 @@ window.GB_MEDIA = {
   "sh": 686,
   "sband": 0,
   "alpha": false,
-  "master": "01_Hardware_Spec_Mountain_LED.png (Drive 1IEBoR2g2nG9ZHz3__s0wqfkMjfD9wwcY); composed by tools/make_watch_showcase.py",
+  "master": "01_Hardware_Spec_Mountain_LED.png; composed by tools/make_watch_showcase.py",
   "rev": "2d11bd739b",
   "srev": "6990c71ccf"
  },
@@ -2969,7 +2993,7 @@ window.GB_MEDIA = {
   "sh": 514,
   "sband": 0,
   "alpha": false,
-  "master": "RIVERWORKS_INTERIOR_FINAL_PASS.png (Drive 1apGWTd_pX4nTn8JcMSBaEfSOsnh6HLfv); bottom 45 px cropped",
+  "master": "RIVERWORKS_INTERIOR_FINAL_PASS.png; bottom 45 px cropped",
   "rev": "b061b5b97d",
   "srev": "5926e3d1eb",
   "mw": 720,
@@ -2985,7 +3009,7 @@ window.GB_MEDIA = {
   "sh": 540,
   "sband": 0,
   "alpha": false,
-  "master": "PORTAL_REFERENCE_SUMMIT_PURPLE_WIDE.png (Drive 10ZkdrOv4cWvUyPxVpNJXy3-JYWprjos6)",
+  "master": "PORTAL_REFERENCE_SUMMIT_PURPLE_WIDE.png",
   "rev": "dbcc9af745",
   "srev": "e6b6c7ef41",
   "mw": 720,
@@ -3088,6 +3112,22 @@ window.GB_MEDIA = {
   "rev": "f5f50deb1b",
   "srev": "c289e162f3",
   "mrev": "d1046caf0b"
+ },
+ "assets/systems/portals/v13/prism-ridge-final": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved final Prism Ridge scene (private original unchanged)",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "rev": "3454c6092e",
+  "srev": "4336c1c675",
+  "mrev": "8d1166a006"
  },
  "assets/systems/portals/v13/river": {
   "w": 1672,

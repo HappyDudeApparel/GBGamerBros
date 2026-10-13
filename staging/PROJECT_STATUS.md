@@ -1,6 +1,6 @@
 # GB GAMER BROS™ — project status / handoff
 
-Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
+Checkpoint: 2026-10-13 (staging) · dev branch `ccr-aefb96a7-5w3hgh`
 
 ## Live staging
 - URL: https://gb.happydude.ca/staging/
@@ -16,6 +16,26 @@ Checkpoint: 2026-10-05 · dev branch `ccr-aefb96a7-5w3hgh`
 6. Check the Pages run (GitHub Actions "pages build and deployment") and report the new build ID.
 
 Shell note: don't run `pkill -f "http.server"` inside a compound command. It matches its own shell line and kills the whole command.
+
+## STAGE 2026-10-13 (pass 2) — correction package: Prism Ridge final, clean cutouts, allowlist, carousel (staging only; production NOT promoted)
+DONE (public derivatives only; owner originals stay private and unchanged):
+- Fast Travel Prism Ridge™ = owner-approved final cyan summit portal scene (assets/systems/portals/v13/prism-ridge-final, +720 tier);
+  pr04 fallback retired from Fast Travel (still an area-gallery still). Summit Spine™ keeps its purple base portal.
+- Level Preview: only the Trail junction still remains (both springboard stills rejected and removed).
+- Clean alpha derivatives (separately named *-v14, from owner 1536 px black-background RGB sources; originals untouched):
+  goom-v14, spike-bot-v14, claw-bot-v14, crystal-guardian-v14 (Prism Keeper™). Stone Walker™ card/hero = stone-golem-v14 and
+  full stance = stone-golem-front-v14 (from the approved Angles master; no grey floor). Evolution sequence uses the same clean art.
+  Prism Keeper™ "Defeated · prism rubble" preserved. Brightback™ V1 cutout: detached fragments removed (left toe is covered by the
+  master's caption box, so that truncation is source-limited). New Brightback candidate kept OFF the public site (HOLD).
+- tools/asset_allowlist.py + tools/approved-assets.json: every public image pinned per use; superseded / held / archived art and
+  banned families fail the check; publish.py runs it. Re-pin with --write only after owner approval.
+- Homepage carousel: 3 new owner-review slides interleaved (sporty 1 → streetwear crew → sporty 2 → ground slam → sporty 3 →
+  sliding dodge [candidate]); real wide 1672x941 + portrait 1080x2000 compositions.
+- Copy: unapproved gadget-software name removed (old links alias to SMARTWATCH); evolution Mechanics tab/captions and timing note
+  removed (not disclosed publicly); Steam buttons read "STEAM · COMING SOON" (no validated store page).
+- Phones: evolution Sequence / In the world panels no longer show half-visible cards (wrapped grids).
+OPEN (owner): Brightback candidate approval; Stone Walker™ defeated rubble (no compliant approved source); hi-res Goom/Spike/Claw
+action states (only sheet crops exist); sliding-dodge slide approval; Steam CTA keep/remove; GitHub-side history purge.
 
 ## STAGE 2026-10-13 — approved regional scenes + bot stills (staging only; production NOT promoted)
 Security: local dev branch aligned to the sanitized remote head (no old history pushed); no branch/tag contains the old exposing commits;
@@ -84,7 +104,7 @@ TESTS: func 23/23; 6 owner viewports 0 overflow / 22 dossiers / 0 errors; invari
 Reconciled first: main 677f26c == dev public files.
 COMPLETED
 - Crystal Shards + Prism Shards: floor glow removed (saturation mask / per-shard convex-hull mask; crystal pixels unchanged).
-- Rumbler™ in-world = approved Rolling Boulder Full Reference Card "rolling hero" (Drive 1TCXFYk3…, 1117 px; was 704 px).
+- Rumbler™ in-world = approved Rolling Boulder Full Reference Card "rolling hero" (1117 px; was 704 px).
 - Brightback™ gallery: removed "Four-view turnaround" (technical strip, blank stage) and "Prism Shard detail" (288 px at 0.4x density).
   Gallery = Hero (V1) + Face and core detail. Single scene picks now use their own label (was mislabelled "In the world").
 - New exports default to the approved notice (gbmedia.use_current_notice() at import: XMP, EXIF and band text).
@@ -123,14 +143,14 @@ GALLERIES:
 - Rotor Bot™: hero + Idle/hover + Patrol (flames intact in source cells). Archived Alert/Inactive/Defeated A-B, 6 turnarounds. Still 139–195 px.
 - Rumbler™: in-world + hero + Rolling + Impact. Archived Destroyed (grey rubble, no canonical amber crystals), Idle/Cracked, 4 turnarounds.
 - Stone Walker™: approved in-world (preserved) + hero + Walk + Full stance. Archived Side (third fist), Attack (grey floor block), Hit, Idle, ¾/Back.
-- Prism Keeper™: NEW Defeated = approved "Guardian Rubble B" (Crystals Shards and Evolution Remains Reference, Drive 1vfHK9bR…):
+- Prism Keeper™: NEW Defeated = approved "Guardian Rubble B" (Crystals Shards and Evolution Remains Reference:
   stone rubble + purple prism shards → assets/entities/crystal-guardian-defeated-rubble.
 - Brightback™: V1 cutout — enclosed white background speck between fist and leg and grey ground remnants under the lower-left foot removed
   (pixels otherwise untouched; identity unchanged; apex card unchanged).
 - Crystal + Prism Crystal heroes: orange / blue floor puddles removed with a silhouette mask (facets/glow untouched).
 - Springboard: 3 in-world + Neutral/Compressed/Rebound. Archived Settling + 5 turnarounds.
 - Gallery engine: hero pick no longer duplicated when the hero is also a state.
-REGIONS (flag master REGION_FLAGS_CANONICAL_REFERENCE_MASTER, Drive 1mJBxDQQ…):
+REGIONS (flag master REGION_FLAGS_CANONICAL_REFERENCE_MASTER:
 - Frosty Peaks™ portal: its purple flags recoloured to the canon light blue (fabric pixels only inside the two flag boxes; emblems intact).
 - Summit Spine™ = purple per master → now uses portal-prism (purple flags, crystal summit). portal-summit (near-duplicate) retired, file kept.
 - Prism Ridge™ = "special treatment" → master Option C portal display (four player flags), shown whole (letterboxed). Only 520 px wide
@@ -198,7 +218,7 @@ actions only — not every angle. New artwork only with owner approval against t
 
 ### 5. Regions (next block)
 Frosty Peaks™ and Prism Ridge™ Fast Travel/area flags: compare against Drive REGION_FLAGS_CANONICAL_REFERENCE_MASTER.png
-(folder 1cyrwfNUBbxwXU0QJgU54RFUcTu0cH4NW) before any change; never guess hues. Summit Spine™ Fast Travel image is near-duplicate of
+before any change; never guess hues. Summit Spine™ Fast Travel image is near-duplicate of
 Prism Ridge™ → replace with a distinct approved view or remove the entry (prepare proposal if no canonical source).
 
 ## STAGE 1 RELEASE PORT (2026-10-11) — dev source reconciled with main
@@ -235,7 +255,7 @@ Corrected from approved source:
 Audit, NOT changed (owner decision needed):
 - Homepage carousel: all 3 slides FAIL connected-mountain rule (hero-world-highfive plate, blue-world-action-01, purple-yellow-world-action-01
   all show floating islands; crown banners non-canon). Kept to avoid an empty hero; need owner-approved replacements.
-- Drive 11_ACTION_SCENE_REFERENCES (4 portrait refs): Red/Sentry = FAIL (firing beam), Purple/crystal guardian = UNVERIFIED Prism Keeper
+- (4 portrait refs): Red/Sentry = FAIL (firing beam), Purple/crystal guardian = UNVERIFIED Prism Keeper
   morphology, Blue/Creek + Yellow = connected terrain but enemies don't match locked Spike Bot/Goom designs. Not used.
 Tests: func.js 23/23; p5check all 6 viewports (0 overflow, 21 dossiers open, 0 errors); b2check DOM assertions; gbmedia verify 447/447.
 Remaining queue (issue #1): character cutout mats (8 hero poses + turnarounds), crystal-guardian/stone-golem/coins/crystals/chests alpha audit
@@ -243,10 +263,10 @@ Remaining queue (issue #1): character cutout mats (8 hero poses + turnarounds), 
 copyright wording review.
 
 ## PHASE 5 — block 1 (2026-10-10, build r-9fea5c71) — STAGING ONLY, awaiting owner review
-Brief: 00B_CLAUDE_SITE_REFRESH_2026-10-10 (Drive doc 1yn2IjKOtJDdJzLfQYj8HiwvZJ1q-RiiMfbHeVsbz-rY). Production root untouched.
+Brief: 00B_CLAUDE_SITE_REFRESH_2026-10-10. Production root untouched.
 Done:
-- NEW Gear & Tech panel (#gear, after Adventure Finds™): PATCHPAD™ GB Blue approved hero render (Drive 1yZT5_6dyh…),
-  SMARTWATCH balanced four-colour lineup (1GlwsA05…, default) + angled showcase (1zq8LqUd…) toggle; both click to the
+- NEW Gear & Tech panel (#gear, after Adventure Finds™): PATCHPAD™ GB Blue approved hero render,
+  SMARTWATCH balanced four-colour lineup (default) + angled showcase toggle; both click to the
   dossier with full-size view/link. GlitchKey™ is a separate "More to come" placeholder (no image, no invented detail).
   Assets: assets/gear/{patchpad-hero,smartwatch-lineup,smartwatch-stage}. The 5 watch hardware/UI references are untouched.
 - Entities: patchpad → new hero; new `smartwatch` entity (views Lineup/Showcase swap the full-size render);

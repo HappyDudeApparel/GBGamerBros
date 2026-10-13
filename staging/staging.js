@@ -377,8 +377,8 @@
     return `<h3>Evolution · phase ${e.evolution.phase} of ${line.length}</h3><ol class="dossier__evo">${steps}</ol>
       ${detail ? "" : `<p class="dossier__empty">${EVO_NOTE}</p>`}`;
   };
-  const EVO_NOTE = "Evolution is optional and doesn't happen every time. When it happens is still being designed.";
-  // full evolution component: cutout sequence, transformation mechanics, in-world steps (tabs; swipe rails on phones)
+  const EVO_NOTE = "More about evolution will be revealed later.";
+  // full evolution component: cutout sequence and in-world steps (tabs; swipe rails on phones)
   const evoDetail = (e) => {
     const d = e.evolution && (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     if (!d) return "";
@@ -390,21 +390,20 @@
     const seq = phases.map((g) => `<li class="evo__phase${g.phase === ph ? " is-here" : ""}" style="--n:${g.steps.length}">
         <h4 class="evo__phase-h"><span>Phase ${g.phase}</span> ${esc(PHN[g.phase] || "")}</h4>
         <ol class="evo__steps">${g.steps.map((x) => `<li class="evo__step"><span class="stage-box">${isCut(x.src) ? cut(x.src, "evo__cut", x.label, "160px") : media(x.src, "evo__thumb-scene", x.label, "small")}</span><strong>${esc(x.label)}</strong></li>`).join("")}</ol></li>`).join("");
-    const mech = d.mechanics.map((x) => `<li>${media(x.src, "evo__mechimg", x.label, "small")}<strong>${esc(x.label)}</strong><p>${esc(x.text)}</p></li>`).join("");
+    const mech = (d.mechanics || []).map((x) => `<li>${media(x.src, "evo__mechimg", x.label, "small")}<strong>${esc(x.label)}</strong><p>${esc(x.text)}</p></li>`).join("");
     const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${x.reference && isCut(x.src) ? `<span class="evo__refstage stage-box">${cut(x.src, "evo__refcut", `${x.label}: ${x.note}`, "(min-width: 900px) 220px, 70vw")}</span>` : media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}${x.reference ? '<span class="evo__num evo__num--ref">Reference</span>' : `<span class="evo__num">${i + 1}</span>`}<strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
     return `<section class="evo" id="entEvo" aria-labelledby="evoTitle">
       <header class="evo__head">
-        <div><h3 id="evoTitle">How the evolution works</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™ → Brightback™</p></div>
+        <div><h3 id="evoTitle">Evolution line</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™ → Brightback™</p></div>
         <div class="evo__tabs" role="tablist" aria-label="Evolution views">
           <button type="button" role="tab" aria-selected="true" data-evo-tab="seq">Sequence</button>
-          <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>
-          <button type="button" role="tab" aria-selected="false" data-evo-tab="scene">In the world</button>
+${mech ? `          <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>\n` : ""}          <button type="button" role="tab" aria-selected="false" data-evo-tab="scene">In the world</button>
         </div>
       </header>
       <div class="evo__panel" data-evo-panel="seq" role="tabpanel"><ol class="evo__phases">${seq}</ol></div>
-      <div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ul class="evo__mech">${mech}</ul></div>
+      ${mech ? `<div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ul class="evo__mech">${mech}</ul></div>` : ""}
       <div class="evo__panel" data-evo-panel="scene" role="tabpanel" hidden><ol class="evo__scenes">${scenes}</ol></div>
-      <p class="evo__note">${EVO_NOTE} Each later form builds on the earlier stone body; Brightback™ is the fourth and largest prism evolution.</p>
+      <p class="evo__note">${EVO_NOTE}</p>
     </section>`;
   };
 
@@ -694,6 +693,7 @@
     ftName.textContent = name;
     const pm = portalMeta[name] || {};
     ftFrame.style.setProperty("--fx", pm.fx || "50%");
+    ftFrame.style.setProperty("--fy", pm.fy || "50%");
     ftFrame.classList.toggle("is-whole", pm.fit === "whole");   // wide source: show it whole (letterboxed) so no flag is cropped
     ftNote.innerHTML = pm.area && isOpen(pm.area) ? `<a href="#area/${pm.area}/1">Explore ${esc(name)} <span aria-hidden="true">→</span></a>` : esc(pm.note || "");
     [...ftDots.children].forEach((d, n) => d.setAttribute("aria-pressed", String(n === i)));
