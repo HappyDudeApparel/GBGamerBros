@@ -81,13 +81,15 @@ window.GB_AREAS = {
   prism: {
     name: "Prism Ridge™", sub: "Crystal Peaks & Ancient Ruins", status: "open",
     views: [
+      // 2026-10-13 owner QA: Prism Ridge™ leads with the approved top-of-mountain scene (giant cyan summit portal);
+      // the temporary "Ruin landing" substitute (pr04) is retired from public view.
+      { src: "assets/systems/portals/v13/prism-ridge-final", kind: "landmark", label: "Summit portal", focus: 0.5,
+        alt: "The crystal citadel at the top of Adventure Mountain™, with the giant cyan summit portal above a long staircase", hotspots: [] },
       { src: A + "prism-ridge/pr02-crystal-flatland", kind: "establishing", label: "Crystal flatland", focus: 0.55,
         alt: "Paved ruin plateau with violet crystals and the crystal citadel on the peaks beyond", hotspots: [] },
       { src: A + "prism-ridge/pr03-high-ridge-approach", kind: "traversal", label: "High ridge approach", focus: 0.6,
         alt: "Ridge path past ruined arches with a sightline to the crystal citadel", hotspots: [] },
-      { src: A + "prism-ridge/pr04-prism-ruin-landing", kind: "ground", label: "Ruin landing", focus: 0.55,
-        alt: "Broad stone landing among ruined towers and crystal clusters", hotspots: [] },
-      { src: A + "prism-ridge/ss01-summit-portal-stairs", kind: "landmark", label: "Summit portal stairs", focus: 0.5,
+      { src: A + "prism-ridge/ss01-summit-portal-stairs", kind: "landmark", label: "Summit Spine™ ascent", focus: 0.5,
         alt: "Grand staircase climbing between crystals and waterfalls to the summit portal", hotspots: [] },
     ],
   },
@@ -112,12 +114,7 @@ window.GB_AREAS = {
       // show floating islands, contrary to ONE CONNECTED MOUNTAIN. Removed pending owner-approved scenes.
       { src: "assets/systems/preview-04-trail-junction", kind: "still", label: "Trail junction", focus: 0.3,
         alt: "Stone steps at a trail junction with signposts, pipes and a waterfall", hotspots: [] },
-      // Gameplay-style stills (springboard traversal). Selected 2026-10-11 from the approved SPRINGBOARD action references; the Portal Meadow
-      // launch scene is NOT used because its sky contains floating islands (contrary to ONE CONNECTED MOUNTAIN).
-      { src: "assets/objects/springboard/scene-riverworks", kind: "still", label: "Springboard launch · Riverworks™", focus: 0.5,
-        alt: "A player launches off a red GB springboard beside the timber waterworks of Riverworks™, with a portal and red region banners in the distance", hotspots: [] },
-      { src: "assets/objects/springboard/scene-frost-peaks", kind: "still", label: "Springboard launch · Frosty Peaks™", focus: 0.5,
-        alt: "A player launches off a red GB springboard in the snow of Frosty Peaks™, with a portal, blue region banners and a snowy peak beyond", hotspots: [] },
+      // 2026-10-13 owner QA: the two springboard stills (Riverworks, Frosty Peaks) were rejected for Level Preview and removed.
     ],
   },
 };

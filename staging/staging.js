@@ -342,6 +342,11 @@
     return `<span class="gbm cutout ${cls}" style="${frameVars(src)}"><img src="${asset(src)}"${set} alt="${esc(alt)}"${eager ? "" : ' loading="lazy"'} draggable="false"></span>`;
   };
   const isCut = (src) => !!(MEDIA[src] && MEDIA[src].alpha);
+  // studio tile (opaque 4:3 production-sheet frame on its own light background): shown whole, never cropped
+  const studio = (src, cls, alt, small) => `<span class="gbm studio-fit ${cls}" style="${frameVars(src)}"><img src="${asset(src, small)}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`;
+  const isStudio = (src) => !!(MEDIA[src] && !MEDIA[src].alpha && src.indexOf("/studio/") > -1);
+  const stageInner = (src, alt) => isStudio(src) ? studio(src, "dossier__hero", alt)
+    : `<span class="stage-box">${cut(src, "dossier__hero", alt, "(min-width: 720px) 420px, 90vw", true)}</span>`;
   // Selective warm-up (performance, 2026-10-11): fetch at low priority ONLY the few images the visitor can
   // pick next (the open dossier's picks, the Fast Travel portals), using the same srcset/sizes as the real
   // <img>, so the browser chooses the same file and a tap shows it from cache. Never the whole gallery.
@@ -373,28 +378,38 @@
         ? `<strong>${esc(x.name)}</strong>`
         : `<a href="#entity/${id}" data-entity-link="${id}">${esc(x.name)}</a>`}<small>Phase ${i + 1}</small></li>`;
     }).join("");
-    const detail = (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     return `<h3>Evolution · phase ${e.evolution.phase} of ${line.length}</h3><ol class="dossier__evo">${steps}</ol>
-      ${detail ? "" : `<p class="dossier__empty">${EVO_NOTE}</p>`}`;
+`;
   };
-  const EVO_NOTE = "Evolution is optional and doesn't happen every time. When it happens is still being designed.";
-  // full evolution component: cutout sequence, transformation mechanics, in-world steps (tabs; swipe rails on phones)
+  // 2026-10-13 evolution component (owner QA): three tabs with one job each, one tile size throughout.
+  //  Sequence    — every approved form/state as an identical 4:3 studio tile, grouped by phase.
+  //  Mechanics   — what each form does, using only the public behaviour copy already on each dossier.
+  //  In the world — the approved in-world steps, Stone Walker™ and Prism Keeper™ scenes, Brightback™ reference.
+  const evoTile = (src, alt) => isStudio(src) || !isCut(src) ? studio(src, "evo__tile", alt, true) : `<span class="stage-box">${cut(src, "evo__cut", alt, "160px")}</span>`;
   const evoDetail = (e) => {
     const d = e.evolution && (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     if (!d) return "";
     const ph = e.evolution.phase;
-    // sequence: grouped by phase so each phase is labelled once (header) instead of repeating a label per card
+    const line = (window.GB_EVOLUTION || {})[e.evolution.line] || [];
     const PHN = { 1: "Rumbler™", 2: "Stone Walker™", 3: "Prism Keeper™", 4: "Brightback™" };
     const phases = [];
     d.sequence.forEach((x) => { let g = phases.find((p) => p.phase === x.phase); if (!g) phases.push(g = { phase: x.phase, steps: [] }); g.steps.push(x); });
     const seq = phases.map((g) => `<li class="evo__phase${g.phase === ph ? " is-here" : ""}" style="--n:${g.steps.length}">
-        <h4 class="evo__phase-h"><span>Phase ${g.phase}</span> ${esc(PHN[g.phase] || "")}</h4>
-        <ol class="evo__steps">${g.steps.map((x) => `<li class="evo__step"><span class="stage-box">${isCut(x.src) ? cut(x.src, "evo__cut", x.label, "160px") : media(x.src, "evo__thumb-scene", x.label, "small")}</span><strong>${esc(x.label)}</strong></li>`).join("")}</ol></li>`).join("");
-    const mech = d.mechanics.map((x) => `<li>${media(x.src, "evo__mechimg", x.label, "small")}<strong>${esc(x.label)}</strong><p>${esc(x.text)}</p></li>`).join("");
-    const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${x.reference && isCut(x.src) ? `<span class="evo__refstage stage-box">${cut(x.src, "evo__refcut", `${x.label}: ${x.note}`, "(min-width: 900px) 220px, 70vw")}</span>` : media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}${x.reference ? '<span class="evo__num evo__num--ref">Reference</span>' : `<span class="evo__num">${i + 1}</span>`}<strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
+        <h4 class="evo__phase-h"><span>Phase ${g.phase}</span>${esc(PHN[g.phase] || "")}</h4>
+        <ol class="evo__steps">${g.steps.map((x) => `<li class="evo__step"><span class="evo__frame">${evoTile(x.src, x.label)}</span><strong>${esc(x.label)}</strong></li>`).join("")}</ol></li>`).join("");
+    const mech = line.map((id, i) => {
+      const x = ENTITIES[id]; if (!x) return "";
+      const inPhase = d.sequence.filter((s) => s.phase === i + 1);
+      const tile = (inPhase.find((s) => s.label === x.name) || inPhase[0] || {}).src;
+      return `<li class="evo__form${i + 1 === ph ? " is-here" : ""}"><span class="evo__frame">${tile ? evoTile(tile, x.name) : ""}</span>
+        <div><span class="evo__kick">Phase ${i + 1}</span><strong>${esc(x.name)}</strong>
+        <p>${esc(x.copy.summary || "")}</p>${x.copy.behaviour ? `<p class="evo__beh">${esc(x.copy.behaviour)}</p>` : ""}
+        ${i + 1 === ph ? "" : `<a href="#entity/${id}" data-entity-link="${id}">Open dossier</a>`}</div></li>`;
+    }).join("");
+    const scenes = d.scenes.map((x) => `<li class="evo__scene${x.phase === ph ? " is-here" : ""}"><span class="evo__frame">${isStudio(x.src) ? studio(x.src, "evo__tile", x.label, true) : media(x.src, "evo__sceneimg", x.label, "small")}</span><span class="evo__kick">Phase ${x.phase}${x.reference ? ' <span class="evo__num evo__num--ref">Reference</span>' : ""}</span><strong>${esc(x.label)}</strong></li>`).join("");
     return `<section class="evo" id="entEvo" aria-labelledby="evoTitle">
       <header class="evo__head">
-        <div><h3 id="evoTitle">How the evolution works</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™ → Brightback™</p></div>
+        <div><h3 id="evoTitle">Evolution line</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™ → Brightback™</p></div>
         <div class="evo__tabs" role="tablist" aria-label="Evolution views">
           <button type="button" role="tab" aria-selected="true" data-evo-tab="seq">Sequence</button>
           <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>
@@ -402,9 +417,8 @@
         </div>
       </header>
       <div class="evo__panel" data-evo-panel="seq" role="tabpanel"><ol class="evo__phases">${seq}</ol></div>
-      <div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ul class="evo__mech">${mech}</ul></div>
+      <div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ol class="evo__forms">${mech}</ol></div>
       <div class="evo__panel" data-evo-panel="scene" role="tabpanel" hidden><ol class="evo__scenes">${scenes}</ol></div>
-      <p class="evo__note">${EVO_NOTE} Each later form builds on the earlier stone body; Brightback™ is the fourth and largest prism evolution.</p>
     </section>`;
   };
 
@@ -414,8 +428,8 @@
     document.getElementById("entName").textContent = e.name;
     const hero = e.media.render || e.media.thumb;
     // production views / states: cutouts become selectable thumbnails that swap the hero
-    const thumbs = (obj, what) => Object.entries(obj || {}).map(([k, v]) => v && isCut(v)
-      ? `<li><button class="dossier__pick" type="button" data-hero="${v}" data-hero-label="${esc(k)}"${e.flip && e.flip[v] ? ` data-front="${v}" data-back="${e.flip[v]}" data-name="${esc(k)}"` : ""} aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
+    const thumbs = (obj, what) => Object.entries(obj || {}).map(([k, v]) => v && (isCut(v) || isStudio(v))
+      ? `<li><button class="dossier__pick${isStudio(v) ? " dossier__pick--studio" : ""}" type="button" data-hero="${v}" data-hero-label="${esc(k)}"${e.flip && e.flip[v] ? ` data-front="${v}" data-back="${e.flip[v]}" data-name="${esc(k)}"` : ""} aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${isStudio(v) ? studio(v, "dossier__thumbimg", "", true) : cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
       : v ? `<li>${media(v, "dossier__state", `${e.name} ${k}`)}<small>${esc(k[0].toUpperCase() + k.slice(1))}</small></li>` : "").join("");
     const gadget = e.type === "gadget" && hero && !isCut(hero);
     const views = gadget
@@ -445,7 +459,7 @@
     const viewsRow = gallery.length ? "" : views;
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
-        ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : `<span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span>`}</div>
+        ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : stageInner(hero, e.name)}</div>
            <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : esc(e.heroLabel || "Hero")}</span></p>`
         : !hero && e.type === "gadget"
           ? `<span class="dossier__render media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-key"/></svg><span>More to come</span></span>`
@@ -454,7 +468,7 @@
           : media(hero, "dossier__render", e.name)}
         ${scenesOf(id).length > 1 ? `<h3>${e.scenicHero ? "Approved reference imagery" : "In the world"}</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
         ${lead}
-        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : statesPre ? "Gallery" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${statesPre}${states}</ul>` : ""}
+        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : statesPre ? "Gallery" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some((v) => isCut(v) || isStudio(v)) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${statesPre}${states}</ul>` : ""}
                 ${viewsRow && nPicks(viewsRow) > 1 ? `<h3>${esc(e.viewsLabel || "Views")}</h3><ul class="dossier__picks">${viewsRow}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
@@ -540,8 +554,8 @@
         const nm = document.getElementById("entName").textContent;
         const sc = pick.dataset.scene && sceneOf(pick.dataset.scene);
         st.classList.toggle("is-scene", !!sc);
-        st.innerHTML = sc ? sceneImg(sc, `${nm} in Adventure Mountain™`)
-          : `<span class="stage-box">${cut(pick.dataset.hero, "dossier__hero", `${nm}: ${pick.dataset.heroLabel}`, "(min-width: 720px) 420px, 90vw", true)}</span>`;
+        st.classList.toggle("is-studio", !sc && isStudio(pick.dataset.hero));
+        st.innerHTML = sc ? sceneImg(sc, `${nm} in Adventure Mountain™`) : stageInner(pick.dataset.hero, `${nm}: ${pick.dataset.heroLabel}`);
         document.getElementById("entStageLabel").textContent = pick.dataset.heroLabel;
         eBody.querySelectorAll("[data-hero], [data-scene]").forEach((b) => b.setAttribute("aria-pressed", String(b === pick)));
       }
@@ -694,11 +708,14 @@
     ftName.textContent = name;
     const pm = portalMeta[name] || {};
     ftFrame.style.setProperty("--fx", pm.fx || "50%");
+    ftFrame.style.setProperty("--fy", pm.fy || "50%");
     ftFrame.classList.toggle("is-whole", pm.fit === "whole");   // wide source: show it whole (letterboxed) so no flag is cropped
     ftNote.innerHTML = pm.area && isOpen(pm.area) ? `<a href="#area/${pm.area}/1">Explore ${esc(name)} <span aria-hidden="true">→</span></a>` : esc(pm.note || "");
     [...ftDots.children].forEach((d, n) => d.setAttribute("aria-pressed", String(n === i)));
   }
-  ftDots.innerHTML = ftRegions.map(([name], i) => `<button type="button" style="--rc:${colourOf(name)}" aria-label="${esc(name)} portal" data-ft="${i}"></button>`).join("");
+  // 2026-10-13 owner QA: labelled region buttons (colour swatch + short name) instead of bare colour dots; Summit Spine™
+  // and Prism Ridge™ are both violet, so colour alone was ambiguous. Fixed 4-column grid: never wraps unevenly.
+  ftDots.innerHTML = ftRegions.map(([name], i) => `<button type="button" style="--rc:${colourOf(name)}" aria-label="${esc(name)} portal" data-ft="${i}"><i aria-hidden="true"></i><span>${esc(name.replace("™", ""))}</span></button>`).join("");
   ftDots.addEventListener("click", (e) => { const b = e.target.closest("[data-ft]"); if (b) ftSet(Number(b.dataset.ft)); });
   ftSet(0);
   // warm only the neighbouring portals, and only once Fast Travel is on screen (2 files at a time, low priority)

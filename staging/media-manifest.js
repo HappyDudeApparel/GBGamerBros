@@ -716,16 +716,16 @@ window.GB_MEDIA = {
   "srev": "86333ff2b4"
  },
  "assets/entities/brightback-v1-cutout": {
-  "w": 692,
-  "h": 604,
+  "w": 679,
+  "h": 577,
   "band": 0,
-  "sw": 692,
-  "sh": 604,
+  "sw": 679,
+  "sh": 577,
   "sband": 0,
   "alpha": true,
-  "master": "Brightback Final Evolution V1.jpg (Drive 1VPqGajM...)",
-  "rev": "639b9ed790",
-  "srev": "639b9ed790",
+  "master": "Brightback Final Evolution V1.jpg",
+  "rev": "7df124d436",
+  "srev": "7df124d436",
   "noSmall": true
  },
  "assets/entities/brightback-v1-face": {
@@ -979,6 +979,18 @@ window.GB_MEDIA = {
   "rev": "792a01d408",
   "srev": "192ba19e39"
  },
+ "assets/entities/claw-bot-v14": {
+  "w": 1510,
+  "h": 1026,
+  "band": 27,
+  "sw": 960,
+  "sh": 652,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "417157260f",
+  "srev": "da33fcd007"
+ },
  "assets/entities/claw-bot-walk": {
   "w": 189,
   "h": 103,
@@ -1136,6 +1148,18 @@ window.GB_MEDIA = {
   "rev": "fc2835c037",
   "srev": "705b7aea10"
  },
+ "assets/entities/crystal-guardian-v14": {
+  "w": 1505,
+  "h": 1492,
+  "band": 27,
+  "sw": 960,
+  "sh": 952,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "9c15dc56a0",
+  "srev": "de870822af"
+ },
  "assets/entities/evolution/evo-boulder-cracked": {
   "w": 192,
   "h": 196,
@@ -1256,53 +1280,101 @@ window.GB_MEDIA = {
   "rev": "92387d900d",
   "srev": "f20d8ec165"
  },
- "assets/entities/evolution/mech-core-ignition": {
-  "w": 241,
-  "h": 251,
+ "assets/entities/evolution/seq/seq-brightback": {
+  "w": 640,
+  "h": 480,
   "band": 14,
-  "sw": 240,
-  "sh": 250,
+  "sw": 640,
+  "sh": 480,
   "sband": 14,
   "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-core-ignition.png",
-  "rev": "549bdf5889",
-  "srev": "da734b003b"
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "4d4b66189e",
+  "srev": "57619ce75b"
  },
- "assets/entities/evolution/mech-core-migration": {
-  "w": 245,
-  "h": 251,
+ "assets/entities/evolution/seq/seq-cracked": {
+  "w": 640,
+  "h": 480,
   "band": 14,
-  "sw": 240,
-  "sh": 246,
+  "sw": 640,
+  "sh": 480,
   "sband": 14,
   "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-core-migration.png",
-  "rev": "6ad1b84508",
-  "srev": "9d4489144c"
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "d5861dd314",
+  "srev": "1931d0719d"
  },
- "assets/entities/evolution/mech-crystal-nucleation": {
-  "w": 253,
-  "h": 251,
+ "assets/entities/evolution/seq/seq-forming": {
+  "w": 640,
+  "h": 480,
   "band": 14,
-  "sw": 240,
-  "sh": 238,
+  "sw": 640,
+  "sh": 480,
   "sband": 14,
   "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-crystal-nucleation.png",
-  "rev": "c90b61be49",
-  "srev": "8116e00487"
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "1e5a828675",
+  "srev": "f4fc1fbbae"
  },
- "assets/entities/evolution/mech-plate-reconfiguration": {
-  "w": 259,
-  "h": 251,
+ "assets/entities/evolution/seq/seq-impact": {
+  "w": 640,
+  "h": 480,
   "band": 14,
-  "sw": 240,
-  "sh": 233,
+  "sw": 640,
+  "sh": 480,
   "sband": 14,
   "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-plate-reconfiguration.png",
-  "rev": "2908dad1a1",
-  "srev": "88f7952c17"
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "b8e2c53538",
+  "srev": "8eb7f63c5e"
+ },
+ "assets/entities/evolution/seq/seq-prism-keeper": {
+  "w": 640,
+  "h": 480,
+  "band": 14,
+  "sw": 640,
+  "sh": 480,
+  "sband": 14,
+  "alpha": false,
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "0b777d96c7",
+  "srev": "1fafc99247"
+ },
+ "assets/entities/evolution/seq/seq-rolling": {
+  "w": 640,
+  "h": 480,
+  "band": 14,
+  "sw": 640,
+  "sh": 480,
+  "sband": 14,
+  "alpha": false,
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "0cedef0b0c",
+  "srev": "79f5c94e4c"
+ },
+ "assets/entities/evolution/seq/seq-rumbler": {
+  "w": 640,
+  "h": 480,
+  "band": 14,
+  "sw": 640,
+  "sh": 480,
+  "sband": 14,
+  "alpha": false,
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "b4a390dc5c",
+  "srev": "fc51bf9c30"
+ },
+ "assets/entities/evolution/seq/seq-stone-walker": {
+  "w": 640,
+  "h": 480,
+  "band": 14,
+  "sw": 640,
+  "sh": 480,
+  "sband": 14,
+  "alpha": false,
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "6d67959c7d",
+  "srev": "584eb42075"
  },
  "assets/entities/goom-active": {
   "w": 158,
@@ -1435,6 +1507,18 @@ window.GB_MEDIA = {
   "master": "GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1__goom-threeq.png",
   "rev": "cfb49efe6f",
   "srev": "3a59761a40"
+ },
+ "assets/entities/goom-v14": {
+  "w": 1518,
+  "h": 1361,
+  "band": 27,
+  "sw": 960,
+  "sh": 861,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "feec189a67",
+  "srev": "e1110e0ee1"
  },
  "assets/entities/goom-walk": {
   "w": 255,
@@ -2072,6 +2156,18 @@ window.GB_MEDIA = {
   "rev": "32620d3e01",
   "srev": "ec95a83056"
  },
+ "assets/entities/spike-bot-v14": {
+  "w": 1503,
+  "h": 1450,
+  "band": 27,
+  "sw": 960,
+  "sh": 926,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "31ed394730",
+  "srev": "0d27490f67"
+ },
  "assets/entities/stone-golem-attack": {
   "w": 339,
   "h": 324,
@@ -2120,6 +2216,18 @@ window.GB_MEDIA = {
   "master": "STONE_GOLEM_ANGLES_MASTER_V1__stone-golem-front.png",
   "rev": "b20ca849f5",
   "srev": "8ca722c6a3"
+ },
+ "assets/entities/stone-golem-front-v14": {
+  "w": 372,
+  "h": 283,
+  "band": 14,
+  "sw": 372,
+  "sh": 283,
+  "sband": 14,
+  "alpha": true,
+  "master": "approved Stone Walker angles master view; separately named alpha derivative (no grey floor; original unchanged)",
+  "rev": "c7eb33ac88",
+  "srev": "c7eb33ac88"
  },
  "assets/entities/stone-golem-hero": {
   "w": 768,
@@ -2181,6 +2289,18 @@ window.GB_MEDIA = {
   "rev": "09934accb2",
   "srev": "14a3af5eb9"
  },
+ "assets/entities/stone-golem-v14": {
+  "w": 409,
+  "h": 289,
+  "band": 14,
+  "sw": 409,
+  "sh": 289,
+  "sband": 14,
+  "alpha": true,
+  "master": "approved Stone Walker angles master view; separately named alpha derivative (no grey floor; original unchanged)",
+  "rev": "bdcd3e5707",
+  "srev": "bdcd3e5707"
+ },
  "assets/entities/stone-golem-walk": {
   "w": 310,
   "h": 306,
@@ -2192,6 +2312,186 @@ window.GB_MEDIA = {
   "master": "STONE_GOLEM_STATES_MASTER_V1__stone-golem-walk.png",
   "rev": "63431c58a3",
   "srev": "0d83bcf4d4"
+ },
+ "assets/entities/studio/claw-bot-alert-st": {
+  "w": 272,
+  "h": 204,
+  "band": 14,
+  "sw": 272,
+  "sh": 204,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "7302a17f28",
+  "srev": "7651cc7a15"
+ },
+ "assets/entities/studio/claw-bot-attack-st": {
+  "w": 492,
+  "h": 369,
+  "band": 14,
+  "sw": 492,
+  "sh": 369,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "3edda8ba2d",
+  "srev": "184eacabe4"
+ },
+ "assets/entities/studio/claw-bot-walk-st": {
+  "w": 280,
+  "h": 210,
+  "band": 14,
+  "sw": 280,
+  "sh": 210,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "d753a5860b",
+  "srev": "1017b922ef"
+ },
+ "assets/entities/studio/crystal-guardian-defeated-rubble-st": {
+  "w": 736,
+  "h": 552,
+  "band": 14,
+  "sw": 736,
+  "sh": 552,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "8002b6294f",
+  "srev": "d338d1fe9d"
+ },
+ "assets/entities/studio/crystal-guardian-idle-st": {
+  "w": 532,
+  "h": 399,
+  "band": 14,
+  "sw": 532,
+  "sh": 399,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "917a7b3d18",
+  "srev": "9d02b115f9"
+ },
+ "assets/entities/studio/goom-alert-st": {
+  "w": 444,
+  "h": 333,
+  "band": 14,
+  "sw": 444,
+  "sh": 333,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "0064c0ab39",
+  "srev": "da034340a1"
+ },
+ "assets/entities/studio/goom-charge-st": {
+  "w": 652,
+  "h": 489,
+  "band": 14,
+  "sw": 652,
+  "sh": 489,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "1d3b142cb3",
+  "srev": "e37f38519b"
+ },
+ "assets/entities/studio/goom-walk-st": {
+  "w": 428,
+  "h": 321,
+  "band": 14,
+  "sw": 428,
+  "sh": 321,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "23de880fe0",
+  "srev": "12449cc610"
+ },
+ "assets/entities/studio/rolling-boulder-fracture-st": {
+  "w": 344,
+  "h": 258,
+  "band": 14,
+  "sw": 344,
+  "sh": 258,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "fde90f1937",
+  "srev": "3a33c313fe"
+ },
+ "assets/entities/studio/rolling-boulder-impact-st": {
+  "w": 476,
+  "h": 357,
+  "band": 14,
+  "sw": 476,
+  "sh": 357,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "d2359df7aa",
+  "srev": "d3177272b1"
+ },
+ "assets/entities/studio/rolling-boulder-rolling-st": {
+  "w": 408,
+  "h": 306,
+  "band": 14,
+  "sw": 408,
+  "sh": 306,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "74510cd28d",
+  "srev": "bf225dd3a2"
+ },
+ "assets/entities/studio/spike-bot-alert-st": {
+  "w": 420,
+  "h": 315,
+  "band": 14,
+  "sw": 420,
+  "sh": 315,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "42e429a570",
+  "srev": "b929bf6aef"
+ },
+ "assets/entities/studio/spike-bot-attack-st": {
+  "w": 484,
+  "h": 363,
+  "band": 14,
+  "sw": 484,
+  "sh": 363,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "7ce9382907",
+  "srev": "6bc1cc5e60"
+ },
+ "assets/entities/studio/spike-bot-defeated-st": {
+  "w": 400,
+  "h": 300,
+  "band": 14,
+  "sw": 400,
+  "sh": 300,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "c890c5be1d",
+  "srev": "bb4b516421"
+ },
+ "assets/entities/studio/stone-golem-walk-st": {
+  "w": 536,
+  "h": 402,
+  "band": 14,
+  "sw": 536,
+  "sh": 402,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "85be27f483",
+  "srev": "96a2cf0b98"
  },
  "assets/gear/patchpad-hero": {
   "w": 1448,
@@ -2213,7 +2513,7 @@ window.GB_MEDIA = {
   "sh": 686,
   "sband": 0,
   "alpha": false,
-  "master": "01_Hardware_Spec_Mountain_LED.png (Drive 1IEBoR2g2nG9ZHz3__s0wqfkMjfD9wwcY); composed by tools/make_watch_showcase.py",
+  "master": "01_Hardware_Spec_Mountain_LED.png; composed by tools/make_watch_showcase.py",
   "rev": "2d11bd739b",
   "srev": "6990c71ccf"
  },
@@ -2969,7 +3269,7 @@ window.GB_MEDIA = {
   "sh": 514,
   "sband": 0,
   "alpha": false,
-  "master": "RIVERWORKS_INTERIOR_FINAL_PASS.png (Drive 1apGWTd_pX4nTn8JcMSBaEfSOsnh6HLfv); bottom 45 px cropped",
+  "master": "RIVERWORKS_INTERIOR_FINAL_PASS.png; bottom 45 px cropped",
   "rev": "b061b5b97d",
   "srev": "5926e3d1eb",
   "mw": 720,
@@ -2985,7 +3285,7 @@ window.GB_MEDIA = {
   "sh": 540,
   "sband": 0,
   "alpha": false,
-  "master": "PORTAL_REFERENCE_SUMMIT_PURPLE_WIDE.png (Drive 10ZkdrOv4cWvUyPxVpNJXy3-JYWprjos6)",
+  "master": "PORTAL_REFERENCE_SUMMIT_PURPLE_WIDE.png",
   "rev": "dbcc9af745",
   "srev": "e6b6c7ef41",
   "mw": 720,
@@ -3088,6 +3388,22 @@ window.GB_MEDIA = {
   "rev": "f5f50deb1b",
   "srev": "c289e162f3",
   "mrev": "d1046caf0b"
+ },
+ "assets/systems/portals/v13/prism-ridge-final": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved final Prism Ridge scene (private original unchanged)",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "rev": "3454c6092e",
+  "srev": "4336c1c675",
+  "mrev": "8d1166a006"
  },
  "assets/systems/portals/v13/river": {
   "w": 1672,

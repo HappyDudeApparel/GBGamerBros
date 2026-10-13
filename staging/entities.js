@@ -38,42 +38,42 @@ window.GB_ENTITIES = {
   "goom": {
     name: "Goom Bot™", type: "enemy", status: "APPROVED",
     // GOOM_SENTRY_CANNON_PRODUCTION_ATLAS_V1 (approved production master)
-    media: { thumb: E + "goom-hero", render: E + "goom-hero", icon: null },
+    media: { thumb: E + "goom-v14", render: E + "goom-v14", icon: null },
     copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
     encounter: [],
     views: {  },
-    states: { "Walk": "assets/entities/goom-walk", "Alert": "assets/entities/goom-alert", "Charge / attack": "assets/entities/goom-charge" },
+    states: { "Walk": "assets/entities/studio/goom-walk-st", "Alert": "assets/entities/studio/goom-alert-st", "Charge / attack": "assets/entities/studio/goom-charge-st" },
     angles: angles("top", "bottom"), cardScale: 0.64, height: 0.5, scale: null,
     // PUBLIC CURATION 2026-10-11: hero + in-world (cropped to drop the malformed background Goom) + 3 actions. Archived: Idle/Inactive (dupes), Defeated + dizzy Defeated (grey dust mat, owner QA 05), 4 turnarounds.
-    archived: { "Idle": "assets/entities/goom-idle", "Defeated": "assets/entities/goom-defeated-dizzy", "Inactive": "assets/entities/goom-defeated", "Front": "assets/entities/goom-front", "¾ view": "assets/entities/goom-threeq", "Side": "assets/entities/goom-side", "Back": "assets/entities/goom-back" },
+    archived: { "Superseded hero (2026-10-13)": E + "goom-hero", "Idle": "assets/entities/goom-idle", "Defeated": "assets/entities/goom-defeated-dizzy", "Inactive": "assets/entities/goom-defeated", "Front": "assets/entities/goom-front", "¾ view": "assets/entities/goom-threeq", "Side": "assets/entities/goom-side", "Back": "assets/entities/goom-back" },
   },
   "claw-bot": {
     name: "Claw Bot™", type: "enemy", status: "APPROVED",
     // Sources: Claw Bot Final Production Reference (hero, views, idle, alert, clamp A, defeated A/B) and
     // Claw Bot Animation Bundle Reference (walk = front scuttle; attack = front attack). Re-extracted 2026-10-10 (no streaks/shadows).
-    media: { thumb: E + "claw-bot-hero", render: E + "claw-bot-hero", icon: null },
+    media: { thumb: E + "claw-bot-v14", render: E + "claw-bot-v14", icon: null },
     copy: { provisional: true, summary: "Crab-like ground enemy with two split-spike claws.", behaviour: "Patrols, spots you, raises its claws and clamps to attack.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {},
-    states: { "Walk / scuttle": E + "claw-bot-walk", "Alert · claws raised": E + "claw-bot-alert", "Clamp attack": E + "claw-bot-attack-a" },
+    states: { "Walk / scuttle": "assets/entities/studio/claw-bot-walk-st", "Alert · claws raised": "assets/entities/studio/claw-bot-alert-st", "Clamp attack": "assets/entities/studio/claw-bot-attack-st" },
     // PUBLIC CURATION 2026-10-11 (owner strategy): hero + 3 distinctive actions. Source cells are only 92–201 px
     // (Final Production Reference sheet), so they are shown at native size, never stretched. Kept for provenance,
     // not shown publicly: routine turnarounds, the redundant idle, the head-spike-clipped front attack, defeated states.
-    archived: { "Idle": E + "claw-bot-idle", "Attack · open claws (spike + feet clipped)": E + "claw-bot-attack-front", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b",
+    archived: { "Superseded hero (2026-10-13)": E + "claw-bot-hero", "Idle": E + "claw-bot-idle", "Attack · open claws (spike + feet clipped)": E + "claw-bot-attack-front", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b",
       "Front": E + "claw-bot-front", "¾ view": E + "claw-bot-threeq", "Side": E + "claw-bot-side", "Back": E + "claw-bot-back", "Top": E + "claw-bot-top", "Bottom": E + "claw-bot-bottom" },
     angles: angles("top", "bottom"), cardScale: 0.95, height: 0.8, scale: null,
   },
   "spike-bot": {
     name: "Spike Bot™", type: "enemy", status: "APPROVED",
     // SPIKE_BOT_PRODUCTION_MASTER_V1 (approved production master)
-    media: { thumb: E + "spike-bot-hero", render: E + "spike-bot-hero", icon: null },
+    media: { thumb: E + "spike-bot-v14", render: E + "spike-bot-v14", icon: null },
     copy: { provisional: true, summary: "Spiked ground enemy.", behaviour: "Stays put or patrols. Damages on contact.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {  },
-    states: { "Alert": "assets/entities/spike-bot-alert", "Attack": "assets/entities/spike-bot-attack", "Defeated": "assets/entities/spike-bot-defeated" },
+    states: { "Alert": "assets/entities/studio/spike-bot-alert-st", "Attack": "assets/entities/studio/spike-bot-attack-st", "Defeated": "assets/entities/studio/spike-bot-defeated-st" },
     angles: angles("top", "bottom"), cardScale: 0.68, height: 0.5, scale: null,
     // PUBLIC CURATION 2026-10-11: in-world + hero + Alert (red eye), Attack (thruster flame), Defeated. Archived: Idle/Roll (same pose as hero), 5 turnarounds incl. top/bottom.
-    archived: { "Idle": "assets/entities/spike-bot-idle", "Roll": "assets/entities/spike-bot-roll", "Front": "assets/entities/spike-bot-front", "Side": "assets/entities/spike-bot-side", "Back": "assets/entities/spike-bot-back", "Top": "assets/entities/spike-bot-top", "Bottom": "assets/entities/spike-bot-bottom" },
+    archived: { "Superseded hero (2026-10-13)": E + "spike-bot-hero", "Idle": "assets/entities/spike-bot-idle", "Roll": "assets/entities/spike-bot-roll", "Front": "assets/entities/spike-bot-front", "Side": "assets/entities/spike-bot-side", "Back": "assets/entities/spike-bot-back", "Top": "assets/entities/spike-bot-top", "Bottom": "assets/entities/spike-bot-bottom" },
   },
   "rotor-bot": {
     name: "Rotor Bot™", type: "enemy", status: "APPROVED",
@@ -106,31 +106,31 @@ window.GB_ENTITIES = {
   "stone-golem": {
     name: "Stone Walker™", type: "enemy", status: "APPROVED",
     // STONE_GOLEM_ANGLES_MASTER_V1 + STONE_GOLEM_STATES_MASTER_V1 (approved; the sheets' printed label is the superseded legacy name)
-    media: { thumb: E + "stone-golem-card", render: E + "stone-golem-hero", icon: null },
+    media: { thumb: E + "stone-golem-v14", render: E + "stone-golem-v14", icon: null },
     copy: { provisional: true, summary: "Awakened rock enemy.", behaviour: "Chases and attacks up close.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Full stance": "assets/entities/stone-golem-front" },
+    views: { "Full stance": E + "stone-golem-front-v14" },
     // the sheet's Defeated pose is not used: it shows a purple crystal fragment, and Phase 2 has no crystals
-    states: { "Walk / chase": "assets/entities/stone-golem-walk" },
+    states: { "Walk / chase": "assets/entities/studio/stone-golem-walk-st" },
     angles: angles(), cardScale: 1.25, height: 2.0, scale: null,
     evolution: { line: "boulder", phase: 2 },
     // PUBLIC CURATION 2026-10-11: approved in-world (preserved) + card hero + Walk + full stance. Archived: Side (apparent third fist, owner QA 11), Attack (grey floor block, owner QA 12), Hit (grey debris), Idle (dupe), ¾/Back. Defeated amber-crystal rubble: source missing.
-    archived: { "Idle": "assets/entities/stone-golem-idle", "Attack": "assets/entities/stone-golem-attack", "Hit / stagger": "assets/entities/stone-golem-hit", "¾ view": "assets/entities/stone-golem-threeq", "Side": "assets/entities/stone-golem-side", "Back": "assets/entities/stone-golem-back" },
+    archived: { "Superseded card (grey floor, 2026-10-13)": E + "stone-golem-card", "Superseded hero": E + "stone-golem-hero", "Superseded full stance": E + "stone-golem-front", "Idle": "assets/entities/stone-golem-idle", "Attack": "assets/entities/stone-golem-attack", "Hit / stagger": "assets/entities/stone-golem-hit", "¾ view": "assets/entities/stone-golem-threeq", "Side": "assets/entities/stone-golem-side", "Back": "assets/entities/stone-golem-back" },
   },
   "crystal-guardian": {
     name: "Prism Keeper™", type: "enemy", status: "APPROVED",
     // CRYSTAL_GUARDIAN_ANGLES_MASTER_V1 + CRYSTAL_GUARDIAN_STATES_MASTER_V1 (approved production masters)
-    media: { thumb: E + "crystal-guardian-card", render: E + "crystal-guardian-card", icon: null },
+    media: { thumb: E + "crystal-guardian-v14", render: E + "crystal-guardian-v14", icon: null },
     copy: { provisional: true, summary: "Rare evolved Prism form.", behaviour: "Guards key areas.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Ready stance": E + "crystal-guardian-idle" },
-    // Defeated = approved "Guardian Rubble B" (Crystals Shards and Evolution Remains Reference, Drive 1vfHK9bR…): stone rubble with purple prism shards
-    states: { "Defeated · prism rubble": E + "crystal-guardian-defeated-rubble" },
+    views: { "Ready stance": "assets/entities/studio/crystal-guardian-idle-st" },
+    // Defeated = approved "Guardian Rubble B" (Crystals Shards and Evolution Remains Reference): stone rubble with purple prism shards
+    states: { "Defeated · prism rubble": "assets/entities/studio/crystal-guardian-defeated-rubble-st" },
     // PUBLIC CURATION 2026-10-11: lead = approved in-world image (1368 px), the clean studio hero and the full-body ready stance.
     // Not shown publicly (kept for provenance): Charge (grey smoke mat at its left edge), Attack (slam) and Hit (grey debris/ghosting baked into the cutouts),
     // Defeated (shows the living form crouching; canon defeated = rubble with purple Prism Shards: source missing),
     // the four routine turnarounds, and the smoky original hero.
-    archived: { "Charge (grey smoke mat)": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated (wrong: living crouch)": E + "crystal-guardian-defeated",
+    archived: { "Superseded card (2026-10-13)": E + "crystal-guardian-card", "Charge (grey smoke mat)": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated (wrong: living crouch)": E + "crystal-guardian-defeated",
       "Front": E + "crystal-guardian-front", "¾ view": E + "crystal-guardian-threeq", "Side": E + "crystal-guardian-side", "Back": E + "crystal-guardian-back", "Hero (smoke under foot)": E + "crystal-guardian-hero" },
     leadScene: true,
     angles: angles(), cardScale: 1.28, height: 2.5, scale: null,
@@ -144,7 +144,7 @@ window.GB_ENTITIES = {
     // and header strip are gone. The captioned scene crop (brightback-v1-hero.png) stays in the repo as a reference but is not shown publicly.
     scenicHero: true, heroFirst: true, heroLabel: "Hero (V1)",
     media: { thumb: E + "brightback-v1-cutout", render: E + "brightback-v1-cutout", icon: null },
-    copy: { summary: "The towering fourth evolution of the Rumbler™ line, with deeper violet stone and larger Prism Shards.", behaviour: "An imposing apex form with an intensified core and heavy crystal growth.", where: "Prism Ridge™." },
+    copy: { summary: "The towering fourth evolution of the Rumbler™ line, with deeper violet stone and larger Prism Shards.", behaviour: "An imposing apex form.", where: "Prism Ridge™." },
     encounter: [],
     views: {}, states: {}, angles: angles(), cardScale: 1.0, height: null, scale: null,
     evolution: { line: "boulder", phase: 4 },
@@ -157,7 +157,7 @@ window.GB_ENTITIES = {
     copy: { provisional: true, summary: "Energized rolling boulder.", behaviour: "Rolls downhill and smashes obstacles.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {  },
-    states: { "Rolling": "assets/entities/rolling-boulder-rolling", "Impact": "assets/entities/rolling-boulder-impact" },
+    states: { "Rolling": "assets/entities/studio/rolling-boulder-rolling-st", "Fracture": "assets/entities/studio/rolling-boulder-fracture-st", "Impact": "assets/entities/studio/rolling-boulder-impact-st" },
     angles: angles(), cardScale: 0.74, height: 1.5, scale: null,
     evolution: { line: "boulder", phase: 1 },
     // PUBLIC CURATION 2026-10-11: in-world + Rolling + Impact. Archived: Destroyed (grey rubble WITHOUT the canonical amber/yellow crystals: wrong, source missing), Idle/Cracked (dupes), 4 turnarounds.
@@ -168,13 +168,15 @@ window.GB_ENTITIES = {
   // ---------------- portals / props / collectibles ----------------
   "portal": {
     name: "Portal", type: "portal", status: "APPROVED",
-    media: { thumb: null, render: "assets/systems/fast-travel-portal", icon: null },
+    // 2026-10-13 owner QA: the generic generated portal image is retired; the dossier leads with the established
+    // Portal Meadow™ design (the starting portal). Every regional portal follows below.
+    media: { thumb: null, render: "assets/systems/portals/v13/meadow", icon: null },
     copy: { summary: "Regional fast-travel portal.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
     encounter: [],
     // Canonical region order (03_CANONICAL_REGION_REFERENCE_INDEX). Every entry shows approved portal artwork.
     // 2026-10-13 owner-approved regional portal scenes (private Drive originals unchanged; public derivatives only).
     // Order = owner's final route: … Fallen Grounds → Frosty Peaks → Summit Spine → Prism Ridge (final destination).
-    states: { "Portal Meadow™": "assets/systems/portals/v13/meadow", "Creek Crossing™": "assets/systems/portals/v13/creek", "Riverworks™": "assets/systems/portals/v13/river", "Clover Cliffs™": "assets/systems/portals/v13/clover", "Fallen Grounds™": "assets/systems/portals/v13/fallen", "Frosty Peaks™": "assets/systems/portals/v13/frost", "Summit Spine™": "assets/systems/portals/v13/summit", "Prism Ridge™": "assets/areas/prism-ridge/pr04-prism-ruin-landing" },
+    states: { "Portal Meadow™": "assets/systems/portals/v13/meadow", "Creek Crossing™": "assets/systems/portals/v13/creek", "Riverworks™": "assets/systems/portals/v13/river", "Clover Cliffs™": "assets/systems/portals/v13/clover", "Fallen Grounds™": "assets/systems/portals/v13/fallen", "Frosty Peaks™": "assets/systems/portals/v13/frost", "Summit Spine™": "assets/systems/portals/v13/summit", "Prism Ridge™": "assets/systems/portals/v13/prism-ridge-final" },
   },
   "springboard": {
     name: "Springboard", type: "prop", status: "APPROVED",
@@ -204,14 +206,8 @@ window.GB_ENTITIES = {
   "smartwatch": {
     name: "SMARTWATCH", type: "gadget", status: "APPROVED",
     media: { thumb: "assets/gear/smartwatch-lineup", render: "assets/gear/smartwatch-lineup", icon: null },
-    copy: { summary: "The Gamers' smartwatch, in Blue, Red, Yellow and Purple.", behaviour: "Runs QuickHack™, the fast hacking software, alongside the watch face.", where: "Worn by every Gamer." },
+    copy: { summary: "The Gamers' smartwatch, in Blue, Red, Yellow and Purple.", behaviour: "Runs the Gamers' hacking software alongside the watch face.", where: "Worn by every Gamer." },
     encounter: [], states: {}, views: { "Lineup": "assets/gear/smartwatch-lineup", "Showcase": "assets/gear/smartwatch-hardware" }, angles: angles(), scale: null,
-  },
-  "quickhack": {
-    name: "QuickHack™", type: "gadget", status: "APPROVED",
-    media: { thumb: "assets/gear/smartwatch-lineup", render: "assets/gear/smartwatch-lineup", icon: null },
-    copy: { summary: "Fast hacking software on the Gamers' SMARTWATCH.", behaviour: "Runs on the SMARTWATCH in every player colour.", where: "On every Gamer's watch." },
-    encounter: [], states: {}, angles: angles(), scale: null,
   },
   "glitchkey": {
     name: "GlitchKey™", type: "gadget", status: "PENDING",
@@ -264,36 +260,32 @@ window.GB_EVOLUTION = {
   boulder: ["rolling-boulder", "stone-golem", "crystal-guardian", "brightback"],
 };
 
-// evolution detail (approved EVOLUTION_MECHANICS masters): cutout sequence, mechanics close-ups, in-world steps
+// evolution detail: cutout sequence and in-world steps (no mechanics captions in public files)
 const X = E + "evolution/";
 window.GB_EVOLUTION_DETAIL = {
   boulder: {
+    // uniform 4:3 studio tiles (approved form art, subject unaltered) so every step reads at the same size
     sequence: [
-      { src: X + "evo-boulder-idle", label: "Rumbler", phase: 1 },
-      { src: X + "evo-boulder-rolling", label: "Rolling", phase: 1 },
-      { src: X + "evo-boulder-impact", label: "Impact", phase: 1 },
-      { src: X + "evo-boulder-cracked", label: "Cracked", phase: 1 },
-      { src: X + "evo-golem-forming", label: "Forming", phase: 2 },
-      { src: X + "evo-stone-golem", label: "Stone Walker™", phase: 2 },
-      { src: E + "crystal-guardian-card", label: "Prism Keeper™", phase: 3 },
-      { src: E + "brightback-v1-cutout", label: "Brightback™", phase: 4 },
+      { src: X + "seq/seq-rumbler", label: "Dormant", phase: 1 },
+      { src: X + "seq/seq-rolling", label: "Rolling", phase: 1 },
+      { src: X + "seq/seq-impact", label: "Impact", phase: 1 },
+      { src: X + "seq/seq-cracked", label: "Fracture", phase: 1 },
+      { src: X + "seq/seq-forming", label: "Forming", phase: 2 },
+      { src: X + "seq/seq-stone-walker", label: "Stone Walker™", phase: 2 },
+      { src: X + "seq/seq-prism-keeper", label: "Prism Keeper™", phase: 3 },
+      { src: X + "seq/seq-brightback", label: "Brightback™", phase: 4 },
     ],
-    mechanics: [
-      { src: X + "mech-core-ignition", label: "Core ignition", text: "Orange internal energy ignites, visible through cracks between the stone plates." },
-      { src: X + "mech-plate-reconfiguration", label: "Plate reconfiguration", text: "Stone plates unlock and rotate, reconfiguring into limbs and torso." },
-      { src: X + "mech-core-migration", label: "Core migration", text: "The energy gathers into the Stone Walker™'s eyes and core." },
-      { src: X + "mech-crystal-nucleation", label: "Crystal nucleation", text: "Crystals grow from the core and pressure points while the rock body stays visible." },
-    ],
+    // 2026-10-13 owner QA: transformation mechanics are not disclosed publicly (spoilers). The Mechanics tab shows each
+    // form's public summary and behaviour copy from its own dossier instead.
     scenes: [
-      { src: X + "evo-step-1", label: "Rumbler™", note: "Mossy segmented stone, dormant.", phase: 1 },
-      { src: X + "evo-step-2", label: "Energized", note: "Energy glows through the cracks.", phase: 1 },
-      { src: X + "evo-step-3", label: "Impact / fracture", note: "Plates break loose and begin to reconfigure.", phase: 1 },
-      { src: X + "evo-step-4", label: "Stone Walker™ forming", note: "The same rock becomes limbs and torso.", phase: 2 },
-      // Owner visual audit, 2026-10-10: former evo-step-5 and evo-step-6 incorrectly portrayed
-      // Prism Keeper anatomy. Keep the gallery's earlier approved steps only, pending
-      // verified replacement Phase 3 in-world imagery. Do not relabel mismatched art.
-      // Completed-form reference only: no in-world Rumbler™ line transformation art exists for Phase 4, so none is implied.
-      { src: E + "brightback-v1-cutout", label: "Brightback™ (completed form)", note: "Approved V1 reference art for the finished fourth phase. No in-world transformation scene is documented yet.", phase: 4, reference: true },
+      { src: X + "evo-step-1", label: "Rumbler™", phase: 1 },
+      { src: X + "evo-step-2", label: "Energized", phase: 1 },
+      { src: X + "evo-step-3", label: "Fracture", phase: 1 },
+      { src: X + "evo-step-4", label: "Stone Walker™ forming", phase: 2 },
+      { src: E + "scenes/stone-golem-ingame", label: "Stone Walker™", phase: 2 },
+      { src: E + "scenes/crystal-guardian-ingame", label: "Prism Keeper™", phase: 3 },
+      // no approved in-world Brightback™ scene without a wrong-region banner: the approved V1 form tile stands in
+      { src: X + "seq/seq-brightback", label: "Brightback™", phase: 4, reference: true },
     ],
   },
 };
@@ -301,16 +293,13 @@ window.GB_EVOLUTION_DETAIL = {
 // Fast Travel extras per portal: `area` = the region's area guide (only linked while that area is open); `note` = honest status text;
 // `color` = dot colour when the region is not in GB_WORLD.regions. Summit Spine™ is a canonical region (Visual Design Bible, region index) but is not a
 // public area yet (world-data.js lists it as a sub-region of Prism Ridge™), so it is shown as a portal preview only.
-// FLAG CANON 2026-10-11 (REGION_FLAGS_CANONICAL_REFERENCE_MASTER): Summit Spine™ = purple, Frosty Peaks™ = light blue,
-// Prism Ridge™ = special treatment. portal-prism (purple flags, crystal summit) is the Summit Spine™ portal. Prism Ridge™: OWNER DECISION
-// 2026-10-11 = Option D (TEMPORARY): approved area view pr04 (1448 px, no flag rather than a wrong flag) until a dedicated Prism Ridge
-// portal render with the canonical Option A prismatic flag is approved. Option C (portal-prism-ridge, master crop) retired, file kept; portal-frost flags recoloured to canon
-// light blue; portal-summit (near-duplicate of portal-prism) retired from public view, file kept.
+// 2026-10-13: Prism Ridge™ (final destination) uses the owner-approved final scene with the giant cyan summit portal; Summit Spine™
+// keeps its own smaller purple base portal. Earlier temporary/rejected Prism Ridge images (pr04 as FT, portal-prism-ridge crop) not used here.
 window.GB_PORTAL_META = {
   "Portal Meadow™": { area: "portal", fx: "62%" }, "Creek Crossing™": { area: "creek", fx: "34%" }, "Riverworks™": { area: "river", fx: "30%" }, "Clover Cliffs™": { area: "clover", fx: "74%" },
   "Fallen Grounds™": { area: "ruin", fx: "78%" }, "Frosty Peaks™": { area: "frost", fx: "84%" },
   "Summit Spine™": { note: "The climb toward Prism Ridge™ begins here. Portal preview only: its area guide is not published yet.", color: "#8d4fe0", fx: "76%" },
-  "Prism Ridge™": { area: "prism", fx: "50%" },
+  "Prism Ridge™": { area: "prism", fx: "50%", fy: "20%" },
 };
 
 // display order for the Enemies & Hazards section
@@ -322,14 +311,15 @@ window.GB_BESTIARY = ["goom", "spike-bot", "rotor-bot", "claw-bot", "sentry-cann
 const SC = "assets/entities/scenes/";
 window.GB_ENTITY_SCENE = {
   // crop of the approved final-goom scene (x 0–425): drops the malformed background Goom (owner QA 07); original kept
-  "goom": { src: SC + "goom-ingame-solo", fx: 50 },
+  // Goom in-world withdrawn 2026-10-13 (owner QA): the scene's blue flag does not match its region and cannot be
+  // cropped out without cutting Goom's spike. Goom leads with its clean hero until an approved in-world image exists.
   "spike-bot": { src: SC + "spike-bot-ingame", fx: 50 },
   // Rotor Bot™ in-world scene removed 2026-10-10: it showed the superseded propeller-fin design.
   // Owner explicitly rejected former Sentry Cannon "In the world" image: unapproved
   // person and beam scene. Hostile canonical model will be the main hero without it.
   // Do not re-enable this source until an approved in-world replacement exists.
   "springboard": [{ src: "assets/objects/springboard/scene-portal-meadow", fx: 45, label: "Portal Meadow™" }, { src: "assets/objects/springboard/scene-riverworks", fx: 45, label: "Riverworks™" }, { src: "assets/objects/springboard/scene-frost-peaks", fx: 45, label: "Frosty Peaks™" }],
-  // Rolling hero from the approved Rolling Boulder Full Reference Card (Drive 1TCXFYk3…, 1117 px; was 704 px)
+  // Rolling hero from the approved Rolling Boulder Full Reference Card (1117 px; was 704 px)
   "rolling-boulder": { src: SC + "rolling-boulder-rolling-hero", fx: 50 },
   "stone-golem": { src: SC + "stone-golem-ingame", fx: 50 },
   "crystal-guardian": { src: SC + "crystal-guardian-ingame", fx: 50 },
@@ -354,7 +344,8 @@ window.GB_ENTITY_ALIASES = {
   "prism-crystal": "secret-key",
   "patch-pad": "patchpad",
   "glitch-key": "glitchkey",
-  "quick-hack": "quickhack",
+  // 2026-10-13: the software name is not owner-approved; old #entity/quickhack links resolve to the SMARTWATCH
+  "quickhack": "smartwatch", "quick-hack": "smartwatch",
   "smart-watch": "smartwatch",
   "clawbot": "claw-bot",
   "claw": "claw-bot",
