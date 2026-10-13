@@ -28,6 +28,7 @@
 
 (() => {
 const E = "assets/entities/";
+const N = "assets/entities/new/";
 const angles = (...extra) => ({ front: null, threeQuarter: null, side: null, back: null, ...Object.fromEntries(extra.map((k) => [k, null])) });
 const states = (...labels) => Object.fromEntries(labels.map((l) => [l, null]));
 
@@ -116,49 +117,46 @@ window.GB_ENTITIES = {
   },
   "stone-golem": {
     name: "Stone Walker™", type: "enemy", status: "APPROVED",
-    // STONE_GOLEM_ANGLES_MASTER_V1 + STONE_GOLEM_STATES_MASTER_V1 (approved; the sheets' printed label is the superseded legacy name)
-    media: { thumb: E + "stone-golem-v14", render: E + "stone-golem-v14", icon: null },
+    // 2026-10-13 quality pass: owner-supplied 1254 px true-alpha renders (clean edges, soft contact shadow) replace the grey-floor cutouts.
+    // Defeated = the mossy amber-crystal rubble (its own look: it is NOT Prism Keeper's prism rubble) and a collapsed pile.
+    heroFirst: true, heroLabel: "Stance",
+    media: { thumb: "assets/entities/new/stone-walker-hero", render: "assets/entities/new/stone-walker-hero", icon: null },
     copy: { provisional: true, summary: "Awakened rock enemy.", behaviour: "Chases and attacks up close.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Full stance": E + "stone-golem-front-v14" },
-    // the sheet's Defeated pose is not used: it shows a purple crystal fragment, and Phase 2 has no crystals
-    states: { "Walk / chase": "assets/entities/studio/stone-golem-walk-st" },
+    views: {},
+    states: { "Stance": "assets/entities/new/stone-walker-hero", "Glare": "assets/entities/new/stone-walker-glare", "Lunge": "assets/entities/new/stone-walker-dynamic", "Collapsed": "assets/entities/new/stone-walker-collapsed", "Defeated · rubble": "assets/objects/studio/stone-walker-rubble" },
     angles: angles(), cardScale: 1.25, height: 2.0, scale: null,
     evolution: { line: "boulder", phase: 2 },
-    // PUBLIC CURATION 2026-10-11: approved in-world (preserved) + card hero + Walk + full stance. Archived: Side (apparent third fist, owner QA 11), Attack (grey floor block, owner QA 12), Hit (grey debris), Idle (dupe), ¾/Back. Defeated amber-crystal rubble: source missing.
-    archived: { "Superseded card (grey floor, 2026-10-13)": E + "stone-golem-card", "Superseded hero": E + "stone-golem-hero", "Superseded full stance": E + "stone-golem-front", "Idle": "assets/entities/stone-golem-idle", "Attack": "assets/entities/stone-golem-attack", "Hit / stagger": "assets/entities/stone-golem-hit", "¾ view": "assets/entities/stone-golem-threeq", "Side": "assets/entities/stone-golem-side", "Back": "assets/entities/stone-golem-back" },
+    // Archived (superseded 2026-10-13): v14 cutouts and sheet tiles.
+    archived: { "Cutout v14": E + "stone-golem-v14", "Full stance v14": E + "stone-golem-front-v14", "Walk (sheet tile)": "assets/entities/studio/stone-golem-walk-st", "Superseded card (grey floor, 2026-10-13)": E + "stone-golem-card", "Superseded hero": E + "stone-golem-hero", "Superseded full stance": E + "stone-golem-front", "Idle": "assets/entities/stone-golem-idle", "Attack": "assets/entities/stone-golem-attack", "Hit / stagger": "assets/entities/stone-golem-hit", "¾ view": "assets/entities/stone-golem-threeq", "Side": "assets/entities/stone-golem-side", "Back": "assets/entities/stone-golem-back" },
   },
   "crystal-guardian": {
     name: "Prism Keeper™", type: "enemy", status: "APPROVED",
-    // CRYSTAL_GUARDIAN_ANGLES_MASTER_V1 + CRYSTAL_GUARDIAN_STATES_MASTER_V1 (approved production masters)
-    media: { thumb: E + "crystal-guardian-v14", render: E + "crystal-guardian-v14", icon: null },
+    // 2026-10-13: owner-supplied 1122x1402 true-alpha renders. The approved defeated state (stone rubble with purple prism shards) is preserved.
+    leadScene: true, heroFirst: true, heroLabel: "Ready",
+    media: { thumb: "assets/entities/new/prism-keeper-hero", render: "assets/entities/new/prism-keeper-hero", icon: null },
     copy: { provisional: true, summary: "Rare evolved Prism form.", behaviour: "Guards key areas.", where: "Found across Adventure Mountain™." },
     encounter: [],
-    views: { "Ready stance": "assets/entities/studio/crystal-guardian-idle-st" },
-    // Defeated = approved "Guardian Rubble B" (Crystals Shards and Evolution Remains Reference): stone rubble with purple prism shards
-    states: { "Defeated · prism rubble": "assets/entities/studio/crystal-guardian-defeated-rubble-st" },
-    // PUBLIC CURATION 2026-10-11: lead = approved in-world image (1368 px), the clean studio hero and the full-body ready stance.
-    // Not shown publicly (kept for provenance): Charge (grey smoke mat at its left edge), Attack (slam) and Hit (grey debris/ghosting baked into the cutouts),
-    // Defeated (shows the living form crouching; canon defeated = rubble with purple Prism Shards: source missing),
-    // the four routine turnarounds, and the smoky original hero.
-    archived: { "Superseded card (2026-10-13)": E + "crystal-guardian-card", "Charge (grey smoke mat)": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated (wrong: living crouch)": E + "crystal-guardian-defeated",
+    views: {},
+    states: { "Ready": "assets/entities/new/prism-keeper-hero", "Guard": "assets/entities/new/prism-keeper-guard", "Brace": "assets/entities/new/prism-keeper-ready", "Advance": "assets/entities/new/prism-keeper-advance", "Impact": "assets/entities/new/prism-keeper-impact", "Defeated · prism rubble": "assets/entities/studio/crystal-guardian-defeated-rubble-st" },
+    // Archived (superseded 2026-10-13): v14 cutout, 532 px ready stance, earlier heroes.
+    archived: { "Cutout v14": E + "crystal-guardian-v14", "Ready stance (532 px tile)": "assets/entities/studio/crystal-guardian-idle-st", "Superseded card (2026-10-13)": E + "crystal-guardian-card", "Charge (grey smoke mat)": E + "crystal-guardian-charge", "Attack (slam)": E + "crystal-guardian-attack", "Hit / stagger": E + "crystal-guardian-hit", "Defeated (wrong: living crouch)": E + "crystal-guardian-defeated",
       "Front": E + "crystal-guardian-front", "¾ view": E + "crystal-guardian-threeq", "Side": E + "crystal-guardian-side", "Back": E + "crystal-guardian-back", "Hero (smoke under foot)": E + "crystal-guardian-hero" },
-    leadScene: true,
     angles: angles(), cardScale: 1.28, height: 2.5, scale: null,
     evolution: { line: "boulder", phase: 3 },
   },
   "brightback": {
     name: "Brightback™", type: "enemy", status: "APPROVED",
-    // Preferred Brightback V1 imagery only; V2 is an unapproved alternate.
-    // Stage 4 follows Prism Keeper; do not borrow this silhouette or its cyan/magenta shards for stage 3.
-    // Clean V1 derivative: the figure cut out of the approved V1 sheet (Brightback Final Evolution V1.jpg), so the sheet's baked caption
-    // and header strip are gone. The captioned scene crop (brightback-v1-hero.png) stays in the repo as a reference but is not shown publicly.
-    scenicHero: true, heroFirst: true, heroLabel: "Final form",
-    media: { thumb: E + "brightback-v1-cutout", render: E + "brightback-v1-cutout", icon: null },
+    // 2026-10-13: owner-supplied 1122x1402 true-alpha renders of the accepted V1 design (crown, crystal colours, silhouette, core) replace the
+    // 679 px cutout whose feet faded out. V2 remains an unapproved alternate and is not used.
+    heroFirst: true, heroLabel: "Final form",
+    media: { thumb: N + "brightback-hero", render: "assets/entities/new/brightback-hero", icon: null },
     copy: { summary: "The towering fourth evolution of the Rumbler™ line, with deeper violet stone and larger Prism Shards.", behaviour: "An imposing apex form.", where: "Prism Ridge™." },
     encounter: [],
-    views: {}, states: {}, angles: angles(), cardScale: 1.0, height: null, scale: null,
+    views: {}, states: { "Final form": "assets/entities/new/brightback-hero", "Alternate stance": "assets/entities/new/brightback-alt", "Guard": "assets/entities/new/brightback-guard", "Flex": "assets/entities/new/brightback-flex" }, angles: angles(), cardScale: 1.0, height: null, scale: null,
     evolution: { line: "boulder", phase: 4 },
+    // Archived: the 679 px V1 cutout (superseded by the true-alpha renders). The captioned scene crop (brightback-v1-hero.png) stays in the repo as a reference but is not shown.
+    archived: { "V1 cutout (679 px)": E + "brightback-v1-cutout" },
   },
   // ---------------- hazards ----------------
   "rolling-boulder": {
@@ -236,13 +234,13 @@ window.GB_ENTITIES = {
     name: "Crystal", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/crystal", render: "assets/objects/crystal", icon: null },
     copy: { summary: "The common Crystal.", behaviour: "Breaks into Crystal Shards.", where: "Found across Adventure Mountain™." },
-    encounter: [], states: { "Crystal Shards": "assets/objects/crystal-shards" }, angles: angles(), scale: null,
+    encounter: [], states: { "Crystal Shards": "assets/objects/crystal-shards", "Among the rubble": "assets/objects/studio/crystal-rubble-a", "Rubble · wide": "assets/objects/studio/crystal-rubble-b" }, angles: angles(), scale: null,
   },
   "secret-key": {
     name: "Prism Crystal", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/prism-crystal", render: "assets/objects/prism-crystal", icon: null },
     copy: { summary: "The rarer Prism Crystal.", behaviour: "Breaks into Prism Shards.", where: "Found across Adventure Mountain™." },
-    encounter: [], states: { "Prism Shards": "assets/objects/prism-shards" }, angles: angles(), scale: null,
+    encounter: [], states: { "Prism Shards": "assets/objects/prism-shards", "Among the rubble": "assets/objects/studio/prism-rubble-a", "Rubble · wide": "assets/objects/studio/prism-rubble-b", "Rubble · close": "assets/objects/studio/prism-rubble-c" }, angles: angles(), scale: null,
   },
   "crystal-chest": {
     name: "Crystal Chest", type: "collectible", status: "APPROVED",
@@ -294,6 +292,8 @@ window.GB_EVOLUTION_DETAIL = {
       { src: X + "evo-step-3", label: "Fracture", phase: 1 },
       { src: X + "evo-step-4", label: "Stone Walker™ forming", phase: 2 },
       { src: E + "scenes/stone-golem-ingame", label: "Stone Walker™", phase: 2 },
+      { src: "assets/scenes/portal-meadow-pursuit", label: "Portal Meadow™", phase: 2 },
+      { src: "assets/scenes/creek-crossing-pursuit", label: "Creek Crossing™", phase: 2 },
       { src: E + "scenes/crystal-guardian-ingame", label: "Prism Keeper™", phase: 3 },
       // no approved in-world Brightback™ scene without a wrong-region banner: the approved V1 form tile stands in
       { src: X + "seq/seq-brightback", label: "Brightback™", phase: 4, reference: true },

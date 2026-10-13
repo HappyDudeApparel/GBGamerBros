@@ -125,10 +125,10 @@ for f in ("hero", "turnaround", "face", "hand"):
 
 # ---- owner QA pass 2026-10-11 ---------------------------------------------------------------------------
 need("In development" not in index and "in development" not in index.lower(), "index.html: unnecessary 'In development' label is back")
-need("brightback-v1-cutout" in ent and 'media: { thumb: E + "brightback-v1-hero"' not in ent, "entities.js: Brightback must use the clean cutout, not the captioned hero scene")
+need('thumb: N + "brightback-hero"' in ent and 'media: { thumb: E + "brightback-v1-hero"' not in ent, "entities.js: Brightback must use the true-alpha V1 render, not the captioned hero scene")
 need("brightback-v1-hero" not in ent.replace("(brightback-v1-hero.png)", ""), "entities.js: captioned Brightback hero scene is referenced in a public entity")
 # 2026-10-13: the *-card derivatives had grey floor mats (owner QA); clean v14 derivatives replace them
-need('thumb: E + "stone-golem-v14"' in ent and 'thumb: E + "crystal-guardian-v14"' in ent, "entities.js: Stone Walker/Prism Keeper cards must use the clean *-v14 derivatives")
+need('thumb: "assets/entities/new/stone-walker-hero"' in ent and 'thumb: "assets/entities/new/prism-keeper-hero"' in ent, "entities.js: Stone Walker/Prism Keeper cards must use the 2026-10-13 true-alpha renders (the grey-floor cutouts must not return)")
 need('"Defeated · prism rubble": "assets/entities/studio/crystal-guardian-defeated-rubble-st"' in ent, "entities.js: Prism Keeper approved 'Defeated · prism rubble' state is missing")
 portal_states = ent.split("Canonical region order")[1].split("angles: angles()")[0] if "Canonical region order" in ent else ""
 for region in ("Portal Meadow", "Creek Crossing", "Riverworks", "Clover Cliffs", "Fallen Grounds", "Prism Ridge", "Frosty Peaks", "Summit Spine"):

@@ -1728,3 +1728,11 @@ a.steam,a.steam:visited{text-decoration:none;color:#fff}
   .spot__name{font-size:clamp(24px,4vw,36px)}
   .spot__roster{flex-wrap:wrap;overflow:visible}
 }
+
+/* 2026-10-13: nine "In the world" tiles (new Portal Meadow / Creek Crossing scenes) sit in a clean 3 x 3 grid */
+#entEvo .evo__scenes{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* Brightback™ apex card, 2026-10-13: the true-alpha V1 render is portrait (1122 x 1402), so it is sized by HEIGHT (98 % of the card width, up to the
+   560 px cap) and the breakout headroom grows to match; it is now a taller, more imposing figure than the old 679 px landscape cutout. */
+#foes > li.foes__apex{padding-top:calc(min(94cqw,560px) * .34)}
+#foes .foe--apex .foe__stage > .gbm.cutout{width:calc(var(--fw) * .98 * var(--ar))}

@@ -1281,16 +1281,16 @@ window.GB_MEDIA = {
   "srev": "f20d8ec165"
  },
  "assets/entities/evolution/seq/seq-brightback": {
-  "w": 640,
-  "h": 480,
-  "band": 14,
-  "sw": 640,
-  "sh": 480,
-  "sband": 14,
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
   "alpha": false,
-  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
-  "rev": "4d4b66189e",
-  "srev": "57619ce75b"
+  "master": "seq-brightback.png",
+  "rev": "6739e4ce6e",
+  "srev": "2e687611d2"
  },
  "assets/entities/evolution/seq/seq-cracked": {
   "w": 640,
@@ -1305,16 +1305,16 @@ window.GB_MEDIA = {
   "srev": "1931d0719d"
  },
  "assets/entities/evolution/seq/seq-forming": {
-  "w": 640,
-  "h": 480,
-  "band": 14,
-  "sw": 640,
-  "sh": 480,
-  "sband": 14,
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
   "alpha": false,
-  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
-  "rev": "1e5a828675",
-  "srev": "f4fc1fbbae"
+  "master": "seq-forming.png",
+  "rev": "22274413e9",
+  "srev": "e0da202ad5"
  },
  "assets/entities/evolution/seq/seq-impact": {
   "w": 640,
@@ -1329,16 +1329,16 @@ window.GB_MEDIA = {
   "srev": "8eb7f63c5e"
  },
  "assets/entities/evolution/seq/seq-prism-keeper": {
-  "w": 640,
-  "h": 480,
-  "band": 14,
-  "sw": 640,
-  "sh": 480,
-  "sband": 14,
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
   "alpha": false,
-  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
-  "rev": "0b777d96c7",
-  "srev": "1fafc99247"
+  "master": "seq-prism-keeper.png",
+  "rev": "2a4c3b3be8",
+  "srev": "a56b3f55c1"
  },
  "assets/entities/evolution/seq/seq-rolling": {
   "w": 640,
@@ -1365,16 +1365,16 @@ window.GB_MEDIA = {
   "srev": "fc51bf9c30"
  },
  "assets/entities/evolution/seq/seq-stone-walker": {
-  "w": 640,
-  "h": 480,
-  "band": 14,
-  "sw": 640,
-  "sh": 480,
-  "sband": 14,
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
   "alpha": false,
-  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
-  "rev": "6d67959c7d",
-  "srev": "584eb42075"
+  "master": "seq-stone-walker.png",
+  "rev": "70713c29cb",
+  "srev": "99348c6f35"
  },
  "assets/entities/goom-active": {
   "w": 158,
@@ -1531,6 +1531,174 @@ window.GB_MEDIA = {
   "master": "goom-walk.png",
   "rev": "b1ecf9ed59",
   "srev": "a3c41c3d2f"
+ },
+ "assets/entities/new/brightback-alt": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "1EJHsjupK6dTSCOH0E3ilB9XC1cKYNiKS.png",
+  "rev": "bb25d5e5f4",
+  "srev": "71ed2cbf48"
+ },
+ "assets/entities/new/brightback-flex": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "1RsEZ4HMig8b6dznWfZZQDErv48eGhB3Q.png",
+  "rev": "99f67fc718",
+  "srev": "92beae5cb3"
+ },
+ "assets/entities/new/brightback-guard": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "1UbS88k7wkaY7al12hjVCPS9dJCFObPgX.png",
+  "rev": "436ca43af5",
+  "srev": "d2ae0d5e16"
+ },
+ "assets/entities/new/brightback-hero": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "1WHwZob67qV_DZdR_nHwXy7OynMPnVmcb.png",
+  "rev": "cf2f35f806",
+  "srev": "631d91d69c"
+ },
+ "assets/entities/new/prism-keeper-advance": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "1BMqZWanRNirpdnIMTpENLrziwuVEo9a3.png",
+  "rev": "6eba90142a",
+  "srev": "47d77dca4b"
+ },
+ "assets/entities/new/prism-keeper-guard": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "1DQEFcgVxymxkKK3UXjKS7OZ_nnzUbOtm.png",
+  "rev": "a31957428a",
+  "srev": "be23fdd67d"
+ },
+ "assets/entities/new/prism-keeper-hero": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "1SUC1C5OufjxnVhhpNfUJjFYbc2uUz2QL.png",
+  "rev": "baf02e416a",
+  "srev": "30bb493f5d"
+ },
+ "assets/entities/new/prism-keeper-impact": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "1_7uaZYl1iIyTDVLF_eEiJo1j2LSbnFHt.png",
+  "rev": "4151fac91b",
+  "srev": "91684d2e8a"
+ },
+ "assets/entities/new/prism-keeper-ready": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "1uS6fcDSFkI5xsHUz_kuVLyOf0eW6qvZs.png",
+  "rev": "83a3a51bd3",
+  "srev": "53102b7df4"
+ },
+ "assets/entities/new/stone-walker-collapsed": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "1UZxL6b838_zPX6H2wKHE-IO-3NXKDyEP.png",
+  "rev": "9ad351100e",
+  "srev": "2f11a04777"
+ },
+ "assets/entities/new/stone-walker-dynamic": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "1D1x8bhJVjoS6wakKPPu6tfN9SsmiLtsw.png",
+  "rev": "d6a9e8ca36",
+  "srev": "5f02c15956"
+ },
+ "assets/entities/new/stone-walker-forming": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "1m5FVW4QAxFHKNkKEMJdWHLp6Bq5gKW69.png",
+  "rev": "e44b710395",
+  "srev": "0dbf0a5e37"
+ },
+ "assets/entities/new/stone-walker-glare": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "1XUiv9tczl8WGU-rH_IM7JZawMK996AcB.png",
+  "rev": "b1ddff8788",
+  "srev": "6d5fa51156"
+ },
+ "assets/entities/new/stone-walker-hero": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "1wGcz4sExpYBUs_3LpXD8Z5nF0NGINWz2.png",
+  "rev": "8df784b968",
+  "srev": "1fc331a448"
  },
  "assets/entities/rolling-boulder-back": {
   "w": 203,
@@ -3453,6 +3621,78 @@ window.GB_MEDIA = {
   "rev": "1aeddcf0c9",
   "srev": "b77dcbfb5d"
  },
+ "assets/objects/studio/crystal-rubble-a": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "1Y08Oj_v5PL4CMh10w-kKkRrhzV0VMzWq.png",
+  "rev": "30a46bd8cb",
+  "srev": "0b3fbfb417"
+ },
+ "assets/objects/studio/crystal-rubble-b": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "13nirXomlpirtOHR_wZ5Z_BIMLfuduTUq.png",
+  "rev": "8e8c773cc9",
+  "srev": "8c61575168"
+ },
+ "assets/objects/studio/prism-rubble-a": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "1Fc26inuIf-TH_EXcOJ0oDaGDRoznA00P.png",
+  "rev": "bc7061a803",
+  "srev": "7272f49463"
+ },
+ "assets/objects/studio/prism-rubble-b": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "11DHFwMKwfk8ue9C80rYFwOVelZTZUNvT.png",
+  "rev": "329c7a6543",
+  "srev": "368b676e33"
+ },
+ "assets/objects/studio/prism-rubble-c": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "14gxszYX5EKCh30q37CIfbnJz7ag4LPop.png",
+  "rev": "5102c9ac34",
+  "srev": "d83f260a52"
+ },
+ "assets/objects/studio/stone-walker-rubble": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "attached_mossy_rubble.png",
+  "rev": "74184a7d2e",
+  "srev": "f4b5a56b16"
+ },
  "assets/scenes/blue-world-action-01": {
   "w": 1672,
   "h": 941,
@@ -3464,6 +3704,30 @@ window.GB_MEDIA = {
   "master": "GB_BLUE_WORLD_ACTION_01.png",
   "rev": "f188c09494",
   "srev": "79c7174e12"
+ },
+ "assets/scenes/creek-crossing-pursuit": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "1TpVwHoU3pZ66Zi00G6smFJmztFFDhT1q.png",
+  "rev": "f851944d4e",
+  "srev": "f348f0d9bc"
+ },
+ "assets/scenes/portal-meadow-pursuit": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "1PdrVZMugzCUUPEzKvN7fXhcuqOCA2z_f.png",
+  "rev": "aac34cacf1",
+  "srev": "2317a48b4f"
  },
  "assets/scenes/purple-yellow-world-action-01": {
   "w": 1672,

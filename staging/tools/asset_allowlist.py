@@ -58,6 +58,12 @@ SUPERSEDED = {
     "assets/systems/fast-travel-portal": "generic generated portal image, not an established portal design (owner QA 2026-10-13)",
     "assets/entities/scenes/goom-ingame": "wrong-region flag and malformed background Goom",
 }
+# 2026-10-13 (new library): true-alpha 1122-1254 px renders replace the earlier cutouts of the stone line
+for _k, _why in (("stone-golem-v14", "grey-floor-era cutout"), ("crystal-guardian-v14", "cutout superseded by the true-alpha render"), ("stone-golem-front-v14", "superseded"),
+                 ("brightback-v1-cutout", "679 px cutout with a faded foot; superseded by the true-alpha V1 render")):
+    SUPERSEDED[f"assets/entities/{_k}"] = f"{_why} (2026-10-13 new library)"
+SUPERSEDED["assets/entities/studio/stone-golem-walk-st"] = "444 px sheet tile; superseded 2026-10-13"
+SUPERSEDED["assets/entities/studio/crystal-guardian-idle-st"] = "532 px sheet tile; superseded 2026-10-13"
 SUPERSEDED["assets/systems/preview-04-trail-junction"] = "rejected by the owner 2026-10-13 (wrong enemies, inaccurate flag); no replacement trail scene approved yet"
 # 2026-10-13 (quality pass): owner-approved 1254 px standalone studio renders replace the earlier cutouts and sheet-crop tiles
 for _k in ("goom", "spike-bot", "claw-bot"):

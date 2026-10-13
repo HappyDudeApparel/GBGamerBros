@@ -112,9 +112,12 @@ window.GB_AREAS = {
       // Owner canon audit 2026-10-10 (issue #1): the three character action stills formerly here
       // (blue-red-world-action-01, purple-yellow-world-action-02, four-character-world-action-01)
       // show floating islands, contrary to ONE CONNECTED MOUNTAIN. Removed pending owner-approved scenes.
-      // 2026-10-13 quality pass: the Trail Junction still was rejected by the owner (wrong enemies, inaccurate flag) and is withdrawn.
-      // No approved replacement trail scene exists yet; the owner-approved GB Blue vs Prism Keeper encounter (lossless 1672 px source) is the
-      // only approved gameplay still available and stands in until more Level Preview stills are supplied.
+      // 2026-10-13: the Trail Junction still was rejected by the owner (wrong enemies, inaccurate flag) and is withdrawn. Level Preview now shows
+      // three moments of play from the owner's new library: correct regional flags and portals, Stone Walker™ and Claw Bots™ in character.
+      { src: "assets/scenes/portal-meadow-pursuit", kind: "still", label: "Portal Meadow™ pursuit", focus: 0.42,
+        alt: "Gamer Girl Yellow™ in her streetwear slides across a flower-lined stone path as a Stone Walker™ lunges behind her, Claw Bots™ closing in near the gold Portal Meadow™ portal and its gold GB banners", hotspots: [] },
+      { src: "assets/scenes/creek-crossing-pursuit", kind: "still", label: "Creek Crossing™ pursuit", focus: 0.3,
+        alt: "Gamer Bro Red™ in his sporty look sprints along a creek-side path away from a Stone Walker™ and Claw Bots™, with the blue Creek Crossing™ portal and its blue GB banner behind him", hotspots: [] },
       { src: "assets/systems/preview-prism-keeper-encounter", kind: "still", label: "Prism Keeper™ encounter", focus: 0.5,
         alt: "Gamer Bro Blue™ in his sporty look stands in front of the Prism Keeper™ as it slams both fists into a crystal-lit plaza below a grand staircase", hotspots: [] },
       // 2026-10-13 owner QA: the two springboard stills (Riverworks, Frosty Peaks) were rejected for Level Preview and removed.

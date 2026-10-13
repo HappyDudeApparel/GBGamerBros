@@ -1,0 +1,71 @@
+{
+ "note": "owner-supplied originals used whole; no recolour, redraw or crop",
+ "slots": {
+  "entities/new/stone-walker-hero": {
+   "source_sha256_prefix": "6b88fb4fc001"
+  },
+  "entities/new/stone-walker-glare": {
+   "source_sha256_prefix": "61598cb854c3"
+  },
+  "entities/new/stone-walker-forming": {
+   "source_sha256_prefix": "24b8b3f310b1"
+  },
+  "entities/new/stone-walker-dynamic": {
+   "source_sha256_prefix": "bcfd65f9c35c"
+  },
+  "entities/new/stone-walker-collapsed": {
+   "source_sha256_prefix": "477cefbac6a5"
+  },
+  "entities/new/prism-keeper-hero": {
+   "source_sha256_prefix": "96e19a3b0512"
+  },
+  "entities/new/prism-keeper-guard": {
+   "source_sha256_prefix": "9928276a5a65"
+  },
+  "entities/new/prism-keeper-ready": {
+   "source_sha256_prefix": "7ab35bd3df12"
+  },
+  "entities/new/prism-keeper-impact": {
+   "source_sha256_prefix": "3cda62fc18d6"
+  },
+  "entities/new/prism-keeper-advance": {
+   "source_sha256_prefix": "1c48928fe178"
+  },
+  "entities/new/brightback-hero": {
+   "source_sha256_prefix": "56da479863ec"
+  },
+  "entities/new/brightback-alt": {
+   "source_sha256_prefix": "1b869de706e2"
+  },
+  "entities/new/brightback-guard": {
+   "source_sha256_prefix": "3b6d6ac3e023"
+  },
+  "entities/new/brightback-flex": {
+   "source_sha256_prefix": "50a5493216d5"
+  },
+  "objects/studio/crystal-rubble-a": {
+   "source_sha256_prefix": "27dae4e1cb82"
+  },
+  "objects/studio/crystal-rubble-b": {
+   "source_sha256_prefix": "c3e82a9c0b91"
+  },
+  "objects/studio/prism-rubble-a": {
+   "source_sha256_prefix": "69f7d34c4921"
+  },
+  "objects/studio/prism-rubble-b": {
+   "source_sha256_prefix": "44fc43b51f54"
+  },
+  "objects/studio/prism-rubble-c": {
+   "source_sha256_prefix": "825c7c3cb689"
+  },
+  "scenes/portal-meadow-pursuit": {
+   "source_sha256_prefix": "c83b5ea1bb11"
+  },
+  "scenes/creek-crossing-pursuit": {
+   "source_sha256_prefix": "593e417191ac"
+  },
+  "objects/studio/stone-walker-rubble": {
+   "source_sha256_prefix": "9c2b514ec6b6"
+  }
+ }
+}
