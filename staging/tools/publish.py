@@ -56,8 +56,8 @@ def main(dry):
             return
         msg = (f"Publish staging {rev} (dev {dev_sha})\n\n"
                "Public /staging/ files only; root homepage and /v2/ unchanged.\n\n"
-               "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n"
-               "Claude-Session: https://claude.ai/code/session_01WDMc6omQTtU5QGMbzTfAf7")
+               "Co-Authored-By: Claude <noreply@anthropic.com>\n"
+               "Claude-Session: https://claude.ai/code/session_01LPFrrt91CSr8icc1zm77A8")
         git("commit", "-q", "-m", msg, cwd=tmp)
         sha = git("rev-parse", "--short", "HEAD", cwd=tmp, out=True)
         if dry:
