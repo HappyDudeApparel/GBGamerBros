@@ -1618,3 +1618,19 @@ html.is-locked{overflow:hidden}
 .dossier__states .gbm.dossier__state{aspect-ratio:16/10}
 .dossier__states .gbm.dossier__state > img{object-fit:cover;object-position:50% 30%}
 [data-area-card="prism"] .area-card__img > img{object-position:50% 12%}
+/* 2026-10-13: Level Preview has one approved still; beside Fast Travel it fills the panel height instead of leaving a gap */
+@media (min-width:720px){
+  .panel--preview:has(.lp__thumbs[hidden]){display:flex;flex-direction:column}
+  .panel--preview:has(.lp__thumbs[hidden]) .lp{flex:1;grid-template-columns:1fr;grid-template-rows:1fr auto;align-items:stretch}
+  .panel--preview:has(.lp__thumbs[hidden]) .lp__main{grid-row:auto;min-height:260px;align-self:stretch;height:100%}
+  .panel--preview:has(.lp__thumbs[hidden]) .lp__frame.gbm{position:absolute;inset:0;aspect-ratio:auto;height:100%}
+  .panel--preview:has(.lp__thumbs[hidden]) .lp__frame.gbm > img{object-fit:cover;object-position:50% 45%}
+}
+/* 2026-10-13 desktop: Level Preview + Fast Travel side by side, Enemies & Hazards full width below (no narrow columns
+   beside a tall panel, no dead space) */
+@media (min-width:1100px){
+  .trio{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .panel--hazards{grid-column:1/-1}
+  .panel--preview,.panel--travel{min-height:0}
+  #foes{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
