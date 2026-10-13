@@ -55,6 +55,7 @@ SUPERSEDED = {
     "assets/entities/claw-bot-alert": "superseded by animation-bundle studio tile",
     "assets/entities/claw-bot-attack-a": "superseded by animation-bundle studio tile",
     "assets/entities/scenes/goom-ingame-solo": "wrong-region flag (owner QA 2026-10-13)",
+    "assets/systems/fast-travel-portal": "generic generated portal image, not an established portal design (owner QA 2026-10-13)",
     "assets/entities/scenes/goom-ingame": "wrong-region flag and malformed background Goom",
 }
 for _r in ("meadow", "creek", "river", "clover", "fallen", "frost", "summit", "prism", "prism-ridge"):

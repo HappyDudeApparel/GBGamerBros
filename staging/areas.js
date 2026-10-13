@@ -81,13 +81,15 @@ window.GB_AREAS = {
   prism: {
     name: "Prism Ridge™", sub: "Crystal Peaks & Ancient Ruins", status: "open",
     views: [
+      // 2026-10-13 owner QA: Prism Ridge™ leads with the approved top-of-mountain scene (giant cyan summit portal);
+      // the temporary "Ruin landing" substitute (pr04) is retired from public view.
+      { src: "assets/systems/portals/v13/prism-ridge-final", kind: "landmark", label: "Summit portal", focus: 0.5,
+        alt: "The crystal citadel at the top of Adventure Mountain™, with the giant cyan summit portal above a long staircase", hotspots: [] },
       { src: A + "prism-ridge/pr02-crystal-flatland", kind: "establishing", label: "Crystal flatland", focus: 0.55,
         alt: "Paved ruin plateau with violet crystals and the crystal citadel on the peaks beyond", hotspots: [] },
       { src: A + "prism-ridge/pr03-high-ridge-approach", kind: "traversal", label: "High ridge approach", focus: 0.6,
         alt: "Ridge path past ruined arches with a sightline to the crystal citadel", hotspots: [] },
-      { src: A + "prism-ridge/pr04-prism-ruin-landing", kind: "ground", label: "Ruin landing", focus: 0.55,
-        alt: "Broad stone landing among ruined towers and crystal clusters", hotspots: [] },
-      { src: A + "prism-ridge/ss01-summit-portal-stairs", kind: "landmark", label: "Summit portal stairs", focus: 0.5,
+      { src: A + "prism-ridge/ss01-summit-portal-stairs", kind: "landmark", label: "Summit Spine™ ascent", focus: 0.5,
         alt: "Grand staircase climbing between crystals and waterfalls to the summit portal", hotspots: [] },
     ],
   },

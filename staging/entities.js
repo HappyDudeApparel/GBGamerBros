@@ -168,7 +168,9 @@ window.GB_ENTITIES = {
   // ---------------- portals / props / collectibles ----------------
   "portal": {
     name: "Portal", type: "portal", status: "APPROVED",
-    media: { thumb: null, render: "assets/systems/fast-travel-portal", icon: null },
+    // 2026-10-13 owner QA: the generic generated portal image is retired; the dossier leads with the established
+    // Portal Meadow™ design (the starting portal). Every regional portal follows below.
+    media: { thumb: null, render: "assets/systems/portals/v13/meadow", icon: null },
     copy: { summary: "Regional fast-travel portal.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
     encounter: [],
     // Canonical region order (03_CANONICAL_REGION_REFERENCE_INDEX). Every entry shows approved portal artwork.

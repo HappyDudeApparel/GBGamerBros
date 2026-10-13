@@ -1604,3 +1604,17 @@ html.is-locked{overflow:hidden}
   #entEvo .evo__scenes{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   #entEvo .evo__phase-h{white-space:normal}
 }
+
+/* Fast Travel region selector (2026-10-13): labelled buttons in a fixed grid */
+.ft__dots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
+.ft__dots button{display:flex;align-items:center;gap:6px;width:auto;height:auto;min-height:36px;padding:4px 8px;border-radius:10px;
+  border:1.5px solid rgba(11,42,107,.18);background:#fff;color:#0b2a6b;font:inherit;font-size:11.5px;font-weight:700;line-height:1.15;
+  text-align:left;box-shadow:0 1px 3px rgba(10,40,110,.12);transform:none}
+.ft__dots button i{flex:0 0 12px;width:12px;height:12px;border-radius:50%;background:var(--rc);box-shadow:0 0 0 1.5px #fff,0 0 0 2.5px rgba(11,42,107,.25)}
+.ft__dots button span{min-width:0;overflow-wrap:normal}
+.ft__dots button[aria-pressed="true"]{border-color:var(--rc);background:color-mix(in srgb,var(--rc) 14%,#fff);box-shadow:0 0 0 2px var(--rc);transform:none}
+@media (max-width:420px){.ft__dots{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* regional portal grid: equal tiles whatever the source aspect */
+.dossier__states .gbm.dossier__state{aspect-ratio:16/10}
+.dossier__states .gbm.dossier__state > img{object-fit:cover;object-position:50% 30%}
+[data-area-card="prism"] .area-card__img > img{object-position:50% 12%}

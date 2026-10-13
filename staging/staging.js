@@ -713,7 +713,9 @@
     ftNote.innerHTML = pm.area && isOpen(pm.area) ? `<a href="#area/${pm.area}/1">Explore ${esc(name)} <span aria-hidden="true">→</span></a>` : esc(pm.note || "");
     [...ftDots.children].forEach((d, n) => d.setAttribute("aria-pressed", String(n === i)));
   }
-  ftDots.innerHTML = ftRegions.map(([name], i) => `<button type="button" style="--rc:${colourOf(name)}" aria-label="${esc(name)} portal" data-ft="${i}"></button>`).join("");
+  // 2026-10-13 owner QA: labelled region buttons (colour swatch + short name) instead of bare colour dots; Summit Spine™
+  // and Prism Ridge™ are both violet, so colour alone was ambiguous. Fixed 4-column grid: never wraps unevenly.
+  ftDots.innerHTML = ftRegions.map(([name], i) => `<button type="button" style="--rc:${colourOf(name)}" aria-label="${esc(name)} portal" data-ft="${i}"><i aria-hidden="true"></i><span>${esc(name.replace("™", ""))}</span></button>`).join("");
   ftDots.addEventListener("click", (e) => { const b = e.target.closest("[data-ft]"); if (b) ftSet(Number(b.dataset.ft)); });
   ftSet(0);
   // warm only the neighbouring portals, and only once Fast Travel is on screen (2 files at a time, low priority)
