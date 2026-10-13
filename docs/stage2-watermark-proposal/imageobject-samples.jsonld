@@ -1,0 +1,16 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "ImageObject", "contentUrl": "https://gb.happydude.ca/staging/assets/characters/blue/sporty-pose.webp",
+   "name": "Gamer Bro Blue — sporty pose", "creditText": "A HAPPY DUDE® Original",
+   "copyrightNotice": "© 2026 HAPPY DUDE®. All rights reserved.",
+   "creator": {"@type": "Organization", "name": "HAPPY DUDE®", "url": "https://happydude.ca/"},
+   "license": "https://gb.happydude.ca/staging/rights.html", "acquireLicensePage": "https://gb.happydude.ca/staging/rights.html"},
+  {"@type": "ImageObject", "contentUrl": "https://gb.happydude.ca/staging/assets/areas/portal-meadow/pm02-open-meadow-routes.webp",
+   "name": "Portal Meadow — open meadow routes", "creditText": "A HAPPY DUDE® Original",
+   "copyrightNotice": "© 2026 HAPPY DUDE®. All rights reserved.",
+   "creator": {"@type": "Organization", "name": "HAPPY DUDE®", "url": "https://happydude.ca/"},
+   "license": "https://gb.happydude.ca/staging/rights.html", "acquireLicensePage": "https://gb.happydude.ca/staging/rights.html"}
+ ],
+ "_note": "SAMPLE ONLY, not deployed. contentUrl values point at the current unmarked staging files; they would point at the approved marked exports."
+}

@@ -1,0 +1,68 @@
+{
+ "source": "crystal-guardian-hero.webp",
+ "source_sha256": "6fd9d0f20eb8073e2d2a7f60ac71f4439e678b6b55d2a869d97665b03e2e3793",
+ "level": "C",
+ "subject_bbox": [
+  6,
+  0,
+  652,
+  483
+ ],
+ "marks": [
+  {
+   "zone": "0.10,0.62,0.92,0.84",
+   "px_width": 491,
+   "angle": -10.0,
+   "opacity": 0.55,
+   "edge": 0.45,
+   "tone": "white",
+   "luminance": 77.5,
+   "share_of_subject_width": 0.76
+  },
+  {
+   "zone": "0.20,0.84,0.8,0.95",
+   "px_width": 252,
+   "angle": 6.0,
+   "opacity": 0.385,
+   "edge": 0.45,
+   "tone": "white",
+   "luminance": 50.7,
+   "share_of_subject_width": 0.39
+  }
+ ],
+ "outputs": {
+  "enemy-prism-keeper_C.webp": {
+   "px": [
+    658,
+    483
+   ],
+   "sha256": "4bb3fe49596dbec3548d58bd71a126e9478c8f11733794d25f6f4df8284d6ef3",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  },
+  "enemy-prism-keeper_C-960.webp": {
+   "px": [
+    658,
+    483
+   ],
+   "sha256": "4bb3fe49596dbec3548d58bd71a126e9478c8f11733794d25f6f4df8284d6ef3",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  }
+ },
+ "source_unchanged": true
+}

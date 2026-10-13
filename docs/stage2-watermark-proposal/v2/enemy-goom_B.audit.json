@@ -1,0 +1,58 @@
+{
+ "source": "goom-hero.webp",
+ "source_sha256": "45e3203d2b0a7836d0f087f7b4ea7ea6a3a407fe0aa38e1a7087144bc6be01e0",
+ "level": "B",
+ "subject_bbox": [
+  7,
+  7,
+  332,
+  285
+ ],
+ "marks": [
+  {
+   "zone": "0.22,0.22,0.78,0.37",
+   "px_width": 155,
+   "angle": -6.0,
+   "opacity": 0.38,
+   "edge": 0.3,
+   "tone": "white",
+   "luminance": 106.7,
+   "share_of_subject_width": 0.48
+  }
+ ],
+ "outputs": {
+  "enemy-goom_B.webp": {
+   "px": [
+    338,
+    291
+   ],
+   "sha256": "7cda133540664971ad0b053653c82318122941061e0b37693cb0c65b6d98be69",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  },
+  "enemy-goom_B-960.webp": {
+   "px": [
+    338,
+    291
+   ],
+   "sha256": "7cda133540664971ad0b053653c82318122941061e0b37693cb0c65b6d98be69",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  }
+ },
+ "source_unchanged": true
+}

@@ -1,0 +1,75 @@
+{
+ "category": "character",
+ "source": "staging/assets/characters/blue/sporty-pose.webp",
+ "source_sha256": "12329af283557f3f971c827c588b4a4784af63e3a624f64eae230ebb94d96802",
+ "content_px": [
+  366,
+  751
+ ],
+ "content_box": [
+  7,
+  8,
+  360,
+  744
+ ],
+ "cutout": true,
+ "band_cropped": 14,
+ "marks": [
+  {
+   "corner": "br",
+   "xy": [
+    214,
+    519
+   ],
+   "size": [
+    100,
+    16
+   ],
+   "opacity": 0.62,
+   "tone": "light",
+   "luminance_under_mark": 87.3,
+   "inset_of_content_box": [
+    0.586,
+    0.694
+   ]
+  }
+ ],
+ "outputs": {
+  "character_blue-sporty-pose.webp": {
+   "px": [
+    366,
+    751
+   ],
+   "bytes": 67704,
+   "sha256": "ca99a27d131574b6cb42c5d3e5e76f81e43dd492a21bd739d254e369b03436aa",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_name": true
+   }
+  },
+  "character_blue-sporty-pose-960.webp": {
+   "px": [
+    366,
+    751
+   ],
+   "bytes": 67704,
+   "sha256": "ca99a27d131574b6cb42c5d3e5e76f81e43dd492a21bd739d254e369b03436aa",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_name": true
+   }
+  }
+ },
+ "source_unchanged": true,
+ "metadata_survived_all_variants": true
+}
