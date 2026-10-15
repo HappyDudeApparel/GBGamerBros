@@ -158,7 +158,7 @@ def prepare_production(tmp, expect):
     run(sys.executable, os.path.join(REPO, "staging/tools/asset_allowlist.py"), "--check", sdir)
     before_root = revision_of(tmp) if os.path.exists(os.path.join(tmp, "revision.json")) else "unknown"
     promote(tmp)
-    touched = git("diff", "--cached", "--name-only", "origin/main", cwd=tmp, out=True).splitlines()
+    touched = git("diff", "--cached", "--name-only", "HEAD", cwd=tmp, out=True).splitlines()
     bad = [f for f in touched if f.split("/")[0] in PRESERVED or f.startswith("assets/") and "/" not in f[len("assets/"):]]
     if bad:
         raise SystemExit("refusing: preserved files would change:\n" + "\n".join(bad[:20]))
@@ -166,7 +166,7 @@ def prepare_production(tmp, expect):
         run(sys.executable, os.path.join(tmp, "tools/check_staging_invariants.py"), sdir)
     if revision_of(tmp) != rev:
         raise SystemExit("refusing: root revision.json does not match the staged build")
-    stat = git("diff", "--cached", "--stat", "origin/main", cwd=tmp, out=True)
+    stat = git("diff", "--cached", "--stat", "HEAD", cwd=tmp, out=True)
     if not stat:
         return rev, before_root, None
     print(stat.splitlines()[-1])
