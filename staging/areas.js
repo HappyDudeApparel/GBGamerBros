@@ -116,20 +116,24 @@ window.GB_AREAS = {
     views: [
       // Owner canon audit 2026-10-10 (issue #1): the three character action stills formerly here show floating islands, contrary to ONE
       // CONNECTED MOUNTAIN; the Trail Junction still and the two springboard stills were rejected and withdrawn.
-      // 2026-10-15 owner QA: a more varied mix from the owner's newest library: in-world pursuit scenes with the correct regional flags and
-      // portals, two enemy poster compositions (true-alpha group renders on the studio background), and the Prism Keeper encounter last.
-      { src: "assets/scenes/portal-meadow-pursuit", kind: "still", label: "Portal Meadow™ pursuit", focus: 0.42,
+      // 2026-10-15 owner QA: one still with a portal and its canonical regional flags for every point of interest, in route order, mixing
+      // in-world pursuit scenes with the approved portal scenes; the two background-less enemy poster stills are removed.
+      { src: "assets/scenes/portal-meadow-pursuit", kind: "still", label: "Portal Meadow™", focus: 0.42,
         alt: "Gamer Girl Yellow™ in her streetwear slides across a flower-lined stone path as a Stone Walker™ lunges behind her, Claw Bots™ closing in near the gold Portal Meadow™ portal and its gold GB banners", hotspots: [] },
-      { src: "assets/scenes/enemy-squad-poster", kind: "still", label: "Bot squad", focus: 0.5,
-        alt: "Goom Bot™ with a Spike Bot™, a Claw Bot™ and a Rotor Bot™ above them, shown together on a soft studio background", hotspots: [] },
-      { src: "assets/scenes/riverworks-rush", kind: "still", label: "Riverworks™ rush", focus: 0.5,
-        alt: "Goom Bot™ rolls down a timber walkway at Riverworks™ with Claw Bots™ and a Rotor Bot™ behind it, in front of the red Riverworks™ portal, red GB banners, blue pipes and waterfalls", hotspots: [] },
-      { src: "assets/scenes/creek-crossing-pursuit", kind: "still", label: "Creek Crossing™ pursuit", focus: 0.3,
+      { src: "assets/scenes/creek-crossing-pursuit", kind: "still", label: "Creek Crossing™", focus: 0.3,
         alt: "Gamer Bro Red™ in his sporty look sprints along a creek-side path away from a Stone Walker™ and Claw Bots™, with the blue Creek Crossing™ portal and its blue GB banner behind him", hotspots: [] },
-      { src: "assets/scenes/stone-line-poster", kind: "still", label: "The stone line", focus: 0.5,
-        alt: "A Stone Walker™ and a Prism Keeper™ stand in front of Brightback™, the towering fourth form of the Rumbler™ line, shown together on a soft studio background", hotspots: [] },
-      { src: "assets/scenes/summit-spine-climb", kind: "still", label: "Summit Spine™ climb", focus: 0.5,
+      { src: "assets/scenes/riverworks-rush", kind: "still", label: "Riverworks™", focus: 0.5,
+        alt: "Goom Bot™ rolls down a timber walkway at Riverworks™ with Claw Bots™ and a Rotor Bot™ behind it, in front of the red Riverworks™ portal, red GB banners, blue pipes and waterfalls", hotspots: [] },
+      { src: "assets/scenes/clover-cliffs-charge", kind: "still", label: "Clover Cliffs™", focus: 0.5,
+        alt: "Goom Bot™, a Claw Bot™ and a Rotor Bot™ rush the stairs of Clover Cliffs™ below the green Clover Cliffs™ portal and green GB banners, with a Stone Walker™ above the pines", hotspots: [] },
+      { src: "assets/systems/portals/v13/fallen", kind: "still", label: "Fallen Grounds™", focus: 0.7,
+        alt: "The glowing orange Fallen Grounds™ portal between ivy-covered stone arches, with orange GB banners and autumn leaves", hotspots: [] },
+      { src: "assets/systems/portals/v13/frost", kind: "still", label: "Frosty Peaks™", focus: 0.75,
+        alt: "The blue Frosty Peaks™ portal above a frozen basin and waterfalls, with light-blue GB banners and a lantern-lit rope bridge", hotspots: [] },
+      { src: "assets/scenes/summit-spine-climb", kind: "still", label: "Summit Spine™", focus: 0.5,
         alt: "A Spike Bot™ and a Stone Walker™ on the flower-lined path to the purple Summit Spine™ portal, with purple GB banners, crystals and waterfalls", hotspots: [] },
+      { src: "assets/systems/portals/v13/prism-ridge-final", kind: "still", label: "Prism Ridge™", focus: 0.5,
+        alt: "The crystal citadel at the top of Adventure Mountain™, with the giant cyan Prism Ridge™ summit portal above a long staircase", hotspots: [] },
       { src: "assets/systems/preview-prism-keeper-encounter", kind: "still", label: "Prism Keeper™ encounter", focus: 0.5,
         alt: "Gamer Bro Blue™ in his sporty look stands in front of the Prism Keeper™ as it slams both fists into a crystal-lit plaza below a grand staircase", hotspots: [] },
     ],

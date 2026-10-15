@@ -6,6 +6,7 @@
 The original (BRIGHTBACK_CUTOUT_TRUE_ALPHA_V1, 1536 px, found by SHA-256 prefix, never modified) shows the V1 design: squat build, wide
 shoulders, the glowing chest core in its pointed crystal frame, the comb crown. It replaces the taller, slimmer renders (ring-shaped core)
 that were published on 2026-10-13: those match the V2/"new candidate" look and are NOT the accepted design. They are no longer published.
+Also built here: scenes/brightback-in-the-world (4:3 crop of one owner scene) and two stone-line posters.
 The render is trimmed to its alpha bounds (plus a small margin) and otherwise untouched. Derivatives are built with staging/tools/gbmedia.py.
 """
 import hashlib, os, subprocess, sys, tempfile
@@ -20,6 +21,8 @@ REPO = os.path.dirname(HERE)
 STAGING = os.path.join(REPO, "staging")
 GBMEDIA = os.path.join(STAGING, "tools", "gbmedia.py")
 SHA = "df2f14a508f0"
+SCENE_SHA = "b052c14a6da9"                                   # sunlit mountain scene, Brightback behind the stone line
+POSTERS = {"scenes/stone-line-poster": "a76d1ccf69f1", "scenes/stone-line-poster-b": "45ccfa260bc1"}
 TILE_HEIGHT = 0.94 * (BASELINE - 8)      # px of tile height the figure may use: taller than the Prism Keeper tile figure, inside the frame
 
 
@@ -45,7 +48,28 @@ def main(src):
     tile = studio_bg(); tile.alpha_composite(f2, ((W - f2.width) // 2, round(BASELINE - f2.height)))
     out = os.path.join(tmp, "seq-brightback.png"); tile.convert("RGB").save(out)
     subprocess.check_call([sys.executable, GBMEDIA, "build", out, os.path.join(STAGING, "assets/entities/evolution/seq/seq-brightback")])
-    print("built Brightback V1 hero + evolution tile")
+    # Brightback in the world: tight 4:3 crop of the owner's sunlit mountain scene (Brightback towering over the Stone Walker and Prism Keeper, no banners)
+    # and two studio posters of the stone line (true-alpha group renders set whole on the studio gradient)
+    extra = {}
+    for root, _, files in os.walk(src):
+        for f in files:
+            p = os.path.join(root, f)
+            extra[hashlib.sha256(open(p, "rb").read()).hexdigest()[:12]] = p
+    if SCENE_SHA in extra:
+        sc = Image.open(extra[SCENE_SHA]).convert("RGB")
+        out = os.path.join(tmp, "brightback-in-the-world.png"); sc.crop((100, 0, 940, 630)).save(out)      # tight 4:3 on Brightback so it reads larger than the Prism Keeper close-up
+        subprocess.check_call([sys.executable, GBMEDIA, "build", out, os.path.join(STAGING, "assets/scenes/brightback-in-the-world")])
+    for slot, h in POSTERS.items():
+        if h not in extra:
+            continue
+        g = Image.open(extra[h]).convert("RGBA")
+        g = g.crop(g.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox())
+        k = min(0.94 * (BASELINE - 10) / g.height, 0.92 * W / g.width)
+        g = g.resize((round(g.width * k), round(g.height * k)), Image.LANCZOS)
+        t = studio_bg(); t.alpha_composite(g, ((W - g.width) // 2, round(BASELINE - g.height)))
+        out = os.path.join(tmp, os.path.basename(slot) + ".png"); t.convert("RGB").save(out)
+        subprocess.check_call([sys.executable, GBMEDIA, "build", out, os.path.join(STAGING, "assets", slot)])
+    print("built Brightback V1 hero + evolution tile + in-world scene + posters")
 
 
 if __name__ == "__main__":

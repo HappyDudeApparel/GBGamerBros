@@ -70,6 +70,7 @@ for _k in ("alt", "guard", "flex"):
 # 2026-10-15 owner QA: Prism Ridge shows only the final portal scene; Summit Spine has its own entry
 for _k in ("pr02-crystal-flatland", "pr03-high-ridge-approach"):
     SUPERSEDED[f"assets/areas/prism-ridge/{_k}"] = {"reason": "Prism Ridge shows ONLY the final portal scene (owner QA 2026-10-15)", "scope": "GB_AREAS.prism"}
+SUPERSEDED["assets/objects/chest"] = "superseded 2026-10-15 by the owner's four-colour treasure chest render (chest-set, chest-blue/red/yellow/purple)"
 SUPERSEDED["assets/systems/preview-04-trail-junction"] = "rejected by the owner 2026-10-13 (wrong enemies, inaccurate flag); no replacement trail scene approved yet"
 # 2026-10-13 (quality pass): owner-approved 1254 px standalone studio renders replace the earlier cutouts and sheet-crop tiles
 for _k in ("goom", "spike-bot", "claw-bot"):

@@ -116,7 +116,9 @@ need("evo__phases" in js and "evo__phase-h" in js, "staging.js: phase-grouped ev
 need("evo__num--ref" in js, "staging.js: REFERENCE badge for the completed-form entry missing")
 ent = read("entities.js")
 need('"brightback": {' in ent and "brightback-v1-hero" in ent, "entities.js: Brightback V1 entity missing")
-need("reference: true" in ent, "entities.js: Brightback in-world entry must be flagged reference: true")
+# 2026-10-15: the Brightback in-world step is a real scene (assets/scenes/brightback-in-the-world), no longer a "Reference" stand-in tile
+need("brightback-in-the-world" in ent or "reference: true" in ent, "entities.js: Brightback in-world entry must be a real scene or flagged reference: true")
+need("Reference</span>" not in open(os.path.join(STAGING, "staging.js"), encoding="utf-8").read() or "reference: true" not in ent, "Brightback in-world step must not be labelled Reference")
 need("brightback-v2" not in ent.lower() and "brightback-v2" not in js.lower(), "Brightback V2 (alternate) must not be used")
 need('"brightback"' in ent.split("GB_BESTIARY")[-1], "entities.js: Brightback missing from the bestiary")
 for f in ("hero", "turnaround", "face", "hand"):

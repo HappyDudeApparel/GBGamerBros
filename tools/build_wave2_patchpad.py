@@ -6,7 +6,7 @@
 The Blue version is the existing owner-selected hero (assets/gear/patchpad-hero). Originals are found by SHA-256 prefix and never modified.
 The yellow and purple renders carry a small baked "PLAYER WEARABLE ECOSYSTEM" line under the title, which the owner has ruled out of public
 use; it is removed from the derivative only (as is the baked footer strip at the bottom of each source, whose rows are replaced by a mirrored, softened continuation of the floor), by interpolating the plain gradient behind it column by column (no device pixels are touched).
-The red render has no such line. Derivatives are built with staging/tools/gbmedia.py.
+All three renders have the line. Derivatives are built with staging/tools/gbmedia.py.
 """
 import hashlib, os, subprocess, sys, tempfile
 import numpy as np
@@ -17,9 +17,10 @@ STAGING = os.path.join(REPO, "staging")
 GBMEDIA = os.path.join(STAGING, "tools", "gbmedia.py")
 # slot -> (sha256 prefix, remove the subtitle line?)
 SLOTS = {
-    "gear/patchpad-red": ("5802f781a2b9", False),
-    "gear/patchpad-yellow": ("6888d941ae51", True),
-    "gear/patchpad-purple": ("cfbbaac4e608", True),
+    # owner QA 2026-10-15: every colour on the BLUE studio background (like the approved Blue hero), not on a background matched to the pad
+    "gear/patchpad-red": ("1d713cd54f04", True),
+    "gear/patchpad-yellow": ("ee3a8b42ea5d", True),
+    "gear/patchpad-purple": ("977d03f9e4be", True),
 }
 BAND = (203, 233)        # rows to rebuild (title ends ~y200; device starts well below)
 FOOTER = 28             # height of the baked footer strip at the bottom of the source renders

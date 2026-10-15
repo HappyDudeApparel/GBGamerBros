@@ -34,7 +34,8 @@ window.GB_WORLD = {
     { id: "ruin", color: "#D2691E",   area: "ruin",   name: "Fallen Grounds™",  sub: "Broken Arches & Old Stone",              icon: "i-secret",
       fallback: { x: 0.15, y: 0.18 }, world: { x: 0.2886, y: 0.1953 } },
     { id: "prism", color: "#7A3CC8",  area: "prism",  name: "Prism Ridge™",     sub: "Crystal Peaks & Ancient Ruins", icon: "i-reward",
-      fallback: { x: 0.5, y: 0.115 }, world: { x: 0.4015, y: 0.0928 } },
+      // 2026-10-15 owner QA: the label sat on the summit portal; it now stands in the sky to the right of the peak, clear of the portal and citadel
+      fallback: { x: 0.63, y: 0.075 }, world: { x: 0.4515, y: 0.0728 } },
     // Summit Spine™ (2026-10-15 owner QA): public region between Frosty Peaks™ and Prism Ridge™. Pin sits low on the map, mid-bottom, where the
     // climb begins; the position is approximate until the owner confirms it against the panorama.
     { id: "summit", color: "#8d4fe0", area: "summit", name: "Summit Spine™",    sub: "The Climb to the Summit",       icon: "i-traversal",

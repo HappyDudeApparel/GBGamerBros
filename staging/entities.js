@@ -154,7 +154,7 @@ window.GB_ENTITIES = {
     media: { thumb: N + "brightback-hero", render: "assets/entities/new/brightback-hero", icon: null },
     copy: { summary: "The towering fourth evolution of the Rumbler™ line, with deeper violet stone and larger Prism Shards.", behaviour: "An imposing apex form.", where: "Prism Ridge™." },
     encounter: [],
-    views: {}, states: { "Final form": "assets/entities/new/brightback-hero" }, angles: angles(), cardScale: 1.0, height: null, scale: null,
+    views: {}, states: { "Final form": "assets/entities/new/brightback-hero", "With the stone line": "assets/scenes/stone-line-poster", "Stone line · wide": "assets/scenes/stone-line-poster-b" }, angles: angles(), cardScale: 1.0, height: null, scale: null,
     evolution: { line: "boulder", phase: 4 },
     // Archived: the 679 px V1 cutout (superseded by the true-alpha V1 cutout). The captioned scene crop (brightback-v1-hero.png) stays in the repo as a reference but is not shown.
     archived: { "V1 cutout (679 px)": E + "brightback-v1-cutout" },
@@ -259,8 +259,8 @@ window.GB_ENTITIES = {
     angles: angles(), scale: null,
   },
   "treasure-chest": {
-    name: "Treasure Chest", type: "collectible", status: "APPROVED",
-    media: { thumb: "assets/objects/chest", render: "assets/objects/chest", icon: null },
+    name: "Treasure Chest", type: "collectible", status: "APPROVED", heroLabel: "All four", cardScale: 0.95,
+    media: { thumb: "assets/objects/chest-set", render: "assets/objects/chest-set", icon: null },
     copy: { summary: "The GB treasure chest.", behaviour: "Holds rewards for curious explorers.", where: "Found across Adventure Mountain™." },
     encounter: [], states: { "Blue": "assets/objects/chest-blue", "Red": "assets/objects/chest-red", "Yellow": "assets/objects/chest-yellow", "Purple": "assets/objects/chest-purple" }, angles: angles(), scale: null,
   },
@@ -279,12 +279,13 @@ window.GB_EVOLUTION_DETAIL = {
     sequence: [
       { src: X + "seq/seq-rumbler", label: "Dormant", phase: 1 },
       { src: X + "seq/seq-rolling", label: "Rolling", phase: 1 },
-      { src: X + "seq/seq-impact", label: "Impact", phase: 1 },
       { src: X + "seq/seq-cracked", label: "Fracture", phase: 1 },
+      { src: X + "seq/seq-impact", label: "Impact", phase: 1 },
       { src: X + "seq/seq-forming", label: "Forming", phase: 2 },
       { src: X + "seq/seq-stone-walker", label: "Stone Walker™", phase: 2 },
       { src: X + "seq/seq-prism-keeper", label: "Prism Keeper™", phase: 3 },
-      { src: X + "seq/seq-brightback", label: "Brightback™", phase: 4 },
+      // apex: Brightback™ is shown as its true-alpha V1 cutout, larger than the Prism Keeper™ tile, and may rise out of its frame
+      { src: X + "seq/seq-brightback", apex: "assets/entities/new/brightback-hero", label: "Brightback™", phase: 4 },
     ],
     // 2026-10-13 owner QA: transformation mechanics are not disclosed publicly (spoilers). The Mechanics tab shows each
     // form's public summary and behaviour copy from its own dossier instead.
@@ -297,8 +298,8 @@ window.GB_EVOLUTION_DETAIL = {
       { src: "assets/scenes/portal-meadow-pursuit", label: "Portal Meadow™", phase: 2 },
       { src: "assets/scenes/creek-crossing-pursuit", label: "Creek Crossing™", phase: 2 },
       { src: E + "scenes/crystal-guardian-ingame", label: "Prism Keeper™", phase: 3 },
-      // no approved in-world Brightback™ scene without a wrong-region banner: the approved V1 form tile stands in
-      { src: X + "seq/seq-brightback", label: "Brightback™", phase: 4, reference: true },
+      // 2026-10-15 owner QA: a real in-world scene (sunlit mountain, no banners), Brightback™ towering over the Stone Walker™ and Prism Keeper™
+      { src: "assets/scenes/brightback-in-the-world", label: "Brightback™", phase: 4 },
     ],
   },
 };
@@ -338,6 +339,7 @@ window.GB_ENTITY_SCENE = {
   "crystal-guardian": { src: SC + "crystal-guardian-ingame", fx: 50 },
   "brightback": [
     // "Four-view turnaround" removed from public view 2026-10-11 (technical turnaround; thin strip left a large blank stage); file kept
+    { src: "assets/scenes/brightback-in-the-world", fx: 50, label: "In the world" },
     { src: E + "brightback-v1-face-clean", fx: 50, label: "Face and core detail" },
     // "Prism Shard detail" (brightback-v1-hand-clean, 288 px) removed from public view 2026-10-11: shown at 0.4x density on phones; file kept
   ],
