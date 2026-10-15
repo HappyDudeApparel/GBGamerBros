@@ -10,7 +10,7 @@
 staging
   * the dev branch must be committed; revision.py --check, check_invariants.py and asset_allowlist.py must pass
   * only public staging files are copied (no *.md, no tools/); /staging/ is replaced as a whole, so removed assets disappear
-  * the main-branch CI guard tools/check_staging_invariants.py is synced in the same commit (the only file outside staging/ it may change)
+  * the main-branch CI guard tools/check_staging_invariants.py (a copy of staging/tools/check_invariants.py) is synced in the same commit (the only file outside staging/ it may change)
   * refuses if anything else outside staging/ would change; "already current" is a success, not an error
 
 production
@@ -97,7 +97,7 @@ def prepare_staging(tmp):
                 os.remove(os.path.join(root, f))
     git("add", "-A", "staging", cwd=tmp)
     # the main-branch CI guard (tools/check_staging_invariants.py) must match the build it guards, or the push turns CI red
-    shutil.copy2(os.path.join(REPO, GUARD), os.path.join(tmp, GUARD))
+    shutil.copy2(os.path.join(REPO, "staging/tools/check_invariants.py"), os.path.join(tmp, GUARD))
     git("add", GUARD, cwd=tmp)
     outside = git("diff", "--cached", "--name-only", "origin/main", "--", ".", ":!staging", f":!{GUARD}", cwd=tmp, out=True)
     if outside:
