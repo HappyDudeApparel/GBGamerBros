@@ -242,8 +242,8 @@ button{font:inherit;color:inherit;cursor:pointer}
   .pillars li{width:max(92px,calc(143 * var(--u)))}
   .pillars{left:calc(30 * var(--u))}
   .hero__arrow{top:calc(549 * var(--u));transform:translateY(-50%)}
-  .hero__arrow--prev{left:calc(770 * var(--u) - 118px)}
-  .hero__arrow--next{right:auto;left:calc(770 * var(--u) + 78px)}
+  .hero__arrow--prev{left:calc(770 * var(--u) - var(--hw,156px) / 2 - max(40px,calc(38 * var(--u))) - 4px)}
+  .hero__arrow--next{right:auto;left:calc(770 * var(--u) + var(--hw,156px) / 2 + 4px)}
 }
 
 /* ========== portrait: same elements, stacked composition ========== */
@@ -289,8 +289,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 
   .hero__dots{left:50%;top:calc(572 * var(--p));gap:2px}
   .hero__arrow{top:calc(572 * var(--p));transform:translateY(-50%)}
-  .hero__arrow--prev{left:calc(50% - 112px)}
-  .hero__arrow--next{right:auto;left:calc(50% + 72px)}
+  .hero__arrow--prev{left:calc(50% - var(--hw,144px) / 2 - 44px)}
+  .hero__arrow--next{right:auto;left:calc(50% + var(--hw,144px) / 2 + 4px)}
 
 }
 
@@ -1523,7 +1523,7 @@ html.is-locked{overflow:hidden}
 
 /* Hero key art: one composite per slide (wide + portrait); characters are part of the picture. Wide crops keep the lower part (feet) in view. */
 .slide--art picture{display:block;width:100%;height:100%}
-.slide--art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 80%;filter:none}
+.slide--art img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 80%);filter:none}
 @media (max-aspect-ratio:1/1){.slide--art img{object-position:50% 50%}}
 
 /* Public curation 2026-10-11: a small source is shown at (about) its native size in the dossier stage instead of
@@ -1736,3 +1736,8 @@ a.steam,a.steam:visited{text-decoration:none;color:#fff}
    560 px cap) and the breakout headroom grows to match; it is now a taller, more imposing figure than the old 679 px landscape cutout. */
 #foes > li.foes__apex{padding-top:calc(min(94cqw,560px) * .34)}
 #foes .foe--apex .foe__stage > .gbm.cutout{width:calc(var(--fw) * .98 * var(--ar))}
+
+/* 2026-10-15: GlitchKey(TM) concept preview sits in the same row and card style as PATCHPAD(TM) and SMARTWATCH */
+.gear{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gear__card figcaption{align-content:start}
+@media (max-width:719px){.gear{grid-template-columns:1fr}}

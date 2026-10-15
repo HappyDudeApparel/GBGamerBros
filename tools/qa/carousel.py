@@ -11,7 +11,8 @@ async def main():
             pg.on("pageerror",lambda e:errs.append(str(e))); pg.on("response",lambda r:errs.append(f"{r.status} {r.url}") if r.status>=400 else None)
             await pg.goto(BASE,wait_until="networkidle"); await pg.wait_for_timeout(500)
             n=await pg.evaluate("[...document.querySelectorAll('#heroDots button')].filter(b=>!b.hidden).length")
-            if n!=3: fails.append(f"[{name}] expected 3 slides, got {n}")
+            want=5 if w<h else 10   # slides 6-10 are wide action art that leaves the rotation on portrait screens
+            if n!=want: fails.append(f"[{name}] expected {want} slides, got {n}")
             arrow=await pg.query_selector('.hero__arrow--next')
             if arrow and await arrow.is_visible():
                 for i in range(n+1):
@@ -20,11 +21,12 @@ async def main():
                 print(f"  [{name}] next arrow hidden by design; using dots")
             sel=await pg.evaluate("document.querySelectorAll('#heroDots button[aria-selected=true]').length"); 
             if sel!=1: fails.append(f"[{name}] selected dots {sel}")
-            for k in range(n):
-                await pg.click(f'#heroDots button:nth-child({k+1})'); await pg.wait_for_timeout(300)
+            vis=await pg.evaluate("[...document.querySelectorAll('#heroDots button')].map((b,i)=>b.hidden?-1:i).filter(i=>i>=0)")
+            for k in vis:
+                await pg.evaluate(f"document.querySelectorAll('#heroDots button')[{k}].click()"); await pg.wait_for_timeout(300)
                 r=await pg.evaluate("""(k)=>{const s=document.querySelectorAll('#heroTrack .slide')[k];const i=s.querySelector('img');return {ok:i.complete&&i.naturalWidth>0,src:i.currentSrc.split('/').pop().split('?')[0]}}""",k)
                 if not r['ok']: fails.append(f"[{name}] slide {k} image failed")
-                if (w<h)!=('-p' in r['src']): fails.append(f"[{name}] slide {k} wrong crop for orientation: {r['src']}")
+                if (w<h and '-p' not in r['src']) or (w>=h and '-p' in r['src']): fails.append(f"[{name}] slide {k} wrong crop for orientation: {r['src']}")
             hl=await pg.evaluate("""()=>{const q=s=>document.querySelector(s).getBoundingClientRect();const a=q('.headline'),c=q('.steam--hero'),h=q('.hero');return {head:a.left>=0&&a.right<=innerWidth,cta:c.left>=0&&c.right<=innerWidth&&c.height>0,overflow:document.documentElement.scrollWidth-innerWidth}}""")
             if not (hl['head'] and hl['cta']) or hl['overflow']>0: fails.append(f"[{name}] headline/CTA clipped or overflow {hl}")
             for e in sorted(set(errs)): fails.append(f"[{name}] {e}")

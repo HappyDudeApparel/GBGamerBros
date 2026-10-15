@@ -115,6 +115,10 @@
   "GB_ENTITIES.crystal-guardian.states.Guard": "assets/entities/new/prism-keeper-guard",
   "GB_ENTITIES.crystal-guardian.states.Impact": "assets/entities/new/prism-keeper-impact",
   "GB_ENTITIES.crystal-guardian.states.Ready": "assets/entities/new/prism-keeper-hero",
+  "GB_ENTITIES.glitchkey.media.render": "assets/gear/glitchkey-scene-blue",
+  "GB_ENTITIES.glitchkey.media.thumb": "assets/gear/glitchkey-scene-blue",
+  "GB_ENTITIES.glitchkey.views.Blue": "assets/gear/glitchkey-scene-blue",
+  "GB_ENTITIES.glitchkey.views.Four colours": "assets/gear/glitchkey-lineup",
   "GB_ENTITIES.goom.cardAlt": "assets/entities/studio/goom-attack-hd",
   "GB_ENTITIES.goom.details.Expression": "assets/entities/studio/goom-face-hd",
   "GB_ENTITIES.goom.media.render": "assets/entities/studio/goom-idle-hd",
@@ -236,6 +240,7 @@
    "assets/cloud-bank",
    "assets/hero/hero-1",
    "assets/hero/hero-1-p",
+   "assets/hero/hero-10",
    "assets/hero/hero-2",
    "assets/hero/hero-2-p",
    "assets/hero/hero-3",
@@ -245,12 +250,17 @@
    "assets/hero/hero-5",
    "assets/hero/hero-5-p",
    "assets/hero/hero-6",
-   "assets/hero/hero-6-p"
+   "assets/hero/hero-6-p",
+   "assets/hero/hero-7",
+   "assets/hero/hero-8",
+   "assets/hero/hero-9"
   ],
   "staging.css": [
    "assets/hero-world-highfive"
   ],
   "staging.js": [
+   "assets/gear/glitchkey-lineup",
+   "assets/gear/glitchkey-scene-blue",
    "assets/gear/patchpad-hero",
    "assets/gear/smartwatch-hardware",
    "assets/gear/smartwatch-lineup"

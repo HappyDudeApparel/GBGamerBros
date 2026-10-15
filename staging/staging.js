@@ -66,6 +66,9 @@
     });
   }
 
+  // the arrows flank the dot row, whose width follows the number of live slides
+  if (window.ResizeObserver) new ResizeObserver(() => document.querySelector(".hero").style.setProperty("--hw", dotsWrap.offsetWidth + "px")).observe(dotsWrap);
+
   function go(n) {
     const L = live();
     index = (n + L.length) % L.length;
@@ -831,8 +834,15 @@
   };
   const WATCH = [["assets/gear/smartwatch-lineup", "SMARTWATCH in Blue, Red, Yellow and Purple, balanced lineup"],
                  ["assets/gear/smartwatch-hardware", "SMARTWATCH hardware showcase in GB Blue: front, three-quarter and side views with close-ups of the buttons, metal build, strap and clasp, and engraved back plate"]];
-  gearImg(document.getElementById("gearPadImg"), "assets/gear/patchpad-hero", "PATCHPAD™ handheld hacking device in GB Blue");
+  gearImg(document.getElementById("gearPadImg"), "assets/gear/patchpad-hero", "PATCHPAD™ in GB Blue, with a metallic dial, vertical thumbwheel and four coloured controls");
   gearImg(document.getElementById("gearWatchImg"), ...WATCH[0]);
+  const KEY = [["assets/gear/glitchkey-scene-blue", "GlitchKey™ concept: a glowing blue card on a lit plinth"],
+               ["assets/gear/glitchkey-lineup", "GlitchKey™ concept in Blue, Red, Yellow and Purple, front view"]];
+  gearImg(document.getElementById("gearKeyImg"), ...KEY[0]);
+  document.querySelectorAll("[data-key]").forEach((b) => b.addEventListener("click", () => {
+    gearImg(document.getElementById("gearKeyImg"), ...KEY[+b.dataset.key]);
+    document.querySelectorAll("[data-key]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  }));
   document.querySelectorAll("[data-watch]").forEach((b) => b.addEventListener("click", () => {
     gearImg(document.getElementById("gearWatchImg"), ...WATCH[+b.dataset.watch]);
     document.querySelectorAll("[data-watch]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));

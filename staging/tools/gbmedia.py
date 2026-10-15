@@ -131,6 +131,14 @@ def write_manifest(m):
         f"window.GB_MEDIA = {body};\n")
 
 
+def _master_label(path):
+    """Public record of the source: its file name, except opaque private-storage ids, which are never published."""
+    n = os.path.basename(path)
+    if re.fullmatch(r"[A-Za-z0-9_-]{25,}\.(png|jpe?g|webp)", n) and not re.search(r"[a-z]{3,}_[a-z]{3,}", n.lower()):
+        return "owner-supplied render (private source; source pixels unchanged)"
+    return n
+
+
 def build(master, base, small_w=SMALL_W):
     src = Image.open(master)
     alpha = src.mode in ("RGBA", "LA") or (src.mode == "P" and "transparency" in src.info)
@@ -146,7 +154,7 @@ def build(master, base, small_w=SMALL_W):
     key = os.path.relpath(base, STAGING).replace(os.sep, "/")
     m = load_manifest()
     m[key] = {"w": w, "h": h, "band": band, "sw": sw, "sh": sh, "sband": sband,
-              "alpha": alpha, "master": os.path.basename(master)}
+              "alpha": alpha, "master": _master_label(master)}
     write_manifest(m)
     print(f"built {key}: content {w}x{h} + band {band}px; small {sw}x{sh} + {sband}px{' (transparent band)' if alpha else ''}")
 

@@ -209,7 +209,7 @@ window.GB_ENTITIES = {
   "patchpad": {
     name: "PATCHPAD™", type: "gadget", status: "APPROVED",
     media: { thumb: "assets/gear/patchpad-hero", render: "assets/gear/patchpad-hero", icon: null },
-    copy: { summary: "Handheld hacking device, shown in GB Blue.", behaviour: "Metallic dial and vertical thumbwheel. Four controls: red Action/Acquire, blue Scan/Monitor, yellow App/Program Selector and purple Settings.", where: "Carried by the Gamers. Designed for hacking machines such as the Sentry Cannon." },
+    copy: { summary: "The Gamers' PATCHPAD™, shown in GB Blue.", behaviour: "Metallic dial and vertical thumbwheel. Four controls: red Action/Acquire, blue Scan/Monitor, yellow App/Program Selector and purple Settings.", where: "Carried by the Gamers." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "smartwatch": {
@@ -219,10 +219,11 @@ window.GB_ENTITIES = {
     encounter: [], states: {}, views: { "Lineup": "assets/gear/smartwatch-lineup", "Showcase": "assets/gear/smartwatch-hardware" }, angles: angles(), scale: null,
   },
   "glitchkey": {
+    // concept preview only (owner approval of a final render is still pending): no functions, mechanics or platform claims
     name: "GlitchKey™", type: "gadget", status: "PENDING",
-    media: { thumb: null, render: null, icon: null },
-    copy: { summary: "More to come.", behaviour: "More to come.", where: "More to come." },
-    encounter: [], states: {}, angles: angles(), scale: null,
+    media: { thumb: "assets/gear/glitchkey-scene-blue", render: "assets/gear/glitchkey-scene-blue", icon: null },
+    copy: { summary: "Concept preview of the GlitchKey™, shown in Blue, Red, Yellow and Purple.", behaviour: "More to come.", where: "More to come." },
+    encounter: [], states: {}, views: { "Blue": "assets/gear/glitchkey-scene-blue", "Four colours": "assets/gear/glitchkey-lineup" }, angles: angles(), scale: null,
   },
   "coin": {
     name: "GB Coin", type: "collectible", status: "APPROVED",

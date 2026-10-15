@@ -1540,7 +1540,7 @@ window.GB_MEDIA = {
   "sh": 1200,
   "sband": 17,
   "alpha": true,
-  "master": "1EJHsjupK6dTSCOH0E3ilB9XC1cKYNiKS.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "bb25d5e5f4",
   "srev": "71ed2cbf48"
  },
@@ -1552,7 +1552,7 @@ window.GB_MEDIA = {
   "sh": 1200,
   "sband": 17,
   "alpha": true,
-  "master": "1RsEZ4HMig8b6dznWfZZQDErv48eGhB3Q.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "99f67fc718",
   "srev": "92beae5cb3"
  },
@@ -1564,7 +1564,7 @@ window.GB_MEDIA = {
   "sh": 1200,
   "sband": 17,
   "alpha": true,
-  "master": "1UbS88k7wkaY7al12hjVCPS9dJCFObPgX.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "436ca43af5",
   "srev": "d2ae0d5e16"
  },
@@ -1576,7 +1576,7 @@ window.GB_MEDIA = {
   "sh": 1200,
   "sband": 17,
   "alpha": true,
-  "master": "1WHwZob67qV_DZdR_nHwXy7OynMPnVmcb.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "cf2f35f806",
   "srev": "631d91d69c"
  },
@@ -1588,7 +1588,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": true,
-  "master": "1BMqZWanRNirpdnIMTpENLrziwuVEo9a3.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "6eba90142a",
   "srev": "47d77dca4b"
  },
@@ -1600,7 +1600,7 @@ window.GB_MEDIA = {
   "sh": 1200,
   "sband": 17,
   "alpha": true,
-  "master": "1DQEFcgVxymxkKK3UXjKS7OZ_nnzUbOtm.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "a31957428a",
   "srev": "be23fdd67d"
  },
@@ -1612,7 +1612,7 @@ window.GB_MEDIA = {
   "sh": 1200,
   "sband": 17,
   "alpha": true,
-  "master": "1SUC1C5OufjxnVhhpNfUJjFYbc2uUz2QL.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "baf02e416a",
   "srev": "30bb493f5d"
  },
@@ -1624,7 +1624,7 @@ window.GB_MEDIA = {
   "sh": 1200,
   "sband": 17,
   "alpha": true,
-  "master": "1_7uaZYl1iIyTDVLF_eEiJo1j2LSbnFHt.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "4151fac91b",
   "srev": "91684d2e8a"
  },
@@ -1636,7 +1636,7 @@ window.GB_MEDIA = {
   "sh": 1200,
   "sband": 17,
   "alpha": true,
-  "master": "1uS6fcDSFkI5xsHUz_kuVLyOf0eW6qvZs.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "83a3a51bd3",
   "srev": "53102b7df4"
  },
@@ -1648,7 +1648,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": true,
-  "master": "1UZxL6b838_zPX6H2wKHE-IO-3NXKDyEP.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "9ad351100e",
   "srev": "2f11a04777"
  },
@@ -1660,7 +1660,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": true,
-  "master": "1D1x8bhJVjoS6wakKPPu6tfN9SsmiLtsw.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "d6a9e8ca36",
   "srev": "5f02c15956"
  },
@@ -1672,7 +1672,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": true,
-  "master": "1m5FVW4QAxFHKNkKEMJdWHLp6Bq5gKW69.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "e44b710395",
   "srev": "0dbf0a5e37"
  },
@@ -1684,7 +1684,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": true,
-  "master": "1XUiv9tczl8WGU-rH_IM7JZawMK996AcB.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "b1ddff8788",
   "srev": "6d5fa51156"
  },
@@ -1696,7 +1696,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": true,
-  "master": "1wGcz4sExpYBUs_3LpXD8Z5nF0NGINWz2.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "8df784b968",
   "srev": "1fc331a448"
  },
@@ -2997,6 +2997,30 @@ window.GB_MEDIA = {
   "rev": "85be27f483",
   "srev": "96a2cf0b98"
  },
+ "assets/gear/glitchkey-lineup": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "16f43a454f",
+  "srev": "ff8519070f"
+ },
+ "assets/gear/glitchkey-scene-blue": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "0593a73d30",
+  "srev": "6603a85d57"
+ },
  "assets/gear/patchpad-hero": {
   "w": 1448,
   "h": 1086,
@@ -3629,7 +3653,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": false,
-  "master": "1Y08Oj_v5PL4CMh10w-kKkRrhzV0VMzWq.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "30a46bd8cb",
   "srev": "0b3fbfb417"
  },
@@ -3641,7 +3665,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": false,
-  "master": "13nirXomlpirtOHR_wZ5Z_BIMLfuduTUq.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "8e8c773cc9",
   "srev": "8c61575168"
  },
@@ -3653,7 +3677,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": false,
-  "master": "1Fc26inuIf-TH_EXcOJ0oDaGDRoznA00P.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "bc7061a803",
   "srev": "7272f49463"
  },
@@ -3665,7 +3689,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": false,
-  "master": "11DHFwMKwfk8ue9C80rYFwOVelZTZUNvT.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "329c7a6543",
   "srev": "368b676e33"
  },
@@ -3677,7 +3701,7 @@ window.GB_MEDIA = {
   "sh": 960,
   "sband": 17,
   "alpha": false,
-  "master": "14gxszYX5EKCh30q37CIfbnJz7ag4LPop.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "5102c9ac34",
   "srev": "d83f260a52"
  },
@@ -3713,7 +3737,7 @@ window.GB_MEDIA = {
   "sh": 720,
   "sband": 17,
   "alpha": false,
-  "master": "1TpVwHoU3pZ66Zi00G6smFJmztFFDhT1q.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "f851944d4e",
   "srev": "f348f0d9bc"
  },
@@ -3725,7 +3749,7 @@ window.GB_MEDIA = {
   "sh": 720,
   "sband": 17,
   "alpha": false,
-  "master": "1PdrVZMugzCUUPEzKvN7fXhcuqOCA2z_f.png",
+  "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "aac34cacf1",
   "srev": "2317a48b4f"
  },
