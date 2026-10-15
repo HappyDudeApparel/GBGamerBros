@@ -1745,3 +1745,15 @@ a.steam,a.steam:visited{text-decoration:none;color:#fff}
 /* 2026-10-15: Level Preview thumbnails share one frame (mixed 16:9 / 4:3 stills are cover-cropped, centred) */
 .lp__thumbs button{aspect-ratio:4/3;position:relative;container-type:size}
 .lp__thumbs .lp__thumb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max(100cqw,calc(100cqh * var(--ar,1.7778)));aspect-ratio:var(--ar,1.7778)}
+
+/* 2026-10-15 owner QA: Brightback™ in the Sequence and Mechanics tabs reads bigger than the Prism Keeper™ and may rise out of its frame */
+#entEvo .evo__frame--apex{overflow:visible;background:radial-gradient(120% 90% at 50% 40%,#e5eefc 0%,#bfd4f2 100%);z-index:2}
+#entEvo .evo__apex{position:absolute;left:50%;bottom:5%;width:88%;transform:translateX(-50%);display:block;pointer-events:none}
+#entEvo .evo__apex .gbm,#entEvo .evo__apex .cutout{display:block;width:100%}
+#entEvo .evo__apex img{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 10px rgba(30,40,90,.28))}
+#entEvo .evo__steps,#entEvo .evo__phase,#entEvo .evo__phases,#entEvo .evo__forms{overflow:visible}
+#entEvo .evo__phase:has(.evo__frame--apex),#entEvo .evo__form:has(.evo__frame--apex){padding-top:clamp(36px,6vw,64px)}
+
+/* 2026-10-15: nine Level Preview stills (one per point of interest + the encounter) sit in an even 3 x 3 grid */
+.lp__thumbs,.panel--preview .lp__thumbs{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1099px){.lp__thumbs{grid-template-columns:repeat(3,1fr)}}

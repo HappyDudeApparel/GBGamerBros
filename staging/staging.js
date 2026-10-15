@@ -390,7 +390,8 @@
   //  Sequence    — every approved form/state as an identical 4:3 studio tile, grouped by phase.
   //  Mechanics   — what each form does, using only the public behaviour copy already on each dossier.
   //  In the world — the approved in-world steps, Stone Walker™ and Prism Keeper™ scenes, Brightback™ reference.
-  const evoTile = (src, alt) => isStudio(src) || !isCut(src) ? studio(src, "evo__tile", alt, true) : `<span class="stage-box">${cut(src, "evo__cut", alt, "160px")}</span>`;
+  // apex = Brightback™'s true-alpha cutout, larger than the other tiles' figures, free to rise out of its frame (owner QA 2026-10-15)
+  const evoTile = (src, alt, apex) => apex ? `<span class="evo__apex">${cut(apex, "evo__apexcut", alt, "240px")}</span>` : isStudio(src) || !isCut(src) ? studio(src, "evo__tile", alt, true) : `<span class="stage-box">${cut(src, "evo__cut", alt, "160px")}</span>`;
   const evoDetail = (e) => {
     const d = e.evolution && (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     if (!d) return "";
@@ -401,12 +402,13 @@
     d.sequence.forEach((x) => { let g = phases.find((p) => p.phase === x.phase); if (!g) phases.push(g = { phase: x.phase, steps: [] }); g.steps.push(x); });
     const seq = phases.map((g) => `<li class="evo__phase${g.phase === ph ? " is-here" : ""}" style="--n:${g.steps.length}">
         <h4 class="evo__phase-h"><span>Phase ${g.phase}</span>${esc(PHN[g.phase] || "")}</h4>
-        <ol class="evo__steps">${g.steps.map((x) => `<li class="evo__step"><span class="evo__frame">${evoTile(x.src, x.label)}</span><strong>${esc(x.label)}</strong></li>`).join("")}</ol></li>`).join("");
+        <ol class="evo__steps">${g.steps.map((x) => `<li class="evo__step"><span class="evo__frame${x.apex ? " evo__frame--apex" : ""}">${evoTile(x.src, x.label, x.apex)}</span><strong>${esc(x.label)}</strong></li>`).join("")}</ol></li>`).join("");
     const mech = line.map((id, i) => {
       const x = ENTITIES[id]; if (!x) return "";
       const inPhase = d.sequence.filter((s) => s.phase === i + 1);
-      const tile = (inPhase.find((s) => s.label === x.name) || inPhase[0] || {}).src;
-      return `<li class="evo__form${i + 1 === ph ? " is-here" : ""}"><span class="evo__frame">${tile ? evoTile(tile, x.name) : ""}</span>
+      const pick = inPhase.find((s) => s.label === x.name) || inPhase[0] || {};
+      const tile = pick.src;
+      return `<li class="evo__form${i + 1 === ph ? " is-here" : ""}"><span class="evo__frame${pick.apex ? " evo__frame--apex" : ""}">${tile ? evoTile(tile, x.name, pick.apex) : ""}</span>
         <div><span class="evo__kick">Phase ${i + 1}</span><strong>${esc(x.name)}</strong>
         <p>${esc(x.copy.summary || "")}</p>${x.copy.behaviour ? `<p class="evo__beh">${esc(x.copy.behaviour)}</p>` : ""}
         ${i + 1 === ph ? "" : `<a href="#entity/${id}" data-entity-link="${id}">Open dossier</a>`}</div></li>`;
@@ -455,7 +457,7 @@
     const gallery = [];
     const scLab = (scAny && scAny.label) || "In the world";
     if (scAny && scenesOf(id).length === 1) gallery.push(`<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="${esc(scLab)}" aria-label="${esc(e.name)}: ${esc(scLab)}" aria-pressed="${!!sc}"><span class="stage-box">${sceneImg(scAny, "", true)}</span><small>${esc(scLab)}</small></button></li>`);
-    if (stage && !Object.values(e.views || {}).includes(hero) && !Object.values(e.states || {}).includes(hero)) gallery.push(`<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="${esc(e.heroLabel || "Hero")}" aria-label="${esc(e.name)}: ${esc(e.heroLabel || "Hero")}" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>${esc(e.heroLabel || "Hero")}</small></button></li>`);
+    if (stage && !Object.values(e.views || {}).includes(hero) && !Object.values(e.states || {}).includes(hero)) gallery.push(`<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="${esc(e.heroLabel || "Main view")}" aria-label="${esc(e.name)}: ${esc(e.heroLabel || "Main view")}" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>${esc(e.heroLabel || "Main view")}</small></button></li>`);
     const nPicks = (h) => h.split("<li").length - 1;
     // hero + in-world first (owner order); a lone hero pick joins the action row so the visitor can always return to it
     // with a lead (in-world/hero) the curated views join the Gallery row; without one they keep their own row
@@ -466,7 +468,7 @@
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
         ? `<div class="dossier__stage${sc ? " is-scene" : ""}${!sc && isStudio(hero) ? " is-studio" + (isSq(hero) ? " is-square" : "") : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : stageInner(hero, e.name)}</div>
-           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : esc(e.heroLabel || "Hero")}</span></p>`
+           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : esc(e.heroLabel || "Main view")}</span></p>`
         : !hero && e.type === "gadget"
           ? `<span class="dossier__render media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-key"/></svg><span>More to come</span></span>`
           : gadget
@@ -938,10 +940,13 @@
   });
 
   const teamList = document.getElementById("teamList");
+  // one look for the whole panel, chosen at random on every load (front-facing views)
+  const teamLook = Math.random() < 0.5 ? "sporty" : "streetwear";
+  teamList.dataset.look = teamLook;
   teamList.innerHTML = TEAM.map((id) => {
     const c = CHARS[id];
     return `<li><a class="mate" href="#character/${id}" data-character="${id}" style="--c:${c.hex};--cd:${c.deep}">
-      <span class="mate__fig" aria-hidden="true"><span class="stage-box">${cut(c.card, "mate__cut", "", "(min-width: 1100px) 260px, 60vw")}</span></span>
+      <span class="mate__fig" aria-hidden="true"><span class="stage-box">${cut(window.GB_TEAM_CARD ? window.GB_TEAM_CARD(id, teamLook) : c.card, "mate__cut", "", "(min-width: 1100px) 260px, 60vw")}</span></span>
       <span class="mate__text">
         <b class="mate__colour">${esc(c.colour)}</b>
         <strong>${esc(c.name)}</strong>
@@ -956,7 +961,7 @@
     e.preventDefault();
     charOpenedFrom = a;
     charPushed = true;
-    location.hash = `#character/${a.dataset.character}`;   // pushes history; router opens the view
+    location.hash = `#character/${a.dataset.character}/${teamLook}`;   // pushes history; router opens the view in the same look
   });
   document.querySelectorAll("[data-team]").forEach((b) => b.addEventListener("click", () => {
     const card = teamList.querySelector("li");

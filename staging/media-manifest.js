@@ -340,8 +340,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_SPORTY_MULTI_VIEW_V1__back.png",
-  "rev": "8be6e2a647",
-  "srev": "f174b4226c"
+  "rev": "c113573ea1",
+  "srev": "805cb725be"
  },
  "assets/characters/blue/sporty-front": {
   "w": 305,
@@ -352,8 +352,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_SPORTY_MULTI_VIEW_V1__front.png",
-  "rev": "71a2485655",
-  "srev": "9bbc0cb998"
+  "rev": "153af1cbf4",
+  "srev": "bdf6991718"
  },
  "assets/characters/blue/sporty-pose": {
   "w": 366,
@@ -364,8 +364,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_SPORTY_MULTI_VIEW_V1__pose.png",
-  "rev": "74e6f97292",
-  "srev": "451835d6e2"
+  "rev": "ee3fd14141",
+  "srev": "96ad187fb8"
  },
  "assets/characters/blue/sporty-side": {
   "w": 224,
@@ -376,8 +376,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_SPORTY_MULTI_VIEW_V1__side.png",
-  "rev": "97a3dfa11c",
-  "srev": "3742c46454"
+  "rev": "b62c7aa3ff",
+  "srev": "34d77a9c2d"
  },
  "assets/characters/blue/street-back": {
   "w": 294,
@@ -388,8 +388,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "blue-street-back.png",
-  "rev": "472c507daa",
-  "srev": "7fc99d962f"
+  "rev": "a17ed453ed",
+  "srev": "63835fc537"
  },
  "assets/characters/blue/street-front": {
   "w": 262,
@@ -400,8 +400,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_STREETWEAR_MULTI_VIEW_V1__front.png",
-  "rev": "aa303a3c93",
-  "srev": "8dbee971e8"
+  "rev": "a24b1ff6fe",
+  "srev": "c51cef9eae"
  },
  "assets/characters/blue/street-side": {
   "w": 184,
@@ -412,8 +412,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_STREETWEAR_MULTI_VIEW_V1__side.png",
-  "rev": "2c7b6db276",
-  "srev": "f614fe7851"
+  "rev": "187fd9b329",
+  "srev": "4155f7ecf4"
  },
  "assets/characters/blue/street-threeq": {
   "w": 226,
@@ -424,8 +424,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_STREETWEAR_MULTI_VIEW_V1__threeq.png",
-  "rev": "fe60f8f3fa",
-  "srev": "68aa08689e"
+  "rev": "bbbc018829",
+  "srev": "39f5dfedee"
  },
  "assets/characters/purple/sporty-back": {
   "w": 256,
@@ -436,8 +436,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_SPORTY_MULTI_VIEW_V1__back.png",
-  "rev": "dcb77ec200",
-  "srev": "9f28182fe6"
+  "rev": "653d6d98d0",
+  "srev": "8bb2926204"
  },
  "assets/characters/purple/sporty-front": {
   "w": 277,
@@ -448,8 +448,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_SPORTY_MULTI_VIEW_V1__front.png",
-  "rev": "1a544b729b",
-  "srev": "ffdb28b741"
+  "rev": "20803fb1cc",
+  "srev": "b4436ffef3"
  },
  "assets/characters/purple/sporty-pose": {
   "w": 315,
@@ -460,8 +460,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_SPORTY_MULTI_VIEW_V1__pose.png",
-  "rev": "5697806e46",
-  "srev": "bca5a7968a"
+  "rev": "d9f329efcc",
+  "srev": "274955f3c9"
  },
  "assets/characters/purple/sporty-side": {
   "w": 260,
@@ -472,8 +472,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_SPORTY_MULTI_VIEW_V1__side.png",
-  "rev": "e961e5f54e",
-  "srev": "b507e49b4c"
+  "rev": "8c83a5810b",
+  "srev": "0130c6fd4d"
  },
  "assets/characters/purple/street-back": {
   "w": 286,
@@ -484,8 +484,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_STREETWEAR_MULTI_VIEW_V1__back.png",
-  "rev": "a820d24c0e",
-  "srev": "b079600e6a"
+  "rev": "742dd75c02",
+  "srev": "e99649f1cc"
  },
  "assets/characters/purple/street-front": {
   "w": 330,
@@ -496,8 +496,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "purple-street-front.png",
-  "rev": "d2a13d4510",
-  "srev": "4e92054149"
+  "rev": "82b78a6c1b",
+  "srev": "e65be9f138"
  },
  "assets/characters/purple/street-pose": {
   "w": 350,
@@ -508,8 +508,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "purple-street-pose.png",
-  "rev": "2d24ee9097",
-  "srev": "2c2d3e3a3f"
+  "rev": "6757fabf24",
+  "srev": "e5fe3ac934"
  },
  "assets/characters/purple/street-side": {
   "w": 293,
@@ -520,8 +520,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_STREETWEAR_MULTI_VIEW_V1__side.png",
-  "rev": "9ef2f7c440",
-  "srev": "03a07e1d3f"
+  "rev": "a88c69c0fb",
+  "srev": "d0de52cc4f"
  },
  "assets/characters/red/sporty-back": {
   "w": 282,
@@ -532,8 +532,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_SPORTY_MULTI_VIEW_V1__back.png",
-  "rev": "f23c6ab55f",
-  "srev": "b3f6d56880"
+  "rev": "860a497cde",
+  "srev": "18df5e1c25"
  },
  "assets/characters/red/sporty-front": {
   "w": 301,
@@ -544,8 +544,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_SPORTY_MULTI_VIEW_V1__front.png",
-  "rev": "b8abbd7a42",
-  "srev": "8b21efddcf"
+  "rev": "02cb6039cc",
+  "srev": "0c20792411"
  },
  "assets/characters/red/sporty-pose": {
   "w": 357,
@@ -556,8 +556,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_SPORTY_MULTI_VIEW_V1__pose.png",
-  "rev": "6cd175ad32",
-  "srev": "b47937da5e"
+  "rev": "0a556a42be",
+  "srev": "628cba2516"
  },
  "assets/characters/red/sporty-side": {
   "w": 257,
@@ -568,8 +568,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_SPORTY_MULTI_VIEW_V1__side.png",
-  "rev": "3a658980da",
-  "srev": "b332fa81d5"
+  "rev": "e1eef33903",
+  "srev": "82ea9fb270"
  },
  "assets/characters/red/street-back": {
   "w": 278,
@@ -580,8 +580,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_STREETWEAR_MULTI_VIEW_V1__back.png",
-  "rev": "fc267a4967",
-  "srev": "f2a31e966b"
+  "rev": "669c4917c3",
+  "srev": "3bc8c3f460"
  },
  "assets/characters/red/street-front": {
   "w": 312,
@@ -592,8 +592,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_STREETWEAR_MULTI_VIEW_V1__front.png",
-  "rev": "502b975afd",
-  "srev": "6967c1cbf0"
+  "rev": "353fe255a2",
+  "srev": "0ceb9e7612"
  },
  "assets/characters/red/street-pose": {
   "w": 319,
@@ -604,8 +604,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_STREETWEAR_MULTI_VIEW_V1__pose.png",
-  "rev": "a7f3a6183e",
-  "srev": "b05cd0eb53"
+  "rev": "0995f98fd1",
+  "srev": "254bb6fd92"
  },
  "assets/characters/red/street-side": {
   "w": 220,
@@ -616,8 +616,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_STREETWEAR_MULTI_VIEW_V1__side.png",
-  "rev": "69fbdb6fb3",
-  "srev": "98d5df39ef"
+  "rev": "1776acc839",
+  "srev": "651f6e7165"
  },
  "assets/characters/yellow/sporty-back": {
   "w": 197,
@@ -628,8 +628,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_SPORTY_MULTI_VIEW_V1__back.png",
-  "rev": "bb6d37c4b3",
-  "srev": "cf2e3fc039"
+  "rev": "9f3091483d",
+  "srev": "25d62c4adc"
  },
  "assets/characters/yellow/sporty-front": {
   "w": 221,
@@ -640,8 +640,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_SPORTY_MULTI_VIEW_V1__front.png",
-  "rev": "9b18fd7f74",
-  "srev": "dac18dc115"
+  "rev": "66a15bc056",
+  "srev": "29cf83e23d"
  },
  "assets/characters/yellow/sporty-pose": {
   "w": 262,
@@ -652,8 +652,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_SPORTY_MULTI_VIEW_V1__pose.png",
-  "rev": "a36e6ecd3e",
-  "srev": "e84b28c468"
+  "rev": "a6ec00d95c",
+  "srev": "e45419c67c"
  },
  "assets/characters/yellow/sporty-side": {
   "w": 189,
@@ -664,8 +664,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_SPORTY_MULTI_VIEW_V1__side.png",
-  "rev": "f8198b6d5f",
-  "srev": "5914af25f9"
+  "rev": "7a426dd8b5",
+  "srev": "386f8d1bf2"
  },
  "assets/characters/yellow/street-back": {
   "w": 297,
@@ -676,8 +676,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1__back.png",
-  "rev": "7b731bbf1e",
-  "srev": "67d2bcb725"
+  "rev": "7d7377e4d3",
+  "srev": "9f381198b2"
  },
  "assets/characters/yellow/street-front": {
   "w": 340,
@@ -688,8 +688,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1__front.png",
-  "rev": "1e1366f674",
-  "srev": "edf3d3e77f"
+  "rev": "c7a06c5d37",
+  "srev": "8bd2300897"
  },
  "assets/characters/yellow/street-pose": {
   "w": 329,
@@ -700,8 +700,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1__pose.png",
-  "rev": "322e210ec5",
-  "srev": "dc5b14941a"
+  "rev": "dd9175f75a",
+  "srev": "970b9d9f0a"
  },
  "assets/characters/yellow/street-side": {
   "w": 288,
@@ -712,8 +712,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1__side.png",
-  "rev": "409ff2ce45",
-  "srev": "86333ff2b4"
+  "rev": "2d755b55a3",
+  "srev": "00587f90a5"
  },
  "assets/entities/brightback-v1-cutout": {
   "w": 679,
@@ -3090,8 +3090,8 @@ window.GB_MEDIA = {
   "sband": 17,
   "alpha": false,
   "master": "patchpad-purple.png",
-  "rev": "180c08e5b6",
-  "srev": "fef849beab"
+  "rev": "6db46d0419",
+  "srev": "4a18460c8b"
  },
  "assets/gear/patchpad-red": {
   "w": 1448,
@@ -3102,8 +3102,8 @@ window.GB_MEDIA = {
   "sband": 17,
   "alpha": false,
   "master": "patchpad-red.png",
-  "rev": "2f45604f83",
-  "srev": "c7592b2827"
+  "rev": "0ee5ffceff",
+  "srev": "7a3633fb20"
  },
  "assets/gear/patchpad-yellow": {
   "w": 1448,
@@ -3114,8 +3114,8 @@ window.GB_MEDIA = {
   "sband": 17,
   "alpha": false,
   "master": "patchpad-yellow.png",
-  "rev": "9e073219cc",
-  "srev": "a7d626a9b4"
+  "rev": "c13d39d3fb",
+  "srev": "2f5c2e8119"
  },
  "assets/gear/smartwatch-hardware": {
   "w": 1400,
@@ -3225,65 +3225,65 @@ window.GB_MEDIA = {
   "rev": "7c121243d2",
   "srev": "d4ed9e3d2b"
  },
- "assets/objects/chest": {
-  "w": 627,
-  "h": 410,
-  "band": 14,
-  "sw": 627,
-  "sh": 410,
-  "sband": 14,
-  "alpha": true,
-  "master": "chest.png",
-  "rev": "7b1e968be6",
-  "srev": "cdac64477f"
- },
  "assets/objects/chest-blue": {
-  "w": 570,
-  "h": 346,
+  "w": 412,
+  "h": 309,
   "band": 14,
-  "sw": 570,
-  "sh": 346,
+  "sw": 412,
+  "sh": 309,
   "sband": 14,
   "alpha": true,
   "master": "chest-blue.png",
-  "rev": "85548b4630",
-  "srev": "687256e27b"
+  "rev": "bca21b1ad1",
+  "srev": "bca21b1ad1"
  },
  "assets/objects/chest-purple": {
-  "w": 582,
-  "h": 346,
+  "w": 403,
+  "h": 312,
   "band": 14,
-  "sw": 582,
-  "sh": 346,
+  "sw": 403,
+  "sh": 312,
   "sband": 14,
   "alpha": true,
   "master": "chest-purple.png",
-  "rev": "ad6e6348ee",
-  "srev": "f97c9fbde3"
+  "rev": "6335360e94",
+  "srev": "6335360e94"
  },
  "assets/objects/chest-red": {
-  "w": 566,
-  "h": 346,
+  "w": 405,
+  "h": 311,
   "band": 14,
-  "sw": 566,
-  "sh": 346,
+  "sw": 405,
+  "sh": 311,
   "sband": 14,
   "alpha": true,
   "master": "chest-red.png",
-  "rev": "e7b2422ab7",
-  "srev": "50d973eb9e"
+  "rev": "332f5fe983",
+  "srev": "332f5fe983"
+ },
+ "assets/objects/chest-set": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "chest-set.png",
+  "rev": "8bf1793f93",
+  "srev": "8442151169"
  },
  "assets/objects/chest-yellow": {
-  "w": 564,
-  "h": 346,
+  "w": 402,
+  "h": 311,
   "band": 14,
-  "sw": 564,
-  "sh": 346,
+  "sw": 402,
+  "sh": 311,
   "sband": 14,
   "alpha": true,
   "master": "chest-yellow.png",
-  "rev": "b311de0fbc",
-  "srev": "c41a01e7bf"
+  "rev": "12e2bacb78",
+  "srev": "12e2bacb78"
  },
  "assets/objects/coin": {
   "w": 365,
@@ -3294,8 +3294,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "coin.png",
-  "rev": "5442e9bf83",
-  "srev": "b80bb934e9"
+  "rev": "4e6b49371e",
+  "srev": "e055e02c08"
  },
  "assets/objects/coin-back": {
   "w": 352,
@@ -3306,8 +3306,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "coin-back.png",
-  "rev": "72d49ff48d",
-  "srev": "b305824f8b"
+  "rev": "7b149fb88b",
+  "srev": "1654a8f8e0"
  },
  "assets/objects/coin-blue": {
   "w": 319,
@@ -3813,6 +3813,30 @@ window.GB_MEDIA = {
   "rev": "f188c09494",
   "srev": "79c7174e12"
  },
+ "assets/scenes/brightback-in-the-world": {
+  "w": 840,
+  "h": 630,
+  "band": 15,
+  "sw": 840,
+  "sh": 630,
+  "sband": 15,
+  "alpha": false,
+  "master": "brightback-in-the-world.png",
+  "rev": "4b5e179b46",
+  "srev": "c72b6ed44c"
+ },
+ "assets/scenes/clover-cliffs-charge": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "ac3086c8e3",
+  "srev": "783b4b22b6"
+ },
  "assets/scenes/creek-crossing-pursuit": {
   "w": 1448,
   "h": 1086,
@@ -3824,18 +3848,6 @@ window.GB_MEDIA = {
   "master": "owner-supplied render (private source; source pixels unchanged)",
   "rev": "f851944d4e",
   "srev": "f348f0d9bc"
- },
- "assets/scenes/enemy-squad-poster": {
-  "w": 960,
-  "h": 720,
-  "band": 17,
-  "sw": 960,
-  "sh": 720,
-  "sband": 17,
-  "alpha": false,
-  "master": "enemy-squad-poster.png",
-  "rev": "538e73b377",
-  "srev": "4012f8f282"
  },
  "assets/scenes/portal-meadow-pursuit": {
   "w": 1448,
@@ -3884,6 +3896,18 @@ window.GB_MEDIA = {
   "master": "stone-line-poster.png",
   "rev": "985810df3b",
   "srev": "18f8c06fe1"
+ },
+ "assets/scenes/stone-line-poster-b": {
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "stone-line-poster-b.png",
+  "rev": "2602d6b6a0",
+  "srev": "572bcb1cc2"
  },
  "assets/scenes/summit-spine-climb": {
   "w": 1672,
