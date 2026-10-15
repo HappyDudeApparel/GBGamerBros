@@ -81,16 +81,10 @@ window.GB_AREAS = {
   prism: {
     name: "Prism Ridge™", sub: "Crystal Peaks & Ancient Ruins", status: "open",
     views: [
-      // 2026-10-13 owner QA: Prism Ridge™ leads with the approved top-of-mountain scene (giant cyan summit portal);
-      // the temporary "Ruin landing" substitute (pr04) is retired from public view.
+      // 2026-10-15 owner QA: Prism Ridge™ (the final destination) shows ONLY the approved final portal scene with its canonical flags;
+      // the flatland, high-ridge and Summit Spine stair stills are not shown under Prism Ridge™ (the stair still moved to Summit Spine™).
       { src: "assets/systems/portals/v13/prism-ridge-final", kind: "landmark", label: "Summit portal", focus: 0.5,
         alt: "The crystal citadel at the top of Adventure Mountain™, with the giant cyan summit portal above a long staircase", hotspots: [] },
-      { src: A + "prism-ridge/pr02-crystal-flatland", kind: "establishing", label: "Crystal flatland", focus: 0.55,
-        alt: "Paved ruin plateau with violet crystals and the crystal citadel on the peaks beyond", hotspots: [] },
-      { src: A + "prism-ridge/pr03-high-ridge-approach", kind: "traversal", label: "High ridge approach", focus: 0.6,
-        alt: "Ridge path past ruined arches with a sightline to the crystal citadel", hotspots: [] },
-      { src: A + "prism-ridge/ss01-summit-portal-stairs", kind: "landmark", label: "Summit Spine™ ascent", focus: 0.5,
-        alt: "Grand staircase climbing between crystals and waterfalls to the summit portal", hotspots: [] },
     ],
   },
   frost: {
@@ -105,22 +99,39 @@ window.GB_AREAS = {
         alt: "Snowy path from Frosty Peaks™ toward the crystal summit and its glowing portal", hotspots: [] },
     ],
   },
+  // 2026-10-15 owner QA: Summit Spine™ joins Explore Iconic Areas (between Frosty Peaks™ and Prism Ridge™). Only approved art:
+  // the Summit Spine™ portal scene (purple flags) and the grand staircase that climbs toward Prism Ridge™.
+  summit: {
+    name: "Summit Spine™", sub: "The Climb to the Summit", status: "open", color: "#8d4fe0",
+    views: [
+      { src: "assets/systems/portals/v13/summit", kind: "landmark", label: "Summit Spine portal", focus: 0.5,
+        alt: "The purple Summit Spine™ portal at the foot of the climb, with purple GB banners and crystal-lit stone", hotspots: [] },
+      { src: A + "prism-ridge/ss01-summit-portal-stairs", kind: "traversal", label: "Grand ascent", focus: 0.5,
+        alt: "Grand staircase climbing between crystals and waterfalls to the summit portal", hotspots: [] },
+    ],
+  },
   // Level Preview still sequence (not a map location). Opens in the same gallery view.
   preview: {
     name: "Level Preview", sub: "Preview stills", status: "open", map: false,
     views: [
-      // Owner canon audit 2026-10-10 (issue #1): the three character action stills formerly here
-      // (blue-red-world-action-01, purple-yellow-world-action-02, four-character-world-action-01)
-      // show floating islands, contrary to ONE CONNECTED MOUNTAIN. Removed pending owner-approved scenes.
-      // 2026-10-13: the Trail Junction still was rejected by the owner (wrong enemies, inaccurate flag) and is withdrawn. Level Preview now shows
-      // three moments of play from the owner's new library: correct regional flags and portals, Stone Walker™ and Claw Bots™ in character.
+      // Owner canon audit 2026-10-10 (issue #1): the three character action stills formerly here show floating islands, contrary to ONE
+      // CONNECTED MOUNTAIN; the Trail Junction still and the two springboard stills were rejected and withdrawn.
+      // 2026-10-15 owner QA: a more varied mix from the owner's newest library: in-world pursuit scenes with the correct regional flags and
+      // portals, two enemy poster compositions (true-alpha group renders on the studio background), and the Prism Keeper encounter last.
       { src: "assets/scenes/portal-meadow-pursuit", kind: "still", label: "Portal Meadow™ pursuit", focus: 0.42,
         alt: "Gamer Girl Yellow™ in her streetwear slides across a flower-lined stone path as a Stone Walker™ lunges behind her, Claw Bots™ closing in near the gold Portal Meadow™ portal and its gold GB banners", hotspots: [] },
+      { src: "assets/scenes/enemy-squad-poster", kind: "still", label: "Bot squad", focus: 0.5,
+        alt: "Goom Bot™ with a Spike Bot™, a Claw Bot™ and a Rotor Bot™ above them, shown together on a soft studio background", hotspots: [] },
+      { src: "assets/scenes/riverworks-rush", kind: "still", label: "Riverworks™ rush", focus: 0.5,
+        alt: "Goom Bot™ rolls down a timber walkway at Riverworks™ with Claw Bots™ and a Rotor Bot™ behind it, in front of the red Riverworks™ portal, red GB banners, blue pipes and waterfalls", hotspots: [] },
       { src: "assets/scenes/creek-crossing-pursuit", kind: "still", label: "Creek Crossing™ pursuit", focus: 0.3,
         alt: "Gamer Bro Red™ in his sporty look sprints along a creek-side path away from a Stone Walker™ and Claw Bots™, with the blue Creek Crossing™ portal and its blue GB banner behind him", hotspots: [] },
+      { src: "assets/scenes/stone-line-poster", kind: "still", label: "The stone line", focus: 0.5,
+        alt: "A Stone Walker™ and a Prism Keeper™ stand in front of Brightback™, the towering fourth form of the Rumbler™ line, shown together on a soft studio background", hotspots: [] },
+      { src: "assets/scenes/summit-spine-climb", kind: "still", label: "Summit Spine™ climb", focus: 0.5,
+        alt: "A Spike Bot™ and a Stone Walker™ on the flower-lined path to the purple Summit Spine™ portal, with purple GB banners, crystals and waterfalls", hotspots: [] },
       { src: "assets/systems/preview-prism-keeper-encounter", kind: "still", label: "Prism Keeper™ encounter", focus: 0.5,
         alt: "Gamer Bro Blue™ in his sporty look stands in front of the Prism Keeper™ as it slams both fists into a crystal-lit plaza below a grand staircase", hotspots: [] },
-      // 2026-10-13 owner QA: the two springboard stills (Riverworks, Frosty Peaks) were rejected for Level Preview and removed.
     ],
   },
 };

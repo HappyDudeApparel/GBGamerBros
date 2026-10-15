@@ -1741,3 +1741,7 @@ a.steam,a.steam:visited{text-decoration:none;color:#fff}
 .gear{grid-template-columns:repeat(3,minmax(0,1fr))}
 .gear__card figcaption{align-content:start}
 @media (max-width:719px){.gear{grid-template-columns:1fr}}
+
+/* 2026-10-15: Level Preview thumbnails share one frame (mixed 16:9 / 4:3 stills are cover-cropped, centred) */
+.lp__thumbs button{aspect-ratio:4/3;position:relative;container-type:size}
+.lp__thumbs .lp__thumb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max(100cqw,calc(100cqh * var(--ar,1.7778)));aspect-ratio:var(--ar,1.7778)}

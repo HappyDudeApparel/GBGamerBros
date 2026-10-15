@@ -1289,8 +1289,8 @@ window.GB_MEDIA = {
   "sband": 17,
   "alpha": false,
   "master": "seq-brightback.png",
-  "rev": "6739e4ce6e",
-  "srev": "2e687611d2"
+  "rev": "c6903522a5",
+  "srev": "9bcc8434e6"
  },
  "assets/entities/evolution/seq/seq-cracked": {
   "w": 640,
@@ -1532,53 +1532,17 @@ window.GB_MEDIA = {
   "rev": "b1ecf9ed59",
   "srev": "a3c41c3d2f"
  },
- "assets/entities/new/brightback-alt": {
-  "w": 1122,
-  "h": 1402,
-  "band": 20,
-  "sw": 960,
-  "sh": 1200,
-  "sband": 17,
-  "alpha": true,
-  "master": "owner-supplied render (private source; source pixels unchanged)",
-  "rev": "bb25d5e5f4",
-  "srev": "71ed2cbf48"
- },
- "assets/entities/new/brightback-flex": {
-  "w": 1122,
-  "h": 1402,
-  "band": 20,
-  "sw": 960,
-  "sh": 1200,
-  "sband": 17,
-  "alpha": true,
-  "master": "owner-supplied render (private source; source pixels unchanged)",
-  "rev": "99f67fc718",
-  "srev": "92beae5cb3"
- },
- "assets/entities/new/brightback-guard": {
-  "w": 1122,
-  "h": 1402,
-  "band": 20,
-  "sw": 960,
-  "sh": 1200,
-  "sband": 17,
-  "alpha": true,
-  "master": "owner-supplied render (private source; source pixels unchanged)",
-  "rev": "436ca43af5",
-  "srev": "d2ae0d5e16"
- },
  "assets/entities/new/brightback-hero": {
-  "w": 1122,
-  "h": 1402,
-  "band": 20,
+  "w": 1494,
+  "h": 1512,
+  "band": 27,
   "sw": 960,
-  "sh": 1200,
+  "sh": 972,
   "sband": 17,
   "alpha": true,
-  "master": "owner-supplied render (private source; source pixels unchanged)",
-  "rev": "cf2f35f806",
-  "srev": "631d91d69c"
+  "master": "brightback-hero.png",
+  "rev": "7d748ccc2e",
+  "srev": "870fed5c07"
  },
  "assets/entities/new/prism-keeper-advance": {
   "w": 1254,
@@ -2997,17 +2961,41 @@ window.GB_MEDIA = {
   "rev": "85be27f483",
   "srev": "96a2cf0b98"
  },
- "assets/gear/glitchkey-lineup": {
+ "assets/gear/glitchkey-blue": {
   "w": 1448,
   "h": 1086,
   "band": 26,
   "sw": 960,
   "sh": 720,
   "sband": 17,
-  "alpha": true,
-  "master": "owner-supplied render (private source; source pixels unchanged)",
-  "rev": "16f43a454f",
-  "srev": "ff8519070f"
+  "alpha": false,
+  "master": "glitchkey-blue.png",
+  "rev": "9751b8fff2",
+  "srev": "d80394ff7c"
+ },
+ "assets/gear/glitchkey-purple": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "glitchkey-purple.png",
+  "rev": "0e07971844",
+  "srev": "0bddb989eb"
+ },
+ "assets/gear/glitchkey-red": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "glitchkey-red.png",
+  "rev": "c360d063fb",
+  "srev": "56233540af"
  },
  "assets/gear/glitchkey-scene-blue": {
   "w": 1448,
@@ -3017,9 +3005,69 @@ window.GB_MEDIA = {
   "sh": 720,
   "sband": 17,
   "alpha": false,
-  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "master": "1_Xu3Z_28AGWYTYir_GUtA1D3gWMKkN5k.png",
   "rev": "0593a73d30",
   "srev": "6603a85d57"
+ },
+ "assets/gear/glitchkey-scene-purple": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "f17017a137",
+  "srev": "a56688402f"
+ },
+ "assets/gear/glitchkey-scene-red": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "158bc509de",
+  "srev": "5815346491"
+ },
+ "assets/gear/glitchkey-scene-yellow": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "e208335c3b",
+  "srev": "9942071889"
+ },
+ "assets/gear/glitchkey-set": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "glitchkey-set.png",
+  "rev": "ce0fe0c29d",
+  "srev": "a9a6a97022"
+ },
+ "assets/gear/glitchkey-yellow": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "glitchkey-yellow.png",
+  "rev": "2069dad543",
+  "srev": "5c9e71ae60"
  },
  "assets/gear/patchpad-hero": {
   "w": 1448,
@@ -3032,6 +3080,42 @@ window.GB_MEDIA = {
   "master": "PATCHPAD™_GB_BLUE_APPROVED_HERO_RENDER_2026-10-10.png",
   "rev": "53686dd22f",
   "srev": "8ad2544755"
+ },
+ "assets/gear/patchpad-purple": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "patchpad-purple.png",
+  "rev": "180c08e5b6",
+  "srev": "fef849beab"
+ },
+ "assets/gear/patchpad-red": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "patchpad-red.png",
+  "rev": "2f45604f83",
+  "srev": "c7592b2827"
+ },
+ "assets/gear/patchpad-yellow": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "patchpad-yellow.png",
+  "rev": "9e073219cc",
+  "srev": "a7d626a9b4"
  },
  "assets/gear/smartwatch-hardware": {
   "w": 1400,
@@ -3741,6 +3825,18 @@ window.GB_MEDIA = {
   "rev": "f851944d4e",
   "srev": "f348f0d9bc"
  },
+ "assets/scenes/enemy-squad-poster": {
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "enemy-squad-poster.png",
+  "rev": "538e73b377",
+  "srev": "4012f8f282"
+ },
  "assets/scenes/portal-meadow-pursuit": {
   "w": 1448,
   "h": 1086,
@@ -3764,6 +3860,42 @@ window.GB_MEDIA = {
   "master": "GB_PURPLE_YELLOW_WORLD_ACTION_01.png",
   "rev": "0952411235",
   "srev": "5d1943bd75"
+ },
+ "assets/scenes/riverworks-rush": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "7ae82902f5",
+  "srev": "8bbb534b71"
+ },
+ "assets/scenes/stone-line-poster": {
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "stone-line-poster.png",
+  "rev": "985810df3b",
+  "srev": "18f8c06fe1"
+ },
+ "assets/scenes/summit-spine-climb": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "1IrdTatRK_mouRVOS-AkezENJ6w6sZcWr.png",
+  "rev": "7d3d1eef02",
+  "srev": "5c7ba14486"
  },
  "assets/systems/fast-travel-portal": {
   "w": 1280,

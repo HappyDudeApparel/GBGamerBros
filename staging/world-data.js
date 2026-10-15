@@ -20,7 +20,7 @@ window.GB_WORLD = {
   schema: 1,
   coordinateAuthority: "pano-2026-10-05",   // world {x,y} measured on this panorama (front sector)
 
-  // Seven public regions. `area` is the gallery id in areas.js (routes #area/<id>).
+  // Eight public regions. `area` is the gallery id in areas.js (routes #area/<id>).
   // `color` = canonical region banner field (WORLD_ASSET_STANDARD.md §1): cards, pins, placeholders.
   regions: [
     { id: "portal", color: "#E8A812", area: "portal", name: "Portal Meadow™",   sub: "The Adventure Begins",          icon: "i-portal",
@@ -35,14 +35,16 @@ window.GB_WORLD = {
       fallback: { x: 0.15, y: 0.18 }, world: { x: 0.2886, y: 0.1953 } },
     { id: "prism", color: "#7A3CC8",  area: "prism",  name: "Prism Ridge™",     sub: "Crystal Peaks & Ancient Ruins", icon: "i-reward",
       fallback: { x: 0.5, y: 0.115 }, world: { x: 0.4015, y: 0.0928 } },
+    // Summit Spine™ (2026-10-15 owner QA): public region between Frosty Peaks™ and Prism Ridge™. Pin sits low on the map, mid-bottom, where the
+    // climb begins; the position is approximate until the owner confirms it against the panorama.
+    { id: "summit", color: "#8d4fe0", area: "summit", name: "Summit Spine™",    sub: "The Climb to the Summit",       icon: "i-traversal",
+      fallback: { x: 0.50, y: 0.755 }, world: { x: 0.3971, y: 0.726 } },
     { id: "frost", color: "#7CC6F2",  area: "frost",  name: "Frosty Peaks™",     sub: "Icy Cliffs & Granite Roads",    icon: "i-snow",
       fallback: { x: 0.86, y: 0.21 }, world: { x: 0.5345, y: 0.2217 } },
   ],
 
   // Geographic sub-regions that are NOT public areas (no card, no route, no pin).
-  subregions: [
-    { id: "summit-spine", name: "Summit Spine™", parent: "prism", public: false, world: null },
-  ],
+  subregions: [],
 
   // Phase 2 gameplay overlays. Reversible: they never touch the base imagery.
   // Each entry: { id, ref (entities.js id, optional), x, y, [w, h], label? }
