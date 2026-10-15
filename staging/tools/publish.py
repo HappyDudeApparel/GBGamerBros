@@ -10,7 +10,8 @@
 staging
   * the dev branch must be committed; revision.py --check, check_invariants.py and asset_allowlist.py must pass
   * only public staging files are copied (no *.md, no tools/); /staging/ is replaced as a whole, so removed assets disappear
-  * refuses if anything outside staging/ would change; "already current" is a success, not an error
+  * the main-branch CI guard tools/check_staging_invariants.py is synced in the same commit (the only file outside staging/ it may change)
+  * refuses if anything else outside staging/ would change; "already current" is a success, not an error
 
 production
   * source = staging/ as it is on origin/main (the build that was reviewed), NOT the dev tree; --expect must equal its revision
@@ -27,6 +28,7 @@ import os, shutil, subprocess, sys, tempfile
 
 REPO = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()
 SESSION = "Claude-Session: https://claude.ai/code/session_01LPFrrt91CSr8icc1zm77A8"
+GUARD = "tools/check_staging_invariants.py"
 PRESERVED = ("v2", "staging", "CNAME", ".nojekyll", ".github", "README.md", "docs", "tools", "site.css", "site.js")
 ROOT_FILES = ("staging.css", "revision.json")        # plus every *.html / *.js shipped by the staged build
 
@@ -94,7 +96,10 @@ def prepare_staging(tmp):
             if f.endswith(".md"):
                 os.remove(os.path.join(root, f))
     git("add", "-A", "staging", cwd=tmp)
-    outside = git("diff", "--cached", "--name-only", "origin/main", "--", ".", ":!staging", cwd=tmp, out=True)
+    # the main-branch CI guard (tools/check_staging_invariants.py) must match the build it guards, or the push turns CI red
+    shutil.copy2(os.path.join(REPO, GUARD), os.path.join(tmp, GUARD))
+    git("add", GUARD, cwd=tmp)
+    outside = git("diff", "--cached", "--name-only", "origin/main", "--", ".", ":!staging", f":!{GUARD}", cwd=tmp, out=True)
     if outside:
         raise SystemExit("refusing: files outside staging/ would change:\n" + outside)
     stat = git("diff", "--cached", "--stat", "origin/main", cwd=tmp, out=True)
@@ -162,8 +167,7 @@ def prepare_production(tmp, expect):
     bad = [f for f in touched if f.split("/")[0] in PRESERVED or f.startswith("assets/") and "/" not in f[len("assets/"):]]
     if bad:
         raise SystemExit("refusing: preserved files would change:\n" + "\n".join(bad[:20]))
-    if os.path.exists(os.path.join(tmp, "tools/check_staging_invariants.py")):
-        run(sys.executable, os.path.join(tmp, "tools/check_staging_invariants.py"), sdir)
+    run(sys.executable, os.path.join(tmp, GUARD), sdir)      # main's own CI guard (synced by the staging operation)
     if revision_of(tmp) != rev:
         raise SystemExit("refusing: root revision.json does not match the staged build")
     stat = git("diff", "--cached", "--stat", "HEAD", cwd=tmp, out=True)
