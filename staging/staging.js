@@ -128,7 +128,7 @@
   const viewer = window.GBWorld.create(world, { panorama: window.GB_PANORAMA });
   const portraitMap = window.matchMedia("(max-aspect-ratio: 1/1)");
   // portrait fallback opens zoomed on a framing where every visible baked label is whole
-  // (Prism Ridge™, Fallen Grounds™, Riverworks™, Frosty Peaks™); "Whole map" shows all seven
+  // (Prism Ridge™, Fallen Grounds™, Riverworks™, Frosty Peaks™); "Whole map" shows all eight
   const FALLBACK_ZOOM = 2, MAP_START = 0.5;
   function setZoomed(on, fx) {
     world.classList.toggle("is-zoomed", on);
@@ -650,13 +650,14 @@
 
   // ---------- Explore Iconic Areas rail ----------
   const rail = document.getElementById("areaRail");
-  const RAIL = ["portal", "creek", "river", "clover", "ruin", "prism", "frost"];
+  // owner route order: … Fallen Grounds → Frosty Peaks → Summit Spine → Prism Ridge (last)
+  const RAIL = ["portal", "creek", "river", "clover", "ruin", "frost", "summit", "prism"];
   rail.innerHTML = RAIL.map((id) => {
     const a = AREAS[id];
     const v = a.views[0];
     const state = a.status === "open" ? "" : a.status === "incomplete" ? "More views soon" : "Coming soon";
     const rc = ((window.GB_WORLD || {}).regions || []).find((r) => r.area === id);
-    return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}" style="--rc:${rc ? rc.color : "#1f7ae0"}"
+    return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}" style="--rc:${rc ? rc.color : a.color || "#1f7ae0"}"
         aria-label="${esc(a.name)} — ${esc(a.sub)}${state ? ` (${state})` : ""}">
       ${v ? media(v.src, "area-card__img", "", "small")
           : a.identity ? `<span class="area-card__img region-id region-id--${a.identity.theme}" aria-hidden="true"><svg><use href="#${a.identity.icon}"/></svg></span>`
@@ -836,8 +837,19 @@
                  ["assets/gear/smartwatch-hardware", "SMARTWATCH hardware showcase in GB Blue: front, three-quarter and side views with close-ups of the buttons, metal build, strap and clasp, and engraved back plate"]];
   gearImg(document.getElementById("gearPadImg"), "assets/gear/patchpad-hero", "PATCHPAD™ in GB Blue, with a metallic dial, vertical thumbwheel and four coloured controls");
   gearImg(document.getElementById("gearWatchImg"), ...WATCH[0]);
-  const KEY = [["assets/gear/glitchkey-scene-blue", "GlitchKey™ concept: a glowing blue card on a lit plinth"],
-               ["assets/gear/glitchkey-lineup", "GlitchKey™ concept in Blue, Red, Yellow and Purple, front view"]];
+  const KEY = [["assets/gear/glitchkey-set", "GlitchKey™ concept preview in Blue, Red, Yellow and Purple"],
+               ["assets/gear/glitchkey-blue", "GlitchKey™ concept in Blue"],
+               ["assets/gear/glitchkey-red", "GlitchKey™ concept in Red"],
+               ["assets/gear/glitchkey-yellow", "GlitchKey™ concept in Yellow"],
+               ["assets/gear/glitchkey-purple", "GlitchKey™ concept in Purple"]];
+  const PAD = [["assets/gear/patchpad-hero", "PATCHPAD™ in Blue, with a metallic dial, vertical thumbwheel and four coloured controls"],
+               ["assets/gear/patchpad-red", "PATCHPAD™ in Red"],
+               ["assets/gear/patchpad-yellow", "PATCHPAD™ in Yellow"],
+               ["assets/gear/patchpad-purple", "PATCHPAD™ in Purple"]];
+  document.querySelectorAll("[data-pad]").forEach((b) => b.addEventListener("click", () => {
+    gearImg(document.getElementById("gearPadImg"), ...PAD[+b.dataset.pad]);
+    document.querySelectorAll("[data-pad]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  }));
   gearImg(document.getElementById("gearKeyImg"), ...KEY[0]);
   document.querySelectorAll("[data-key]").forEach((b) => b.addEventListener("click", () => {
     gearImg(document.getElementById("gearKeyImg"), ...KEY[+b.dataset.key]);

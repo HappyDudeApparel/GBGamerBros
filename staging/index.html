@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-aa3c275f">
+<meta name="gb-revision" content="r-c102a73b">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-aa3c275f";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-c102a73b";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -16,7 +16,7 @@
 <link rel="icon" href="assets/brand/gb-logo-clean.webp?v=d0c8b5a38d">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=7447cf81d3">
+<link rel="stylesheet" href="staging.css?v=157c2df2b5">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -144,7 +144,7 @@
     <section class="rail-block" id="areas" aria-labelledby="areasTitle">
       <header class="sec-head">
         <span class="sec-head__icon"><svg aria-hidden="true"><use href="#i-compass"/></svg></span>
-        <div><h2 id="areasTitle">Explore Iconic Areas</h2><p>Seven regions of Adventure Mountain™</p></div>
+        <div><h2 id="areasTitle">Explore Iconic Areas</h2><p>The regions of Adventure Mountain™</p></div>
       </header>
       <div class="rail-wrap">
         <button class="round-btn rail-arrow rail-arrow--prev" type="button" data-rail="-1" aria-label="Scroll areas left" aria-controls="areaRail"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -212,14 +212,18 @@
         <span class="panel__icon"><svg aria-hidden="true"><use href="#i-secret"/></svg></span>
         <div><h2 id="gearTitle">Gear &amp; Tech</h2></div>
       </header>
-      <p class="panel__intro">The Gamers' hardware. <b>PATCHPAD™</b> is the Gamers' hardware companion, shown in GB Blue; the <b>SMARTWATCH</b> comes in all four player colours; the <b>GlitchKey™</b> is previewed as concept art.</p>
+      <p class="panel__intro">The Gamers' hardware. <b>PATCHPAD™</b> is the Gamers' hardware companion and the <b>SMARTWATCH</b> is worn on the wrist; both come in the four player colours. The <b>GlitchKey™</b> is previewed as concept art in the same four colours.</p>
       <div class="gear">
         <figure class="gear__card gear__card--patchpad">
           <button class="gear__view" type="button" data-entity="patchpad" aria-label="PATCHPAD™ — view full size and details">
             <span class="gbm gear__img" id="gearPadImg"></span>
             <span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span>
           </button>
-          <figcaption><strong>PATCHPAD™</strong><span>GB Blue</span></figcaption>
+          <figcaption><strong>PATCHPAD™</strong><span>Blue · Red · Yellow · Purple</span>
+            <span class="gear__seg" role="group" aria-label="PATCHPAD™ colour">
+              <button type="button" data-pad="0" aria-pressed="true">Blue</button><button type="button" data-pad="1" aria-pressed="false">Red</button><button type="button" data-pad="2" aria-pressed="false">Yellow</button><button type="button" data-pad="3" aria-pressed="false">Purple</button>
+            </span>
+          </figcaption>
         </figure>
         <figure class="gear__card gear__card--watch">
           <button class="gear__view" type="button" data-entity="smartwatch" aria-label="SMARTWATCH — view full size and details">
@@ -237,9 +241,9 @@
             <span class="gbm gear__img" id="gearKeyImg"></span>
             <span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span>
           </button>
-          <figcaption><strong>GlitchKey™</strong><span>Concept preview</span>
-            <span class="gear__seg" role="group" aria-label="GlitchKey™ presentation">
-              <button type="button" data-key="0" aria-pressed="true">Blue</button><button type="button" data-key="1" aria-pressed="false">Four colours</button>
+          <figcaption><strong>GlitchKey™</strong><span>Concept preview · Blue · Red · Yellow · Purple</span>
+            <span class="gear__seg" role="group" aria-label="GlitchKey™ colour">
+              <button type="button" data-key="0" aria-pressed="true">All</button><button type="button" data-key="1" aria-pressed="false">Blue</button><button type="button" data-key="2" aria-pressed="false">Red</button><button type="button" data-key="3" aria-pressed="false">Yellow</button><button type="button" data-key="4" aria-pressed="false">Purple</button>
             </span>
           </figcaption>
         </figure>
@@ -326,18 +330,18 @@
   <p class="site-foot__legal">© 2026 HAPPY DUDE®. All rights reserved.</p>
   <p class="site-foot__links"><a href="rights.html">Rights &amp; IP</a></p>
   <p class="site-foot__note">Adventure Mountain™ artwork, characters, environments and visual assets are original project material.</p>
-  <p class="site-foot__build" hidden>Build <span id="gbRev">r-aa3c275f</span></p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-c102a73b</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite"></div>
 
-<script src="media-manifest.js?v=9ff04311bc" defer></script>
-<script src="areas.js?v=f63a96df78" defer></script>
-<script src="entities.js?v=78432559c3" defer></script>
-<script src="world-data.js?v=4e4c3357aa" defer></script>
+<script src="media-manifest.js?v=4bf91d7166" defer></script>
+<script src="areas.js?v=31053b30ac" defer></script>
+<script src="entities.js?v=65a80f3606" defer></script>
+<script src="world-data.js?v=0c68a00e3c" defer></script>
 <script src="panorama-manifest.js?v=f6156987ce" defer></script>
 <script src="world.js?v=ecb5fa5de5" defer></script>
 <script src="characters.js?v=1bc2a9feb2" defer></script>
-<script src="staging.js?v=a437075f78" defer></script>
+<script src="staging.js?v=c305381ba0" defer></script>
 </body>
 </html>

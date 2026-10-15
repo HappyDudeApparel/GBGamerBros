@@ -64,6 +64,12 @@ for _k, _why in (("stone-golem-v14", "grey-floor-era cutout"), ("crystal-guardia
     SUPERSEDED[f"assets/entities/{_k}"] = f"{_why} (2026-10-13 new library)"
 SUPERSEDED["assets/entities/studio/stone-golem-walk-st"] = "444 px sheet tile; superseded 2026-10-13"
 SUPERSEDED["assets/entities/studio/crystal-guardian-idle-st"] = "532 px sheet tile; superseded 2026-10-13"
+# 2026-10-15 owner QA: the Brightback shown since 2026-10-13 was the taller "new candidate" look (ring-shaped core), not the accepted V1
+for _k in ("alt", "guard", "flex"):
+    SUPERSEDED[f"assets/entities/new/brightback-{_k}"] = "new-candidate Brightback pose (ring core); V1 is the accepted design (owner QA 2026-10-15)"
+# 2026-10-15 owner QA: Prism Ridge shows only the final portal scene; Summit Spine has its own entry
+for _k in ("pr02-crystal-flatland", "pr03-high-ridge-approach"):
+    SUPERSEDED[f"assets/areas/prism-ridge/{_k}"] = {"reason": "Prism Ridge shows ONLY the final portal scene (owner QA 2026-10-15)", "scope": "GB_AREAS.prism"}
 SUPERSEDED["assets/systems/preview-04-trail-junction"] = "rejected by the owner 2026-10-13 (wrong enemies, inaccurate flag); no replacement trail scene approved yet"
 # 2026-10-13 (quality pass): owner-approved 1254 px standalone studio renders replace the earlier cutouts and sheet-crop tiles
 for _k in ("goom", "spike-bot", "claw-bot"):

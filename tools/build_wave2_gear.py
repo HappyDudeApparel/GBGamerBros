@@ -12,8 +12,10 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STAGING = os.path.join(REPO, "staging")
 GBMEDIA = os.path.join(STAGING, "tools", "gbmedia.py")
 SLOTS = {
-    "gear/glitchkey-lineup": "cea00669e2ff",        # four colourways, front, true alpha
     "gear/glitchkey-scene-blue": "ec8c67767d0d",    # blue card on a lit plinth
+    "gear/glitchkey-scene-red": "abe00d9e79d5",     # red card, front, close (16:9)
+    "gear/glitchkey-scene-yellow": "9823762bd5e9",  # yellow card on a lit floor
+    "gear/glitchkey-scene-purple": "1c78ac85f753",  # purple card on a lit floor
 }
 
 

@@ -147,15 +147,16 @@ window.GB_ENTITIES = {
   },
   "brightback": {
     name: "Brightback™", type: "enemy", status: "APPROVED",
-    // 2026-10-13: owner-supplied 1122x1402 true-alpha renders of the accepted V1 design (crown, crystal colours, silhouette, core) replace the
-    // 679 px cutout whose feet faded out. V2 remains an unapproved alternate and is not used.
+    // 2026-10-15 owner QA: the displayed Brightback was NOT the accepted V1 (the 2026-10-13 renders were the taller, slimmer "new candidate" look
+    // with a ring-shaped core). It now uses the owner's true-alpha cutout of V1 (squat build, pointed crystal frame around the chest core, comb crown).
+    // V2 and the new-candidate poses (alternate stance, guard, flex) are not used.
     heroFirst: true, heroLabel: "Final form",
     media: { thumb: N + "brightback-hero", render: "assets/entities/new/brightback-hero", icon: null },
     copy: { summary: "The towering fourth evolution of the Rumbler™ line, with deeper violet stone and larger Prism Shards.", behaviour: "An imposing apex form.", where: "Prism Ridge™." },
     encounter: [],
-    views: {}, states: { "Final form": "assets/entities/new/brightback-hero", "Alternate stance": "assets/entities/new/brightback-alt", "Guard": "assets/entities/new/brightback-guard", "Flex": "assets/entities/new/brightback-flex" }, angles: angles(), cardScale: 1.0, height: null, scale: null,
+    views: {}, states: { "Final form": "assets/entities/new/brightback-hero" }, angles: angles(), cardScale: 1.0, height: null, scale: null,
     evolution: { line: "boulder", phase: 4 },
-    // Archived: the 679 px V1 cutout (superseded by the true-alpha renders). The captioned scene crop (brightback-v1-hero.png) stays in the repo as a reference but is not shown.
+    // Archived: the 679 px V1 cutout (superseded by the true-alpha V1 cutout). The captioned scene crop (brightback-v1-hero.png) stays in the repo as a reference but is not shown.
     archived: { "V1 cutout (679 px)": E + "brightback-v1-cutout" },
   },
   // ---------------- hazards ----------------
@@ -209,8 +210,8 @@ window.GB_ENTITIES = {
   "patchpad": {
     name: "PATCHPAD™", type: "gadget", status: "APPROVED",
     media: { thumb: "assets/gear/patchpad-hero", render: "assets/gear/patchpad-hero", icon: null },
-    copy: { summary: "The Gamers' PATCHPAD™, shown in GB Blue.", behaviour: "Metallic dial and vertical thumbwheel. Four controls: red Action/Acquire, blue Scan/Monitor, yellow App/Program Selector and purple Settings.", where: "Carried by the Gamers." },
-    encounter: [], states: {}, angles: angles(), scale: null,
+    copy: { summary: "The Gamers' PATCHPAD™, shown in Blue, Red, Yellow and Purple.", behaviour: "Metallic dial and vertical thumbwheel. Four controls: red Action/Acquire, blue Scan/Monitor, yellow App/Program Selector and purple Settings.", where: "Carried by the Gamers." },
+    encounter: [], states: {}, views: { "Blue": "assets/gear/patchpad-hero", "Red": "assets/gear/patchpad-red", "Yellow": "assets/gear/patchpad-yellow", "Purple": "assets/gear/patchpad-purple" }, angles: angles(), scale: null,
   },
   "smartwatch": {
     name: "SMARTWATCH", type: "gadget", status: "APPROVED",
@@ -221,9 +222,9 @@ window.GB_ENTITIES = {
   "glitchkey": {
     // concept preview only (owner approval of a final render is still pending): no functions, mechanics or platform claims
     name: "GlitchKey™", type: "gadget", status: "PENDING",
-    media: { thumb: "assets/gear/glitchkey-scene-blue", render: "assets/gear/glitchkey-scene-blue", icon: null },
+    media: { thumb: "assets/gear/glitchkey-set", render: "assets/gear/glitchkey-set", icon: null },
     copy: { summary: "Concept preview of the GlitchKey™, shown in Blue, Red, Yellow and Purple.", behaviour: "More to come.", where: "More to come." },
-    encounter: [], states: {}, views: { "Blue": "assets/gear/glitchkey-scene-blue", "Four colours": "assets/gear/glitchkey-lineup" }, angles: angles(), scale: null,
+    encounter: [], states: {}, views: { "Four colours": "assets/gear/glitchkey-set", "Blue": "assets/gear/glitchkey-blue", "Red": "assets/gear/glitchkey-red", "Yellow": "assets/gear/glitchkey-yellow", "Purple": "assets/gear/glitchkey-purple", "Blue · scene": "assets/gear/glitchkey-scene-blue", "Red · scene": "assets/gear/glitchkey-scene-red", "Yellow · scene": "assets/gear/glitchkey-scene-yellow", "Purple · scene": "assets/gear/glitchkey-scene-purple" }, angles: angles(), scale: null,
   },
   "coin": {
     name: "GB Coin", type: "collectible", status: "APPROVED",

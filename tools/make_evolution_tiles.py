@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evolution sequence tiles for Forming / Stone Walker / Prism Keeper / Brightback from the owner's 2026-10-13 true-alpha renders.
+"""Evolution sequence tiles for Forming / Stone Walker / Prism Keeper from the owner's 2026-10-13 true-alpha renders.
 
     python3 tools/make_evolution_tiles.py <directory containing the original image files>
 
@@ -22,7 +22,7 @@ TILES = {
     "seq-forming": "24b8b3f310b1",
     "seq-stone-walker": "6b88fb4fc001",
     "seq-prism-keeper": "96e19a3b0512",
-    "seq-brightback": "56da479863ec",
+    # seq-brightback is built by tools/build_brightback_v1.py (the accepted V1 design)
 }
 SCALE = 0.90 * H / 1402          # the tallest source canvas (1402 px) fills 90 % of the tile height
 BASELINE = 0.975 * H             # bottom of every source canvas
