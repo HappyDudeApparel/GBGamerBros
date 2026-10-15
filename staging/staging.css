@@ -242,8 +242,8 @@ button{font:inherit;color:inherit;cursor:pointer}
   .pillars li{width:max(92px,calc(143 * var(--u)))}
   .pillars{left:calc(30 * var(--u))}
   .hero__arrow{top:calc(549 * var(--u));transform:translateY(-50%)}
-  .hero__arrow--prev{left:calc(770 * var(--u) - 118px)}
-  .hero__arrow--next{right:auto;left:calc(770 * var(--u) + 78px)}
+  .hero__arrow--prev{left:calc(770 * var(--u) - var(--hw,156px) / 2 - max(40px,calc(38 * var(--u))) - 4px)}
+  .hero__arrow--next{right:auto;left:calc(770 * var(--u) + var(--hw,156px) / 2 + 4px)}
 }
 
 /* ========== portrait: same elements, stacked composition ========== */
@@ -289,8 +289,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 
   .hero__dots{left:50%;top:calc(572 * var(--p));gap:2px}
   .hero__arrow{top:calc(572 * var(--p));transform:translateY(-50%)}
-  .hero__arrow--prev{left:calc(50% - 112px)}
-  .hero__arrow--next{right:auto;left:calc(50% + 72px)}
+  .hero__arrow--prev{left:calc(50% - var(--hw,144px) / 2 - 44px)}
+  .hero__arrow--next{right:auto;left:calc(50% + var(--hw,144px) / 2 + 4px)}
 
 }
 
@@ -1523,7 +1523,7 @@ html.is-locked{overflow:hidden}
 
 /* Hero key art: one composite per slide (wide + portrait); characters are part of the picture. Wide crops keep the lower part (feet) in view. */
 .slide--art picture{display:block;width:100%;height:100%}
-.slide--art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 80%;filter:none}
+.slide--art img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 80%);filter:none}
 @media (max-aspect-ratio:1/1){.slide--art img{object-position:50% 50%}}
 
 /* Public curation 2026-10-11: a small source is shown at (about) its native size in the dossier stage instead of
@@ -1635,3 +1635,109 @@ html.is-locked{overflow:hidden}
   #foes{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
 .dossier__head{background:#0e2a6e;box-shadow:0 6px 12px -6px rgba(0,10,40,.6)}
+
+/* ===== 2026-10-13 premium enemy cards: whole studio renders, never cropped =====
+   The approved 1254 px studio renders are opaque and square, so the card stage is square and shows each one in full
+   (silhouette, flames, motion streaks and contact shadow all stay inside the frame). The alternate action pose crossfades in on
+   hover / keyboard focus (and is simply not shown on touch). Nothing is scaled past 1:1, so nothing can be clipped. */
+#foes .foe--studio-host,#foes .foe{--lift:0px}
+#foes .foe__stage.foe__stage--studio{aspect-ratio:1/1;overflow:hidden;border-radius:16px 16px 0 0;background:#eef3fb;container-type:normal;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
+#foes .foe__stage.foe__stage--studio::before{display:none}
+#foes .foe__stage.foe__stage--studio > .gbm.foe__studio{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;margin:0;border-radius:0;z-index:1}
+#foes .foe__stage--studio > .gbm.foe__studio > img{object-fit:contain;object-position:50% 50%;transition:none}
+#foes .foe__stage--studio > .foe__studio--alt{opacity:0;z-index:2;transition:opacity .45s ease}
+#foes .foe:hover .foe__studio--alt,#foes .foe:focus-visible .foe__studio--alt{opacity:1}
+#foes .foe__stage--studio[data-peek]:not([data-peek=""])::after{display:block;content:attr(data-peek);position:absolute;left:10px;bottom:10px;z-index:3;
+  width:auto;height:auto;right:auto;padding:4px 9px;border-radius:99px;background:rgba(7,28,79,.82);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;line-height:1;opacity:0;transform:translateY(4px);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
+#foes .foe:hover .foe__stage--studio::after,#foes .foe:focus-visible .foe__stage--studio::after{opacity:1;transform:none}
+#foes .foe:has(.foe__stage--studio){background:#fff;border-radius:16px;box-shadow:0 0 0 1.5px rgba(255,255,255,.95),0 6px 18px rgba(20,60,140,.16);
+  transition:transform .25s ease,box-shadow .25s ease}
+#foes .foe:has(.foe__stage--studio):hover,#foes .foe:has(.foe__stage--studio):focus-visible{transform:translateY(-4px);box-shadow:0 0 0 2.5px #1f7ae0,0 16px 30px rgba(20,60,140,.28)}
+#foes .foe:has(.foe__stage--studio) .foe__text{border-radius:0 0 16px 16px;box-shadow:none}
+@media (prefers-reduced-motion:reduce){
+  #foes .foe__stage--studio > .foe__studio--alt,#foes .foe__stage--studio::after,#foes .foe:has(.foe__stage--studio){transition:none}
+  #foes .foe:has(.foe__stage--studio):hover{transform:none}
+}
+@media (hover:none){#foes .foe__stage--studio > .foe__studio--alt,#foes .foe__stage--studio[data-peek]::after{display:none}}
+
+/* dossier: square studio renders get a square stage (a 4:3 stage would crop them top and bottom) */
+.dossier__stage.is-studio.is-square{aspect-ratio:1/1;max-width:min(560px,100%)}
+.dossier__stage.is-studio.is-square > .gbm.studio-fit{top:0;left:0;right:auto;translate:none;width:100%;height:100%;aspect-ratio:auto}
+.dossier__stage.is-studio.is-square > .gbm.studio-fit > img{object-fit:contain}
+.dossier__pick--studio .stage-box{background:#f1f5fb}
+
+/* one tile ratio for the whole grid: the cutout forms (Sentry, Rumbler, Stone Walker, Prism Keeper) sit in the same square as the studio renders */
+#foes li:not(.foes__apex) .foe__stage:not(.foe__stage--scene){aspect-ratio:1/1}
+/* safe box for the cutout forms: relative scale is kept for the smaller ones, but nothing may exceed 90% of the tile's width
+   or 82% of its height, so crests, claws and feet are never cut by the tile edge (Prism Keeper's crest was). */
+#foes li:not(.foes__apex) .foe__stage > .gbm.cutout{bottom:10%;width:min(calc(var(--s) * 92cqw),90cqw,calc(82cqh * var(--ar)))}
+#foes li:not(.foes__apex) .foe--big .foe__stage > .gbm.cutout{bottom:10%}
+
+/* the primary call to action is now a link (Explore the Mountain), not a Steam button */
+a.steam,a.steam:visited{text-decoration:none;color:#fff}
+
+/* ===== 2026-10-13 Enemy Spotlight: a cinematic stage above the roster =====
+   One bot at a time on a dark arena, shown as the whole approved studio render on a light "specimen plate" (never cropped). The pose
+   cycles idle → alert → attack until the visitor takes over; it never autoplays under prefers-reduced-motion. */
+.spot{--accent:#ff8a2b;position:relative;display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center;
+  margin:0 0 18px;padding:clamp(14px,2.2vw,26px);border-radius:22px;overflow:hidden;color:#fff;
+  background:radial-gradient(120% 90% at 18% 20%,color-mix(in srgb,var(--accent) 22%,transparent) 0,transparent 55%),linear-gradient(135deg,#0b2a6b 0%,#071c4f 62%,#0a1840 100%);
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.55),0 18px 40px rgba(7,28,79,.35)}
+.spot[hidden]{display:none}
+.spot::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.spot__plate{position:relative;width:100%;aspect-ratio:1/1;border-radius:18px;background:#eef3fb;padding:0;overflow:hidden;
+  box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 0 6px color-mix(in srgb,var(--accent) 70%,transparent),0 20px 36px rgba(0,8,30,.45)}
+.spot__frame{position:absolute;inset:0}
+.spot__img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;opacity:0;transition:opacity .6s ease}
+.spot__img.is-on{opacity:1}
+.spot__img > img{object-fit:contain;object-position:50% 50%}
+.spot__info{display:grid;gap:10px;min-width:0}
+.spot__kicker{margin:0;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.spot__name{margin:0;font-size:clamp(28px,4vw,52px);font-weight:900;font-style:italic;line-height:1;text-transform:uppercase;letter-spacing:.005em;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.spot__sum{margin:0;max-width:46ch;font-size:clamp(14px,1.25vw,17px);line-height:1.45;color:#dbe9ff}
+.spot__states{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.spot__states button{padding:8px 14px;border:0;border-radius:99px;background:rgba(255,255,255,.12);color:#fff;font:inherit;font-size:12px;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28);transition:background .2s,color .2s,box-shadow .2s}
+.spot__states button:hover{background:rgba(255,255,255,.22)}
+.spot__states button[aria-pressed="true"]{background:#fff;color:#0b2a6b;box-shadow:0 0 0 2px var(--accent)}
+.spot__open{justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:11px 18px;border:0;border-radius:99px;background:var(--accent);color:#1a0b00;
+  font:inherit;font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.3);transition:transform .2s,filter .2s}
+.spot__open:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.spot__open svg{width:15px;height:15px}
+.spot__roster{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.spot__roster button{padding:9px 16px;border:0;border-radius:12px;background:transparent;color:#bcd6ff;font:inherit;font-size:13px;font-weight:800;font-style:italic;letter-spacing:.04em;
+  text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.spot__roster button:hover{color:#fff;background:rgba(255,255,255,.1)}
+.spot__roster button[aria-selected="true"]{background:#fff;color:#0b2a6b}
+.spot button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (max-width:899px){
+  .spot{grid-template-columns:1fr;gap:16px}
+  .spot__plate{max-width:min(460px,100%);justify-self:center}
+  .spot__roster{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .spot__roster button{flex:none}
+}
+@media (prefers-reduced-motion:reduce){.spot__img,.spot__states button,.spot__open,.spot__roster button{transition:none}.spot__open:hover{transform:none}}
+/* the overscan band sits below the picture inside the file; clip it exactly (plus 1 px of anti-alias bleed) so no hairline shows */
+#foes .foe__stage--studio .foe__studio > img,.spot__img > img{clip-path:inset(0 0 calc(100% - 100% / var(--ext,1) + 1px) 0)}
+/* short landscape phones: side-by-side with a plate that fits the screen height */
+@media (orientation:landscape) and (max-height:520px){
+  .spot{grid-template-columns:minmax(0,min(300px,70vh)) minmax(0,1fr);gap:18px;padding:12px 16px}
+  .spot__plate{max-width:none;justify-self:stretch}
+  .spot__name{font-size:clamp(24px,4vw,36px)}
+  .spot__roster{flex-wrap:wrap;overflow:visible}
+}
+
+/* 2026-10-13: nine "In the world" tiles (new Portal Meadow / Creek Crossing scenes) sit in a clean 3 x 3 grid */
+#entEvo .evo__scenes{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* Brightback™ apex card, 2026-10-13: the true-alpha V1 render is portrait (1122 x 1402), so it is sized by HEIGHT (98 % of the card width, up to the
+   560 px cap) and the breakout headroom grows to match; it is now a taller, more imposing figure than the old 679 px landscape cutout. */
+#foes > li.foes__apex{padding-top:calc(min(94cqw,560px) * .34)}
+#foes .foe--apex .foe__stage > .gbm.cutout{width:calc(var(--fw) * .98 * var(--ar))}
+
+/* 2026-10-15: GlitchKey(TM) concept preview sits in the same row and card style as PATCHPAD(TM) and SMARTWATCH */
+.gear{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gear__card figcaption{align-content:start}
+@media (max-width:719px){.gear{grid-template-columns:1fr}}

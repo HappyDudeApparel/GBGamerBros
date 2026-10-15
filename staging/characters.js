@@ -20,7 +20,7 @@ const looks = (id, sporty, street) => ({
 window.GB_CHARACTERS = {
   blue: {
     name: "Gamer Bro Blue™", colour: "Blue", hex: "#1f6fff", deep: "#0a2f8f",
-    card: C + "blue/street-threeq", tagline: "Bold, curious, and always ready to explore.",
+    card: C + "blue/sporty-pose", tagline: "Bold, curious, and always ready to explore.",
     looks: looks("blue", ["pose", "front", "side", "back"], ["threeq", "front", "side", "back"]),
   },
   red: {
