@@ -1,0 +1,68 @@
+{
+ "source": "brightback-v1-cutout.webp",
+ "source_sha256": "ccc8b3563ccf10f3b4187438dcefcd7f59a9e1b98bc2635239ed601027058fba",
+ "level": "C",
+ "subject_bbox": [
+  7,
+  6,
+  685,
+  601
+ ],
+ "marks": [
+  {
+   "zone": "0.12,0.66,0.90,0.88",
+   "px_width": 491,
+   "angle": -10.0,
+   "opacity": 0.55,
+   "edge": 0.45,
+   "tone": "white",
+   "luminance": 58.7,
+   "share_of_subject_width": 0.72
+  },
+  {
+   "zone": "0.2,0.88,0.8,0.98",
+   "px_width": 266,
+   "angle": 6.0,
+   "opacity": 0.385,
+   "edge": 0.45,
+   "tone": "white",
+   "luminance": 63.8,
+   "share_of_subject_width": 0.39
+  }
+ ],
+ "outputs": {
+  "hero-brightback_C.webp": {
+   "px": [
+    692,
+    604
+   ],
+   "sha256": "6188dbe594a9aac19ed3f4606962470fcf31a2e939c56a6debbda84ec021394a",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  },
+  "hero-brightback_C-960.webp": {
+   "px": [
+    692,
+    604
+   ],
+   "sha256": "6188dbe594a9aac19ed3f4606962470fcf31a2e939c56a6debbda84ec021394a",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_identifiers": true
+   }
+  }
+ },
+ "source_unchanged": true
+}

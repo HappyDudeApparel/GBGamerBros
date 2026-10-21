@@ -1,0 +1,75 @@
+{
+ "category": "game-screenshot",
+ "source": "staging/assets/systems/preview-04-trail-junction.webp",
+ "source_sha256": "e412030f2d17b7334ca05ccd9a0812ad9c3bb76e32239a0b5b148bef1cc81c14",
+ "content_px": [
+  1672,
+  941
+ ],
+ "content_box": [
+  0,
+  0,
+  1672,
+  941
+ ],
+ "cutout": false,
+ "band_cropped": 30,
+ "marks": [
+  {
+   "corner": "br",
+   "xy": [
+    1345,
+    859
+   ],
+   "size": [
+    244,
+    35
+   ],
+   "opacity": 0.62,
+   "tone": "light",
+   "luminance_under_mark": 124.2,
+   "inset_of_content_box": [
+    0.804,
+    0.913
+   ]
+  }
+ ],
+ "outputs": {
+  "screenshot_trail-junction.webp": {
+   "px": [
+    1672,
+    941
+   ],
+   "bytes": 462198,
+   "sha256": "aaa1cf7be8645e0e4b13ed988077d13b7161584b9a020a4257a979034d975965",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_name": true
+   }
+  },
+  "screenshot_trail-junction-960.webp": {
+   "px": [
+    960,
+    540
+   ],
+   "bytes": 226814,
+   "sha256": "77f2482c257cba406ad57529c7e3ff920e3abd04950dc9adc58c20117ea9d96e",
+   "metadata": {
+    "xmp_notice": true,
+    "xmp_rights_url": true,
+    "xmp_credit": true,
+    "xmp_title": true,
+    "xmp_contact": true,
+    "exif_copyright": true,
+    "no_personal_name": true
+   }
+  }
+ },
+ "source_unchanged": true,
+ "metadata_survived_all_variants": true
+}

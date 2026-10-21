@@ -1,0 +1,43 @@
+# PROPOSAL — NOT DEPLOYED. Needs owner approval; it would govern the whole host (production root included).
+# These are published requests. Compliant crawlers honour them; nothing here blocks anyone, and nothing here
+# makes any service credit or link to HAPPY DUDE®.
+
+# Normal search indexing stays open.
+User-agent: *
+Allow: /
+
+# AI-training crawlers (voluntary opt-out). Search/assistant fetchers such as OAI-SearchBot and user-initiated
+# fetches are NOT listed, so discovery keeps working.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+# Staging stays unindexed (it already carries <meta name="robots" content="noindex">).
+User-agent: *
+Disallow: /staging/
