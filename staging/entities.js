@@ -59,11 +59,10 @@ window.GB_ENTITIES = {
     // support feet, front amber core. The red/gold streak render (#10) is illustrative only and is not shown.
     studioHero: true, heroFirst: true, heroLabel: "Idle",
     media: { thumb: "assets/entities/studio/claw-bot-idle-hd", render: "assets/entities/studio/claw-bot-idle-hd", icon: null },
-    cardAlt: "assets/entities/studio/claw-bot-clamp-hd",
     copy: { provisional: true, summary: "Watch those claws! Claw Bot™ is a ground-roaming troublemaker with two split-spike claws.", behaviour: "Once it spots an explorer, those claws rise and clamp into action.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {},
-    states: { "Idle": "assets/entities/studio/claw-bot-idle-hd", "Scuttle": "assets/entities/studio/claw-bot-scuttle-hd", "Alert": "assets/entities/studio/claw-bot-alert-hd", "Clamp": "assets/entities/studio/claw-bot-clamp-hd", "Forward clamp": "assets/entities/studio/claw-bot-clamp-forward-hd", "Defeated": "assets/entities/studio/claw-bot-defeated-hd" },
+    states: { "Idle": "assets/entities/studio/claw-bot-idle-hd", "Scuttle": "assets/entities/studio/claw-bot-scuttle-hd", "Alert": "assets/entities/studio/claw-bot-alert-hd", "Forward clamp": "assets/entities/studio/claw-bot-clamp-forward-hd", "Defeated": "assets/entities/studio/claw-bot-defeated-hd" },
     details: { "Closed claw": "assets/entities/studio/claw-bot-claw-closed-hd", "Open claw": "assets/entities/studio/claw-bot-claw-open-hd", "Hinge": "assets/entities/studio/claw-bot-hinge-hd" },
     // Archived (superseded 2026-10-13): v14 cutout and the 92-201 px sheet tiles.
     archived: { "Superseded hero (2026-10-13)": E + "claw-bot-hero", "Cutout v14": E + "claw-bot-v14", "Walk (sheet tile)": "assets/entities/studio/claw-bot-walk-st", "Alert (sheet tile)": "assets/entities/studio/claw-bot-alert-st", "Clamp (sheet tile)": "assets/entities/studio/claw-bot-attack-st", "Idle": E + "claw-bot-idle", "Attack · open claws (spike + feet clipped)": E + "claw-bot-attack-front", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b",

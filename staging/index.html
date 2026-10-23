@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-385532dd">
+<meta name="gb-revision" content="r-86635a48">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-385532dd";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-86635a48";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
@@ -28,7 +28,7 @@
 <link rel="icon" href="assets/brand/gb-logo-clean.webp?v=d0c8b5a38d">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=ab99f2a535">
+<link rel="stylesheet" href="staging.css?v=ff8efff837">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -59,9 +59,9 @@
       <a href="#features">FEATURES</a>
       <a href="#level-preview">MEDIA</a>
     </nav>
-    <a class="steam steam--top" href="#world">
-      <svg class="steam__logo" aria-hidden="true"><use href="#i-compass"/></svg><span>EXPLORE THE MOUNTAIN</span><svg class="steam__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-    </a>
+    <span class="steam steam--top steam--soon" role="status" aria-label="Adventure Mountain™ coming soon">
+      <svg class="steam__logo" aria-hidden="true"><use href="#i-compass"/></svg><span>COMING SOON</span>
+    </span>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
   </header>
 
@@ -89,13 +89,13 @@
     <div class="hero__copy">
       <h1 class="headline"><span>EXPLORE</span> <span>A BRIGHTER</span> <span>TOMORROW</span></h1>
       <p class="tagline">PLAY <b>•</b> EXPLORE <b>•</b> DISCOVER</p>
-      <a class="steam steam--hero" href="#world">
-      <svg class="steam__logo" aria-hidden="true"><use href="#i-compass"/></svg><span>EXPLORE THE MOUNTAIN</span><svg class="steam__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-    </a>
-      <ul class="pillars" aria-label="Game pillars">
-        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-compass"/></svg></span><span class="pillar__label">EXPLORE<br>THE MOUNTAIN</span></li>
-        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-spiral"/></svg></span><span class="pillar__label">DISCOVER<br>HIDDEN SECRETS</span></li>
-        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-team"/></svg></span><span class="pillar__label">MEET<br>THE TEAM</span></li>
+      <span class="steam steam--hero steam--soon" role="status" aria-label="Adventure Mountain™ coming soon">
+        <svg class="steam__logo" aria-hidden="true"><use href="#i-compass"/></svg><span>COMING SOON</span>
+      </span>
+      <ul class="pillars" aria-label="Explore Adventure Mountain">
+        <li><a class="pillar__link" href="#areas" aria-label="Explore the Mountain — view the regions"><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-compass"/></svg></span><span class="pillar__label">EXPLORE<br>THE MOUNTAIN</span></a></li>
+        <li><a class="pillar__link" href="#adventure-finds" aria-label="Discover Hidden Secrets — explore Adventure Finds"><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-spiral"/></svg></span><span class="pillar__label">DISCOVER<br>HIDDEN SECRETS</span></a></li>
+        <li><a class="pillar__link" href="#characters" aria-label="Meet the Team — view the characters"><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-team"/></svg></span><span class="pillar__label">MEET<br>THE TEAM</span></a></li>
       </ul>
     </div>
 
@@ -346,14 +346,14 @@
   <p class="site-foot__legal">© 2026 HAPPY DUDE®. All rights reserved.</p>
   <p class="site-foot__links"><a href="rights.html">Rights &amp; IP</a></p>
   <p class="site-foot__note">Adventure Mountain™ is an original world from GB GAMER BROS™.</p>
-  <p class="site-foot__build" hidden>Build <span id="gbRev">r-385532dd</span></p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-86635a48</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite"></div>
 
 <script src="media-manifest.js?v=671305dfce" defer></script>
 <script src="areas.js?v=086ace00f7" defer></script>
-<script src="entities.js?v=a0939ccd6a" defer></script>
+<script src="entities.js?v=8c127954e9" defer></script>
 <script src="world-data.js?v=07120b5d5e" defer></script>
 <script src="panorama-manifest.js?v=f6156987ce" defer></script>
 <script src="world.js?v=ecb5fa5de5" defer></script>
