@@ -192,7 +192,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "PR04_Broad_Prism_Ruin_Landing.png",
   "rev": "c629631cbe",
-  "srev": "f8cfef4b32"
+  "srev": "f8cfef4b32",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "mrev": "83a6f3fc3c"
  },
  "assets/areas/prism-ridge/ss01-summit-portal-stairs": {
   "w": 1448,
@@ -302,6 +306,19 @@ window.GB_MEDIA = {
   "rev": "90580b9bae",
   "srev": "40182d5678"
  },
+ "assets/brand/gb-logo-clean": {
+  "w": 640,
+  "h": 260,
+  "band": 0,
+  "sw": 640,
+  "sh": 260,
+  "sband": 0,
+  "alpha": true,
+  "master": "gb-logo.png",
+  "rev": "d0c8b5a38d",
+  "srev": "d0c8b5a38d",
+  "noSmall": true
+ },
  "assets/characters/blue-red-high-five": {
   "w": 1088,
   "h": 1160,
@@ -323,8 +340,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_SPORTY_MULTI_VIEW_V1__back.png",
-  "rev": "8be6e2a647",
-  "srev": "f174b4226c"
+  "rev": "c113573ea1",
+  "srev": "805cb725be"
  },
  "assets/characters/blue/sporty-front": {
   "w": 305,
@@ -335,8 +352,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_SPORTY_MULTI_VIEW_V1__front.png",
-  "rev": "71a2485655",
-  "srev": "9bbc0cb998"
+  "rev": "153af1cbf4",
+  "srev": "bdf6991718"
  },
  "assets/characters/blue/sporty-pose": {
   "w": 366,
@@ -347,8 +364,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_SPORTY_MULTI_VIEW_V1__pose.png",
-  "rev": "74e6f97292",
-  "srev": "451835d6e2"
+  "rev": "ee3fd14141",
+  "srev": "96ad187fb8"
  },
  "assets/characters/blue/sporty-side": {
   "w": 224,
@@ -359,8 +376,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_SPORTY_MULTI_VIEW_V1__side.png",
-  "rev": "97a3dfa11c",
-  "srev": "3742c46454"
+  "rev": "b62c7aa3ff",
+  "srev": "34d77a9c2d"
  },
  "assets/characters/blue/street-back": {
   "w": 294,
@@ -371,8 +388,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "blue-street-back.png",
-  "rev": "472c507daa",
-  "srev": "7fc99d962f"
+  "rev": "a17ed453ed",
+  "srev": "63835fc537"
  },
  "assets/characters/blue/street-front": {
   "w": 262,
@@ -383,8 +400,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_STREETWEAR_MULTI_VIEW_V1__front.png",
-  "rev": "aa303a3c93",
-  "srev": "8dbee971e8"
+  "rev": "a24b1ff6fe",
+  "srev": "c51cef9eae"
  },
  "assets/characters/blue/street-side": {
   "w": 184,
@@ -395,8 +412,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_STREETWEAR_MULTI_VIEW_V1__side.png",
-  "rev": "2c7b6db276",
-  "srev": "f614fe7851"
+  "rev": "187fd9b329",
+  "srev": "4155f7ecf4"
  },
  "assets/characters/blue/street-threeq": {
   "w": 226,
@@ -407,8 +424,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_BLUE_STREETWEAR_MULTI_VIEW_V1__threeq.png",
-  "rev": "fe60f8f3fa",
-  "srev": "68aa08689e"
+  "rev": "bbbc018829",
+  "srev": "39f5dfedee"
  },
  "assets/characters/purple/sporty-back": {
   "w": 256,
@@ -419,8 +436,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_SPORTY_MULTI_VIEW_V1__back.png",
-  "rev": "dcb77ec200",
-  "srev": "9f28182fe6"
+  "rev": "653d6d98d0",
+  "srev": "8bb2926204"
  },
  "assets/characters/purple/sporty-front": {
   "w": 277,
@@ -431,8 +448,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_SPORTY_MULTI_VIEW_V1__front.png",
-  "rev": "1a544b729b",
-  "srev": "ffdb28b741"
+  "rev": "20803fb1cc",
+  "srev": "b4436ffef3"
  },
  "assets/characters/purple/sporty-pose": {
   "w": 315,
@@ -443,8 +460,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_SPORTY_MULTI_VIEW_V1__pose.png",
-  "rev": "5697806e46",
-  "srev": "bca5a7968a"
+  "rev": "d9f329efcc",
+  "srev": "274955f3c9"
  },
  "assets/characters/purple/sporty-side": {
   "w": 260,
@@ -455,8 +472,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_SPORTY_MULTI_VIEW_V1__side.png",
-  "rev": "e961e5f54e",
-  "srev": "b507e49b4c"
+  "rev": "8c83a5810b",
+  "srev": "0130c6fd4d"
  },
  "assets/characters/purple/street-back": {
   "w": 286,
@@ -467,8 +484,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_STREETWEAR_MULTI_VIEW_V1__back.png",
-  "rev": "a820d24c0e",
-  "srev": "b079600e6a"
+  "rev": "742dd75c02",
+  "srev": "e99649f1cc"
  },
  "assets/characters/purple/street-front": {
   "w": 330,
@@ -479,8 +496,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "purple-street-front.png",
-  "rev": "d2a13d4510",
-  "srev": "4e92054149"
+  "rev": "82b78a6c1b",
+  "srev": "e65be9f138"
  },
  "assets/characters/purple/street-pose": {
   "w": 350,
@@ -491,8 +508,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "purple-street-pose.png",
-  "rev": "2d24ee9097",
-  "srev": "2c2d3e3a3f"
+  "rev": "6757fabf24",
+  "srev": "e5fe3ac934"
  },
  "assets/characters/purple/street-side": {
   "w": 293,
@@ -503,8 +520,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_PURPLE_STREETWEAR_MULTI_VIEW_V1__side.png",
-  "rev": "9ef2f7c440",
-  "srev": "03a07e1d3f"
+  "rev": "a88c69c0fb",
+  "srev": "d0de52cc4f"
  },
  "assets/characters/red/sporty-back": {
   "w": 282,
@@ -515,8 +532,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_SPORTY_MULTI_VIEW_V1__back.png",
-  "rev": "f23c6ab55f",
-  "srev": "b3f6d56880"
+  "rev": "860a497cde",
+  "srev": "18df5e1c25"
  },
  "assets/characters/red/sporty-front": {
   "w": 301,
@@ -527,8 +544,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_SPORTY_MULTI_VIEW_V1__front.png",
-  "rev": "b8abbd7a42",
-  "srev": "8b21efddcf"
+  "rev": "02cb6039cc",
+  "srev": "0c20792411"
  },
  "assets/characters/red/sporty-pose": {
   "w": 357,
@@ -539,8 +556,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_SPORTY_MULTI_VIEW_V1__pose.png",
-  "rev": "6cd175ad32",
-  "srev": "b47937da5e"
+  "rev": "0a556a42be",
+  "srev": "628cba2516"
  },
  "assets/characters/red/sporty-side": {
   "w": 257,
@@ -551,8 +568,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_SPORTY_MULTI_VIEW_V1__side.png",
-  "rev": "3a658980da",
-  "srev": "b332fa81d5"
+  "rev": "e1eef33903",
+  "srev": "82ea9fb270"
  },
  "assets/characters/red/street-back": {
   "w": 278,
@@ -563,8 +580,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_STREETWEAR_MULTI_VIEW_V1__back.png",
-  "rev": "fc267a4967",
-  "srev": "f2a31e966b"
+  "rev": "669c4917c3",
+  "srev": "3bc8c3f460"
  },
  "assets/characters/red/street-front": {
   "w": 312,
@@ -575,8 +592,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_STREETWEAR_MULTI_VIEW_V1__front.png",
-  "rev": "502b975afd",
-  "srev": "6967c1cbf0"
+  "rev": "353fe255a2",
+  "srev": "0ceb9e7612"
  },
  "assets/characters/red/street-pose": {
   "w": 319,
@@ -587,8 +604,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_STREETWEAR_MULTI_VIEW_V1__pose.png",
-  "rev": "a7f3a6183e",
-  "srev": "b05cd0eb53"
+  "rev": "0995f98fd1",
+  "srev": "254bb6fd92"
  },
  "assets/characters/red/street-side": {
   "w": 220,
@@ -599,8 +616,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_BRO_RED_STREETWEAR_MULTI_VIEW_V1__side.png",
-  "rev": "69fbdb6fb3",
-  "srev": "98d5df39ef"
+  "rev": "1776acc839",
+  "srev": "651f6e7165"
  },
  "assets/characters/yellow/sporty-back": {
   "w": 197,
@@ -611,8 +628,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_SPORTY_MULTI_VIEW_V1__back.png",
-  "rev": "bb6d37c4b3",
-  "srev": "cf2e3fc039"
+  "rev": "9f3091483d",
+  "srev": "25d62c4adc"
  },
  "assets/characters/yellow/sporty-front": {
   "w": 221,
@@ -623,8 +640,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_SPORTY_MULTI_VIEW_V1__front.png",
-  "rev": "9b18fd7f74",
-  "srev": "dac18dc115"
+  "rev": "66a15bc056",
+  "srev": "29cf83e23d"
  },
  "assets/characters/yellow/sporty-pose": {
   "w": 262,
@@ -635,8 +652,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_SPORTY_MULTI_VIEW_V1__pose.png",
-  "rev": "a36e6ecd3e",
-  "srev": "e84b28c468"
+  "rev": "a6ec00d95c",
+  "srev": "e45419c67c"
  },
  "assets/characters/yellow/sporty-side": {
   "w": 189,
@@ -647,8 +664,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_SPORTY_MULTI_VIEW_V1__side.png",
-  "rev": "f8198b6d5f",
-  "srev": "5914af25f9"
+  "rev": "7a426dd8b5",
+  "srev": "386f8d1bf2"
  },
  "assets/characters/yellow/street-back": {
   "w": 297,
@@ -659,8 +676,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1__back.png",
-  "rev": "7b731bbf1e",
-  "srev": "67d2bcb725"
+  "rev": "7d7377e4d3",
+  "srev": "9f381198b2"
  },
  "assets/characters/yellow/street-front": {
   "w": 340,
@@ -671,8 +688,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1__front.png",
-  "rev": "1e1366f674",
-  "srev": "edf3d3e77f"
+  "rev": "c7a06c5d37",
+  "srev": "8bd2300897"
  },
  "assets/characters/yellow/street-pose": {
   "w": 329,
@@ -683,8 +700,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1__pose.png",
-  "rev": "322e210ec5",
-  "srev": "dc5b14941a"
+  "rev": "dd9175f75a",
+  "srev": "970b9d9f0a"
  },
  "assets/characters/yellow/street-side": {
   "w": 288,
@@ -695,8 +712,296 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "GAMER_GIRL_YELLOW_STREETWEAR_MULTI_VIEW_V1__side.png",
-  "rev": "409ff2ce45",
-  "srev": "86333ff2b4"
+  "rev": "2d755b55a3",
+  "srev": "00587f90a5"
+ },
+ "assets/entities/brightback-v1-cutout": {
+  "w": 679,
+  "h": 577,
+  "band": 0,
+  "sw": 679,
+  "sh": 577,
+  "sband": 0,
+  "alpha": true,
+  "master": "Brightback Final Evolution V1.jpg",
+  "rev": "7df124d436",
+  "srev": "7df124d436",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-face": {
+  "w": 471,
+  "h": 316,
+  "band": 0,
+  "sw": 471,
+  "sh": 316,
+  "sband": 0,
+  "alpha": false,
+  "master": "Brightback_V1_Preferred__face_chest_detail.png",
+  "rev": "d0f7f85b4e",
+  "srev": "d0f7f85b4e",
+  "ext": "png",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-face-clean": {
+  "w": 455,
+  "h": 300,
+  "band": 0,
+  "sw": 455,
+  "sh": 300,
+  "sband": 0,
+  "alpha": false,
+  "master": "brightback-v1-face.png (crop-only)",
+  "rev": "5029b4f481",
+  "srev": "5029b4f481",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-hand": {
+  "w": 308,
+  "h": 317,
+  "band": 0,
+  "sw": 308,
+  "sh": 317,
+  "sband": 0,
+  "alpha": false,
+  "master": "Brightback_V1_Preferred__hand_shard_detail.png",
+  "rev": "fc903beea8",
+  "srev": "fc903beea8",
+  "ext": "png",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-hand-clean": {
+  "w": 288,
+  "h": 297,
+  "band": 0,
+  "sw": 288,
+  "sh": 297,
+  "sband": 0,
+  "alpha": false,
+  "master": "brightback-v1-hand.png (crop-only)",
+  "rev": "157536e52d",
+  "srev": "157536e52d",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-hero": {
+  "w": 701,
+  "h": 573,
+  "band": 0,
+  "sw": 701,
+  "sh": 573,
+  "sband": 0,
+  "alpha": false,
+  "master": "Brightback_V1_Preferred__hero_preferred_scene.png",
+  "rev": "482d804427",
+  "srev": "482d804427",
+  "ext": "png",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-turnaround": {
+  "w": 802,
+  "h": 187,
+  "band": 0,
+  "sw": 802,
+  "sh": 187,
+  "sband": 0,
+  "alpha": false,
+  "master": "Brightback_V1_Preferred__turnaround_row.png",
+  "rev": "1aacf1d5eb",
+  "srev": "1aacf1d5eb",
+  "ext": "png",
+  "noSmall": true
+ },
+ "assets/entities/brightback-v1-turnaround-clean": {
+  "w": 794,
+  "h": 179,
+  "band": 0,
+  "sw": 794,
+  "sh": 179,
+  "sband": 0,
+  "alpha": false,
+  "master": "brightback-v1-turnaround.png (crop-only)",
+  "rev": "4a71cf2964",
+  "srev": "4a71cf2964",
+  "noSmall": true
+ },
+ "assets/entities/claw-bot-alert": {
+  "w": 186,
+  "h": 122,
+  "band": 14,
+  "sw": 186,
+  "sh": 122,
+  "sband": 14,
+  "alpha": true,
+  "master": "alert.png",
+  "rev": "59b96f43fe",
+  "srev": "3409774134"
+ },
+ "assets/entities/claw-bot-attack-a": {
+  "w": 185,
+  "h": 117,
+  "band": 14,
+  "sw": 185,
+  "sh": 117,
+  "sband": 14,
+  "alpha": true,
+  "master": "attack-a.png",
+  "rev": "6a6170d297",
+  "srev": "a01a36080e"
+ },
+ "assets/entities/claw-bot-attack-front": {
+  "w": 302,
+  "h": 109,
+  "band": 14,
+  "sw": 302,
+  "sh": 109,
+  "sband": 14,
+  "alpha": true,
+  "master": "attack-front.png",
+  "rev": "38b50240dc",
+  "srev": "eda22908c1"
+ },
+ "assets/entities/claw-bot-back": {
+  "w": 169,
+  "h": 122,
+  "band": 14,
+  "sw": 169,
+  "sh": 122,
+  "sband": 14,
+  "alpha": true,
+  "master": "back.png",
+  "rev": "b3b3c076ff",
+  "srev": "e5db15463e"
+ },
+ "assets/entities/claw-bot-bottom": {
+  "w": 151,
+  "h": 137,
+  "band": 14,
+  "sw": 151,
+  "sh": 137,
+  "sband": 14,
+  "alpha": true,
+  "master": "bottom.png",
+  "rev": "56d964f36b",
+  "srev": "3677aa4855"
+ },
+ "assets/entities/claw-bot-defeated-a": {
+  "w": 196,
+  "h": 98,
+  "band": 14,
+  "sw": 196,
+  "sh": 98,
+  "sband": 14,
+  "alpha": true,
+  "master": "defeated-a.png",
+  "rev": "53e6e59adc",
+  "srev": "5a0444ea68"
+ },
+ "assets/entities/claw-bot-defeated-b": {
+  "w": 189,
+  "h": 92,
+  "band": 14,
+  "sw": 189,
+  "sh": 92,
+  "sband": 14,
+  "alpha": true,
+  "master": "defeated-b.png",
+  "rev": "5b0b97e484",
+  "srev": "c8b697b517"
+ },
+ "assets/entities/claw-bot-front": {
+  "w": 183,
+  "h": 121,
+  "band": 14,
+  "sw": 183,
+  "sh": 121,
+  "sband": 14,
+  "alpha": true,
+  "master": "front.png",
+  "rev": "0fd18235fb",
+  "srev": "ec570cd4ae"
+ },
+ "assets/entities/claw-bot-hero": {
+  "w": 428,
+  "h": 265,
+  "band": 14,
+  "sw": 428,
+  "sh": 265,
+  "sband": 14,
+  "alpha": true,
+  "master": "hero.png",
+  "rev": "8ccad80d9e",
+  "srev": "0e98d21e83"
+ },
+ "assets/entities/claw-bot-idle": {
+  "w": 166,
+  "h": 111,
+  "band": 14,
+  "sw": 166,
+  "sh": 111,
+  "sband": 14,
+  "alpha": true,
+  "master": "idle.png",
+  "rev": "337dfd641c",
+  "srev": "ad9d204a59"
+ },
+ "assets/entities/claw-bot-side": {
+  "w": 124,
+  "h": 121,
+  "band": 14,
+  "sw": 124,
+  "sh": 121,
+  "sband": 14,
+  "alpha": true,
+  "master": "side.png",
+  "rev": "7b3f0536a2",
+  "srev": "4c16ca44c5"
+ },
+ "assets/entities/claw-bot-threeq": {
+  "w": 167,
+  "h": 123,
+  "band": 14,
+  "sw": 167,
+  "sh": 123,
+  "sband": 14,
+  "alpha": true,
+  "master": "threeq.png",
+  "rev": "a34c14fb33",
+  "srev": "44f0860577"
+ },
+ "assets/entities/claw-bot-top": {
+  "w": 201,
+  "h": 147,
+  "band": 14,
+  "sw": 201,
+  "sh": 147,
+  "sband": 14,
+  "alpha": true,
+  "master": "top.png",
+  "rev": "792a01d408",
+  "srev": "192ba19e39"
+ },
+ "assets/entities/claw-bot-v14": {
+  "w": 1510,
+  "h": 1026,
+  "band": 27,
+  "sw": 960,
+  "sh": 652,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "417157260f",
+  "srev": "da33fcd007"
+ },
+ "assets/entities/claw-bot-walk": {
+  "w": 189,
+  "h": 103,
+  "band": 14,
+  "sw": 189,
+  "sh": 103,
+  "sband": 14,
+  "alpha": true,
+  "master": "walk.png",
+  "rev": "a173ec78c9",
+  "srev": "03e81f3295"
  },
  "assets/entities/crystal-guardian-attack": {
   "w": 376,
@@ -722,6 +1027,19 @@ window.GB_MEDIA = {
   "rev": "336937a0dc",
   "srev": "d3b5b68880"
  },
+ "assets/entities/crystal-guardian-card": {
+  "w": 658,
+  "h": 497,
+  "band": 0,
+  "sw": 658,
+  "sh": 497,
+  "sband": 0,
+  "alpha": true,
+  "master": "crystal-guardian-hero.webp (card derivative)",
+  "rev": "766ff22d93",
+  "srev": "766ff22d93",
+  "noSmall": true
+ },
  "assets/entities/crystal-guardian-charge": {
   "w": 319,
   "h": 306,
@@ -745,6 +1063,18 @@ window.GB_MEDIA = {
   "master": "CRYSTAL_GUARDIAN_STATES_MASTER_V1__crystal-guardian-defeated.png",
   "rev": "5a9fe9ccb8",
   "srev": "377bc8347d"
+ },
+ "assets/entities/crystal-guardian-defeated-rubble": {
+  "w": 456,
+  "h": 218,
+  "band": 14,
+  "sw": 456,
+  "sh": 218,
+  "sband": 14,
+  "alpha": true,
+  "master": "pk-rubble.png",
+  "rev": "e48cc72e0d",
+  "srev": "35daaeb23c"
  },
  "assets/entities/crystal-guardian-front": {
   "w": 336,
@@ -817,6 +1147,18 @@ window.GB_MEDIA = {
   "master": "CRYSTAL_GUARDIAN_ANGLES_MASTER_V1__crystal-guardian-threeq.png",
   "rev": "fc2835c037",
   "srev": "705b7aea10"
+ },
+ "assets/entities/crystal-guardian-v14": {
+  "w": 1505,
+  "h": 1492,
+  "band": 27,
+  "sw": 960,
+  "sh": 952,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "9c15dc56a0",
+  "srev": "de870822af"
  },
  "assets/entities/evolution/evo-boulder-cracked": {
   "w": 192,
@@ -926,30 +1268,6 @@ window.GB_MEDIA = {
   "rev": "7298a3771d",
   "srev": "8a2c342a33"
  },
- "assets/entities/evolution/evo-step-5": {
-  "w": 236,
-  "h": 276,
-  "band": 14,
-  "sw": 236,
-  "sh": 276,
-  "sband": 14,
-  "alpha": false,
-  "master": "ROLLING_BOULDER_TO_STONE_GOLEM_TO_CRYSTAL_GUARDIAN_EVOLUTION_MASTER_V1__evo-step-5.png",
-  "rev": "f5c60fc19f",
-  "srev": "e405df78f2"
- },
- "assets/entities/evolution/evo-step-6": {
-  "w": 246,
-  "h": 276,
-  "band": 14,
-  "sw": 240,
-  "sh": 269,
-  "sband": 14,
-  "alpha": false,
-  "master": "ROLLING_BOULDER_TO_STONE_GOLEM_TO_CRYSTAL_GUARDIAN_EVOLUTION_MASTER_V1__evo-step-6.png",
-  "rev": "3ba1c1da0d",
-  "srev": "2561e784e4"
- },
  "assets/entities/evolution/evo-stone-golem": {
   "w": 232,
   "h": 249,
@@ -962,53 +1280,101 @@ window.GB_MEDIA = {
   "rev": "92387d900d",
   "srev": "f20d8ec165"
  },
- "assets/entities/evolution/mech-core-ignition": {
-  "w": 241,
-  "h": 251,
-  "band": 14,
-  "sw": 240,
-  "sh": 250,
-  "sband": 14,
+ "assets/entities/evolution/seq/seq-brightback": {
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
   "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-core-ignition.png",
-  "rev": "549bdf5889",
-  "srev": "da734b003b"
+  "master": "seq-brightback.png",
+  "rev": "c6903522a5",
+  "srev": "9bcc8434e6"
  },
- "assets/entities/evolution/mech-core-migration": {
-  "w": 245,
-  "h": 251,
+ "assets/entities/evolution/seq/seq-cracked": {
+  "w": 640,
+  "h": 480,
   "band": 14,
-  "sw": 240,
-  "sh": 246,
+  "sw": 640,
+  "sh": 480,
   "sband": 14,
   "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-core-migration.png",
-  "rev": "6ad1b84508",
-  "srev": "9d4489144c"
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "d5861dd314",
+  "srev": "1931d0719d"
  },
- "assets/entities/evolution/mech-crystal-nucleation": {
-  "w": 253,
-  "h": 251,
-  "band": 14,
-  "sw": 240,
-  "sh": 238,
-  "sband": 14,
+ "assets/entities/evolution/seq/seq-forming": {
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
   "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-crystal-nucleation.png",
-  "rev": "c90b61be49",
-  "srev": "8116e00487"
+  "master": "seq-forming.png",
+  "rev": "22274413e9",
+  "srev": "e0da202ad5"
  },
- "assets/entities/evolution/mech-plate-reconfiguration": {
-  "w": 259,
-  "h": 251,
+ "assets/entities/evolution/seq/seq-impact": {
+  "w": 640,
+  "h": 480,
   "band": 14,
-  "sw": 240,
-  "sh": 233,
+  "sw": 640,
+  "sh": 480,
   "sband": 14,
   "alpha": false,
-  "master": "EVOLUTION_OVERLAY_ASSETS_AND_MECHANICS_V1__mech-plate-reconfiguration.png",
-  "rev": "2908dad1a1",
-  "srev": "88f7952c17"
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "b8e2c53538",
+  "srev": "8eb7f63c5e"
+ },
+ "assets/entities/evolution/seq/seq-prism-keeper": {
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "seq-prism-keeper.png",
+  "rev": "2a4c3b3be8",
+  "srev": "a56b3f55c1"
+ },
+ "assets/entities/evolution/seq/seq-rolling": {
+  "w": 640,
+  "h": 480,
+  "band": 14,
+  "sw": 640,
+  "sh": 480,
+  "sband": 14,
+  "alpha": false,
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "0cedef0b0c",
+  "srev": "79f5c94e4c"
+ },
+ "assets/entities/evolution/seq/seq-rumbler": {
+  "w": 640,
+  "h": 480,
+  "band": 14,
+  "sw": 640,
+  "sh": 480,
+  "sband": 14,
+  "alpha": false,
+  "master": "uniform evolution tile from the approved form art (subject unaltered; studio background)",
+  "rev": "b4a390dc5c",
+  "srev": "fc51bf9c30"
+ },
+ "assets/entities/evolution/seq/seq-stone-walker": {
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "seq-stone-walker.png",
+  "rev": "70713c29cb",
+  "srev": "99348c6f35"
  },
  "assets/entities/goom-active": {
   "w": 158,
@@ -1142,6 +1508,18 @@ window.GB_MEDIA = {
   "rev": "cfb49efe6f",
   "srev": "3a59761a40"
  },
+ "assets/entities/goom-v14": {
+  "w": 1518,
+  "h": 1361,
+  "band": 27,
+  "sw": 960,
+  "sh": 861,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "feec189a67",
+  "srev": "e1110e0ee1"
+ },
  "assets/entities/goom-walk": {
   "w": 255,
   "h": 237,
@@ -1153,6 +1531,138 @@ window.GB_MEDIA = {
   "master": "goom-walk.png",
   "rev": "b1ecf9ed59",
   "srev": "a3c41c3d2f"
+ },
+ "assets/entities/new/brightback-hero": {
+  "w": 1494,
+  "h": 1512,
+  "band": 27,
+  "sw": 960,
+  "sh": 972,
+  "sband": 17,
+  "alpha": true,
+  "master": "brightback-hero.png",
+  "rev": "7d748ccc2e",
+  "srev": "870fed5c07"
+ },
+ "assets/entities/new/prism-keeper-advance": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "6eba90142a",
+  "srev": "47d77dca4b"
+ },
+ "assets/entities/new/prism-keeper-guard": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "a31957428a",
+  "srev": "be23fdd67d"
+ },
+ "assets/entities/new/prism-keeper-hero": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "baf02e416a",
+  "srev": "30bb493f5d"
+ },
+ "assets/entities/new/prism-keeper-impact": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "4151fac91b",
+  "srev": "91684d2e8a"
+ },
+ "assets/entities/new/prism-keeper-ready": {
+  "w": 1122,
+  "h": 1402,
+  "band": 20,
+  "sw": 960,
+  "sh": 1200,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "83a3a51bd3",
+  "srev": "53102b7df4"
+ },
+ "assets/entities/new/stone-walker-collapsed": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "9ad351100e",
+  "srev": "2f11a04777"
+ },
+ "assets/entities/new/stone-walker-dynamic": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "d6a9e8ca36",
+  "srev": "5f02c15956"
+ },
+ "assets/entities/new/stone-walker-forming": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "e44b710395",
+  "srev": "0dbf0a5e37"
+ },
+ "assets/entities/new/stone-walker-glare": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "b1ddff8788",
+  "srev": "6d5fa51156"
+ },
+ "assets/entities/new/stone-walker-hero": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "8df784b968",
+  "srev": "1fc331a448"
  },
  "assets/entities/rolling-boulder-back": {
   "w": 203,
@@ -1274,89 +1784,209 @@ window.GB_MEDIA = {
   "rev": "0bacb274bd",
   "srev": "3e211e03b2"
  },
- "assets/entities/rotor-bot-active": {
-  "w": 410,
-  "h": 280,
+ "assets/entities/rotor-bot-alert": {
+  "w": 143,
+  "h": 103,
   "band": 14,
-  "sw": 200,
-  "sh": 137,
+  "sw": 143,
+  "sh": 103,
   "sband": 14,
   "alpha": true,
-  "master": "ROTOR_BOT_PRODUCTION_ATLAS_V1__rotor-active.png",
-  "rev": "e03911319b",
-  "srev": "0b7d0bff5c"
+  "master": "alert.png",
+  "rev": "b93896c29d",
+  "srev": "dcda5cc24e"
  },
  "assets/entities/rotor-bot-back": {
-  "w": 322,
-  "h": 217,
+  "w": 187,
+  "h": 147,
   "band": 14,
-  "sw": 200,
-  "sh": 135,
+  "sw": 187,
+  "sh": 147,
   "sband": 14,
   "alpha": true,
-  "master": "ROTOR_BOT_PRODUCTION_ATLAS_V1__rotor-back.png",
-  "rev": "fe0f6aaafb",
-  "srev": "f13e5cd2a4"
+  "master": "back.png",
+  "rev": "dde447ec79",
+  "srev": "2b4488dd88"
  },
- "assets/entities/rotor-bot-defeated": {
-  "w": 325,
-  "h": 176,
+ "assets/entities/rotor-bot-bottom": {
+  "w": 181,
+  "h": 139,
   "band": 14,
-  "sw": 200,
-  "sh": 108,
+  "sw": 181,
+  "sh": 139,
   "sband": 14,
   "alpha": true,
-  "master": "ROTOR_BOT_PRODUCTION_ATLAS_V1__rotor-defeated.png",
-  "rev": "821b0a321e",
-  "srev": "f58bdcb419"
+  "master": "bottom.png",
+  "rev": "f5f524f2ba",
+  "srev": "ed667d3248"
+ },
+ "assets/entities/rotor-bot-defeated-a": {
+  "w": 178,
+  "h": 95,
+  "band": 14,
+  "sw": 178,
+  "sh": 95,
+  "sband": 14,
+  "alpha": true,
+  "master": "defeated-a.png",
+  "rev": "4516293e92",
+  "srev": "1ec0556fb7"
+ },
+ "assets/entities/rotor-bot-defeated-b": {
+  "w": 195,
+  "h": 103,
+  "band": 14,
+  "sw": 195,
+  "sh": 103,
+  "sband": 14,
+  "alpha": true,
+  "master": "defeated-b.png",
+  "rev": "b42afa092b",
+  "srev": "3de29afe7b"
  },
  "assets/entities/rotor-bot-front": {
-  "w": 320,
-  "h": 204,
+  "w": 180,
+  "h": 140,
   "band": 14,
-  "sw": 200,
-  "sh": 128,
+  "sw": 180,
+  "sh": 140,
   "sband": 14,
   "alpha": true,
-  "master": "ROTOR_BOT_PRODUCTION_ATLAS_V1__rotor-front.png",
-  "rev": "2c442f1d55",
-  "srev": "48b1bd3849"
+  "master": "front.png",
+  "rev": "f16670a3a4",
+  "srev": "12bbbe6ea3"
  },
  "assets/entities/rotor-bot-hero": {
-  "w": 523,
-  "h": 273,
+  "w": 408,
+  "h": 325,
   "band": 14,
-  "sw": 200,
-  "sh": 104,
+  "sw": 408,
+  "sh": 325,
   "sband": 14,
   "alpha": true,
-  "master": "ROTOR_BOT_PRODUCTION_ATLAS_V1__rotor-hero.png",
-  "rev": "e1e8dc0163",
-  "srev": "d2d1c0a893"
+  "master": "hero.png",
+  "rev": "9be5f4554c",
+  "srev": "4ac24f9bb1"
+ },
+ "assets/entities/rotor-bot-idle": {
+  "w": 140,
+  "h": 103,
+  "band": 14,
+  "sw": 140,
+  "sh": 103,
+  "sband": 14,
+  "alpha": true,
+  "master": "idle.png",
+  "rev": "2692ef1848",
+  "srev": "fb73b3f82e"
+ },
+ "assets/entities/rotor-bot-inactive": {
+  "w": 139,
+  "h": 105,
+  "band": 14,
+  "sw": 139,
+  "sh": 105,
+  "sband": 14,
+  "alpha": true,
+  "master": "inactive.png",
+  "rev": "2c36954a5d",
+  "srev": "831a6bcf3b"
+ },
+ "assets/entities/rotor-bot-patrol": {
+  "w": 153,
+  "h": 102,
+  "band": 14,
+  "sw": 153,
+  "sh": 102,
+  "sband": 14,
+  "alpha": true,
+  "master": "patrol.png",
+  "rev": "e239a40727",
+  "srev": "c92b97ac91"
  },
  "assets/entities/rotor-bot-side": {
-  "w": 219,
-  "h": 204,
+  "w": 162,
+  "h": 149,
   "band": 14,
-  "sw": 200,
-  "sh": 186,
+  "sw": 162,
+  "sh": 149,
   "sband": 14,
   "alpha": true,
-  "master": "ROTOR_BOT_PRODUCTION_ATLAS_V1__rotor-side.png",
-  "rev": "308fe74933",
-  "srev": "a4f6523180"
+  "master": "side.png",
+  "rev": "0c0fffa9a0",
+  "srev": "1b1231dd48"
  },
  "assets/entities/rotor-bot-threeq": {
-  "w": 324,
-  "h": 215,
+  "w": 166,
+  "h": 145,
   "band": 14,
-  "sw": 200,
-  "sh": 133,
+  "sw": 166,
+  "sh": 145,
   "sband": 14,
   "alpha": true,
-  "master": "ROTOR_BOT_PRODUCTION_ATLAS_V1__rotor-threeq.png",
-  "rev": "ce5051092c",
-  "srev": "73f6a736d5"
+  "master": "threeq.png",
+  "rev": "13202e1232",
+  "srev": "403e16b0a5"
+ },
+ "assets/entities/rotor-bot-top": {
+  "w": 178,
+  "h": 136,
+  "band": 14,
+  "sw": 178,
+  "sh": 136,
+  "sband": 14,
+  "alpha": true,
+  "master": "top.png",
+  "rev": "04a0065ab6",
+  "srev": "ee8754559d"
+ },
+ "assets/entities/rotor-bot-v13-a": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-locked 2026-10-13 still (private Drive; source pixels unchanged)",
+  "rev": "58eb24dfe1",
+  "srev": "ff7969eba3"
+ },
+ "assets/entities/rotor-bot-v13-b": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-locked 2026-10-13 still (private Drive; source pixels unchanged)",
+  "rev": "01ca767731",
+  "srev": "9861697741"
+ },
+ "assets/entities/rotor-bot-v13-c": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-locked 2026-10-13 still (private Drive; source pixels unchanged)",
+  "rev": "a786d279ec",
+  "srev": "5177a698ad"
+ },
+ "assets/entities/rumbler-v13": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "owner-locked 2026-10-13 still (private Drive; source pixels unchanged)",
+  "rev": "f19de249c6",
+  "srev": "112e53c676"
  },
  "assets/entities/scenes/crystal-guardian-ingame": {
   "w": 1368,
@@ -1382,6 +2012,18 @@ window.GB_MEDIA = {
   "rev": "d29d26f8dd",
   "srev": "3f86c7a1e4"
  },
+ "assets/entities/scenes/goom-ingame-solo": {
+  "w": 425,
+  "h": 544,
+  "band": 14,
+  "sw": 425,
+  "sh": 544,
+  "sband": 14,
+  "alpha": false,
+  "master": "goom-scene-crop.png",
+  "rev": "17ac51b724",
+  "srev": "7ff85ee088"
+ },
  "assets/entities/scenes/rolling-boulder-ingame": {
   "w": 704,
   "h": 334,
@@ -1394,29 +2036,17 @@ window.GB_MEDIA = {
   "rev": "32cad515b4",
   "srev": "f2e5b0baf7"
  },
- "assets/entities/scenes/rotor-bot-ingame": {
-  "w": 624,
-  "h": 336,
-  "band": 14,
-  "sw": 624,
-  "sh": 336,
-  "sband": 14,
-  "alpha": false,
-  "master": "final-rotor-bot.png",
-  "rev": "95eafe14a7",
-  "srev": "1358414e2e"
- },
- "assets/entities/scenes/sentry-cannon-ingame": {
-  "w": 928,
-  "h": 584,
-  "band": 17,
-  "sw": 928,
-  "sh": 584,
+ "assets/entities/scenes/rolling-boulder-rolling-hero": {
+  "w": 1117,
+  "h": 571,
+  "band": 20,
+  "sw": 960,
+  "sh": 491,
   "sband": 17,
   "alpha": false,
-  "master": "sc-ingame.png",
-  "rev": "d0558144b2",
-  "srev": "eaf5210dc0"
+  "master": "Rumbler_Rolling_Boulder_Card__rolling_hero.png",
+  "rev": "ce3fd98eb7",
+  "srev": "ad19d02126"
  },
  "assets/entities/scenes/spike-bot-ingame": {
   "w": 576,
@@ -1658,6 +2288,18 @@ window.GB_MEDIA = {
   "rev": "32620d3e01",
   "srev": "ec95a83056"
  },
+ "assets/entities/spike-bot-v14": {
+  "w": 1503,
+  "h": 1450,
+  "band": 27,
+  "sw": 960,
+  "sh": 926,
+  "sband": 17,
+  "alpha": true,
+  "master": "2026-10-13 owner-supplied 1536 px black-background source; separately named alpha derivative (original unchanged)",
+  "rev": "31ed394730",
+  "srev": "0d27490f67"
+ },
  "assets/entities/stone-golem-attack": {
   "w": 339,
   "h": 324,
@@ -1682,6 +2324,19 @@ window.GB_MEDIA = {
   "rev": "2524c11a37",
   "srev": "c3fb0d7849"
  },
+ "assets/entities/stone-golem-card": {
+  "w": 768,
+  "h": 521,
+  "band": 0,
+  "sw": 768,
+  "sh": 521,
+  "sband": 0,
+  "alpha": true,
+  "master": "stone-golem-hero.webp (card derivative)",
+  "rev": "c006b1ded9",
+  "srev": "c006b1ded9",
+  "noSmall": true
+ },
  "assets/entities/stone-golem-front": {
   "w": 386,
   "h": 294,
@@ -1693,6 +2348,18 @@ window.GB_MEDIA = {
   "master": "STONE_GOLEM_ANGLES_MASTER_V1__stone-golem-front.png",
   "rev": "b20ca849f5",
   "srev": "8ca722c6a3"
+ },
+ "assets/entities/stone-golem-front-v14": {
+  "w": 372,
+  "h": 283,
+  "band": 14,
+  "sw": 372,
+  "sh": 283,
+  "sband": 14,
+  "alpha": true,
+  "master": "approved Stone Walker angles master view; separately named alpha derivative (no grey floor; original unchanged)",
+  "rev": "c7eb33ac88",
+  "srev": "c7eb33ac88"
  },
  "assets/entities/stone-golem-hero": {
   "w": 768,
@@ -1754,6 +2421,18 @@ window.GB_MEDIA = {
   "rev": "09934accb2",
   "srev": "14a3af5eb9"
  },
+ "assets/entities/stone-golem-v14": {
+  "w": 409,
+  "h": 289,
+  "band": 14,
+  "sw": 409,
+  "sh": 289,
+  "sband": 14,
+  "alpha": true,
+  "master": "approved Stone Walker angles master view; separately named alpha derivative (no grey floor; original unchanged)",
+  "rev": "bdcd3e5707",
+  "srev": "bdcd3e5707"
+ },
  "assets/entities/stone-golem-walk": {
   "w": 310,
   "h": 306,
@@ -1766,65 +2445,845 @@ window.GB_MEDIA = {
   "rev": "63431c58a3",
   "srev": "0d83bcf4d4"
  },
- "assets/objects/chest": {
-  "w": 627,
-  "h": 410,
+ "assets/entities/studio/claw-bot-alert-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_07_ALERT_RAISED_SPLIT_CLAWS_SITE_APPROVED_2026-10-13.png",
+  "rev": "41c492f1ec",
+  "srev": "3ab1da5fec"
+ },
+ "assets/entities/studio/claw-bot-alert-st": {
+  "w": 272,
+  "h": 204,
   "band": 14,
-  "sw": 627,
-  "sh": 410,
+  "sw": 272,
+  "sh": 204,
   "sband": 14,
-  "alpha": true,
-  "master": "chest.png",
-  "rev": "7b1e968be6",
-  "srev": "cdac64477f"
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "7302a17f28",
+  "srev": "7651cc7a15"
+ },
+ "assets/entities/studio/claw-bot-attack-st": {
+  "w": 492,
+  "h": 369,
+  "band": 14,
+  "sw": 492,
+  "sh": 369,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "3edda8ba2d",
+  "srev": "184eacabe4"
+ },
+ "assets/entities/studio/claw-bot-clamp-forward-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_09_ATTACK_FORWARD_CLAMP_SITE_APPROVED_2026-10-13.png",
+  "rev": "65d40738ad",
+  "srev": "59aaff7d10"
+ },
+ "assets/entities/studio/claw-bot-clamp-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_04_ATTACK_CLAMP_A_APPROVED_STUDIO_2026-10-13.png",
+  "rev": "b7b5ab9d08",
+  "srev": "1fb8462e53"
+ },
+ "assets/entities/studio/claw-bot-claw-closed-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_11_MECHANICAL_CLOSED_SPLIT_CLAW_DETAIL_SITE_APPROVED_2026-10-13.png",
+  "rev": "303bff7746",
+  "srev": "3c2ceb141c"
+ },
+ "assets/entities/studio/claw-bot-claw-open-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_12_MECHANICAL_OPEN_SPLIT_CLAW_DETAIL_SITE_APPROVED_2026-10-13.png",
+  "rev": "8a78741848",
+  "srev": "031c786180"
+ },
+ "assets/entities/studio/claw-bot-defeated-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_06_DEFEATED_APPROVED_STUDIO_2026-10-13.png",
+  "rev": "f711ac3fb0",
+  "srev": "2656a76971"
+ },
+ "assets/entities/studio/claw-bot-hinge-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_13_MECHANICAL_HINGE_ACTUATOR_DETAIL_SITE_APPROVED_2026-10-13.png",
+  "rev": "8d2211ca54",
+  "srev": "3d0ccac793"
+ },
+ "assets/entities/studio/claw-bot-idle-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_01_IDLE_HERO_APPROVED_STUDIO_2026-10-13.png",
+  "rev": "fc592b76f8",
+  "srev": "4fe46735f5"
+ },
+ "assets/entities/studio/claw-bot-scuttle-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "CLAW_BOT_02_WALK_SCUTTLE_APPROVED_STUDIO_2026-10-13.png",
+  "rev": "d599c693b3",
+  "srev": "0b3d430d49"
+ },
+ "assets/entities/studio/claw-bot-walk-st": {
+  "w": 280,
+  "h": 210,
+  "band": 14,
+  "sw": 280,
+  "sh": 210,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "d753a5860b",
+  "srev": "1017b922ef"
+ },
+ "assets/entities/studio/crystal-guardian-defeated-rubble-st": {
+  "w": 736,
+  "h": 552,
+  "band": 14,
+  "sw": 736,
+  "sh": 552,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "8002b6294f",
+  "srev": "d338d1fe9d"
+ },
+ "assets/entities/studio/crystal-guardian-idle-st": {
+  "w": 532,
+  "h": 399,
+  "band": 14,
+  "sw": 532,
+  "sh": 399,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "917a7b3d18",
+  "srev": "9d02b115f9"
+ },
+ "assets/entities/studio/goom-alert-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_02_ALERT_SURPRISED_APPROVED_2026-10-13.png",
+  "rev": "9f9febff63",
+  "srev": "f6e03e3705"
+ },
+ "assets/entities/studio/goom-alert-st": {
+  "w": 444,
+  "h": 333,
+  "band": 14,
+  "sw": 444,
+  "sh": 333,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "0064c0ab39",
+  "srev": "da034340a1"
+ },
+ "assets/entities/studio/goom-attack-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_04_ATTACK_ANGRY_APPROVED_2026-10-13.png",
+  "rev": "f106046f12",
+  "srev": "db55de48eb"
+ },
+ "assets/entities/studio/goom-charge-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_05_CHARGE_ACTION_APPROVED_2026-10-13.png",
+  "rev": "7ed9c94060",
+  "srev": "b5daf72f29"
+ },
+ "assets/entities/studio/goom-charge-st": {
+  "w": 652,
+  "h": 489,
+  "band": 14,
+  "sw": 652,
+  "sh": 489,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "1d3b142cb3",
+  "srev": "e37f38519b"
+ },
+ "assets/entities/studio/goom-defeated-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_06_DEFEATED_X_EYES_APPROVED_2026-10-13.png",
+  "rev": "7e02fbe2fa",
+  "srev": "87e4ccde94"
+ },
+ "assets/entities/studio/goom-face-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_07_ATTACK_FACE_CLOSEUP_APPROVED_2026-10-13.png",
+  "rev": "15761f530e",
+  "srev": "cca2c4307b"
+ },
+ "assets/entities/studio/goom-idle-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "GOOM_01_IDLE_STUDIO_APPROVED_2026-10-13.png",
+  "rev": "268c747051",
+  "srev": "ac34c9e508"
+ },
+ "assets/entities/studio/goom-walk-st": {
+  "w": 428,
+  "h": 321,
+  "band": 14,
+  "sw": 428,
+  "sh": 321,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "23de880fe0",
+  "srev": "12449cc610"
+ },
+ "assets/entities/studio/rolling-boulder-fracture-st": {
+  "w": 344,
+  "h": 258,
+  "band": 14,
+  "sw": 344,
+  "sh": 258,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "fde90f1937",
+  "srev": "3a33c313fe"
+ },
+ "assets/entities/studio/rolling-boulder-impact-st": {
+  "w": 476,
+  "h": 357,
+  "band": 14,
+  "sw": 476,
+  "sh": 357,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "d2359df7aa",
+  "srev": "d3177272b1"
+ },
+ "assets/entities/studio/rolling-boulder-rolling-st": {
+  "w": 408,
+  "h": 306,
+  "band": 14,
+  "sw": 408,
+  "sh": 306,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "74510cd28d",
+  "srev": "bf225dd3a2"
+ },
+ "assets/entities/studio/rotor-bot-core-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_06_CORE_CLOSEUP_APPROVED_2026-10-13.png",
+  "rev": "78728ea7fe",
+  "srev": "9106ebaee0"
+ },
+ "assets/entities/studio/rotor-bot-flight-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_04_ATTACK_ANGLED_FLIGHT_APPROVED_2026-10-13.png",
+  "rev": "f6d5c3da63",
+  "srev": "7f034dc202"
+ },
+ "assets/entities/studio/rotor-bot-hover-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_01_HOVER_APPROVED_2026-10-13.png",
+  "rev": "7f86fa7cf3",
+  "srev": "a599c95788"
+ },
+ "assets/entities/studio/rotor-bot-inactive-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_05_DEFEATED_NO_FLAMES_APPROVED_2026-10-13.png",
+  "rev": "42509b6fe7",
+  "srev": "db416f91f8"
+ },
+ "assets/entities/studio/rotor-bot-nozzle-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_07_THRUSTER_CLOSEUP_APPROVED_2026-10-13.png",
+  "rev": "d2e27a1798",
+  "srev": "9c0536736f"
+ },
+ "assets/entities/studio/rotor-bot-spike-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_08_RED_SPIKE_COLLAR_CLOSEUP_APPROVED_2026-10-13.png",
+  "rev": "9603f82228",
+  "srev": "fd7188a6c8"
+ },
+ "assets/entities/studio/rotor-bot-thrust-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "ROTOR_BOT_03_ATTACK_MAX_THRUST_APPROVED_2026-10-13.png",
+  "rev": "d2582173b9",
+  "srev": "e02438c4f7"
+ },
+ "assets/entities/studio/spike-bot-alert-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_06_ALERT_READY_APPROVED_2026-10-13.png",
+  "rev": "53ce681782",
+  "srev": "6ec3218fa9"
+ },
+ "assets/entities/studio/spike-bot-alert-st": {
+  "w": 420,
+  "h": 315,
+  "band": 14,
+  "sw": 420,
+  "sh": 315,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "42e429a570",
+  "srev": "b929bf6aef"
+ },
+ "assets/entities/studio/spike-bot-attack-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_03_ATTACK_ENERGY_EFFECT_APPROVED_2026-10-13.png",
+  "rev": "5fef5eaba8",
+  "srev": "dae3afd336"
+ },
+ "assets/entities/studio/spike-bot-attack-st": {
+  "w": 484,
+  "h": 363,
+  "band": 14,
+  "sw": 484,
+  "sh": 363,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "7ce9382907",
+  "srev": "6bc1cc5e60"
+ },
+ "assets/entities/studio/spike-bot-charge-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_05_CHARGE_SPARKS_APPROVED_2026-10-13.png",
+  "rev": "ad3d0579c8",
+  "srev": "404800ae7e"
+ },
+ "assets/entities/studio/spike-bot-defeated-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_02_DEFEATED_INACTIVE_APPROVED_2026-10-13.png",
+  "rev": "c2ec98f96b",
+  "srev": "a8fd18f4cc"
+ },
+ "assets/entities/studio/spike-bot-defeated-st": {
+  "w": 400,
+  "h": 300,
+  "band": 14,
+  "sw": 400,
+  "sh": 300,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "c890c5be1d",
+  "srev": "bb4b516421"
+ },
+ "assets/entities/studio/spike-bot-hero-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_01_HERO_APPROVED_2026-10-13.png",
+  "rev": "b76e5a68d3",
+  "srev": "4867e2770f"
+ },
+ "assets/entities/studio/spike-bot-roll-hd": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "SPIKE_BOT_04_ROLL_ACTION_APPROVED_2026-10-13.png",
+  "rev": "e6cb1a05fc",
+  "srev": "bc71d50f46"
+ },
+ "assets/entities/studio/stone-golem-walk-st": {
+  "w": 536,
+  "h": 402,
+  "band": 14,
+  "sw": 536,
+  "sh": 402,
+  "sband": 14,
+  "alpha": false,
+  "master": "studio tile from the approved production sheet / approved state art (subject unaltered; studio background extended)",
+  "rev": "85be27f483",
+  "srev": "96a2cf0b98"
+ },
+ "assets/gear/glitchkey-blue": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "glitchkey-blue.png",
+  "rev": "9751b8fff2",
+  "srev": "d80394ff7c"
+ },
+ "assets/gear/glitchkey-purple": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "glitchkey-purple.png",
+  "rev": "0e07971844",
+  "srev": "0bddb989eb"
+ },
+ "assets/gear/glitchkey-red": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "glitchkey-red.png",
+  "rev": "c360d063fb",
+  "srev": "56233540af"
+ },
+ "assets/gear/glitchkey-scene-blue": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "1_Xu3Z_28AGWYTYir_GUtA1D3gWMKkN5k.png",
+  "rev": "0593a73d30",
+  "srev": "6603a85d57"
+ },
+ "assets/gear/glitchkey-scene-purple": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "f17017a137",
+  "srev": "a56688402f"
+ },
+ "assets/gear/glitchkey-scene-red": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "158bc509de",
+  "srev": "5815346491"
+ },
+ "assets/gear/glitchkey-scene-yellow": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "e208335c3b",
+  "srev": "9942071889"
+ },
+ "assets/gear/glitchkey-set": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "glitchkey-set.png",
+  "rev": "ce0fe0c29d",
+  "srev": "a9a6a97022"
+ },
+ "assets/gear/glitchkey-yellow": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "glitchkey-yellow.png",
+  "rev": "2069dad543",
+  "srev": "5c9e71ae60"
+ },
+ "assets/gear/patchpad-hero": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "PATCHPAD™_GB_BLUE_APPROVED_HERO_RENDER_2026-10-10.png",
+  "rev": "53686dd22f",
+  "srev": "8ad2544755"
+ },
+ "assets/gear/patchpad-purple": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "patchpad-purple.png",
+  "rev": "6db46d0419",
+  "srev": "4a18460c8b"
+ },
+ "assets/gear/patchpad-red": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "patchpad-red.png",
+  "rev": "0ee5ffceff",
+  "srev": "7a3633fb20"
+ },
+ "assets/gear/patchpad-yellow": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "patchpad-yellow.png",
+  "rev": "c13d39d3fb",
+  "srev": "2f5c2e8119"
+ },
+ "assets/gear/smartwatch-hardware": {
+  "w": 1400,
+  "h": 1000,
+  "band": 0,
+  "sw": 960,
+  "sh": 686,
+  "sband": 0,
+  "alpha": false,
+  "master": "01_Hardware_Spec_Mountain_LED.png; composed by tools/make_watch_showcase.py",
+  "rev": "2d11bd739b",
+  "srev": "6990c71ccf"
+ },
+ "assets/gear/smartwatch-lineup": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "07_SMARTWATCH_FOUR_COLORWAYS_BALANCED_LINEUP_2026-10-10.png",
+  "rev": "b9ec3d2c6b",
+  "srev": "36d0c39b0e"
+ },
+ "assets/gear/smartwatch-stage": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "06_SMARTWATCH_Four_Character_Colorways_Circular_Stage_Showcase_2026-10-09.png",
+  "rev": "cecd8a4fb8",
+  "srev": "0fb040eb66"
+ },
+ "assets/hero/hero-1": {
+  "w": 1672,
+  "h": 941,
+  "band": 0,
+  "sw": 960,
+  "sh": 540,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "feeb8f1fd9",
+  "srev": "3fa9072e91"
+ },
+ "assets/hero/hero-1-p": {
+  "w": 1080,
+  "h": 2000,
+  "band": 0,
+  "sw": 960,
+  "sh": 1778,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "970d4ad1af",
+  "srev": "17626ad426"
+ },
+ "assets/hero/hero-2": {
+  "w": 1672,
+  "h": 941,
+  "band": 0,
+  "sw": 960,
+  "sh": 540,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "c1e9bef0b5",
+  "srev": "1587d00e59"
+ },
+ "assets/hero/hero-2-p": {
+  "w": 1080,
+  "h": 2000,
+  "band": 0,
+  "sw": 960,
+  "sh": 1778,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "d71fb21c28",
+  "srev": "d2efc3a88f"
+ },
+ "assets/hero/hero-3": {
+  "w": 1672,
+  "h": 941,
+  "band": 0,
+  "sw": 960,
+  "sh": 540,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "48ccc77b93",
+  "srev": "6c1968c2f0"
+ },
+ "assets/hero/hero-3-p": {
+  "w": 1080,
+  "h": 2000,
+  "band": 0,
+  "sw": 960,
+  "sh": 1778,
+  "sband": 0,
+  "alpha": false,
+  "master": "tools/make_hero_composites.py (approved area scene + approved sporty-pose cutouts)",
+  "rev": "7c121243d2",
+  "srev": "d4ed9e3d2b"
  },
  "assets/objects/chest-blue": {
-  "w": 570,
-  "h": 346,
+  "w": 412,
+  "h": 309,
   "band": 14,
-  "sw": 570,
-  "sh": 346,
+  "sw": 412,
+  "sh": 309,
   "sband": 14,
   "alpha": true,
   "master": "chest-blue.png",
-  "rev": "85548b4630",
-  "srev": "687256e27b"
+  "rev": "bca21b1ad1",
+  "srev": "bca21b1ad1"
  },
  "assets/objects/chest-purple": {
-  "w": 582,
-  "h": 346,
+  "w": 403,
+  "h": 312,
   "band": 14,
-  "sw": 582,
-  "sh": 346,
+  "sw": 403,
+  "sh": 312,
   "sband": 14,
   "alpha": true,
   "master": "chest-purple.png",
-  "rev": "ad6e6348ee",
-  "srev": "f97c9fbde3"
+  "rev": "6335360e94",
+  "srev": "6335360e94"
  },
  "assets/objects/chest-red": {
-  "w": 566,
-  "h": 346,
+  "w": 405,
+  "h": 311,
   "band": 14,
-  "sw": 566,
-  "sh": 346,
+  "sw": 405,
+  "sh": 311,
   "sband": 14,
   "alpha": true,
   "master": "chest-red.png",
-  "rev": "e7b2422ab7",
-  "srev": "50d973eb9e"
+  "rev": "332f5fe983",
+  "srev": "332f5fe983"
+ },
+ "assets/objects/chest-set": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": true,
+  "master": "chest-set.png",
+  "rev": "8bf1793f93",
+  "srev": "8442151169"
  },
  "assets/objects/chest-yellow": {
-  "w": 564,
-  "h": 346,
+  "w": 402,
+  "h": 311,
   "band": 14,
-  "sw": 564,
-  "sh": 346,
+  "sw": 402,
+  "sh": 311,
   "sband": 14,
   "alpha": true,
   "master": "chest-yellow.png",
-  "rev": "b311de0fbc",
-  "srev": "c41a01e7bf"
+  "rev": "12e2bacb78",
+  "srev": "12e2bacb78"
  },
  "assets/objects/coin": {
   "w": 365,
@@ -1835,8 +3294,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "coin.png",
-  "rev": "5442e9bf83",
-  "srev": "b80bb934e9"
+  "rev": "4e6b49371e",
+  "srev": "e055e02c08"
  },
  "assets/objects/coin-back": {
   "w": 352,
@@ -1847,8 +3306,8 @@ window.GB_MEDIA = {
   "sband": 14,
   "alpha": true,
   "master": "coin-back.png",
-  "rev": "72d49ff48d",
-  "srev": "b305824f8b"
+  "rev": "7b149fb88b",
+  "srev": "1654a8f8e0"
  },
  "assets/objects/coin-blue": {
   "w": 319,
@@ -1862,6 +3321,18 @@ window.GB_MEDIA = {
   "rev": "12efe33143",
   "srev": "91251e9485"
  },
+ "assets/objects/coin-blue-back": {
+  "w": 307,
+  "h": 324,
+  "band": 14,
+  "sw": 307,
+  "sh": 324,
+  "sband": 14,
+  "alpha": true,
+  "master": "coin-blue-back.png",
+  "rev": "589c76b129",
+  "srev": "b8047f1af0"
+ },
  "assets/objects/coin-purple": {
   "w": 321,
   "h": 324,
@@ -1873,6 +3344,18 @@ window.GB_MEDIA = {
   "master": "coin-purple.png",
   "rev": "1c613bf7af",
   "srev": "3e113cd451"
+ },
+ "assets/objects/coin-purple-back": {
+  "w": 310,
+  "h": 329,
+  "band": 14,
+  "sw": 310,
+  "sh": 329,
+  "sband": 14,
+  "alpha": true,
+  "master": "coin-purple-back.png",
+  "rev": "07c15d9021",
+  "srev": "3ef6ae7e57"
  },
  "assets/objects/coin-red": {
   "w": 313,
@@ -1886,6 +3369,18 @@ window.GB_MEDIA = {
   "rev": "5659d2a37b",
   "srev": "a9d814a1b8"
  },
+ "assets/objects/coin-red-back": {
+  "w": 309,
+  "h": 324,
+  "band": 14,
+  "sw": 309,
+  "sh": 324,
+  "sband": 14,
+  "alpha": true,
+  "master": "coin-red-back.png",
+  "rev": "1dbf5bbc7c",
+  "srev": "ace3e6effe"
+ },
  "assets/objects/coin-yellow": {
   "w": 315,
   "h": 324,
@@ -1897,6 +3392,18 @@ window.GB_MEDIA = {
   "master": "coin-yellow.png",
   "rev": "af18890c46",
   "srev": "1be792d5d8"
+ },
+ "assets/objects/coin-yellow-back": {
+  "w": 307,
+  "h": 329,
+  "band": 14,
+  "sw": 307,
+  "sh": 329,
+  "sband": 14,
+  "alpha": true,
+  "master": "coin-yellow-back.png",
+  "rev": "cc93c8acce",
+  "srev": "fb7b1c3763"
  },
  "assets/objects/crate-broken": {
   "w": 466,
@@ -1942,9 +3449,9 @@ window.GB_MEDIA = {
   "sh": 488,
   "sband": 14,
   "alpha": true,
-  "master": "crystal.png",
-  "rev": "d988dfce42",
-  "srev": "5cfc19fd77"
+  "master": "crystal-geo.png",
+  "rev": "b8e3213d1d",
+  "srev": "b8e3213d1d"
  },
  "assets/objects/crystal-chest": {
   "w": 1333,
@@ -1959,16 +3466,16 @@ window.GB_MEDIA = {
   "srev": "8620dd1d96"
  },
  "assets/objects/crystal-shards": {
-  "w": 514,
-  "h": 266,
+  "w": 487,
+  "h": 263,
   "band": 14,
-  "sw": 514,
-  "sh": 266,
+  "sw": 487,
+  "sh": 263,
   "sband": 14,
   "alpha": true,
-  "master": "crystal-shards.png",
-  "rev": "69d853a8b9",
-  "srev": "c6ce159947"
+  "master": "crystal-shards-mat.png",
+  "rev": "378aab8f5b",
+  "srev": "378aab8f5b"
  },
  "assets/objects/glitchkey": {
   "w": 432,
@@ -1995,28 +3502,28 @@ window.GB_MEDIA = {
   "srev": "e45e7a32c7"
  },
  "assets/objects/prism-crystal": {
-  "w": 258,
+  "w": 256,
   "h": 490,
   "band": 14,
-  "sw": 258,
+  "sw": 256,
   "sh": 490,
   "sband": 14,
   "alpha": true,
-  "master": "prism-crystal.png",
-  "rev": "a20e29bd2f",
-  "srev": "1d4de8ecc9"
+  "master": "prism-crystal-geo.png",
+  "rev": "6c74d42132",
+  "srev": "6c74d42132"
  },
  "assets/objects/prism-shards": {
-  "w": 508,
-  "h": 268,
+  "w": 463,
+  "h": 241,
   "band": 14,
-  "sw": 508,
-  "sh": 268,
+  "sw": 463,
+  "sh": 241,
   "sband": 14,
   "alpha": true,
-  "master": "prism-shards.png",
-  "rev": "1e298efa70",
-  "srev": "c82554ac5b"
+  "master": "prism-shards-hull.png",
+  "rev": "4d5ca9fd70",
+  "srev": "4d5ca9fd70"
  },
  "assets/objects/quickhack/code": {
   "w": 560,
@@ -2222,17 +3729,77 @@ window.GB_MEDIA = {
   "rev": "1aeddcf0c9",
   "srev": "b77dcbfb5d"
  },
- "assets/scenes/blue-red-world-action-01": {
-  "w": 1672,
-  "h": 941,
-  "band": 30,
+ "assets/objects/studio/crystal-rubble-a": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
   "sw": 960,
-  "sh": 540,
+  "sh": 960,
   "sband": 17,
   "alpha": false,
-  "master": "GB_BLUE_RED_WORLD_ACTION_01.png",
-  "rev": "9d927aba45",
-  "srev": "1f7659b2c3"
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "30a46bd8cb",
+  "srev": "0b3fbfb417"
+ },
+ "assets/objects/studio/crystal-rubble-b": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "8e8c773cc9",
+  "srev": "8c61575168"
+ },
+ "assets/objects/studio/prism-rubble-a": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "bc7061a803",
+  "srev": "7272f49463"
+ },
+ "assets/objects/studio/prism-rubble-b": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "329c7a6543",
+  "srev": "368b676e33"
+ },
+ "assets/objects/studio/prism-rubble-c": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "5102c9ac34",
+  "srev": "d83f260a52"
+ },
+ "assets/objects/studio/stone-walker-rubble": {
+  "w": 1254,
+  "h": 1254,
+  "band": 23,
+  "sw": 960,
+  "sh": 960,
+  "sband": 17,
+  "alpha": false,
+  "master": "attached_mossy_rubble.png",
+  "rev": "74184a7d2e",
+  "srev": "f4b5a56b16"
  },
  "assets/scenes/blue-world-action-01": {
   "w": 1672,
@@ -2246,7 +3813,19 @@ window.GB_MEDIA = {
   "rev": "f188c09494",
   "srev": "79c7174e12"
  },
- "assets/scenes/four-character-world-action-01": {
+ "assets/scenes/brightback-in-the-world": {
+  "w": 840,
+  "h": 630,
+  "band": 15,
+  "sw": 840,
+  "sh": 630,
+  "sband": 15,
+  "alpha": false,
+  "master": "brightback-in-the-world.png",
+  "rev": "4b5e179b46",
+  "srev": "c72b6ed44c"
+ },
+ "assets/scenes/clover-cliffs-charge": {
   "w": 1672,
   "h": 941,
   "band": 30,
@@ -2254,9 +3833,33 @@ window.GB_MEDIA = {
   "sh": 540,
   "sband": 17,
   "alpha": false,
-  "master": "GB_FOUR_CHARACTER_WORLD_ACTION_01.png",
-  "rev": "d921032084",
-  "srev": "20896f6947"
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "ac3086c8e3",
+  "srev": "783b4b22b6"
+ },
+ "assets/scenes/creek-crossing-pursuit": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "f851944d4e",
+  "srev": "f348f0d9bc"
+ },
+ "assets/scenes/portal-meadow-pursuit": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "aac34cacf1",
+  "srev": "2317a48b4f"
  },
  "assets/scenes/purple-yellow-world-action-01": {
   "w": 1672,
@@ -2270,7 +3873,7 @@ window.GB_MEDIA = {
   "rev": "0952411235",
   "srev": "5d1943bd75"
  },
- "assets/scenes/purple-yellow-world-action-02": {
+ "assets/scenes/riverworks-rush": {
   "w": 1672,
   "h": 941,
   "band": 30,
@@ -2278,9 +3881,45 @@ window.GB_MEDIA = {
   "sh": 540,
   "sband": 17,
   "alpha": false,
-  "master": "GB_PURPLE_YELLOW_WORLD_ACTION_02.png",
-  "rev": "aff80a4cab",
-  "srev": "3551f16e63"
+  "master": "owner-supplied render (private source; source pixels unchanged)",
+  "rev": "7ae82902f5",
+  "srev": "8bbb534b71"
+ },
+ "assets/scenes/stone-line-poster": {
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "stone-line-poster.png",
+  "rev": "985810df3b",
+  "srev": "18f8c06fe1"
+ },
+ "assets/scenes/stone-line-poster-b": {
+  "w": 960,
+  "h": 720,
+  "band": 17,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "stone-line-poster-b.png",
+  "rev": "2602d6b6a0",
+  "srev": "572bcb1cc2"
+ },
+ "assets/scenes/summit-spine-climb": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "1IrdTatRK_mouRVOS-AkezENJ6w6sZcWr.png",
+  "rev": "7d3d1eef02",
+  "srev": "5c7ba14486"
  },
  "assets/systems/fast-travel-portal": {
   "w": 1280,
@@ -2304,7 +3943,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-clover.png",
   "rev": "5734ebcdcd",
-  "srev": "26dd8af6b4"
+  "srev": "26dd8af6b4",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "mrev": "cc0f8b873b"
  },
  "assets/systems/portals/portal-creek": {
   "w": 963,
@@ -2316,7 +3959,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-creek.png",
   "rev": "72c5129ce8",
-  "srev": "ab6784d269"
+  "srev": "ab6784d269",
+  "mw": 720,
+  "mh": 539,
+  "mband": 14,
+  "mrev": "922ccbe27f"
  },
  "assets/systems/portals/portal-fallen": {
   "w": 963,
@@ -2328,7 +3975,27 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-fallen.png",
   "rev": "ed96a4589e",
-  "srev": "72d0051c2b"
+  "srev": "72d0051c2b",
+  "mw": 720,
+  "mh": 539,
+  "mband": 14,
+  "mrev": "e015b9dff2"
+ },
+ "assets/systems/portals/portal-frost": {
+  "w": 1672,
+  "h": 896,
+  "band": 30,
+  "sw": 960,
+  "sh": 514,
+  "sband": 17,
+  "alpha": false,
+  "master": "frost-fixed.png",
+  "mw": 720,
+  "mh": 386,
+  "mband": 14,
+  "rev": "f032b1cea2",
+  "srev": "5195d0eefd",
+  "mrev": "9c1ed4af29"
  },
  "assets/systems/portals/portal-meadow": {
   "w": 1254,
@@ -2340,7 +4007,11 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-meadow.png",
   "rev": "90afd94401",
-  "srev": "6380221d67"
+  "srev": "6380221d67",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "mrev": "327f7c6cd9"
  },
  "assets/systems/portals/portal-prism": {
   "w": 1254,
@@ -2352,9 +4023,57 @@ window.GB_MEDIA = {
   "alpha": false,
   "master": "portal-prism.png",
   "rev": "d6d59d9c7c",
-  "srev": "775852be40"
+  "srev": "775852be40",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "mrev": "fd0b6395c7"
  },
- "assets/systems/preview-04-trail-junction": {
+ "assets/systems/portals/portal-prism-ridge": {
+  "w": 520,
+  "h": 262,
+  "band": 14,
+  "sw": 520,
+  "sh": 262,
+  "sband": 14,
+  "alpha": false,
+  "master": "prism-optC-crop.png",
+  "rev": "678415e83a",
+  "srev": "e53287f0fd"
+ },
+ "assets/systems/portals/portal-river": {
+  "w": 1672,
+  "h": 896,
+  "band": 0,
+  "sw": 960,
+  "sh": 514,
+  "sband": 0,
+  "alpha": false,
+  "master": "RIVERWORKS_INTERIOR_FINAL_PASS.png; bottom 45 px cropped",
+  "rev": "b061b5b97d",
+  "srev": "5926e3d1eb",
+  "mw": 720,
+  "mh": 386,
+  "mband": 14,
+  "mrev": "fc6bf029b4"
+ },
+ "assets/systems/portals/portal-summit": {
+  "w": 1536,
+  "h": 864,
+  "band": 0,
+  "sw": 960,
+  "sh": 540,
+  "sband": 0,
+  "alpha": false,
+  "master": "PORTAL_REFERENCE_SUMMIT_PURPLE_WIDE.png",
+  "rev": "dbcc9af745",
+  "srev": "e6b6c7ef41",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "mrev": "e7656f9c5f"
+ },
+ "assets/systems/portals/v13/clover": {
   "w": 1672,
   "h": 941,
   "band": 30,
@@ -2362,8 +4081,152 @@ window.GB_MEDIA = {
   "sh": 540,
   "sband": 17,
   "alpha": false,
-  "master": "adventure_mountain_portal_meadow_vista.png",
-  "rev": "57a80c8eb6",
-  "srev": "188a8197a5"
+  "master": "owner-approved 2026-10-12/13 regional scene (private Drive; source pixels unchanged)",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "rev": "0ad9fc7553",
+  "srev": "f9d2953363",
+  "mrev": "9d2bd65e6c"
+ },
+ "assets/systems/portals/v13/creek": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved 2026-10-12/13 regional scene (private Drive; source pixels unchanged)",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "rev": "218001ecce",
+  "srev": "ff7f4f9290",
+  "mrev": "cb31a8f3ea"
+ },
+ "assets/systems/portals/v13/fallen": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved 2026-10-12/13 regional scene (private Drive; source pixels unchanged)",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "rev": "ccdf11cacd",
+  "srev": "e7d11d519f",
+  "mrev": "9bc3cf3dcd"
+ },
+ "assets/systems/portals/v13/frost": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved 2026-10-12/13 regional scene (private Drive; source pixels unchanged)",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "rev": "9998932b5b",
+  "srev": "b5235f9bd2",
+  "mrev": "788870da14"
+ },
+ "assets/systems/portals/v13/frost-basin": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved 2026-10-12/13 regional scene (private Drive; source pixels unchanged)",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "rev": "9a6f321741",
+  "srev": "bb85566213",
+  "mrev": "4b59208bd3"
+ },
+ "assets/systems/portals/v13/meadow": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved 2026-10-12/13 regional scene (private Drive; source pixels unchanged)",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "rev": "f5f50deb1b",
+  "srev": "c289e162f3",
+  "mrev": "d1046caf0b"
+ },
+ "assets/systems/portals/v13/prism-ridge-final": {
+  "w": 1448,
+  "h": 1086,
+  "band": 26,
+  "sw": 960,
+  "sh": 720,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved final Prism Ridge scene (private original unchanged)",
+  "mw": 720,
+  "mh": 540,
+  "mband": 14,
+  "rev": "3454c6092e",
+  "srev": "4336c1c675",
+  "mrev": "8d1166a006"
+ },
+ "assets/systems/portals/v13/river": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved 2026-10-12/13 regional scene (private Drive; source pixels unchanged)",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "rev": "46c7b70400",
+  "srev": "5912e27265",
+  "mrev": "e0aa9752da"
+ },
+ "assets/systems/portals/v13/summit": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "owner-approved 2026-10-12/13 regional scene (private Drive; source pixels unchanged)",
+  "mw": 720,
+  "mh": 405,
+  "mband": 14,
+  "rev": "ef256ee97f",
+  "srev": "704e94afd1",
+  "mrev": "9bcf24a281"
+ },
+ "assets/systems/preview-prism-keeper-encounter": {
+  "w": 1672,
+  "h": 941,
+  "band": 30,
+  "sw": 960,
+  "sh": 540,
+  "sband": 17,
+  "alpha": false,
+  "master": "GB_GAMER_BROS_Prism_Ridge_Prism_Keeper_vs_GB_Blue_Ground_Slam_Approved_2026-10-12.png",
+  "rev": "83671df61a",
+  "srev": "d174bcb82a"
  }
 };

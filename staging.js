@@ -2,9 +2,8 @@
 (() => {
   "use strict";
 
-  // Set this once a real Steam store page exists; until then the buttons explain "coming soon".
-  const STEAM_URL = "";
-
+  // Transient notices (area status, etc.). 2026-10-13: the Steam "coming soon" promise was removed: there is no approved store
+  // page, so the primary call to action is navigational (Explore the Mountain → #world) and makes no platform claim.
   const toast = document.getElementById("steamNote");
   let toastTimer = null;
   function showToast(text) {
@@ -13,13 +12,6 @@
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => toast.classList.remove("is-on"), 2600);
   }
-
-  document.querySelectorAll(".js-steam").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      if (STEAM_URL) window.open(STEAM_URL, "_blank", "noopener");
-      else showToast("Steam store page coming soon.");
-    });
-  });
 
   // ---------- menu (compact header) ----------
   const nav = document.getElementById("nav");
@@ -58,7 +50,9 @@
   // slides marked data-skip="phone-portrait" leave the rotation on phone portrait screens
   // (slide 3: Gamer Girl Yellow™ would sit behind the fixed Adventure Mountain™ sign there)
   const phonePortrait = window.matchMedia("(max-width: 599px) and (max-aspect-ratio: 1/1)");
-  const live = () => slides.filter((s) => !(s.dataset.skip === "phone-portrait" && phonePortrait.matches));
+  // data-skip="portrait" (any portrait screen): wide action art that cannot be framed in a tall band without cutting the character
+  const anyPortrait = window.matchMedia("(max-aspect-ratio: 1/1)");
+  const live = () => slides.filter((s) => !(s.dataset.skip === "phone-portrait" && phonePortrait.matches) && !(s.dataset.skip === "portrait" && anyPortrait.matches));
   function syncSlides() {
     const L = live();
     slides.forEach((s, i) => {
@@ -72,6 +66,9 @@
     });
   }
 
+  // the arrows flank the dot row, whose width follows the number of live slides
+  if (window.ResizeObserver) new ResizeObserver(() => document.querySelector(".hero").style.setProperty("--hw", dotsWrap.offsetWidth + "px")).observe(dotsWrap);
+
   function go(n) {
     const L = live();
     index = (n + L.length) % L.length;
@@ -82,6 +79,7 @@
     fgLayers.forEach((f) => f.classList.toggle("is-active", slides[Number(f.dataset.slide)] === cur));
   }
   phonePortrait.addEventListener("change", () => { syncSlides(); go(0); });
+  anyPortrait.addEventListener("change", () => { syncSlides(); go(0); });
   syncSlides();
   function restart() {
     clearInterval(timer);
@@ -130,7 +128,7 @@
   const viewer = window.GBWorld.create(world, { panorama: window.GB_PANORAMA });
   const portraitMap = window.matchMedia("(max-aspect-ratio: 1/1)");
   // portrait fallback opens zoomed on a framing where every visible baked label is whole
-  // (Prism Ridge™, Fallen Grounds™, Riverworks™, Frosty Peaks™); "Whole map" shows all seven
+  // (Prism Ridge™, Fallen Grounds™, Riverworks™, Frosty Peaks™); "Whole map" shows all eight
   const FALLBACK_ZOOM = 2, MAP_START = 0.5;
   function setZoomed(on, fx) {
     world.classList.toggle("is-zoomed", on);
@@ -168,17 +166,22 @@
   const frameVars = (src) => {
     const m = MEDIA[src];
     if (!m) return "--ar:1.7778;--ext:1";
-    const ext = Math.max((m.h + m.band) / m.h, (m.sh + m.sband) / m.sh);
-    return `--ar:${(m.w / m.h).toFixed(5)};--ext:${ext.toFixed(5)}`;
+    const ext = Math.max((m.h + m.band) / m.h, (m.sh + m.sband) / m.sh, m.mw ? (m.mh + m.mband) / m.mh : 0);
+    return `--ar:${(m.w / m.h).toFixed(5)};--ext:${ext.toFixed(5)};--nw:${m.w}`;
   };
   // every image URL carries the file's content revision so replacements are never served stale
   const asset = (src, small) => {
     const m = MEDIA[src] || {};
-    const rev = small ? m.srev : m.rev;
-    return `${src}${small ? "-960" : ""}.webp${rev ? `?v=${rev}` : ""}`;
+    const useSmall = Boolean(small && !m.noSmall);
+    const rev = useSmall ? m.srev : m.rev;
+    return `${src}${useSmall ? "-960" : ""}.${m.ext || "webp"}${rev ? `?v=${rev}` : ""}`;
   };
   // srcset from the real derivative widths (images differ in size; never hard-code them)
-  const srcset = (src) => { const m = MEDIA[src] || {}; return m.sw && m.sw < m.w ? `${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w` : `${asset(src)} ${m.w || 1600}w`; };
+  const srcset = (src) => {
+    const m = MEDIA[src] || {};
+    const mid = m.mw ? `${src}-${m.mw}.${m.ext || "webp"}${m.mrev ? `?v=${m.mrev}` : ""} ${m.mw}w, ` : "";   // optional mobile tier
+    return m.sw && m.sw < m.w ? `${mid}${asset(src, true)} ${m.sw}w, ${asset(src)} ${m.w}w` : `${asset(src)} ${m.w || 1600}w`;
+  };
   const isOpen = (id) => AREAS[id] && AREAS[id].status === "open" && AREAS[id].views.length > 0;
   const KIND = { establishing: "Overview", ground: "Ground level", traversal: "Route", landmark: "Landmark", closeup: "Close view", still: "Preview still" };
   let current = null;      // area id
@@ -337,6 +340,32 @@
     return `<span class="gbm cutout ${cls}" style="${frameVars(src)}"><img src="${asset(src)}"${set} alt="${esc(alt)}"${eager ? "" : ' loading="lazy"'} draggable="false"></span>`;
   };
   const isCut = (src) => !!(MEDIA[src] && MEDIA[src].alpha);
+  // studio tile (opaque 4:3 production-sheet frame on its own light background): shown whole, never cropped
+  const studio = (src, cls, alt, small) => `<span class="gbm studio-fit ${cls}" style="${frameVars(src)}"><img src="${asset(src, small)}" alt="${esc(alt)}" loading="lazy" draggable="false"></span>`;
+  const isStudio = (src) => !!(MEDIA[src] && !MEDIA[src].alpha && src.indexOf("/studio/") > -1);
+  // square studio renders (the 2026-10-13 enemy library) get a square stage so nothing is ever cropped
+  const isSq = (src) => !!(MEDIA[src] && Math.abs(MEDIA[src].w / MEDIA[src].h - 1) < 0.06);
+  // enemy card art: the whole opaque studio render, responsive (960 px / full), band clipped by .gbm
+  const cardImg = (src, cls, sizes) => {
+    const m = MEDIA[src];
+    return `<span class="gbm ${cls}" style="${frameVars(src)}"><img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="${sizes}" alt="" loading="lazy" decoding="async" draggable="false"></span>`;
+  };
+  const stageInner = (src, alt) => isStudio(src) ? studio(src, "dossier__hero", alt)
+    : `<span class="stage-box">${cut(src, "dossier__hero", alt, "(min-width: 720px) 420px, 90vw", true)}</span>`;
+  // Selective warm-up (performance, 2026-10-11): fetch at low priority ONLY the few images the visitor can
+  // pick next (the open dossier's picks, the Fast Travel portals), using the same srcset/sizes as the real
+  // <img>, so the browser chooses the same file and a tap shows it from cache. Never the whole gallery.
+  const warmed = new Set();
+  const prefetch = (src, sizes) => {
+    const m = MEDIA[src];
+    if (!m || warmed.has(src + "|" + (sizes || ""))) return;
+    warmed.add(src + "|" + (sizes || ""));
+    const i = new Image();
+    i.fetchPriority = "low"; i.decoding = "async";
+    if (sizes && m.sw < m.w) { i.sizes = sizes; i.srcset = srcset(src); }
+    i.src = asset(src);
+  };
+  const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300));
   // in-game view (entities.js GB_ENTITY_SCENE): cover-fitted inside a fixed frame, band clipped
   // GB_ENTITY_SCENE[id] is one scene or a list; scenesOf → all valid, sceneOf → the first ("id" or "id:n")
   const scenesOf = (id) => [].concat((window.GB_ENTITY_SCENE || {})[id] || []).filter((s) => MEDIA[s.src]);
@@ -354,35 +383,49 @@
         ? `<strong>${esc(x.name)}</strong>`
         : `<a href="#entity/${id}" data-entity-link="${id}">${esc(x.name)}</a>`}<small>Phase ${i + 1}</small></li>`;
     }).join("");
-    const detail = (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     return `<h3>Evolution · phase ${e.evolution.phase} of ${line.length}</h3><ol class="dossier__evo">${steps}</ol>
-      ${detail ? "" : `<p class="dossier__empty">${EVO_NOTE}</p>`}`;
+`;
   };
-  const EVO_NOTE = "Evolution is optional and doesn't happen every time. When it happens is still being designed.";
-  // full evolution component: cutout sequence, transformation mechanics, in-world steps (tabs; swipe rails on phones)
+  // 2026-10-13 evolution component (owner QA): three tabs with one job each, one tile size throughout.
+  //  Sequence    — every approved form/state as an identical 4:3 studio tile, grouped by phase.
+  //  Mechanics   — what each form does, using only the public behaviour copy already on each dossier.
+  //  In the world — the approved in-world steps, Stone Walker™ and Prism Keeper™ scenes, Brightback™ reference.
+  // apex = Brightback™'s true-alpha cutout, larger than the other tiles' figures, free to rise out of its frame (owner QA 2026-10-15)
+  const evoTile = (src, alt, apex) => apex ? `<span class="evo__apex">${cut(apex, "evo__apexcut", alt, "240px")}</span>` : isStudio(src) || !isCut(src) ? studio(src, "evo__tile", alt, true) : `<span class="stage-box">${cut(src, "evo__cut", alt, "160px")}</span>`;
   const evoDetail = (e) => {
     const d = e.evolution && (window.GB_EVOLUTION_DETAIL || {})[e.evolution.line];
     if (!d) return "";
     const ph = e.evolution.phase;
-    const PH = ["", "Phase 1", "Phase 2", "Phase 3"];
-    const seq = d.sequence.map((x, i) => `<li class="evo__step${x.phase === ph ? " is-here" : ""}">
-        <span class="stage-box">${cut(x.src, "evo__cut", x.label, "160px")}</span>
-        <strong>${esc(x.label)}</strong><small>${PH[x.phase]}</small></li>`).join("");
-    const mech = d.mechanics.map((x) => `<li>${media(x.src, "evo__mechimg", x.label, "small")}<strong>${esc(x.label)}</strong><p>${esc(x.text)}</p></li>`).join("");
-    const scenes = d.scenes.map((x, i) => `<li${x.phase === ph ? ' class="is-here"' : ""}>${media(x.src, "evo__sceneimg", `${x.label}: ${x.note}`, "small")}<span class="evo__num">${i + 1}</span><strong>${esc(x.label)}</strong><p>${esc(x.note)}</p></li>`).join("");
+    const line = (window.GB_EVOLUTION || {})[e.evolution.line] || [];
+    const PHN = { 1: "Rumbler™", 2: "Stone Walker™", 3: "Prism Keeper™", 4: "Brightback™" };
+    const phases = [];
+    d.sequence.forEach((x) => { let g = phases.find((p) => p.phase === x.phase); if (!g) phases.push(g = { phase: x.phase, steps: [] }); g.steps.push(x); });
+    const seq = phases.map((g) => `<li class="evo__phase${g.phase === ph ? " is-here" : ""}" style="--n:${g.steps.length}">
+        <h4 class="evo__phase-h"><span>Phase ${g.phase}</span>${esc(PHN[g.phase] || "")}</h4>
+        <ol class="evo__steps">${g.steps.map((x) => `<li class="evo__step"><span class="evo__frame${x.apex ? " evo__frame--apex" : ""}">${evoTile(x.src, x.label, x.apex)}</span><strong>${esc(x.label)}</strong></li>`).join("")}</ol></li>`).join("");
+    const mech = line.map((id, i) => {
+      const x = ENTITIES[id]; if (!x) return "";
+      const inPhase = d.sequence.filter((s) => s.phase === i + 1);
+      const pick = inPhase.find((s) => s.label === x.name) || inPhase[0] || {};
+      const tile = pick.src;
+      return `<li class="evo__form${i + 1 === ph ? " is-here" : ""}"><span class="evo__frame${pick.apex ? " evo__frame--apex" : ""}">${tile ? evoTile(tile, x.name, pick.apex) : ""}</span>
+        <div><span class="evo__kick">Phase ${i + 1}</span><strong>${esc(x.name)}</strong>
+        <p>${esc(x.copy.summary || "")}</p>${x.copy.behaviour ? `<p class="evo__beh">${esc(x.copy.behaviour)}</p>` : ""}
+        ${i + 1 === ph ? "" : `<a href="#entity/${id}" data-entity-link="${id}">Open dossier</a>`}</div></li>`;
+    }).join("");
+    const scenes = d.scenes.map((x) => `<li class="evo__scene${x.phase === ph ? " is-here" : ""}"><span class="evo__frame">${isStudio(x.src) ? studio(x.src, "evo__tile", x.label, true) : media(x.src, "evo__sceneimg", x.label, "small")}</span><span class="evo__kick">Phase ${x.phase}${x.reference ? ' <span class="evo__num evo__num--ref">Reference</span>' : ""}</span><strong>${esc(x.label)}</strong></li>`).join("");
     return `<section class="evo" id="entEvo" aria-labelledby="evoTitle">
       <header class="evo__head">
-        <div><h3 id="evoTitle">How the evolution works</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™</p></div>
+        <div><h3 id="evoTitle">Evolution line</h3><p>Rumbler™ → Stone Walker™ → Prism Keeper™ → Brightback™</p></div>
         <div class="evo__tabs" role="tablist" aria-label="Evolution views">
           <button type="button" role="tab" aria-selected="true" data-evo-tab="seq">Sequence</button>
           <button type="button" role="tab" aria-selected="false" data-evo-tab="mech">Mechanics</button>
           <button type="button" role="tab" aria-selected="false" data-evo-tab="scene">In the world</button>
         </div>
       </header>
-      <div class="evo__panel" data-evo-panel="seq" role="tabpanel"><ol class="evo__seq">${seq}</ol></div>
-      <div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ul class="evo__mech">${mech}</ul></div>
+      <div class="evo__panel" data-evo-panel="seq" role="tabpanel"><ol class="evo__phases">${seq}</ol></div>
+      <div class="evo__panel" data-evo-panel="mech" role="tabpanel" hidden><ol class="evo__forms">${mech}</ol></div>
       <div class="evo__panel" data-evo-panel="scene" role="tabpanel" hidden><ol class="evo__scenes">${scenes}</ol></div>
-      <p class="evo__note">${EVO_NOTE} The same mossy, segmented rock carries through every phase.</p>
     </section>`;
   };
 
@@ -392,26 +435,50 @@
     document.getElementById("entName").textContent = e.name;
     const hero = e.media.render || e.media.thumb;
     // production views / states: cutouts become selectable thumbnails that swap the hero
-    const thumbs = (obj, what) => Object.entries(obj || {}).map(([k, v]) => v && isCut(v)
-      ? `<li><button class="dossier__pick" type="button" data-hero="${v}" data-hero-label="${esc(k)}" aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
+    const thumbs = (obj, what) => Object.entries(obj || {}).map(([k, v]) => v && (isCut(v) || isStudio(v))
+      ? `<li><button class="dossier__pick${isStudio(v) ? " dossier__pick--studio" : ""}" type="button" data-hero="${v}" data-hero-label="${esc(k)}"${e.flip && e.flip[v] ? ` data-front="${v}" data-back="${e.flip[v]}" data-name="${esc(k)}"` : ""} aria-label="${esc(e.name)}: ${esc(k)}"><span class="stage-box">${isStudio(v) ? studio(v, "dossier__thumbimg", "", true) : cut(v, "dossier__thumbimg", "", "120px")}</span><small>${esc(k)}</small></button></li>`
       : v ? `<li>${media(v, "dossier__state", `${e.name} ${k}`)}<small>${esc(k[0].toUpperCase() + k.slice(1))}</small></li>` : "").join("");
-    const views = thumbs(e.views);
+    const gadget = e.type === "gadget" && hero && !isCut(hero);
+    const views = gadget
+      ? Object.entries(e.views || {}).map(([k, v], i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-gview="${v}" aria-label="${esc(e.name)}: ${esc(k)}" aria-pressed="${!i}"><span class="stage-box">${sceneImg({ src: v, fx: 50 }, "", true)}</span><small>${esc(k)}</small></button></li>`).join("")
+      : thumbs(e.views);
     const states = thumbs(e.states);
-    const stage = hero && isCut(hero);
+    const stage = hero && (isCut(hero) || e.scenicHero || e.studioHero);
+    const details = thumbs(e.details);
     const enc = (e.encounter || []).filter((x) => AREAS[x.area] && AREAS[x.area].views[x.view - 1]).map((x) => {
       const a = AREAS[x.area], v = a.views[x.view - 1];
       return `<li><a href="#area/${x.area}/${x.view}" data-goto-area>${media(v.src, "dossier__enc", v.alt, "small")}
         <small>${esc(a.name)}</small></a></li>`;
     }).join("");
-    const sc = sceneOf(id);
+    const scAny = sceneOf(id);
+    const sc = e.heroFirst ? null : scAny;   // heroFirst: the production hero leads; the scene stays one pick away
+    // gallery row: in-world (single scene) + studio hero + curated views. A row with a single pick
+    // would advertise a choice that doesn't exist, so it is omitted (the stage already shows that image).
+    const gallery = [];
+    const scLab = (scAny && scAny.label) || "In the world";
+    if (scAny && scenesOf(id).length === 1) gallery.push(`<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="${esc(scLab)}" aria-label="${esc(e.name)}: ${esc(scLab)}" aria-pressed="${!!sc}"><span class="stage-box">${sceneImg(scAny, "", true)}</span><small>${esc(scLab)}</small></button></li>`);
+    if (stage && !Object.values(e.views || {}).includes(hero) && !Object.values(e.states || {}).includes(hero)) gallery.push(`<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="${esc(e.heroLabel || "Main view")}" aria-label="${esc(e.name)}: ${esc(e.heroLabel || "Main view")}" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>${esc(e.heroLabel || "Main view")}</small></button></li>`);
+    const nPicks = (h) => h.split("<li").length - 1;
+    // hero + in-world first (owner order); a lone hero pick joins the action row so the visitor can always return to it
+    // with a lead (in-world/hero) the curated views join the Gallery row; without one they keep their own row
+    const leadAll = gallery.length && views ? gallery.concat(views) : gallery;
+    const lead = nPicks(leadAll.join("")) > 1 ? `<h3>Gallery</h3><ul class="dossier__picks">${leadAll.join("")}</ul>` : "";
+    const statesPre = !lead && gallery.length === 1 && states ? gallery[0] : "";
+    const viewsRow = gallery.length ? "" : views;
     eBody.innerHTML = `
       <div class="dossier__visual">${stage
-        ? `<div class="dossier__stage${sc ? " is-scene" : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : `<span class="stage-box">${cut(hero, "dossier__hero", e.name, "(min-width: 720px) 420px, 90vw", true)}</span>`}</div>
-           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : "Hero"}</span></p>`
-        : media(hero, "dossier__render", e.name)}
-        ${scenesOf(id).length > 1 ? `<h3>In the world</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
-        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : "Action states"}</h3><ul class="${Object.values(e.states).some(isCut) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${states}</ul>` : ""}
-                ${views ? `<h3>Reference views</h3><ul class="dossier__picks">${sc && scenesOf(id).length === 1 ? `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}" data-hero-label="In the world" aria-label="${esc(e.name)}: in the world" aria-pressed="true"><span class="stage-box">${sceneImg(sc, "", true)}</span><small>In the world</small></button></li>` : ""}${stage && !Object.values(e.views || {}).includes(hero) ? `<li><button class="dossier__pick" type="button" data-hero="${hero}" data-hero-label="Hero" aria-label="${esc(e.name)}: Hero" aria-pressed="${!sc}"><span class="stage-box">${cut(hero, "dossier__thumbimg", "", "120px")}</span><small>Hero</small></button></li>` : ""}${views}</ul>` : ""}</div>
+        ? `<div class="dossier__stage${sc ? " is-scene" : ""}${!sc && isStudio(hero) ? " is-studio" + (isSq(hero) ? " is-square" : "") : ""}" id="entStage">${sc ? sceneImg(sc, `${e.name} in Adventure Mountain™`) : stageInner(hero, e.name)}</div>
+           <p class="dossier__caption"><b class="chip chip--inline">View</b> <span id="entStageLabel">${sc ? esc(sc.label || "In the world") : esc(e.heroLabel || "Main view")}</span></p>`
+        : !hero && e.type === "gadget"
+          ? `<span class="dossier__render media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-key"/></svg><span>More to come</span></span>`
+          : gadget
+          ? `<a class="dossier__full" id="entFull" href="${asset(hero)}" target="_blank" rel="noopener" aria-label="${esc(e.name)}: open full-size image in a new tab">${media(hero, "dossier__render", e.name)}<span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span></a>`
+          : media(hero, "dossier__render", e.name)}
+        ${scenesOf(id).length > 1 ? `<h3>${e.scenicHero ? "Approved reference imagery" : "In the world"}</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
+        ${lead}
+        ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : statesPre ? "Gallery" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some((v) => isCut(v) || isStudio(v)) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${statesPre}${states}</ul>` : ""}
+                ${details ? `<h3>Close-ups</h3><ul class="dossier__picks dossier__picks--states">${details}</ul>` : ""}
+                ${viewsRow && nPicks(viewsRow) > 1 ? `<h3>${esc(e.viewsLabel || "Views")}</h3><ul class="dossier__picks">${viewsRow}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
           <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
@@ -431,6 +498,14 @@
     document.documentElement.classList.add("is-locked");
     pause();
     eDlg.querySelector(".dossier__close").focus({ preventScroll: true });
+    // after the first view has loaded, warm this dossier's own picks (a handful of files)
+    const first = eBody.querySelector("#entStage img, .dossier__render img");
+    const warmPicks = () => whenIdle(() => {
+      eBody.querySelectorAll("[data-hero]").forEach((b) => prefetch(b.dataset.hero, "(min-width: 720px) 420px, 90vw"));
+      eBody.querySelectorAll("[data-scene]").forEach((b) => { const sc = sceneOf(b.dataset.scene); if (sc) prefetch(sc.src); });
+      eBody.querySelectorAll("[data-gview]").forEach((b) => prefetch(b.dataset.gview));
+    });
+    if (!first || first.complete) warmPicks(); else first.addEventListener("load", warmPicks, { once: true });
     const ev = document.getElementById("entEvo");
     if (evoFocus && ev) requestAnimationFrame(() => ev.scrollIntoView({ block: "start" }));
     else eDlg.querySelector(".dossier__card").scrollTop = 0;
@@ -465,6 +540,22 @@
       eBody.querySelectorAll("[data-evo-panel]").forEach((p) => { p.hidden = p.dataset.evoPanel !== tab.dataset.evoTab; });
       return;
     }
+    const flip = e.target.closest("[data-flip]");
+    if (flip) {
+      // one coin per colour, two faces: swap every colour pick (and the stage) to the chosen face
+      const back = flip.dataset.flip === "1";
+      eBody.querySelectorAll("[data-flip]").forEach((b) => b.setAttribute("aria-pressed", String(b === flip)));
+      const picks = [...eBody.querySelectorAll("[data-front]")];
+      picks.forEach((b) => {
+        const src = back ? b.dataset.back : b.dataset.front;
+        b.dataset.hero = src;
+        b.dataset.heroLabel = `${b.dataset.name} · ${back ? "Back" : "Front"}`;
+        b.querySelector(".stage-box").innerHTML = cut(src, "dossier__thumbimg", "", "120px");
+      });
+      const on = picks.find((b) => b.getAttribute("aria-pressed") === "true") || picks[0];
+      if (on) on.click();
+      return;
+    }
     const pick = e.target.closest("[data-hero], [data-scene]");
     if (pick) {
       const st = document.getElementById("entStage");
@@ -472,11 +563,22 @@
         const nm = document.getElementById("entName").textContent;
         const sc = pick.dataset.scene && sceneOf(pick.dataset.scene);
         st.classList.toggle("is-scene", !!sc);
-        st.innerHTML = sc ? sceneImg(sc, `${nm} in Adventure Mountain™`)
-          : `<span class="stage-box">${cut(pick.dataset.hero, "dossier__hero", `${nm}: ${pick.dataset.heroLabel}`, "(min-width: 720px) 420px, 90vw", true)}</span>`;
+        st.classList.toggle("is-studio", !sc && isStudio(pick.dataset.hero));
+        st.classList.toggle("is-square", !sc && isStudio(pick.dataset.hero) && isSq(pick.dataset.hero));
+        st.innerHTML = sc ? sceneImg(sc, `${nm} in Adventure Mountain™`) : stageInner(pick.dataset.hero, `${nm}: ${pick.dataset.heroLabel}`);
         document.getElementById("entStageLabel").textContent = pick.dataset.heroLabel;
         eBody.querySelectorAll("[data-hero], [data-scene]").forEach((b) => b.setAttribute("aria-pressed", String(b === pick)));
       }
+      return;
+    }
+    const g = e.target.closest("[data-gview]");
+    if (g) {
+      const full = document.getElementById("entFull"), src = g.dataset.gview;
+      if (full) {
+        const img = full.querySelector("img"), box = full.querySelector(".gbm");
+        box.setAttribute("style", frameVars(src)); img.src = asset(src); full.href = asset(src);
+      }
+      eBody.querySelectorAll("[data-gview]").forEach((b) => b.setAttribute("aria-pressed", String(b === g)));
       return;
     }
     const l = e.target.closest("[data-entity-link]");
@@ -550,13 +652,14 @@
 
   // ---------- Explore Iconic Areas rail ----------
   const rail = document.getElementById("areaRail");
-  const RAIL = ["portal", "creek", "river", "clover", "ruin", "prism", "frost"];
+  // owner route order: … Fallen Grounds → Frosty Peaks → Summit Spine → Prism Ridge (last)
+  const RAIL = ["portal", "creek", "river", "clover", "ruin", "frost", "summit", "prism"];
   rail.innerHTML = RAIL.map((id) => {
     const a = AREAS[id];
     const v = a.views[0];
     const state = a.status === "open" ? "" : a.status === "incomplete" ? "More views soon" : "Coming soon";
     const rc = ((window.GB_WORLD || {}).regions || []).find((r) => r.area === id);
-    return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}" style="--rc:${rc ? rc.color : "#1f7ae0"}"
+    return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}" style="--rc:${rc ? rc.color : a.color || "#1f7ae0"}"
         aria-label="${esc(a.name)} — ${esc(a.sub)}${state ? ` (${state})` : ""}">
       ${v ? media(v.src, "area-card__img", "", "small")
           : a.identity ? `<span class="area-card__img region-id region-id--${a.identity.theme}" aria-hidden="true"><svg><use href="#${a.identity.icon}"/></svg></span>`
@@ -578,20 +681,24 @@
   const lpThumbs = document.getElementById("lpThumbs");
   const lpLabel = document.getElementById("lpLabel");
   let lpIndex = 0;
+  let lpLazy = true;   // first still is far below the fold; later swaps are user-initiated and load at once
   lpThumbs.innerHTML = LP.views.map((v, i) =>
     `<button type="button" role="tab" data-lp-index="${i}" aria-label="${esc(v.label)}">${media(v.src, "lp__thumb", "", "small")}</button>`).join("");
   function lpSet(i) {
     lpIndex = (i + LP.views.length) % LP.views.length;
     const v = LP.views[lpIndex];
     lpFrame.setAttribute("style", frameVars(v.src));
-    lpFrame.innerHTML = `<img src="${asset(v.src, true)}" srcset="${srcset(v.src)}" sizes="(min-width: 1100px) 34vw, 92vw" alt="${esc(v.alt)}" draggable="false">`;
+    lpFrame.innerHTML = `<img src="${asset(v.src, true)}" srcset="${srcset(v.src)}" sizes="(min-width: 1100px) 34vw, 92vw" alt="${esc(v.alt)}"${lpLazy ? ' loading="lazy"' : ""} draggable="false">`;
     lpLabel.textContent = v.label;
     [...lpThumbs.children].forEach((b, n) => b.setAttribute("aria-selected", String(n === lpIndex)));
   }
+  lpThumbs.addEventListener("pointerdown", () => { lpLazy = false; }, { once: true });
   lpThumbs.addEventListener("click", (e) => { const b = e.target.closest("[data-lp-index]"); if (b) lpSet(Number(b.dataset.lpIndex)); });
   document.querySelectorAll("[data-lp]").forEach((b) => b.addEventListener("click", () => lpSet(lpIndex + Number(b.dataset.lp))));
   document.getElementById("lpMain").addEventListener("click", (e) => navArea("preview", e.currentTarget, lpIndex));
   lpSet(0);
+  // a single approved still: no carousel controls to show
+  if (LP.views.length < 2) { lpThumbs.hidden = true; document.querySelectorAll("[data-lp]").forEach((b) => { b.hidden = true; }); }
 
   // ---------- Fast Travel ----------
   const portal = ENTITIES.portal;
@@ -599,32 +706,119 @@
   const ftRegions = Object.entries(portal.states || {});
   const ftName = document.getElementById("ftName");
   const ftDots = document.getElementById("ftDots");
-  const colourOf = (name) => (((window.GB_WORLD || {}).regions || []).find((r) => r.name === name) || {}).color || "#1f7ae0";
+  const ftNote = document.getElementById("ftNote");
+  const portalMeta = window.GB_PORTAL_META || {};
+  const colourOf = (name) => (((window.GB_WORLD || {}).regions || []).find((r) => r.name === name) || {}).color || (portalMeta[name] || {}).color || "#1f7ae0";
+  // Fast Travel frame is ~92vw on phones. Declaring 60vw there caps the pick at ~2x density on 3x phones
+  // (720 px mobile tier, 90–140 KB) instead of the 1254–1672 px original (170–420 KB); desktop unchanged.
+  const FT_SIZES = "(min-width: 1100px) 30vw, (min-width: 720px) 46vw, 60vw";
   function ftSet(i) {
     const [name, src] = ftRegions[i];
     ftFrame.setAttribute("style", frameVars(src));
-    ftFrame.innerHTML = `<img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="(min-width: 1100px) 30vw, 92vw" alt="${esc(name)} portal" loading="lazy" draggable="false">`;
+    ftFrame.innerHTML = `<img src="${asset(src, true)}" srcset="${srcset(src)}" sizes="${FT_SIZES}" alt="${esc(name)} portal" draggable="false">`;
     ftName.textContent = name;
+    const pm = portalMeta[name] || {};
+    ftFrame.style.setProperty("--fx", pm.fx || "50%");
+    ftFrame.style.setProperty("--fy", pm.fy || "50%");
+    ftFrame.classList.toggle("is-whole", pm.fit === "whole");   // wide source: show it whole (letterboxed) so no flag is cropped
+    ftNote.innerHTML = pm.area && isOpen(pm.area) ? `<a href="#area/${pm.area}/1">Explore ${esc(name)} <span aria-hidden="true">→</span></a>` : esc(pm.note || "");
     [...ftDots.children].forEach((d, n) => d.setAttribute("aria-pressed", String(n === i)));
   }
-  ftDots.innerHTML = ftRegions.map(([name], i) => `<button type="button" style="--rc:${colourOf(name)}" aria-label="${esc(name)} portal" data-ft="${i}"></button>`).join("");
+  // 2026-10-13 owner QA: labelled region buttons (colour swatch + short name) instead of bare colour dots; Summit Spine™
+  // and Prism Ridge™ are both violet, so colour alone was ambiguous. Fixed 4-column grid: never wraps unevenly.
+  ftDots.innerHTML = ftRegions.map(([name], i) => `<button type="button" style="--rc:${colourOf(name)}" aria-label="${esc(name)} portal" data-ft="${i}"><i aria-hidden="true"></i><span>${esc(name.replace("™", ""))}</span></button>`).join("");
   ftDots.addEventListener("click", (e) => { const b = e.target.closest("[data-ft]"); if (b) ftSet(Number(b.dataset.ft)); });
   ftSet(0);
+  // warm only the neighbouring portals, and only once Fast Travel is on screen (2 files at a time, low priority)
+  let ftSeen = false;
+  const ftWarm = (i) => { if (!ftSeen) return; [i + 1, i - 1].forEach((k) => { const r = ftRegions[(k + ftRegions.length) % ftRegions.length]; if (r) prefetch(r[1], FT_SIZES); }); };
+  if ("IntersectionObserver" in window) {
+    const ftIO = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { ftSeen = true; ftIO.disconnect(); whenIdle(() => ftWarm(0)); } });
+    ftIO.observe(ftFrame);
+  }
+  ftDots.addEventListener("click", (e) => { const b = e.target.closest("[data-ft]"); if (b) whenIdle(() => ftWarm(Number(b.dataset.ft))); });
 
   // ---------- Enemies & Hazards ----------
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
     const e = ENTITIES[id];
     const t = e.media.thumb;
-    return `<li><button class="foe${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
-      ${sceneOf(id) ? `<span class="foe__stage foe__stage--scene">${sceneImg(sceneOf(id), "", true)}</span>`
-        : `<span class="foe__stage">${t && isCut(t) ? cut(t, "foe__cut", "", "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>`}
-      <span class="foe__text"><strong>${esc(e.name)}</strong></span>
+    return `<li${id === "brightback" ? ' class="foes__apex"' : ""}><button class="foe${id === "brightback" ? " foe--apex" : ""}${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
+      <span class="foe__stage${e.studioHero ? " foe__stage--studio" : ""}"${e.cardAlt ? ` data-peek="${esc(Object.keys(e.states || {}).find((k) => e.states[k] === e.cardAlt) || "")}"` : ""}>${e.studioHero && isStudio(t) ? cardImg(t, "foe__studio", "(min-width: 1100px) 290px, (min-width: 720px) 22vw, 46vw") + (e.cardAlt ? cardImg(e.cardAlt, "foe__studio foe__studio--alt", "(min-width: 1100px) 290px, (min-width: 720px) 22vw, 46vw") : "") : t && isCut(t) ? cut(t, id === "brightback" ? "foe__cut foe__cut--apex" : "foe__cut", "", id === "brightback" ? "(min-width: 720px) 560px, 94vw" : "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
+      <span class="foe__text"><strong>${esc(e.name)}</strong>${id === "brightback" ? "<small>Apex evolution · Prism Ridge™</small>" : ""}</span>
     </button></li>`;
-  }).join("") + `<li><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
+  }).join("") + `<li class="foes__evo"><button class="foe foe--evo" type="button" data-entity="rolling-boulder" data-evo aria-label="See how the optional evolution works">
       <span class="foe-evo__kicker">Optional evolution</span>
-      <span class="foe-evo__line">Rumbler™ <i>→</i> Stone Walker™ <i>→</i> Prism Keeper™</span>
+      <span class="foe-evo__line">Rumbler™ <i>→</i> Stone Walker™ <i>→</i> Prism Keeper™ <i>→</i> Brightback™</span>
       <span class="foe-evo__go">See how it evolves<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </button></li>`;
+
+  // ---------- Enemy Spotlight (2026-10-13) ----------
+  // A stage above the roster: one bot at a time, shown as the owner-approved studio renders (whole image, never cropped), cycling
+  // idle → alert → attack until the visitor takes control. Uses only each dossier's public states and copy; no mechanics are added.
+  (() => {
+    const host = document.getElementById("foeSpot");
+    const ids = ["goom", "spike-bot", "rotor-bot", "claw-bot"].filter((id) => ENTITIES[id] && ENTITIES[id].studioHero);
+    if (!host || !ids.length) return;
+    const SIZES = "(min-width: 900px) 460px, 92vw";
+    const accent = { "goom": "#ffb21f", "spike-bot": "#ff4b3a", "rotor-bot": "#ff8a2b", "claw-bot": "#ff4b3a" };
+    let cur = 0, st = 0, timer = null, user = false, visible = false;
+    const stateKeys = (id) => Object.keys(ENTITIES[id].states || {}).filter((k) => MEDIA[ENTITIES[id].states[k]]);
+    host.innerHTML = `
+      <div class="spot__plate"><div class="spot__frame" id="spotFrame"></div></div>
+      <div class="spot__info">
+        <p class="spot__kicker">Enemy spotlight</p>
+        <h3 class="spot__name" id="spotName"></h3>
+        <p class="spot__sum" id="spotSum"></p>
+        <div class="spot__states" id="spotStates" role="group" aria-label="Poses"></div>
+        <button class="spot__open" id="spotOpen" type="button" data-entity="">Open dossier<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="spot__roster" id="spotRoster" role="tablist" aria-label="Choose an enemy">${ids.map((id, i) => `<button type="button" role="tab" data-spot="${i}" aria-selected="${i === 0}">${esc(ENTITIES[id].name)}</button>`).join("")}</div>`;
+    host.hidden = false;
+    const frame = document.getElementById("spotFrame");
+    const setSrc = (img) => { if (img && !img.getAttribute("src")) { img.src = img.dataset.src; img.srcset = img.dataset.srcset; } };
+    function build() {
+      const id = ids[cur], e = ENTITIES[id], keys = stateKeys(id);
+      host.style.setProperty("--accent", accent[id] || "#ff8a2b");
+      frame.innerHTML = keys.map((k, i) => {
+        const src = e.states[k];
+        return `<span class="gbm spot__img${i === 0 ? " is-on" : ""}" style="${frameVars(src)}" data-i="${i}"><img ${i === 0 ? `src="${asset(src, true)}" srcset="${srcset(src)}"` : ""} data-src="${asset(src, true)}" data-srcset="${srcset(src)}" sizes="${SIZES}" alt="${esc(e.name)}: ${esc(k)}" decoding="async" draggable="false"></span>`;
+      }).join("");
+      document.getElementById("spotName").textContent = e.name;
+      document.getElementById("spotSum").textContent = e.copy.summary + (e.copy.behaviour ? " " + e.copy.behaviour : "");
+      document.getElementById("spotStates").innerHTML = keys.map((k, i) => `<button type="button" data-state="${i}" aria-pressed="${i === 0}">${esc(k)}</button>`).join("");
+      const open = document.getElementById("spotOpen"); open.dataset.entity = id; open.setAttribute("aria-label", `Open the ${e.name} dossier`);
+      host.querySelectorAll("[data-spot]").forEach((b) => b.setAttribute("aria-selected", String(Number(b.dataset.spot) === cur)));
+      st = 0;
+      whenIdle(() => setSrc(frame.querySelector('[data-i="1"] img')));
+    }
+    function show(i) {
+      const keys = stateKeys(ids[cur]);
+      st = (i + keys.length) % keys.length;
+      frame.querySelectorAll(".spot__img").forEach((n) => { const on = Number(n.dataset.i) === st; n.classList.toggle("is-on", on); if (on) setSrc(n.querySelector("img")); });
+      document.querySelectorAll("#spotStates [data-state]").forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.state) === st)));
+      whenIdle(() => setSrc(frame.querySelector(`[data-i="${(st + 1) % keys.length}"] img`)));
+    }
+    const stop = () => { clearInterval(timer); timer = null; };
+    const play = () => { stop(); if (!reduceMotion && !user && visible && !document.hidden) timer = setInterval(() => show(st + 1), 3600); };
+    host.addEventListener("click", (e) => {
+      const t = e.target.closest("[data-spot]");
+      if (t) { user = true; stop(); cur = Number(t.dataset.spot); build(); return; }
+      const s = e.target.closest("[data-state]");
+      if (s) { user = true; stop(); show(Number(s.dataset.state)); }
+    });
+    host.addEventListener("keydown", (e) => {   // arrow keys move between the enemy tabs
+      const t = e.target.closest("[data-spot]");
+      if (!t || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
+      e.preventDefault(); user = true; stop();
+      cur = (cur + (e.key === "ArrowRight" ? 1 : -1) + ids.length) % ids.length; build();
+      host.querySelector(`[data-spot="${cur}"]`).focus();
+    });
+    build();
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((es) => { visible = es.some((x) => x.isIntersecting); visible ? play() : stop(); }, { threshold: 0.35 }).observe(host);
+    }
+    document.addEventListener("visibilitychange", () => (document.hidden ? stop() : play()));
+  })();
 
   // ---------- Adventure Finds™ ----------
   document.getElementById("objs").innerHTML = (window.GB_OBJECTS || []).filter((id) => ENTITIES[id]).map((id) => {
@@ -634,6 +828,39 @@
       <span class="foe__text"><strong>${esc(e.name)}</strong></span>
     </button></li>`;
   }).join("");
+
+  // ---------- Gear & Tech (#gear) ----------
+  const gearImg = (el, src, alt) => {
+    if (!el || !MEDIA[src]) return;
+    el.setAttribute("style", frameVars(src));
+    el.innerHTML = `<img src="${asset(src)}" srcset="${srcset(src)}" sizes="(min-width: 1100px) 560px, 92vw" alt="${esc(alt)}" loading="lazy" draggable="false">`;
+  };
+  const WATCH = [["assets/gear/smartwatch-lineup", "SMARTWATCH in Blue, Red, Yellow and Purple, balanced lineup"],
+                 ["assets/gear/smartwatch-hardware", "SMARTWATCH hardware showcase in GB Blue: front, three-quarter and side views with close-ups of the buttons, metal build, strap and clasp, and engraved back plate"]];
+  gearImg(document.getElementById("gearPadImg"), "assets/gear/patchpad-hero", "PATCHPAD™ in GB Blue, with a metallic dial, vertical thumbwheel and four coloured controls");
+  gearImg(document.getElementById("gearWatchImg"), ...WATCH[0]);
+  const KEY = [["assets/gear/glitchkey-set", "GlitchKey™ concept preview in Blue, Red, Yellow and Purple"],
+               ["assets/gear/glitchkey-blue", "GlitchKey™ concept in Blue"],
+               ["assets/gear/glitchkey-red", "GlitchKey™ concept in Red"],
+               ["assets/gear/glitchkey-yellow", "GlitchKey™ concept in Yellow"],
+               ["assets/gear/glitchkey-purple", "GlitchKey™ concept in Purple"]];
+  const PAD = [["assets/gear/patchpad-hero", "PATCHPAD™ in Blue, with a metallic dial, vertical thumbwheel and four coloured controls"],
+               ["assets/gear/patchpad-red", "PATCHPAD™ in Red"],
+               ["assets/gear/patchpad-yellow", "PATCHPAD™ in Yellow"],
+               ["assets/gear/patchpad-purple", "PATCHPAD™ in Purple"]];
+  document.querySelectorAll("[data-pad]").forEach((b) => b.addEventListener("click", () => {
+    gearImg(document.getElementById("gearPadImg"), ...PAD[+b.dataset.pad]);
+    document.querySelectorAll("[data-pad]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  }));
+  gearImg(document.getElementById("gearKeyImg"), ...KEY[0]);
+  document.querySelectorAll("[data-key]").forEach((b) => b.addEventListener("click", () => {
+    gearImg(document.getElementById("gearKeyImg"), ...KEY[+b.dataset.key]);
+    document.querySelectorAll("[data-key]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  }));
+  document.querySelectorAll("[data-watch]").forEach((b) => b.addEventListener("click", () => {
+    gearImg(document.getElementById("gearWatchImg"), ...WATCH[+b.dataset.watch]);
+    document.querySelectorAll("[data-watch]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  }));
 
   // ---------- Meet the Team™ (#character/<id>) ----------
   const TEAM = window.GB_TEAM || [];
@@ -713,10 +940,13 @@
   });
 
   const teamList = document.getElementById("teamList");
+  // one look for the whole panel, chosen at random on every load (front-facing views)
+  const teamLook = Math.random() < 0.5 ? "sporty" : "streetwear";
+  teamList.dataset.look = teamLook;
   teamList.innerHTML = TEAM.map((id) => {
     const c = CHARS[id];
     return `<li><a class="mate" href="#character/${id}" data-character="${id}" style="--c:${c.hex};--cd:${c.deep}">
-      <span class="mate__fig" aria-hidden="true"><span class="stage-box">${cut(c.card, "mate__cut", "", "(min-width: 1100px) 260px, 60vw")}</span></span>
+      <span class="mate__fig" aria-hidden="true"><span class="stage-box">${cut(window.GB_TEAM_CARD ? window.GB_TEAM_CARD(id, teamLook) : c.card, "mate__cut", "", "(min-width: 1100px) 260px, 60vw")}</span></span>
       <span class="mate__text">
         <b class="mate__colour">${esc(c.colour)}</b>
         <strong>${esc(c.name)}</strong>
@@ -731,7 +961,7 @@
     e.preventDefault();
     charOpenedFrom = a;
     charPushed = true;
-    location.hash = `#character/${a.dataset.character}`;   // pushes history; router opens the view
+    location.hash = `#character/${a.dataset.character}/${teamLook}`;   // pushes history; router opens the view in the same look
   });
   document.querySelectorAll("[data-team]").forEach((b) => b.addEventListener("click", () => {
     const card = teamList.querySelector("li");

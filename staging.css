@@ -242,8 +242,8 @@ button{font:inherit;color:inherit;cursor:pointer}
   .pillars li{width:max(92px,calc(143 * var(--u)))}
   .pillars{left:calc(30 * var(--u))}
   .hero__arrow{top:calc(549 * var(--u));transform:translateY(-50%)}
-  .hero__arrow--prev{left:calc(770 * var(--u) - 118px)}
-  .hero__arrow--next{right:auto;left:calc(770 * var(--u) + 78px)}
+  .hero__arrow--prev{left:calc(770 * var(--u) - var(--hw,156px) / 2 - max(40px,calc(38 * var(--u))) - 4px)}
+  .hero__arrow--next{right:auto;left:calc(770 * var(--u) + var(--hw,156px) / 2 + 4px)}
 }
 
 /* ========== portrait: same elements, stacked composition ========== */
@@ -289,8 +289,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 
   .hero__dots{left:50%;top:calc(572 * var(--p));gap:2px}
   .hero__arrow{top:calc(572 * var(--p));transform:translateY(-50%)}
-  .hero__arrow--prev{left:calc(50% - 112px)}
-  .hero__arrow--next{right:auto;left:calc(50% + 72px)}
+  .hero__arrow--prev{left:calc(50% - var(--hw,144px) / 2 - 44px)}
+  .hero__arrow--next{right:auto;left:calc(50% + var(--hw,144px) / 2 + 4px)}
 
 }
 
@@ -826,6 +826,10 @@ html.is-locked{overflow:hidden}
 .site-foot__logo{width:clamp(150px,16vw,210px)}
 .site-foot__tag{margin:0;font-size:12px;font-weight:800;letter-spacing:.28em;color:#fff}
 .site-foot__legal{margin:0;font-size:12px;color:#9fb8dd}
+.site-foot__links{margin:0;font-size:12px;color:#b8d6ff}
+.site-foot__links a{color:#d8ebff;text-decoration:underline;text-underline-offset:3px}
+.site-foot__links a:hover{color:#fff}
+.site-foot__links a:focus-visible{outline:2px solid #9fd8ff;outline-offset:3px;border-radius:2px}
 .site-foot__nav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;margin:4px 0}
 .site-foot__nav a{color:#cfe6ff;font-size:13px;font-weight:600;text-decoration:none;padding:6px 2px}
 .site-foot__nav a:hover{color:#fff;text-decoration:underline}
@@ -1252,10 +1256,13 @@ html.is-locked{overflow:hidden}
 
 
 /* ===================== Meet the Team™ (approved target: wide team cards, figures break out above) ===================== */
-.team{background:
-    linear-gradient(180deg,rgba(233,241,252,.55),rgba(233,241,252,.25) 40%,rgba(10,40,110,.35)),
-    url(assets/areas/portal-meadow/pm02-open-meadow-routes-960.webp?v=66fd5e58a6) center 40%/cover}
-.team::after{display:none}
+/* Backdrop is shown through the .gbm frame (a raw CSS background exposed the image's baked credit band on tall crops) */
+.team{background:#dbe7f7}
+.team__bg{position:absolute;inset:0;z-index:0;container-type:size;overflow:hidden;pointer-events:none}
+.team__bg > .gbm{position:absolute;left:50%;top:40%;width:max(100cqw,100cqh * var(--ar));translate:-50% -40%}
+.team::before{z-index:2}
+.team::after{display:block;content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;filter:none;
+  background:linear-gradient(180deg,rgba(233,241,252,.55),rgba(233,241,252,.25) 40%,rgba(10,40,110,.35))}
 .team__head h2{color:#0b2a6b;text-shadow:0 2px 0 #fff}
 .team__head p{color:#24418e}
 .team .sec-head__icon{background:#0b2a6b;color:#fff}
@@ -1407,3 +1414,346 @@ html.is-locked{overflow:hidden}
 .objs .obj .foe__stage--scene{overflow:hidden;border-radius:16px 16px 0 0}
 @media (max-width:719px){.objs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .objs .obj .foe__stage::before{top:0;border-radius:16px 16px 0 0}
+
+/* ---------- Gear & Tech (Phase 5): approved PATCHPAD™ + SMARTWATCH presentations ---------- */
+.panel--gear{margin-top:clamp(14px,1.6vw,22px)}
+.panel__intro a{color:#0b4fc4;font-weight:700}
+.gear{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.2vw,18px);align-items:start}
+.gear__card{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.gear__view{position:relative;display:block;width:100%;padding:0;border:0;border-radius:14px;overflow:hidden;background:#071634;cursor:zoom-in;box-shadow:0 8px 22px rgba(10,40,110,.25)}
+.gear__view:focus-visible,.dossier__full:focus-visible{outline:3px solid #ffc21a;outline-offset:3px}
+.gear__img{display:block;width:100%;aspect-ratio:var(--ar)}
+.gear__img img{width:100%;height:auto;display:block}
+.gear__zoom{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:rgba(5,18,48,.78);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;pointer-events:none}
+.gear__zoom svg{width:16px;height:16px}
+.gear__card figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
+.gear__card figcaption strong{font-size:15px;font-weight:800;font-style:italic;color:#0b2a6b;letter-spacing:.02em}
+.gear__card figcaption>span{font-size:12.5px;font-weight:600;color:#3c5c8f}
+.gear__seg{margin-left:auto;display:inline-flex;border:1.5px solid #9fb6dc;border-radius:999px;overflow:hidden;background:#fff}
+.gear__seg button{border:0;background:none;padding:6px 12px;min-height:32px;font:inherit;font-size:12px;font-weight:700;color:#2c4a7c;cursor:pointer}
+.gear__seg button[aria-pressed="true"]{background:#0b4fc4;color:#fff}
+.gear__soon{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:12px 16px;border:2px dashed #9fb6dc;border-radius:14px;background:rgba(255,255,255,.55)}
+.gear__soon-icon{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#e6eefb;color:#5a7299}
+.gear__soon-icon svg{width:24px;height:24px}
+.gear__soon p{margin:0;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.gear__soon strong{font-size:15px;font-weight:800;font-style:italic;color:#0b2a6b}
+.gear__soon span{font-size:13px;color:#3c5c8f}
+.dossier__full{position:relative;display:block;border-radius:12px;overflow:hidden;cursor:zoom-in}
+@media (max-width:719px){
+  .gear{grid-template-columns:1fr}
+  .gear__seg{margin-left:0}
+}
+.dossier__flip{margin:-2px 0 10px}
+/* Phase 5: Claw Bot™ joins the bestiary. Studio cutout cards match the in-game scene cards' height;
+   the evolution card becomes a full-width banner so the grid stays balanced (8 enemies + banner) */
+#foes .foe__stage:not(.foe__stage--scene){aspect-ratio:1/.86}
+#foes .foe__stage:not(.foe__stage--scene)::before{top:0;border-radius:16px 16px 0 0}
+#foes > li.foes__evo{grid-column:1/-1 !important}
+#foes .foe--evo{grid-template-columns:auto 1fr auto;align-items:center;gap:6px 18px;padding:12px 18px}
+#foes .foe--evo .foe-evo__line{font-size:clamp(13px,1.1vw,16px)}
+#foes .foe--evo .foe-evo__go{margin-top:0;white-space:nowrap}
+@media (max-width:719px){
+  #foes .foe--evo{grid-template-columns:1fr auto;gap:6px 12px}
+  #foes .foe--evo .foe-evo__kicker{grid-column:1/-1}
+}
+
+
+/* Enemy card cutouts (Stone Walker™ / Prism Keeper™): the whole figure sits inside its stage, no drop-shadow box,
+   so nothing spills over the blue title panel. Their soft shadow is baked into the card derivative and fades out. */
+#foes .foe--big .foe__stage{overflow:hidden}
+#foes .foe--big .foe__stage > .gbm.cutout{width:min(100cqw,calc(var(--s) * 78cqh * var(--ar)));bottom:9%;filter:none}
+#foes .foe--big:hover .foe__stage > .gbm.cutout{transform:translateY(-3px)}
+
+/* Brightback™ apex card: the V1 figure is a clean cutout (no sheet caption or header strip) and deliberately breaks out above the card.
+   Sizes derive from one width (--fw) so the crown, feet and title scale together. */
+#foes > li.foes__apex{grid-column:1/-1 !important;width:100% !important;flex:1 1 100%;min-width:0;container-type:inline-size;padding-top:calc(min(94cqw,560px) * .235)}
+#foes .foe--apex{--fw:min(94cqw,560px);display:grid;grid-template-columns:minmax(0,1fr);width:min(100%,820px);margin-inline:auto;overflow:visible;background:none;box-shadow:none;border-radius:16px;position:relative}
+#foes .foe--apex .foe__stage{aspect-ratio:auto;height:calc(var(--fw) * .70);min-height:0;overflow:visible;border-radius:16px 16px 0 0;container-type:normal;background:none}
+#foes .foe--apex .foe__stage::before{display:block;content:"";position:absolute;inset:0;top:0;border-radius:16px 16px 0 0;
+  background:radial-gradient(ellipse 52% 62% at 50% 46%,rgba(176,120,255,.38),rgba(176,120,255,0) 70%),linear-gradient(180deg,#eef4fd,#d3e1f6)}
+#foes .foe--apex .foe__stage::after{display:block;left:18%;right:18%;bottom:3%;height:7%;z-index:1}
+#foes .foe--apex .foe__stage > .gbm.cutout{position:absolute;left:50%;bottom:6%;translate:-50% 0;width:var(--fw);max-width:none;z-index:3;
+  filter:drop-shadow(0 12px 14px rgba(40,14,90,.32));transition:transform .25s}
+#foes .foe--apex:hover .foe__stage > .gbm.cutout{transform:translateY(-4px)}
+#foes .foe--apex .foe__text{display:grid;grid-template-columns:minmax(0,1fr);justify-content:stretch;align-content:center;gap:4px;justify-items:center;padding:14px 12px 16px;border-radius:0 0 16px 16px;text-align:center}
+#foes .foe--apex .foe__text strong{font-size:clamp(20px,6.4cqw,34px);line-height:1.1;white-space:nowrap}
+#foes .foe--apex .foe__text small{color:#d8edff;font-size:clamp(10.5px,3cqw,13px);line-height:1.3;letter-spacing:.07em;text-transform:uppercase;font-weight:750}
+
+/* In the world tab: completed-form reference shown as a cutout on the standard pale stage */
+.evo__refstage{position:relative;display:block;aspect-ratio:4/3;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1.5px rgba(255,255,255,.6);background:radial-gradient(circle at 50% 42%,#fff 0,#e3edfb 58%,#b8cdee 100%)}
+.evo__refstage > .gbm.cutout{position:absolute;left:50%;bottom:4%;translate:-50% 0;width:min(96%,calc(88cqh * var(--ar)));max-width:none}
+.evo__refstage{container-type:size}
+/* Evolution sequence: four labelled phases (Phase 1 = four stone states, 2 = two, 3 = one, 4 = one).
+   Each phase is labelled once in its header; thumbnails keep a single uniform square and never crop art. */
+.evo__phases{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));column-gap:12px;row-gap:14px;align-items:start}
+.evo__phase{grid-column:span var(--n,1);min-width:0;display:grid;gap:8px;align-content:start}
+.evo__phase-h{margin:0;padding-bottom:5px;border-bottom:2px solid rgba(150,205,255,.35);font-size:11px;line-height:1.2;font-weight:800;font-style:italic;letter-spacing:.03em;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.evo__phase.is-here .evo__phase-h{border-bottom-color:#ffb35c}
+.evo__phase.is-here .evo__phase-h span{color:#ffb35c}
+.evo__phase-h span{display:block;font-style:normal;font-size:10px;letter-spacing:.14em;color:#9fd0ff}
+.evo__steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,1),minmax(0,1fr));gap:12px}
+.evo__phases .evo__step{display:grid;gap:4px;text-align:center;min-width:0}
+.evo__phases .evo__step::before{display:none}
+.evo__phases .evo__step .stage-box{position:relative;display:block;aspect-ratio:1;box-shadow:0 0 0 1.5px rgba(150,205,255,.3)}
+.evo__phases .evo__step strong{margin:0;font-size:11px;line-height:1.15;overflow-wrap:anywhere}
+.evo__step .stage-box > .gbm.evo__thumb-scene{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:hidden;border-radius:12px;aspect-ratio:auto}
+.evo__step .stage-box > .gbm.evo__thumb-scene > img{width:100%;height:100%;object-fit:contain;object-position:center}
+.evo__num--ref{width:auto;height:auto;border-radius:99px;padding:4px 9px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:899px){
+  .evo__phases{display:flex;flex-wrap:wrap}
+  .evo__phase{flex:0 1 auto}
+  .evo__phases{column-gap:18px}
+  .evo__steps{display:flex;gap:10px}
+  .evo__phases .evo__step{flex:0 0 112px}
+}
+@media(max-width:559px){
+  .evo__phases{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:#5f87c9 transparent}
+  .evo__phase{flex:0 0 auto;scroll-snap-align:start}
+  .evo__phases .evo__step{flex:0 0 104px}
+}
+
+/* Fast Travel: status / area link under the portal picture */
+.ft__note{margin:8px 4px 0;min-height:1.4em;text-align:center;font-size:13px;line-height:1.35;color:#24418e}
+.ft__note a{color:#0b3fb0;font-weight:700;text-underline-offset:3px}
+.ft__note a:focus-visible{outline:3px solid #2f9bff;outline-offset:2px;border-radius:3px}
+.ft__frame.gbm{flex:none;aspect-ratio:4/3}
+.ft__frame.gbm > img{object-fit:cover;object-position:var(--fx,50%) 50%}
+/* SMARTWATCH card: the "Full size" pill sits top-right so it never covers the showcase captions along the bottom edge */
+.gear__card--watch .gear__zoom{top:10px;bottom:auto}
+
+/* Hero key art: one composite per slide (wide + portrait); characters are part of the picture. Wide crops keep the lower part (feet) in view. */
+.slide--art picture{display:block;width:100%;height:100%}
+.slide--art img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 80%);filter:none}
+@media (max-aspect-ratio:1/1){.slide--art img{object-position:50% 50%}}
+
+/* Public curation 2026-10-11: a small source is shown at (about) its native size in the dossier stage instead of
+   being stretched to the stage width. It stays sharp and honest; the stage frame and shadow are unchanged. */
+.dossier__stage .stage-box > .gbm.cutout{max-width:calc(var(--nw, 9999) * 1.15px)}
+/* Fast Travel: a wide source (Prism Ridge™ four-flag portal display) is shown whole on the panel navy instead of cover-cropped;
+   the img keeps the content aspect, top-aligned, so the copyright band below the content is clipped */
+.ft__frame.gbm.is-whole{display:flex;align-items:center;background:#0b2a6b}
+.ft__frame.gbm.is-whole > img{width:100%;height:auto;aspect-ratio:var(--ar);object-fit:cover;object-position:50% 0}
+.ft__frame.gbm.is-whole > img{position:absolute;left:0;top:calc((100% - 36px) / 2);transform:translateY(-50%)}
+.ft__frame.gbm > img{object-position:var(--fx,50%) var(--fy,50%)}
+
+/* 2026-10-13 owner QA (Brightback evolution, phones): no half-visible cards. The sequence becomes a 4-column grid
+   (Phase 1 fills one row; Phases 2–4 share the second) and the in-world steps wrap in two columns. */
+@media (max-width:719px){
+  .evo__scenes{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-columns:auto;overflow:visible;scroll-snap-type:none;gap:12px}
+}
+@media (max-width:559px){
+  .evo__phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;row-gap:14px;overflow:visible;scroll-snap-type:none;padding-bottom:0}
+  .evo__phase{grid-column:span var(--n,1);flex:none}
+  .evo__steps{display:grid;grid-template-columns:repeat(var(--n,1),minmax(0,1fr));gap:8px}
+  .evo__phases .evo__step{flex:none}
+  .evo__phases .evo__step strong{font-size:10px;overflow-wrap:normal}
+  .evo__phase-h{font-size:9.5px;letter-spacing:0;overflow-wrap:normal;word-break:keep-all}
+  .evo__phase-h span{font-size:9px;letter-spacing:.08em}
+}
+
+/* 2026-10-13 studio tiles: opaque production-sheet frames on their own light studio background (no forced cutout).
+   Stage and thumbnails show the whole 4:3 tile; the copyright band is clipped by .gbm. */
+.gbm.studio-fit{display:block;width:100%;aspect-ratio:var(--ar);border-radius:inherit}
+.dossier__stage.is-studio{background:#eaf1fb}
+.dossier__stage.is-studio::after{display:none}
+.dossier__stage.is-studio > .gbm.studio-fit{position:absolute;left:0;right:0;top:50%;translate:0 -50%;width:100%;aspect-ratio:var(--ar)}
+.dossier__pick--studio .stage-box{background:#eaf1fb;overflow:hidden}
+.dossier__pick--studio .stage-box > .gbm.studio-fit{position:absolute;top:0;bottom:0;left:50%;translate:-50% 0;height:100%;width:auto;aspect-ratio:var(--ar)}
+/* one consistent light studio look for every gallery thumbnail (cutouts and studio tiles alike) */
+.dossier__pick .stage-box{background:radial-gradient(circle at 50% 42%,#fff 0,#e6eefa 58%,#c3d6f1 100%)}
+
+/* ===== 2026-10-13 evolution redesign (owner QA): one tile size, no rails, nothing half-visible ===== */
+#entEvo .evo__frame{position:relative;display:block;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#eaf1fb;
+  box-shadow:0 0 0 1.5px rgba(150,205,255,.35)}
+#entEvo .evo__frame > .gbm{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;border-radius:0;box-shadow:none}
+#entEvo .evo__frame > .gbm > img{object-fit:cover;object-position:50% 30%}
+#entEvo .evo__frame > .stage-box{position:absolute;inset:6%}
+#entEvo .is-here > .evo__frame,#entEvo .evo__phase.is-here .evo__frame{box-shadow:0 0 0 2.5px #fff,0 0 0 5px #ffb35c}
+#entEvo .evo__kick{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9fd0ff}
+#entEvo .evo__kick .evo__num--ref{position:static;padding:2px 7px;font-size:9px}
+/* Sequence: 4-column grid; Phase 1 fills the first row, Phases 2–4 share the second */
+#entEvo .evo__phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:12px;row-gap:16px;overflow:visible;padding:0}
+#entEvo .evo__phase{grid-column:span var(--n,1);display:grid;gap:8px;align-content:start;min-width:0;flex:none}
+#entEvo .evo__steps{display:grid;grid-template-columns:repeat(var(--n,1),minmax(0,1fr));gap:12px}
+#entEvo .evo__phases .evo__step{display:grid;gap:6px;min-width:0;flex:none;text-align:center}
+#entEvo .evo__phases .evo__step strong{font-size:11.5px;line-height:1.2;overflow-wrap:normal;word-break:normal;color:#fff;text-transform:uppercase;letter-spacing:.03em}
+#entEvo .evo__phase-h{font-size:12px;letter-spacing:.02em;overflow-wrap:normal;word-break:normal;white-space:nowrap}
+#entEvo .evo__phase-h span{display:block;font-size:10px;letter-spacing:.12em}
+/* Mechanics: one card per form */
+#entEvo .evo__forms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+#entEvo .evo__form{display:grid;gap:8px;align-content:start;min-width:0}
+#entEvo .evo__form strong{display:block;font-size:14px;font-style:italic;font-weight:800;text-transform:uppercase;color:#fff}
+#entEvo .evo__form p{margin:4px 0 0;font-size:13px;line-height:1.4;color:#cfe6ff}
+#entEvo .evo__form .evo__beh{color:#fff}
+#entEvo .evo__form a{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:700;color:#9fd8ff}
+/* In the world */
+#entEvo .evo__scenes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:row;gap:14px;overflow:visible;scroll-snap-type:none;padding:0}
+#entEvo .evo__scene{display:grid;gap:5px;align-content:start;min-width:0}
+#entEvo .evo__scene strong{font-size:12.5px;line-height:1.25;font-weight:800;text-transform:uppercase;color:#fff}
+@media (max-width:899px){
+  #entEvo .evo__forms{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #entEvo .evo__scenes{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:599px){
+  #entEvo .evo__phases{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #entEvo .evo__phase[style*="--n:4"],#entEvo .evo__phase[style*="--n:2"]{grid-column:span 2}
+  #entEvo .evo__phase[style*="--n:4"] .evo__steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #entEvo .evo__phase[style*="--n:1"]{grid-column:span 1}
+  #entEvo .evo__forms{grid-template-columns:1fr}
+  #entEvo .evo__form{grid-template-columns:42% 1fr;gap:12px;align-items:start}
+  #entEvo .evo__scenes{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  #entEvo .evo__phase-h{white-space:normal}
+}
+
+/* Fast Travel region selector (2026-10-13): labelled buttons in a fixed grid */
+.ft__dots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
+.ft__dots button{display:flex;align-items:center;gap:6px;width:auto;height:auto;min-height:36px;padding:4px 8px;border-radius:10px;
+  border:1.5px solid rgba(11,42,107,.18);background:#fff;color:#0b2a6b;font:inherit;font-size:11.5px;font-weight:700;line-height:1.15;
+  text-align:left;box-shadow:0 1px 3px rgba(10,40,110,.12);transform:none}
+.ft__dots button i{flex:0 0 12px;width:12px;height:12px;border-radius:50%;background:var(--rc);box-shadow:0 0 0 1.5px #fff,0 0 0 2.5px rgba(11,42,107,.25)}
+.ft__dots button span{min-width:0;overflow-wrap:normal}
+.ft__dots button[aria-pressed="true"]{border-color:var(--rc);background:color-mix(in srgb,var(--rc) 14%,#fff);box-shadow:0 0 0 2px var(--rc);transform:none}
+@media (max-width:420px){.ft__dots{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* regional portal grid: equal tiles whatever the source aspect */
+.dossier__states .gbm.dossier__state{aspect-ratio:16/10}
+.dossier__states .gbm.dossier__state > img{object-fit:cover;object-position:50% 30%}
+[data-area-card="prism"] .area-card__img > img{object-position:50% 12%}
+/* 2026-10-13: Level Preview has one approved still; beside Fast Travel it fills the panel height instead of leaving a gap */
+@media (min-width:720px){
+  .panel--preview:has(.lp__thumbs[hidden]){display:flex;flex-direction:column}
+  .panel--preview:has(.lp__thumbs[hidden]) .lp{flex:1;grid-template-columns:1fr;grid-template-rows:1fr auto;align-items:stretch}
+  .panel--preview:has(.lp__thumbs[hidden]) .lp__main{grid-row:auto;min-height:260px;align-self:stretch;height:100%}
+  .panel--preview:has(.lp__thumbs[hidden]) .lp__frame.gbm{position:absolute;inset:0;aspect-ratio:auto;height:100%}
+  .panel--preview:has(.lp__thumbs[hidden]) .lp__frame.gbm > img{object-fit:cover;object-position:50% 45%}
+}
+/* 2026-10-13 desktop: Level Preview + Fast Travel side by side, Enemies & Hazards full width below (no narrow columns
+   beside a tall panel, no dead space) */
+@media (min-width:1100px){
+  .trio{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .panel--hazards{grid-column:1/-1}
+  .panel--preview,.panel--travel{min-height:0}
+  #foes{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+.dossier__head{background:#0e2a6e;box-shadow:0 6px 12px -6px rgba(0,10,40,.6)}
+
+/* ===== 2026-10-13 premium enemy cards: whole studio renders, never cropped =====
+   The approved 1254 px studio renders are opaque and square, so the card stage is square and shows each one in full
+   (silhouette, flames, motion streaks and contact shadow all stay inside the frame). The alternate action pose crossfades in on
+   hover / keyboard focus (and is simply not shown on touch). Nothing is scaled past 1:1, so nothing can be clipped. */
+#foes .foe--studio-host,#foes .foe{--lift:0px}
+#foes .foe__stage.foe__stage--studio{aspect-ratio:1/1;overflow:hidden;border-radius:16px 16px 0 0;background:#eef3fb;container-type:normal;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
+#foes .foe__stage.foe__stage--studio::before{display:none}
+#foes .foe__stage.foe__stage--studio > .gbm.foe__studio{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;margin:0;border-radius:0;z-index:1}
+#foes .foe__stage--studio > .gbm.foe__studio > img{object-fit:contain;object-position:50% 50%;transition:none}
+#foes .foe__stage--studio > .foe__studio--alt{opacity:0;z-index:2;transition:opacity .45s ease}
+#foes .foe:hover .foe__studio--alt,#foes .foe:focus-visible .foe__studio--alt{opacity:1}
+#foes .foe__stage--studio[data-peek]:not([data-peek=""])::after{display:block;content:attr(data-peek);position:absolute;left:10px;bottom:10px;z-index:3;
+  width:auto;height:auto;right:auto;padding:4px 9px;border-radius:99px;background:rgba(7,28,79,.82);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;line-height:1;opacity:0;transform:translateY(4px);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
+#foes .foe:hover .foe__stage--studio::after,#foes .foe:focus-visible .foe__stage--studio::after{opacity:1;transform:none}
+#foes .foe:has(.foe__stage--studio){background:#fff;border-radius:16px;box-shadow:0 0 0 1.5px rgba(255,255,255,.95),0 6px 18px rgba(20,60,140,.16);
+  transition:transform .25s ease,box-shadow .25s ease}
+#foes .foe:has(.foe__stage--studio):hover,#foes .foe:has(.foe__stage--studio):focus-visible{transform:translateY(-4px);box-shadow:0 0 0 2.5px #1f7ae0,0 16px 30px rgba(20,60,140,.28)}
+#foes .foe:has(.foe__stage--studio) .foe__text{border-radius:0 0 16px 16px;box-shadow:none}
+@media (prefers-reduced-motion:reduce){
+  #foes .foe__stage--studio > .foe__studio--alt,#foes .foe__stage--studio::after,#foes .foe:has(.foe__stage--studio){transition:none}
+  #foes .foe:has(.foe__stage--studio):hover{transform:none}
+}
+@media (hover:none){#foes .foe__stage--studio > .foe__studio--alt,#foes .foe__stage--studio[data-peek]::after{display:none}}
+
+/* dossier: square studio renders get a square stage (a 4:3 stage would crop them top and bottom) */
+.dossier__stage.is-studio.is-square{aspect-ratio:1/1;max-width:min(560px,100%)}
+.dossier__stage.is-studio.is-square > .gbm.studio-fit{top:0;left:0;right:auto;translate:none;width:100%;height:100%;aspect-ratio:auto}
+.dossier__stage.is-studio.is-square > .gbm.studio-fit > img{object-fit:contain}
+.dossier__pick--studio .stage-box{background:#f1f5fb}
+
+/* one tile ratio for the whole grid: the cutout forms (Sentry, Rumbler, Stone Walker, Prism Keeper) sit in the same square as the studio renders */
+#foes li:not(.foes__apex) .foe__stage:not(.foe__stage--scene){aspect-ratio:1/1}
+/* safe box for the cutout forms: relative scale is kept for the smaller ones, but nothing may exceed 90% of the tile's width
+   or 82% of its height, so crests, claws and feet are never cut by the tile edge (Prism Keeper's crest was). */
+#foes li:not(.foes__apex) .foe__stage > .gbm.cutout{bottom:10%;width:min(calc(var(--s) * 92cqw),90cqw,calc(82cqh * var(--ar)))}
+#foes li:not(.foes__apex) .foe--big .foe__stage > .gbm.cutout{bottom:10%}
+
+/* the primary call to action is now a link (Explore the Mountain), not a Steam button */
+a.steam,a.steam:visited{text-decoration:none;color:#fff}
+
+/* ===== 2026-10-13 Enemy Spotlight: a cinematic stage above the roster =====
+   One bot at a time on a dark arena, shown as the whole approved studio render on a light "specimen plate" (never cropped). The pose
+   cycles idle → alert → attack until the visitor takes over; it never autoplays under prefers-reduced-motion. */
+.spot{--accent:#ff8a2b;position:relative;display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center;
+  margin:0 0 18px;padding:clamp(14px,2.2vw,26px);border-radius:22px;overflow:hidden;color:#fff;
+  background:radial-gradient(120% 90% at 18% 20%,color-mix(in srgb,var(--accent) 22%,transparent) 0,transparent 55%),linear-gradient(135deg,#0b2a6b 0%,#071c4f 62%,#0a1840 100%);
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.55),0 18px 40px rgba(7,28,79,.35)}
+.spot[hidden]{display:none}
+.spot::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.spot__plate{position:relative;width:100%;aspect-ratio:1/1;border-radius:18px;background:#eef3fb;padding:0;overflow:hidden;
+  box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 0 6px color-mix(in srgb,var(--accent) 70%,transparent),0 20px 36px rgba(0,8,30,.45)}
+.spot__frame{position:absolute;inset:0}
+.spot__img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;opacity:0;transition:opacity .6s ease}
+.spot__img.is-on{opacity:1}
+.spot__img > img{object-fit:contain;object-position:50% 50%}
+.spot__info{display:grid;gap:10px;min-width:0}
+.spot__kicker{margin:0;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.spot__name{margin:0;font-size:clamp(28px,4vw,52px);font-weight:900;font-style:italic;line-height:1;text-transform:uppercase;letter-spacing:.005em;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.spot__sum{margin:0;max-width:46ch;font-size:clamp(14px,1.25vw,17px);line-height:1.45;color:#dbe9ff}
+.spot__states{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.spot__states button{padding:8px 14px;border:0;border-radius:99px;background:rgba(255,255,255,.12);color:#fff;font:inherit;font-size:12px;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28);transition:background .2s,color .2s,box-shadow .2s}
+.spot__states button:hover{background:rgba(255,255,255,.22)}
+.spot__states button[aria-pressed="true"]{background:#fff;color:#0b2a6b;box-shadow:0 0 0 2px var(--accent)}
+.spot__open{justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:11px 18px;border:0;border-radius:99px;background:var(--accent);color:#1a0b00;
+  font:inherit;font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.3);transition:transform .2s,filter .2s}
+.spot__open:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.spot__open svg{width:15px;height:15px}
+.spot__roster{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.spot__roster button{padding:9px 16px;border:0;border-radius:12px;background:transparent;color:#bcd6ff;font:inherit;font-size:13px;font-weight:800;font-style:italic;letter-spacing:.04em;
+  text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.spot__roster button:hover{color:#fff;background:rgba(255,255,255,.1)}
+.spot__roster button[aria-selected="true"]{background:#fff;color:#0b2a6b}
+.spot button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (max-width:899px){
+  .spot{grid-template-columns:1fr;gap:16px}
+  .spot__plate{max-width:min(460px,100%);justify-self:center}
+  .spot__roster{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .spot__roster button{flex:none}
+}
+@media (prefers-reduced-motion:reduce){.spot__img,.spot__states button,.spot__open,.spot__roster button{transition:none}.spot__open:hover{transform:none}}
+/* the overscan band sits below the picture inside the file; clip it exactly (plus 1 px of anti-alias bleed) so no hairline shows */
+#foes .foe__stage--studio .foe__studio > img,.spot__img > img{clip-path:inset(0 0 calc(100% - 100% / var(--ext,1) + 1px) 0)}
+/* short landscape phones: side-by-side with a plate that fits the screen height */
+@media (orientation:landscape) and (max-height:520px){
+  .spot{grid-template-columns:minmax(0,min(300px,70vh)) minmax(0,1fr);gap:18px;padding:12px 16px}
+  .spot__plate{max-width:none;justify-self:stretch}
+  .spot__name{font-size:clamp(24px,4vw,36px)}
+  .spot__roster{flex-wrap:wrap;overflow:visible}
+}
+
+/* 2026-10-13: nine "In the world" tiles (new Portal Meadow / Creek Crossing scenes) sit in a clean 3 x 3 grid */
+#entEvo .evo__scenes{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* Brightback™ apex card, 2026-10-13: the true-alpha V1 render is portrait (1122 x 1402), so it is sized by HEIGHT (98 % of the card width, up to the
+   560 px cap) and the breakout headroom grows to match; it is now a taller, more imposing figure than the old 679 px landscape cutout. */
+#foes > li.foes__apex{padding-top:calc(min(94cqw,560px) * .34)}
+#foes .foe--apex .foe__stage > .gbm.cutout{width:calc(var(--fw) * .98 * var(--ar))}
+
+/* 2026-10-15: GlitchKey(TM) concept preview sits in the same row and card style as PATCHPAD(TM) and SMARTWATCH */
+.gear{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gear__card figcaption{align-content:start}
+@media (max-width:719px){.gear{grid-template-columns:1fr}}
+
+/* 2026-10-15: Level Preview thumbnails share one frame (mixed 16:9 / 4:3 stills are cover-cropped, centred) */
+.lp__thumbs button{aspect-ratio:4/3;position:relative;container-type:size}
+.lp__thumbs .lp__thumb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max(100cqw,calc(100cqh * var(--ar,1.7778)));aspect-ratio:var(--ar,1.7778)}
+
+/* 2026-10-15 owner QA: Brightback™ in the Sequence and Mechanics tabs reads bigger than the Prism Keeper™ and may rise out of its frame */
+#entEvo .evo__frame--apex{overflow:visible;background:radial-gradient(120% 90% at 50% 40%,#e5eefc 0%,#bfd4f2 100%);z-index:2}
+#entEvo .evo__apex{position:absolute;left:50%;bottom:5%;width:88%;transform:translateX(-50%);display:block;pointer-events:none}
+#entEvo .evo__apex .gbm,#entEvo .evo__apex .cutout{display:block;width:100%}
+#entEvo .evo__apex img{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 10px rgba(30,40,90,.28))}
+#entEvo .evo__steps,#entEvo .evo__phase,#entEvo .evo__phases,#entEvo .evo__forms{overflow:visible}
+#entEvo .evo__phase:has(.evo__frame--apex),#entEvo .evo__form:has(.evo__frame--apex){padding-top:clamp(36px,6vw,64px)}
+
+/* 2026-10-15: nine Level Preview stills (one per point of interest + the encounter) sit in an even 3 x 3 grid */
+.lp__thumbs,.panel--preview .lp__thumbs{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1099px){.lp__thumbs{grid-template-columns:repeat(3,1fr)}}
