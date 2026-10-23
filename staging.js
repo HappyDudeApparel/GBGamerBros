@@ -472,19 +472,18 @@
         : !hero && e.type === "gadget"
           ? `<span class="dossier__render media-missing"><svg class="media-missing__icon" aria-hidden="true"><use href="#i-key"/></svg><span>More to come</span></span>`
           : gadget
-          ? `<a class="dossier__full" id="entFull" href="${asset(hero)}" target="_blank" rel="noopener" aria-label="${esc(e.name)}: open full-size image in a new tab">${media(hero, "dossier__render", e.name)}<span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span></a>`
+          ? `<a class="dossier__full" id="entFull" href="${asset(hero)}" target="_blank" rel="noopener" aria-label="${esc(e.name)}: open full size image in a new tab">${media(hero, "dossier__render", e.name)}<span class="gear__zoom"><svg aria-hidden="true"><use href="#i-frames"/></svg>Full size</span></a>`
           : media(hero, "dossier__render", e.name)}
-        ${scenesOf(id).length > 1 ? `<h3>${e.scenicHero ? "Approved reference imagery" : "In the world"}</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
+        ${scenesOf(id).length > 1 ? `<h3>${e.scenicHero ? "Explore the world" : "In the world"}</h3><ul class="dossier__picks">${scenesOf(id).map((s, i) => `<li><button class="dossier__pick dossier__pick--scene" type="button" data-scene="${id}:${i}" data-hero-label="${esc(s.label || "In the world")}" aria-label="${esc(e.name)}: ${esc(s.label || "in the world")}" aria-pressed="${!i}"><span class="stage-box">${sceneImg(s, "", true)}</span><small>${esc(s.label || "In the world")}</small></button></li>`).join("")}</ul>` : ""}
         ${lead}
         ${states ? `<h3>${e.type === "portal" ? "Regional portals" : e.flip ? "Colours" : statesPre ? "Gallery" : "Action states"}</h3>${e.flip ? `<span class="gear__seg dossier__flip" role="group" aria-label="Coin face"><button type="button" data-flip="0" aria-pressed="true">Front · GB face</button><button type="button" data-flip="1" aria-pressed="false">Back · Mountain face</button></span>` : ""}<ul class="${Object.values(e.states).some((v) => isCut(v) || isStudio(v)) ? "dossier__picks dossier__picks--states" : "dossier__states"}">${statesPre}${states}</ul>` : ""}
-                ${details ? `<h3>Close-ups</h3><ul class="dossier__picks dossier__picks--states">${details}</ul>` : ""}
+                ${details ? `<h3>Close views</h3><ul class="dossier__picks dossier__picks--states">${details}</ul>` : ""}
                 ${viewsRow && nPicks(viewsRow) > 1 ? `<h3>${esc(e.viewsLabel || "Views")}</h3><ul class="dossier__picks">${viewsRow}</ul>` : ""}</div>
       <div class="dossier__info">
         <dl>
-          <dt>Description</dt><dd>${esc(e.copy.summary)}</dd>
-          <dt>${e.type === "hazard" ? "Hazard" : "Behaviour"}</dt><dd>${esc(e.copy.behaviour)}</dd>
-          <dt>Where encountered</dt><dd>${esc(e.copy.where)}</dd>
-          ${e.height ? `<dt>Approx. height</dt><dd>${e.height.toFixed(1)} m <small class="dossier__note">design reference · Gamer Bros ${(window.GB_HERO_HEIGHT || 1.8).toFixed(1)} m</small></dd>` : ""}
+          <dt>About</dt><dd>${esc(e.copy.summary)}</dd>
+          <dt>${e.type === "enemy" || e.type === "hazard" ? "Watch for" : "Details"}</dt><dd>${esc(e.copy.behaviour)}</dd>
+          <dt>Where to look</dt><dd>${esc(e.copy.where)}</dd>
         </dl>
         ${evo(e)}
         ${enc ? `<h3>Encounter images</h3><ul class="dossier__encs">${enc}</ul>` : ""}
@@ -634,7 +633,7 @@
     h.className = "hotspot";
     if (r.color) h.style.setProperty("--rc", r.color);
     h.dataset.area = r.area;
-    h.setAttribute("aria-label", `${r.name} — ${r.sub}`);
+    h.setAttribute("aria-label", `${r.name}: ${r.sub}`);
     if (LIVE_LABELS) {
       h.classList.add("pin");
       h.innerHTML = `<span class="pin__icon" aria-hidden="true"><svg><use href="#${r.icon || "i-compass"}"/></svg></span><span class="pin__text" aria-hidden="true"><strong>${esc(r.name)}</strong><small>${esc(r.sub)}</small></span>`;
@@ -660,7 +659,7 @@
     const state = a.status === "open" ? "" : a.status === "incomplete" ? "More views soon" : "Coming soon";
     const rc = ((window.GB_WORLD || {}).regions || []).find((r) => r.area === id);
     return `<button class="area-card${state ? " is-pending" : ""}" type="button" data-area-card="${id}" style="--rc:${rc ? rc.color : a.color || "#1f7ae0"}"
-        aria-label="${esc(a.name)} — ${esc(a.sub)}${state ? ` (${state})` : ""}">
+        aria-label="${esc(a.name)}: ${esc(a.sub)}${state ? ` (${state})` : ""}">
       ${v ? media(v.src, "area-card__img", "", "small")
           : a.identity ? `<span class="area-card__img region-id region-id--${a.identity.theme}" aria-hidden="true"><svg><use href="#${a.identity.icon}"/></svg></span>`
           : `<span class="area-card__img area-card__img--empty"></span>`}
@@ -742,7 +741,7 @@
   document.getElementById("foes").innerHTML = (window.GB_BESTIARY || []).map((id) => {
     const e = ENTITIES[id];
     const t = e.media.thumb;
-    return `<li${id === "brightback" ? ' class="foes__apex"' : ""}><button class="foe${id === "brightback" ? " foe--apex" : ""}${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)} — details">
+    return `<li${id === "brightback" ? ' class="foes__apex"' : ""}><button class="foe${id === "brightback" ? " foe--apex" : ""}${e.status === "APPROVED" ? " foe--approved" : ""}${(e.cardScale || 1) > 1 ? " foe--big" : ""}" type="button" data-entity="${id}" style="--s:${e.cardScale || .8}" aria-label="${esc(e.name)}: details">
       <span class="foe__stage${e.studioHero ? " foe__stage--studio" : ""}"${e.cardAlt ? ` data-peek="${esc(Object.keys(e.states || {}).find((k) => e.states[k] === e.cardAlt) || "")}"` : ""}>${e.studioHero && isStudio(t) ? cardImg(t, "foe__studio", "(min-width: 1100px) 290px, (min-width: 720px) 22vw, 46vw") + (e.cardAlt ? cardImg(e.cardAlt, "foe__studio foe__studio--alt", "(min-width: 1100px) 290px, (min-width: 720px) 22vw, 46vw") : "") : t && isCut(t) ? cut(t, id === "brightback" ? "foe__cut foe__cut--apex" : "foe__cut", "", id === "brightback" ? "(min-width: 720px) 560px, 94vw" : "(min-width: 1100px) 220px, (min-width: 720px) 30vw, 50vw") : media(t, "foe__img", "", "small")}</span>
       <span class="foe__text"><strong>${esc(e.name)}</strong>${id === "brightback" ? "<small>Apex evolution · Prism Ridge™</small>" : ""}</span>
     </button></li>`;
@@ -770,7 +769,7 @@
         <h3 class="spot__name" id="spotName"></h3>
         <p class="spot__sum" id="spotSum"></p>
         <div class="spot__states" id="spotStates" role="group" aria-label="Poses"></div>
-        <button class="spot__open" id="spotOpen" type="button" data-entity="">Open dossier<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="spot__open" id="spotOpen" type="button" data-entity="">Discover More<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
       <div class="spot__roster" id="spotRoster" role="tablist" aria-label="Choose an enemy">${ids.map((id, i) => `<button type="button" role="tab" data-spot="${i}" aria-selected="${i === 0}">${esc(ENTITIES[id].name)}</button>`).join("")}</div>`;
     host.hidden = false;
@@ -786,7 +785,7 @@
       document.getElementById("spotName").textContent = e.name;
       document.getElementById("spotSum").textContent = e.copy.summary + (e.copy.behaviour ? " " + e.copy.behaviour : "");
       document.getElementById("spotStates").innerHTML = keys.map((k, i) => `<button type="button" data-state="${i}" aria-pressed="${i === 0}">${esc(k)}</button>`).join("");
-      const open = document.getElementById("spotOpen"); open.dataset.entity = id; open.setAttribute("aria-label", `Open the ${e.name} dossier`);
+      const open = document.getElementById("spotOpen"); open.dataset.entity = id; open.setAttribute("aria-label", `Discover more about ${e.name}`);
       host.querySelectorAll("[data-spot]").forEach((b) => b.setAttribute("aria-selected", String(Number(b.dataset.spot) === cur)));
       st = 0;
       whenIdle(() => setSrc(frame.querySelector('[data-i="1"] img')));
@@ -823,7 +822,7 @@
   // ---------- Adventure Finds™ ----------
   document.getElementById("objs").innerHTML = (window.GB_OBJECTS || []).filter((id) => ENTITIES[id]).map((id) => {
     const e = ENTITIES[id], t = e.media.thumb;
-    return `<li><button class="foe obj" type="button" data-entity="${id}" style="--s:${e.cardScale || .62}" aria-label="${esc(e.name)} — details">
+    return `<li><button class="foe obj" type="button" data-entity="${id}" style="--s:${e.cardScale || .62}" aria-label="${esc(e.name)}: details">
       ${isCut(t) ? `<span class="foe__stage">${cut(t, "foe__cut", "", "(min-width: 1100px) 160px, 40vw")}</span>` : `<span class="foe__stage foe__stage--scene">${sceneImg({ src: t, fx: 50 }, "", true)}</span>`}
       <span class="foe__text"><strong>${esc(e.name)}</strong></span>
     </button></li>`;

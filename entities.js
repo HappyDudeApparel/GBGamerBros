@@ -44,7 +44,7 @@ window.GB_ENTITIES = {
     studioHero: true, heroFirst: true, heroLabel: "Idle",
     media: { thumb: "assets/entities/studio/goom-idle-hd", render: "assets/entities/studio/goom-idle-hd", icon: null },
     cardAlt: "assets/entities/studio/goom-attack-hd",
-    copy: { provisional: true, summary: "Basic enemy.", behaviour: "Wanders and patrols. Chases when you get close.", where: "Common across regions." },
+    copy: { provisional: true, summary: "Small but troublesome, Goom Bot™ patrols the mountain trails and gives chase when explorers get too close.", behaviour: "Keep your eyes open. It may spot you before you spot it.", where: "Common across regions." },
     encounter: [],
     views: {  },
     states: { "Idle": "assets/entities/studio/goom-idle-hd", "Alert": "assets/entities/studio/goom-alert-hd", "Attack": "assets/entities/studio/goom-attack-hd", "Charge": "assets/entities/studio/goom-charge-hd", "Defeated": "assets/entities/studio/goom-defeated-hd" },
@@ -59,11 +59,10 @@ window.GB_ENTITIES = {
     // support feet, front amber core. The red/gold streak render (#10) is illustrative only and is not shown.
     studioHero: true, heroFirst: true, heroLabel: "Idle",
     media: { thumb: "assets/entities/studio/claw-bot-idle-hd", render: "assets/entities/studio/claw-bot-idle-hd", icon: null },
-    cardAlt: "assets/entities/studio/claw-bot-clamp-hd",
-    copy: { provisional: true, summary: "Crab-like ground enemy with two split-spike claws.", behaviour: "Patrols, spots you, raises its claws and clamps to attack.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Watch those claws! Claw Bot™ is a troublemaker that roams the ground with two hinged claws and split spikes.", behaviour: "Once it spots an explorer, those claws rise and clamp into action.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {},
-    states: { "Idle": "assets/entities/studio/claw-bot-idle-hd", "Scuttle": "assets/entities/studio/claw-bot-scuttle-hd", "Alert": "assets/entities/studio/claw-bot-alert-hd", "Clamp": "assets/entities/studio/claw-bot-clamp-hd", "Forward clamp": "assets/entities/studio/claw-bot-clamp-forward-hd", "Defeated": "assets/entities/studio/claw-bot-defeated-hd" },
+    states: { "Idle": "assets/entities/studio/claw-bot-idle-hd", "Scuttle": "assets/entities/studio/claw-bot-scuttle-hd", "Alert": "assets/entities/studio/claw-bot-alert-hd", "Forward clamp": "assets/entities/studio/claw-bot-clamp-forward-hd", "Defeated": "assets/entities/studio/claw-bot-defeated-hd" },
     details: { "Closed claw": "assets/entities/studio/claw-bot-claw-closed-hd", "Open claw": "assets/entities/studio/claw-bot-claw-open-hd", "Hinge": "assets/entities/studio/claw-bot-hinge-hd" },
     // Archived (superseded 2026-10-13): v14 cutout and the 92-201 px sheet tiles.
     archived: { "Superseded hero (2026-10-13)": E + "claw-bot-hero", "Cutout v14": E + "claw-bot-v14", "Walk (sheet tile)": "assets/entities/studio/claw-bot-walk-st", "Alert (sheet tile)": "assets/entities/studio/claw-bot-alert-st", "Clamp (sheet tile)": "assets/entities/studio/claw-bot-attack-st", "Idle": E + "claw-bot-idle", "Attack · open claws (spike + feet clipped)": E + "claw-bot-attack-front", "Defeated A": E + "claw-bot-defeated-a", "Defeated B": E + "claw-bot-defeated-b",
@@ -77,7 +76,7 @@ window.GB_ENTITIES = {
     studioHero: true, heroFirst: true, heroLabel: "Hero",
     media: { thumb: "assets/entities/studio/spike-bot-hero-hd", render: "assets/entities/studio/spike-bot-hero-hd", icon: null },
     cardAlt: "assets/entities/studio/spike-bot-roll-hd",
-    copy: { provisional: true, summary: "Spiked ground enemy.", behaviour: "Stays put or patrols. Damages on contact.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Watch your step around Spike Bot™. Those spikes make close encounters risky.", behaviour: "It may stand its ground or patrol nearby paths, and contact can hurt.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {  },
     states: { "Hero": "assets/entities/studio/spike-bot-hero-hd", "Alert": "assets/entities/studio/spike-bot-alert-hd", "Rolling": "assets/entities/studio/spike-bot-roll-hd", "Charge": "assets/entities/studio/spike-bot-charge-hd", "Attack": "assets/entities/studio/spike-bot-attack-hd", "Defeated": "assets/entities/studio/spike-bot-defeated-hd" },
@@ -93,7 +92,7 @@ window.GB_ENTITIES = {
     studioHero: true, heroFirst: true, heroLabel: "Hover",
     media: { thumb: "assets/entities/studio/rotor-bot-hover-hd", render: "assets/entities/studio/rotor-bot-hover-hd", icon: null },
     cardAlt: "assets/entities/studio/rotor-bot-thrust-hd",
-    copy: { provisional: true, summary: "Fast, agile flying enemy with a spherical core and fixed thruster nozzles.", behaviour: "Hovers, patrols, spots you and attacks from above.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Look up! Rotor Bot™ uses its thrusters to patrol the skies over Adventure Mountain™.", behaviour: "It hovers, keeps watch and attacks from above when it spots an explorer.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: { "Design view A": E + "rotor-bot-v13-a", "Design view B": E + "rotor-bot-v13-b", "Design view C": E + "rotor-bot-v13-c" },
     viewsLabel: "Design views",
@@ -108,7 +107,7 @@ window.GB_ENTITIES = {
     // 08_SENTRY_CANNON locked system (sole geometry/state source): hostile = red/orange hazard language,
     // hacked = player-colour energy + GB / mountain insignia; same structure across Standard, Rotary, Missile
     media: { thumb: "assets/entities/sentry/hostile", render: "assets/entities/sentry/hostile", icon: null },
-    copy: { summary: "Stationary hostile cannon.", behaviour: "Locks on and fires from a fixed position. Hack one and it fights on your side in your colour.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "Stay out of its sights! This stationary cannon can make a dangerous stretch of trail even trickier.", behaviour: "It locks on and fires from its position. Take control of one, and it can fight for your team in your colour.", where: "Found across Adventure Mountain™." },
     encounter: [],
     states: { "Hostile": "assets/entities/sentry/hostile", "Hacked · Blue": "assets/entities/sentry/blue", "Hacked · Red": "assets/entities/sentry/red", "Hacked · Yellow": "assets/entities/sentry/yellow", "Hacked · Purple": "assets/entities/sentry/purple" },
     views: { "Standard": "assets/entities/sentry/hostile", "Rotary": "assets/entities/sentry/rotary", "Missile": "assets/entities/sentry/missile" },
@@ -121,7 +120,7 @@ window.GB_ENTITIES = {
     // Defeated = the mossy amber-crystal rubble (its own look: it is NOT Prism Keeper's prism rubble) and a collapsed pile.
     heroFirst: true, heroLabel: "Stance",
     media: { thumb: "assets/entities/new/stone-walker-hero", render: "assets/entities/new/stone-walker-hero", icon: null },
-    copy: { provisional: true, summary: "Awakened rock enemy.", behaviour: "Chases and attacks up close.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "An imposing figure of awakened stone, Stone Walker™ brings a serious challenge to the mountain.", behaviour: "Watch for heavy footsteps. It gives chase and attacks at close range.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {},
     states: { "Stance": "assets/entities/new/stone-walker-hero", "Glare": "assets/entities/new/stone-walker-glare", "Lunge": "assets/entities/new/stone-walker-dynamic", "Collapsed": "assets/entities/new/stone-walker-collapsed", "Defeated · rubble": "assets/objects/studio/stone-walker-rubble" },
@@ -135,7 +134,7 @@ window.GB_ENTITIES = {
     // 2026-10-13: owner-supplied 1122x1402 true-alpha renders. The approved defeated state (stone rubble with purple prism shards) is preserved.
     leadScene: true, heroFirst: true, heroLabel: "Ready",
     media: { thumb: "assets/entities/new/prism-keeper-hero", render: "assets/entities/new/prism-keeper-hero", icon: null },
-    copy: { provisional: true, summary: "Rare evolved Prism form.", behaviour: "Guards key areas.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Rare and formidable, Prism Keeper™ stands watch over important places on Adventure Mountain™.", behaviour: "A powerful presence to watch for as the mountain's mysteries unfold.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {},
     states: { "Ready": "assets/entities/new/prism-keeper-hero", "Guard": "assets/entities/new/prism-keeper-guard", "Brace": "assets/entities/new/prism-keeper-ready", "Advance": "assets/entities/new/prism-keeper-advance", "Impact": "assets/entities/new/prism-keeper-impact", "Defeated · prism rubble": "assets/entities/studio/crystal-guardian-defeated-rubble-st" },
@@ -152,7 +151,7 @@ window.GB_ENTITIES = {
     // V2 and the new-candidate poses (alternate stance, guard, flex) are not used.
     heroFirst: true, heroLabel: "Final form",
     media: { thumb: N + "brightback-hero", render: "assets/entities/new/brightback-hero", icon: null },
-    copy: { summary: "The towering fourth evolution of the Rumbler™ line, with deeper violet stone and larger Prism Shards.", behaviour: "An imposing apex form.", where: "Prism Ridge™." },
+    copy: { summary: "The towering final form of the Rumbler™ line, crowned with deep violet stone and larger Prism Shards.", behaviour: "The fourth and most imposing form in this mysterious evolution.", where: "Prism Ridge™." },
     encounter: [],
     views: {}, states: { "Final form": "assets/entities/new/brightback-hero", "With the stone line": "assets/scenes/stone-line-poster", "Stone line · wide": "assets/scenes/stone-line-poster-b" }, angles: angles(), cardScale: 1.0, height: null, scale: null,
     evolution: { line: "boulder", phase: 4 },
@@ -164,7 +163,7 @@ window.GB_ENTITIES = {
     name: "Rumbler™", type: "hazard", status: "APPROVED",
     // ROLLING_BOULDER_PRODUCTION_MASTER_V1 (approved Phase 1 production master; replaces the old provisional crop)
     media: { thumb: E + "rumbler-v13", render: E + "rumbler-v13", icon: null },
-    copy: { provisional: true, summary: "Energized rolling boulder.", behaviour: "Rolls downhill and smashes obstacles.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Watch the slopes! Rumbler™ is an energized boulder that turns downhill paths into moving hazards.", behaviour: "It barrels downhill, smashing obstacles in its path.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {  },
     states: { "Rolling": "assets/entities/studio/rolling-boulder-rolling-st", "Fracture": "assets/entities/studio/rolling-boulder-fracture-st", "Impact": "assets/entities/studio/rolling-boulder-impact-st" },
@@ -181,7 +180,7 @@ window.GB_ENTITIES = {
     // 2026-10-13 owner QA: the generic generated portal image is retired; the dossier leads with the established
     // Portal Meadow™ design (the starting portal). Every regional portal follows below.
     media: { thumb: null, render: "assets/systems/portals/v13/meadow", icon: null },
-    copy: { summary: "Regional fast-travel portal.", behaviour: "Connects discovered areas of Adventure Mountain™.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "Follow the glow! Portals connect regions across Adventure Mountain™.", behaviour: "Travel between the areas you've discovered.", where: "Found across Adventure Mountain™." },
     encounter: [],
     // Canonical region order (03_CANONICAL_REGION_REFERENCE_INDEX). Every entry shows approved portal artwork.
     // 2026-10-13 owner-approved regional portal scenes (private Drive originals unchanged; public derivatives only).
@@ -192,7 +191,7 @@ window.GB_ENTITIES = {
     name: "Springboard", type: "prop", status: "APPROVED",
     // 09_SPRINGBOARD/SPRINGBOARD_TURNAROUND_LOCKED (the only approved springboard)
     media: { thumb: "assets/objects/springboard/front", render: "assets/objects/springboard/front", icon: null },
-    copy: { summary: "Red domed springboard on a GB base.", behaviour: "Jump on it to launch to higher ledges and hidden routes.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "A bright red springboard can turn an ordinary path into an unexpected leap.", behaviour: "Bounce toward higher ledges and paths that might otherwise stay hidden.", where: "Found across Adventure Mountain™." },
     encounter: [],
     states: { "Neutral": "assets/objects/springboard/neutral", "Compressed": "assets/objects/springboard/compressed", "Rebound": "assets/objects/springboard/rebound" },
     views: {  },
@@ -204,50 +203,50 @@ window.GB_ENTITIES = {
     name: "GB Crate", type: "prop", status: "APPROVED",
     // 07_CRATES preferred direction: Classic GB
     media: { thumb: "assets/objects/crate-intact", render: "assets/objects/crate-intact", icon: null },
-    copy: { summary: "Classic wooden GB crate.", behaviour: "Break it open for rewards; it cracks before it breaks.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "Keep an eye out for wooden GB Crates along your route.", behaviour: "Crack one open to uncover its rewards.", where: "Found across Adventure Mountain™." },
     encounter: [], states: { "Intact": "assets/objects/crate-intact", "Damaged": "assets/objects/crate-damaged", "Broken": "assets/objects/crate-broken" }, angles: angles(), scale: null,
   },
   "patchpad": {
     name: "PATCHPAD™", type: "gadget", status: "APPROVED",
     media: { thumb: "assets/gear/patchpad-hero", render: "assets/gear/patchpad-hero", icon: null },
-    copy: { summary: "The Gamers' PATCHPAD™, shown in Blue, Red, Yellow and Purple.", behaviour: "Metallic dial and vertical thumbwheel. Four controls: red Action/Acquire, blue Scan/Monitor, yellow App/Program Selector and purple Settings.", where: "Carried by the Gamers." },
+    copy: { summary: "Meet PATCHPAD™, a signature piece of the Gamers' gear in Blue, Red, Yellow and Purple.", behaviour: "Explore its metallic dial, thumbwheel and four colourful controls for action, scanning, apps and settings.", where: "Carried by the Gamers." },
     encounter: [], states: {}, views: { "Blue": "assets/gear/patchpad-hero", "Red": "assets/gear/patchpad-red", "Yellow": "assets/gear/patchpad-yellow", "Purple": "assets/gear/patchpad-purple" }, angles: angles(), scale: null,
   },
   "smartwatch": {
     name: "SMARTWATCH", type: "gadget", status: "APPROVED",
     media: { thumb: "assets/gear/smartwatch-lineup", render: "assets/gear/smartwatch-lineup", icon: null },
-    copy: { summary: "The Gamers' smartwatch, in Blue, Red, Yellow and Purple.", behaviour: "Worn on the wrist in each Gamer's own colour.", where: "Worn by every Gamer." },
+    copy: { summary: "Every Gamer has a signature SMARTWATCH, styled in their own team colour.", behaviour: "A familiar companion for adventures on the mountain.", where: "Worn by every Gamer." },
     encounter: [], states: {}, views: { "Lineup": "assets/gear/smartwatch-lineup", "Showcase": "assets/gear/smartwatch-hardware" }, angles: angles(), scale: null,
   },
   "glitchkey": {
     // concept preview only (owner approval of a final render is still pending): no functions, mechanics or platform claims
     name: "GlitchKey™", type: "gadget", status: "PENDING",
     media: { thumb: "assets/gear/glitchkey-set", render: "assets/gear/glitchkey-set", icon: null },
-    copy: { summary: "Concept preview of the GlitchKey™, shown in Blue, Red, Yellow and Purple.", behaviour: "More to come.", where: "More to come." },
+    copy: { summary: "What is GlitchKey™? Take an early look at this mysterious piece of gear in Blue, Red, Yellow and Purple.", behaviour: "Its story is still a mystery.", where: "Among the Gamers' gear." },
     encounter: [], states: {}, views: { "Four colours": "assets/gear/glitchkey-set", "Blue": "assets/gear/glitchkey-blue", "Red": "assets/gear/glitchkey-red", "Yellow": "assets/gear/glitchkey-yellow", "Purple": "assets/gear/glitchkey-purple", "Blue · scene": "assets/gear/glitchkey-scene-blue", "Red · scene": "assets/gear/glitchkey-scene-red", "Yellow · scene": "assets/gear/glitchkey-scene-yellow", "Purple · scene": "assets/gear/glitchkey-scene-purple" }, angles: angles(), scale: null,
   },
   "coin": {
     name: "GB Coin", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/coin", render: "assets/objects/coin", icon: null },
-    copy: { summary: "Gold GB Coin: GB face and Adventure Mountain™ face.", behaviour: "Collect them on every route.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "Follow the glint of gold! Each GB Coin bears the GB emblem on one side and Adventure Mountain™ on the other.", behaviour: "Collect them on every route.", where: "Found across Adventure Mountain™." },
     encounter: [], states: { "GB face": "assets/objects/coin", "Mountain face": "assets/objects/coin-back" }, angles: angles(), scale: null,
   },
   "adventure-crystal": {
     name: "Crystal", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/crystal", render: "assets/objects/crystal", icon: null },
-    copy: { summary: "The common Crystal.", behaviour: "Breaks into Crystal Shards.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "Crystals can be found throughout the mountain, waiting to be discovered.", behaviour: "Break one open and collect its Crystal Shards.", where: "Found across Adventure Mountain™." },
     encounter: [], states: { "Crystal Shards": "assets/objects/crystal-shards", "Among the rubble": "assets/objects/studio/crystal-rubble-a", "Rubble · wide": "assets/objects/studio/crystal-rubble-b" }, angles: angles(), scale: null,
   },
   "secret-key": {
     name: "Prism Crystal", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/prism-crystal", render: "assets/objects/prism-crystal", icon: null },
-    copy: { summary: "The rarer Prism Crystal.", behaviour: "Breaks into Prism Shards.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "Keep exploring to uncover rarer Prism Crystals.", behaviour: "Break one apart to reveal Prism Shards.", where: "Found across Adventure Mountain™." },
     encounter: [], states: { "Prism Shards": "assets/objects/prism-shards", "Among the rubble": "assets/objects/studio/prism-rubble-a", "Rubble · wide": "assets/objects/studio/prism-rubble-b", "Rubble · close": "assets/objects/studio/prism-rubble-c" }, angles: angles(), scale: null,
   },
   "crystal-chest": {
     name: "Crystal Chest", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/crystal-chest", render: "assets/objects/crystal-chest", icon: null },
-    copy: { summary: "Special chest with glowing crystal panels.", behaviour: "A rarer reward chest.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "A Crystal Chest is hard to miss, with glowing crystal panels and the promise of a special find.", behaviour: "A rarer treasure for curious explorers.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "character-coins": {
@@ -261,7 +260,7 @@ window.GB_ENTITIES = {
   "treasure-chest": {
     name: "Treasure Chest", type: "collectible", status: "APPROVED", heroLabel: "All four", cardScale: 0.95,
     media: { thumb: "assets/objects/chest-set", render: "assets/objects/chest-set", icon: null },
-    copy: { summary: "The GB treasure chest.", behaviour: "Holds rewards for curious explorers.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "There's always excitement in discovering a GB Treasure Chest.", behaviour: "Find out what rewards are waiting inside.", where: "Found across Adventure Mountain™." },
     encounter: [], states: { "Blue": "assets/objects/chest-blue", "Red": "assets/objects/chest-red", "Yellow": "assets/objects/chest-yellow", "Purple": "assets/objects/chest-purple" }, angles: angles(), scale: null,
   },
 };
@@ -312,7 +311,7 @@ window.GB_EVOLUTION_DETAIL = {
 window.GB_PORTAL_META = {
   "Portal Meadow™": { area: "portal", fx: "62%" }, "Creek Crossing™": { area: "creek", fx: "34%" }, "Riverworks™": { area: "river", fx: "30%" }, "Clover Cliffs™": { area: "clover", fx: "74%" },
   "Fallen Grounds™": { area: "ruin", fx: "78%" }, "Frosty Peaks™": { area: "frost", fx: "84%" },
-  "Summit Spine™": { note: "The climb toward Prism Ridge™ begins here. Portal preview only: its area guide is not published yet.", color: "#8d4fe0", fx: "76%" },
+  "Summit Spine™": { area: "summit", note: "Follow the purple glow toward the climb to Prism Ridge™.", color: "#8d4fe0", fx: "76%" },
   "Prism Ridge™": { area: "prism", fx: "50%", fy: "20%" },
 };
 
@@ -338,7 +337,7 @@ window.GB_ENTITY_SCENE = {
   "stone-golem": { src: SC + "stone-golem-ingame", fx: 50 },
   "crystal-guardian": { src: SC + "crystal-guardian-ingame", fx: 50 },
   "brightback": [
-    // "Four-view turnaround" removed from public view 2026-10-11 (technical turnaround; thin strip left a large blank stage); file kept
+    // "Views from all sides" removed from public view 2026-10-11 (technical turnaround; thin strip left a large blank stage); file kept
     { src: "assets/scenes/brightback-in-the-world", fx: 50, label: "In the world" },
     { src: E + "brightback-v1-face-clean", fx: 50, label: "Face and core detail" },
     // "Prism Shard detail" (brightback-v1-hand-clean, 288 px) removed from public view 2026-10-11: shown at 0.4x density on phones; file kept

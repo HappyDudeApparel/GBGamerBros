@@ -29,14 +29,14 @@ window.GB_AREAS = {
       { src: A + "portal-meadow/pm02-open-meadow-routes", kind: "ground", label: "Branching routes", focus: 0.58,
         alt: "Open meadow where the stone path branches toward broad stairs and a ruined arch", hotspots: [] },
       { src: A + "portal-meadow/pm03-first-ascent-cave-edge", kind: "traversal", label: "First ascent", focus: 0.55,
-        alt: "Gentle path climbing past a stone bridge toward a lantern-lit cave entrance", hotspots: [] },
+        alt: "Gentle path climbing past a stone bridge toward a cave entrance lit by lanterns", hotspots: [] },
     ],
   },
   creek: {
     name: "Creek Crossing™", sub: "Bridges & Rapids", status: "open",
     views: [
-      { src: A + "creek-crossing/cc01-low-water-crossing", kind: "establishing", label: "Low-water crossing", focus: 0.4,
-        alt: "Lantern-lit stone steps and a masonry arch bridge over a turquoise creek", hotspots: [] },
+      { src: A + "creek-crossing/cc01-low-water-crossing", kind: "establishing", label: "Shallow creek crossing", focus: 0.4,
+        alt: "Stone steps lit by lanterns and a masonry arch bridge over a turquoise creek", hotspots: [] },
       { src: A + "creek-crossing/cc02-branching-path", kind: "traversal", label: "Branching path", focus: 0.36,
         alt: "Stone stairs branching from the creek path beside a wooden rail", hotspots: [] },
       { src: A + "creek-crossing/cc03-creek-bank-bridge", kind: "landmark", label: "Under the bridge", focus: 0.55,
@@ -49,7 +49,7 @@ window.GB_AREAS = {
       { src: A + "riverworks/rw02-cliffside-waterworks", kind: "establishing", label: "Cliffside waterworks", focus: 0.62,
         alt: "Timber waterworks and blue pipes on the cliffside above a turquoise river and stone bridges", hotspots: [] },
       { src: A + "riverworks/rw03-maintenance-walkway", kind: "ground", label: "Maintenance walkway", focus: 0.68,
-        alt: "Wood-and-stone maintenance walkway beside a large blue pipe and a stone pump house", hotspots: [] },
+        alt: "Maintenance walkway built from wood and stone beside a large blue pipe and a stone pump house", hotspots: [] },
       { src: A + "riverworks/rw04-aqueduct-corridor", kind: "landmark", label: "Aqueduct corridor", focus: 0.5,
         alt: "Arched stone aqueduct corridor with blue pipes and channels of running water", hotspots: [] },
     ],
@@ -62,16 +62,16 @@ window.GB_AREAS = {
       { src: A + "clover-cliffs/cl02-switchback-forest-route", kind: "traversal", label: "Switchback route", focus: 0.38,
         alt: "Stone stairs and a switchback trail winding down a forested cliff", hotspots: [] },
       { src: A + "clover-cliffs/cl03-cave-shelf-upper-path", kind: "ground", label: "Cave shelf", focus: 0.72,
-        alt: "Grassy shelf path along the cliff toward a lantern-lit cave", hotspots: [] },
+        alt: "Grassy shelf path along the cliff toward a cave lit by lanterns", hotspots: [] },
       { src: A + "clover-cliffs/cl04-cave-interior-channel", kind: "landmark", label: "Cave passage", focus: 0.62,
-        alt: "Timber-braced cave passage with lanterns opening onto the forest cliffs", hotspots: [] },
+        alt: "Cave passage supported by timber beams with lanterns opening onto the forest cliffs", hotspots: [] },
     ],
   },
   ruin: {
     name: "Fallen Grounds™", sub: "Broken Arches & Old Stone", status: "open",
     views: [
       { src: A + "ruin-courtyard/rc01-broad-dry-courtyard", kind: "establishing", label: "Fallen Grounds", focus: 0.55,
-        alt: "Broad paved courtyard between ivy-covered stone arches and ruined towers", hotspots: [] },
+        alt: "Broad paved courtyard between stone arches covered in ivy and ruined towers", hotspots: [] },
       { src: A + "ruin-courtyard/rc02-court-stairs-exits", kind: "ground", label: "Court stairs", focus: 0.5,
         alt: "Flat stone court with a great broken arch, broad stairs and archway exits", hotspots: [] },
       { src: A + "ruin-courtyard/rc03-layered-ruins-routes", kind: "traversal", label: "Layered ruins", focus: 0.62,
@@ -90,11 +90,11 @@ window.GB_AREAS = {
   frost: {
     name: "Frosty Peaks™", sub: "Icy Cliffs & Granite Roads", status: "open",
     views: [
-      // 2026-10-13: approved frozen-basin scene (canonical light-blue flags) replaces fp01, whose flag was the wrong dark blue; fp01 file kept
+      // 2026-10-13: approved frozen-basin scene (canonical pale blue flags) replaces fp01, whose flag was the wrong dark blue; fp01 file kept
       { src: "assets/systems/portals/v13/frost-basin", kind: "establishing", label: "Frozen basin", focus: 0.5,
-        alt: "Frosty Peaks™ frozen basin: a broad icy plateau with waterfalls, lanterns and light-blue GB banners", hotspots: [] },
+        alt: "Frosty Peaks™ frozen basin: a broad icy plateau with waterfalls, lanterns and pale blue GB banners", hotspots: [] },
       { src: A + "frost-peaks/fp02-rope-bridge-snowy-shelf", kind: "traversal", label: "Rope bridge", focus: 0.52,
-        alt: "Lantern-lit rope bridge crossing to a snowy stone shelf below the summit", hotspots: [] },
+        alt: "Rope bridge lit by lanterns crossing to a snowy stone shelf below the summit", hotspots: [] },
       { src: A + "frost-peaks/fp04-frost-to-summit-spine", kind: "landmark", label: "Toward Summit Spine™", focus: 0.42,
         alt: "Snowy path from Frosty Peaks™ toward the crystal summit and its glowing portal", hotspots: [] },
     ],
@@ -105,37 +105,37 @@ window.GB_AREAS = {
     name: "Summit Spine™", sub: "The Climb to the Summit", status: "open", color: "#8d4fe0",
     views: [
       { src: "assets/systems/portals/v13/summit", kind: "landmark", label: "Summit Spine portal", focus: 0.5,
-        alt: "The purple Summit Spine™ portal at the foot of the climb, with purple GB banners and crystal-lit stone", hotspots: [] },
+        alt: "The purple Summit Spine™ portal at the foot of the climb, with purple GB banners and stone illuminated by crystals", hotspots: [] },
       { src: A + "prism-ridge/ss01-summit-portal-stairs", kind: "traversal", label: "Grand ascent", focus: 0.5,
         alt: "Grand staircase climbing between crystals and waterfalls to the summit portal", hotspots: [] },
     ],
   },
   // Level Preview still sequence (not a map location). Opens in the same gallery view.
   preview: {
-    name: "Level Preview", sub: "Preview stills", status: "open", map: false,
+    name: "World Preview", sub: "Scenes and encounters", status: "open", map: false,
     views: [
       // Owner canon audit 2026-10-10 (issue #1): the three character action stills formerly here show floating islands, contrary to ONE
       // CONNECTED MOUNTAIN; the Trail Junction still and the two springboard stills were rejected and withdrawn.
       // 2026-10-15 owner QA: one still with a portal and its canonical regional flags for every point of interest, in route order, mixing
       // in-world pursuit scenes with the approved portal scenes; the two background-less enemy poster stills are removed.
       { src: "assets/scenes/portal-meadow-pursuit", kind: "still", label: "Portal Meadow™", focus: 0.42,
-        alt: "Gamer Girl Yellow™ in her streetwear slides across a flower-lined stone path as a Stone Walker™ lunges behind her, Claw Bots™ closing in near the gold Portal Meadow™ portal and its gold GB banners", hotspots: [] },
+        alt: "Gamer Girl Yellow™ in her streetwear slides across a stone path lined with flowers as a Stone Walker™ lunges behind her, Claw Bots™ closing in near the gold Portal Meadow™ portal and its gold GB banners", hotspots: [] },
       { src: "assets/scenes/creek-crossing-pursuit", kind: "still", label: "Creek Crossing™", focus: 0.3,
-        alt: "Gamer Bro Red™ in his sporty look sprints along a creek-side path away from a Stone Walker™ and Claw Bots™, with the blue Creek Crossing™ portal and its blue GB banner behind him", hotspots: [] },
+        alt: "Gamer Bro Red™ in his sporty look sprints along a path along the creek away from a Stone Walker™ and Claw Bots™, with the blue Creek Crossing™ portal and its blue GB banner behind him", hotspots: [] },
       { src: "assets/scenes/riverworks-rush", kind: "still", label: "Riverworks™", focus: 0.5,
         alt: "Goom Bot™ rolls down a timber walkway at Riverworks™ with Claw Bots™ and a Rotor Bot™ behind it, in front of the red Riverworks™ portal, red GB banners, blue pipes and waterfalls", hotspots: [] },
       { src: "assets/scenes/clover-cliffs-charge", kind: "still", label: "Clover Cliffs™", focus: 0.5,
         alt: "Goom Bot™, a Claw Bot™ and a Rotor Bot™ rush the stairs of Clover Cliffs™ below the green Clover Cliffs™ portal and green GB banners, with a Stone Walker™ above the pines", hotspots: [] },
       { src: "assets/systems/portals/v13/fallen", kind: "still", label: "Fallen Grounds™", focus: 0.7,
-        alt: "The glowing orange Fallen Grounds™ portal between ivy-covered stone arches, with orange GB banners and autumn leaves", hotspots: [] },
+        alt: "The glowing orange Fallen Grounds™ portal between stone arches covered in ivy, with orange GB banners and autumn leaves", hotspots: [] },
       { src: "assets/systems/portals/v13/frost", kind: "still", label: "Frosty Peaks™", focus: 0.75,
-        alt: "The blue Frosty Peaks™ portal above a frozen basin and waterfalls, with light-blue GB banners and a lantern-lit rope bridge", hotspots: [] },
+        alt: "The blue Frosty Peaks™ portal above a frozen basin and waterfalls, with pale blue GB banners and a rope bridge lit by lanterns", hotspots: [] },
       { src: "assets/scenes/summit-spine-climb", kind: "still", label: "Summit Spine™", focus: 0.5,
-        alt: "A Spike Bot™ and a Stone Walker™ on the flower-lined path to the purple Summit Spine™ portal, with purple GB banners, crystals and waterfalls", hotspots: [] },
+        alt: "A Spike Bot™ and a Stone Walker™ on the path bordered by flowers to the purple Summit Spine™ portal, with purple GB banners, crystals and waterfalls", hotspots: [] },
       { src: "assets/systems/portals/v13/prism-ridge-final", kind: "still", label: "Prism Ridge™", focus: 0.5,
         alt: "The crystal citadel at the top of Adventure Mountain™, with the giant cyan Prism Ridge™ summit portal above a long staircase", hotspots: [] },
       { src: "assets/systems/preview-prism-keeper-encounter", kind: "still", label: "Prism Keeper™ encounter", focus: 0.5,
-        alt: "Gamer Bro Blue™ in his sporty look stands in front of the Prism Keeper™ as it slams both fists into a crystal-lit plaza below a grand staircase", hotspots: [] },
+        alt: "Gamer Bro Blue™ in his sporty look stands in front of the Prism Keeper™ as it slams both fists into a plaza illuminated by crystals below a grand staircase", hotspots: [] },
     ],
   },
 };
