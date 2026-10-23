@@ -44,7 +44,7 @@ window.GB_ENTITIES = {
     studioHero: true, heroFirst: true, heroLabel: "Idle",
     media: { thumb: "assets/entities/studio/goom-idle-hd", render: "assets/entities/studio/goom-idle-hd", icon: null },
     cardAlt: "assets/entities/studio/goom-attack-hd",
-    copy: { provisional: true, summary: "Small but troublesome, Goom Bot™ patrols the mountain trails and gives chase when explorers get too close.", behaviour: "Keep your eyes open—it may spot you before you spot it.", where: "Common across regions." },
+    copy: { provisional: true, summary: "Small but troublesome, Goom Bot™ patrols the mountain trails and gives chase when explorers get too close.", behaviour: "Keep your eyes open. It may spot you before you spot it.", where: "Common across regions." },
     encounter: [],
     views: {  },
     states: { "Idle": "assets/entities/studio/goom-idle-hd", "Alert": "assets/entities/studio/goom-alert-hd", "Attack": "assets/entities/studio/goom-attack-hd", "Charge": "assets/entities/studio/goom-charge-hd", "Defeated": "assets/entities/studio/goom-defeated-hd" },
@@ -59,7 +59,7 @@ window.GB_ENTITIES = {
     // support feet, front amber core. The red/gold streak render (#10) is illustrative only and is not shown.
     studioHero: true, heroFirst: true, heroLabel: "Idle",
     media: { thumb: "assets/entities/studio/claw-bot-idle-hd", render: "assets/entities/studio/claw-bot-idle-hd", icon: null },
-    copy: { provisional: true, summary: "Watch those claws! Claw Bot™ is a ground-roaming troublemaker with two split-spike claws.", behaviour: "Once it spots an explorer, those claws rise and clamp into action.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Watch those claws! Claw Bot™ is a troublemaker that roams the ground with two hinged claws and split spikes.", behaviour: "Once it spots an explorer, those claws rise and clamp into action.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {},
     states: { "Idle": "assets/entities/studio/claw-bot-idle-hd", "Scuttle": "assets/entities/studio/claw-bot-scuttle-hd", "Alert": "assets/entities/studio/claw-bot-alert-hd", "Forward clamp": "assets/entities/studio/claw-bot-clamp-forward-hd", "Defeated": "assets/entities/studio/claw-bot-defeated-hd" },
@@ -76,7 +76,7 @@ window.GB_ENTITIES = {
     studioHero: true, heroFirst: true, heroLabel: "Hero",
     media: { thumb: "assets/entities/studio/spike-bot-hero-hd", render: "assets/entities/studio/spike-bot-hero-hd", icon: null },
     cardAlt: "assets/entities/studio/spike-bot-roll-hd",
-    copy: { provisional: true, summary: "Watch your step around Spike Bot™—those spikes make close encounters risky.", behaviour: "It may stand its ground or patrol nearby paths, and contact can hurt.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "Watch your step around Spike Bot™. Those spikes make close encounters risky.", behaviour: "It may stand its ground or patrol nearby paths, and contact can hurt.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {  },
     states: { "Hero": "assets/entities/studio/spike-bot-hero-hd", "Alert": "assets/entities/studio/spike-bot-alert-hd", "Rolling": "assets/entities/studio/spike-bot-roll-hd", "Charge": "assets/entities/studio/spike-bot-charge-hd", "Attack": "assets/entities/studio/spike-bot-attack-hd", "Defeated": "assets/entities/studio/spike-bot-defeated-hd" },
@@ -120,7 +120,7 @@ window.GB_ENTITIES = {
     // Defeated = the mossy amber-crystal rubble (its own look: it is NOT Prism Keeper's prism rubble) and a collapsed pile.
     heroFirst: true, heroLabel: "Stance",
     media: { thumb: "assets/entities/new/stone-walker-hero", render: "assets/entities/new/stone-walker-hero", icon: null },
-    copy: { provisional: true, summary: "An imposing figure of awakened stone, Stone Walker™ brings a serious challenge to the mountain.", behaviour: "Watch for heavy footsteps—it gives chase and attacks at close range.", where: "Found across Adventure Mountain™." },
+    copy: { provisional: true, summary: "An imposing figure of awakened stone, Stone Walker™ brings a serious challenge to the mountain.", behaviour: "Watch for heavy footsteps. It gives chase and attacks at close range.", where: "Found across Adventure Mountain™." },
     encounter: [],
     views: {},
     states: { "Stance": "assets/entities/new/stone-walker-hero", "Glare": "assets/entities/new/stone-walker-glare", "Lunge": "assets/entities/new/stone-walker-dynamic", "Collapsed": "assets/entities/new/stone-walker-collapsed", "Defeated · rubble": "assets/objects/studio/stone-walker-rubble" },
@@ -151,7 +151,7 @@ window.GB_ENTITIES = {
     // V2 and the new-candidate poses (alternate stance, guard, flex) are not used.
     heroFirst: true, heroLabel: "Final form",
     media: { thumb: N + "brightback-hero", render: "assets/entities/new/brightback-hero", icon: null },
-    copy: { summary: "The towering final form of the Rumbler™ line, crowned with deep violet stone and larger Prism Shards.", behaviour: "The fourth—and most imposing—form in this mysterious evolution.", where: "Prism Ridge™." },
+    copy: { summary: "The towering final form of the Rumbler™ line, crowned with deep violet stone and larger Prism Shards.", behaviour: "The fourth and most imposing form in this mysterious evolution.", where: "Prism Ridge™." },
     encounter: [],
     views: {}, states: { "Final form": "assets/entities/new/brightback-hero", "With the stone line": "assets/scenes/stone-line-poster", "Stone line · wide": "assets/scenes/stone-line-poster-b" }, angles: angles(), cardScale: 1.0, height: null, scale: null,
     evolution: { line: "boulder", phase: 4 },
@@ -209,7 +209,7 @@ window.GB_ENTITIES = {
   "patchpad": {
     name: "PATCHPAD™", type: "gadget", status: "APPROVED",
     media: { thumb: "assets/gear/patchpad-hero", render: "assets/gear/patchpad-hero", icon: null },
-    copy: { summary: "Meet PATCHPAD™—a signature piece of the Gamers' gear in Blue, Red, Yellow and Purple.", behaviour: "Explore its metallic dial, thumbwheel and four colourful controls for action, scanning, apps and settings.", where: "Carried by the Gamers." },
+    copy: { summary: "Meet PATCHPAD™, a signature piece of the Gamers' gear in Blue, Red, Yellow and Purple.", behaviour: "Explore its metallic dial, thumbwheel and four colourful controls for action, scanning, apps and settings.", where: "Carried by the Gamers." },
     encounter: [], states: {}, views: { "Blue": "assets/gear/patchpad-hero", "Red": "assets/gear/patchpad-red", "Yellow": "assets/gear/patchpad-yellow", "Purple": "assets/gear/patchpad-purple" }, angles: angles(), scale: null,
   },
   "smartwatch": {
@@ -246,7 +246,7 @@ window.GB_ENTITIES = {
   "crystal-chest": {
     name: "Crystal Chest", type: "collectible", status: "APPROVED",
     media: { thumb: "assets/objects/crystal-chest", render: "assets/objects/crystal-chest", icon: null },
-    copy: { summary: "A Crystal Chest is hard to miss, with glowing crystal panels and the promise of a special find.", behaviour: "A less-common treasure for curious explorers.", where: "Found across Adventure Mountain™." },
+    copy: { summary: "A Crystal Chest is hard to miss, with glowing crystal panels and the promise of a special find.", behaviour: "A rarer treasure for curious explorers.", where: "Found across Adventure Mountain™." },
     encounter: [], states: {}, angles: angles(), scale: null,
   },
   "character-coins": {
@@ -337,7 +337,7 @@ window.GB_ENTITY_SCENE = {
   "stone-golem": { src: SC + "stone-golem-ingame", fx: 50 },
   "crystal-guardian": { src: SC + "crystal-guardian-ingame", fx: 50 },
   "brightback": [
-    // "Four-view turnaround" removed from public view 2026-10-11 (technical turnaround; thin strip left a large blank stage); file kept
+    // "Views from all sides" removed from public view 2026-10-11 (technical turnaround; thin strip left a large blank stage); file kept
     { src: "assets/scenes/brightback-in-the-world", fx: 50, label: "In the world" },
     { src: E + "brightback-v1-face-clean", fx: 50, label: "Face and core detail" },
     // "Prism Shard detail" (brightback-v1-hand-clean, 288 px) removed from public view 2026-10-11: shown at 0.4x density on phones; file kept

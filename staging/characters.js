@@ -30,7 +30,7 @@ window.GB_CHARACTERS = {
   },
   purple: {
     name: "Gamer Girl Purple™", colour: "Purple", hex: "#8a2be2", deep: "#3f0f73",
-    card: C + "purple/street-front", tagline: "Quick-thinking, creative and always curious about the possibilities.",
+    card: C + "purple/street-front", tagline: "Creative, resourceful and always curious about the possibilities.",
     looks: looks("purple", ["pose", "front", "side", "back"], ["pose", "front", "side", "back"]),
   },
   yellow: {
