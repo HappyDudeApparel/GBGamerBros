@@ -2,21 +2,33 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="gb-revision" content="r-010dee65">
+<meta name="gb-revision" content="r-385532dd">
 <script id="gbFresh">/* reload once if a newer staging build exists (HTML may be cached up to ~10 min) */
-(function(){var R="r-010dee65";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
+(function(){var R="r-385532dd";try{fetch("revision.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.revision||j.revision===R)return;var k="gb-rev-reload",d=null;try{d=sessionStorage.getItem(k)}catch(e){}if(d===j.revision)return;try{sessionStorage.setItem(k,j.revision)}catch(e){}var u=new URL(location.href);u.searchParams.set("r",j.revision);location.replace(u.toString())}).catch(function(){})}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2a6b">
 <meta name="robots" content="noindex">
 <title>GB GAMER BROS™ — Adventure Mountain™</title>
-<meta name="description" content="GB GAMER BROS™ — Explore Adventure Mountain™. PLAY • EXPLORE • DISCOVER">
+<meta name="description" content="Meet the GB GAMER BROS™ and explore Adventure Mountain™—a colourful world of waterfalls, hidden trails, mysterious ruins and daring discoveries.">
+<link rel="canonical" href="https://gb.happydude.ca/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GB GAMER BROS™">
+<meta property="og:title" content="GB GAMER BROS™ — Adventure Mountain™">
+<meta property="og:description" content="Meet the Gamers. Explore the Mountain. Discover a world of hidden routes, mysterious ruins and big adventures.">
+<meta property="og:url" content="https://gb.happydude.ca/">
+<meta property="og:image" content="https://gb.happydude.ca/assets/hero/hero-1.webp">
+<meta property="og:image:alt" content="The four GB GAMER BROS™ adventurers together in Portal Meadow™">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GB GAMER BROS™ — Adventure Mountain™">
+<meta name="twitter:description" content="Meet the Gamers. Explore the Mountain. Discover what awaits.">
+<meta name="twitter:image" content="https://gb.happydude.ca/assets/hero/hero-1.webp">
 <meta name="author" content="HAPPY DUDE®">
 <meta name="copyright" content="© 2026 HAPPY DUDE®. All rights reserved.">
 <link rel="icon" href="assets/brand/gb-logo-clean.webp?v=d0c8b5a38d">
 <link rel="preload" href="assets/fonts/rubik-latin.woff2?v=ea3f56e306" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/rubik-italic-latin.woff2?v=0f2553fa1f" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="staging.css?v=835b68c118">
+<link rel="stylesheet" href="staging.css?v=ab99f2a535">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -56,20 +68,17 @@
   <section class="hero" aria-roledescription="carousel" aria-label="Adventure Mountain™ hero">
     <div class="hero__slides" id="heroSlides" aria-live="off">
       <div class="hero__track" id="heroTrack">
-        <!-- Key art: each slide is one composite (approved area scene + approved character cutouts, grounded; see tools/make_hero_composites.py).
-             Characters are part of the picture, so there is no separate foreground layer. Portrait layouts frame the central 66 % in the scene band.
-             2026-10-13 (owner review, staging only): slides 4–6 interleave streetwear and action with the sporty key art.
-             2026-10-15: slides 7–10 are wide in-world scenes (one per region colour) from the second image wave; they leave the rotation on portrait screens (data-skip), like slide 6. -->
+        <!-- Responsive key-art carousel. Slide visibility is handled by staging.js. -->
         <figure class="slide slide--art" aria-label="Slide 1 of 3"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-1-p-960.webp?v=17626ad426 960w, assets/hero/hero-1-p.webp?v=970d4ad1af 1080w" sizes="100vw"><img src="assets/hero/hero-1.webp?v=feeb8f1fd9" srcset="assets/hero/hero-1-960.webp?v=3fa9072e91 960w, assets/hero/hero-1.webp?v=feeb8f1fd9 1672w" sizes="100vw" width="1672" height="941" alt="The four Gamers, Blue, Red, Yellow and Purple, standing together on the broad entry path of Portal Meadow™" fetchpriority="high" draggable="false"></picture></figure>
-        <figure class="slide slide--art" aria-label="Slide 5 of 6" data-review="owner"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-5-p-960.webp?v=d36177fc89 960w, assets/hero/hero-5-p.webp?v=8e2c6157a9 1080w" sizes="100vw"><img src="assets/hero/hero-5.webp?v=41ea4598e9" srcset="assets/hero/hero-5-960.webp?v=0b55fe84d4 960w, assets/hero/hero-5.webp?v=41ea4598e9 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Girl Yellow™, Gamer Bro Blue™, Gamer Bro Red™ and Gamer Girl Purple™ in their streetwear looks on the stone stairs below a crystal-lit plaza" fetchpriority="low" draggable="false"></picture></figure>
+        <figure class="slide slide--art" aria-label="Slide 5 of 6"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-5-p-960.webp?v=d36177fc89 960w, assets/hero/hero-5-p.webp?v=8e2c6157a9 1080w" sizes="100vw"><img src="assets/hero/hero-5.webp?v=41ea4598e9" srcset="assets/hero/hero-5-960.webp?v=0b55fe84d4 960w, assets/hero/hero-5.webp?v=41ea4598e9 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Girl Yellow™, Gamer Bro Blue™, Gamer Bro Red™ and Gamer Girl Purple™ in their streetwear looks on the stone stairs below a crystal-lit plaza" fetchpriority="low" draggable="false"></picture></figure>
         <figure class="slide slide--art" aria-label="Slide" data-skip="portrait"><picture><img style="--pos:50% 85%" src="assets/hero/hero-7.webp?v=486cd209ee" srcset="assets/hero/hero-7-960.webp?v=37a4fc57cf 960w, assets/hero/hero-7.webp?v=486cd209ee 1672w" sizes="100vw" width="1672" height="941" alt="Goom Bot™, Claw Bots™ and a Rotor Bot™ charge down the Riverworks™ path, past a red portal and red region flags" fetchpriority="low" draggable="false"></picture></figure>
         <figure class="slide slide--art" aria-label="Slide 2 of 3"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-2-p-960.webp?v=d2efc3a88f 960w, assets/hero/hero-2-p.webp?v=d71fb21c28 1080w" sizes="100vw"><img src="assets/hero/hero-2.webp?v=c1e9bef0b5" srcset="assets/hero/hero-2-960.webp?v=1587d00e59 960w, assets/hero/hero-2.webp?v=c1e9bef0b5 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Bro Blue™ and Gamer Bro Red™ at the foot of the Summit Spine™ staircase, with the portal glowing at the top" fetchpriority="low" draggable="false"></picture></figure>
         <figure class="slide slide--art" aria-label="Slide" data-skip="portrait"><picture><img style="--pos:50% 38%" src="assets/hero/hero-10.webp?v=a02222c0c7" srcset="assets/hero/hero-10-960.webp?v=7e4bc94031 960w, assets/hero/hero-10.webp?v=a02222c0c7 1672w" sizes="100vw" width="1672" height="941" alt="The Prism Keeper™ storms through the Summit Spine™ approach with Goom Bot™, Claw Bot™ and Rotor Bot™ beneath a purple portal" fetchpriority="low" draggable="false"></picture></figure>
         <figure class="slide slide--art" aria-label="Slide 3 of 3"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-3-p-960.webp?v=d4ed9e3d2b 960w, assets/hero/hero-3-p.webp?v=7c121243d2 1080w" sizes="100vw"><img src="assets/hero/hero-3.webp?v=48ccc77b93" srcset="assets/hero/hero-3-960.webp?v=6c1968c2f0 960w, assets/hero/hero-3.webp?v=48ccc77b93 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Girl Yellow™ and Gamer Girl Purple™ on the timber maintenance walkway of Riverworks™ beside a blue pipe" fetchpriority="low" draggable="false"></picture></figure>
         <figure class="slide slide--art" aria-label="Slide" data-skip="portrait"><picture><img style="--pos:50% 46%" src="assets/hero/hero-8.webp?v=f0b6713502" srcset="assets/hero/hero-8-960.webp?v=5f479c87d8 960w, assets/hero/hero-8.webp?v=f0b6713502 1672w" sizes="100vw" width="1672" height="941" alt="A Stone Walker™ lumbers through Portal Meadow™ with Goom Bot™, Claw Bot™, Rotor Bot™ and Spike Bot™ beside the gold portal" fetchpriority="low" draggable="false"></picture></figure>
-        <figure class="slide slide--art" aria-label="Slide 4 of 6" data-review="owner"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-4-p-960.webp?v=100fa7469e 960w, assets/hero/hero-4-p.webp?v=d0e9c16a2c 1080w" sizes="100vw"><img src="assets/hero/hero-4.webp?v=08aeff7c01" srcset="assets/hero/hero-4-960.webp?v=8920652f6c 960w, assets/hero/hero-4.webp?v=08aeff7c01 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Bro Blue™ stands his ground as the Prism Keeper™ slams both fists into the plaza, scattering stone and purple prism light" fetchpriority="low" draggable="false"></picture></figure>
+        <figure class="slide slide--art" aria-label="Slide 4 of 6"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-4-p-960.webp?v=100fa7469e 960w, assets/hero/hero-4-p.webp?v=d0e9c16a2c 1080w" sizes="100vw"><img src="assets/hero/hero-4.webp?v=08aeff7c01" srcset="assets/hero/hero-4-960.webp?v=8920652f6c 960w, assets/hero/hero-4.webp?v=08aeff7c01 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Bro Blue™ stands his ground as the Prism Keeper™ slams both fists into the plaza, scattering stone and purple prism light" fetchpriority="low" draggable="false"></picture></figure>
         <figure class="slide slide--art" aria-label="Slide" data-skip="portrait"><picture><img style="--pos:50% 62%" src="assets/hero/hero-9.webp?v=2647a3f301" srcset="assets/hero/hero-9-960.webp?v=296a49f033 960w, assets/hero/hero-9.webp?v=2647a3f301 1672w" sizes="100vw" width="1672" height="941" alt="Goom Bot™, Claw Bot™ and Rotor Bot™ rush the stairs of Clover Cliffs™ below a green portal and green region flags" fetchpriority="low" draggable="false"></picture></figure>
-        <figure class="slide slide--art" aria-label="Slide 6 of 6" data-review="owner" data-skip="portrait"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-6-p-960.webp?v=27f98bd69e 960w, assets/hero/hero-6-p.webp?v=6af4be1aa5 1080w" sizes="100vw"><img src="assets/hero/hero-6.webp?v=272809d305" srcset="assets/hero/hero-6-960.webp?v=6404ddc6f7 960w, assets/hero/hero-6.webp?v=272809d305 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Bro Blue™ slides low across the tiled plaza to dodge the Prism Keeper™'s ground strike" fetchpriority="low" draggable="false"></picture></figure>
+        <figure class="slide slide--art" aria-label="Slide 6 of 6" data-skip="portrait"><picture><source media="(max-aspect-ratio: 1/1)" srcset="assets/hero/hero-6-p-960.webp?v=27f98bd69e 960w, assets/hero/hero-6-p.webp?v=6af4be1aa5 1080w" sizes="100vw"><img src="assets/hero/hero-6.webp?v=272809d305" srcset="assets/hero/hero-6-960.webp?v=6404ddc6f7 960w, assets/hero/hero-6.webp?v=272809d305 1672w" sizes="100vw" width="1672" height="941" alt="Gamer Bro Blue™ slides low across the tiled plaza to dodge the Prism Keeper™'s ground strike" fetchpriority="low" draggable="false"></picture></figure>
       </div>
     </div>
     <div class="hero__shade" aria-hidden="true"></div>
@@ -84,9 +93,9 @@
       <svg class="steam__logo" aria-hidden="true"><use href="#i-compass"/></svg><span>EXPLORE THE MOUNTAIN</span><svg class="steam__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
     </a>
       <ul class="pillars" aria-label="Game pillars">
-        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-compass"/></svg></span><span class="pillar__label">EXPLORE<br>VIBRANT WORLDS</span></li>
+        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-compass"/></svg></span><span class="pillar__label">EXPLORE<br>THE MOUNTAIN</span></li>
         <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-spiral"/></svg></span><span class="pillar__label">DISCOVER<br>HIDDEN SECRETS</span></li>
-        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-team"/></svg></span><span class="pillar__label">PLAY<br>TOGETHER</span></li>
+        <li><span class="pillar__ring"><svg aria-hidden="true"><use href="#i-team"/></svg></span><span class="pillar__label">MEET<br>THE TEAM</span></li>
       </ul>
     </div>
 
@@ -134,17 +143,23 @@
 <main class="systems" id="features">
   <div class="systems__inner">
     <ul class="feats" aria-label="Ways to play">
-      <li class="feat"><span class="feat__icon feat__icon--portal"><svg aria-hidden="true"><use href="#i-portal"/></svg></span><h3>Find Portals</h3><p>Discover portal locations hidden across the world.</p></li>
-      <li class="feat"><span class="feat__icon feat__icon--reward"><svg aria-hidden="true"><use href="#i-reward"/></svg></span><h3>Collect Rewards</h3><p>Find Crystals, Prism Crystals, chests and GB Coins.</p></li>
-      <li class="feat"><span class="feat__icon feat__icon--secret"><svg aria-hidden="true"><use href="#i-secret"/></svg></span><h3>Uncover Secrets</h3><p>Explore optional routes and hidden areas.</p></li>
-      <li class="feat"><span class="feat__icon feat__icon--traversal"><svg aria-hidden="true"><use href="#i-traversal"/></svg></span><h3>Master Traversal</h3><p>Use jumps, ziplines, pipes, springboards, bridges and more.</p></li>
-      <li class="feat"><span class="feat__icon feat__icon--team"><svg aria-hidden="true"><use href="#i-team2"/></svg></span><h3>Play Together</h3><p>Built for teaming up to explore Adventure Mountain™ together.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--portal"><svg aria-hidden="true"><use href="#i-portal"/></svg></span><h3>Find Portals</h3><p>Follow the glow of portals scattered across the mountain.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--reward"><svg aria-hidden="true"><use href="#i-reward"/></svg></span><h3>Collect Rewards</h3><p>Gather GB Coins, Crystals, Prism Crystals and treasure along the way.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--secret"><svg aria-hidden="true"><use href="#i-secret"/></svg></span><h3>Uncover Secrets</h3><p>Venture off the main trail to uncover hidden paths and places.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--traversal"><svg aria-hidden="true"><use href="#i-traversal"/></svg></span><h3>Master Traversal</h3><p>Leap, climb and find your way across bridges, pipeways and springboards.</p></li>
+      <li class="feat"><span class="feat__icon feat__icon--team"><svg aria-hidden="true"><use href="#i-team2"/></svg></span><h3>Meet the Gamers</h3><p>Discover four colourful adventurers. Cooperative play is a future goal.</p></li>
     </ul>
+
+    <section class="welcome" aria-labelledby="welcomeTitle">
+      <p class="welcome__eyebrow">PLAY • EXPLORE • DISCOVER</p>
+      <h2 id="welcomeTitle">Adventure Awaits</h2>
+      <p>Welcome to Adventure Mountain™—a colourful world of winding trails, towering waterfalls, ancient ruins and hidden discoveries. Get to know the GB GAMER BROS™ and see where the adventure takes you.</p>
+    </section>
 
     <section class="rail-block" id="areas" aria-labelledby="areasTitle">
       <header class="sec-head">
         <span class="sec-head__icon"><svg aria-hidden="true"><use href="#i-compass"/></svg></span>
-        <div><h2 id="areasTitle">Explore Iconic Areas</h2><p>The regions of Adventure Mountain™</p></div>
+        <div><h2 id="areasTitle">Explore the Mountain</h2><p>Discover the regions of Adventure Mountain™</p></div>
       </header>
       <div class="rail-wrap">
         <button class="round-btn rail-arrow rail-arrow--prev" type="button" data-rail="-1" aria-label="Scroll areas left" aria-controls="areaRail"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -157,7 +172,7 @@
       <section class="panel panel--preview" id="level-preview" aria-labelledby="lpTitle">
         <header class="panel__head">
           <span class="panel__icon"><svg aria-hidden="true"><use href="#i-frames"/></svg></span>
-          <div><h2 id="lpTitle">Level Preview</h2><p>A first look along the trails</p></div>
+          <div><h2 id="lpTitle">World Preview</h2><p>Scenes from across Adventure Mountain™</p></div>
         </header>
         <div class="lp" id="levelPreview">
           <button class="lp__main" id="lpMain" type="button" aria-label="Open preview stills">
@@ -171,6 +186,7 @@
             <button class="round-btn round-btn--sm" type="button" data-lp="1" aria-label="Next still"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           </div>
         </div>
+        <p class="panel__fine">Illustrative scenes—not gameplay footage.</p>
       </section>
 
       <section class="panel panel--travel" id="fast-travel" aria-labelledby="ftTitle">
@@ -202,9 +218,9 @@
         <span class="panel__icon"><svg aria-hidden="true"><use href="#i-reward"/></svg></span>
         <div><h2 id="objTitle">Adventure Finds™</h2></div>
       </header>
-      <p class="panel__intro">Rewards and helpers found across the mountain: chests, GB Coins, Crystals, Prism Crystals, springboards and crates. Gadgets have moved to <a href="#gear">Gear &amp; Tech</a>.</p>
+      <p class="panel__intro">There's always more to discover! Keep an eye out for treasure chests, GB Coins, Crystals, Prism Crystals, springboards and crates hidden across the mountain.</p>
       <ul class="foes objs" id="objs"></ul>
-      <p class="panel__fine">Visualizations and designs are subject to change during development.</p>
+      <p class="panel__fine">Illustrative artwork; final game details may vary.</p>
     </section>
 
     <section class="panel panel--gear" id="gear" aria-labelledby="gearTitle">
@@ -212,7 +228,7 @@
         <span class="panel__icon"><svg aria-hidden="true"><use href="#i-secret"/></svg></span>
         <div><h2 id="gearTitle">Gear &amp; Tech</h2></div>
       </header>
-      <p class="panel__intro">The Gamers' hardware. <b>PATCHPAD™</b> is the Gamers' hardware companion and the <b>SMARTWATCH</b> is worn on the wrist; both come in the four player colours. The <b>GlitchKey™</b> is previewed as concept art in the same four colours.</p>
+      <p class="panel__intro">Explore the Gamers' signature gear: the <b>PATCHPAD™</b>, a colour-matched <b>SMARTWATCH</b>, and an early look at the mysterious <b>GlitchKey™</b>.</p>
       <div class="gear">
         <figure class="gear__card gear__card--patchpad">
           <button class="gear__view" type="button" data-entity="patchpad" aria-label="PATCHPAD™ — view full size and details">
@@ -248,7 +264,7 @@
           </figcaption>
         </figure>
       </div>
-      <p class="panel__fine">Product visuals are design renders; designs are subject to change during development.</p>
+      <p class="panel__fine">Gear shown as design artwork; details may change.</p>
     </section>
 
   </div>
@@ -329,19 +345,19 @@
   </nav>
   <p class="site-foot__legal">© 2026 HAPPY DUDE®. All rights reserved.</p>
   <p class="site-foot__links"><a href="rights.html">Rights &amp; IP</a></p>
-  <p class="site-foot__note">Adventure Mountain™ artwork, characters, environments and visual assets are original project material.</p>
-  <p class="site-foot__build" hidden>Build <span id="gbRev">r-010dee65</span></p>
+  <p class="site-foot__note">Adventure Mountain™ is an original world from GB GAMER BROS™.</p>
+  <p class="site-foot__build" hidden>Build <span id="gbRev">r-385532dd</span></p>
 </footer>
 
 <div class="toast" id="steamNote" role="status" aria-live="polite"></div>
 
 <script src="media-manifest.js?v=671305dfce" defer></script>
-<script src="areas.js?v=05077be61a" defer></script>
-<script src="entities.js?v=a687aa8feb" defer></script>
+<script src="areas.js?v=086ace00f7" defer></script>
+<script src="entities.js?v=a0939ccd6a" defer></script>
 <script src="world-data.js?v=07120b5d5e" defer></script>
 <script src="panorama-manifest.js?v=f6156987ce" defer></script>
 <script src="world.js?v=ecb5fa5de5" defer></script>
-<script src="characters.js?v=ac4ee5ea9f" defer></script>
-<script src="staging.js?v=c78a353764" defer></script>
+<script src="characters.js?v=f7894296cd" defer></script>
+<script src="staging.js?v=3385f0cc12" defer></script>
 </body>
 </html>

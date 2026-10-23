@@ -112,7 +112,7 @@ window.GB_AREAS = {
   },
   // Level Preview still sequence (not a map location). Opens in the same gallery view.
   preview: {
-    name: "Level Preview", sub: "Preview stills", status: "open", map: false,
+    name: "World Preview", sub: "Scenes and encounters", status: "open", map: false,
     views: [
       // Owner canon audit 2026-10-10 (issue #1): the three character action stills formerly here show floating islands, contrary to ONE
       // CONNECTED MOUNTAIN; the Trail Junction still and the two springboard stills were rejected and withdrawn.

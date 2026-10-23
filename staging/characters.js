@@ -20,22 +20,22 @@ const looks = (id, sporty, street) => ({
 window.GB_CHARACTERS = {
   blue: {
     name: "Gamer Bro Blue™", colour: "Blue", hex: "#1f6fff", deep: "#0a2f8f",
-    card: C + "blue/street-front", tagline: "Bold, curious, and always ready to explore.",
+    card: C + "blue/street-front", tagline: "Bold, curious and ready to discover what lies around the next bend.",
     looks: looks("blue", ["pose", "front", "side", "back"], ["threeq", "front", "side", "back"]),
   },
   red: {
     name: "Gamer Bro Red™", colour: "Red", hex: "#e3262f", deep: "#7d0d14",
-    card: C + "red/street-front", tagline: "Confident, creative, and brings the fun.",
+    card: C + "red/street-front", tagline: "Big ideas, bold energy and a knack for making every adventure more fun.",
     looks: looks("red", ["pose", "front", "side", "back"], ["pose", "front", "side", "back"]),
   },
   purple: {
     name: "Gamer Girl Purple™", colour: "Purple", hex: "#8a2be2", deep: "#3f0f73",
-    card: C + "purple/street-front", tagline: "Clever, creative, adventurous.",
+    card: C + "purple/street-front", tagline: "Quick-thinking, creative and always curious about the possibilities.",
     looks: looks("purple", ["pose", "front", "side", "back"], ["pose", "front", "side", "back"]),
   },
   yellow: {
     name: "Gamer Girl Yellow™", colour: "Yellow", hex: "#f5b800", deep: "#7a5600",
-    card: C + "yellow/street-front", tagline: "Energetic, fearless, and always up for a challenge.",
+    card: C + "yellow/street-front", tagline: "Full of energy and ready to take on the next challenge.",
     looks: looks("yellow", ["pose", "front", "side", "back"], ["pose", "front", "side", "back"]),
   },
 };
