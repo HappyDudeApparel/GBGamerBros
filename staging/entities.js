@@ -216,7 +216,7 @@ window.GB_ENTITIES = {
     name: "SMARTWATCH", type: "gadget", status: "APPROVED",
     media: { thumb: "assets/gear/smartwatch-lineup", render: "assets/gear/smartwatch-lineup", icon: null },
     copy: { summary: "Every Gamer has a signature SMARTWATCH, styled in their own team colour.", behaviour: "A familiar companion for adventures on the mountain.", where: "Worn by every Gamer." },
-    encounter: [], states: {}, views: { "Lineup": "assets/gear/smartwatch-lineup", "Showcase": "assets/gear/smartwatch-hardware" }, angles: angles(), scale: null,
+    encounter: [], states: {}, views: { "Lineup": "assets/gear/smartwatch-lineup", "Details": "assets/gear/smartwatch-hardware" }, angles: angles(), scale: null,
   },
   "glitchkey": {
     // concept preview only (owner approval of a final render is still pending): no functions, mechanics or platform claims
